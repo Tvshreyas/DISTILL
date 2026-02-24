@@ -177,24 +177,102 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 to AUTH-05 | Phase 1 | Pending |
-| ONBD-01 to ONBD-09 | Phase 2 | Pending |
-| SESS-01 to SESS-08 | Phase 3 | Pending |
-| REFL-01 to REFL-12 | Phase 3 | Pending |
-| LIB-01 to LIB-09 | Phase 4 | Pending |
-| SURF-01 to SURF-06 | Phase 5 | Pending |
-| LAYR-01 to LAYR-03 | Phase 5 | Pending |
-| STRK-01 to STRK-08 | Phase 4 | Pending |
-| MNTZ-01 to MNTZ-10 | Phase 6 | Pending |
-| ACCT-01 to ACCT-05 | Phase 6 | Pending |
-| PWA-01 to PWA-03 | Phase 7 | Pending |
-| INFRA-01 to INFRA-10 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| AUTH-05 | Phase 1 | Pending |
+| ONBD-01 | Phase 2 | Pending |
+| ONBD-02 | Phase 2 | Pending |
+| ONBD-03 | Phase 2 | Pending |
+| ONBD-04 | Phase 2 | Pending |
+| ONBD-05 | Phase 2 | Pending |
+| ONBD-06 | Phase 2 | Pending |
+| ONBD-07 | Phase 2 | Pending |
+| ONBD-08 | Phase 2 | Pending |
+| ONBD-09 | Phase 2 | Pending |
+| SESS-01 | Phase 3 | Pending |
+| SESS-02 | Phase 3 | Pending |
+| SESS-03 | Phase 3 | Pending |
+| SESS-04 | Phase 3 | Pending |
+| SESS-05 | Phase 3 | Pending |
+| SESS-06 | Phase 3 | Pending |
+| SESS-07 | Phase 3 | Pending |
+| SESS-08 | Phase 3 | Pending |
+| REFL-01 | Phase 3 | Pending |
+| REFL-02 | Phase 3 | Pending |
+| REFL-03 | Phase 3 | Pending |
+| REFL-04 | Phase 3 | Pending |
+| REFL-05 | Phase 3 | Pending |
+| REFL-06 | Phase 3 | Pending |
+| REFL-07 | Phase 3 | Pending |
+| REFL-08 | Phase 3 | Pending |
+| REFL-09 | Phase 3 | Pending |
+| REFL-10 | Phase 3 | Pending |
+| REFL-11 | Phase 3 | Pending |
+| REFL-12 | Phase 3 | Pending |
+| LIB-01 | Phase 4 | Pending |
+| LIB-02 | Phase 4 | Pending |
+| LIB-03 | Phase 4 | Pending |
+| LIB-04 | Phase 4 | Pending |
+| LIB-05 | Phase 4 | Pending |
+| LIB-06 | Phase 4 | Pending |
+| LIB-07 | Phase 4 | Pending |
+| LIB-08 | Phase 4 | Pending |
+| LIB-09 | Phase 4 | Pending |
+| STRK-01 | Phase 4 | Pending |
+| STRK-02 | Phase 4 | Pending |
+| STRK-03 | Phase 4 | Pending |
+| STRK-04 | Phase 4 | Pending |
+| STRK-05 | Phase 4 | Pending |
+| STRK-06 | Phase 4 | Pending |
+| STRK-07 | Phase 4 | Pending |
+| STRK-08 | Phase 4 | Pending |
+| SURF-01 | Phase 5 | Pending |
+| SURF-02 | Phase 5 | Pending |
+| SURF-03 | Phase 5 | Pending |
+| SURF-04 | Phase 5 | Pending |
+| SURF-05 | Phase 5 | Pending |
+| SURF-06 | Phase 5 | Pending |
+| LAYR-01 | Phase 5 | Pending |
+| LAYR-02 | Phase 5 | Pending |
+| LAYR-03 | Phase 5 | Pending |
+| MNTZ-01 | Phase 6 | Pending |
+| MNTZ-02 | Phase 6 | Pending |
+| MNTZ-03 | Phase 6 | Pending |
+| MNTZ-04 | Phase 6 | Pending |
+| MNTZ-05 | Phase 6 | Pending |
+| MNTZ-06 | Phase 6 | Pending |
+| MNTZ-07 | Phase 6 | Pending |
+| MNTZ-08 | Phase 6 | Pending |
+| MNTZ-09 | Phase 6 | Pending |
+| MNTZ-10 | Phase 6 | Pending |
+| ACCT-01 | Phase 6 | Pending |
+| ACCT-02 | Phase 6 | Pending |
+| ACCT-03 | Phase 6 | Pending |
+| ACCT-04 | Phase 6 | Pending |
+| ACCT-05 | Phase 6 | Pending |
+| PWA-01 | Phase 7 | Pending |
+| PWA-02 | Phase 7 | Pending |
+| PWA-03 | Phase 7 | Pending |
+| INFRA-01 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Pending |
+| INFRA-03 | Phase 1 | Pending |
+| INFRA-04 | Phase 1 | Pending |
+| INFRA-05 | Phase 1 | Pending |
+| INFRA-06 | Phase 1 | Pending |
+| INFRA-07 | Phase 1 | Pending |
+| INFRA-08 | Phase 1 | Pending |
+| INFRA-09 | Phase 1 | Pending |
+| INFRA-10 | Phase 1 | Pending |
 
 **Coverage:**
-- v1 requirements: 75 total
-- Mapped to phases: 75
-- Unmapped: 0 ✓
+- v1 requirements: 88 total
+- Mapped to phases: 88
+- Unmapped: 0
+
+**Note:** Previous traceability section listed 75 requirements. Recount after detailed phase mapping: 88 total (AUTH 5 + ONBD 9 + SESS 8 + REFL 12 + LIB 9 + SURF 6 + LAYR 3 + STRK 8 + MNTZ 10 + ACCT 5 + PWA 3 + INFRA 10).
 
 ---
 *Requirements defined: 2026-02-24*
-*Last updated: 2026-02-24 after initial definition — sourced from PRD sections 1–7*
+*Last updated: 2026-02-24 — traceability updated after roadmap creation; requirement count corrected to 88*
