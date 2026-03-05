@@ -1,0 +1,36 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(60,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(120,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(180,0)"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="white" stroke-width="1" transform="translate(0,60)"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="white" stroke-width="1" transform="translate(0,120)"/>
+  </g>
+  <!-- Amber accent circle -->
+  <circle cx="160" cy="315" r="40" fill="url(#amber)" opacity="0.9"/>
+  <!-- Distill icon inside circle -->
+  <path d="M148 300 L148 330 Q148 338 156 338 L164 338 Q172 338 172 330 L172 300 Q172 292 164 292 L156 292 Q148 292 148 300Z" fill="#0a0a0a" opacity="0.8"/>
+  <rect x="154" y="298" width="12" height="2" rx="1" fill="#0a0a0a" opacity="0.6"/>
+  <rect x="154" y="304" width="12" height="2" rx="1" fill="#0a0a0a" opacity="0.6"/>
+  <rect x="154" y="310" width="8" height="2" rx="1" fill="#0a0a0a" opacity="0.6"/>
+  <!-- Title -->
+  <text x="230" y="290" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="700" fill="white">Distill</text>
+  <!-- Tagline -->
+  <text x="230" y="345" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="400" fill="#9ca3af">Stop absorbing. Start thinking.</text>
+  <!-- Bottom accent line -->
+  <rect x="80" y="580" width="1040" height="2" rx="1" fill="url(#amber)" opacity="0.3"/>
+  <!-- URL -->
+  <text x="600" y="610" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" fill="#6b7280" text-anchor="middle">distill.app</text>
+</svg>

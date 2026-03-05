@@ -1,0 +1,103 @@
+import { defineSchema, defineTable } from "convex/server";
+import { v } from "convex/values";
+
+export default defineSchema({
+  profiles: defineTable({
+    userId: v.string(),
+    plan: v.union(v.literal("free"), v.literal("pro")),
+    stripeCustomerId: v.optional(v.string()),
+    stripeSubscriptionId: v.optional(v.string()),
+    subscriptionStatus: v.optional(
+      v.union(
+        v.literal("active"),
+        v.literal("canceled"),
+        v.literal("past_due"),
+        v.literal("trialing")
+      )
+    ),
+    subscriptionPeriodEnd: v.optional(v.string()),
+    reflectionCountThisMonth: v.number(),
+    reflectionCountLifetime: v.number(),
+    currentStreak: v.number(),
+    longestStreak: v.number(),
+    lastReflectionDate: v.optional(v.string()),
+    streakFreezeUsedThisMonth: v.number(),
+    timezone: v.string(),
+    onboardingCompleted: v.boolean(),
+  })
+    .index("by_userId", ["userId"]),
+
+  sessions: defineTable({
+    userId: v.string(),
+    title: v.string(),
+    contentType: v.union(
+      v.literal("book"),
+      v.literal("video"),
+      v.literal("article"),
+      v.literal("podcast"),
+      v.literal("other")
+    ),
+    consumeReason: v.optional(v.string()),
+    status: v.union(
+      v.literal("active"),
+      v.literal("complete"),
+      v.literal("abandoned")
+    ),
+    startedAt: v.string(),
+    completedAt: v.optional(v.string()),
+    isRetroactive: v.boolean(),
+    isDeleted: v.boolean(),
+  })
+    .index("by_userId", ["userId"])
+    .index("by_userId_status", ["userId", "status"]),
+
+  reflections: defineTable({
+    userId: v.string(),
+    sessionId: v.id("sessions"),
+    content: v.string(),
+    promptUsed: v.optional(v.string()),
+    thinkingShiftRating: v.optional(v.number()),
+    wordCount: v.number(),
+    isDeleted: v.boolean(),
+    deletedAt: v.optional(v.string()),
+    updatedAt: v.string(),
+  })
+    .index("by_userId", ["userId", "isDeleted"])
+    .index("by_sessionId", ["sessionId"])
+    .searchIndex("search_content", {
+      searchField: "content",
+      filterFields: ["userId", "isDeleted"],
+    }),
+
+  reflectionLayers: defineTable({
+    reflectionId: v.id("reflections"),
+    userId: v.string(),
+    content: v.string(),
+  })
+    .index("by_reflectionId", ["reflectionId"]),
+
+  resurfacingQueue: defineTable({
+    reflectionId: v.id("reflections"),
+    userId: v.string(),
+    intervalType: v.union(
+      v.literal("3d"),
+      v.literal("7d"),
+      v.literal("30d"),
+      v.literal("90d")
+    ),
+    dueDate: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("surfaced"),
+      v.literal("dismissed"),
+      v.literal("layered")
+    ),
+    surfacedAt: v.optional(v.string()),
+  })
+    .index("by_userId_dueDate", ["userId", "dueDate"]),
+
+  processedWebhookEvents: defineTable({
+    stripeEventId: v.string(),
+    processedAt: v.string(),
+  }).index("by_stripeEventId", ["stripeEventId"]),
+});

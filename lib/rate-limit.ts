@@ -1,0 +1,72 @@
+import { RATE_LIMIT } from "./constants";
+
+interface RateLimitEntry {
+  count: number;
+  resetAt: number;
+}
+
+interface RateLimitResult {
+  success: boolean;
+  remaining: number;
+  resetAt: number;
+}
+
+export class RateLimiter {
+  private store = new Map<string, RateLimitEntry>();
+  private maxRequests: number;
+  private windowMs: number;
+
+  constructor(config: { maxRequests: number; windowMs: number }) {
+    this.maxRequests = config.maxRequests;
+    this.windowMs = config.windowMs;
+
+    // Periodic cleanup of expired entries — unref so it doesn't block process exit
+    const interval = setInterval(() => {
+      const now = Date.now();
+      for (const [key, entry] of this.store) {
+        if (now >= entry.resetAt) {
+          this.store.delete(key);
+        }
+      }
+    }, 60_000);
+    try { interval.unref(); } catch { /* Edge Runtime — no unref needed */ }
+  }
+
+  check(key: string): RateLimitResult {
+    const now = Date.now();
+    const entry = this.store.get(key);
+
+    // No entry or window expired — start fresh
+    if (!entry || now >= entry.resetAt) {
+      const resetAt = now + this.windowMs;
+      this.store.set(key, { count: 1, resetAt });
+      return { success: true, remaining: this.maxRequests - 1, resetAt };
+    }
+
+    // Within window — increment
+    entry.count += 1;
+
+    if (entry.count > this.maxRequests) {
+      return { success: false, remaining: 0, resetAt: entry.resetAt };
+    }
+
+    return {
+      success: true,
+      remaining: this.maxRequests - entry.count,
+      resetAt: entry.resetAt,
+    };
+  }
+}
+
+export function getClientIp(request: Request): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (forwarded) {
+    return forwarded.split(",")[0].trim();
+  }
+  return request.headers.get("x-real-ip") || "unknown";
+}
+
+// Singleton instances
+export const authLimiter = new RateLimiter(RATE_LIMIT.AUTH);
+export const apiWriteLimiter = new RateLimiter(RATE_LIMIT.API_WRITE);
+export const apiReadLimiter = new RateLimiter(RATE_LIMIT.API_READ);
