@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy — Distill",
+  description:
+    "How Distill handles your data. Your reflections are private and encrypted. Read our full privacy policy.",
+  alternates: { canonical: "https://distill.app/privacy" },
+};
 
 export default function PrivacyPage() {
   return (

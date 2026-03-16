@@ -29,14 +29,14 @@ export default function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-50 p-4 pointer-events-none">
-      <div className="max-w-md mx-auto bg-[#111] border border-white/10 rounded-2xl px-5 py-4 flex items-center justify-between gap-4 shadow-2xl pointer-events-auto">
-        <p className="text-xs text-gray-400 leading-relaxed">
-          We use cookies and analytics to improve your experience.
+    <div className="fixed bottom-6 inset-x-0 z-50 p-4 pointer-events-none">
+      <div className="max-w-md mx-auto bg-white brutal-border border-4 border-soft-black rounded-[2rem] px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[12px_12px_0px_0px_rgba(41,37,36,1)] pointer-events-auto">
+        <p className="text-xs font-bold text-soft-black/80 leading-relaxed text-center sm:text-left">
+          We use cookies to ensure you have the most intentional experience possible on Distill.
         </p>
         <button
           onClick={handleAccept}
-          className="shrink-0 bg-white/10 text-white text-xs font-medium px-4 py-2 rounded-lg hover:bg-white/15 transition-colors"
+          className="shrink-0 bg-peach text-soft-black text-xs font-black px-8 py-3 rounded-2xl border-2 border-soft-black hover:bg-peach/90 hover:-translate-y-1 transition-all brutal-shadow-sm"
         >
           Got it
         </button>

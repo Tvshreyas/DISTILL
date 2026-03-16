@@ -1,153 +1,126 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useMutation } from "convex/react";
-import { api } from "@/convex/_generated/api";
-import { sanitizeContent } from "@/lib/sanitize";
 import type { ContentType } from "@/types";
 
-const CONTENT_TYPES: { value: ContentType; label: string; icon: string }[] = [
-  { value: "book", label: "Book", icon: "\u{1F4D6}" },
-  { value: "video", label: "Video", icon: "\u{1F3AC}" },
-  { value: "article", label: "Article", icon: "\u{1F4F0}" },
-  { value: "podcast", label: "Podcast", icon: "\u{1F3A7}" },
-  { value: "other", label: "Other", icon: "\u{1F4CC}" },
-];
+interface SessionFormData {
+  title: string;
+  contentType: ContentType;
+  consumeReason?: string;
+  isRetroactive: boolean;
+}
 
-export default function SessionStartForm() {
-  const router = useRouter();
-  const createSession = useMutation(api.sessions.create);
+export default function SessionStartForm({
+  onSubmitAction,
+  isSubmitting,
+}: {
+  onSubmitAction: (data: SessionFormData) => void;
+  isSubmitting: boolean;
+}) {
   const [title, setTitle] = useState("");
-  const [contentType, setContentType] = useState<ContentType>("book");
-  const [reason, setReason] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError(null);
-
-    const trimmed = title.trim();
-    if (!trimmed) {
-      setError("Enter a title for what you're consuming.");
-      return;
-    }
-    if (trimmed.length > 200) {
-      setError("Title must be 200 characters or fewer.");
-      return;
-    }
-
-    setSubmitting(true);
-
-    try {
-      const session = await createSession({
-        title: sanitizeContent(trimmed),
-        contentType,
-        consumeReason: reason.trim()
-          ? sanitizeContent(reason.trim())
-          : undefined,
-      });
-
-      if (session) {
-        router.push(`/dashboard/session/${session._id}`);
-      }
-    } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Check your connection and try again."
-      );
-      setSubmitting(false);
-    }
-  }
+  const [contentType, setContentType] = useState<ContentType>("article");
+  const [consumeReason, setConsumeReason] = useState("");
+  const [isRetroactive, setIsRetroactive] = useState(false);
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-lg">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmitAction({
+          title,
+          contentType,
+          consumeReason: consumeReason.trim() || undefined,
+          isRetroactive,
+        });
+      }}
+      className="space-y-8"
+    >
       {/* Title */}
-      <div>
-        <label
-          htmlFor="title"
-          className="block text-sm font-medium text-gray-300 mb-1.5"
-        >
-          What are you consuming?
-        </label>
+      <label className="space-y-3 block">
+        <span className="text-xs font-black uppercase tracking-widest text-muted-text block">
+          what are you consuming?
+        </span>
         <input
-          id="title"
-          type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder='e.g. "Thinking, Fast and Slow"'
+          placeholder="title of the content..."
           maxLength={200}
-          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent transition-all duration-200"
-          autoFocus
+          className="w-full h-14 px-6 rounded-2xl bg-white brutal-border border-4 border-soft-black text-lg font-bold placeholder:text-soft-black/20 outline-none focus:bg-sage/5 transition-all"
+          required
         />
-        <p className="text-xs text-gray-500 mt-1 text-right">
-          {title.length}/200
-        </p>
-      </div>
+      </label>
 
       {/* Content Type */}
-      <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Type
-        </label>
+      <fieldset className="space-y-3">
+        <legend className="text-xs font-black uppercase tracking-widest text-muted-text block">
+          content type
+        </legend>
         <div className="flex flex-wrap gap-2">
-          {CONTENT_TYPES.map((ct) => (
+          {(["book", "video", "article", "podcast", "other"] as const).map((type) => (
             <button
-              key={ct.value}
+              key={type}
               type="button"
-              onClick={() => setContentType(ct.value)}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm transition-all duration-200 ${
-                contentType === ct.value
-                  ? "bg-amber-500 text-black font-medium"
-                  : "bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10"
+              onClick={() => setContentType(type)}
+              className={`px-5 py-2.5 rounded-full border-4 border-soft-black font-black text-sm transition-all active:scale-95 ${
+                contentType === type
+                  ? "bg-peach text-soft-black brutal-shadow-xs -translate-x-0.5 -translate-y-0.5"
+                  : "bg-white text-muted-text hover:bg-peach/10"
               }`}
             >
-              <span>{ct.icon}</span>
-              {ct.label}
+              {type}
             </button>
           ))}
         </div>
-      </div>
+      </fieldset>
 
-      {/* Reason (optional) */}
-      <div>
-        <label
-          htmlFor="reason"
-          className="block text-sm font-medium text-gray-300 mb-1.5"
-        >
-          Why are you consuming this?{" "}
-          <span className="text-gray-500 font-normal">Optional</span>
-        </label>
-        <input
-          id="reason"
-          type="text"
-          value={reason}
-          onChange={(e) => setReason(e.target.value)}
-          placeholder="e.g. Curious about decision-making biases"
+      {/* Consume Reason */}
+      <label className="space-y-3 block">
+        <span className="text-xs font-black uppercase tracking-widest text-muted-text block">
+          why are you consuming this? <span className="text-soft-black/30">(optional)</span>
+        </span>
+        <textarea
+          value={consumeReason}
+          onChange={(e) => setConsumeReason(e.target.value)}
+          placeholder="what do you hope to get from this?"
           maxLength={140}
-          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent transition-all duration-200"
+          className="w-full h-24 p-4 rounded-2xl bg-white brutal-border border-4 border-soft-black text-base font-medium placeholder:text-soft-black/20 outline-none focus:bg-sage/5 transition-all resize-none"
         />
-        <p className="text-xs text-gray-500 mt-1 text-right">
-          {reason.length}/140
+        <p className="text-xs font-bold text-muted-text text-right">
+          {consumeReason.length}/140
         </p>
+      </label>
+
+      {/* Retroactive Toggle */}
+      <div className="flex items-center justify-between p-4 rounded-2xl bg-sage/5 border-4 border-soft-black">
+        <div className="space-y-1">
+          <p className="text-sm font-black lowercase">retroactive reflection</p>
+          <p className="text-xs text-muted-text font-medium">
+            already finished consuming this content?
+          </p>
+        </div>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={isRetroactive}
+          onClick={() => setIsRetroactive(!isRetroactive)}
+          className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors ${
+            isRetroactive ? "bg-peach" : "bg-white"
+          }`}
+        >
+          <span
+            className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-soft-black transition-transform ${
+              isRetroactive ? "translate-x-5" : "translate-x-0"
+            }`}
+          />
+        </button>
       </div>
 
-      {/* Error */}
-      {error && (
-        <p className="text-sm text-red-400" role="alert">
-          {error}
-        </p>
-      )}
-
-      {/* Submit */}
       <button
         type="submit"
-        disabled={submitting || !title.trim()}
-        className="w-full bg-amber-500 text-black px-5 py-3 rounded-xl text-sm font-semibold hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+        disabled={isSubmitting || !title.trim()}
+        className="w-full py-4 bg-soft-black text-white rounded-2xl font-black text-lg disabled:opacity-30 transition-all hover:scale-[1.02] active:scale-95"
       >
-        {submitting ? "Starting..." : "Start Session"}
+        {isSubmitting ? "starting..." : "start session"}
       </button>
     </form>
   );

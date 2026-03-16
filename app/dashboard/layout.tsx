@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useUser, useClerk } from "@clerk/nextjs";
+import { useClerk } from "@clerk/nextjs";
+import { ShaderAnimation } from "@/components/ui/shader-lines";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Home", icon: HomeIcon },
@@ -49,7 +50,6 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const { user } = useUser();
   const { signOut } = useClerk();
 
   function isActive(href: string) {
@@ -58,70 +58,73 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      {/* Desktop sidebar */}
-      <aside className="hidden md:flex md:flex-col md:fixed md:inset-y-0 md:left-0 md:w-60 md:border-r md:border-white/10 md:bg-[#0a0a0a]">
-        <div className="flex flex-col h-full px-4 py-6">
-          {/* Logo */}
-          <Link href="/dashboard" className="text-lg font-semibold tracking-tight px-3 mb-8">
-            Distill
-          </Link>
+    <div className="min-h-screen bg-[#FDFCF8] text-soft-black font-sans selection:bg-peach selection:text-soft-black">
+      {/* Analog Grain Overlay */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.12] mix-blend-multiply bg-[url('https://grain-y.vercel.app/noise.svg')] bg-repeat z-50" />
 
-          {/* Nav items */}
-          <nav className="flex-1 space-y-1">
-            {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  isActive(href)
-                    ? "bg-white/10 text-white"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                <Icon className="w-5 h-5" />
-                {label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* User section */}
-          <div className="border-t border-white/10 pt-4 mt-4">
-            <p className="text-xs text-gray-500 truncate px-3 mb-2">
-              {user?.primaryEmailAddress?.emailAddress ?? ""}
-            </p>
-            <button
-              onClick={() => signOut({ redirectUrl: "/" })}
-              className="flex items-center gap-2 px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200 w-full"
+      {/* Floating Ghost Navbar (Desktop) */}
+      <div className="hidden md:flex fixed top-8 left-1/2 -translate-x-1/2 z-40">
+        <nav className="flex items-center gap-1 p-2 bg-white/40 backdrop-blur-xl brutal-border border-4 border-soft-black rounded-2xl shadow-2xl">
+          {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition-all ${
+                isActive(href)
+                  ? "bg-sage text-soft-black brutal-border-sm -translate-y-1 brutal-shadow-xs"
+                  : "text-muted-text hover:text-soft-black hover:bg-sage/10"
+              }`}
             >
-              <SignOutIcon className="w-4 h-4" />
-              Sign out
-            </button>
+              <Icon className="w-4 h-4" />
+              {label}
+            </Link>
+          ))}
+          <div className="w-[2px] h-6 bg-soft-black/10 mx-2" />
+          <button
+            onClick={() => signOut({ redirectUrl: "/" })}
+            className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-muted-text hover:text-peach-dark hover:bg-peach/10 rounded-xl transition-all"
+          >
+            <SignOutIcon className="w-4 h-4" />
+            Sign out
+          </button>
+        </nav>
+      </div>
+
+      {/* Main content area */}
+      <div className="relative min-h-screen">
+        {/* Dynamic Focus Header with Shader */}
+        <header className="relative h-64 w-full border-b-4 border-soft-black bg-white overflow-hidden group">
+          <ShaderAnimation />
+          <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 flex flex-col items-center justify-end pb-12">
+            <div className="flex flex-col items-center gap-4">
+              <div className="p-4 bg-white brutal-border border-2 border-soft-black rounded-[2rem] shadow-xl group-hover:scale-110 transition-transform duration-500">
+                <div className="w-4 h-4 rounded-full bg-peach animate-pulse" />
+              </div>
+              <h2 className="font-grotesk text-5xl font-black lowercase tracking-tighter text-soft-black">
+                {NAV_ITEMS.find(i => isActive(i.href))?.label || "Home"}
+              </h2>
+            </div>
           </div>
-        </div>
-      </aside>
+        </header>
 
-      {/* Main content */}
-      <main className="md:ml-60">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 pb-24 md:pb-8">
+        {/* Scrollable Children */}
+        <main className="max-w-7xl mx-auto p-8 pb-32">
           {children}
-        </div>
-      </main>
+        </main>
+      </div>
 
-      {/* Mobile bottom navigation */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 h-16 bg-[#0a0a0a] border-t border-white/10 flex items-center justify-around z-50">
-        {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
+      {/* Mobile bottom navigation (Refined Ghost Style) */}
+      <nav className="md:hidden fixed bottom-8 left-8 right-8 h-18 bg-white/60 backdrop-blur-2xl brutal-border border-4 border-soft-black rounded-[2rem] flex items-center justify-around z-[60] shadow-2xl">
+        {NAV_ITEMS.map(({ href, icon: Icon }) => (
           <Link
             key={href}
             href={href}
-            className={`flex flex-col items-center gap-1 px-4 py-1 transition-colors ${
-              isActive(href)
-                ? "text-white"
-                : "text-gray-500"
+            className={`flex flex-col items-center gap-1 p-4 rounded-2xl transition-all ${
+              isActive(href) ? "bg-peach brutal-border-sm -translate-y-4 scale-110 shadow-xl text-soft-black" : "text-muted-text"
             }`}
           >
-            <Icon className="w-5 h-5" />
-            <span className="text-[10px] font-medium">{label}</span>
+            <Icon className="w-6 h-6" />
           </Link>
         ))}
       </nav>

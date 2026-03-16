@@ -24,8 +24,21 @@ export default defineSchema({
     streakFreezeUsedThisMonth: v.number(),
     timezone: v.string(),
     onboardingCompleted: v.boolean(),
+    lastExportDate: v.optional(v.string()),
+    // Notification preferences (all opt-in, default false)
+    resurfacingEmailsEnabled: v.optional(v.boolean()),
+    streakRemindersEnabled: v.optional(v.boolean()),
+    weeklySummaryEnabled: v.optional(v.boolean()),
+    preferredNotificationHour: v.optional(v.number()), // 0-23, default 9
+    email: v.optional(v.string()),
+    // Email sequence tracking
+    welcomeEmailStep: v.optional(v.number()), // 1-5, tracks last sent welcome email
+    reEngagementStep: v.optional(v.number()), // 1-3, tracks last sent re-engagement email
+    upgradeEmailStep: v.optional(v.number()), // 1-3, tracks last sent upgrade email
+    proUpgradeDate: v.optional(v.string()), // ISO date when user upgraded to Pro (for annual nudge timing)
   })
-    .index("by_userId", ["userId"]),
+    .index("by_userId", ["userId"])
+    .index("by_stripeCustomerId", ["stripeCustomerId"]),
 
   sessions: defineTable({
     userId: v.string(),
@@ -74,7 +87,8 @@ export default defineSchema({
     userId: v.string(),
     content: v.string(),
   })
-    .index("by_reflectionId", ["reflectionId"]),
+    .index("by_reflectionId", ["reflectionId"])
+    .index("by_userId", ["userId"]),
 
   resurfacingQueue: defineTable({
     reflectionId: v.id("reflections"),
@@ -95,6 +109,23 @@ export default defineSchema({
     surfacedAt: v.optional(v.string()),
   })
     .index("by_userId_dueDate", ["userId", "dueDate"]),
+
+  notificationLogs: defineTable({
+    userId: v.string(),
+    type: v.union(
+      v.literal("resurfacing"),
+      v.literal("streak"),
+      v.literal("weekly"),
+      v.literal("welcome"),
+      v.literal("reengagement"),
+      v.literal("upgrade")
+    ),
+    sentAt: v.string(),
+    emailId: v.optional(v.string()),
+    metadata: v.optional(v.any()),
+  })
+    .index("by_userId_type", ["userId", "type"])
+    .index("by_userId", ["userId"]),
 
   processedWebhookEvents: defineTable({
     stripeEventId: v.string(),

@@ -14,6 +14,7 @@ export const create = mutation({
       v.literal("other")
     ),
     consumeReason: v.optional(v.string()),
+    isRetroactive: v.optional(v.boolean()),
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -66,9 +67,26 @@ export const create = mutation({
       consumeReason: args.consumeReason,
       status: "active",
       startedAt: new Date().toISOString(),
-      isRetroactive: false,
+      isRetroactive: args.isRetroactive ?? false,
       isDeleted: false,
     });
+
+    // Race condition guard: verify no other active session was created concurrently
+    const activeSessions = await ctx.db
+      .query("sessions")
+      .withIndex("by_userId_status", (q) =>
+        q.eq("userId", userId).eq("status", "active")
+      )
+      .filter((q) => q.eq(q.field("isDeleted"), false))
+      .collect();
+
+    if (activeSessions.length > 1) {
+      // Another session was created concurrently — roll back this one
+      await ctx.db.delete(id);
+      throw new Error(
+        "You already have an active session. Complete or abandon it first."
+      );
+    }
 
     return await ctx.db.get(id);
   },
@@ -131,7 +149,7 @@ export const autoAbandonStaleSessions = internalMutation({
     for (const session of activeSessions) {
       const startedAt = new Date(session.startedAt).getTime();
       if (now - startedAt > eightHoursMs) {
-        await ctx.db.patch(session._id, { status: "abandoned" });
+        await ctx.db.patch(session._id, { status: "abandoned", completedAt: new Date().toISOString() });
         count++;
       }
     }

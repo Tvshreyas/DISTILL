@@ -1,0 +1,35 @@
+title = "Distill Gitleaks Config"
+[allowlist]
+  description = "Global allowlist"
+  paths = [
+    '''node_modules/''',
+    '''.next/''',
+    '''convex/_generated/''',
+    '''tests/''',
+    '''\.env\.example''',
+  ]
+[[rules]]
+  id = "clerk-secret-key"
+  description = "Clerk Secret Key"
+  regex = '''sk_test_[A-Za-z0-9]{30,}'''
+  tags = ["key", "clerk"]
+[[rules]]
+  id = "stripe-secret-key"
+  description = "Stripe Secret Key"
+  regex = '''sk_(?:test|live)_[A-Za-z0-9]{20,}'''
+  tags = ["key", "stripe"]
+[[rules]]
+  id = "convex-deploy-key"
+  description = "Convex Deploy Key"
+  regex = '''prod:[a-z]+-[a-z]+-[0-9]+\|[a-z0-9]{32,}'''
+  tags = ["key", "convex"]
+[[rules]]
+  id = "sentry-dsn"
+  description = "Sentry DSN"
+  regex = '''https://[a-f0-9]{32}@[a-z0-9]+\.ingest\.[a-z]+\.sentry\.io/[0-9]+'''
+  tags = ["dsn", "sentry"]
+[[rules]]
+  id = "generic-api-key"
+  description = "Generic API Key"
+  regex = '''(?i)(api[_-]?key|apikey|secret[_-]?key)\s*[:=]\s*['\"][A-Za-z0-9_\-]{20,}['\"]'''
+  tags = ["key", "generic"]

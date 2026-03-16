@@ -1,0 +1,39 @@
+# Distill
+> A thinking development tool for building a reflection practice.
+
+## Site
+- Name: Distill
+- URL: https://distill.app
+- Description: Distill is a thinking development tool where you write short reflections after consuming content like books, videos, articles, and podcasts. Your reflections resurface at intervals so your thinking compounds over time.
+
+## Core Concepts
+- Reflection Practice: The habit of writing your own perspective after consuming content — not a summary, but your response to what you encountered.
+- Spaced Resurfacing: Past reflections resurface at timed intervals, reinforcing and connecting your ideas over time.
+- Compound Thinking: Small, regular reflections accumulate into a connected web of ideas. Each new reflection builds on previous ones.
+- Active Reading: Engaging deliberately with content by capturing your perspective, converting passive consumption into active thinking.
+
+## How It Works
+1. Start a session
+2. Consume content externally (books, articles, videos, podcasts)
+3. Write a short reflection capturing your perspective (2-5 minutes)
+4. Your library grows and past reflections resurface at intervals
+
+## Key Pages
+- /blog — Articles on active reading, intentional consumption, and building a thinking practice
+- /start — Try writing your first reflection before signing up
+- /dashboard — Your personal reflection library and streak tracker (requires account)
+
+## What Distill Is NOT
+- Not a note-taking app (no folders, tags, or organizational overhead)
+- Not an AI summarizer (you write your own thinking; no AI-generated content)
+- Not a journal or diary
+- Not a highlight manager or web clipper
+- Not a content hosting platform
+
+## Pricing
+- Free: 10 reflections per month
+- Pro: Unlimited reflections, spaced resurfacing, streak tracking
+
+## Tech
+- Built with Next.js, Convex, and Clerk
+- PWA-enabled for mobile use

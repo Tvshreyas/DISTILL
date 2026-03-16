@@ -1,583 +1,174 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useSignIn, useSignUp } from "@clerk/nextjs";
-import { useAutoSave } from "@/hooks/useAutoSave";
-import type { ContentType } from "@/types";
+import { LazyMotion, m, AnimatePresence, domAnimation } from "framer-motion";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { ShaderAnimation } from "@/components/ui/shader-lines";
+import { MagnetizeButton } from "@/components/ui/magnetize-button";
+import { ArrowRight, Sparkles, Clock, Layout, Zap } from "lucide-react";
 
-const CONTENT_TYPES: { value: ContentType; label: string }[] = [
-  { value: "book", label: "Book" },
-  { value: "video", label: "Video" },
-  { value: "article", label: "Article" },
-  { value: "podcast", label: "Podcast" },
-  { value: "other", label: "Other" },
+const STEPS = [
+  {
+    id: "welcome",
+    title: "welcome to distill.",
+    description: "a digital living room for your thoughts. intentionally slow, tactile, and private.",
+    icon: Sparkles,
+    accent: "bg-sage",
+  },
+  {
+    id: "how-it-works",
+    title: "how it works",
+    description: "reflect on what you consume—books, videos, articles. we use spaced repetition to resurface your insights at the perfect moment.",
+    icon: Layout,
+    accent: "bg-peach",
+  },
+  {
+    id: "setup",
+    title: "make it yours",
+    description: "we'll sync with your local time to send subtle reminders when you're most receptive.",
+    icon: Clock,
+    accent: "bg-lavender",
+  },
+  {
+    id: "launch",
+    title: "the clarity era",
+    description: "you're ready. start your first reflection to anchor your journey.",
+    icon: Zap,
+    accent: "bg-sage",
+  },
 ];
-
-const PROMPTS = [
-  "What stood out to you? What's one idea you want to hold onto?",
-  "How does this connect to something you already believe or know?",
-  "What would you tell someone about this in your own words?",
-];
-
-const STORAGE_KEY = "distill_onboarding";
-
-interface OnboardingData {
-  deviceToken: string;
-  title: string;
-  contentType: ContentType;
-  consumeReason: string;
-  reflectionContent: string;
-  promptUsed: string;
-  thinkingShiftRating: number | null;
-  createdAt: number;
-}
-
-function getStoredData(): OnboardingData | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const data: OnboardingData = JSON.parse(raw);
-    // Expire after 7 days
-    if (Date.now() - data.createdAt > 7 * 24 * 60 * 60 * 1000) {
-      localStorage.removeItem(STORAGE_KEY);
-      return null;
-    }
-    return data;
-  } catch {
-    return null;
-  }
-}
-
-function saveData(data: OnboardingData) {
-  if (typeof window === "undefined") return;
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch {
-    // localStorage full or unavailable
-  }
-}
-
-function getPrompt(deviceToken: string): string {
-  let hash = 0;
-  for (let i = 0; i < deviceToken.length; i++) {
-    hash = (hash * 31 + deviceToken.charCodeAt(i)) | 0;
-  }
-  return PROMPTS[Math.abs(hash) % PROMPTS.length];
-}
-
-type Screen = "welcome" | "mechanism" | "session" | "reflection" | "account";
 
 export default function OnboardingPage() {
   const router = useRouter();
-  const { signIn, isLoaded: signInLoaded } = useSignIn();
-  const stored = getStoredData();
+  const [currentStep, setCurrentStep] = useState(0);
+  const updateProfile = useMutation(api.profiles.update);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [timezone, setTimezone] = useState("UTC");
 
-  // Determine initial screen based on stored progress
-  function getInitialScreen(): Screen {
-    if (!stored) return "welcome";
-    if (stored.reflectionContent.trim()) return "account";
-    if (stored.title.trim()) return "reflection";
-    return "welcome";
-  }
-
-  const [screen, setScreen] = useState<Screen>(getInitialScreen);
-  const [deviceToken] = useState(
-    () => stored?.deviceToken ?? crypto.randomUUID()
-  );
-
-  // Session setup state
-  const [title, setTitle] = useState(stored?.title ?? "");
-  const [contentType, setContentType] = useState<ContentType>(
-    stored?.contentType ?? "book"
-  );
-  const [reason, setReason] = useState(stored?.consumeReason ?? "");
-  const [sessionError, setSessionError] = useState<string | null>(null);
-
-  // Reflection state
-  const prompt = getPrompt(deviceToken);
-  const [reflectionContent, setReflectionContent] = useState(
-    stored?.reflectionContent ?? ""
-  );
-  const [rating, setRating] = useState<number | null>(
-    stored?.thinkingShiftRating ?? null
-  );
-  const [wordCount, setWordCount] = useState(() => {
-    const initial = stored?.reflectionContent ?? "";
-    return initial.trim() ? initial.trim().split(/\s+/).length : 0;
-  });
-
-  // Account creation state
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState<string | null>(null);
-  const [emailSending, setEmailSending] = useState(false);
-  const [emailSent, setEmailSent] = useState(false);
-
-  // Auto-save reflection to localStorage
-  const handleAutoSave = useCallback(
-    (value: string) => {
-      const data: OnboardingData = {
-        deviceToken,
-        title,
-        contentType,
-        consumeReason: reason,
-        reflectionContent: value,
-        promptUsed: prompt,
-        thinkingShiftRating: rating,
-        createdAt: stored?.createdAt ?? Date.now(),
-      };
-      saveData(data);
-    },
-    [deviceToken, title, contentType, reason, prompt, rating, stored?.createdAt]
-  );
-
-  useAutoSave(reflectionContent, handleAutoSave, 3000);
-
-  function handleReflectionChange(value: string) {
-    if (value.length <= 3000) {
-      setReflectionContent(value);
-      setWordCount(value.trim() ? value.trim().split(/\s+/).length : 0);
-    }
-  }
-
-  function handleSessionSubmit() {
-    setSessionError(null);
-    const trimmed = title.trim();
-    if (!trimmed) {
-      setSessionError("What did you consume? Add a title.");
-      return;
-    }
-    if (trimmed.length > 200) {
-      setSessionError("Title must be 200 characters or fewer.");
-      return;
-    }
-
-    // Save to localStorage and proceed
-    const data: OnboardingData = {
-      deviceToken,
-      title: trimmed,
-      contentType,
-      consumeReason: reason.trim(),
-      reflectionContent: "",
-      promptUsed: prompt,
-      thinkingShiftRating: null,
-      createdAt: stored?.createdAt ?? Date.now(),
-    };
-    saveData(data);
-    setScreen("reflection");
-  }
-
-  function handleReflectionSubmit() {
-    const trimmed = reflectionContent.trim();
-    if (!trimmed) return;
-    if (trimmed.length > 3000) return;
-
-    // Save final reflection to localStorage
-    const data: OnboardingData = {
-      deviceToken,
-      title: title.trim(),
-      contentType,
-      consumeReason: reason.trim(),
-      reflectionContent: trimmed,
-      promptUsed: prompt,
-      thinkingShiftRating: rating,
-      createdAt: stored?.createdAt ?? Date.now(),
-    };
-    saveData(data);
-    setScreen("account");
-  }
-
-  async function handleEmailSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setEmailError(null);
-    setEmailSending(true);
-
-    if (!signInLoaded || !signIn) {
-      setEmailError("Authentication is not ready. Please try again.");
-      setEmailSending(false);
-      return;
-    }
-
+  useEffect(() => {
+    // Detect user's timezone
     try {
-      await signIn.create({
-        identifier: email,
-        strategy: "email_link",
-        redirectUrl: `${window.location.origin}/onboarding/migrate`,
-      });
-      setEmailSent(true);
-    } catch {
-      setEmailError("Something went wrong. Please try again.");
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      setTimezone(tz);
+    } catch (e) {
+      console.error("Failed to detect timezone", e);
     }
+  }, []);
 
-    setEmailSending(false);
-  }
-
-  // --- Screen 1: Welcome ---
-  if (screen === "welcome") {
-    return (
-      <main className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-md space-y-6 text-center">
-          <h1 className="text-3xl font-semibold text-gray-900">
-            You&apos;ve consumed a lot.
-            <br />
-            How much of it became yours?
-          </h1>
-          <p className="text-gray-600 text-sm leading-relaxed">
-            Books, videos, podcasts, articles — you finish them and move on. But
-            what did <em>you</em> actually think? Distill helps you capture your
-            own perspective after consuming content. Not summaries. Not
-            notes. Your thinking.
-          </p>
-          <button
-            onClick={() => setScreen("mechanism")}
-            className="w-full bg-black text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-gray-800"
-          >
-            See how it works
-          </button>
-          <button
-            onClick={() => setScreen("mechanism")}
-            className="text-sm text-gray-400 hover:text-gray-600"
-          >
-            Skip
-          </button>
-          <p className="text-xs text-gray-400 leading-relaxed pt-2">
-            Distill is a thinking development and reflection tool. It is NOT a
-            medical device and is NOT intended to diagnose, treat, cure, or
-            prevent anxiety, digital addiction, attention disorders, or any
-            other medical or psychological condition. Users experiencing mental
-            health difficulties should consult a qualified healthcare
-            professional.
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  // --- Screen 2: Mechanism ---
-  if (screen === "mechanism") {
-    return (
-      <main className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-md space-y-6">
-          <div className="text-center space-y-3">
-            <h1 className="text-2xl font-semibold text-gray-900">
-              Consume. Reflect. Grow.
-            </h1>
-            <p className="text-gray-600 text-sm">
-              After you finish something, take 5 minutes to write what{" "}
-              <em>you</em> think — not what the author said. Over time, your
-              reflections compound into a library of your own perspective.
-            </p>
-          </div>
-
-          {/* Example reflection card */}
-          <div className="border border-gray-200 rounded-md p-4 bg-gray-50">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded">
-                Book
-              </span>
-              <span className="text-sm font-medium text-gray-900">
-                Thinking, Fast and Slow
-              </span>
-            </div>
-            <p className="text-sm text-gray-700 italic leading-relaxed">
-              &ldquo;I thought I was being rational but Kahneman made me
-              realize how often I rely on mental shortcuts. The anchoring
-              effect explains why I always overpay when the first price I see
-              is high. I want to start noticing when System 1 is doing my
-              thinking for me.&rdquo;
-            </p>
-            <p className="text-xs text-gray-400 mt-2">47 words</p>
-          </div>
-
-          <div className="space-y-3">
-            <button
-              onClick={() => setScreen("session")}
-              className="w-full bg-black text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-gray-800"
-            >
-              Try it now
-            </button>
-            <button
-              onClick={() => setScreen("session")}
-              className="w-full text-sm text-gray-400 hover:text-gray-600"
-            >
-              Skip
-            </button>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
-  // --- Screen 3: Session Setup ---
-  if (screen === "session") {
-    return (
-      <main className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-md space-y-6">
-          <div className="space-y-1">
-            <h1 className="text-2xl font-semibold text-gray-900">
-              What have you recently finished?
-            </h1>
-            <p className="text-sm text-gray-500">
-              Pick something you consumed — a book, video, article, or podcast.
-            </p>
-          </div>
-
-          {/* Title */}
-          <div>
-            <label
-              htmlFor="title"
-              className="block text-sm font-medium text-gray-900 mb-1.5"
-            >
-              Title
-            </label>
-            <input
-              id="title"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder='e.g. "Thinking, Fast and Slow"'
-              maxLength={200}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-              autoFocus
-            />
-            <p className="text-xs text-gray-500 mt-1 text-right">
-              {title.length}/200
-            </p>
-          </div>
-
-          {/* Content Type */}
-          <div>
-            <label
-              htmlFor="content-type"
-              className="block text-sm font-medium text-gray-900 mb-1.5"
-            >
-              Type
-            </label>
-            <div className="flex gap-2 flex-wrap">
-              {CONTENT_TYPES.map((ct) => (
-                <button
-                  key={ct.value}
-                  type="button"
-                  onClick={() => setContentType(ct.value)}
-                  className={`px-3 py-1.5 rounded-md text-sm font-medium border ${
-                    contentType === ct.value
-                      ? "bg-black text-white border-black"
-                      : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
-                  }`}
-                >
-                  {ct.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Reason (optional) */}
-          <div>
-            <label
-              htmlFor="reason"
-              className="block text-sm font-medium text-gray-900 mb-1.5"
-            >
-              Why are you consuming this?{" "}
-              <span className="text-gray-400 font-normal">Optional</span>
-            </label>
-            <input
-              id="reason"
-              type="text"
-              value={reason}
-              onChange={(e) => setReason(e.target.value)}
-              placeholder="e.g. Curious about decision-making biases"
-              maxLength={140}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-            />
-          </div>
-
-          {/* Error */}
-          {sessionError && (
-            <p className="text-sm text-red-600" role="alert">
-              {sessionError}
-            </p>
-          )}
-
-          {/* Submit */}
-          <button
-            type="button"
-            onClick={handleSessionSubmit}
-            disabled={!title.trim()}
-            className="w-full bg-black text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Start reflecting
-          </button>
-        </div>
-      </main>
-    );
-  }
-
-  // --- Screen 4a: Reflection ---
-  if (screen === "reflection") {
-    return (
-      <main className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-md space-y-5">
-          <div>
-            <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">
-              Reflecting on
-            </p>
-            <h1 className="text-lg font-semibold text-gray-900">{title}</h1>
-          </div>
-
-          {/* Prompt */}
-          <p className="text-sm text-gray-500 italic">{prompt}</p>
-
-          {/* Textarea */}
-          <div>
-            <textarea
-              value={reflectionContent}
-              onChange={(e) => handleReflectionChange(e.target.value)}
-              placeholder="Write your reflection..."
-              rows={8}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-y"
-              autoFocus
-            />
-            <div className="flex justify-between text-xs text-gray-500 mt-1">
-              <span>{wordCount} words</span>
-              <span>{reflectionContent.length}/3000</span>
-            </div>
-          </div>
-
-          {/* Thinking Shift Rating */}
-          <div>
-            <p className="text-sm font-medium text-gray-900 mb-2">
-              How much did this shift your thinking?{" "}
-              <span className="text-gray-400 font-normal">Optional</span>
-            </p>
-            <div className="flex gap-2">
-              {[1, 2, 3, 4, 5].map((n) => (
-                <button
-                  key={n}
-                  type="button"
-                  onClick={() => setRating(rating === n ? null : n)}
-                  className={`w-9 h-9 rounded-md text-sm font-medium border ${
-                    rating === n
-                      ? "bg-black text-white border-black"
-                      : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
-                  }`}
-                >
-                  {n}
-                </button>
-              ))}
-            </div>
-            <p className="text-xs text-gray-400 mt-1">
-              1 = reinforced what I knew · 5 = completely changed my view
-            </p>
-          </div>
-
-          {/* Submit */}
-          <button
-            type="button"
-            onClick={handleReflectionSubmit}
-            disabled={!reflectionContent.trim()}
-            className="w-full bg-black text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Save my reflection
-          </button>
-        </div>
-      </main>
-    );
-  }
-
-  // --- Screen 4b: Account Creation ---
-  if (screen === "account") {
-    if (emailSent) {
-      return (
-        <main className="min-h-screen flex items-center justify-center p-4">
-          <div className="w-full max-w-sm text-center space-y-4">
-            <h1 className="text-2xl font-semibold text-gray-900">
-              Check your email
-            </h1>
-            <p className="text-gray-600 text-sm">
-              We sent a link to <strong>{email}</strong>
-            </p>
-            <p className="text-sm text-gray-500">
-              The link expires in 15 minutes.{" "}
-              <button
-                onClick={() => setEmailSent(false)}
-                className="underline hover:no-underline"
-              >
-                Send a new one
-              </button>
-            </p>
-          </div>
-        </main>
-      );
+  const handleNext = async () => {
+    if (currentStep < STEPS.length - 1) {
+      setCurrentStep(prev => prev + 1);
+    } else {
+      setIsSubmitting(true);
+      // Finalize onboarding
+      try {
+        await updateProfile({ 
+          onboardingCompleted: true,
+          timezone: timezone 
+        });
+        router.push("/dashboard");
+      } catch (err: unknown) {
+        console.error("Failed to complete onboarding", err);
+        if (err instanceof Error && err.message?.includes("Unauthorized")) {
+          // If unauthorized, redirect to sign-in with a redirect back to dashboard
+          router.push("/sign-in");
+        } else {
+          setIsSubmitting(false);
+        }
+      }
     }
+  };
 
-    return (
-      <main className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-sm space-y-6">
-          <div className="space-y-2 text-center">
-            <h1 className="text-2xl font-semibold text-gray-900">
-              Your reflection is saved
-            </h1>
-            <p className="text-gray-600 text-sm">
-              Enter your email to keep it. We&apos;ll send you a link — no
-              password needed.
-            </p>
-          </div>
+  const step = STEPS[currentStep];
+  const Icon = step.icon;
 
-          {/* Reflection preview */}
-          <div className="border border-gray-200 rounded-md p-3 bg-gray-50">
-            <p className="text-xs text-gray-400 mb-1">{title}</p>
-            <p className="text-sm text-gray-700 line-clamp-3">
-              {reflectionContent}
-            </p>
-            <p className="text-xs text-gray-400 mt-1">{wordCount} words</p>
-          </div>
+  return (
+    <main className="min-h-screen bg-[#FDFCF8] text-soft-black font-sans relative overflow-hidden flex items-center justify-center p-6 selection:bg-peach selection:text-soft-black">
+      {/* Background Shader */}
+      <div className="absolute inset-0 opacity-40">
+        <ShaderAnimation />
+      </div>
 
-          <form onSubmit={handleEmailSubmit} className="space-y-4">
-            <div className="space-y-1">
-              <label htmlFor="email" className="text-sm font-medium">
-                Email address
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                required
-                autoComplete="email"
-                autoFocus
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+      {/* Analog Grain Overlay */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.12] mix-blend-multiply bg-[url('https://grain-y.vercel.app/noise.svg')] bg-repeat z-50" />
+
+      <LazyMotion features={domAnimation}>
+      <AnimatePresence mode="wait">
+        <m.div
+          key={step.id}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 1.05, y: -20 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-xl w-full bg-white/80 backdrop-blur-xl brutal-border border-4 border-soft-black p-10 md:p-16 relative z-10 rounded-[2rem] shadow-[12px_12px_0px_0px_rgba(41,37,36,1)]"
+        >
+          {/* Progress Indicator */}
+          <div className="absolute top-10 left-10 md:left-16 flex gap-2">
+            {STEPS.map((s, i) => (
+              <div
+                key={s.id}
+                className={`h-2 rounded-full transition-all duration-500 ${
+                  i <= currentStep ? "w-8 bg-soft-black" : "w-2 bg-soft-black/20"
+                }`}
               />
+            ))}
+          </div>
+
+          <div className="mt-8 space-y-8">
+            <div className={`w-20 h-20 rounded-3xl ${step.accent} flex items-center justify-center brutal-border-sm border-2`}>
+              <Icon className="w-10 h-10 text-soft-black" />
             </div>
 
-            {emailError && (
-              <p role="alert" className="text-sm text-red-600">
-                {emailError}
+            <div className="space-y-4">
+              <h1 className="font-grotesk text-4xl md:text-5xl font-black lowercase tracking-tighter leading-none">
+                {step.title}
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-text font-medium leading-tight">
+                {step.description}
               </p>
+              {step.id === "welcome" && (
+                <p className="text-[10px] md:text-xs text-muted-text/60 italic font-medium leading-relaxed pt-2 border-t border-soft-black/5">
+                  Disclaimer: Distill is a thinking development tool. It is NOT a medical device and is NOT intended to diagnose, treat, cure, or prevent any medical or psychological condition.
+                </p>
+              )}
+            </div>
+
+            {step.id === "setup" && (
+              <div className="p-6 bg-lavender/30 rounded-2xl brutal-border-sm border-2 space-y-2">
+                <span className="text-xs uppercase font-bold tracking-widest text-soft-black/60">Detected Location</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-peach animate-pulse" />
+                  <span className="font-mono text-sm font-bold">{timezone}</span>
+                </div>
+              </div>
             )}
 
-            <button
-              type="submit"
-              disabled={emailSending}
-              className="w-full bg-black text-white rounded-md px-5 py-2.5 text-sm font-medium hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {emailSending ? "Sending..." : "Send me a link"}
-            </button>
-          </form>
+            <div className="pt-8">
+              <MagnetizeButton
+                onClick={handleNext}
+                disabled={isSubmitting}
+                className="w-full md:w-auto px-10 py-5 text-xl font-black rounded-2xl"
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">launching...</span>
+                ) : currentStep === STEPS.length - 1 ? (
+                  <span className="flex items-center gap-2">enter distill <Sparkles className="w-6 h-6" /></span>
+                ) : (
+                  <span className="flex items-center gap-2">continue <ArrowRight className="w-6 h-6" /></span>
+                )}
+              </MagnetizeButton>
+            </div>
+          </div>
+        </m.div>
+      </AnimatePresence>
+      </LazyMotion>
 
-          <p className="text-center">
-            <button
-              onClick={() => router.push("/sign-in")}
-              className="text-sm text-gray-400 hover:text-gray-600"
-            >
-              Already have an account? Sign in
-            </button>
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  return null;
+      {/* Branding */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 font-grotesk text-sm font-bold opacity-20 tracking-[0.3em] uppercase">
+        distill.focus
+      </div>
+    </main>
+  );
 }

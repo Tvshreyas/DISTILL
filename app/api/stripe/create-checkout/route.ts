@@ -13,12 +13,20 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { plan } = body; // 'monthly' or 'annual'
+    const { plan, currency } = body; // plan: 'monthly' or 'annual', currency: 'USD' or 'INR'
 
-    const priceId =
-      plan === "annual"
-        ? process.env.STRIPE_PRO_ANNUAL_PRICE_ID
-        : process.env.STRIPE_PRO_MONTHLY_PRICE_ID;
+    let priceId: string | undefined;
+    if (currency === "INR") {
+      priceId =
+        plan === "annual"
+          ? process.env.STRIPE_PRO_INR_ANNUAL_PRICE_ID
+          : process.env.STRIPE_PRO_INR_MONTHLY_PRICE_ID;
+    } else {
+      priceId =
+        plan === "annual"
+          ? process.env.STRIPE_PRO_ANNUAL_PRICE_ID
+          : process.env.STRIPE_PRO_MONTHLY_PRICE_ID;
+    }
 
     if (!priceId) {
       return NextResponse.json(

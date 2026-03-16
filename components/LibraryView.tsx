@@ -1,110 +1,59 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { useQuery } from "convex/react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import type { ContentType } from "@/types";
+import Link from "next/link";
+import { toast } from "sonner";
+import { Search, Book, Video, FileText, Mic, MoreHorizontal, ChevronRight, Trash2, Layers } from "lucide-react";
+import type { Id } from "@/convex/_generated/dataModel";
 
-const CONTENT_TYPES: { value: ContentType | "all"; label: string }[] = [
-  { value: "all", label: "All" },
-  { value: "book", label: "Book" },
-  { value: "video", label: "Video" },
-  { value: "article", label: "Article" },
-  { value: "podcast", label: "Podcast" },
-  { value: "other", label: "Other" },
+const CONTENT_TYPES = [
+  { id: "all", label: "all", icon: MoreHorizontal },
+  { id: "book", label: "books", icon: Book },
+  { id: "video", label: "videos", icon: Video },
+  { id: "article", label: "articles", icon: FileText },
+  { id: "podcast", label: "podcasts", icon: Mic },
 ];
 
-const TYPE_ICONS: Record<ContentType, string> = {
-  book: "\u{1F4D6}",
-  video: "\u{1F3AC}",
-  article: "\u{1F4F0}",
-  podcast: "\u{1F3A7}",
-  other: "\u{1F4CC}",
+const CONTENT_TYPE_ICONS: Record<string, typeof Book> = {
+  book: Book,
+  video: Video,
+  article: FileText,
+  podcast: Mic,
+  other: MoreHorizontal,
 };
 
-function truncate(text: string, maxLength: number): string {
-  if (text.length <= maxLength) return text;
-  return text.slice(0, maxLength).trimEnd() + "...";
-}
+function highlightText(text: string, searchTerm: string): React.ReactNode {
+  if (!searchTerm.trim()) return text;
 
-function formatDate(timestamp: number): string {
-  const now = Date.now();
-  const diff = now - timestamp;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  if (days === 0) return "Today";
-  if (days === 1) return "Yesterday";
-  if (days < 7) return `${days} days ago`;
-  return new Date(timestamp).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
+  const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const parts = text.split(new RegExp(`(${escaped})`, "gi"));
 
-interface ReflectionWithSession {
-  _id: string;
-  _creationTime: number;
-  content: string;
-  wordCount: number;
-  thinkingShiftRating?: number;
-  updatedAt: string;
-  session: {
-    title: string;
-    contentType: ContentType;
-  } | null;
-}
-
-function ReflectionCard({ reflection }: { reflection: ReflectionWithSession }) {
-  const contentType = (reflection.session?.contentType ?? "other") as ContentType;
-  const title = reflection.session?.title ?? "Untitled";
-
-  return (
-    <Link
-      href={`/dashboard/library/${reflection._id}`}
-      className="block bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/[0.07] hover:border-white/15 transition-all duration-200"
-    >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="inline-flex items-center gap-1 text-xs bg-white/10 text-gray-300 px-2 py-0.5 rounded-full">
-              <span>{TYPE_ICONS[contentType]}</span>
-              <span className="capitalize">{contentType}</span>
-            </span>
-            {reflection.thinkingShiftRating != null && (
-              <span className="text-xs text-amber-500/70">
-                {"★".repeat(reflection.thinkingShiftRating)}
-                {"☆".repeat(5 - reflection.thinkingShiftRating)}
-              </span>
-            )}
-          </div>
-          <p className="text-sm font-medium text-white truncate">{title}</p>
-          <p className="text-sm text-gray-500 mt-1 line-clamp-2">
-            {truncate(reflection.content, 150)}
-          </p>
-        </div>
-      </div>
-      <div className="flex items-center gap-3 mt-3 text-xs text-gray-500">
-        <span>{formatDate(reflection._creationTime)}</span>
-        <span>{reflection.wordCount} words</span>
-      </div>
-    </Link>
+  return parts.map((part, idx) =>
+    part.toLowerCase() === searchTerm.toLowerCase() ? (
+      <mark key={`hl-${idx}-${part}`} className="bg-peach/30 rounded px-0.5">
+        {part}
+      </mark>
+    ) : (
+      <span key={`t-${idx}`}>{part}</span>
+    )
   );
 }
 
-function SkeletonCard() {
+function RatingDots({ rating }: { rating: number | undefined }) {
+  if (rating == null) return null;
   return (
-    <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-      <div className="flex items-center gap-2 mb-2">
-        <div className="h-5 w-16 skeleton rounded-full" />
-      </div>
-      <div className="h-4 w-3/4 skeleton mb-2" />
-      <div className="h-4 w-full skeleton mb-1" />
-      <div className="h-4 w-2/3 skeleton" />
-      <div className="flex gap-3 mt-3">
-        <div className="h-3 w-20 skeleton" />
-        <div className="h-3 w-16 skeleton" />
-      </div>
+    <div className="flex items-center gap-1">
+      {[1, 2, 3, 4, 5].map((n) => (
+        <div
+          key={n}
+          className={`w-2 h-2 rounded-full ${
+            n <= rating ? "bg-peach" : "border-2 border-soft-black/20"
+          }`}
+        />
+      ))}
     </div>
   );
 }
@@ -112,159 +61,211 @@ function SkeletonCard() {
 export default function LibraryView() {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [activeFilter, setActiveFilter] = useState<ContentType | "all">("all");
+  const [contentType, setContentType] = useState("all");
   const [limit, setLimit] = useState(20);
-  const searchTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const [pendingDelete, setPendingDelete] = useState<Id<"reflections"> | null>(null);
+  const deleteTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const removeReflection = useMutation(api.reflections.remove);
+
+  // Debounce search input
   useEffect(() => {
-    if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
-    searchTimerRef.current = setTimeout(() => {
+    const timer = setTimeout(() => {
       setDebouncedSearch(search);
-      setLimit(20);
     }, 300);
-    return () => {
-      if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
-    };
+    return () => clearTimeout(timer);
   }, [search]);
 
+  // Cleanup delete timer on unmount
   useEffect(() => {
-    setLimit(20);
-  }, [activeFilter]);
+    return () => {
+      if (deleteTimerRef.current) clearTimeout(deleteTimerRef.current);
+    };
+  }, []);
 
-  const result = useQuery(api.reflections.list, {
-    search: debouncedSearch || undefined,
-    contentType: activeFilter !== "all" ? activeFilter : undefined,
+  const results = useQuery(api.reflections.list, {
+    search: debouncedSearch.trim() || undefined,
+    contentType: contentType === "all" ? undefined : contentType,
     limit,
-    offset: 0,
   });
 
-  const loading = result === undefined;
-  const reflections = result?.data ?? [];
-  const total = result?.total ?? 0;
-  const hasMore = reflections.length < total;
+  const reflections = results?.data;
+  const total = results?.total || 0;
 
-  function handleLoadMore() {
-    setLimit((prev) => prev + 20);
-  }
+  const handleDelete = useCallback((reflectionId: Id<"reflections">, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (deleteTimerRef.current) {
+      clearTimeout(deleteTimerRef.current);
+    }
+
+    setPendingDelete(reflectionId);
+
+    const timer = setTimeout(async () => {
+      try {
+        await removeReflection({ reflectionId });
+        setPendingDelete(null);
+      } catch {
+        toast.error("Failed to delete reflection.");
+        setPendingDelete(null);
+      }
+    }, 5000);
+
+    deleteTimerRef.current = timer;
+
+    toast("Reflection deleted.", {
+      action: {
+        label: "Undo",
+        onClick: () => {
+          if (deleteTimerRef.current) {
+            clearTimeout(deleteTimerRef.current);
+            deleteTimerRef.current = null;
+          }
+          setPendingDelete(null);
+          toast.success("Deletion undone.");
+        },
+      },
+      duration: 5000,
+    });
+  }, [removeReflection]);
 
   return (
-    <div className="space-y-4">
-      {/* Search bar */}
-      <div className="relative">
-        <svg
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+    <div className="space-y-8 pb-12">
+      {/* Search & Filters */}
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="relative flex-1 group">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-text group-focus-within:text-soft-black transition-colors" />
+          <input
+            type="text"
+            placeholder="search your reflections..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-12 pr-4 py-4 bg-white brutal-border-sm border-2 border-soft-black rounded-2xl outline-none focus:bg-sage/5 transition-all font-medium text-lg"
           />
-        </svg>
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search your reflections..."
-          className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent transition-all duration-200"
-        />
+        </div>
       </div>
 
-      {/* Content type filter tabs */}
-      <div className="flex gap-1.5 overflow-x-auto pb-1 -mx-1 px-1">
-        {CONTENT_TYPES.map(({ value, label }) => (
-          <button
-            key={value}
-            onClick={() => setActiveFilter(value)}
-            aria-pressed={activeFilter === value}
-            className={`px-3 py-1.5 text-sm rounded-lg whitespace-nowrap transition-all duration-200 ${
-              activeFilter === value
-                ? "bg-amber-500 text-black font-medium"
-                : "bg-white/5 text-gray-400 hover:bg-white/10"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
+      <div className="flex flex-wrap gap-2">
+        {CONTENT_TYPES.map((type) => {
+          const Icon = type.icon;
+          const isSelected = contentType === type.id;
+          return (
+            <button
+              key={type.id}
+              onClick={() => setContentType(type.id)}
+              className={`flex items-center gap-2 px-6 py-2 rounded-full border-2 border-soft-black font-bold text-sm transition-all active:scale-95 ${
+                isSelected
+                  ? "bg-sage text-soft-black brutal-shadow-xs -translate-x-0.5 -translate-y-0.5"
+                  : "bg-white text-muted-text hover:bg-sage/10 hover:text-soft-black"
+              }`}
+            >
+              <Icon className="w-4 h-4" />
+              {type.label}
+            </button>
+          );
+        })}
       </div>
 
-      {/* Results count */}
-      {!loading && (
-        <p className="text-xs text-gray-500">
-          {total} reflection{total !== 1 ? "s" : ""}
-          {debouncedSearch && " found"}
-        </p>
-      )}
-
-      {/* Loading state */}
-      {loading && (
-        <div className="space-y-3">
-          <SkeletonCard />
-          <SkeletonCard />
-          <SkeletonCard />
-        </div>
-      )}
-
-      {/* Empty state */}
-      {!loading && reflections.length === 0 && (
-        <div className="text-center py-16">
-          <div className="w-16 h-16 mx-auto rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-4">
-            <svg className="w-8 h-8 text-gray-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-            </svg>
-          </div>
-          {debouncedSearch || activeFilter !== "all" ? (
-            <div>
-              <p className="text-gray-400 text-sm">
-                No reflections match{debouncedSearch ? ` '${debouncedSearch}'` : " this filter"}.
-              </p>
-              <button
-                onClick={() => {
-                  setSearch("");
-                  setActiveFilter("all");
-                }}
-                className="text-sm text-amber-500 hover:text-amber-400 mt-2 transition-colors"
-              >
-                Clear search
-              </button>
-            </div>
-          ) : (
-            <div>
-              <p className="text-gray-400 text-sm mb-4">
-                No reflections yet. Start a session and write your first reflection.
-              </p>
-              <Link
-                href="/dashboard/session/new"
-                className="inline-block bg-amber-500 text-black px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-amber-400 transition-all duration-200"
-              >
-                Start your first session
-              </Link>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Reflection cards */}
-      {!loading && reflections.length > 0 && (
-        <div className="space-y-3">
-          {reflections.map((r) => (
-            <ReflectionCard key={r._id} reflection={r as ReflectionWithSession} />
+      {/* Results Grid */}
+      {reflections === undefined ? (
+        <div className="space-y-4">
+          {["skeleton-1", "skeleton-2", "skeleton-3"].map((id) => (
+            <div key={id} className="h-40 bg-soft-black/5 animate-pulse rounded-[2rem]" />
           ))}
         </div>
-      )}
+      ) : reflections.length === 0 ? (
+        <div className="py-20 text-center border-4 border-dashed border-soft-black/10 rounded-[2rem] space-y-4">
+          <div className="w-16 h-16 bg-soft-black/5 rounded-full flex items-center justify-center mx-auto">
+            <Search className="w-8 h-8 text-soft-black/20" />
+          </div>
+          <div className="space-y-1">
+            <h3 className="font-grotesk text-xl font-black lowercase">no reflections found.</h3>
+            <p className="text-muted-text max-w-xs mx-auto">try adjusting your search or filters to find what you&apos;re looking for.</p>
+          </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-4">
+          {reflections
+            .filter((r: any) => r._id !== pendingDelete)
+            .map((reflection: any) => {
+              const TypeIcon = CONTENT_TYPE_ICONS[reflection.session?.contentType] || MoreHorizontal;
+              const layerCount: number = reflection.layerCount ?? 0;
 
-      {/* Load more */}
-      {!loading && hasMore && (
-        <div className="text-center pt-2">
-          <button
-            onClick={handleLoadMore}
-            className="text-sm text-gray-400 hover:text-white transition-colors"
-          >
-            Load more
-          </button>
+              return (
+                <Link
+                  key={reflection._id}
+                  href={`/dashboard/library/${reflection._id}`}
+                  className="group p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black hover:bg-sage/5 transition-all text-left relative overflow-hidden"
+                >
+                  {/* Delete button */}
+                  <button
+                    onClick={(e) => handleDelete(reflection._id as Id<"reflections">, e)}
+                    className="absolute top-6 right-6 p-2 rounded-xl opacity-0 group-hover:opacity-100 hover:bg-red-50 text-muted-text hover:text-red-500 transition-all z-10"
+                    title="Delete reflection"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+
+                  {/* Subtle background icon */}
+                  <div className="absolute top-4 right-16 text-soft-black/5 group-hover:text-soft-black/10 transition-colors">
+                    <ChevronRight className="w-12 h-12" />
+                  </div>
+
+                  {/* Meta row: badge, date, rating, layers */}
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
+                    <div className="flex items-center gap-1.5 px-3 py-1 bg-peach/20 rounded-lg border-2 border-peach/30">
+                      <TypeIcon className="w-3 h-3 text-peach-dark" />
+                      <span className="text-[10px] uppercase font-black tracking-widest text-peach-dark">
+                        {reflection.session?.contentType || "reflection"}
+                      </span>
+                    </div>
+                    <span className="text-xs font-bold text-muted-text">
+                      {new Date(reflection._creationTime).toLocaleDateString(undefined, {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </span>
+                    <RatingDots rating={reflection.thinkingShiftRating} />
+                    {layerCount > 0 ? (
+                      <div className="flex items-center gap-1 px-2 py-0.5 bg-sage/20 rounded-full">
+                        <Layers className="w-3 h-3 text-sage-dark" />
+                        <span className="text-[10px] uppercase font-black tracking-widest text-sage-dark">
+                          {layerCount} {layerCount === 1 ? "layer" : "layers"}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="px-2 py-0.5 bg-soft-black/5 rounded-full">
+                        <span className="text-[10px] uppercase font-black tracking-widest text-muted-text">
+                          fresh
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  <h4 className="font-grotesk text-2xl font-black lowercase tracking-tighter mb-2 group-hover:underline decoration-peach decoration-4 underline-offset-4">
+                    {reflection.session?.title
+                      ? highlightText(reflection.session.title, debouncedSearch)
+                      : "Untitled Reflection"}
+                  </h4>
+                  <p className="line-clamp-2 text-lg text-muted-text font-medium leading-tight max-w-2xl">
+                    &ldquo;{highlightText(reflection.content, debouncedSearch)}&rdquo;
+                  </p>
+                </Link>
+              );
+            })}
+
+          {total > limit && (
+            <div className="pt-8 flex justify-center">
+              <button
+                onClick={() => setLimit(prev => prev + 20)}
+                className="px-8 py-3 bg-white brutal-border-sm border-2 border-soft-black rounded-xl font-bold hover:bg-sage transition-all active:scale-95"
+              >
+                load more reflections
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

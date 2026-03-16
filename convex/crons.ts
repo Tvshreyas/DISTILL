@@ -24,4 +24,39 @@ crons.daily(
   internal.reflections.purgeSoftDeletedReflections
 );
 
+// Every hour: send resurfacing emails to eligible users at their preferred hour
+crons.interval(
+  "send resurfacing emails",
+  { hours: 1 },
+  internal.notifications.processResurfacingEmails
+);
+
+// Every hour: send streak reminders to users who haven't reflected today
+crons.interval(
+  "send streak reminders",
+  { hours: 1 },
+  internal.notifications.processStreakReminders
+);
+
+// Every hour: send weekly summaries (action checks for Sunday in user's timezone)
+crons.interval(
+  "send weekly summaries",
+  { hours: 1 },
+  internal.notifications.processWeeklySummary
+);
+
+// Every 6 hours: check for inactive users and send re-engagement emails
+crons.interval(
+  "send re-engagement emails",
+  { hours: 6 },
+  internal.notifications.processReEngagementEmails
+);
+
+// Every 6 hours: check for users near/at free tier limit and send upgrade emails
+crons.interval(
+  "send upgrade emails",
+  { hours: 6 },
+  internal.notifications.processUpgradeEmails
+);
+
 export default crons;

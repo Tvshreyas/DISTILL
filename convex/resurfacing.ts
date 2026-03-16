@@ -1,4 +1,4 @@
-import { query, mutation } from "./_generated/server";
+import { query, mutation, internalQuery } from "./_generated/server";
 import { v } from "convex/values";
 
 export const getPending = query({
@@ -126,5 +126,45 @@ export const respond = mutation({
       status: args.action,
       surfacedAt: new Date().toISOString(),
     });
+  },
+});
+
+// Internal query for notification actions — accepts userId directly instead of reading from auth
+export const getPendingForUser = internalQuery({
+  args: { userId: v.string() },
+  handler: async (ctx, args) => {
+    const today = new Date().toISOString().split("T")[0];
+
+    const pendingItems = await ctx.db
+      .query("resurfacingQueue")
+      .withIndex("by_userId_dueDate", (q) => q.eq("userId", args.userId))
+      .filter((q) =>
+        q.and(
+          q.eq(q.field("status"), "pending"),
+          q.lte(q.field("dueDate"), today)
+        )
+      )
+      .collect();
+
+    if (pendingItems.length === 0) return null;
+
+    const item = pendingItems[0];
+    const reflection = await ctx.db.get(item.reflectionId);
+    if (!reflection || reflection.isDeleted) return null;
+
+    const session = await ctx.db.get(reflection.sessionId);
+
+    const createdDate = new Date(reflection._creationTime);
+    const now = new Date();
+    const daysAgo = Math.floor(
+      (now.getTime() - createdDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
+
+    return {
+      reflectionContent: reflection.content,
+      contentTitle: session?.title ?? "Untitled",
+      contentType: session?.contentType ?? "other",
+      daysAgo,
+    };
   },
 });

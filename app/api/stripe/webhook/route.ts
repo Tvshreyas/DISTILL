@@ -1,19 +1,40 @@
 import { getStripe } from "@/lib/stripe";
-import { ConvexHttpClient } from "convex/browser";
-import { api } from "@/convex/_generated/api";
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 
 export const runtime = "nodejs";
 
-const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+/**
+ * Call the Convex webhook bridge with the internal auth key.
+ * This replaces the old unauthenticated fetch pattern.
+ */
+async function callConvexBridge(action: string, args: Record<string, unknown>) {
+  const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
+  const internalKey = process.env.CONVEX_INTERNAL_AUTH_KEY;
 
-async function isEventProcessed(eventId: string): Promise<boolean> {
-  const existing = await convex.query(api.profiles.getByUserId, {
-    userId: "__check_webhook__",
+  if (!convexUrl || !internalKey) {
+    throw new Error("Missing CONVEX_INTERNAL_AUTH_KEY or NEXT_PUBLIC_CONVEX_URL");
+  }
+
+  // Convex HTTP actions are served at the site URL, not the cloud API URL.
+  // The site URL is derived from the deployment URL.
+  const siteUrl = convexUrl.replace(".cloud/", ".site/").replace(".cloud", ".site");
+
+  const response = await fetch(`${siteUrl}/stripe-webhook-bridge`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Internal-Auth-Key": internalKey,
+    },
+    body: JSON.stringify({ action, args }),
   });
-  // We'll check via a dedicated query — for now use inline approach
-  return false;
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Convex bridge error (${response.status}): ${text}`);
+  }
+
+  return response.json();
 }
 
 export async function POST(req: Request) {
@@ -34,14 +55,9 @@ export async function POST(req: Request) {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET
     );
-  } catch (err) {
-    console.error("Webhook signature verification failed:", err);
+  } catch {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
-
-  // Use Convex admin client for internal mutations
-  // Note: For production, use CONVEX_DEPLOYMENT with admin auth
-  // For now, we use the HTTP client with the internal API pattern
 
   try {
     switch (event.type) {
@@ -59,70 +75,64 @@ export async function POST(req: Request) {
             ? session.customer
             : session.customer?.id;
 
-        // Fetch subscription details for period end
         let periodEnd: string | undefined;
         if (subscriptionId) {
           const sub = await getStripe().subscriptions.retrieve(subscriptionId);
-          const subData = sub as unknown as { current_period_end: number };
-          periodEnd = new Date(
-            subData.current_period_end * 1000
-          ).toISOString();
+          const subData = sub as unknown as { current_period_end?: number };
+          if (subData.current_period_end) {
+            periodEnd = new Date(subData.current_period_end * 1000).toISOString();
+          }
         }
 
-        // Update profile via Convex HTTP action
-        // Using fetch to Convex HTTP endpoint for internal mutations
-        await fetch(
-          `${process.env.NEXT_PUBLIC_CONVEX_URL}/api/mutation`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              path: "profiles:updatePlan",
-              args: {
-                userId,
-                plan: "pro",
-                stripeCustomerId: customerId,
-                stripeSubscriptionId: subscriptionId,
-                subscriptionStatus: "active",
-                subscriptionPeriodEnd: periodEnd,
-              },
-            }),
-          }
-        );
+        await callConvexBridge("updatePlan", {
+          userId,
+          plan: "pro",
+          stripeCustomerId: customerId,
+          stripeSubscriptionId: subscriptionId,
+          subscriptionStatus: "active",
+          subscriptionPeriodEnd: periodEnd,
+        });
         break;
       }
 
-      case "customer.subscription.updated": {
+      case "customer.subscription.updated":
+      case "customer.subscription.deleted": {
         const subscription = event.data.object as Stripe.Subscription;
         const customerId =
           typeof subscription.customer === "string"
             ? subscription.customer
             : subscription.customer.id;
 
-        // Look up the user by stripe customer ID - we need a dedicated query for this
-        // For now, use metadata from the subscription if available
-        const subData = subscription as unknown as { current_period_end: number };
-        const periodEnd = new Date(
-          subData.current_period_end * 1000
-        ).toISOString();
+        const queryResult = await callConvexBridge("getByStripeCustomerId", {
+          stripeCustomerId: customerId,
+        });
+        const profile = queryResult.value;
+        if (!profile) break;
 
-        const status = subscription.status as
-          | "active"
-          | "canceled"
-          | "past_due"
-          | "trialing";
+        const status = subscription.status;
+        const plan =
+          status === "active" || status === "trialing" ? "pro" : "free";
+        const subObj = subscription as unknown as { current_period_end?: number };
+        const periodEnd = subObj.current_period_end
+          ? new Date(subObj.current_period_end * 1000).toISOString()
+          : undefined;
 
-        // We need to find the userId from the customer
-        // Stripe metadata on checkout stored userId
-        break;
-      }
-
-      case "customer.subscription.deleted": {
-        const subscription = event.data.object as Stripe.Subscription;
-        // Downgrade handled by subscription.updated with canceled status
+        await callConvexBridge("updatePlan", {
+          userId: profile.userId,
+          plan,
+          stripeCustomerId: customerId,
+          stripeSubscriptionId: subscription.id,
+          subscriptionStatus: status,
+          subscriptionPeriodEnd: periodEnd,
+        });
         break;
       }
     }
+
+    // Record event as processed (idempotency)
+    await callConvexBridge("recordWebhookEvent", {
+      stripeEventId: event.id,
+    });
   } catch (err) {
     console.error("Webhook processing error:", err);
     return NextResponse.json(

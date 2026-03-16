@@ -69,71 +69,86 @@ export default async function ReflectionViewPage({
       </Link>
 
       {/* Session info header */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center text-xs bg-white/10 text-gray-300 px-2.5 py-1 rounded-full capitalize">
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center text-[10px] bg-peach/20 text-soft-black px-3 py-1 rounded-full font-black uppercase tracking-widest border border-soft-black/10">
             {reflection.session
               ? TYPE_LABELS[reflection.session.contentType as ContentType]
               : "Content"}
           </span>
           {reflection.thinkingShiftRating != null && (
-            <span className="text-xs text-amber-500">
-              {"★".repeat(reflection.thinkingShiftRating)}
-              {"☆".repeat(5 - reflection.thinkingShiftRating)}
-            </span>
+            <div className="flex gap-0.5">
+              {[1, 2, 3, 4, 5].map((n) => (
+                <span
+                  key={n}
+                  className={`text-sm ${n - 1 < (reflection.thinkingShiftRating ?? 0) ? "text-peach" : "text-soft-black/10"}`}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
           )}
         </div>
-        <h1 className="text-xl font-semibold text-white">
-          {reflection.session?.title ?? "Untitled"}
+        <h1 className="font-grotesk text-4xl md:text-5xl font-black lowercase tracking-tighter leading-tight text-soft-black">
+          {reflection.session?.title ?? "Untitled Insight"}
         </h1>
-        <p className="text-sm text-gray-500">
-          {formatDate(reflection._creationTime)} &middot;{" "}
-          {reflection.wordCount} words
+        <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-muted-text">
+          <span>{formatDate(reflection._creationTime)}</span>
+          <span className="w-1 h-1 rounded-full bg-soft-black/20" />
+          <span>{reflection.wordCount} words</span>
           {wasEdited && (
-            <span>
-              {" "}
-              &middot; Edited{" "}
-              {new Date(reflection.updatedAt).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-              })}
-            </span>
+            <>
+              <span className="w-1 h-1 rounded-full bg-soft-black/20" />
+              <span className="italic">Edited {formatDate(reflection.updatedAt!)}</span>
+            </>
           )}
-        </p>
+        </div>
       </div>
 
-      {/* Reflection content + edit/delete */}
-      <ReflectionDetail
-        reflectionId={reflection._id}
-        initialContent={reflection.content}
-      />
+      <div className="brutal-card bg-white p-8 md:p-12 relative overflow-hidden">
+        {/* Analog Grain Overlay inside card */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.05] bg-[url('https://grain-y.vercel.app/noise.svg')] bg-repeat" />
+        
+        <ReflectionDetail
+          reflection={reflection}
+        />
+      </div>
 
-      {/* Layers */}
+      {/* Layers - Thinking Evolution */}
       {reflection.layers && reflection.layers.length > 0 && (
-        <div className="border-t border-white/10 pt-6 space-y-4">
-          <h2 className="text-sm font-semibold text-white">
-            Layers ({reflection.layers.length})
-          </h2>
-          {reflection.layers
-            .sort((a, b) => a._creationTime - b._creationTime)
-            .map((layer) => (
-              <div
-                key={layer._id}
-                className="border-l-2 border-amber-500/40 pl-4 py-1"
-              >
-                <p className="text-xs text-gray-500 mb-1">
-                  Added{" "}
-                  {new Date(layer._creationTime).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </p>
-                <p className="text-sm text-gray-300 whitespace-pre-wrap">
-                  {layer.content}
-                </p>
-              </div>
-            ))}
+        <div className="space-y-8 pt-8 border-t-4 border-soft-black/5">
+          <div className="flex items-center gap-3">
+            <h2 className="font-grotesk text-xs font-black uppercase tracking-[0.2em] text-muted-text">
+              Thinking Evolution
+            </h2>
+            <div className="flex-1 h-[1px] bg-soft-black/5" />
+          </div>
+          
+          <div className="space-y-12">
+            {reflection.layers
+              .sort((a, b) => a._creationTime - b._creationTime)
+              .map((layer, index) => (
+                <div
+                  key={layer._id}
+                  className="relative pl-12"
+                >
+                  {/* Timeline branch line */}
+                  <div className="absolute left-[19px] top-0 bottom-0 w-1 bg-sage/30 rounded-full" />
+                  <div className="absolute left-0 top-0 w-10 h-10 rounded-full bg-sage border-4 border-[#FDFCF8] flex items-center justify-center font-grotesk font-black text-xs text-sage-dark brutal-shadow-xs">
+                    {index + 1}
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-muted-text">
+                      Layered {formatDate(layer._creationTime)}
+                    </p>
+                    <p className="text-xl font-serif text-soft-black leading-relaxed italic pr-4">
+                      &ldquo;{layer.content}&rdquo;
+                    </p>
+                  </div>
+                </div>
+              ))}
+          </div>
         </div>
       )}
     </div>

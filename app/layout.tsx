@@ -1,31 +1,51 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
+import { headers } from "next/headers";
+import { Space_Grotesk, Outfit, Reenie_Beanie, Lora } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import ConvexClientProvider from "@/components/ConvexClientProvider";
 import PostHogProvider from "@/components/PostHogProvider";
 import CookieBanner from "@/components/CookieBanner";
+import PWAProvider from "@/components/PWAProvider";
 import { Toaster } from "sonner";
+import { CustomCursor } from "@/components/ui/custom-cursor";
+import ProfileSync from "@/components/ProfileSync";
 import "./globals.css";
 
-const instrumentSerif = Instrument_Serif({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument",
+  variable: "--font-grotesk",
+  display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const reenieBeanie = Reenie_Beanie({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-reenie",
+  display: "swap",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://distill.app"),
   title: "Distill — Think more clearly about what you consume",
   description:
     "Distill helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",
   manifest: "/manifest.json",
   icons: {
-    icon: "/icon.svg",
+    icon: "/icon-192.png",
+    shortcut: "/icon-192.png",
+    apple: "/icon-192.png",
   },
   appleWebApp: {
     capable: true,
@@ -33,19 +53,26 @@ export const metadata: Metadata = {
     title: "Distill",
   },
   openGraph: {
-    title: "Distill — Think more clearly about what you consume",
+    title: "Distill — Think More Clearly About What You Consume",
     description:
-      "Build a reflection habit. Your thoughts, compounded over time.",
-    images: ["/og-image.svg"],
+      "Build a reflection habit from the content you consume. Your perspective, compounded over time.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Distill — a thinking development tool",
+      },
+    ],
     type: "website",
     siteName: "Distill",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Distill — Think more clearly about what you consume",
+    title: "Distill — Think More Clearly About What You Consume",
     description:
-      "Build a reflection habit. Your thoughts, compounded over time.",
-    images: ["/og-image.svg"],
+      "Build a reflection habit from the content you consume. Your perspective, compounded over time.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -55,29 +82,38 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const nonce = headersList.get("x-nonce") ?? undefined;
+
   return (
     <html lang="en">
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
-      <body className={`${instrumentSerif.variable} ${plusJakarta.variable} font-sans antialiased`}>
-        <ClerkProvider>
+      <body className={`${spaceGrotesk.variable} ${outfit.variable} ${reenieBeanie.variable} ${lora.variable} font-sans antialiased text-soft-black`}>
+        <ClerkProvider nonce={nonce}>
           <ConvexClientProvider>
             <PostHogProvider>
+              <PWAProvider />
+              <CustomCursor />
+              <ProfileSync />
               {children}
               <Toaster
-                theme="dark"
+                theme="light"
                 position="bottom-right"
                 toastOptions={{
                   style: {
-                    background: "#111",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                    color: "#e5e5e5",
+                    background: "#ffffff",
+                    border: "2px solid #292524",
+                    borderRadius: "1rem",
+                    color: "#292524",
+                    fontWeight: "700",
+                    fontFamily: "var(--font-outfit)",
                   },
                 }}
               />

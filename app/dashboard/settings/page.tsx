@@ -1,93 +1,69 @@
 "use client";
 
-import { useUser, useClerk } from "@clerk/nextjs";
+import { useClerk } from "@clerk/nextjs";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useState } from "react";
 import { toast } from "sonner";
-import { FREE_TIER_LIMIT } from "@/lib/constants";
+import { Bell, CreditCard, Download, LogOut, Globe, Settings2, ShieldAlert, Snowflake } from "lucide-react";
+import { MagnetizeButton } from "@/components/ui/magnetize-button";
 
 const TIMEZONES = [
-  "UTC",
-  "America/New_York",
-  "America/Chicago",
-  "America/Denver",
-  "America/Los_Angeles",
-  "America/Sao_Paulo",
-  "Europe/London",
-  "Europe/Paris",
-  "Europe/Berlin",
-  "Asia/Kolkata",
-  "Asia/Shanghai",
-  "Asia/Tokyo",
-  "Asia/Dubai",
-  "Australia/Sydney",
-  "Pacific/Auckland",
+  "UTC", "America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles",
+  "Europe/London", "Europe/Paris", "Asia/Kolkata", "Asia/Tokyo", "Australia/Sydney"
 ];
 
+const DELETE_CONFIRMATION_PHRASE = "DELETE MY ACCOUNT";
+
 export default function SettingsPage() {
-  const { user } = useUser();
   const { signOut } = useClerk();
   const profile = useQuery(api.profiles.get);
-  const exportData = useQuery(api.export.getAllData);
   const updateProfile = useMutation(api.profiles.update);
-  const deleteAccount = useMutation(api.account.deleteAccount);
+  const deleteAccount = useMutation(api.profiles.removeAccount);
+  const applyFreeze = useMutation(api.profiles.applyStreakFreeze);
 
-  const [deletePhrase, setDeletePhrase] = useState("");
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [error, setError] = useState("");
-  const [billingLoading, setBillingLoading] = useState(false);
+  const [isPortalLoading, setIsPortalLoading] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deleteInput, setDeleteInput] = useState("");
+  const [isFreezing, setIsFreezing] = useState(false);
 
-  // Loading state
-  if (profile === undefined) {
-    return (
-      <div className="space-y-6">
-        <h1 className="text-2xl font-semibold text-white">Settings</h1>
-        <div className="space-y-4">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-32 skeleton rounded-2xl" />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  // Error state
-  if (!profile) {
-    return (
-      <div className="space-y-6">
-        <h1 className="text-2xl font-semibold text-white">Settings</h1>
-        <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-5 text-center">
-          <p className="text-gray-400 text-sm mb-3">Could not load profile.</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="text-sm text-amber-500 hover:text-amber-400 transition-colors"
-          >
-            Try again
-          </button>
-        </div>
-      </div>
-    );
-  }
+  if (profile === undefined) return <div className="p-8 text-muted-text animate-pulse">Loading settings...</div>;
+  if (!profile) return <div className="p-8 text-muted-text text-center">Profile not found.</div>;
 
   async function handleTimezoneChange(tz: string) {
     try {
       await updateProfile({ timezone: tz });
       toast.success("Timezone updated.");
     } catch {
-      setError("Failed to update timezone.");
+      toast.error("Failed to update timezone.");
     }
   }
 
-  async function handleExport() {
-    if (!exportData) return;
+  async function handleManageSubscription() {
+    setIsPortalLoading(true);
+    try {
+      const res = await fetch("/api/stripe/create-portal", { method: "POST" });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        toast.error(data.error || "Could not open billing portal.");
+      }
+    } catch {
+      toast.error("Subscription management unavailable.");
+    } finally {
+      setIsPortalLoading(false);
+    }
+  }
+
+  async function handleExportData() {
     setIsExporting(true);
     try {
-      const blob = new Blob([JSON.stringify(exportData, null, 2)], {
-        type: "application/json",
-      });
+      const res = await fetch("/api/export");
+      if (!res.ok) throw new Error("Export failed");
+
+      const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -95,272 +71,319 @@ export default function SettingsPage() {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      toast.success("Data exported.");
+      toast.success("Data export ready.");
+    } catch {
+      toast.error("Export failed. Please try again.");
     } finally {
       setIsExporting(false);
     }
   }
 
   async function handleDeleteAccount() {
-    if (deletePhrase !== "DELETE MY ACCOUNT") return;
-    setIsDeleting(true);
-    setError("");
     try {
       await deleteAccount();
-      await signOut({ redirectUrl: "/" });
+      toast.success("Account deleted. Goodbye.");
+      signOut({ redirectUrl: "/" });
     } catch {
-      setError("Something went wrong. Please try again.");
-      setIsDeleting(false);
+      toast.error("Failed to delete account. Contact support.");
     }
   }
 
-  async function handleManageBilling() {
-    setBillingLoading(true);
+  async function handleApplyFreeze() {
+    setIsFreezing(true);
     try {
-      const res = await fetch("/api/stripe/create-portal", { method: "POST" });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    } catch {
-      setError("Could not open billing portal.");
+      await applyFreeze();
+      toast.success("Streak freeze applied.");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to apply freeze.");
     } finally {
-      setBillingLoading(false);
+      setIsFreezing(false);
     }
   }
 
-  async function handleUpgrade() {
-    try {
-      const res = await fetch("/api/stripe/create-checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: "monthly" }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    } catch {
-      setError("Could not start checkout.");
-    }
-  }
-
-  const monthlyCount = profile.reflectionCountThisMonth ?? 0;
-  const progressPct = Math.min((monthlyCount / FREE_TIER_LIMIT) * 100, 100);
+  const canDelete = deleteInput === DELETE_CONFIRMATION_PHRASE;
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-semibold text-white">Settings</h1>
-
-      {error && (
-        <div className="bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
-          <p className="text-sm text-red-400">{error}</p>
+    <div className="max-w-3xl mx-auto space-y-12 pb-20">
+      <header className="space-y-4">
+        <div className="flex items-center gap-3">
+          <Settings2 className="w-8 h-8 text-soft-black" />
+          <h1 className="font-grotesk text-4xl font-black lowercase tracking-tighter">Settings</h1>
         </div>
-      )}
+        <p className="text-muted-text font-medium text-lg">Manage your account and preferences.</p>
+      </header>
 
-      {/* Profile Section */}
-      <section className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
-        <h2 className="font-medium text-white">Profile</h2>
-        <div className="space-y-3">
-          <div>
-            <label className="text-xs text-gray-500 uppercase tracking-wider">Email</label>
-            <p className="text-sm text-gray-300 mt-0.5">
-              {user?.primaryEmailAddress?.emailAddress ?? "\u2014"}
-            </p>
+      {/* Subscription Section */}
+      <section className="space-y-6">
+        <h2 className="text-xs font-black uppercase tracking-[0.2em] text-soft-black/40 flex items-center gap-2">
+          <CreditCard className="w-3 h-3" /> Billing & Plan
+        </h2>
+        <div className="p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black space-y-6">
+          <div className="flex justify-between items-center">
+            <div>
+              <p className="text-sm font-black uppercase text-muted-text tracking-widest">Current Plan</p>
+              <h3 className="text-2xl font-black lowercase">{profile.plan}</h3>
+            </div>
+            <div className={`px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest ${profile.plan === "pro" ? "bg-sage text-sage-dark" : "bg-peach/20 text-peach-dark"}`}>
+              {profile.plan === "pro" ? "Active" : "Standard"}
+            </div>
           </div>
-          <div>
-            <label className="text-xs text-gray-500 uppercase tracking-wider">Account created</label>
-            <p className="text-sm text-gray-300 mt-0.5">
-              {user?.createdAt
-                ? new Date(user.createdAt).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  })
-                : "\u2014"}
-            </p>
-          </div>
+
+          <MagnetizeButton
+            onClick={handleManageSubscription}
+            disabled={isPortalLoading}
+            className="w-full py-4 bg-soft-black text-white rounded-2xl font-black hover:bg-soft-black/90 transition-all"
+          >
+            {isPortalLoading ? "opening portal..." : profile.plan === "pro" ? "Manage Subscription" : "Upgrade to Pro"}
+          </MagnetizeButton>
         </div>
       </section>
 
-      {/* Plan Section */}
-      <section className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
-        <h2 className="font-medium text-white">Plan</h2>
-        <div className="flex items-center gap-3">
-          <span
-            className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-              profile.plan === "pro"
-                ? "bg-amber-500/20 text-amber-500"
-                : "bg-white/10 text-gray-400"
-            }`}
-          >
-            {profile.plan === "pro" ? "Pro" : "Free"}
-          </span>
-        </div>
+      {/* Streak Freeze Section */}
+      <section className="space-y-6">
+        <h2 className="text-xs font-black uppercase tracking-[0.2em] text-soft-black/40 flex items-center gap-2">
+          <Snowflake className="w-3 h-3" /> Streak Freeze
+        </h2>
+        <div className="p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black space-y-4">
+          <div className="flex justify-between items-center">
+            <div className="space-y-1">
+              <h3 className="font-black text-xl lowercase">streak freeze</h3>
+              <p className="text-sm font-medium text-muted-text">
+                Protect your streak when you miss a day. Available freezes: 1/month (Pro only).
+              </p>
+            </div>
+            <div className={`px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest ${
+              profile.streakFreezeUsedThisMonth >= 1 ? "bg-soft-black/10 text-muted-text" : "bg-sage text-sage-dark"
+            }`}>
+              {profile.streakFreezeUsedThisMonth >= 1 ? "Used" : "Available"}
+            </div>
+          </div>
 
-        {profile.plan === "free" && (
-          <>
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-400">
-                  {monthlyCount} / {FREE_TIER_LIMIT} reflections this month
-                </span>
-              </div>
-              <div className="h-2 bg-white/5 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-amber-500 rounded-full transition-all duration-300"
-                  style={{ width: `${progressPct}%` }}
-                />
-              </div>
+          {profile.plan === "pro" ? (
+            <button
+              onClick={handleApplyFreeze}
+              disabled={isFreezing || profile.streakFreezeUsedThisMonth >= 1}
+              className="flex items-center gap-2 px-6 py-3 bg-white border-4 border-soft-black rounded-xl font-black text-sm hover:bg-sage/10 transition-all disabled:opacity-30 disabled:hover:bg-white"
+            >
+              <Snowflake className="w-4 h-4" />
+              {isFreezing ? "Applying..." : profile.streakFreezeUsedThisMonth >= 1 ? "Already used this month" : "Apply Freeze"}
+            </button>
+          ) : (
+            <p className="text-sm font-black text-peach-dark">
+              Upgrade to Pro to use streak freezes.
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* Preferences Section */}
+      <section className="space-y-6">
+        <h2 className="text-xs font-black uppercase tracking-[0.2em] text-soft-black/40 flex items-center gap-2">
+          <Globe className="w-3 h-3" /> Preferences
+        </h2>
+        <div className="p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black">
+          <label className="text-xs font-black uppercase text-muted-text tracking-widest block mb-4">Timezone
+          <div className="relative">
+            <select
+              value={profile.timezone}
+              onChange={(e) => handleTimezoneChange(e.target.value)}
+              className="w-full p-4 rounded-xl bg-sage/5 border-2 border-soft-black font-bold text-soft-black appearance-none outline-none focus:bg-sage/10 transition-all"
+            >
+              {TIMEZONES.map((tz) => (
+                <option key={tz} value={tz}>{tz.replace(/_/g, " ")}</option>
+              ))}
+            </select>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+              <Globe className="w-4 h-4 text-soft-black/40" />
+            </div>
+          </div>
+          </label>
+        </div>
+      </section>
+
+      {/* Notifications Section */}
+      <section className="space-y-6">
+        <h2 className="text-xs font-black uppercase tracking-[0.2em] text-soft-black/40 flex items-center gap-2">
+          <Bell className="w-3 h-3" /> Email Notifications
+        </h2>
+        <div className="p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black space-y-6">
+          <p className="text-sm font-medium text-muted-text">
+            All notifications are opt-in. Emails are sent at your preferred hour in your timezone ({profile.timezone.replace(/_/g, " ")}).
+          </p>
+
+          {/* Toggle: Resurfacing emails */}
+          <div className="flex items-center justify-between">
+            <div className="space-y-1">
+              <h3 className="font-black text-sm lowercase">resurfacing emails</h3>
+              <p className="text-xs text-muted-text">Past reflections resurface via email when due.</p>
             </div>
             <button
-              onClick={handleUpgrade}
-              className="bg-amber-500 text-black px-4 py-2 rounded-xl text-sm font-semibold hover:bg-amber-400 transition-all duration-200"
+              onClick={async () => {
+                const next = !profile.resurfacingEmailsEnabled;
+                try {
+                  await updateProfile({ resurfacingEmailsEnabled: next });
+                  toast.success(next ? "Resurfacing emails enabled." : "Resurfacing emails disabled.");
+                } catch { toast.error("Failed to update preference."); }
+              }}
+              className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors ${profile.resurfacingEmailsEnabled ? "bg-sage" : "bg-soft-black/10"}`}
             >
-              Upgrade to Pro
+              <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white border-2 border-soft-black transition-transform ${profile.resurfacingEmailsEnabled ? "translate-x-5" : "translate-x-0"}`} />
             </button>
-            <p className="text-xs text-gray-500">
-              &#x20B9;249/month in India — $8/month everywhere else
-            </p>
-          </>
-        )}
+          </div>
 
-        {profile.plan === "pro" && (
-          <>
-            <p className="text-sm text-gray-400">Unlimited reflections</p>
-            {profile.subscriptionPeriodEnd && (
-              <p className="text-xs text-gray-500">
-                Renews{" "}
-                {new Date(profile.subscriptionPeriodEnd).toLocaleDateString(
-                  "en-US",
-                  { month: "long", day: "numeric", year: "numeric" }
-                )}
-              </p>
-            )}
+          {/* Toggle: Streak reminders */}
+          <div className="flex items-center justify-between">
+            <div className="space-y-1">
+              <h3 className="font-black text-sm lowercase">streak reminders</h3>
+              <p className="text-xs text-muted-text">A reminder when your streak is active but no reflection recorded today.</p>
+            </div>
             <button
-              onClick={handleManageBilling}
-              disabled={billingLoading}
-              className="border border-white/10 text-gray-300 px-4 py-2 rounded-xl text-sm font-medium hover:bg-white/5 disabled:opacity-50 transition-all duration-200"
+              onClick={async () => {
+                const next = !profile.streakRemindersEnabled;
+                try {
+                  await updateProfile({ streakRemindersEnabled: next });
+                  toast.success(next ? "Streak reminders enabled." : "Streak reminders disabled.");
+                } catch { toast.error("Failed to update preference."); }
+              }}
+              className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors ${profile.streakRemindersEnabled ? "bg-sage" : "bg-soft-black/10"}`}
             >
-              {billingLoading ? "Loading..." : "Manage billing"}
+              <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white border-2 border-soft-black transition-transform ${profile.streakRemindersEnabled ? "translate-x-5" : "translate-x-0"}`} />
             </button>
-          </>
-        )}
-      </section>
+          </div>
 
-      {/* Streak Section */}
-      <section className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
-        <h2 className="font-medium text-white">Streak</h2>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-2xl font-bold text-white">{profile.currentStreak}</p>
-            <p className="text-xs text-gray-500">Current streak</p>
+          {/* Toggle: Weekly summary */}
+          <div className="flex items-center justify-between">
+            <div className="space-y-1">
+              <h3 className="font-black text-sm lowercase">weekly summary</h3>
+              <p className="text-xs text-muted-text">A summary of your reflections, sent Sundays.</p>
+            </div>
+            <button
+              onClick={async () => {
+                const next = !profile.weeklySummaryEnabled;
+                try {
+                  await updateProfile({ weeklySummaryEnabled: next });
+                  toast.success(next ? "Weekly summary enabled." : "Weekly summary disabled.");
+                } catch { toast.error("Failed to update preference."); }
+              }}
+              className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors ${profile.weeklySummaryEnabled ? "bg-sage" : "bg-soft-black/10"}`}
+            >
+              <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white border-2 border-soft-black transition-transform ${profile.weeklySummaryEnabled ? "translate-x-5" : "translate-x-0"}`} />
+            </button>
           </div>
-          <div>
-            <p className="text-2xl font-bold text-white">{profile.longestStreak}</p>
-            <p className="text-xs text-gray-500">Longest streak</p>
+
+          {/* Preferred notification hour */}
+          <div className="pt-2 border-t border-soft-black/10">
+            <label className="text-xs font-black uppercase text-muted-text tracking-widest block mb-3">Preferred Send Time
+            <div className="relative">
+              <select
+                value={profile.preferredNotificationHour ?? 9}
+                onChange={async (e) => {
+                  try {
+                    await updateProfile({ preferredNotificationHour: parseInt(e.target.value, 10) });
+                    toast.success("Notification time updated.");
+                  } catch { toast.error("Failed to update time."); }
+                }}
+                className="w-full p-4 rounded-xl bg-sage/5 border-2 border-soft-black font-bold text-soft-black appearance-none outline-none focus:bg-sage/10 transition-all"
+              >
+                {Array.from({ length: 24 }, (_, i) => {
+                  const period = i >= 12 ? "PM" : "AM";
+                  const hour = i === 0 ? 12 : i > 12 ? i - 12 : i;
+                  return (
+                    <option key={`hour-${i}`} value={i}>{hour}:00 {period}</option>
+                  );
+                })}
+              </select>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                <Bell className="w-4 h-4 text-soft-black/40" />
+              </div>
+            </div>
+            </label>
           </div>
-        </div>
-        <div>
-          <div className="flex items-center gap-2">
-            <p className="text-sm text-gray-400">
-              Streak freeze: {profile.streakFreezeUsedThisMonth ?? 0} of 1 used this month
-            </p>
-            {profile.plan === "free" && (
-              <span className="text-[10px] bg-amber-500/20 text-amber-500 px-1.5 py-0.5 rounded-full font-medium">
-                Pro
-              </span>
-            )}
-          </div>
-        </div>
-        <div>
-          <label
-            htmlFor="timezone"
-            className="text-xs text-gray-500 uppercase tracking-wider block mb-1.5"
-          >
-            Timezone
-          </label>
-          <select
-            id="timezone"
-            value={profile.timezone}
-            onChange={(e) => handleTimezoneChange(e.target.value)}
-            className="block w-full max-w-xs bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all duration-200"
-          >
-            {TIMEZONES.map((tz) => (
-              <option key={tz} value={tz} className="bg-[#111] text-white">
-                {tz.replace(/_/g, " ")}
-              </option>
-            ))}
-          </select>
         </div>
       </section>
 
       {/* Data Section */}
-      <section className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
-        <h2 className="font-medium text-white">Data</h2>
-        <div className="space-y-3">
-          <div>
-            <button
-              onClick={handleExport}
-              disabled={isExporting || !exportData}
-              className="bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-xl text-sm font-medium hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
-            >
-              {isExporting ? "Exporting..." : "Export all my data"}
-            </button>
-            <p className="text-xs text-gray-500 mt-1.5">
-              Downloads a JSON file with all your reflections, sessions, and profile data.
+      <section className="space-y-6">
+        <h2 className="text-xs font-black uppercase tracking-[0.2em] text-soft-black/40 flex items-center gap-2">
+          <Download className="w-3 h-3" /> Data Portability
+        </h2>
+        <div className="p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black space-y-4">
+          <p className="text-sm font-medium text-muted-text">
+            Export all your reflections and perspectives in a clean, human-readable JSON format.
+          </p>
+          <button
+            onClick={handleExportData}
+            disabled={isExporting}
+            className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-soft-black rounded-xl font-black text-sm hover:bg-sage/10 transition-all brutal-border-sm"
+          >
+            <Download className="w-4 h-4" /> {isExporting ? "Exporting..." : "Export My Data"}
+          </button>
+        </div>
+      </section>
+
+      {/* Danger Zone */}
+      <section className="space-y-6">
+        <h2 className="text-xs font-black uppercase tracking-[0.2em] text-red-400 flex items-center gap-2">
+          <ShieldAlert className="w-3 h-3" /> Danger Zone
+        </h2>
+        <div className="p-8 rounded-[2rem] bg-red-50/50 border-4 border-red-200 border-dashed space-y-6">
+          <div className="space-y-2">
+            <h3 className="font-black text-red-600 lowercase text-xl">Delete Account</h3>
+            <p className="text-sm font-medium text-red-400">
+              Permanently remove your profile and all reflections. This action is irreversible.
             </p>
           </div>
 
-          <div className="pt-4 border-t border-white/10">
-            {!showDeleteConfirm ? (
-              <button
-                onClick={() => setShowDeleteConfirm(true)}
-                className="text-sm text-red-400 hover:text-red-300 transition-colors"
-              >
-                Delete account
-              </button>
-            ) : (
-              <div className="space-y-3">
-                <p className="text-sm text-gray-300">
-                  This will permanently delete your account and all reflections
-                  in 30 days. Type{" "}
-                  <span className="font-mono font-semibold text-white">
-                    DELETE MY ACCOUNT
-                  </span>{" "}
-                  to confirm.
-                </p>
+          {!showDeleteConfirm ? (
+            <button
+              onClick={() => setShowDeleteConfirm(true)}
+              className="px-6 py-3 bg-red-500 text-white rounded-xl font-black text-sm hover:bg-red-600 transition-all"
+            >
+              Delete My Account
+            </button>
+          ) : (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-red-500 block">
+                  Type &ldquo;{DELETE_CONFIRMATION_PHRASE}&rdquo; to confirm
+                </label>
                 <input
-                  type="text"
-                  value={deletePhrase}
-                  onChange={(e) => setDeletePhrase(e.target.value)}
-                  placeholder="Type DELETE MY ACCOUNT"
-                  className="block w-full max-w-sm bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all duration-200"
+                  value={deleteInput}
+                  onChange={(e) => setDeleteInput(e.target.value)}
+                  placeholder={DELETE_CONFIRMATION_PHRASE}
+                  className="w-full p-4 rounded-xl border-2 border-red-300 bg-white font-bold text-red-600 placeholder:text-red-200 outline-none focus:border-red-500 transition-all"
+                  // eslint-disable-next-line jsx-a11y/no-autofocus
+                  autoFocus
                 />
-                <div className="flex gap-2">
-                  <button
-                    onClick={handleDeleteAccount}
-                    disabled={deletePhrase !== "DELETE MY ACCOUNT" || isDeleting}
-                    className="text-sm bg-red-600 text-white px-4 py-2 rounded-xl font-medium hover:bg-red-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
-                  >
-                    {isDeleting ? "Deleting..." : "Delete my account"}
-                  </button>
-                  <button
-                    onClick={() => {
-                      setShowDeleteConfirm(false);
-                      setDeletePhrase("");
-                    }}
-                    className="text-sm text-gray-400 px-4 py-2 rounded-xl hover:bg-white/5 transition-all duration-200"
-                  >
-                    Cancel
-                  </button>
-                </div>
               </div>
-            )}
-          </div>
+              <div className="flex gap-4">
+                <button
+                  onClick={handleDeleteAccount}
+                  disabled={!canDelete}
+                  className="px-6 py-3 bg-red-600 text-white rounded-xl font-black text-sm disabled:opacity-30 transition-all"
+                >
+                  Confirm Irreversible Deletion
+                </button>
+                <button
+                  onClick={() => { setShowDeleteConfirm(false); setDeleteInput(""); }}
+                  className="px-6 py-3 bg-white border-2 border-soft-black rounded-xl font-black text-sm"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
+
+      <footer className="pt-10 flex justify-center">
+        <button
+          onClick={() => signOut({ redirectUrl: "/" })}
+          className="flex items-center gap-2 font-black text-muted-text hover:text-soft-black transition-colors uppercase text-xs tracking-widest"
+        >
+          <LogOut className="w-4 h-4" /> Sign out of Distill
+        </button>
+      </footer>
     </div>
   );
 }

@@ -1,145 +1,98 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { PRICING, PPP_COUNTRIES } from "@/lib/constants";
 
-interface UpgradeModalProps {
-  reflectionCount: number;
-  totalWordCount: number;
-  onDismiss: () => void;
+type BillingPeriod = "monthly" | "yearly";
+type CurrencyKey = keyof typeof PRICING;
+
+function getCurrencyFromCookie(): CurrencyKey {
+  if (typeof document === "undefined") return "USD";
+  const match = document.cookie.match(/(?:^|; )x-user-country=([^;]*)/);
+  const country = match?.[1] || "US";
+  return PPP_COUNTRIES[country] || "USD";
 }
 
-const DISMISS_KEY = "distill_upgrade_dismissed_at";
+export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction: () => void; isOpen: boolean }) {
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
+  const [isLoading, setIsLoading] = useState(false);
 
-export default function UpgradeModal({
-  reflectionCount,
-  totalWordCount,
-  onDismiss,
-}: UpgradeModalProps) {
-  const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState<"monthly" | "annual" | null>(null);
+  if (!isOpen) return null;
 
-  useEffect(() => {
-    const dismissedAt = localStorage.getItem(DISMISS_KEY);
-    if (dismissedAt) {
-      const dismissedDate = new Date(dismissedAt);
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-      if (dismissedDate > thirtyDaysAgo) {
-        return;
-      }
-    }
-    setVisible(true);
-  }, []);
+  const currency = getCurrencyFromCookie();
+  const pricing = PRICING[currency];
+  const amount = pricing[billingPeriod];
 
-  function handleRemindLater() {
-    localStorage.setItem(DISMISS_KEY, new Date().toISOString());
-    setVisible(false);
-    onDismiss();
-  }
-
-  async function handleUpgrade(plan: "monthly" | "annual") {
-    setLoading(plan);
+  async function handleCheckout() {
+    setIsLoading(true);
     try {
       const res = await fetch("/api/stripe/create-checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan }),
+        body: JSON.stringify({
+          plan: billingPeriod === "yearly" ? "annual" : "monthly",
+          currency: pricing.code,
+        }),
       });
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
-      } else {
-        setLoading(null);
       }
-    } catch {
-      setLoading(null);
+    } finally {
+      setIsLoading(false);
     }
   }
 
-  if (!visible) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={handleRemindLater}
-        role="presentation"
-      />
-      <div
-        className="relative bg-[#111] border border-white/10 rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-5"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="upgrade-heading"
-      >
-        <div className="space-y-2">
-          <h2
-            id="upgrade-heading"
-            className="text-xl font-semibold text-white"
-          >
-            You&apos;ve written {reflectionCount} reflections this month.
-          </h2>
-          <p className="text-lg text-gray-400">
-            {totalWordCount.toLocaleString()} words of your own thinking.
-          </p>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+      <div className="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center space-y-6">
+        <h2 className="text-2xl font-bold uppercase tracking-tight">Upgrade</h2>
+        <p className="text-zinc-400">Unlock unlimited reflections and analytics.</p>
+
+        {/* Billing toggle */}
+        <div className="flex justify-center">
+          <div className="inline-flex items-center border border-zinc-700 rounded-full p-1">
+            <button
+              onClick={() => setBillingPeriod("monthly")}
+              className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${
+                billingPeriod === "monthly"
+                  ? "bg-white text-black"
+                  : "text-zinc-500 hover:text-zinc-300"
+              }`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setBillingPeriod("yearly")}
+              className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all relative ${
+                billingPeriod === "yearly"
+                  ? "bg-white text-black"
+                  : "text-zinc-500 hover:text-zinc-300"
+              }`}
+            >
+              Yearly
+              <span className="absolute -top-2.5 -right-2 text-[10px] text-emerald-400 font-bold">
+                -25%
+              </span>
+            </button>
+          </div>
         </div>
 
-        <p className="text-gray-400 text-sm">
-          The free plan covers 10 per month. To keep going, upgrade.
-        </p>
-
-        <ul className="space-y-2.5 text-sm text-gray-300">
-          <li className="flex items-start gap-2.5">
-            <span className="text-amber-500 mt-0.5 shrink-0">&#10003;</span>
-            <span>
-              Unlimited reflections — think as much as you want
-            </span>
-          </li>
-          <li className="flex items-start gap-2.5">
-            <span className="text-amber-500 mt-0.5 shrink-0">&#10003;</span>
-            <span>
-              Add new perspectives to past thoughts as your view changes
-            </span>
-          </li>
-          <li className="flex items-start gap-2.5">
-            <span className="text-amber-500 mt-0.5 shrink-0">&#10003;</span>
-            <span>Weekly digest — one past thought, every Sunday</span>
-          </li>
-          <li className="flex items-start gap-2.5">
-            <span className="text-amber-500 mt-0.5 shrink-0">&#10003;</span>
-            <span>Export everything — your thinking belongs to you</span>
-          </li>
-        </ul>
-
-        <div className="text-sm text-gray-500">
-          <p>&#x20B9;249/month in India — $8/month everywhere else</p>
-          <p>Or &#x20B9;1,999/year — $72/year (save 25%)</p>
+        {/* Price display */}
+        <div>
+          <span className="text-4xl font-bold">{pricing.symbol}{amount}</span>
+          <span className="text-zinc-500 ml-1">{billingPeriod === "monthly" ? "/mo" : "/yr"}</span>
         </div>
 
-        <div className="space-y-2 pt-1">
+        <div className="flex flex-col gap-2 pt-2">
           <button
-            onClick={() => handleUpgrade("monthly")}
-            disabled={loading !== null}
-            className="w-full bg-amber-500 text-black py-2.5 px-4 rounded-xl font-medium hover:bg-amber-400 text-sm transition-all duration-200 disabled:opacity-50"
+            onClick={handleCheckout}
+            disabled={isLoading}
+            className="w-full py-4 bg-white text-black rounded-2xl font-bold transition-transform active:scale-95 disabled:opacity-50"
           >
-            {loading === "monthly"
-              ? "Redirecting..."
-              : "Keep thinking — upgrade to Pro"}
+            {isLoading ? "Loading..." : "Upgrade Now"}
           </button>
-          <button
-            onClick={() => handleUpgrade("annual")}
-            disabled={loading !== null}
-            className="w-full bg-white/5 border border-white/10 text-white py-2.5 px-4 rounded-xl font-medium hover:bg-white/10 text-sm transition-all duration-200 disabled:opacity-50"
-          >
-            {loading === "annual"
-              ? "Redirecting..."
-              : "Get annual — save 25%"}
-          </button>
-          <button
-            onClick={handleRemindLater}
-            className="w-full text-gray-500 py-2 px-4 text-sm hover:text-gray-300 transition-colors"
-          >
-            Remind me next month
-          </button>
+          <button onClick={onCloseAction} className="w-full py-2 text-zinc-600 font-bold hover:text-zinc-400 transition-colors">Maybe Later</button>
         </div>
       </div>
     </div>

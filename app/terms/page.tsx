@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Terms of Service — Distill",
+  description:
+    "Terms of service for Distill, a thinking development and reflection tool.",
+  alternates: { canonical: "https://distill.app/terms" },
+};
 
 export default function TermsPage() {
   return (

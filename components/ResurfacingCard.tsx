@@ -1,83 +1,152 @@
 "use client";
 
-import { useState } from "react";
-import { useMutation, useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import LayerEditor from "./LayerEditor";
+import { Sparkles, ArrowRight, Check } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function ResurfacingCard() {
+  const profile = useQuery(api.profiles.get);
   const pending = useQuery(api.resurfacing.getPending);
   const respond = useMutation(api.resurfacing.respond);
-  const profile = useQuery(api.profiles.get);
-
-  const [showLayerEditor, setShowLayerEditor] = useState(false);
   const [isResponding, setIsResponding] = useState(false);
-  const [error, setError] = useState("");
+  const [isLayering, setIsLayering] = useState(false);
+  const [layerContent, setLayerContent] = useState("");
 
-  if (pending === undefined || pending === null) return null;
-
-  async function handleRespond(action: "surfaced" | "dismissed") {
+  const handleAction = async (action: "surfaced" | "dismissed" | "layered") => {
+    if (!pending) return;
     setIsResponding(true);
-    setError("");
     try {
-      await respond({ queueId: pending!.queueId, action });
-    } catch {
-      setError("Something went wrong. Please try again.");
+      await respond({ 
+        queueId: pending.queueId, 
+        action,
+        layerContent: action === "layered" ? layerContent : undefined
+      });
+      toast.success(
+        action === "layered" ? "Perspective layered." : 
+        action === "surfaced" ? "Acknowleged." : "Dismissed."
+      );
+      setIsLayering(false);
+      setLayerContent("");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to update status.");
+    } finally {
       setIsResponding(false);
     }
+  };
+
+  if (pending === undefined) {
+    return <div className="h-48 bg-soft-black/5 animate-pulse rounded-[2rem]" />;
   }
 
-  async function handleLayerSave(content: string) {
-    await respond({ queueId: pending!.queueId, action: "layered", layerContent: content });
-  }
-
-  function handleViewChanged() {
-    if (profile && profile.plan === "free") {
-      setError("Adding new perspectives is a Pro feature.");
-      return;
-    }
-    setShowLayerEditor(true);
-  }
-
-  if (showLayerEditor) {
+  if (!pending) {
     return (
-      <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
-        <LayerEditor
-          originalContent={pending.reflection.content}
-          originalDate={pending.reflection.createdAt}
-          onSave={handleLayerSave}
-          onCancel={() => setShowLayerEditor(false)}
-        />
+      <div className="p-8 md:p-12 rounded-[2rem] bg-white brutal-border border-4 border-soft-black text-center space-y-4">
+        <div className="w-16 h-16 bg-sage/20 rounded-full flex items-center justify-center mx-auto">
+          <Check className="w-8 h-8 text-sage-dark" />
+        </div>
+        <div className="space-y-1">
+          <h3 className="font-grotesk text-xl font-black lowercase">all caught up.</h3>
+          <p className="text-muted-text max-w-xs mx-auto text-sm font-medium">No reflections due for resurfacing today. Take a break or capture something new.</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white/5 border border-amber-500/20 rounded-2xl p-5 space-y-4">
-      <div className="space-y-1">
-        <p className="text-sm text-amber-500">
-          A thought you had {pending.daysAgo} days ago is waiting.
-        </p>
-        {pending.session && (
-          <p className="text-xs text-gray-500">From: {pending.session.title}</p>
+    <div className="relative group p-8 md:p-10 rounded-[2rem] bg-white brutal-border border-4 border-soft-black overflow-hidden bg-[url('https://grain-y.vercel.app/noise.svg')] bg-repeat">
+      {/* Decorative accent */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-peach opacity-10 rounded-bl-full -translate-y-8 translate-x-8" />
+      
+      <div className="relative z-10 space-y-6">
+        <div className="flex items-center gap-3">
+          <div className="px-3 py-1 bg-sage/20 rounded-lg border-2 border-sage/30">
+            <span className="text-[10px] uppercase font-black tracking-widest text-sage-dark">
+              Resurfacing from {pending.daysAgo} days ago
+            </span>
+          </div>
+          <Sparkles className="w-4 h-4 text-peach animate-pulse" />
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="font-grotesk text-3xl font-black lowercase tracking-tighter leading-none">
+            {pending.session?.title || "Untitled Insight"}
+          </h3>
+          <p className="text-lg md:text-xl text-muted-text font-medium leading-relaxed line-clamp-4 italic border-l-4 border-peach/30 pl-6 py-2">
+            &ldquo;{pending.reflection.content}&rdquo;
+          </p>
+        </div>
+
+        {isLayering ? (
+          <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div className="space-y-2">
+              <label className="font-grotesk text-[10px] font-black uppercase tracking-widest text-muted-text block">
+                How has your view changed?
+              <textarea
+                value={layerContent}
+                onChange={(e) => setLayerContent(e.target.value)}
+                placeholder="Add a new layer of thinking..."
+                className="w-full bg-sage/5 brutal-border-sm p-4 text-sm font-medium focus:outline-none focus:bg-white transition-colors min-h-[120px] rounded-xl resize-none"
+              />
+              </label>
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => handleAction("layered")}
+                disabled={isResponding || !layerContent.trim()}
+                className="px-6 py-3 bg-peach text-soft-black rounded-xl font-bold text-sm brutal-border-sm shadow-[2px_2px_0px_#292524] hover:bg-peach/90 disabled:opacity-50"
+              >
+                {isResponding ? "Saving..." : "Save Layer"}
+              </button>
+              <button
+                onClick={() => {
+                  setIsLayering(false);
+                  setLayerContent("");
+                }}
+                className="px-6 py-3 text-muted-text font-bold text-sm hover:text-soft-black"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col md:flex-row gap-3 pt-4">
+            <button
+              onClick={() => handleAction("surfaced")}
+              disabled={isResponding}
+              className="flex-1 px-6 py-4 bg-soft-black text-white rounded-2xl font-black text-lg hover:bg-soft-black/90 transition-all flex items-center justify-center gap-2 group/btn"
+            >
+              Acknowledge <Check className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+            </button>
+            <button
+              onClick={() => {
+                if (profile?.plan === "free") {
+                  toast.error("Adding new perspectives is a Pro feature.");
+                  return;
+                }
+                setIsLayering(true);
+              }}
+              className="px-6 py-4 bg-white brutal-border-sm border-2 border-soft-black rounded-2xl font-bold hover:bg-sage/10 transition-all flex items-center gap-2 group/layer"
+            >
+              View Changed 
+              {profile?.plan === "free" ? (
+                <svg className="w-4 h-4 text-peach" fill="currentColor" viewBox="0 0 24 24">
+                   <path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1v-3a5 5 0 0 0-5-5zm-3 5a3 3 0 1 1 6 0v3H9V7zm3 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>
+              ) : (
+                <ArrowRight className="w-4 h-4 group-hover/layer:translate-x-1 transition-transform" />
+              )}
+            </button>
+            <button
+              onClick={() => handleAction("dismissed")}
+              disabled={isResponding}
+              className="px-4 py-4 text-muted-text font-bold hover:text-soft-black text-sm"
+            >
+              Dismiss
+            </button>
+          </div>
         )}
-      </div>
-      <blockquote className="border-l-2 border-amber-500/40 pl-4 text-sm text-gray-300 whitespace-pre-wrap">
-        {pending.reflection.content.length > 500
-          ? pending.reflection.content.slice(0, 500) + "..."
-          : pending.reflection.content}
-      </blockquote>
-      {error && <p className="text-sm text-red-400">{error}</p>}
-      <div className="flex flex-wrap gap-2">
-        <button onClick={handleViewChanged} disabled={isResponding} className="text-sm bg-amber-500 text-black px-4 py-2 rounded-xl font-semibold hover:bg-amber-400 disabled:opacity-50 transition-all duration-200">
-          My view has changed
-        </button>
-        <button onClick={() => handleRespond("surfaced")} disabled={isResponding} className="text-sm border border-white/10 text-gray-300 px-4 py-2 rounded-xl hover:bg-white/5 disabled:opacity-50 transition-all duration-200">
-          Still relevant
-        </button>
-        <button onClick={() => handleRespond("dismissed")} disabled={isResponding} className="text-sm text-gray-500 px-4 py-2 rounded-xl hover:bg-white/5 disabled:opacity-50 transition-all duration-200">
-          Dismiss
-        </button>
       </div>
     </div>
   );

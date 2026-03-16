@@ -1,5 +1,11 @@
-import { query, mutation, internalMutation } from "./_generated/server";
+import { query, mutation, internalMutation, internalQuery } from "./_generated/server";
 import { v } from "convex/values";
+import { checkContentSafety } from "./safety";
+
+/** Strip HTML tags server-side (no DOM dependency for Convex edge runtime) */
+function sanitizeContent(input: string): string {
+  return input.replace(/<[^>]*>/g, "").trim();
+}
 
 const FREE_TIER_LIMIT = 10;
 
@@ -74,10 +80,17 @@ export const create = mutation({
     const wordCount = computeWordCount(args.content);
 
     // Create reflection
+    const cleanContent = sanitizeContent(args.content);
+
+    const safetyResult = checkContentSafety(cleanContent);
+    if (!safetyResult.safe && safetyResult.category === "A") {
+      throw new Error("This content cannot be saved.");
+    }
+
     const reflectionId = await ctx.db.insert("reflections", {
       userId,
       sessionId: args.sessionId,
-      content: args.content,
+      content: cleanContent,
       promptUsed: args.promptUsed,
       thinkingShiftRating: args.thinkingShiftRating,
       wordCount,
@@ -138,7 +151,14 @@ export const create = mutation({
       });
     }
 
-    return await ctx.db.get(reflectionId);
+    const reflection = await ctx.db.get(reflectionId);
+    const totalReflections = profile.reflectionCountLifetime + 1;
+    const milestones = [1, 10, 50, 100];
+    const milestoneReached = milestones.includes(totalReflections)
+      ? totalReflections
+      : null;
+
+    return { ...reflection, milestoneReached };
   },
 });
 
@@ -165,9 +185,16 @@ export const update = mutation({
       throw new Error("Resource not found.");
     }
 
+    const cleanContent = sanitizeContent(args.content);
+
+    const safetyResult = checkContentSafety(cleanContent);
+    if (!safetyResult.safe && safetyResult.category === "A") {
+      throw new Error("This content cannot be saved.");
+    }
+
     await ctx.db.patch(args.reflectionId, {
-      content: args.content,
-      wordCount: computeWordCount(args.content),
+      content: cleanContent,
+      wordCount: computeWordCount(cleanContent),
       updatedAt: new Date().toISOString(),
     });
 
@@ -258,13 +285,15 @@ export const list = query({
 
     let reflections;
 
-    if (args.search && args.search.trim()) {
+    // Sanitize search input: strip special characters that could cause unexpected behavior
+    const sanitizedSearch = args.search?.replace(/[<>{}[\]\\]/g, "").trim();
+    if (sanitizedSearch && sanitizedSearch.length > 0) {
       // Use search index
       reflections = await ctx.db
         .query("reflections")
         .withSearchIndex("search_content", (q) =>
           q
-            .search("content", args.search!)
+            .search("content", sanitizedSearch)
             .eq("userId", userId)
             .eq("isDeleted", false)
         )
@@ -279,12 +308,17 @@ export const list = query({
         .collect();
     }
 
-    // Filter by content type (requires joining with sessions)
+    // Join with sessions and count layers
     let withSessions = await Promise.all(
       reflections.map(async (r) => {
         const session = await ctx.db.get(r.sessionId);
+        const layers = await ctx.db
+          .query("reflectionLayers")
+          .withIndex("by_reflectionId", (q) => q.eq("reflectionId", r._id))
+          .collect();
         return {
           ...r,
+          layerCount: layers.length,
           session: session
             ? { title: session.title, contentType: session.contentType }
             : null,
@@ -364,8 +398,8 @@ export const recent = query({
     if (!identity) return [];
     const userId = identity.subject;
 
-    const sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
     const reflections = await ctx.db
       .query("reflections")
@@ -373,7 +407,7 @@ export const recent = query({
       .filter((q) =>
         q.and(
           q.eq(q.field("isDeleted"), false),
-          q.gte(q.field("_creationTime"), sevenDaysAgo.getTime())
+          q.gte(q.field("_creationTime"), thirtyDaysAgo.getTime())
         )
       )
       .order("desc")
@@ -382,5 +416,89 @@ export const recent = query({
     return reflections.map((r) => ({
       _creationTime: r._creationTime,
     }));
+  },
+});
+
+export const exportAll = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return [];
+    const userId = identity.subject;
+
+    const reflections = await ctx.db
+      .query("reflections")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .filter((q) => q.eq(q.field("isDeleted"), false))
+      .collect();
+
+    return await Promise.all(
+      reflections.map(async (r) => {
+        const session = await ctx.db.get(r.sessionId);
+        const layers = await ctx.db
+          .query("reflectionLayers")
+          .withIndex("by_reflectionId", (q) => q.eq("reflectionId", r._id))
+          .collect();
+
+        return {
+          id: r._id,
+          content: r.content,
+          promptUsed: r.promptUsed,
+          thinkingShiftRating: r.thinkingShiftRating,
+          wordCount: r.wordCount,
+          createdAt: new Date(r._creationTime).toISOString(),
+          updatedAt: r.updatedAt,
+          session: session
+            ? {
+                title: session.title,
+                contentType: session.contentType,
+                startedAt: session.startedAt,
+                completedAt: session.completedAt,
+              }
+            : null,
+          layers: layers.map((l) => ({
+            content: l.content,
+            createdAt: new Date(l._creationTime).toISOString(),
+          })),
+        };
+      })
+    );
+  },
+});
+
+// Internal query for weekly summary notifications
+export const getWeeklyStats = internalQuery({
+  args: { userId: v.string() },
+  handler: async (ctx, args) => {
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+    const reflections = await ctx.db
+      .query("reflections")
+      .withIndex("by_userId", (q) => q.eq("userId", args.userId))
+      .filter((q) =>
+        q.and(
+          q.eq(q.field("isDeleted"), false),
+          q.gte(q.field("_creationTime"), sevenDaysAgo.getTime())
+        )
+      )
+      .collect();
+
+    const totalReflections = reflections.length;
+    const totalWords = reflections.reduce((sum, r) => sum + r.wordCount, 0);
+
+    // Build content type breakdown by joining with sessions
+    const typeMap: Record<string, number> = {};
+    for (const r of reflections) {
+      const session = await ctx.db.get(r.sessionId);
+      const ct = session?.contentType ?? "other";
+      typeMap[ct] = (typeMap[ct] || 0) + 1;
+    }
+
+    const contentTypeBreakdown = Object.entries(typeMap).map(
+      ([type, count]) => ({ type, count })
+    );
+
+    return { totalReflections, totalWords, contentTypeBreakdown };
   },
 });

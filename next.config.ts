@@ -1,3 +1,4 @@
+import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 // CSP is set dynamically in middleware.ts with per-request nonces.
@@ -14,6 +15,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
+  trailingSlash: false,
   async headers() {
     return [
       {
@@ -24,4 +26,9 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  // Suppress source map upload logs in CI
+  silent: true,
+  // Disable Sentry telemetry
+  telemetry: false,
+});

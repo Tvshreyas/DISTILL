@@ -1,161 +1,76 @@
-import { auth } from "@clerk/nextjs/server";
-import { ConvexHttpClient } from "convex/browser";
-import { redirect, notFound } from "next/navigation";
+"use client";
+
+import { useState } from "react";
+import { useQuery, useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { useParams, useRouter } from "next/navigation";
+import { toast } from "sonner";
+import type { Id } from "@/convex/_generated/dataModel";
 import ReflectionCapture from "@/components/ReflectionCapture";
 import Link from "next/link";
-import AbandonSessionButton from "./AbandonSessionButton";
-import { api } from "@/convex/_generated/api";
-import type { Id } from "@/convex/_generated/dataModel";
 
-const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
-
-const TYPE_LABELS: Record<string, string> = {
-  book: "Book",
-  video: "Video",
-  article: "Article",
-  podcast: "Podcast",
-  other: "Other",
+const MILESTONE_MESSAGES: Record<number, string> = {
+  1: "Your first reflection. The journey begins.",
+  10: "10 reflections. You're building a real habit.",
+  50: "50 reflections. Your library is growing.",
+  100: "100 reflections. A century of your own thinking.",
 };
 
-export default async function ActiveSessionPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-  const { userId, getToken } = await auth();
+export default function ActiveSessionPage() {
+  const { id } = useParams();
+  const router = useRouter();
+  const session = useQuery(api.sessions.getById, { sessionId: id as Id<"sessions"> });
+  const completeSession = useMutation(api.reflections.create);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  if (!userId) {
-    redirect("/sign-in");
+  if (session === undefined) return <div className="p-8 text-muted-text animate-pulse text-center">Loading session...</div>;
+  if (!session) return <div className="p-8 text-muted-text text-center">Session not found.</div>;
+
+  async function handleComplete(content: string, rating: number | null) {
+    setIsSubmitting(true);
+    try {
+      const result = await completeSession({
+        sessionId: id as Id<"sessions">,
+        content,
+        thinkingShiftRating: rating || undefined,
+      });
+
+      if (result?.milestoneReached) {
+        const msg = MILESTONE_MESSAGES[result.milestoneReached] ?? `Milestone reached: ${result.milestoneReached} reflections.`;
+        toast.success(msg, { duration: 6000 });
+      }
+
+      router.push("/dashboard");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Something went wrong.";
+      toast.error(message);
+      setIsSubmitting(false);
+    }
   }
-
-  const token = await getToken({ template: "convex" });
-  if (token) {
-    convex.setAuth(token);
-  }
-
-  const session = await convex.query(api.sessions.getById, {
-    sessionId: id as Id<"sessions">,
-  });
-
-  if (!session) {
-    notFound();
-  }
-
-  // Completed session
-  if (session.status === "complete") {
-    return (
-      <div className="space-y-4">
-        <Link
-          href="/dashboard"
-          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-white transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-          Home
-        </Link>
-        <h1 className="text-xl font-semibold text-white">{session.title}</h1>
-        <p className="text-sm text-gray-400">
-          This session is complete. Your reflection has been saved.
-        </p>
-        <div className="flex gap-3">
-          <Link
-            href="/dashboard/library"
-            className="bg-amber-500 text-black px-4 py-2 rounded-xl text-sm font-semibold hover:bg-amber-400 transition-all duration-200"
-          >
-            View in Library
-          </Link>
-          <Link
-            href="/dashboard/session/new"
-            className="border border-white/10 text-gray-300 px-4 py-2 rounded-xl text-sm font-medium hover:bg-white/5 transition-all duration-200"
-          >
-            Start New Session
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  // Abandoned session
-  if (session.status === "abandoned") {
-    return (
-      <div className="space-y-4">
-        <Link
-          href="/dashboard"
-          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-white transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-          Home
-        </Link>
-        <h1 className="text-xl font-semibold text-white">{session.title}</h1>
-        <p className="text-sm text-gray-400">This session was abandoned.</p>
-        <Link
-          href="/dashboard/session/new"
-          className="inline-block bg-amber-500 text-black px-4 py-2 rounded-xl text-sm font-semibold hover:bg-amber-400 transition-all duration-200"
-        >
-          Start New Session
-        </Link>
-      </div>
-    );
-  }
-
-  // Active session
-  const profile = await convex.query(api.profiles.get, {});
-
-  // Calculate total word count from user's reflections
-  const allReflections = await convex.query(api.reflections.list, { limit: 50 });
-  const totalWordCount = allReflections.data.reduce(
-    (sum: number, r: { wordCount?: number }) => sum + (r.wordCount || 0),
-    0
-  );
 
   return (
-    <div className="space-y-6">
-      <div>
-        <Link
-          href="/dashboard"
-          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-white transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-          Home
-        </Link>
-        <div className="flex items-start justify-between mt-3">
-          <div>
-            <p className="text-xs text-amber-500 uppercase tracking-wider font-medium">
-              {TYPE_LABELS[session.contentType] ?? "Content"}
-            </p>
-            <h1 className="text-xl font-semibold text-white mt-0.5">
-              {session.title}
-            </h1>
-            {session.consumeReason && (
-              <p className="text-sm text-gray-500 mt-1">
-                {session.consumeReason}
-              </p>
-            )}
-          </div>
-          <AbandonSessionButton sessionId={session._id} />
-        </div>
-      </div>
+    <main className="max-w-2xl mx-auto px-6 py-20 relative">
+      <Link
+        href="/dashboard"
+        className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-muted-text hover:text-soft-black transition-colors"
+      >
+        &larr; Dashboard
+      </Link>
 
-      <hr className="border-white/10" />
+      <header className="space-y-2 border-b-4 border-soft-black pb-8 mt-6 mb-10">
+        <div className="text-xs font-black uppercase tracking-widest text-muted-text">{session.contentType}</div>
+        <h1 className="font-grotesk text-4xl font-black lowercase tracking-tighter">{session.title}</h1>
+        {session.consumeReason && (
+          <p className="text-sm text-muted-text font-medium italic">&ldquo;{session.consumeReason}&rdquo;</p>
+        )}
+      </header>
 
-      <div>
-        <h2 className="text-sm font-medium text-gray-300 mb-3">
-          Write your reflection
-        </h2>
-        <ReflectionCapture
-          sessionId={session._id}
-          sessionTitle={session.title}
-          reflectionCountThisMonth={profile?.reflectionCountThisMonth ?? 0}
-          plan={profile?.plan ?? "free"}
-          totalWordCount={totalWordCount}
-        />
-      </div>
-    </div>
+      <ReflectionCapture
+        title={session.title}
+        prompt="What's your core takeaway from this?"
+        onSubmitAction={handleComplete}
+        isSubmitting={isSubmitting}
+      />
+    </main>
   );
 }
