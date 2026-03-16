@@ -76,7 +76,7 @@ http.route({
         headers: { "Content-Type": "application/json" },
       });
     } catch (err) {
-      console.error("Webhook bridge error:", err);
+      console.error("Webhook bridge error:", err instanceof Error ? err.message : "Unknown error");
       return new Response("Internal error", { status: 500 });
     }
   }),

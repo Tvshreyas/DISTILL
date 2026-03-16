@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import DOMPurify from "isomorphic-dompurify";
 import { getPostData, getAllPostSlugs } from "@/lib/blog";
 
 export async function generateMetadata({
@@ -130,7 +131,7 @@ export default async function BlogPostPage({
             prose-blockquote:border-l-8 prose-blockquote:border-[#FFB7B2] prose-blockquote:bg-[#E8EFE8] prose-blockquote:p-6 prose-blockquote:rounded-r-2xl prose-blockquote:italic
             prose-img:border-4 prose-img:border-[#292524] prose-img:shadow-[8px_8px_0px_0px_rgba(41,37,36,1)]
             prose-hr:border-4 prose-hr:border-[#E8EFE8]"
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(postData.contentHtml) }}
         />
 
         <footer className="mt-20 pt-12 border-t-4 border-[#292524]">

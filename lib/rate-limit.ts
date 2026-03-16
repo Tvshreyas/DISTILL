@@ -11,6 +11,11 @@ interface RateLimitResult {
   resetAt: number;
 }
 
+// NOTE: In-memory rate limiting resets on serverless cold starts (each Vercel
+// function instance gets its own Map). This provides best-effort protection
+// against bursts within a single instance but is not globally consistent.
+// TODO: For strict enforcement, migrate to a distributed store (e.g. Upstash
+// Redis with @upstash/ratelimit) before scaling beyond moderate traffic.
 export class RateLimiter {
   private store = new Map<string, RateLimitEntry>();
   private maxRequests: number;

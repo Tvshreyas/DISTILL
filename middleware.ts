@@ -32,6 +32,15 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
   const { pathname } = request.nextUrl;
   const method = request.method;
 
+  // Reject oversized request bodies (1MB limit for API routes)
+  const contentLength = request.headers.get("content-length");
+  if (pathname.startsWith("/api/") && contentLength && parseInt(contentLength, 10) > 1_048_576) {
+    return NextResponse.json(
+      { error: { code: "PAYLOAD_TOO_LARGE", message: "Request body too large." } },
+      { status: 413 }
+    );
+  }
+
   // Rate limiting for API routes
   if (pathname.startsWith("/api/")) {
     const ip = getClientIp(request);
@@ -64,17 +73,24 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
   // Generate per-request nonce for CSP
   const nonce = generateNonce();
 
+  // --- CSP Directive Construction ---
+  // Each external domain is explicitly listed with its purpose.
+
   const scriptSrc = isDev
-    ? `script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://js.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/`
-    : `script-src 'self' 'nonce-${nonce}' https://js.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/`;
+    ? `script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://js.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdnjs.cloudflare.com`
+    //                                     ^unsafe-eval: Next.js HMR     ^Stripe Elements         ^Clerk auth UI                     ^Cloudflare Turnstile            ^reCAPTCHA                       ^reCAPTCHA assets                  ^Three.js (landing animation)
+    : `script-src 'self' 'nonce-${nonce}' https://js.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdnjs.cloudflare.com`;
 
   const styleSrc = isDev
     ? `style-src 'self' 'nonce-${nonce}' 'unsafe-inline'`
     : `style-src 'self' 'nonce-${nonce}'`;
 
   const connectSrc = isDev
-    ? "connect-src 'self' https://*.convex.cloud wss://*.convex.cloud https://api.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://us.i.posthog.com https://app.posthog.com ws://localhost:*"
-    : "connect-src 'self' https://*.convex.cloud wss://*.convex.cloud https://api.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://us.i.posthog.com https://app.posthog.com";
+    ? "connect-src 'self' https://*.convex.cloud wss://*.convex.cloud https://api.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://us.i.posthog.com https://app.posthog.com https://*.ingest.sentry.io ws://localhost:*"
+    //                      ^Convex DB queries      ^Convex realtime       ^Stripe API            ^Clerk auth               ^Turnstile                       ^PostHog analytics          ^PostHog                     ^Sentry error reports          ^Next.js HMR
+    : "connect-src 'self' https://*.convex.cloud wss://*.convex.cloud https://api.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://us.i.posthog.com https://app.posthog.com https://*.ingest.sentry.io";
+
+  const upgradeInsecure = isDev ? "" : "upgrade-insecure-requests";
 
   const CSP = [
     "default-src 'self'",
@@ -86,7 +102,11 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
     styleSrc,
     "worker-src 'self' blob:",
     "font-src 'self' https://fonts.gstatic.com",
-  ].join("; ");
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    upgradeInsecure,
+  ].filter(Boolean).join("; ");
 
   // Set CSP and pass nonce to layout via header
   const response = NextResponse.next();
@@ -99,6 +119,7 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
     httpOnly: false,
     sameSite: "lax",
     path: "/",
+    secure: process.env.NODE_ENV === "production",
   });
 
   return response;

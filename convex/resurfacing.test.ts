@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { convexTest } from "convex-test";
 import { describe, it, expect } from "vitest";
 import { api, internal } from "./_generated/api";
@@ -16,9 +17,9 @@ async function setupWithResurfacing(t: ReturnType<typeof convexTest>) {
   });
 
   const reflection = await asUser.mutation(api.reflections.create, {
-    sessionId: session!._id,
+    sessionId: (session as any)._id,
     content: "Focus is everything.",
-  });
+  }) as any;
 
   // The reflection.create mutation auto-creates 4 resurfacing queue entries.
   // Make one of them due today so getPending can find it.
@@ -68,7 +69,7 @@ describe("resurfacing.respond", () => {
 
     await t.run(async (ctx) => {
       const entry = await ctx.db.get(queueId);
-      expect(entry!.status).toBe("surfaced");
+      expect((entry as any).status).toBe("surfaced");
     });
   });
 
@@ -83,7 +84,7 @@ describe("resurfacing.respond", () => {
 
     await t.run(async (ctx) => {
       const entry = await ctx.db.get(queueId);
-      expect(entry!.status).toBe("dismissed");
+      expect((entry as any).status).toBe("dismissed");
     });
   });
 
@@ -107,7 +108,7 @@ describe("resurfacing.respond", () => {
 
     await t.run(async (ctx) => {
       const entry = await ctx.db.get(queueId);
-      expect(entry!.status).toBe("layered");
+      expect((entry as any).status).toBe("layered");
 
       const layers = await ctx.db.query("reflectionLayers").collect();
       expect(layers.length).toBe(1);

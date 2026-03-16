@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Set env vars before imports
@@ -100,7 +101,7 @@ describe("Stripe Webhook POST", () => {
     expect(res.status).toBe(200);
 
     // Should call bridge with updatePlan
-    const updateCall = mockFetch.mock.calls.find((c: unknown[]) => {
+    const updateCall = mockFetch.mock.calls.find((c: any[]) => {
       const body = JSON.parse(c[1]?.body as string);
       return body.action === "updatePlan";
     });
@@ -129,7 +130,7 @@ describe("Stripe Webhook POST", () => {
     const res = await POST(req);
     expect(res.status).toBe(200);
 
-    const updateCall = mockFetch.mock.calls.find((c: unknown[]) => {
+    const updateCall = mockFetch.mock.calls.find((c: any[]) => {
       const body = JSON.parse(c[1]?.body as string);
       return body.action === "updatePlan";
     });
@@ -156,7 +157,7 @@ describe("Stripe Webhook POST", () => {
     const res = await POST(req);
     expect(res.status).toBe(200);
 
-    const updateCall = mockFetch.mock.calls.find((c: unknown[]) => {
+    const updateCall = mockFetch.mock.calls.find((c: any[]) => {
       const body = JSON.parse(c[1]?.body as string);
       return body.action === "updatePlan";
     });
@@ -181,7 +182,7 @@ describe("Stripe Webhook POST", () => {
     const req = makeRequest();
     await POST(req);
 
-    const recordCall = mockFetch.mock.calls.find((c: unknown[]) => {
+    const recordCall = mockFetch.mock.calls.find((c: any[]) => {
       const body = JSON.parse(c[1]?.body as string);
       return body.action === "recordWebhookEvent";
     });

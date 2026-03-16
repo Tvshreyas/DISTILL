@@ -13,7 +13,21 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { plan, currency } = body; // plan: 'monthly' or 'annual', currency: 'USD' or 'INR'
+    const { plan, currency } = body;
+
+    // Validate input — reject unexpected values
+    if (plan !== "monthly" && plan !== "annual") {
+      return NextResponse.json(
+        { error: { code: "BAD_REQUEST", message: "Invalid plan" } },
+        { status: 400 }
+      );
+    }
+    if (currency !== "USD" && currency !== "INR") {
+      return NextResponse.json(
+        { error: { code: "BAD_REQUEST", message: "Invalid currency" } },
+        { status: 400 }
+      );
+    }
 
     let priceId: string | undefined;
     if (currency === "INR") {
@@ -47,7 +61,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ url: session.url });
   } catch (error) {
-    console.error("Stripe checkout error:", error);
+    console.error("Stripe checkout error:", error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json(
       { error: { code: "SERVER_ERROR", message: "Something went wrong." } },
       { status: 500 }

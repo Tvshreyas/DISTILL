@@ -10,7 +10,7 @@ function makeReflection(overrides: Partial<Doc<"reflections">> = {}): Doc<"refle
     userId: "user1",
     sessionId: "session1" as Doc<"reflections">["sessionId"],
     content: "This is my reflection content",
-    thinkingShiftRating: null,
+    thinkingShiftRating: undefined,
     isDeleted: false,
     ...overrides,
   } as Doc<"reflections">;
@@ -38,7 +38,7 @@ describe("ReflectionDetail", () => {
   });
 
   it("hides thinking shift rating when null", () => {
-    render(<ReflectionDetail reflection={makeReflection({ thinkingShiftRating: null })} />);
+    render(<ReflectionDetail reflection={makeReflection({ thinkingShiftRating: undefined })} />);
     expect(screen.queryByText("Thinking Shift Impact")).toBeNull();
   });
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import LibraryView from "@/components/LibraryView";
@@ -7,8 +8,8 @@ const mockUseQuery = vi.fn();
 const mockUseMutation = vi.fn(() => vi.fn());
 
 vi.mock("convex/react", () => ({
-  useQuery: (...args: unknown[]) => mockUseQuery(...args),
-  useMutation: (...args: unknown[]) => mockUseMutation(...args),
+  useQuery: (...args: any[]) => mockUseQuery(...args),
+  useMutation: (...args: any[]) => (mockUseMutation as any)(...args),
 }));
 
 vi.mock("@/convex/_generated/api", () => ({

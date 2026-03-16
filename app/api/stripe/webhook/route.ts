@@ -134,7 +134,7 @@ export async function POST(req: Request) {
       stripeEventId: event.id,
     });
   } catch (err) {
-    console.error("Webhook processing error:", err);
+    console.error("Webhook processing error:", err instanceof Error ? err.message : "Unknown error");
     return NextResponse.json(
       { error: "Webhook processing failed" },
       { status: 500 }

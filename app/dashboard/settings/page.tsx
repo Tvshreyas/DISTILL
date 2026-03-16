@@ -352,7 +352,7 @@ export default function SettingsPage() {
                   onChange={(e) => setDeleteInput(e.target.value)}
                   placeholder={DELETE_CONFIRMATION_PHRASE}
                   className="w-full p-4 rounded-xl border-2 border-red-300 bg-white font-bold text-red-600 placeholder:text-red-200 outline-none focus:border-red-500 transition-all"
-                  // eslint-disable-next-line jsx-a11y/no-autofocus
+                   
                   autoFocus
                 />
               </div>

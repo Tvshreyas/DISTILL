@@ -38,6 +38,8 @@ export function ShaderAnimation() {
     // Load Three.js dynamically to keep initial bundle light
     const script = document.createElement("script")
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"
+    script.integrity = "sha512-9nYs8QvHOk+iXmZ/TT+PIfk/gFij+OkLqPF48RnRCW2mASmpIj95zM+WbsUKOD46Fr6ay2gMHf/I1MI09p5wdA=="
+    script.crossOrigin = "anonymous"
     script.id = "three-js-script"
     
     const onLoad = () => {

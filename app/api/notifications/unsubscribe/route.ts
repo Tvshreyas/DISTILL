@@ -60,20 +60,31 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const label = TYPE_LABELS[result.type] ?? result.type;
+  const label = TYPE_LABELS[result.type] ?? "Notifications";
   return new Response(
     renderPage("Unsubscribed", `${label} have been disabled. You can re-enable them in your Distill settings.`),
     { status: 200, headers: { "Content-Type": "text/html" } }
   );
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 function renderPage(title: string, message: string): string {
+  const safeTitle = escapeHtml(title);
+  const safeMessage = escapeHtml(message);
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${title} — Distill</title>
+  <title>${safeTitle} — Distill</title>
   <style>
     body {
       font-family: 'Outfit', Arial, sans-serif;
@@ -118,8 +129,8 @@ function renderPage(title: string, message: string): string {
 <body>
   <div class="card">
     <div class="logo">distill</div>
-    <h1>${title}</h1>
-    <p>${message}</p>
+    <h1>${safeTitle}</h1>
+    <p>${safeMessage}</p>
   </div>
 </body>
 </html>`;

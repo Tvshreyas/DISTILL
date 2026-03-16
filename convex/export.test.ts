@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { convexTest } from "convex-test";
 import { describe, it, expect } from "vitest";
 import { api } from "./_generated/api";
@@ -22,7 +23,7 @@ describe("export.getAllData", () => {
     const session = await asUser.mutation(api.sessions.create, {
       title: "Test Book",
       contentType: "book",
-    });
+    }) as any;
     await asUser.mutation(api.reflections.create, {
       sessionId: session!._id,
       content: "My reflection.",
@@ -46,11 +47,11 @@ describe("export.getAllData", () => {
     const session = await asUser.mutation(api.sessions.create, {
       title: "Test",
       contentType: "book",
-    });
+    }) as any;
     const reflection = await asUser.mutation(api.reflections.create, {
       sessionId: session!._id,
       content: "My reflection.",
-    });
+    }) as any;
 
     // Add a layer directly
     await t.run(async (ctx) => {

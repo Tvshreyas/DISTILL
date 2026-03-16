@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { convexTest } from "convex-test";
 import { describe, it, expect } from "vitest";
 import { api, internal } from "./_generated/api";
@@ -13,7 +14,7 @@ async function setupUserWithSession(t: ReturnType<typeof convexTest>) {
     title: "Test Book",
     contentType: "book",
   });
-  return { asUser, sessionId: session!._id };
+  return { asUser, sessionId: (session as any)._id };
 }
 
 describe("reflections.create", () => {
@@ -37,7 +38,7 @@ describe("reflections.create", () => {
     const result = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "This changed my thinking.",
-    });
+    }) as any;
     expect(result).toMatchObject({
       content: "This changed my thinking.",
       isDeleted: false,
@@ -114,7 +115,7 @@ describe("reflections.create", () => {
     const result = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "No rating here.",
-    });
+    }) as any;
     expect(result!.thinkingShiftRating).toBeUndefined();
   });
 
@@ -172,7 +173,7 @@ describe("reflections.create", () => {
     const result = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "hello world test",
-    });
+    }) as any;
     expect(result!.wordCount).toBe(3);
   });
 
@@ -195,7 +196,7 @@ describe("reflections.create", () => {
     const result = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "I hope you die for writing this",
-    });
+    }) as any;
     expect(result).toBeTruthy();
     expect(result!.content).toContain("I hope you die");
   });
@@ -207,7 +208,7 @@ describe("reflections.create", () => {
     const result = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "This book was absolute garbage and a waste of time",
-    });
+    }) as any;
     expect(result).toBeTruthy();
   });
 });
@@ -220,12 +221,12 @@ describe("reflections.update", () => {
     const created = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "Original content.",
-    });
+    }) as any;
 
     const updated = await asUser.mutation(api.reflections.update, {
       reflectionId: created!._id,
       content: "Updated content.",
-    });
+    }) as any;
     expect(updated!.content).toBe("Updated content.");
   });
 
@@ -236,7 +237,7 @@ describe("reflections.update", () => {
     const created = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "Original safe content.",
-    });
+    }) as any;
 
     await expect(
       asUser.mutation(api.reflections.update, {
@@ -253,7 +254,7 @@ describe("reflections.update", () => {
     const created = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "My content.",
-    });
+    }) as any;
 
     const otherUser = t.withIdentity({ name: "Other User" });
     await otherUser.mutation(api.profiles.createOrGet);
@@ -275,7 +276,7 @@ describe("reflections.remove", () => {
     const created = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "To be deleted.",
-    });
+    }) as any;
 
     await asUser.mutation(api.reflections.remove, { reflectionId: created!._id });
 
@@ -291,7 +292,7 @@ describe("reflections.remove", () => {
     const created = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "Delete me.",
-    });
+    }) as any;
     await asUser.mutation(api.reflections.remove, { reflectionId: created!._id });
 
     await expect(
@@ -306,7 +307,7 @@ describe("reflections.list", () => {
     const asUser = t.withIdentity({ name: "Test User" });
     await asUser.mutation(api.profiles.createOrGet);
 
-    const result = await asUser.query(api.reflections.list);
+    const result = await asUser.query(api.reflections.list, {});
     expect(result).toMatchObject({ data: [], total: 0 });
   });
 
@@ -317,10 +318,10 @@ describe("reflections.list", () => {
     const created = await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "Will be deleted.",
-    });
+    }) as any;
     await asUser.mutation(api.reflections.remove, { reflectionId: created!._id });
 
-    const result = await asUser.query(api.reflections.list);
+    const result = await asUser.query(api.reflections.list, {});
     expect(result.total).toBe(0);
   });
 

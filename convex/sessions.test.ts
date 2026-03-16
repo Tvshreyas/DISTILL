@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { convexTest } from "convex-test";
 import { describe, it, expect } from "vitest";
 import { api, internal } from "./_generated/api";
@@ -103,7 +104,7 @@ describe("sessions.abandon", () => {
     const session = await asUser.mutation(api.sessions.create, {
       title: "Test",
       contentType: "book",
-    });
+    }) as any;
 
     await asUser.mutation(api.sessions.abandon, { sessionId: session!._id });
 
@@ -119,7 +120,7 @@ describe("sessions.abandon", () => {
     const session = await asUser.mutation(api.sessions.create, {
       title: "Test",
       contentType: "book",
-    });
+    }) as any;
     await asUser.mutation(api.sessions.abandon, { sessionId: session!._id });
 
     await expect(
