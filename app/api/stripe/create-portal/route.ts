@@ -4,6 +4,8 @@ import { ConvexHttpClient } from "convex/browser";
 import { api } from "@/convex/_generated/api";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function POST() {
   try {
     const { userId, getToken } = await auth();
@@ -15,7 +17,11 @@ export async function POST() {
     }
 
     const token = await getToken({ template: "convex" });
-    const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+    const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
+    if (!convexUrl) {
+      throw new Error("Missing NEXT_PUBLIC_CONVEX_URL");
+    }
+    const convex = new ConvexHttpClient(convexUrl);
     if (token) {
       convex.setAuth(token);
     }

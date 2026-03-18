@@ -6,8 +6,19 @@ const TYPE_LABELS: Record<string, string> = {
   streak: "Streak reminders",
   weekly: "Weekly summaries",
 };
+export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
+  const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
+  
+  if (!convexUrl) {
+    console.error("Missing NEXT_PUBLIC_CONVEX_URL environment variable");
+    return new Response(renderPage("Configuration Error", "The server is missing a required environment variable."), {
+      status: 500,
+      headers: { "Content-Type": "text/html" },
+    });
+  }
+
   const token = request.nextUrl.searchParams.get("token");
 
   if (!token) {
@@ -25,9 +36,9 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  // Call Convex HTTP bridge to disable the notification type
-  try {
-    const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL!;
+    // Call Convex HTTP bridge to disable the notification type
+    try {
+      // convexUrl is already checked at the top of the function
     const internalAuthKey = process.env.CONVEX_INTERNAL_AUTH_KEY;
 
     if (!internalAuthKey) {

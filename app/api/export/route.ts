@@ -4,8 +4,16 @@ import { ConvexHttpClient } from "convex/browser";
 import { api } from "@/convex/_generated/api";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
+  
+  if (!convexUrl) {
+    console.error("Missing NEXT_PUBLIC_CONVEX_URL environment variable");
+    return NextResponse.json({ error: "Internal Server Error: Missing Configuration" }, { status: 500 });
+  }
+
   const { userId, getToken } = await auth();
 
   if (!userId) {
@@ -19,7 +27,7 @@ export async function GET() {
       return NextResponse.json({ error: "Could not retrieve auth token" }, { status: 401 });
     }
 
-    const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+    const convex = new ConvexHttpClient(convexUrl);
     convex.setAuth(token);
 
     // Check 24h export rate limit and record timestamp
