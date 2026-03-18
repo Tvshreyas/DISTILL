@@ -61,7 +61,7 @@ describe("create-checkout POST", () => {
     mockAuth.mockResolvedValue({ userId: null });
     const req = new Request("http://localhost/api/stripe/create-checkout", {
       method: "POST",
-      body: JSON.stringify({ plan: "monthly" }),
+      body: JSON.stringify({ plan: "monthly", currency: "USD" }),
       headers: { "Content-Type": "application/json" },
     });
     const res = await checkoutPOST(req);
@@ -72,7 +72,7 @@ describe("create-checkout POST", () => {
     mockAuth.mockResolvedValue({ userId: "user_123" });
     const req = new Request("http://localhost/api/stripe/create-checkout", {
       method: "POST",
-      body: JSON.stringify({ plan: "monthly" }),
+      body: JSON.stringify({ plan: "monthly", currency: "USD" }),
       headers: { "Content-Type": "application/json" },
     });
     const res = await checkoutPOST(req);
@@ -91,7 +91,7 @@ describe("create-checkout POST", () => {
     mockAuth.mockResolvedValue({ userId: "user_123" });
     const req = new Request("http://localhost/api/stripe/create-checkout", {
       method: "POST",
-      body: JSON.stringify({ plan: "annual" }),
+      body: JSON.stringify({ plan: "annual", currency: "USD" }),
       headers: { "Content-Type": "application/json" },
     });
     const res = await checkoutPOST(req);
@@ -111,7 +111,7 @@ describe("create-checkout POST", () => {
 
     const req = new Request("http://localhost/api/stripe/create-checkout", {
       method: "POST",
-      body: JSON.stringify({ plan: "monthly" }),
+      body: JSON.stringify({ plan: "monthly", currency: "USD" }),
       headers: { "Content-Type": "application/json" },
     });
     const res = await checkoutPOST(req);

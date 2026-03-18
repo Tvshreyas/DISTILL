@@ -19,7 +19,7 @@ let mockProtect: ReturnType<typeof vi.fn>;
 let mockUserId: string | null;
 
 vi.mock("@clerk/nextjs/server", () => ({
-  clerkMiddleware: (handler: Function) => {
+  clerkMiddleware: (handler: (auth: unknown, request: NextRequest) => Promise<NextResponse | void>) => {
     // Return an async function that acts as the middleware
     return async (request: NextRequest) => {
       const authFn = Object.assign(

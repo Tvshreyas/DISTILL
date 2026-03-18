@@ -5,8 +5,6 @@ import { api } from "@/convex/_generated/api";
 
 export const runtime = "nodejs";
 
-const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
-
 export async function GET() {
   const { userId, getToken } = await auth();
 
@@ -21,6 +19,7 @@ export async function GET() {
       return NextResponse.json({ error: "Could not retrieve auth token" }, { status: 401 });
     }
 
+    const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
     convex.setAuth(token);
 
     // Check 24h export rate limit and record timestamp

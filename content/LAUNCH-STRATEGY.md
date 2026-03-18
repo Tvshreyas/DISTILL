@@ -1,7 +1,7 @@
 # Distill Launch Strategy
 
 *Created: 2026-03-14*
-*Launch date target: Tuesday, March 17, 2026*
+*Launch date target: Tuesday, March 24, 2026*
 
 ---
 
@@ -14,7 +14,7 @@
 
 ---
 
-## Phase 1: Pre-Launch Prep (March 14-16)
+## Phase 1: Pre-Launch Prep (March 14-23)
 
 ### Goal
 Final polish, visual assets, community drafts, recruit 10-15 launch day supporters.
@@ -93,7 +93,7 @@ Final polish, visual assets, community drafts, recruit 10-15 launch day supporte
 - [ ] Set 3 alarms: 11:45pm Monday night (PH goes live), 6:00am Tuesday, 8:00am Tuesday
 - [ ] Pre-write a "things are breaking" status tweet just in case:
 
-> we're seeing higher traffic than expected. some signups may be slow. working on it. your data is safe. distill.app
+> we're seeing higher traffic than expected. some signups may be slow. working on it. your data is safe. distillwise.com
 
 - [ ] Get a good night's sleep. Launch day is a marathon.
 
@@ -108,7 +108,7 @@ Final polish, visual assets, community drafts, recruit 10-15 launch day supporte
 
 ---
 
-## Phase 2: Launch Day — Tuesday, March 17, 2026
+## Phase 2: Launch Day — Tuesday, March 24, 2026
 
 ### Hour-by-Hour Playbook
 
@@ -155,7 +155,7 @@ Final polish, visual assets, community drafts, recruit 10-15 launch day supporte
 > [X] signups.
 > [X] reflections written.
 > one person already wrote [X] reflections. that's more active thinking than most people do in a month.
-> distill.app
+> distillwise.com
 
 - Reply to every X mention, RT, and quote tweet.
 - Check Reddit posts. Respond to every comment thoughtfully.
@@ -164,7 +164,7 @@ Final polish, visual assets, community drafts, recruit 10-15 launch day supporte
 > distill is currently #[X] on product hunt.
 > built by one person. no VC. no AI.
 > just a tool that asks: what did you actually think?
-> distill.app
+> distillwise.com
 
 **8:00pm - 10:00pm:**
 - Final PH comment push. Thank specific commenters by name.
@@ -189,7 +189,7 @@ Final polish, visual assets, community drafts, recruit 10-15 launch day supporte
 
 ---
 
-## Phase 3: Post-Launch Week 1 (March 18-23)
+## Phase 3: Post-Launch Week 1 (March 25-30)
 
 ### Goal
 Convert launch traffic into retained users. Fix bugs. Keep momentum.
@@ -252,12 +252,12 @@ Convert launch traffic into retained users. Fix bugs. Keep momentum.
 
 ---
 
-## Phase 4: Post-Launch Weeks 2-4 (March 24 - April 13)
+## Phase 4: Post-Launch Weeks 2-4 (March 31 - April 20)
 
 ### Goal
 Convert free users to Pro. Build sustainable content + community cadence. Get first revenue.
 
-### Week 2 (March 24-30): Convert and retain
+### Week 2 (March 31 - April 6): Convert and retain
 
 - Email users who wrote 3+ reflections:
 
@@ -288,7 +288,7 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 > Thanks,
 > [your name]
 
-### Week 3 (March 31 - April 6): Second wave
+### Week 3 (April 7-13): Second wave
 
 - Guest pitch 2-3 newsletters in the reading/productivity space:
   - Dense Discovery (Kai Brach) — thoughtful tech audience
@@ -309,12 +309,12 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 > Would it be a fit for [newsletter name]? Happy to write a guest piece on [specific topic relevant to their audience] if that works better than a feature.
 >
 > [your name]
-> distill.app
+> distillwise.com
 
 - Publish 1-2 more blog posts. Prioritize based on which search queries are showing impressions in Google Search Console.
 - Update landing page with 3 testimonial quotes from real users.
 
-### Week 4 (April 7-13): Optimize and plan
+### Week 4 (April 14-20): Optimize and plan
 
 - First monthly cohort analysis:
   - Day 1 → Day 7 retention rate
@@ -432,7 +432,7 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 > a thinking tool for people who read, watch, and listen to things — and want to actually remember what they thought about them.
 >
 > free to use. link below.
-> distill.app
+> distillwise.com
 
 **Tweet 2:**
 > the problem: you consume 50+ books, 1000+ articles, countless podcasts per year.
@@ -470,7 +470,7 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 **Tweet 6:**
 > if you've ever finished a book and immediately forgotten what you thought about it — distill exists for you.
 >
-> try it: distill.app
+> try it: distillwise.com
 > feedback welcome. i read everything.
 
 ---
@@ -484,7 +484,7 @@ Post these one per day leading up to launch:
 >
 > not a summary tool. not AI. just a prompt: what did you actually think?
 >
-> launching tuesday. distill.app
+> launching tuesday. distillwise.com
 
 **Sunday:**
 > the problem isn't that you forget what you read.
@@ -583,7 +583,7 @@ Post these one per day leading up to launch:
 > Would it be a fit for [newsletter name]? Happy to write a guest piece on [specific topic relevant to their audience] if that works better than a feature.
 >
 > [your name]
-> distill.app
+> distillwise.com
 
 ---
 
@@ -595,7 +595,7 @@ Post these one per day leading up to launch:
 - Recruit a hunter with 500+ followers (dramatically increases visibility).
 - Have 10+ genuine users ready to comment (PH algorithm weights comments heavily).
 - Post maker comment immediately when listing goes live.
-- Share the PH link directly (not distill.app) on X, email, everywhere — PH algorithm counts referral traffic.
+- Share the PH link directly (not distillwise.com) on X, email, everywhere — PH algorithm counts referral traffic.
 
 **Recovery (after):**
 - Do NOT delete the listing or try to relaunch. You only get one shot per product.
@@ -621,7 +621,7 @@ Post these one per day leading up to launch:
 **Mitigation (before):**
 - Ensure upgrade prompt is clear and non-annoying at reflection 8/10 (FREE_TIER_NUDGE = 8).
 - Make spaced resurfacing a Pro-only feature that free users can SEE but not USE. Show a locked "Your reflection from 3 weeks ago" card with "Upgrade to unlock resurfacing."
-- Price Pro at $5/month or $36/year (30% annual discount). Low enough to be impulse.
+- Price Pro at $8/month or $72/year (30% annual discount). Low enough to be impulse.
 
 **Recovery (after):**
 - If 0 conversions after 30 days with 100+ users: problem is either (a) users don't reach the limit or (b) they don't care enough to pay.

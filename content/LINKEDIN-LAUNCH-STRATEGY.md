@@ -32,7 +32,7 @@ No AI summaries. No second brain complexity. No folders or tags. You have to do 
 
 Free to use. Launching on Product Hunt this Tuesday.
 
-distill.app
+distillwise.com
 
 If you've ever finished a book and immediately forgotten what you thought about it — this exists for you.
 ```
@@ -67,7 +67,7 @@ Pro: unlimited + spaced resurfacing.
 
 Launching on Product Hunt this Tuesday.
 
-distill.app
+distillwise.com
 ```
 
 ---
@@ -97,7 +97,7 @@ You have to do the thinking yourself. That's the point.
 
 Free to use. Launching on Product Hunt this Tuesday.
 
-distill.app
+distillwise.com
 ```
 
 ---
@@ -180,7 +180,7 @@ One person reflected on [X] different books in 3 days. That's more active proces
 
 Solo founder. No VC. No AI in the product.
 
-distill.app
+distillwise.com
 ```
 
 ### Week 2: Thought Leadership Posts (not product posts)
@@ -239,7 +239,7 @@ Post 2-3x/week. Ratio: 80% insight, 20% product.
 | Launch post impressions | 1,000+ |
 | Launch post engagement rate | 3%+ |
 | Profile views from posts | 200+ |
-| Clicks to distill.app from LinkedIn | 50+ |
+| Clicks to distillwise.com from LinkedIn | 50+ |
 | Connection requests received | 20+ |
 | Comments on launch post | 15+ |
 

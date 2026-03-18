@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const mockRespond = vi.fn().mockResolvedValue(undefined);
-let mockProfileValue: any = { plan: "pro" };
-let mockPendingValue: any = {
+let mockProfileValue: Record<string, unknown> | null | undefined = { plan: "pro" };
+let mockPendingValue: Record<string, unknown> | null | undefined = {
   queueId: "q1",
   daysAgo: 3,
   session: { title: "Deep Work" },
@@ -10,7 +10,7 @@ let mockPendingValue: any = {
 };
 
 vi.mock("convex/react", () => ({
-  useQuery: vi.fn((queryFn: any) => {
+  useQuery: vi.fn((queryFn: { _name?: string }) => {
     const name = queryFn?._name || "";
     if (name.includes("profile")) return mockProfileValue;
     return mockPendingValue;
@@ -35,11 +35,8 @@ vi.mock("lucide-react", () => ({
 }));
 
 import { render, screen, fireEvent } from "@testing-library/react";
-import { useQuery } from "convex/react";
 import { toast } from "sonner";
 import ResurfacingCard from "@/components/ResurfacingCard";
-
-const mockUseQuery = vi.mocked(useQuery);
 
 describe("ResurfacingCard", () => {
   beforeEach(() => {

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 
 vi.mock("@/components/ui/magnetize-button", () => ({
-  MagnetizeButton: ({ children, onClick, disabled, className }: any) => (
+  MagnetizeButton: ({ children, onClick, disabled, className }: { children: React.ReactNode; onClick?: () => void; disabled?: boolean; className?: string }) => (
     <button onClick={onClick} disabled={disabled} className={className}>{children}</button>
   ),
 }));

@@ -76,7 +76,7 @@
 >
 > writing a reflection forces retrieval. it's the simplest version of this.
 >
-> full post: distill.app/blog/why-you-forget-everything-you-read
+> full post: distillwise.com/blog/why-you-forget-everything-you-read
 
 ### Friday March 20
 **Morning:**
@@ -164,7 +164,7 @@
 >
 > [2-3 sentence expansion]
 >
-> full post: distill.app/blog/[slug]
+> full post: distillwise.com/blog/[slug]
 
 **From glossary:**
 > what is [concept]?
@@ -173,7 +173,7 @@
 >
 > most people [common mistake]. [better approach].
 >
-> more: distill.app/glossary/[slug]
+> more: distillwise.com/glossary/[slug]
 
 **From reflection guides:**
 > how to reflect after [content type]:
@@ -182,13 +182,13 @@
 > 2. [step 2]
 > 3. [step 3]
 >
-> full guide: distill.app/reflect/[slug]
+> full guide: distillwise.com/reflect/[slug]
 
 ### Product (use 1x/week, max)
 
 > distill now has [feature/milestone].
 > [one sentence on what it means for users].
-> distill.app
+> distillwise.com
 
 > [X] reflections have been written in distill.
 > every one of those is someone choosing to think instead of scroll.
@@ -212,7 +212,7 @@ LinkedIn posts should be longer (150-300 words), more professional, but same voi
 >
 > No AI. No summaries. Just: what did you think?
 >
-> distill.app
+> distillwise.com
 
 ### Template 2: Data/Insight
 > [Data point about reading/retention/attention]
@@ -280,7 +280,7 @@ LinkedIn: 3-5 per post, placed at the bottom: #reading #thinking #productivity #
 | X followers | +50 | +200 |
 | Avg. impressions/tweet | 500 | 1,000 |
 | Engagement rate | 3%+ | 4%+ |
-| Link clicks to distill.app | 20/week | 50/week |
+| Link clicks to distillwise.com | 20/week | 50/week |
 | LinkedIn post impressions | 500/post | 1,000/post |
 
 ---

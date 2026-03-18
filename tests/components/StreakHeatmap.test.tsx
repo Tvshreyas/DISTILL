@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({ children, className, ...props }: any) => <div className={className}>{children}</div>,
+    div: ({ children, className }: { children?: React.ReactNode; className?: string }) => <div className={className}>{children}</div>,
   },
 }));
 

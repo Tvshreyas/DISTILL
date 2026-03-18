@@ -4,8 +4,6 @@ import { ConvexHttpClient } from "convex/browser";
 import { api } from "@/convex/_generated/api";
 import { NextResponse } from "next/server";
 
-const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
-
 export async function POST() {
   try {
     const { userId, getToken } = await auth();
@@ -17,6 +15,7 @@ export async function POST() {
     }
 
     const token = await getToken({ template: "convex" });
+    const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
     if (token) {
       convex.setAuth(token);
     }

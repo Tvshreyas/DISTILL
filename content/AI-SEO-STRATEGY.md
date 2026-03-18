@@ -102,7 +102,7 @@ Embed in content:
 - Launch on Product Hunt → add to `sameAs` in Organization JSON-LD
 - Create social profiles (X, LinkedIn) → add to `sameAs`
 - Submit to directories (AlternativeTo, G2, SaaSHub)
-- Answer questions on Quora/Reddit linking to distill.app content
+- Answer questions on Quora/Reddit linking to distillwise.com content
 - Guest post on productivity blogs
 - All external profile URLs go into the `sameAs` array
 
