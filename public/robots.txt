@@ -27,4 +27,4 @@ Disallow: /api/*
 Disallow: /sign-in*
 Disallow: /sign-up*
 
-Sitemap: https://distill.app/sitemap.xml
+Sitemap: https://distillwise.com/sitemap.xml

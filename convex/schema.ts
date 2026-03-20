@@ -36,6 +36,10 @@ export default defineSchema({
     reEngagementStep: v.optional(v.number()), // 1-3, tracks last sent re-engagement email
     upgradeEmailStep: v.optional(v.number()), // 1-3, tracks last sent upgrade email
     proUpgradeDate: v.optional(v.string()), // ISO date when user upgraded to Pro (for annual nudge timing)
+    // Acquisition tracking (first-touch UTM params)
+    acquisitionSource: v.optional(v.string()),
+    acquisitionMedium: v.optional(v.string()),
+    acquisitionCampaign: v.optional(v.string()),
   })
     .index("by_userId", ["userId"])
     .index("by_stripeCustomerId", ["stripeCustomerId"]),

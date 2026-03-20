@@ -113,6 +113,21 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
   response.headers.set("Content-Security-Policy", CSP);
   response.headers.set("x-nonce", nonce);
 
+  // Capture UTM params in cookies (survives Clerk auth redirect)
+  const utmParams = ["utm_source", "utm_medium", "utm_campaign"] as const;
+  for (const param of utmParams) {
+    const value = request.nextUrl.searchParams.get(param);
+    if (value) {
+      response.cookies.set(param, value, {
+        httpOnly: false,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+      });
+    }
+  }
+
   // Set country cookie for PPP pricing (Vercel injects x-vercel-ip-country on Edge)
   const country = request.headers.get("x-vercel-ip-country") || "US";
   response.cookies.set("x-user-country", country, {

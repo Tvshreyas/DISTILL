@@ -5,7 +5,8 @@ import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Bell, CreditCard, Download, LogOut, Globe, Settings2, ShieldAlert, Snowflake } from "lucide-react";
+import { Bell, CreditCard, Download, LogOut, Globe, Settings2, ShieldAlert, Snowflake, Share2 } from "lucide-react";
+import posthog from "posthog-js";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
 
 const TIMEZONES = [
@@ -299,6 +300,43 @@ export default function SettingsPage() {
             </div>
             </label>
           </div>
+        </div>
+      </section>
+
+      {/* Share Section */}
+      <section className="space-y-6">
+        <h2 className="text-xs font-black uppercase tracking-[0.2em] text-soft-black/40 flex items-center gap-2">
+          <Share2 className="w-3 h-3" /> Share Distill
+        </h2>
+        <div className="p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black space-y-4">
+          <p className="text-sm font-medium text-muted-text">
+            Know someone who consumes a lot of content? Share distill with them.
+          </p>
+          <button
+            onClick={async () => {
+              const shareUrl = "https://distillwise.com?utm_source=referral&utm_medium=share&utm_campaign=user_share";
+              const shareData = {
+                title: "Distill — stop absorbing, start thinking",
+                text: "A tool that helps you capture your own perspective after consuming books, videos, articles, and podcasts.",
+                url: shareUrl,
+              };
+              const canShare = typeof navigator.share === "function";
+              try {
+                if (canShare) {
+                  await navigator.share(shareData);
+                } else {
+                  await navigator.clipboard.writeText(shareUrl);
+                  toast.success("Link copied.");
+                }
+                posthog.capture("shared_distill", { method: canShare ? "native" : "clipboard" });
+              } catch {
+                // User cancelled native share — not an error
+              }
+            }}
+            className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-soft-black rounded-xl font-black text-sm hover:bg-peach/10 transition-all brutal-border-sm"
+          >
+            <Share2 className="w-4 h-4" /> Share Distill
+          </button>
         </div>
       </section>
 

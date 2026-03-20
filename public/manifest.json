@@ -23,5 +23,14 @@
       "url": "/dashboard/session/new",
       "description": "Start a new reflection session"
     }
-  ]
+  ],
+  "share_target": {
+    "action": "/dashboard/session/new",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }

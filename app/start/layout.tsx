@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "Start Reflecting — Distill",
   description:
     "Begin a reflection session. Pick what you consumed and capture your perspective before it fades.",
-  alternates: { canonical: "https://distill.app/start" },
+  alternates: { canonical: "https://distillwise.com/start" },
   robots: { index: true, follow: true },
 };
 

@@ -37,7 +37,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://distill.app"),
+  metadataBase: new URL("https://distillwise.com"),
   title: "Distill — Think more clearly about what you consume",
   description:
     "Distill helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",

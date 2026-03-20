@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Link from "next/link";
@@ -8,6 +9,7 @@ import ResurfacingCard from "@/components/ResurfacingCard";
 import StreakHeatmap from "@/components/StreakHeatmap";
 import { WordReveal } from "@/components/ui/word-reveal";
 import OnboardingReflectionRestore from "@/components/OnboardingReflectionRestore";
+import posthog from "posthog-js";
 
 function toDateString(date: Date, timezone: string): string {
   return date.toLocaleDateString("en-CA", { timeZone: timezone });
@@ -30,6 +32,16 @@ export default function DashboardPage() {
   const profile = useQuery(api.profiles.get);
   const activeSession = useQuery(api.sessions.getActive);
   const recentReflections = useQuery(api.reflections.recent);
+
+  // Track upgrade success from Stripe redirect
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("upgrade") === "success") {
+      posthog.capture("upgraded_to_pro");
+      // Clean URL without reload
+      window.history.replaceState({}, "", window.location.pathname);
+    }
+  }, []);
 
   if (profile === undefined) return <div>Loading dashboard...</div>;
   if (!profile) return <div>Profile not found.</div>;

@@ -6,18 +6,18 @@ export const metadata: Metadata = {
   description:
     "Distill is a thinking development tool. Build a reflection habit from books, videos, articles, and podcasts. Your perspective, compounded over time.",
   alternates: {
-    canonical: "https://distill.app",
+    canonical: "https://distillwise.com",
   },
   openGraph: {
     title: "Distill — Think More Clearly About What You Consume",
     description:
       "Build a reflection habit from the content you consume. Your perspective, compounded over time.",
-    url: "https://distill.app",
+    url: "https://distillwise.com",
     siteName: "Distill",
     type: "website",
     images: [
       {
-        url: "https://distill.app/og-image.png",
+        url: "https://distillwise.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Distill — a thinking development tool",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Distill — Think More Clearly About What You Consume",
     description:
       "Build a reflection habit from the content you consume. Your perspective, compounded over time.",
-    images: ["https://distill.app/og-image.png"],
+    images: ["https://distillwise.com/og-image.png"],
   },
   keywords: [
     "reflection app",
@@ -51,7 +51,7 @@ const jsonLd = {
     {
       "@type": "WebApplication",
       name: "Distill",
-      url: "https://distill.app",
+      url: "https://distillwise.com",
       description:
         "A thinking development tool that helps you build a reflection habit from books, videos, articles, and podcasts.",
       applicationCategory: "ProductivityApplication",
@@ -73,8 +73,8 @@ const jsonLd = {
     {
       "@type": "Organization",
       name: "Distill",
-      url: "https://distill.app",
-      logo: "https://distill.app/icon-192.png",
+      url: "https://distillwise.com",
+      logo: "https://distillwise.com/icon-192.png",
       sameAs: [],
       knowsAbout: [
         "Active Reading",
@@ -90,7 +90,7 @@ const jsonLd = {
     {
       "@type": "WebSite",
       name: "Distill",
-      url: "https://distill.app",
+      url: "https://distillwise.com",
       description:
         "A thinking development tool for building a reflection practice.",
     },

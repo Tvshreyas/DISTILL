@@ -16,7 +16,7 @@ export async function generateMetadata({
     title: `${guide.title} — Distill`,
     description: guide.description,
     alternates: {
-      canonical: `https://distill.app/reflect/${slug}`,
+      canonical: `https://distillwise.com/reflect/${slug}`,
     },
     openGraph: {
       title: guide.title,

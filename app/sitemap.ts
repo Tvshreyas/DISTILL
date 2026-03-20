@@ -3,7 +3,7 @@ import { getSortedPostsData } from "@/lib/blog";
 import { glossaryTerms, reflectionGuides } from "@/lib/pseo-data";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://distill.app";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://distillwise.com";
 
   const staticPages: MetadataRoute.Sitemap = [
     {

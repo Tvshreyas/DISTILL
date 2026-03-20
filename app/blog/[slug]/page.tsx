@@ -16,7 +16,7 @@ export async function generateMetadata({
       title: `${postData.title} — Distill`,
       description: postData.description,
       alternates: {
-        canonical: `https://distill.app/blog/${slug}`,
+        canonical: `https://distillwise.com/blog/${slug}`,
       },
       openGraph: {
         title: postData.title,
@@ -64,19 +64,19 @@ export default async function BlogPostPage({
     "author": {
       "@type": "Organization",
       "name": "Distill",
-      "url": "https://distill.app"
+      "url": "https://distillwise.com"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Distill",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://distill.app/icon.svg"
+        "url": "https://distillwise.com/icon.svg"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://distill.app/blog/${slug}`
+      "@id": `https://distillwise.com/blog/${slug}`
     }
   };
 

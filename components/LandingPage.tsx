@@ -307,7 +307,7 @@ function Footer() {
           <ul className="space-y-3 text-sm text-muted-text font-medium">
             <li><Link href="https://x.com/distillapp" target="_blank" rel="noopener noreferrer">twitter</Link></li>
             <li><Link href="https://instagram.com/distillapp" target="_blank" rel="noopener noreferrer">instagram</Link></li>
-            <li><Link href="mailto:hello@distill.app">email</Link></li>
+            <li><Link href="mailto:hello@distillwise.com">email</Link></li>
           </ul>
         </div>
       </div>

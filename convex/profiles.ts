@@ -17,8 +17,12 @@ export const get = query({
 });
 
 export const createOrGet = mutation({
-  args: {},
-  handler: async (ctx) => {
+  args: {
+    acquisitionSource: v.optional(v.string()),
+    acquisitionMedium: v.optional(v.string()),
+    acquisitionCampaign: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) throw new Error("Unauthorized");
     const userId = identity.subject;
@@ -48,6 +52,9 @@ export const createOrGet = mutation({
       onboardingCompleted: false,
       email: identity.email,
       welcomeEmailStep: 0,
+      ...(args.acquisitionSource && { acquisitionSource: args.acquisitionSource }),
+      ...(args.acquisitionMedium && { acquisitionMedium: args.acquisitionMedium }),
+      ...(args.acquisitionCampaign && { acquisitionCampaign: args.acquisitionCampaign }),
     });
 
     // Schedule welcome email sequence

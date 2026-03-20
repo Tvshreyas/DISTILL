@@ -4,26 +4,65 @@ import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useEffect, useState } from "react";
+import posthog from "posthog-js";
+
+function getCookie(name: string): string | undefined {
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : undefined;
+}
+
+function deleteCookie(name: string) {
+  document.cookie = `${name}=; path=/; max-age=0`;
+}
 
 export default function ProfileSync() {
-  const { isSignedIn, isLoaded } = useAuth();
+  const { isSignedIn, isLoaded, userId } = useAuth();
   const profile = useQuery(api.profiles.get);
   const createProfile = useMutation(api.profiles.createOrGet);
   const [synced, setSynced] = useState(false);
 
+  // Create profile with UTM data on first sign-in
   useEffect(() => {
     if (isLoaded && isSignedIn && profile === null && !synced) {
-      console.log("Syncing profile...");
-      createProfile()
+      const utmSource = getCookie("utm_source");
+      const utmMedium = getCookie("utm_medium");
+      const utmCampaign = getCookie("utm_campaign");
+
+      createProfile({
+        acquisitionSource: utmSource,
+        acquisitionMedium: utmMedium,
+        acquisitionCampaign: utmCampaign,
+      })
         .then(() => {
           setSynced(true);
-          console.log("Profile synced successfully.");
+          // Clear UTM cookies after successful profile creation
+          deleteCookie("utm_source");
+          deleteCookie("utm_medium");
+          deleteCookie("utm_campaign");
+          // Track signup event
+          posthog.capture("user_signed_up", {
+            acquisition_source: utmSource,
+            acquisition_medium: utmMedium,
+            acquisition_campaign: utmCampaign,
+          });
         })
         .catch((err) => {
           console.error("Failed to sync profile:", err);
         });
     }
   }, [isLoaded, isSignedIn, profile, createProfile, synced]);
+
+  // Identify user in PostHog once profile exists
+  useEffect(() => {
+    if (isLoaded && isSignedIn && userId && profile) {
+      posthog.identify(userId, {
+        plan: profile.plan,
+        acquisition_source: profile.acquisitionSource,
+        acquisition_medium: profile.acquisitionMedium,
+        acquisition_campaign: profile.acquisitionCampaign,
+      });
+    }
+  }, [isLoaded, isSignedIn, userId, profile]);
 
   return null;
 }

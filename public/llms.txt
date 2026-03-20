@@ -3,7 +3,7 @@
 
 ## Site
 - Name: Distill
-- URL: https://distill.app
+- URL: https://distillwise.com
 - Description: Distill is a thinking development tool where you write short reflections after consuming content like books, videos, articles, and podcasts. Your reflections resurface at intervals so your thinking compounds over time.
 
 ## Core Concepts

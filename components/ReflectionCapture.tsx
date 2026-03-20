@@ -7,6 +7,7 @@ import { Check, CloudUpload, Shuffle } from "lucide-react";
 import { REFLECTION_PROMPTS } from "@/lib/prompts";
 import { checkContentSafety, type SafetyResult } from "@/lib/safety";
 import { toast } from "sonner";
+import posthog from "posthog-js";
 
 export default function ReflectionCapture({
   onSubmitAction,
@@ -53,6 +54,10 @@ export default function ReflectionCapture({
     }
     onSubmitAction(content, rating);
     localStorage.removeItem(`draft_${prompt}`);
+    posthog.capture("reflection_created", {
+      word_count: content.trim().split(/\s+/).length,
+      has_rating: rating !== null,
+    });
   };
 
   const handleShufflePrompt = () => {
