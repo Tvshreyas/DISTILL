@@ -108,7 +108,7 @@ function Hero() {
             transition={{ duration: 0.8 }}
             className="max-w-xl mx-auto text-base md:text-lg text-muted-text font-medium leading-relaxed opacity-80"
           >
-            the 2-minute thinking ritual. convert passive consumption into active thinking, one distilled thought at a time.
+            the 2-minute thinking ritual. convert passive consumption into active thinking, **so you can** finally own your own perspective.
           </motion.p>
 
           <motion.div
