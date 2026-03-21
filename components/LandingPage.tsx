@@ -282,9 +282,16 @@ function Footer() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 relative z-10">
         <div className="col-span-2 md:col-span-1 space-y-6">
-          <span className="font-grotesk text-2xl font-bold lowercase">distill.</span>
-          <p className="text-sm text-muted-text max-w-xs">
-            a thinking development tool for the digital age. built for those who want to think more clearly.
+          <div className="flex items-center gap-2">
+            <div className="grid grid-cols-3 gap-1 w-5 h-5">
+              {[...Array(9)].map((_, i) => (
+                <div key={i} className="w-1 h-1 rounded-full bg-soft-black" />
+              ))}
+            </div>
+            <span className="font-grotesk text-2xl font-bold lowercase">distill</span>
+          </div>
+          <p className="text-sm text-muted-text max-w-xs leading-relaxed">
+            the 2-minute thinking ritual. think more clearly about what you consume.
           </p>
         </div>
         <div>

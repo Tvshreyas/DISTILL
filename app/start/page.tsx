@@ -18,7 +18,6 @@ const CONTENT_TYPES: { id: ContentType; label: string }[] = [
 
 const STEP_TITLES = [
   "what are you consuming?",
-  "why are you consuming this?",
   "write your reflection.",
   "how much did your thinking shift?",
 ];
@@ -60,10 +59,8 @@ export default function StartPage() {
       case 0:
         return data.title.trim().length > 0;
       case 1:
-        return true; // consumeReason is optional
-      case 2:
         return data.content.trim().length > 0 && data.content.length <= 3000;
-      case 3:
+      case 2:
         return data.thinkingShiftRating !== null;
       default:
         return false;
@@ -71,7 +68,7 @@ export default function StartPage() {
   }
 
   function handleNext() {
-    if (step < 3) {
+    if (step < 2) {
       setStep(step + 1);
     } else {
       // Save to localStorage and redirect to sign-up
@@ -104,9 +101,8 @@ export default function StartPage() {
           <ArrowLeft className="w-3 h-3" /> back
         </Link>
 
-        {/* Progress bar */}
         <div className="flex gap-2 mb-12">
-          {[0, 1, 2, 3].map((i) => (
+          {[0, 1, 2].map((i) => (
             <div
               key={i}
               className={`h-1 flex-1 rounded-full transition-all duration-300 ${
@@ -140,6 +136,17 @@ export default function StartPage() {
                   className="w-full h-16 px-6 rounded-2xl bg-white brutal-border border-4 border-soft-black text-xl font-bold placeholder:text-soft-black/20 outline-none focus:bg-sage/5 transition-all"
                   autoFocus
                 />
+                
+                <div className="space-y-4">
+                  <textarea
+                    value={data.consumeReason}
+                    onChange={(e) => setData((d) => ({ ...d, consumeReason: e.target.value }))}
+                    placeholder="what do you hope to get from this? (optional)"
+                    maxLength={140}
+                    className="w-full h-24 p-6 rounded-2xl bg-white brutal-border border-2 border-soft-black/20 text-lg font-medium placeholder:text-soft-black/20 outline-none focus:bg-sage/5 transition-all resize-none"
+                  />
+                </div>
+
                 <div className="space-y-3">
                   <label className="text-xs font-black uppercase tracking-widest text-muted-text block">
                     content type
@@ -165,22 +172,6 @@ export default function StartPage() {
             )}
 
             {step === 1 && (
-              <div className="space-y-4">
-                <textarea
-                  value={data.consumeReason}
-                  onChange={(e) => setData((d) => ({ ...d, consumeReason: e.target.value }))}
-                  placeholder="what do you hope to get from this? (optional)"
-                  maxLength={140}
-                  className="w-full h-40 p-6 rounded-2xl bg-white brutal-border border-4 border-soft-black text-lg font-medium placeholder:text-soft-black/20 outline-none focus:bg-sage/5 transition-all resize-none"
-                  autoFocus
-                />
-                <p className="text-xs font-bold text-muted-text text-right">
-                  {data.consumeReason.length}/140
-                </p>
-              </div>
-            )}
-
-            {step === 2 && (
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <span className="text-xs uppercase tracking-widest text-muted-text font-black">
@@ -213,7 +204,7 @@ export default function StartPage() {
               </div>
             )}
 
-            {step === 3 && (
+            {step === 2 && (
               <div className="space-y-6">
                 <p className="text-sm font-black text-muted-text uppercase tracking-widest">
                   how much did your thinking shift?
@@ -257,7 +248,7 @@ export default function StartPage() {
             disabled={!canAdvance()}
             className="flex items-center gap-2 px-8 py-4 bg-soft-black text-white rounded-2xl font-black text-sm disabled:opacity-30 transition-all hover:scale-105 active:scale-95"
           >
-            {step === 3 ? "save & sign up" : "next"}
+            {step === 2 ? "save & sign up" : "next"}
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
