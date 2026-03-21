@@ -98,7 +98,7 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
     "frame-src https://js.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/",
     "frame-ancestors 'none'",
     connectSrc,
-    "img-src 'self' data: blob: https://img.clerk.com https://us.i.posthog.com https://app.posthog.com",
+    "img-src 'self' data: blob: https://img.clerk.com https://grain-y.vercel.app https://us.i.posthog.com https://app.posthog.com",
     styleSrc,
     "worker-src 'self' blob:",
     "font-src 'self' https://fonts.gstatic.com",

@@ -62,7 +62,8 @@ export function CreativePricingDemo() {
       description: "start your clarity journey",
       color: "sage",
       features: [
-        "10 reflections per month",
+        "3 deep sessions per month",
+        "unlimited quick captures",
         "personal search library",
         "basic streak tracking",
         "secure local storage",

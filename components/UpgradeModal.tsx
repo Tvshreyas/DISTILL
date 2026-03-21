@@ -46,8 +46,8 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
       <div className="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center space-y-6">
-        <h2 className="text-2xl font-bold uppercase tracking-tight">Upgrade</h2>
-        <p className="text-zinc-400">Unlock unlimited reflections and analytics.</p>
+        <h2 className="text-2xl font-bold uppercase tracking-tight">Upgrade to Refiner</h2>
+        <p className="text-zinc-400">Unlock unlimited deep sessions, bi-weekly spaced resurfacing, and multi-layer reflections.</p>
 
         {/* Billing toggle */}
         <div className="flex justify-center">

@@ -7,7 +7,7 @@ function sanitizeContent(input: string): string {
   return input.replace(/<[^>]*>/g, "").trim();
 }
 
-const FREE_TIER_LIMIT = 10;
+const FREE_TIER_LIMIT = 3;
 
 function computeWordCount(text: string): number {
   const trimmed = text.trim();

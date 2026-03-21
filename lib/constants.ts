@@ -1,5 +1,5 @@
-export const FREE_TIER_LIMIT = 10;
-export const FREE_TIER_NUDGE = 8;
+export const FREE_TIER_LIMIT = 3;
+export const FREE_TIER_NUDGE = 2;
 
 // Pricing configuration
 export const PRICING = {

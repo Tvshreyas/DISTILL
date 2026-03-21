@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
       }),
     });
   } catch (err) {
-    console.error("[unsubscribe] Failed to disable notification:", err);
+    console.error("[unsubscribe] Failed to disable notification:", err instanceof Error ? err.message : "Unknown error");
     return new Response(
       renderPage("Something went wrong", "We couldn't process your request. Please try again or adjust your settings in the app."),
       { status: 500, headers: { "Content-Type": "text/html" } }

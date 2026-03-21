@@ -81,17 +81,27 @@ describe("sessions.create", () => {
     const asUser = t.withIdentity({ name: "Test User" });
     await asUser.mutation(api.profiles.createOrGet);
 
-    // Seed profile at limit
+    // Seed 10 completed deep sessions to hit the free tier limit
     await t.run(async (ctx) => {
       const profiles = await ctx.db.query("profiles").collect();
-      for (const p of profiles) {
-        await ctx.db.patch(p._id, { reflectionCountThisMonth: 10 });
+      const userId = profiles[0].userId;
+      for (let i = 0; i < 10; i++) {
+        await ctx.db.insert("sessions", {
+          userId,
+          title: `Session ${i}`,
+          contentType: "book",
+          status: "complete",
+          startedAt: new Date().toISOString(),
+          isRetroactive: false,
+          isDeleted: false,
+          type: "deep",
+        });
       }
     });
 
     await expect(
       asUser.mutation(api.sessions.create, { title: "Test", contentType: "book" })
-    ).rejects.toThrowError(/reached your 10 reflections/);
+    ).rejects.toThrowError(/reached your 10/);
   });
 });
 

@@ -150,11 +150,21 @@ describe("reflections.create", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    // Seed profile at limit
+    // Seed 10 completed deep sessions to hit the free tier limit
     await t.run(async (ctx) => {
       const profiles = await ctx.db.query("profiles").collect();
-      for (const p of profiles) {
-        await ctx.db.patch(p._id, { reflectionCountThisMonth: 10 });
+      const userId = profiles[0].userId;
+      for (let i = 0; i < 10; i++) {
+        await ctx.db.insert("sessions", {
+          userId,
+          title: `Completed Session ${i}`,
+          contentType: "book",
+          status: "complete",
+          startedAt: new Date().toISOString(),
+          isRetroactive: false,
+          isDeleted: false,
+          type: "deep",
+        });
       }
     });
 
@@ -163,7 +173,7 @@ describe("reflections.create", () => {
         sessionId,
         content: "Over limit.",
       })
-    ).rejects.toThrowError(/reached your 10 reflections/);
+    ).rejects.toThrowError(/reached your 10/);
   });
 
   it("calculates word count correctly", async () => {
