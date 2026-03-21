@@ -196,9 +196,7 @@ export const resetMonthlyCounts = internalMutation({
         reflectionCountThisMonth: 0,
         streakFreezeUsedThisMonth: 0,
       });
-      count++;
     }
-    console.log(`[cron] Reset monthly counts for ${count} profiles`);
   },
 });
 

@@ -515,11 +515,8 @@ export const purgeSoftDeletedReflections = internalMutation({
 
         // Delete the reflection itself
         await ctx.db.delete(reflection._id);
-        count++;
       }
     }
-
-    console.log(`[cron] Purged ${count} soft-deleted reflections`);
   },
 });
 
