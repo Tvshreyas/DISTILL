@@ -285,7 +285,7 @@ export const quickCreate = mutation({
 
     const reflection = await ctx.db.get(reflectionId);
     const totalReflections = profile.reflectionCountLifetime + 1;
-    const milestones = [1, 10, 50, 100];
+    const milestones = [1, 3, 10, 50, 100];
     const milestoneReached = milestones.includes(totalReflections)
       ? totalReflections
       : null;

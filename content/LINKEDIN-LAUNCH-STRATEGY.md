@@ -62,7 +62,7 @@ I built Distill to close that window.
 
 The loop: start a session, consume something, write what you thought, and your reflections resurface at intervals. No AI. No summaries. You do the thinking because that's what produces the retention.
 
-Free: 10 reflections/month.
+Free: 3 deep sessions per month.
 Pro: unlimited + spaced resurfacing.
 
 Launching on Product Hunt this Tuesday.

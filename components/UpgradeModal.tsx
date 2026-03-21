@@ -46,8 +46,8 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
       <div className="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center space-y-6">
-        <h2 className="text-2xl font-bold uppercase tracking-tight">Upgrade to Refiner</h2>
-        <p className="text-zinc-400">Unlock unlimited deep sessions, bi-weekly spaced resurfacing, and multi-layer reflections.</p>
+        <h2 className="text-2xl font-bold uppercase tracking-tight">Commit to your thinking ritual</h2>
+        <p className="text-zinc-400">Don’t let your momentum fade. Your archive of original thought is a lifelong asset. Upgrade to Refiner to unlock unlimited capacity and lifelong resurfacing.</p>
 
         {/* Billing toggle */}
         <div className="flex justify-center">
@@ -90,9 +90,9 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
             disabled={isLoading}
             className="w-full py-4 bg-white text-black rounded-2xl font-bold transition-transform active:scale-95 disabled:opacity-50"
           >
-            {isLoading ? "Loading..." : "Upgrade Now"}
+            {isLoading ? "Loading..." : "Preserve my momentum"}
           </button>
-          <button onClick={onCloseAction} className="w-full py-2 text-zinc-600 font-bold hover:text-zinc-400 transition-colors">Maybe Later</button>
+          <button onClick={onCloseAction} className="w-full py-2 text-zinc-600 font-bold hover:text-zinc-400 transition-colors lowercase">i&apos;ll risk the momentum</button>
         </div>
       </div>
     </div>

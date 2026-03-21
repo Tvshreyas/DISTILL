@@ -2,12 +2,12 @@ import { describe, it, expect } from "vitest";
 import { FREE_TIER_LIMIT, FREE_TIER_NUDGE, RATE_LIMIT } from "@/lib/constants";
 
 describe("free tier constants", () => {
-  it("FREE_TIER_LIMIT equals 10", () => {
-    expect(FREE_TIER_LIMIT).toBe(10);
+  it("FREE_TIER_LIMIT equals 3", () => {
+    expect(FREE_TIER_LIMIT).toBe(3);
   });
 
-  it("FREE_TIER_NUDGE equals 8", () => {
-    expect(FREE_TIER_NUDGE).toBe(8);
+  it("FREE_TIER_NUDGE equals 2", () => {
+    expect(FREE_TIER_NUDGE).toBe(2);
   });
 
   it("nudge is strictly less than limit", () => {

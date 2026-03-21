@@ -10,8 +10,8 @@ describe("UpgradeModal", () => {
 
   it("renders the modal when isOpen is true", () => {
     render(<UpgradeModal isOpen={true} onCloseAction={vi.fn()} />);
-    expect(screen.getByText("Upgrade")).toBeTruthy();
-    expect(screen.getByText("Unlock unlimited reflections and analytics.")).toBeTruthy();
+    expect(screen.getByText("Upgrade to Refiner")).toBeTruthy();
+    expect(screen.getByText("Unlock unlimited deep sessions, bi-weekly spaced resurfacing, and multi-layer reflections.")).toBeTruthy();
   });
 
   it("shows Upgrade Now and Maybe Later buttons", () => {

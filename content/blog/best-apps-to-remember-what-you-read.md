@@ -48,7 +48,7 @@ The best retention tool is one that combines all three: it forces you to process
 
 **Best for:** Readers who want to develop and track their own perspective over time, not just recall what authors said.
 
-**Price:** Free (10 reflections/month), Pro $8/month
+**Price:** Free (3 deep sessions per month), Pro $8/month
 
 ### 3. Notion — best for structured reading databases
 

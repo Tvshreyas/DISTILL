@@ -456,7 +456,7 @@
 
 **Slide 6 — CTA**
 > 2 days until launch.
-> free to use. 10 reflections per month.
+> free to use. 3 deep sessions per month.
 >
 > distillwise.com
 
@@ -494,7 +494,7 @@
 > growing into a searchable archive of how you think.
 
 **Slide 5**
-> free to use. 10 reflections per month.
+> free to use. 3 deep sessions per month.
 > unlimited with pro ($8/mo).
 >
 > your thoughts have been disappearing for years.
@@ -540,7 +540,7 @@
 > you write. not a model.
 
 **Slide 5**
-> free to use. 10 reflections per month.
+> free to use. 3 deep sessions per month.
 > unlimited with pro ($8/mo).
 >
 > your thoughts compound over time.

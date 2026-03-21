@@ -23,19 +23,10 @@ describe("REFLECTION_PROMPTS", () => {
     expect(unique.size).toBe(REFLECTION_PROMPTS.length);
   });
 
-  it("every prompt ends with a question mark or closing smart quote", () => {
+  it("every prompt ends with a question mark", () => {
     for (const prompt of REFLECTION_PROMPTS) {
-      const lastChar = prompt.trim().slice(-1);
-      // Ends with ? or \u201D (right double quotation mark)
-      expect(lastChar === "?" || lastChar === "\u201D").toBe(true);
+      expect(prompt.trim().endsWith("?")).toBe(true);
     }
-  });
-
-  it("some prompts use smart quotes", () => {
-    const smartQuoted = REFLECTION_PROMPTS.filter(
-      (p) => p.includes("\u201C") || p.includes("\u201D")
-    );
-    expect(smartQuoted.length).toBeGreaterThan(0);
   });
 });
 

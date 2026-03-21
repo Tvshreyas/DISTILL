@@ -135,7 +135,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 **Tweet 5:**
 > AI summarizes. humans distill.
 >
-> free: 10 reflections/month.
+> free: 3 deep sessions/month.
 > pro: unlimited + spaced resurfacing.
 >
 > solo founder. bootstrapped. no VC. no AI in the product.
@@ -316,7 +316,7 @@ distillwise.com
 >
 > In a world where AI can summarize any book in 30 seconds, the ability to form your own perspective is becoming rare. Distill makes it a daily practice.
 >
-> Free: 10 reflections/month. Pro: unlimited + spaced resurfacing + streaks.
+> Free: 3 deep sessions/month. Pro: unlimited + spaced resurfacing + streaks.
 >
 > Built by a solo founder who read 50 books last year and couldn't recall an original thought about any of them.
 
@@ -341,7 +341,7 @@ distillwise.com
 > I'd appreciate feedback on:
 > - Does "anti-AI" positioning resonate or feel gimmicky?
 > - Would you actually use this, or is a blank doc sufficient?
-> - Is 10 reflections/month the right free tier limit?
+> - Is 3 deep sessions/month free right free tier limit?
 >
 > [URL]
 

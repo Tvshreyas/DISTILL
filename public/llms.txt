@@ -31,7 +31,7 @@
 - Not a content hosting platform
 
 ## Pricing
-- Free: 10 reflections per month
+- Free: 3 deep sessions per month
 - Pro: Unlimited reflections, spaced resurfacing, streak tracking
 
 ## Tech

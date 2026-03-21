@@ -93,7 +93,33 @@ export default function NewSessionPage() {
           Capture your perspective on something new.
         </p>
       </header>
-      <SessionStartForm onSubmitAction={handleStart} isSubmitting={isSubmitting} />
+      
+      {profile?.plan === "free" && (profile.deepSessionsCount ?? 0) >= 3 ? (
+        <div className="p-10 rounded-[2.5rem] bg-white brutal-border border-4 border-soft-black text-center space-y-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sage/20 border-2 border-soft-black mb-2">
+            <span className="text-2xl font-black text-soft-black">3/3</span>
+          </div>
+          <div className="space-y-2">
+            <h2 className="font-grotesk text-2xl font-black lowercase tracking-tight">Ritual Fulfilled</h2>
+            <p className="text-muted-text font-medium max-w-sm mx-auto leading-relaxed">
+              You&apos;ve completed your monthly meditation of 3 deep sessions. Your thinking is starting to compound.
+            </p>
+          </div>
+          <div className="pt-4 border-t border-soft-black/10">
+            <p className="text-sm text-soft-black font-black mb-4 lowercase">
+              Expand your capacity to build your archive
+            </p>
+            <Link
+              href="/dashboard/settings"
+              className="inline-block px-8 py-4 bg-soft-black text-white rounded-2xl font-black transition-transform active:scale-95 hover:bg-soft-black/90"
+            >
+              Preserve my momentum
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <SessionStartForm onSubmitAction={handleStart} isSubmitting={isSubmitting} />
+      )}
     </main>
   );
 }

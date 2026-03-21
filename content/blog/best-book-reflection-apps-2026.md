@@ -37,7 +37,7 @@ With those criteria in mind, here are five options.
 - Session-based workflow ties each reflection to specific content
 - Built-in resurfacing — past reflections come back automatically
 - No setup, no templates, no configuration, no organizational decisions
-- Free tier: 10 reflections per month. Pro: $8/month for unlimited
+- Free tier: 3 deep sessions per month. Pro: $8/month for unlimited
 
 **Limitations:**
 - No import from Kindle, Readwise, or other highlight tools

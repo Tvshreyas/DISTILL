@@ -62,7 +62,7 @@ Both are useful. They serve different purposes.
 | **AI features** | AI-generated summaries, flashcards | None (by design) |
 | **Setup** | Connect reading sources | None — just start writing |
 | **Reading app included** | Yes (Reader) | No — consume content externally |
-| **Free tier** | No | Yes (10 reflections/month) |
+| **Free tier** | No | Yes (3 reflections per month) |
 | **Paid** | $8.99/month | $8/month |
 | **Best for** | Highlight collectors | Thinkers and reflectors |
 
@@ -100,4 +100,4 @@ If you use Readwise already and feel like something is missing — like you have
 
 ---
 
-*Distill is free for 10 reflections per month. [distillwise.com](https://distillwise.com)*
+*Distill is free for 3 deep sessions per month. [distillwise.com](https://distillwise.com)*

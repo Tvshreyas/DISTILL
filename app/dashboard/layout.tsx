@@ -7,7 +7,7 @@ import { ShaderAnimation } from "@/components/ui/shader-lines";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Home", icon: HomeIcon },
-  { href: "/dashboard/library", label: "Library", icon: LibraryIcon },
+  { href: "/dashboard/library", label: "Archive", icon: LibraryIcon },
   { href: "/dashboard/settings", label: "Settings", icon: SettingsIcon },
 ] as const;
 

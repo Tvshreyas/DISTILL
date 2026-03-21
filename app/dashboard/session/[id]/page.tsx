@@ -11,6 +11,7 @@ import Link from "next/link";
 
 const MILESTONE_MESSAGES: Record<number, string> = {
   1: "Your first reflection. The journey begins.",
+  3: "3 reflections. You're finding your rhythm.",
   10: "10 reflections. You're building a real habit.",
   50: "50 reflections. Your library is growing.",
   100: "100 reflections. A century of your own thinking.",

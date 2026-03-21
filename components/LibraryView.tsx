@@ -138,7 +138,7 @@ export default function LibraryView() {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-text group-focus-within:text-soft-black transition-colors" />
           <input
             type="text"
-            placeholder="search your reflections..."
+            placeholder="search your archive of thought..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full pl-12 pr-4 py-4 bg-white brutal-border-sm border-2 border-soft-black rounded-2xl outline-none focus:bg-sage/5 transition-all font-medium text-lg"
@@ -180,7 +180,7 @@ export default function LibraryView() {
             <Search className="w-8 h-8 text-soft-black/20" />
           </div>
           <div className="space-y-1">
-            <h3 className="font-grotesk text-xl font-black lowercase">no reflections found.</h3>
+            <h3 className="font-grotesk text-xl font-black lowercase text-soft-black/40">your archive is silent.</h3>
             <p className="text-muted-text max-w-xs mx-auto">try adjusting your search or filters to find what you&apos;re looking for.</p>
           </div>
         </div>
@@ -262,7 +262,7 @@ export default function LibraryView() {
                 onClick={() => setLimit(prev => prev + 20)}
                 className="px-8 py-3 bg-white brutal-border-sm border-2 border-soft-black rounded-xl font-bold hover:bg-sage transition-all active:scale-95"
               >
-                load more reflections
+                load more from archive
               </button>
             </div>
           )}

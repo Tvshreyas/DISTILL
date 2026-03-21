@@ -175,20 +175,20 @@ Three automated sequences to drive activation, retention, and conversion. All co
 
 ## Sequence 3: Free → Pro Upgrade (3 emails)
 
-**Trigger:** User hits 8/10 reflections in the current month (FREE_TIER_NUDGE)
+**Trigger:** User hits 2/3 deep sessions/month free current month (FREE_TIER_NUDGE)
 **Exit conditions:** User upgrades to Pro, unsubscribes, or sequence completes
 **Goal:** Convert engaged free users to Pro
 
 ---
 
 ### Email 1: Usage Milestone
-**Send:** When user writes their 8th reflection this month
-**Subject:** You've used 8 of 10 reflections this month
-**Preview:** 2 reflections remaining on the free tier.
+**Send:** When user completes their 2nd deep session this month
+**Subject:** You've used 2 of 3 deep sessions this month
+**Preview:** 1 deep session remaining on the free tier.
 
-> You've written 8 reflections this month. The free tier includes 10 per month.
+> You've completed 2 deep sessions this month. The free tier includes 3 deep sessions per month.
 >
-> After 10, you'll need to wait until next month to write more — or upgrade to Pro for unlimited reflections.
+> After 3 deep sessions, you'll need to wait until next month — or upgrade to Pro for unlimited deep sessions.
 >
 > Pro also includes spaced resurfacing and streak tracking.
 >

@@ -69,7 +69,7 @@ export const create = mutation({
 
       if (completedDeepSessions.length >= 3) {
         throw new Error(
-          "You've reached your 3 Deep Sessions for this month. You can still use Quick Distill, or upgrade to Pro for unlimited Deep Sessions."
+          "You've completed your 3-reflection monthly ritual. To extend your practice and preserve your momentum, upgrade to Refiner."
         );
       }
     }
