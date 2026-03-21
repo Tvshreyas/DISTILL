@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { useMutation, useQuery } from "convex/react";
+import { useState, useRef } from "react";
+import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Check, Sparkles, Loader2 } from "lucide-react";
@@ -13,10 +13,7 @@ export default function QuickDistill() {
   const [showSuccess, setShowSuccess] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Note: Claude Code will implement this mutation
-  // We use any for now to avoid build errors before the backend is ready
-  const quickCreate = useMutation(api.reflections.quickCreate as any);
-  const profile = useQuery(api.profiles.get);
+  const quickCreate = useMutation(api.reflections.quickCreate);
 
   const handleSubmit = async (e?: React.FormEvent) => {
     e?.preventDefault();
