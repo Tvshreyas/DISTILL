@@ -190,7 +190,6 @@ export const resetMonthlyCounts = internalMutation({
   args: {},
   handler: async (ctx) => {
     const profiles = await ctx.db.query("profiles").collect();
-    let count = 0;
     for (const profile of profiles) {
       await ctx.db.patch(profile._id, {
         reflectionCountThisMonth: 0,

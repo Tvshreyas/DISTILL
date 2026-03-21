@@ -487,7 +487,6 @@ export const purgeSoftDeletedReflections = internalMutation({
 
     const now = Date.now();
     const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
-    let count = 0;
 
     for (const reflection of deletedReflections) {
       if (!reflection.deletedAt) continue;
