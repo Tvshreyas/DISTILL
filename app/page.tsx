@@ -60,7 +60,7 @@ const jsonLd = {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
-        description: "Free tier with 10 reflections per month",
+        description: "Free tier with 3 deep sessions per month",
       },
       featureList: [
         "Session-based reflection capture",

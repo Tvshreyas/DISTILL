@@ -67,9 +67,9 @@ export const create = mutation({
         )
         .collect();
 
-      if (completedDeepSessions.length >= 10) {
+      if (completedDeepSessions.length >= 3) {
         throw new Error(
-          "You've reached your 10 reflections for this month. Upgrade to Pro for unlimited reflections."
+          "You've reached your 3 Deep Sessions for this month. You can still use Quick Distill, or upgrade to Pro for unlimited Deep Sessions."
         );
       }
     }

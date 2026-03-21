@@ -21,13 +21,13 @@ export function UpgradeEmail({ step, reflectionCount, dashboardUrl, unsubscribeU
 
   const content = {
     1: {
-      heading: `You've used ${reflectionCount} of 10 reflections this month.`,
-      body: `${10 - reflectionCount} reflection${10 - reflectionCount !== 1 ? "s" : ""} remaining on the free tier.\n\nAfter 10, you'll need to wait until next month to write more — or upgrade to Pro for unlimited reflections.\n\nPro also includes spaced resurfacing and streak tracking.\n\nNo pressure. The free tier resets on the 1st of every month.`,
+      heading: `You've used ${reflectionCount} of 3 deep sessions this month.`,
+      body: `${3 - reflectionCount} deep session${3 - reflectionCount !== 1 ? "s" : ""} remaining on the free tier.\n\nAfter 3, you'll need to wait until next month for more deep sessions — or upgrade to Pro for unlimited access.\n\nRemember: Quick Distills on the dashboard are always unlimited.\n\nNo pressure. The free tier resets on the 1st of every month.`,
       cta: "See Pro details",
     },
     2: {
-      heading: "Your free reflections have reset.",
-      body: `Your monthly reflection count has reset. You have 10 more reflections available.\n\nLast month you used all 10. That's more active thinking than most people do in a year.\n\nIf the limit feels like it's getting in the way, Pro removes it entirely:\n\n— Unlimited reflections\n— Spaced resurfacing (past reflections come back at intervals)\n— Streak tracking\n— $5/month or $36/year\n\nThe free tier stays free. Upgrade only if the limit doesn't work for you.`,
+      heading: "Your deep sessions have reset.",
+      body: `Your monthly deep session count has reset. You have 3 more sessions available.\n\nIf the limit feels like it's getting in the way, Pro removes it entirely:\n\n— Unlimited deep sessions\n— Spaced resurfacing (past reflections come back at intervals)\n— Multi-layer reflections\n— $5/month or $48/year\n\nThe free tier stays free. Upgrade only if the limit doesn't work for you.`,
       cta: "Upgrade to Pro",
     },
     3: {
@@ -93,9 +93,9 @@ export function UpgradeEmail({ step, reflectionCount, dashboardUrl, unsubscribeU
 
 export function getUpgradeSubject(step: 1 | 2 | 3, reflectionCount: number): string {
   const subjects = {
-    1: `You've used ${reflectionCount} of 10 reflections this month`,
-    2: "Your free reflections reset — or go unlimited",
-    3: "Save 40% with annual billing",
+    1: `You've used ${reflectionCount} of 3 deep sessions this month`,
+    2: "Your deep sessions reset — or go unlimited",
+    3: "Save 25% with annual billing",
   };
   return subjects[step];
 }
