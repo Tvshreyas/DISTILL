@@ -1,17 +1,21 @@
 export const REFLECTION_PROMPTS = [
-  "What's your core takeaway from this?",
-  "How has this changed your perspective on the topic?",
-  "Which 20% of this content will provide 80% of the value for you?",
-  "How can you apply one specific insight from this in the next 24 hours?",
-  "What did you disagree with, and why?",
-  "How does this relate to something else you've learned recently?",
-  "What's the most high-leverage question this content leaves you with?",
-  "If you had to teach this to someone else in 30 seconds, what would you say?",
+  "What is the core insight that survives every dismissal?",
+  "How does this make your past self look wrong?",
+  "What is the most high-leverage question this leaves you with?",
+  "If you could only keep one sentence from this, what would it be?",
+  "What did you disagree with most, and why?",
+  "How does this connect to something completely unrelated in your library?",
   "What action will you take today as a direct result of this?",
-  "What mental model does this best illustrate or challenge?",
-  "\u201CHow does this confirm or challenge what you already know?\u201D",
-  "\u201CWhat\u2019s the one thing from this you want to remember in 6 months?\u201D",
-  "\u201CIf you had to explain this (simply) to a 10-year-old, what would you say?\u201D"
+  "What mental model does this best illustrate—or shatter?",
+  "If you had to teach this to someone smarter than you, what would you say?",
+  "What's the one thing from this you want to remember in 5 years?",
+  "How does this confirm or challenge your fundamental assumptions?",
+  "What's the 20% of this that will provide 80% of your future value?",
+  "If you were the author, what would you have added to make this better?",
+  "Strip away the jargon. What is the naked truth here?",
+  "How would you explain the core of this to a 5-year-old?",
+  "What if the opposite of the author's argument was true?",
+  "What's the one thing in this you should ignore forever?"
 ];
 
 export function getRandomPrompt() {

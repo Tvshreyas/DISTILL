@@ -13,7 +13,7 @@ export function WordReveal({ text, className, delay = 0 }: WordRevealProps) {
   const words = text.split(" ");
 
   return (
-    <h1 className={cn("flex flex-wrap justify-center text-center", className)}>
+    <div className={cn("flex flex-wrap justify-center text-center", className)}>
       {words.map((word, i) => (
         <span 
           key={i} 
@@ -34,6 +34,6 @@ export function WordReveal({ text, className, delay = 0 }: WordRevealProps) {
           </motion.span>
         </span>
       ))}
-    </h1>
+    </div>
   );
 }

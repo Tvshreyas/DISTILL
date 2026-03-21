@@ -9,10 +9,28 @@ export const get = query({
     if (!identity) return null;
     const userId = identity.subject;
 
-    return await ctx.db
+    const profile = await ctx.db
       .query("profiles")
       .withIndex("by_userId", (q) => q.eq("userId", userId))
       .unique();
+
+    if (!profile) return null;
+
+    // Count deep sessions this month
+    const deepSessions = await ctx.db
+      .query("sessions")
+      .withIndex("by_userId_status", (q) =>
+        q.eq("userId", userId).eq("status", "complete")
+      )
+      .filter((q) =>
+        q.and(q.eq(q.field("isDeleted"), false), q.neq(q.field("type"), "quick"))
+      )
+      .collect();
+
+    return {
+      ...profile,
+      deepSessionsCount: deepSessions.length,
+    };
   },
 });
 

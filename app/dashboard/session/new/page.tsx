@@ -75,7 +75,17 @@ export default function NewSessionPage() {
 
   return (
     <main className="max-w-2xl mx-auto px-6 py-20 relative">
-      <header className="space-y-2 text-center mb-10">
+      <header className="space-y-4 text-center mb-10">
+        <div className="flex justify-center">
+          {profile?.plan === "free" && (
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-sage/20 border border-sage/50 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-soft-black/80">
+                {Math.max(0, 3 - (profile.deepSessionsCount ?? 0))} deep sessions left this month
+              </span>
+            </div>
+          )}
+        </div>
         <h1 className="font-grotesk text-4xl font-black lowercase tracking-tighter">
           new session
         </h1>

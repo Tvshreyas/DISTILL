@@ -60,13 +60,17 @@ export default defineSchema({
       v.literal("complete"),
       v.literal("abandoned")
     ),
+    // "deep" = full session flow, "quick" = Quick Distill capture
+    // Optional for backward compat: existing sessions without type are treated as "deep"
+    type: v.optional(v.union(v.literal("deep"), v.literal("quick"))),
     startedAt: v.string(),
     completedAt: v.optional(v.string()),
     isRetroactive: v.boolean(),
     isDeleted: v.boolean(),
   })
     .index("by_userId", ["userId"])
-    .index("by_userId_status", ["userId", "status"]),
+    .index("by_userId_status", ["userId", "status"])
+    .index("by_userId_type_status", ["userId", "type", "status"]),
 
   reflections: defineTable({
     userId: v.string(),

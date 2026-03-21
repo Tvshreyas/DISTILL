@@ -9,6 +9,7 @@ import ResurfacingCard from "@/components/ResurfacingCard";
 import StreakHeatmap from "@/components/StreakHeatmap";
 import { WordReveal } from "@/components/ui/word-reveal";
 import OnboardingReflectionRestore from "@/components/OnboardingReflectionRestore";
+import QuickDistill from "@/components/QuickDistill";
 import posthog from "posthog-js";
 
 function toDateString(date: Date, timezone: string): string {
@@ -68,6 +69,8 @@ export default function DashboardPage() {
           your thinking, compounded daily.
         </p>
       </header>
+
+      <QuickDistill />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Streak Counter */}

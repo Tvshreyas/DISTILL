@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import LandingPage from "@/components/LandingPage";
 
 export const metadata: Metadata = {
-  title: "Distill — Think More Clearly About What You Consume",
+  title: "Distill — Think more clearly about what you consume",
   description:
     "Distill is a thinking development tool. Build a reflection habit from books, videos, articles, and podcasts. Your perspective, compounded over time.",
   alternates: {
     canonical: "https://distillwise.com",
   },
   openGraph: {
-    title: "Distill — Think More Clearly About What You Consume",
+    title: "Distill — Think more clearly about what you consume",
     description:
       "Build a reflection habit from the content you consume. Your perspective, compounded over time.",
     url: "https://distillwise.com",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Distill — Think More Clearly About What You Consume",
+    title: "Distill — Think more clearly about what you consume",
     description:
       "Build a reflection habit from the content you consume. Your perspective, compounded over time.",
     images: ["https://distillwise.com/og-image.png"],
@@ -118,7 +118,7 @@ const jsonLd = {
           name: "Is Distill free?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. The free tier includes 10 reflections per month. Pro unlocks unlimited reflections, spaced resurfacing, and streak tracking.",
+            text: "Yes. The free tier includes 3 deep sessions per month. Quick Distills are unlimited. Pro unlocks unlimited deep sessions, layered resurfacing, and advanced analytics.",
           },
         },
         {

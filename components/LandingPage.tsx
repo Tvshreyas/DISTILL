@@ -41,7 +41,7 @@ function Header() {
       <div className="flex items-center gap-3">
         {/* Swishy-inspired Dot Logo */}
         <div className="grid grid-cols-3 gap-1 w-6 h-6">
-          {[...Array(8)].map((_, i) => (
+          {[...Array(9)].map((_, i) => (
             <div key={i} className="w-1.5 h-1.5 rounded-full bg-soft-black" />
           ))}
         </div>
@@ -58,7 +58,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="relative pt-0 pb-32 px-6 overflow-hidden">
+    <section className="relative pt-10 md:pt-12 pb-20 px-6 overflow-hidden">
       <ZenParticles />
 
       {/* Massive Background Watermark */}
@@ -84,32 +84,31 @@ function Hero() {
         className="absolute bottom-40 right-[10%] w-[600px] h-[600px] bg-lavender/30 rounded-full blur-[140px] -z-10"
       />
 
-      <div className="max-w-6xl mx-auto text-center relative z-10 -mt-12 md:-mt-24">
+      <div className="max-w-6xl mx-auto text-center relative z-10">
         <div className="space-y-4 mb-12">
-          <h1 className="sr-only">Distill — Think more clearly about what you consume</h1>
-          <div className="flex flex-col items-center">
+          <h1 className="flex flex-col items-center">
             <WordReveal
               text="think more clearly"
-              className="text-7xl md:text-[9.5rem] font-bold leading-[0.9] tracking-tighter"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tighter"
             />
-            <div className="flex items-center justify-center -mt-2 md:-mt-8">
-              <span className="font-reenie text-6xl md:text-9xl text-peach inline-block rotate-[-4deg] px-6 -translate-y-2">about</span>
+            <div className="flex items-center justify-center -mt-1 md:-mt-2">
+              <span className="font-reenie text-4xl md:text-6xl text-peach inline-block rotate-[-4deg] px-4 md:px-8 -translate-y-1">about</span>
               <WordReveal
-                text="your ideas."
-                className="text-7xl md:text-[9.5rem] font-bold leading-[0.9] tracking-tighter"
+                text="what you consume."
+                className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tighter"
                 delay={0.5}
               />
             </div>
-          </div>
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-xl mx-auto text-xl md:text-2xl text-muted-text font-medium leading-relaxed opacity-80"
+            className="max-w-xl mx-auto text-base md:text-lg text-muted-text font-medium leading-relaxed opacity-80"
           >
-            elevate your reading and watching into original thought. build a private archive of your perspective, one reflection at a time.
+            the 2-minute thinking ritual. convert passive consumption into active thinking, one distilled thought at a time.
           </motion.p>
 
           <motion.div
@@ -121,7 +120,7 @@ function Hero() {
           >
             <MagnetizeButton asChild className="w-full sm:w-auto">
               <Link href="/start" className="text-lg px-10 py-4">
-                start your reflection journey
+                start distilling
               </Link>
             </MagnetizeButton>
             <Link href="#features" className="px-10 py-4 rounded-full font-bold border-2 border-soft-black/5 hover:border-soft-black/20 hover:bg-white transition-all w-full sm:w-auto">

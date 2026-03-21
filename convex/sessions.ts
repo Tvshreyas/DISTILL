@@ -44,7 +44,7 @@ export const create = mutation({
       );
     }
 
-    // Free tier enforcement — block session creation at limit
+    // Free tier enforcement — only deep sessions count against the limit
     const profile = await ctx.db
       .query("profiles")
       .withIndex("by_userId", (q) => q.eq("userId", userId))
@@ -52,10 +52,26 @@ export const create = mutation({
 
     if (!profile) throw new Error("Profile not found.");
 
-    if (profile.plan === "free" && profile.reflectionCountThisMonth >= 10) {
-      throw new Error(
-        "You've reached your 10 reflections for this month. Upgrade to Pro for unlimited reflections."
-      );
+    if (profile.plan === "free") {
+      // Count completed deep sessions (type === "deep" or undefined for legacy sessions)
+      const completedDeepSessions = await ctx.db
+        .query("sessions")
+        .withIndex("by_userId_status", (q) =>
+          q.eq("userId", userId).eq("status", "complete")
+        )
+        .filter((q) =>
+          q.and(
+            q.eq(q.field("isDeleted"), false),
+            q.neq(q.field("type"), "quick")
+          )
+        )
+        .collect();
+
+      if (completedDeepSessions.length >= 10) {
+        throw new Error(
+          "You've reached your 10 reflections for this month. Upgrade to Pro for unlimited reflections."
+        );
+      }
     }
 
     const id = await ctx.db.insert("sessions", {
@@ -64,6 +80,7 @@ export const create = mutation({
       contentType: args.contentType,
       consumeReason: args.consumeReason,
       status: "active",
+      type: "deep",
       startedAt: new Date().toISOString(),
       isRetroactive: args.isRetroactive ?? false,
       isDeleted: false,
