@@ -44,7 +44,7 @@ export default function ActiveSessionPage() {
         toast.success(msg, { duration: 6000 });
       }
 
-      setLastWordCount(result.wordCount);
+      setLastWordCount(result.wordCount ?? 0);
       setShowSuccess(true);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Something went wrong.";
