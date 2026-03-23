@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Shuffle, Sparkles, Zap } from "lucide-react";
 import Link from "next/link";
 import { REFLECTION_PROMPTS } from "@/lib/prompts";
@@ -58,7 +57,7 @@ export default function StartPage() {
             distill your<br />first thought.
           </h1>
           <p className="font-serif italic text-xl text-muted-text max-w-lg">
-            "Knowledge is not what you consume. It is what you remember."
+            &ldquo;Knowledge is not what you consume. It is what you remember.&rdquo;
           </p>
         </header>
 
