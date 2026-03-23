@@ -78,8 +78,8 @@ export const migrate = mutation({
       throw new Error("Invalid content type.");
     }
 
-    if (args.reflectionContent.length < 1 || args.reflectionContent.length > 3000) {
-      throw new Error("Reflection must be between 1 and 3,000 characters.");
+    if (args.reflectionContent.length < 1 || args.reflectionContent.length > 30000) {
+      throw new Error("Reflection must be between 1 and 30,000 characters.");
     }
 
     if (
