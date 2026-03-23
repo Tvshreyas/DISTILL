@@ -10,20 +10,19 @@ describe("UpgradeModal", () => {
 
   it("renders the modal when isOpen is true", () => {
     render(<UpgradeModal isOpen={true} onCloseAction={vi.fn()} />);
-    expect(screen.getByText("Upgrade to Refiner")).toBeTruthy();
-    expect(screen.getByText("Unlock unlimited deep sessions, bi-weekly spaced resurfacing, and multi-layer reflections.")).toBeTruthy();
+    expect(screen.getByText("Commit to your thinking ritual")).toBeTruthy();
   });
 
-  it("shows Upgrade Now and Maybe Later buttons", () => {
+  it("shows checkout and dismiss buttons", () => {
     render(<UpgradeModal isOpen={true} onCloseAction={vi.fn()} />);
-    expect(screen.getByText("Upgrade Now")).toBeTruthy();
-    expect(screen.getByText("Maybe Later")).toBeTruthy();
+    expect(screen.getByText("Preserve my momentum")).toBeTruthy();
+    expect(screen.getByText(/risk the momentum/i)).toBeTruthy();
   });
 
-  it("calls onCloseAction when Maybe Later is clicked", () => {
+  it("calls onCloseAction when dismiss is clicked", () => {
     const onClose = vi.fn();
     render(<UpgradeModal isOpen={true} onCloseAction={onClose} />);
-    fireEvent.click(screen.getByText("Maybe Later"));
+    fireEvent.click(screen.getByText(/risk the momentum/i));
     expect(onClose).toHaveBeenCalledOnce();
   });
 });

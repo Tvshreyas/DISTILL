@@ -47,6 +47,11 @@ export default function SettingsPage() {
       const res = await fetch("/api/stripe/create-portal", { method: "POST" });
       const data = await res.json();
       if (data.url) {
+        const parsed = new URL(data.url);
+        if (!["checkout.stripe.com", "billing.stripe.com"].includes(parsed.hostname)) {
+          toast.error("Unexpected redirect destination.");
+          return;
+        }
         window.location.href = data.url;
       } else {
         toast.error(data.error || "Could not open billing portal.");

@@ -46,6 +46,10 @@ export function CreativePricingDemo() {
       });
       const data = await res.json();
       if (data.url) {
+        const parsed = new URL(data.url);
+        if (!["checkout.stripe.com", "billing.stripe.com"].includes(parsed.hostname)) {
+          return;
+        }
         window.location.href = data.url;
       }
     } finally {

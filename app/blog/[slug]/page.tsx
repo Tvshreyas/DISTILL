@@ -131,7 +131,12 @@ export default async function BlogPostPage({
             prose-blockquote:border-l-8 prose-blockquote:border-[#FFB7B2] prose-blockquote:bg-[#E8EFE8] prose-blockquote:p-6 prose-blockquote:rounded-r-2xl prose-blockquote:italic
             prose-img:border-4 prose-img:border-[#292524] prose-img:shadow-[8px_8px_0px_0px_rgba(41,37,36,1)]
             prose-hr:border-4 prose-hr:border-[#E8EFE8]"
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(postData.contentHtml) }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(postData.contentHtml, {
+            ALLOWED_TAGS: ["p","h1","h2","h3","h4","h5","h6","ul","ol","li","blockquote","strong","em","a","code","pre","hr","br","img","table","thead","tbody","tr","th","td","span","del","sup","sub"],
+            ALLOWED_ATTR: ["href","src","alt","title","class","id","target","rel"],
+            FORBID_ATTR: ["style","onerror","onload","onclick","onmouseover"],
+            ALLOW_DATA_ATTR: false,
+          }) }}
         />
 
         <footer className="mt-20 pt-12 border-t-4 border-[#292524]">

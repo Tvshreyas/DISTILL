@@ -67,7 +67,7 @@ describe("LibraryView", () => {
   it("shows empty state when no reflections", () => {
     mockUseQuery.mockReturnValue({ data: [], total: 0 });
     render(<LibraryView />);
-    expect(screen.getByText("no reflections found.")).toBeTruthy();
+    expect(screen.getByText("your archive is silent.")).toBeTruthy();
   });
 
   it("renders reflection cards", () => {
@@ -86,7 +86,7 @@ describe("LibraryView", () => {
   it("renders search input", () => {
     mockUseQuery.mockReturnValue({ data: [], total: 0 });
     render(<LibraryView />);
-    expect(screen.getByPlaceholderText("search your reflections...")).toBeTruthy();
+    expect(screen.getByPlaceholderText("search your archive of thought...")).toBeTruthy();
   });
 
   it("renders content type filter buttons", () => {
@@ -107,7 +107,7 @@ describe("LibraryView", () => {
       total: 50,
     });
     render(<LibraryView />);
-    expect(screen.getByText("load more reflections")).toBeTruthy();
+    expect(screen.getByText("load more from archive")).toBeTruthy();
   });
 
   it("does not show 'load more' when all loaded", () => {
@@ -116,13 +116,13 @@ describe("LibraryView", () => {
       total: 1,
     });
     render(<LibraryView />);
-    expect(screen.queryByText("load more reflections")).toBeNull();
+    expect(screen.queryByText("load more from archive")).toBeNull();
   });
 
   it("updates search input value on typing", () => {
     mockUseQuery.mockReturnValue({ data: [], total: 0 });
     render(<LibraryView />);
-    const input = screen.getByPlaceholderText("search your reflections...") as HTMLInputElement;
+    const input = screen.getByPlaceholderText("search your archive of thought...") as HTMLInputElement;
     fireEvent.change(input, { target: { value: "habits" } });
     expect(input.value).toBe("habits");
   });

@@ -64,11 +64,16 @@ export class RateLimiter {
 }
 
 export function getClientIp(request: Request): string {
+  // Prefer x-real-ip — set by Vercel infrastructure, not client-controllable.
+  // x-forwarded-for leftmost entry is user-supplied and spoofable.
+  const realIp = request.headers.get("x-real-ip");
+  if (realIp) return realIp;
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) {
-    return forwarded.split(",")[0].trim();
+    const ips = forwarded.split(",").map((ip) => ip.trim());
+    return ips[ips.length - 1]; // rightmost = last trusted proxy
   }
-  return request.headers.get("x-real-ip") || "unknown";
+  return "unknown";
 }
 
 // Singleton instances

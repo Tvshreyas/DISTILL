@@ -120,11 +120,18 @@ describe("getClientIp", () => {
     expect(getClientIp(req)).toBe("10.0.0.1");
   });
 
-  it("handles multiple IPs in x-forwarded-for (comma-separated), picks first", () => {
+  it("handles multiple IPs in x-forwarded-for (comma-separated), picks last (rightmost = trusted proxy)", () => {
     const req = new Request("http://localhost", {
       headers: { "x-forwarded-for": "203.0.113.1, 70.41.3.18, 150.172.238.178" },
     });
-    expect(getClientIp(req)).toBe("203.0.113.1");
+    expect(getClientIp(req)).toBe("150.172.238.178");
+  });
+
+  it("prefers x-real-ip over x-forwarded-for", () => {
+    const req = new Request("http://localhost", {
+      headers: { "x-real-ip": "10.0.0.1", "x-forwarded-for": "203.0.113.1" },
+    });
+    expect(getClientIp(req)).toBe("10.0.0.1");
   });
 
   it("falls back to x-real-ip if no x-forwarded-for", () => {

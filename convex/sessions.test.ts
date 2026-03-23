@@ -101,7 +101,7 @@ describe("sessions.create", () => {
 
     await expect(
       asUser.mutation(api.sessions.create, { title: "Test", contentType: "book" })
-    ).rejects.toThrowError(/reached your 3/);
+    ).rejects.toThrowError(/3-reflection monthly ritual/);
   });
 });
 

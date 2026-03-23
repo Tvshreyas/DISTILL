@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import { PRICING, PPP_COUNTRIES } from "@/lib/constants";
 
 type BillingPeriod = "monthly" | "yearly";
@@ -36,6 +37,11 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
       });
       const data = await res.json();
       if (data.url) {
+        const parsed = new URL(data.url);
+        if (!["checkout.stripe.com", "billing.stripe.com"].includes(parsed.hostname)) {
+          toast.error("Unexpected redirect destination.");
+          return;
+        }
         window.location.href = data.url;
       }
     } finally {

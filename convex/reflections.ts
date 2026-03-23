@@ -111,6 +111,35 @@ export const create = mutation({
       updatedAt: nowIso,
     });
 
+    // Post-insert rollback guard: re-check free tier to prevent race condition
+    // (two concurrent requests could both pass the pre-insert check)
+    if (profile.plan === "free") {
+      const postInsertCount = await ctx.db
+        .query("sessions")
+        .withIndex("by_userId_status", (q) =>
+          q.eq("userId", userId).eq("status", "complete")
+        )
+        .filter((q) =>
+          q.and(
+            q.eq(q.field("isDeleted"), false),
+            q.neq(q.field("type"), "quick")
+          )
+        )
+        .collect();
+      // Include the session we're about to complete — it's still "active" but will be completed below
+      if (postInsertCount.length >= FREE_TIER_LIMIT) {
+        // Check if this would push us over (account for the current session completing)
+        const currentSessionIsDeep = session.type !== "quick";
+        const effectiveCount = postInsertCount.length + (currentSessionIsDeep ? 1 : 0);
+        if (effectiveCount > FREE_TIER_LIMIT) {
+          await ctx.db.delete(reflectionId);
+          throw new Error(
+            `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or upgrade to Pro for unlimited Deep Sessions.`
+          );
+        }
+      }
+    }
+
     // Update profile counts and streak
     const todayStr = toDateString(now, profile.timezone);
     const lastDate = profile.lastReflectionDate;

@@ -1,5 +1,6 @@
 import { mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { checkContentSafety } from "./safety";
 
 const VALID_CONTENT_TYPES = ["book", "video", "article", "podcast", "other"] as const;
 
@@ -106,12 +107,18 @@ export const migrate = mutation({
       isDeleted: false,
     });
 
-    // Create reflection
-    const wordCount = computeWordCount(args.reflectionContent);
+    // Create reflection — sanitize content (strip HTML tags, check safety)
+    const cleanContent = args.reflectionContent.replace(/<[^>]*>/g, "").trim();
+    const safetyResult = checkContentSafety(cleanContent);
+    if (!safetyResult.safe && safetyResult.category === "A") {
+      throw new Error("This content cannot be saved.");
+    }
+
+    const wordCount = computeWordCount(cleanContent);
     const reflectionId = await ctx.db.insert("reflections", {
       userId,
       sessionId,
-      content: args.reflectionContent,
+      content: cleanContent,
       promptUsed: args.promptUsed,
       thinkingShiftRating: args.thinkingShiftRating,
       wordCount,
