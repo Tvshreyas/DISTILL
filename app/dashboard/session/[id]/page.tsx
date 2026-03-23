@@ -7,6 +7,7 @@ import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import type { Id } from "@/convex/_generated/dataModel";
 import ReflectionCapture from "@/components/ReflectionCapture";
+import SessionSuccessOverlay from "@/components/SessionSuccessOverlay";
 import Link from "next/link";
 
 const MILESTONE_MESSAGES: Record<number, string> = {
@@ -23,6 +24,8 @@ export default function ActiveSessionPage() {
   const session = useQuery(api.sessions.getById, { sessionId: id as Id<"sessions"> });
   const completeSession = useMutation(api.reflections.create);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [lastWordCount, setLastWordCount] = useState(0);
 
   if (session === undefined) return <div className="p-8 text-muted-text animate-pulse text-center">Loading session...</div>;
   if (!session) return <div className="p-8 text-muted-text text-center">Session not found.</div>;
@@ -41,12 +44,17 @@ export default function ActiveSessionPage() {
         toast.success(msg, { duration: 6000 });
       }
 
-      router.push("/dashboard");
+      setLastWordCount(result.wordCount);
+      setShowSuccess(true);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Something went wrong.";
       toast.error(message);
       setIsSubmitting(false);
     }
+  }
+
+  function handleSuccessComplete() {
+    router.push("/dashboard");
   }
 
   return (
@@ -71,6 +79,13 @@ export default function ActiveSessionPage() {
         prompt="What's your core takeaway from this?"
         onSubmitAction={handleComplete}
         isSubmitting={isSubmitting}
+      />
+
+      <SessionSuccessOverlay
+        isVisible={showSuccess}
+        wordCount={lastWordCount}
+        title={session.title}
+        onComplete={handleSuccessComplete}
       />
     </main>
   );
