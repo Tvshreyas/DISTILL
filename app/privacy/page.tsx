@@ -155,10 +155,10 @@ export default function PrivacyPage() {
               For any privacy-related questions or to exercise your rights,
               email us at{" "}
               <a
-                href="mailto:privacy@distill.app"
+                href="mailto:hello@distillwise.com"
                 className="text-black underline underline-offset-2"
               >
-                privacy@distill.app
+                hello@distillwise.com
               </a>
               .
             </p>

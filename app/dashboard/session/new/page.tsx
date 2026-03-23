@@ -87,10 +87,10 @@ export default function NewSessionPage() {
           )}
         </div>
         <h1 className="font-grotesk text-4xl font-black lowercase tracking-tighter">
-          new session
+          new deep session
         </h1>
         <p className="text-muted-text font-medium text-lg">
-          Capture your perspective on something new.
+          a 5,000-word space for intensive thinking and archival.
         </p>
       </header>
       

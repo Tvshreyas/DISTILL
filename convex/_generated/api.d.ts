@@ -8,13 +8,16 @@
  * @module
  */
 
-import type * as account from "../account.js";
 import type * as crons from "../crons.js";
 import type * as export_ from "../export.js";
+import type * as http from "../http.js";
+import type * as notificationLogs from "../notificationLogs.js";
+import type * as notifications from "../notifications.js";
 import type * as onboarding from "../onboarding.js";
 import type * as profiles from "../profiles.js";
 import type * as reflections from "../reflections.js";
 import type * as resurfacing from "../resurfacing.js";
+import type * as safety from "../safety.js";
 import type * as sessions from "../sessions.js";
 
 import type {
@@ -24,13 +27,16 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
-  account: typeof account;
   crons: typeof crons;
   export: typeof export_;
+  http: typeof http;
+  notificationLogs: typeof notificationLogs;
+  notifications: typeof notifications;
   onboarding: typeof onboarding;
   profiles: typeof profiles;
   reflections: typeof reflections;
   resurfacing: typeof resurfacing;
+  safety: typeof safety;
   sessions: typeof sessions;
 }>;
 

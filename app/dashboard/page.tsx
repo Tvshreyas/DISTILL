@@ -118,7 +118,7 @@ export default function DashboardPage() {
             href="/dashboard/session/new"
             className="brutal-btn bg-soft-black text-white text-lg px-10 py-4 hover:bg-peach hover:text-soft-black w-full md:w-auto"
           >
-            Start Session &rarr;
+            Start Deep Session &rarr;
           </Link>
         </div>
       )}

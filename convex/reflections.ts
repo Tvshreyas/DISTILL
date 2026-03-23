@@ -34,9 +34,9 @@ export const create = mutation({
     if (!identity) throw new Error("Unauthorized");
     const userId = identity.subject;
 
-    // Validate content
-    if (args.content.length < 1 || args.content.length > 3000) {
-      throw new Error("Reflection must be between 1 and 3,000 characters.");
+    // Validate content (Deep Sessions allow for 30k characters / 5k word refined archives)
+    if (args.content.length < 1 || args.content.length > 30000) {
+      throw new Error("Deep Session reflection must be under 30,000 characters (~5,000 words).");
     }
 
     // Validate rating
@@ -214,9 +214,9 @@ export const quickCreate = mutation({
     if (!identity) throw new Error("Unauthorized");
     const userId = identity.subject;
 
-    // Validate content
-    if (args.content.length < 1 || args.content.length > 3000) {
-      throw new Error("Reflection must be between 1 and 3,000 characters.");
+    // Validate content (Quick Distill is for fast, pithy thoughts under ~80 words)
+    if (args.content.length < 1 || args.content.length > 500) {
+      throw new Error("Quick Distill must be under 500 characters. Use a Deep Session for longer reflections.");
     }
 
     const cleanContent = sanitizeContent(args.content);
@@ -333,8 +333,8 @@ export const update = mutation({
     if (!identity) throw new Error("Unauthorized");
     const userId = identity.subject;
 
-    if (args.content.length < 1 || args.content.length > 3000) {
-      throw new Error("Reflection must be between 1 and 3,000 characters.");
+    if (args.content.length < 1 || args.content.length > 30000) {
+      throw new Error("Reflection must be between 1 and 30,000 characters.");
     }
 
     const reflection = await ctx.db.get(args.reflectionId);
