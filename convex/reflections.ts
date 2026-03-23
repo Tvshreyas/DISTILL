@@ -214,9 +214,9 @@ export const quickCreate = mutation({
     if (!identity) throw new Error("Unauthorized");
     const userId = identity.subject;
 
-    // Validate content (Quick Distill is for fast, pithy thoughts under ~80 words)
-    if (args.content.length < 1 || args.content.length > 500) {
-      throw new Error("Quick Distill must be under 500 characters. Use a Deep Session for longer reflections.");
+    // Validate content (Quick Distill: Atomic insights only, 400 chars)
+    if (args.content.length < 1 || args.content.length > 400) {
+      throw new Error("Quick Distill must be under 400 characters. Use a Deep Session for longer reflections.");
     }
 
     const cleanContent = sanitizeContent(args.content);

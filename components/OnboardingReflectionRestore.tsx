@@ -70,7 +70,7 @@ export default function OnboardingReflectionRestore() {
         // 2. Create the reflection on that session
         await createReflection({
           sessionId: session._id,
-          content: data.content!.slice(0, 30000),
+          content: data.content!.slice(0, 400),
           promptUsed: data.promptUsed || undefined,
           thinkingShiftRating:
             data.thinkingShiftRating != null &&

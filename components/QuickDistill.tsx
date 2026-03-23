@@ -57,9 +57,9 @@ export default function QuickDistill() {
                   type="text"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  placeholder="The Pithy Essence (~80 words)"
+                  placeholder="The Atomic Insight (~60 words)"
                   className="w-full bg-transparent border-none focus:outline-none font-medium text-lg md:text-xl placeholder:text-muted-text/30"
-                  maxLength={500}
+                  maxLength={400}
                   disabled={isSubmitting}
                 />
               </div>
