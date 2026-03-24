@@ -3,7 +3,7 @@ export const FREE_TIER_NUDGE = 2;
 
 // Pricing configuration
 export const PRICING = {
-  USD: { monthly: 8, yearly: 72, symbol: "$", code: "USD" },
+  USD: { monthly: 8, yearly: 80, symbol: "$", code: "USD" },
   INR: { monthly: 249, yearly: 2490, symbol: "\u20B9", code: "INR" },
 } as const;
 

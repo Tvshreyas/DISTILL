@@ -49,3 +49,10 @@ supabase/.temp
 shannon-pentest/
 
 .vercel
+
+# Ensure all env variants are ignored
+.env*
+.env.local
+.env.development
+.env.production
+.env.test

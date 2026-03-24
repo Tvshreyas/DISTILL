@@ -9,6 +9,9 @@ export const create = mutation({
       v.literal("video"),
       v.literal("article"),
       v.literal("podcast"),
+      v.literal("realization"),
+      v.literal("workout"),
+      v.literal("walk"),
       v.literal("other")
     ),
     consumeReason: v.optional(v.string()),

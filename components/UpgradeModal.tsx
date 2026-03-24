@@ -37,11 +37,6 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
       });
       const data = await res.json();
       if (data.url) {
-        const parsed = new URL(data.url);
-        if (!["checkout.stripe.com", "billing.stripe.com"].includes(parsed.hostname)) {
-          toast.error("Unexpected redirect destination.");
-          return;
-        }
         window.location.href = data.url;
       }
     } finally {
@@ -53,7 +48,7 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
       <div className="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center space-y-6">
         <h2 className="text-2xl font-bold uppercase tracking-tight">Commit to your thinking ritual</h2>
-        <p className="text-zinc-400">Don’t let your momentum fade. Your archive of original thought is a lifelong asset. Upgrade to Refiner to unlock unlimited capacity and lifelong resurfacing.</p>
+        <p className="text-zinc-400">Don’t let your momentum fade. Your archive of original thought is a lifelong asset. Upgrade to Pro to unlock unlimited capacity and lifelong resurfacing.</p>
 
         {/* Billing toggle */}
         <div className="flex justify-center">
@@ -78,7 +73,7 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
             >
               Yearly
               <span className="absolute -top-2.5 -right-2 text-[10px] text-emerald-400 font-bold">
-                -25%
+                -20%
               </span>
             </button>
           </div>

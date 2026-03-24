@@ -1,67 +1,68 @@
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 import { RATE_LIMIT } from "./constants";
 
-interface RateLimitEntry {
-  count: number;
-  resetAt: number;
+function createRedis(): Redis | null {
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) return null;
+  return new Redis({ url, token });
 }
 
-interface RateLimitResult {
+const redis = createRedis();
+
+function createLimiter(
+  prefix: string,
+  config: { maxRequests: number; windowMs: number }
+): Ratelimit | null {
+  if (!redis) return null;
+  const windowSec = `${Math.round(config.windowMs / 1000)} s` as const;
+  return new Ratelimit({
+    redis,
+    prefix: `ratelimit:${prefix}`,
+    limiter: Ratelimit.slidingWindow(config.maxRequests, windowSec),
+    analytics: false,
+  });
+}
+
+export interface RateLimitResult {
   success: boolean;
   remaining: number;
-  resetAt: number;
+  reset: number; // Unix timestamp ms when window resets
 }
 
-// NOTE: In-memory rate limiting resets on serverless cold starts (each Vercel
-// function instance gets its own Map). This provides best-effort protection
-// against bursts within a single instance but is not globally consistent.
-// TODO: For strict enforcement, migrate to a distributed store (e.g. Upstash
-// Redis with @upstash/ratelimit) before scaling beyond moderate traffic.
-export class RateLimiter {
-  private store = new Map<string, RateLimitEntry>();
-  private maxRequests: number;
-  private windowMs: number;
+// Singleton instances — null when Upstash env vars are missing (local dev)
+const authRL = createLimiter("auth", RATE_LIMIT.AUTH);
+const apiWriteRL = createLimiter("api-write", RATE_LIMIT.API_WRITE);
+const apiReadRL = createLimiter("api-read", RATE_LIMIT.API_READ);
 
-  constructor(config: { maxRequests: number; windowMs: number }) {
-    this.maxRequests = config.maxRequests;
-    this.windowMs = config.windowMs;
-
-    // Periodic cleanup of expired entries — unref so it doesn't block process exit
-    const interval = setInterval(() => {
-      const now = Date.now();
-      for (const [key, entry] of this.store) {
-        if (now >= entry.resetAt) {
-          this.store.delete(key);
-        }
-      }
-    }, 60_000);
-    try { interval.unref(); } catch { /* Edge Runtime — no unref needed */ }
+async function checkLimit(
+  limiter: Ratelimit | null,
+  key: string
+): Promise<RateLimitResult> {
+  // Graceful fallback: no Redis = allow all (dev mode)
+  if (!limiter) {
+    return { success: true, remaining: 999, reset: Date.now() + 60_000 };
   }
-
-  check(key: string): RateLimitResult {
-    const now = Date.now();
-    const entry = this.store.get(key);
-
-    // No entry or window expired — start fresh
-    if (!entry || now >= entry.resetAt) {
-      const resetAt = now + this.windowMs;
-      this.store.set(key, { count: 1, resetAt });
-      return { success: true, remaining: this.maxRequests - 1, resetAt };
-    }
-
-    // Within window — increment
-    entry.count += 1;
-
-    if (entry.count > this.maxRequests) {
-      return { success: false, remaining: 0, resetAt: entry.resetAt };
-    }
-
-    return {
-      success: true,
-      remaining: this.maxRequests - entry.count,
-      resetAt: entry.resetAt,
-    };
-  }
+  const result = await limiter.limit(key);
+  return {
+    success: result.success,
+    remaining: result.remaining,
+    reset: result.reset,
+  };
 }
+
+export const authLimiter = {
+  limit: (key: string) => checkLimit(authRL, key),
+};
+
+export const apiWriteLimiter = {
+  limit: (key: string) => checkLimit(apiWriteRL, key),
+};
+
+export const apiReadLimiter = {
+  limit: (key: string) => checkLimit(apiReadRL, key),
+};
 
 export function getClientIp(request: Request): string {
   // Prefer x-real-ip — set by Vercel infrastructure, not client-controllable.
@@ -75,8 +76,3 @@ export function getClientIp(request: Request): string {
   }
   return "unknown";
 }
-
-// Singleton instances
-export const authLimiter = new RateLimiter(RATE_LIMIT.AUTH);
-export const apiWriteLimiter = new RateLimiter(RATE_LIMIT.API_WRITE);
-export const apiReadLimiter = new RateLimiter(RATE_LIMIT.API_READ);

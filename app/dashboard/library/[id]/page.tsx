@@ -14,6 +14,9 @@ const TYPE_LABELS: Record<ContentType, string> = {
   video: "Video",
   article: "Article",
   podcast: "Podcast",
+  realization: "Realization",
+  workout: "Workout",
+  walk: "Walk",
   other: "Content",
 };
 

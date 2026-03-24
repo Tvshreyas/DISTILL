@@ -1,11 +1,6 @@
 export type Plan = "free" | "pro";
 
-export type ContentType =
-  | "book"
-  | "video"
-  | "article"
-  | "podcast"
-  | "other";
+export type ContentType = "book" | "video" | "article" | "podcast" | "realization" | "workout" | "walk" | "other";
 
 export type SessionStatus = "active" | "complete" | "abandoned";
 

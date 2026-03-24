@@ -56,7 +56,9 @@ export default function SessionStartForm({
           content type
         </legend>
         <div className="flex flex-wrap gap-2">
-          {(["book", "video", "article", "podcast", "other"] as const).map((type) => (
+          {(
+            ["book", "video", "article", "podcast", "realization", "workout", "walk", "other"] as const
+          ).map((type) => (
             <button
               key={type}
               type="button"

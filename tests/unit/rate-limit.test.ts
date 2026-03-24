@@ -1,107 +1,73 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { RateLimiter, getClientIp } from "@/lib/rate-limit";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
-describe("RateLimiter", () => {
+// Mock @upstash/ratelimit before importing the module under test
+let mockLimitFn: ReturnType<typeof vi.fn>;
+
+vi.mock("@upstash/ratelimit", () => {
+  mockLimitFn = vi.fn();
+  return {
+    Ratelimit: class {
+      limit = mockLimitFn;
+      static slidingWindow() {
+        return "sliding-window";
+      }
+    },
+  };
+});
+
+vi.mock("@upstash/redis", () => ({
+  Redis: class {
+    constructor() {}
+  },
+}));
+
+// Provide env vars so the limiter instances are created (not null fallback)
+vi.stubEnv("UPSTASH_REDIS_REST_URL", "https://fake.upstash.io");
+vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "fake-token");
+
+// Import after mocks are set up
+const { authLimiter, apiWriteLimiter, apiReadLimiter, getClientIp } =
+  await import("@/lib/rate-limit");
+
+describe("Rate limiters (Upstash)", () => {
   beforeEach(() => {
-    vi.useFakeTimers();
+    mockLimitFn.mockReset();
   });
 
-  afterEach(() => {
-    vi.useRealTimers();
-  });
-
-  it("allows requests under the limit", () => {
-    const limiter = new RateLimiter({ maxRequests: 5, windowMs: 60_000 });
-    const result = limiter.check("user1");
+  it("authLimiter.limit() returns success when under limit", async () => {
+    mockLimitFn.mockResolvedValue({ success: true, remaining: 4, reset: Date.now() + 60_000 });
+    const result = await authLimiter.limit("auth:1.2.3.4");
     expect(result.success).toBe(true);
-  });
-
-  it("first request always succeeds with remaining = maxRequests - 1", () => {
-    const limiter = new RateLimiter({ maxRequests: 10, windowMs: 60_000 });
-    const result = limiter.check("user1");
-    expect(result.success).toBe(true);
-    expect(result.remaining).toBe(9);
-  });
-
-  it("returns correct remaining count (maxRequests - currentCount)", () => {
-    const limiter = new RateLimiter({ maxRequests: 5, windowMs: 60_000 });
-    limiter.check("user1"); // count=1, remaining=4
-    limiter.check("user1"); // count=2, remaining=3
-    const result = limiter.check("user1"); // count=3, remaining=2
-    expect(result.remaining).toBe(2);
-  });
-
-  it("increments count correctly on successive calls", () => {
-    const limiter = new RateLimiter({ maxRequests: 10, windowMs: 60_000 });
-    for (let i = 0; i < 5; i++) {
-      limiter.check("user1");
-    }
-    const result = limiter.check("user1"); // count=6, remaining=4
     expect(result.remaining).toBe(4);
-    expect(result.success).toBe(true);
+    expect(mockLimitFn).toHaveBeenCalledWith("auth:1.2.3.4");
   });
 
-  it("blocks requests when limit is exceeded (success === false, remaining === 0)", () => {
-    const limiter = new RateLimiter({ maxRequests: 3, windowMs: 60_000 });
-    limiter.check("user1"); // 1
-    limiter.check("user1"); // 2
-    limiter.check("user1"); // 3 — last allowed
-    const result = limiter.check("user1"); // 4 — blocked
+  it("authLimiter.limit() returns failure when over limit", async () => {
+    mockLimitFn.mockResolvedValue({ success: false, remaining: 0, reset: Date.now() + 30_000 });
+    const result = await authLimiter.limit("auth:1.2.3.4");
     expect(result.success).toBe(false);
     expect(result.remaining).toBe(0);
   });
 
-  it("edge case: exactly at maxRequests (last allowed request, remaining === 0, success === true)", () => {
-    const limiter = new RateLimiter({ maxRequests: 3, windowMs: 60_000 });
-    limiter.check("user1"); // 1
-    limiter.check("user1"); // 2
-    const result = limiter.check("user1"); // 3 — exactly at max
+  it("apiWriteLimiter delegates to Upstash", async () => {
+    mockLimitFn.mockResolvedValue({ success: true, remaining: 29, reset: Date.now() + 60_000 });
+    const result = await apiWriteLimiter.limit("write:1.2.3.4");
     expect(result.success).toBe(true);
-    expect(result.remaining).toBe(0);
+    expect(result.remaining).toBe(29);
   });
 
-  it("returns resetAt in the future (resetAt > Date.now())", () => {
-    const limiter = new RateLimiter({ maxRequests: 5, windowMs: 60_000 });
-    const now = Date.now();
-    const result = limiter.check("user1");
-    expect(result.resetAt).toBeGreaterThan(now);
-  });
-
-  it("resets the window after windowMs expires", () => {
-    const limiter = new RateLimiter({ maxRequests: 2, windowMs: 10_000 });
-    limiter.check("user1"); // 1
-    limiter.check("user1"); // 2 — at limit
-    const blocked = limiter.check("user1"); // 3 — blocked
-    expect(blocked.success).toBe(false);
-
-    vi.advanceTimersByTime(10_000);
-
-    const result = limiter.check("user1"); // fresh window
+  it("apiReadLimiter delegates to Upstash", async () => {
+    mockLimitFn.mockResolvedValue({ success: true, remaining: 59, reset: Date.now() + 60_000 });
+    const result = await apiReadLimiter.limit("read:1.2.3.4");
     expect(result.success).toBe(true);
-    expect(result.remaining).toBe(1);
+    expect(result.remaining).toBe(59);
   });
 
-  it("after window expiry, count resets to 1", () => {
-    const limiter = new RateLimiter({ maxRequests: 5, windowMs: 5_000 });
-    limiter.check("user1"); // 1
-    limiter.check("user1"); // 2
-    limiter.check("user1"); // 3
-
-    vi.advanceTimersByTime(5_000);
-
-    const result = limiter.check("user1"); // reset — count=1
-    expect(result.remaining).toBe(4); // maxRequests(5) - count(1) = 4
-  });
-
-  it("handles multiple independent keys without interference", () => {
-    const limiter = new RateLimiter({ maxRequests: 2, windowMs: 60_000 });
-    limiter.check("user1"); // user1: count=1
-    limiter.check("user1"); // user1: count=2
-    limiter.check("user1"); // user1: blocked
-
-    const result = limiter.check("user2"); // user2: count=1, fresh
-    expect(result.success).toBe(true);
-    expect(result.remaining).toBe(1);
+  it("returns reset timestamp from Upstash", async () => {
+    const futureReset = Date.now() + 120_000;
+    mockLimitFn.mockResolvedValue({ success: true, remaining: 3, reset: futureReset });
+    const result = await authLimiter.limit("auth:test");
+    expect(result.reset).toBe(futureReset);
   });
 });
 
