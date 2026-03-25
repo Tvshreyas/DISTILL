@@ -86,8 +86,8 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
   // - www.gstatic.com/recaptcha/ — reCAPTCHA static assets
   // - cdnjs.cloudflare.com — Three.js CDN (landing page animation)
   const scriptSrc = isDev
-    ? `script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://js.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdnjs.cloudflare.com`
-    : `script-src 'self' 'nonce-${nonce}' https://js.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdnjs.cloudflare.com`;
+    ? `script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://js.stripe.com https://*.clerk.accounts.dev https://clerk.distillwise.com https://accounts.distillwise.com https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdnjs.cloudflare.com`
+    : `script-src 'self' 'nonce-${nonce}' https://js.stripe.com https://*.clerk.accounts.dev https://clerk.distillwise.com https://accounts.distillwise.com https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdnjs.cloudflare.com`;
 
   // style-src: nonce-based; unsafe-inline only in dev for HMR hot-reload styles
   const styleSrc = isDev
@@ -102,8 +102,8 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
   // - us.i.posthog.com / app.posthog.com — PostHog analytics ingest
   // - *.ingest.sentry.io — Sentry error reporting
   const connectSrc = isDev
-    ? "connect-src 'self' https://*.convex.cloud wss://*.convex.cloud https://api.stripe.com https://*.clerk.accounts.dev https://*.clerk.com https://clerk-telemetry.com https://challenges.cloudflare.com https://us.i.posthog.com https://app.posthog.com https://*.ingest.sentry.io ws://localhost:*"
-    : "connect-src 'self' https://*.convex.cloud wss://*.convex.cloud https://api.stripe.com https://*.clerk.accounts.dev https://*.clerk.com https://clerk-telemetry.com https://challenges.cloudflare.com https://us.i.posthog.com https://app.posthog.com https://*.ingest.sentry.io";
+    ? "connect-src 'self' https://*.convex.cloud wss://*.convex.cloud https://api.stripe.com https://*.clerk.accounts.dev https://clerk.distillwise.com https://accounts.distillwise.com https://*.clerk.com https://clerk-telemetry.com https://challenges.cloudflare.com https://us.i.posthog.com https://app.posthog.com https://*.ingest.sentry.io ws://localhost:*"
+    : "connect-src 'self' https://*.convex.cloud wss://*.convex.cloud https://api.stripe.com https://*.clerk.accounts.dev https://clerk.distillwise.com https://accounts.distillwise.com https://*.clerk.com https://clerk-telemetry.com https://challenges.cloudflare.com https://us.i.posthog.com https://app.posthog.com https://*.ingest.sentry.io";
 
   const upgradeInsecure = isDev ? "" : "upgrade-insecure-requests";
 
@@ -111,12 +111,12 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
     "default-src 'self'",
     scriptSrc,
     // frame-src: embedded iframes for payment + auth + bot protection
-    "frame-src https://js.stripe.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/",
+    "frame-src https://js.stripe.com https://*.clerk.accounts.dev https://clerk.distillwise.com https://accounts.distillwise.com https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/",
     // frame-ancestors: prevent clickjacking — no embedding allowed
     "frame-ancestors 'none'",
     connectSrc,
     // img-src: user avatars (Clerk), noise texture (grain-y), analytics pixels (PostHog)
-    "img-src 'self' data: blob: https://img.clerk.com https://grain-y.vercel.app https://us.i.posthog.com https://app.posthog.com",
+    "img-src 'self' data: blob: https://img.clerk.com https://clerk.distillwise.com https://grain-y.vercel.app https://us.i.posthog.com https://app.posthog.com",
     styleSrc,
     // worker-src: service worker + Three.js blob workers
     "worker-src 'self' blob:",
