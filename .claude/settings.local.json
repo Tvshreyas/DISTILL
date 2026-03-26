@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:\\\\Users\\\\shrey\\\\Downloads\\\\claude code\" && claude mcp add context7 -- npx -y @upstash/context7-mcp@latest 2>&1)"
+    ]
+  }
+}
