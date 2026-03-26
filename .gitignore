@@ -15,5 +15,3 @@ node_modules/
 distill/.next/
 distill/node_modules/
 shannon/.env
-.claude/
-.github/
