@@ -1,20 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
 
 interface LayerEditorProps {
-  originalContent: string;
-  originalDate: string;
-  existingLayers?: Array<{ content: string; _creationTime: number }>;
-  onSave: (content: string) => Promise<void>;
+  onSave: (content: string, thinkingShiftRating?: number) => Promise<void>;
   onCancel: () => void;
 }
 
-const EMPTY_LAYERS: Array<{ content: string; _creationTime: number }> = [];
-
-export default function LayerEditor({ originalContent, originalDate, existingLayers = EMPTY_LAYERS, onSave, onCancel }: LayerEditorProps) {
+export default function LayerEditor({ onSave, onCancel }: LayerEditorProps) {
   const [content, setContent] = useState("");
+  const [rating, setRating] = useState<number | undefined>(undefined);
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState("");
 
@@ -23,41 +20,82 @@ export default function LayerEditor({ originalContent, originalDate, existingLay
     setIsSaving(true);
     setError("");
     try {
-      await onSave(content.trim());
-    } catch {
-      setError("Could not save. Your addition is preserved — try again.");
+      await onSave(content.trim(), rating);
+    } catch (e) {
+      const message = e instanceof Error ? e.message : "Could not save. Your addition is preserved — try again.";
+      setError(message);
       setIsSaving(false);
     }
   }
 
   return (
-    <div className="space-y-4">
-      <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-        <p className="text-xs text-gray-500 mb-2">Original — {new Date(originalDate).toLocaleDateString()}</p>
-        <p className="text-sm text-gray-300 whitespace-pre-wrap">{originalContent}</p>
-      </div>
-      {existingLayers.map((layer) => (
-        <div key={layer._creationTime} className="bg-white/5 border border-white/10 rounded-xl p-4">
-          <p className="text-xs text-gray-500 mb-2">Layer — {new Date(layer._creationTime).toLocaleDateString()}</p>
-          <p className="text-sm text-gray-300 whitespace-pre-wrap">{layer.content}</p>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.98 }}
+        transition={{ duration: 0.2 }}
+        className="brutal-card bg-white space-y-5"
+      >
+        {/* Textarea */}
+        <div className="space-y-2">
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="how has your thinking changed?"
+            maxLength={3000}
+            rows={5}
+            className="w-full bg-warm-bg brutal-border rounded-2xl p-4 font-serif text-lg text-soft-black placeholder:text-soft-black/30 resize-none focus:outline-none focus:ring-2 focus:ring-peach/50 transition-all duration-200"
+          />
+          <p className="text-right text-[10px] font-grotesk font-black uppercase tracking-widest text-soft-black/30">
+            {content.length}/3000
+          </p>
         </div>
-      ))}
-      <div className="border-l-2 border-amber-500 pl-4 space-y-2">
-        <p className="text-xs text-gray-500">New perspective — {new Date().toLocaleDateString()}</p>
-        <textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="How has your thinking changed?" maxLength={3000} rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white placeholder:text-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all duration-200" />
-        <p className="text-xs text-gray-500 text-right">{content.length}/3000</p>
-      </div>
-      {error && <p className="text-sm text-red-400">{error}</p>}
-      <div className="flex gap-4 pt-2">
-        <MagnetizeButton 
-          onClick={handleSave} 
-          disabled={!content.trim() || isSaving}
-          className="min-w-[180px]"
-        >
-          {isSaving ? "preserving..." : "add perspective"}
-        </MagnetizeButton>
-        <button onClick={onCancel} className="text-gray-400 px-6 py-2 rounded-full text-sm hover:bg-white/5 transition-all duration-200">cancel</button>
-      </div>
-    </div>
+
+        {/* Thinking Shift Rating */}
+        <div className="space-y-2">
+          <p className="font-grotesk text-[10px] font-black uppercase tracking-[0.2em] text-soft-black/40">
+            thinking shift
+          </p>
+          <div className="flex gap-2">
+            {[1, 2, 3, 4, 5].map((n) => (
+              <button
+                key={n}
+                type="button"
+                onClick={() => setRating(rating === n ? undefined : n)}
+                className={`w-10 h-10 rounded-full brutal-border font-grotesk font-black text-sm transition-all duration-200 ${
+                  rating === n
+                    ? "bg-peach text-soft-black"
+                    : "bg-white text-soft-black/40 hover:bg-warm-bg"
+                }`}
+              >
+                {n}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {error && (
+          <p className="text-sm text-red-600 font-grotesk">{error}</p>
+        )}
+
+        {/* Actions */}
+        <div className="flex items-center gap-4 pt-1">
+          <MagnetizeButton
+            onClick={handleSave}
+            disabled={!content.trim() || isSaving}
+            className="min-w-[180px]"
+          >
+            {isSaving ? "preserving..." : "add perspective"}
+          </MagnetizeButton>
+          <button
+            onClick={onCancel}
+            className="font-grotesk text-sm font-bold text-soft-black/40 hover:text-soft-black transition-colors lowercase px-4 py-2"
+          >
+            cancel
+          </button>
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }

@@ -167,7 +167,7 @@ export default function OnboardingPage() {
 
       {/* Branding */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 font-grotesk text-sm font-bold opacity-20 tracking-[0.3em] uppercase">
-        distill.focus
+        distillwise.com
       </div>
     </main>
   );

@@ -174,8 +174,9 @@ export const create = mutation({
       completedAt: nowIso,
     });
 
-    // Schedule resurfacing
+    // Schedule resurfacing — 1d first to collapse time-to-magic for new users
     const intervals = [
+      { type: "1d" as const, days: 1 },
       { type: "3d" as const, days: 3 },
       { type: "7d" as const, days: 7 },
       { type: "30d" as const, days: 30 },
@@ -195,7 +196,7 @@ export const create = mutation({
 
     const reflection = await ctx.db.get(reflectionId);
     const totalReflections = profile.reflectionCountLifetime + 1;
-    const milestones = [1, 10, 50, 100];
+    const milestones = [1, 3, 5, 10, 25, 50, 100];
     const milestoneReached = milestones.includes(totalReflections)
       ? totalReflections
       : null;
@@ -293,8 +294,9 @@ export const quickCreate = mutation({
       lastReflectionDate: todayStr,
     });
 
-    // Schedule resurfacing (3d, 7d, 30d, 90d)
+    // Schedule resurfacing — 1d first to collapse time-to-magic
     const intervals = [
+      { type: "1d" as const, days: 1 },
       { type: "3d" as const, days: 3 },
       { type: "7d" as const, days: 7 },
       { type: "30d" as const, days: 30 },
@@ -314,7 +316,7 @@ export const quickCreate = mutation({
 
     const reflection = await ctx.db.get(reflectionId);
     const totalReflections = profile.reflectionCountLifetime + 1;
-    const milestones = [1, 3, 10, 50, 100];
+    const milestones = [1, 3, 5, 10, 25, 50, 100];
     const milestoneReached = milestones.includes(totalReflections)
       ? totalReflections
       : null;
@@ -415,8 +417,15 @@ export const getById = query({
       )
       .collect();
 
+    // Fetch profile for plan info
+    const profile = await ctx.db
+      .query("profiles")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .unique();
+
     return {
       ...reflection,
+      plan: profile?.plan ?? "free",
       session: session
         ? {
           title: session.title,
@@ -426,6 +435,74 @@ export const getById = query({
         : null,
       layers,
     };
+  },
+});
+
+export const addLayer = mutation({
+  args: {
+    reflectionId: v.id("reflections"),
+    content: v.string(),
+    thinkingShiftRating: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Unauthorized");
+    const userId = identity.subject;
+
+    // Validate content length
+    if (args.content.length < 1 || args.content.length > 3000) {
+      throw new Error("Layer content must be between 1 and 3,000 characters.");
+    }
+
+    // Validate rating
+    if (
+      args.thinkingShiftRating !== undefined &&
+      (args.thinkingShiftRating < 1 ||
+        args.thinkingShiftRating > 5 ||
+        !Number.isInteger(args.thinkingShiftRating))
+    ) {
+      throw new Error("Rating must be an integer between 1 and 5.");
+    }
+
+    // IDOR: verify reflection exists and is owned by user
+    const reflection = await ctx.db.get(args.reflectionId);
+    if (
+      !reflection ||
+      reflection.userId !== userId ||
+      reflection.isDeleted
+    ) {
+      throw new Error("Resource not found.");
+    }
+
+    // Pro gate
+    const profile = await ctx.db
+      .query("profiles")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .unique();
+
+    if (!profile) throw new Error("Profile not found.");
+
+    if (profile.plan === "free") {
+      throw new Error("PRO_REQUIRED");
+    }
+
+    // Sanitize content
+    const cleanContent = sanitizeContent(args.content);
+
+    const safetyResult = checkContentSafety(cleanContent);
+    if (!safetyResult.safe && safetyResult.category === "A") {
+      throw new Error("This content cannot be saved.");
+    }
+
+    const layerId = await ctx.db.insert("reflectionLayers", {
+      reflectionId: args.reflectionId,
+      userId,
+      content: cleanContent,
+      thinkingShiftRating: args.thinkingShiftRating,
+      createdAt: new Date().toISOString(),
+    });
+
+    return await ctx.db.get(layerId);
   },
 });
 

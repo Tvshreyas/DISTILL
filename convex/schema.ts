@@ -97,6 +97,8 @@ export default defineSchema({
     reflectionId: v.id("reflections"),
     userId: v.string(),
     content: v.string(),
+    thinkingShiftRating: v.optional(v.number()),
+    createdAt: v.optional(v.string()),
   })
     .index("by_reflectionId", ["reflectionId"])
     .index("by_userId", ["userId"]),
@@ -105,6 +107,7 @@ export default defineSchema({
     reflectionId: v.id("reflections"),
     userId: v.string(),
     intervalType: v.union(
+      v.literal("1d"),
       v.literal("3d"),
       v.literal("7d"),
       v.literal("30d"),

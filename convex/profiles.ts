@@ -27,9 +27,22 @@ export const get = query({
       )
       .collect();
 
+    // Total words written (endowment effect — show users their growing investment)
+    const allReflections = await ctx.db
+      .query("reflections")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .filter((q) => q.eq(q.field("isDeleted"), false))
+      .collect();
+
+    const totalWordsWritten = allReflections.reduce(
+      (sum, r) => sum + (r.wordCount ?? 0),
+      0
+    );
+
     return {
       ...profile,
       deepSessionsCount: deepSessions.length,
+      totalWordsWritten,
     };
   },
 });

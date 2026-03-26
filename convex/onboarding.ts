@@ -137,8 +137,9 @@ export const migrate = mutation({
       onboardingCompleted: true,
     });
 
-    // Schedule resurfacing
+    // Schedule resurfacing — 1d first to collapse time-to-magic
     const intervals = [
+      { type: "1d" as const, days: 1 },
       { type: "3d" as const, days: 3 },
       { type: "7d" as const, days: 7 },
       { type: "30d" as const, days: 30 },

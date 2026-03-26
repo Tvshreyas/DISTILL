@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Link from "next/link";
@@ -11,6 +11,7 @@ import { WordReveal } from "@/components/ui/word-reveal";
 import OnboardingReflectionRestore from "@/components/OnboardingReflectionRestore";
 import QuickDistill from "@/components/QuickDistill";
 import posthog from "posthog-js";
+import { Flame, BookOpen, PenTool, TrendingUp } from "lucide-react";
 
 function toDateString(date: Date, timezone: string): string {
   return date.toLocaleDateString("en-CA", { timeZone: timezone });
@@ -29,6 +30,76 @@ function getMonthDays(timezone: string) {
   return days;
 }
 
+// Goal Gradient — milestones feel closer as you approach them
+const MILESTONES = [1, 3, 5, 10, 25, 50, 100, 250, 500, 1000];
+
+function getNextMilestone(current: number) {
+  for (const m of MILESTONES) {
+    if (current < m) return m;
+  }
+  return current + 100;
+}
+
+// Loss Aversion — calculate hours until streak dies
+function getStreakUrgency(
+  lastReflectionDate: string | undefined,
+  timezone: string
+): { hoursLeft: number; isUrgent: boolean } | null {
+  if (!lastReflectionDate) return null;
+
+  const now = new Date();
+  const todayStr = toDateString(now, timezone);
+
+  // Already reflected today — no urgency
+  if (lastReflectionDate === todayStr) return null;
+
+  // Calculate end of today in user's timezone
+  const endOfDay = new Date(now);
+  endOfDay.setHours(23, 59, 59, 999);
+  const hoursLeft = Math.max(
+    0,
+    Math.floor((endOfDay.getTime() - now.getTime()) / (1000 * 60 * 60))
+  );
+
+  return { hoursLeft, isUrgent: hoursLeft <= 6 };
+}
+
+// Identity Labels — earned titles based on reflection count
+function getIdentityLabel(reflectionCount: number): {
+  label: string;
+  description: string;
+} {
+  if (reflectionCount >= 100)
+    return {
+      label: "Deep Thinker",
+      description: "100+ reflections. your perspective is an archive.",
+    };
+  if (reflectionCount >= 50)
+    return {
+      label: "Pattern Finder",
+      description: "50+ reflections. connections are forming.",
+    };
+  if (reflectionCount >= 25)
+    return {
+      label: "Consistent Mind",
+      description: "25+ reflections. the habit is yours now.",
+    };
+  if (reflectionCount >= 10)
+    return {
+      label: "Active Thinker",
+      description: "10+ reflections. you think for yourself.",
+    };
+  if (reflectionCount >= 3)
+    return {
+      label: "Emerging Voice",
+      description: "your own perspective is taking shape.",
+    };
+  return {
+    label: "New Thinker",
+    description: "every reflection compounds. start here.",
+  };
+}
+
 export default function DashboardPage() {
   const profile = useQuery(api.profiles.get);
   const activeSession = useQuery(api.sessions.getActive);
@@ -44,24 +115,85 @@ export default function DashboardPage() {
     }
   }, []);
 
-  if (profile === undefined) return <div>Loading dashboard...</div>;
-  if (!profile) return <div>Profile not found.</div>;
+  const dashboardData = useMemo(() => {
+    if (!profile) return null;
 
-  const currentStreak = profile.currentStreak ?? 0;
-  const userTimezone = profile.timezone ?? "UTC";
+    const currentStreak = profile.currentStreak ?? 0;
+    const userTimezone = profile.timezone ?? "UTC";
+    const lifetimeReflections = profile.reflectionCountLifetime ?? 0;
+    const totalWords = profile.totalWordsWritten ?? 0;
+    const nextMilestone = getNextMilestone(lifetimeReflections);
+    const milestoneProgress = lifetimeReflections / nextMilestone;
+    const streakUrgency = currentStreak > 0
+      ? getStreakUrgency(profile.lastReflectionDate, userTimezone)
+      : null;
+    const identity = getIdentityLabel(lifetimeReflections);
 
-  const reflectionDates = new Set(
-    (recentReflections ?? []).map((r) =>
-      toDateString(new Date(r._creationTime), userTimezone)
-    )
+    const reflectionDates = new Set(
+      (recentReflections ?? []).map((r) =>
+        toDateString(new Date(r._creationTime), userTimezone)
+      )
+    );
+    const monthDays = getMonthDays(userTimezone);
+
+    return {
+      currentStreak,
+      userTimezone,
+      lifetimeReflections,
+      totalWords,
+      nextMilestone,
+      milestoneProgress,
+      streakUrgency,
+      identity,
+      reflectionDates,
+      monthDays,
+    };
+  }, [profile, recentReflections]);
+
+  if (profile === undefined) return (
+    <div className="space-y-12 animate-pulse">
+      <div className="space-y-2">
+        <div className="h-12 w-56 bg-soft-black/10 rounded-2xl" />
+        <div className="h-4 w-72 bg-soft-black/5 rounded-lg" />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-4 h-60 bg-peach/10 rounded-[2rem] border-4 border-soft-black/10" />
+        <div className="lg:col-span-8 h-60 bg-soft-black/5 rounded-[2rem] border-2 border-soft-black/10" />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="h-36 bg-white/50 rounded-2xl border-2 border-soft-black/10" />
+        <div className="h-36 bg-white/50 rounded-2xl border-2 border-soft-black/10" />
+        <div className="h-36 bg-white/50 rounded-2xl border-2 border-soft-black/10" />
+      </div>
+    </div>
   );
-  const monthDays = getMonthDays(userTimezone);
+  if (!profile) return (
+    <div className="flex flex-col items-center justify-center py-32 text-center">
+      <div className="p-8 rounded-[2rem] border-4 border-soft-black bg-peach/10 max-w-sm space-y-4">
+        <h2 className="font-grotesk text-xl font-black text-soft-black">profile not found.</h2>
+        <p className="text-sm text-muted-text">something went wrong loading your profile. try refreshing the page.</p>
+      </div>
+    </div>
+  );
+  if (!dashboardData) return null;
+
+  const {
+    currentStreak,
+    lifetimeReflections,
+    totalWords,
+    nextMilestone,
+    milestoneProgress,
+    streakUrgency,
+    identity,
+    reflectionDates,
+    monthDays,
+  } = dashboardData;
 
   return (
     <div className="space-y-12">
       <OnboardingReflectionRestore />
       <header className="space-y-1">
-        <WordReveal 
+        <WordReveal
           text="dashboard"
           className="text-4xl md:text-5xl font-bold tracking-tighter justify-start text-left font-serif"
         />
@@ -72,31 +204,75 @@ export default function DashboardPage() {
 
       <QuickDistill />
 
+      {/* === LOSS AVERSION: Streak urgency banner === */}
+      {streakUrgency && (
+        <div
+          className={`flex items-center gap-3 px-6 py-4 rounded-2xl border-2 border-soft-black ${
+            streakUrgency.isUrgent
+              ? "bg-peach/30 animate-pulse"
+              : "bg-peach/10"
+          }`}
+        >
+          <Flame
+            className={`w-5 h-5 ${streakUrgency.isUrgent ? "text-red-500" : "text-peach"}`}
+          />
+          <span className="font-grotesk text-sm font-bold">
+            {streakUrgency.isUrgent
+              ? `${streakUrgency.hoursLeft}h left to keep your ${currentStreak}-day streak alive.`
+              : `Reflect today to extend your ${currentStreak}-day streak.`}
+          </span>
+          <Link
+            href="/dashboard/session/new"
+            className="ml-auto text-xs font-black uppercase tracking-wider bg-soft-black text-white px-4 py-2 rounded-full hover:bg-peach hover:text-soft-black transition-colors"
+          >
+            Reflect now
+          </Link>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Streak Counter */}
+        {/* Streak Counter + Identity Label */}
         <section className="lg:col-span-4 p-8 rounded-[2rem] border-4 border-soft-black bg-peach/10 relative overflow-hidden group hover:bg-peach/20 transition-colors">
           <div className="absolute top-0 right-0 p-4 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity">
-            <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-24 h-24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path d="M15.312 10.5c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z" />
-              <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM4.5 12a7.5 7.5 0 1115 0 7.5 7.5 0 01-15 0z" clipRule="evenodd" />
+              <path
+                fillRule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM4.5 12a7.5 7.5 0 1115 0 7.5 7.5 0 01-15 0z"
+                clipRule="evenodd"
+              />
             </svg>
           </div>
-          
-          <h2 className="font-grotesk text-xs font-bold uppercase tracking-[0.2em] text-muted-text mb-4">Current Streak</h2>
+
+          <h2 className="font-grotesk text-xs font-bold uppercase tracking-[0.2em] text-muted-text mb-4">
+            Current Streak
+          </h2>
           <div className="flex items-baseline gap-2">
-            <span className="font-grotesk text-7xl font-black text-soft-black">{currentStreak}</span>
-            <span className="font-grotesk text-xl font-bold text-soft-black/40 lowercase">days</span>
+            <span className="font-grotesk text-7xl font-black text-soft-black">
+              {currentStreak}
+            </span>
+            <span className="font-grotesk text-xl font-bold text-soft-black/40 lowercase">
+              days
+            </span>
           </div>
-          
-          <div className="mt-6 flex items-center gap-2">
-            <div className="px-3 py-1 bg-soft-black text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">
-              Active
+
+          {/* IDENTITY LABELING — earned title */}
+          <div className="mt-6 space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="px-3 py-1 bg-soft-black text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">
+                {identity.label}
+              </div>
+              {currentStreak > 0 && (
+                <Flame className="w-4 h-4 text-peach animate-pulse" />
+              )}
             </div>
-            {currentStreak > 0 && (
-              <span className="text-[10px] font-bold text-peach uppercase tracking-tighter animate-pulse">
-                Fire Keepers
-              </span>
-            )}
+            <p className="text-[10px] text-muted-text font-medium lowercase tracking-wide">
+              {identity.description}
+            </p>
           </div>
         </section>
 
@@ -106,15 +282,89 @@ export default function DashboardPage() {
         </section>
       </div>
 
-      {activeSession && (
-        <ActiveSessionBanner session={activeSession} />
-      )}
+      {/* === ENDOWMENT EFFECT + GOAL GRADIENT: Your thinking portfolio === */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Total reflections */}
+        <div className="p-6 rounded-2xl border-2 border-soft-black/10 bg-white/50 backdrop-blur-sm space-y-2">
+          <div className="flex items-center gap-2 text-muted-text">
+            <BookOpen className="w-4 h-4" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
+              Reflections
+            </span>
+          </div>
+          <span className="font-grotesk text-4xl font-black text-soft-black">
+            {lifetimeReflections}
+          </span>
+          <p className="text-[10px] text-muted-text font-medium">
+            {lifetimeReflections === 0
+              ? "your archive starts with one."
+              : lifetimeReflections === 1
+                ? "the first of many."
+                : `${lifetimeReflections} perspectives, uniquely yours.`}
+          </p>
+        </div>
+
+        {/* Total words — the investment you've built */}
+        <div className="p-6 rounded-2xl border-2 border-soft-black/10 bg-white/50 backdrop-blur-sm space-y-2">
+          <div className="flex items-center gap-2 text-muted-text">
+            <PenTool className="w-4 h-4" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
+              Words Written
+            </span>
+          </div>
+          <span className="font-grotesk text-4xl font-black text-soft-black">
+            {totalWords.toLocaleString()}
+          </span>
+          <p className="text-[10px] text-muted-text font-medium">
+            {totalWords === 0
+              ? "your thinking, in your words."
+              : totalWords < 500
+                ? "a growing body of thought."
+                : totalWords < 2000
+                  ? "this is becoming something real."
+                  : "a library of your own thinking."}
+          </p>
+        </div>
+
+        {/* GOAL GRADIENT — progress toward next milestone */}
+        <div className="p-6 rounded-2xl border-2 border-soft-black/10 bg-white/50 backdrop-blur-sm space-y-2">
+          <div className="flex items-center gap-2 text-muted-text">
+            <TrendingUp className="w-4 h-4" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
+              Next Milestone
+            </span>
+          </div>
+          <div className="flex items-baseline gap-2">
+            <span className="font-grotesk text-4xl font-black text-soft-black">
+              {nextMilestone}
+            </span>
+            <span className="font-grotesk text-sm font-bold text-soft-black/40">
+              reflections
+            </span>
+          </div>
+
+          {/* Progress bar */}
+          <div className="w-full h-2 bg-soft-black/10 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-peach rounded-full transition-all duration-700"
+              style={{ width: `${Math.min(milestoneProgress * 100, 100)}%` }}
+            />
+          </div>
+          <p className="text-[10px] text-muted-text font-medium">
+            {nextMilestone - lifetimeReflections === 1
+              ? "one reflection away."
+              : `${nextMilestone - lifetimeReflections} to go. keep compounding.`}
+          </p>
+        </div>
+      </div>
+
+      {activeSession && <ActiveSessionBanner session={activeSession} />}
 
       <ResurfacingCard />
 
       {!activeSession && (
         <div className="pt-8">
-          <Link 
+          <Link
             href="/dashboard/session/new"
             className="brutal-btn bg-soft-black text-white text-lg px-10 py-4 hover:bg-peach hover:text-soft-black w-full md:w-auto"
           >
