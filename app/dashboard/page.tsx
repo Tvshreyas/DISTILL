@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
-import { useQuery } from "convex/react";
+import { useEffect, useMemo, useState } from "react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Link from "next/link";
 import ActiveSessionBanner from "@/components/ActiveSessionBanner";
@@ -11,7 +11,8 @@ import { WordReveal } from "@/components/ui/word-reveal";
 import OnboardingReflectionRestore from "@/components/OnboardingReflectionRestore";
 import QuickDistill from "@/components/QuickDistill";
 import posthog from "posthog-js";
-import { Flame, BookOpen, PenTool, TrendingUp } from "lucide-react";
+import { toast } from "sonner";
+import { Flame, BookOpen, PenTool, TrendingUp, Sparkles, Check, ArrowRight, CalendarDays, X } from "lucide-react";
 
 function toDateString(date: Date, timezone: string): string {
   return date.toLocaleDateString("en-CA", { timeZone: timezone });
@@ -100,6 +101,152 @@ function getIdentityLabel(reflectionCount: number): {
   };
 }
 
+function MonthlyDigestCard() {
+  const profile = useQuery(api.profiles.get);
+  const digest = useQuery(api.reflections.getMonthlyDigest);
+  const updateProfile = useMutation(api.profiles.update);
+
+  if (!digest || !profile) return null;
+
+  // Check if already dismissed for current month
+  const currentMonth = new Date().toISOString().slice(0, 7); // "YYYY-MM"
+  if (profile.lastDigestDismissedMonth === currentMonth) return null;
+
+  const handleDismiss = async () => {
+    try {
+      await updateProfile({ lastDigestDismissedMonth: currentMonth });
+    } catch {
+      toast.error("Failed to dismiss.");
+    }
+  };
+
+  return (
+    <div className="p-6 md:p-8 rounded-[2rem] bg-sage/10 border-2 border-sage/30 space-y-3 relative">
+      <button
+        onClick={handleDismiss}
+        className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-sage/20 transition-colors text-muted-text hover:text-soft-black"
+      >
+        <X className="w-4 h-4" />
+      </button>
+      <div className="flex items-center gap-2">
+        <CalendarDays className="w-4 h-4 text-sage-dark" />
+        <span className="text-[10px] font-black uppercase tracking-widest text-muted-text">
+          Monthly Digest
+        </span>
+      </div>
+      <p className="font-grotesk text-lg font-black lowercase leading-snug text-soft-black">
+        in {digest.monthLabel.toLowerCase()}, you wrote {digest.totalReflections} reflection{digest.totalReflections !== 1 ? "s" : ""} across {digest.contentTypes} type{digest.contentTypes !== 1 ? "s" : ""}.
+        {digest.totalWords > 0 && ` ${digest.totalWords.toLocaleString()} words total.`}
+        {digest.longestStreak > 0 && ` your longest streak was ${digest.longestStreak} days.`}
+      </p>
+    </div>
+  );
+}
+
+function ResurfacingHero() {
+  const pending = useQuery(api.resurfacing.getPending);
+  const respond = useMutation(api.resurfacing.respond);
+  const [isResponding, setIsResponding] = useState(false);
+  const [isLayering, setIsLayering] = useState(false);
+  const [layerContent, setLayerContent] = useState("");
+
+  if (!pending) return null;
+
+  const handleStillTrue = async () => {
+    setIsResponding(true);
+    try {
+      await respond({ queueId: pending.queueId, action: "surfaced" });
+      toast.success("Acknowledged.");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to respond.");
+    } finally {
+      setIsResponding(false);
+    }
+  };
+
+  const handleLayered = async () => {
+    if (!layerContent.trim()) return;
+    setIsResponding(true);
+    try {
+      await respond({ queueId: pending.queueId, action: "layered", layerContent: layerContent.trim() });
+      toast.success("Perspective layered.");
+      setIsLayering(false);
+      setLayerContent("");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to save layer.");
+    } finally {
+      setIsResponding(false);
+    }
+  };
+
+  return (
+    <div className="p-6 md:p-8 rounded-[2rem] bg-lavender/10 border-2 border-lavender/30 space-y-4">
+      <div className="flex items-center gap-2">
+        <Sparkles className="w-4 h-4 text-lavender" />
+        <span className="text-[10px] font-black uppercase tracking-widest text-muted-text">
+          {pending.daysAgo} days ago, you thought...
+        </span>
+      </div>
+
+      <p className="text-lg md:text-xl font-medium text-soft-black leading-relaxed italic border-l-4 border-lavender/30 pl-4 line-clamp-3">
+        &ldquo;{pending.reflection.content}&rdquo;
+      </p>
+
+      {pending.session?.title && (
+        <p className="text-xs text-muted-text font-bold lowercase">
+          from: {pending.session.title}
+        </p>
+      )}
+
+      {isLayering ? (
+        <div className="space-y-3">
+          <label className="text-[10px] font-black uppercase tracking-widest text-muted-text block">
+            How has your thinking shifted?
+          </label>
+          <textarea
+            value={layerContent}
+            onChange={(e) => setLayerContent(e.target.value)}
+            placeholder="Write how your perspective has changed..."
+            className="w-full bg-white brutal-border-sm p-4 text-sm font-medium focus:outline-none min-h-[100px] rounded-xl resize-none"
+            maxLength={3000}
+          />
+          <div className="flex gap-3">
+            <button
+              onClick={handleLayered}
+              disabled={isResponding || !layerContent.trim()}
+              className="px-5 py-2.5 bg-lavender text-soft-black rounded-xl font-bold text-sm brutal-border-sm shadow-[2px_2px_0px_#292524] hover:bg-lavender/90 disabled:opacity-50"
+            >
+              {isResponding ? "Saving..." : "Save Layer"}
+            </button>
+            <button
+              onClick={() => { setIsLayering(false); setLayerContent(""); }}
+              className="px-5 py-2.5 text-muted-text font-bold text-sm hover:text-soft-black"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-wrap gap-3">
+          <button
+            onClick={handleStillTrue}
+            disabled={isResponding}
+            className="px-5 py-2.5 bg-soft-black text-white rounded-xl font-bold text-sm hover:bg-soft-black/90 transition-all flex items-center gap-2"
+          >
+            <Check className="w-4 h-4" /> Still true
+          </button>
+          <button
+            onClick={() => setIsLayering(true)}
+            className="px-5 py-2.5 bg-white border-2 border-soft-black rounded-xl font-bold text-sm hover:bg-lavender/10 transition-all flex items-center gap-2"
+          >
+            <ArrowRight className="w-4 h-4" /> My thinking shifted
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function DashboardPage() {
   const profile = useQuery(api.profiles.get);
   const activeSession = useQuery(api.sessions.getActive);
@@ -171,7 +318,13 @@ export default function DashboardPage() {
     <div className="flex flex-col items-center justify-center py-32 text-center">
       <div className="p-8 rounded-[2rem] border-4 border-soft-black bg-peach/10 max-w-sm space-y-4">
         <h2 className="font-grotesk text-xl font-black text-soft-black">profile not found.</h2>
-        <p className="text-sm text-muted-text">something went wrong loading your profile. try refreshing the page.</p>
+        <p className="text-sm text-muted-text">something went wrong loading your profile.</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-6 py-3 bg-soft-black text-white rounded-2xl font-black text-sm hover:scale-105 transition-transform"
+        >
+          try again
+        </button>
       </div>
     </div>
   );
@@ -203,6 +356,10 @@ export default function DashboardPage() {
       </header>
 
       <QuickDistill />
+
+      <ResurfacingHero />
+
+      <MonthlyDigestCard />
 
       {/* === LOSS AVERSION: Streak urgency banner === */}
       {streakUrgency && (

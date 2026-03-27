@@ -102,17 +102,8 @@ export const respond = mutation({
         throw new Error("Resource not found.");
       }
 
-      // Pro-only check
-      const profile = await ctx.db
-        .query("profiles")
-        .withIndex("by_userId", (q) => q.eq("userId", userId))
-        .unique();
-
-      if (!profile || profile.plan === "free") {
-        throw new Error(
-          "Adding new perspectives is a Pro feature. Upgrade to continue."
-        );
-      }
+      // Resurfacing layers are free for all users — this is the "aha moment"
+      // Pro gate only applies to reflections.addLayer (Living Archive detail page)
 
       await ctx.db.insert("reflectionLayers", {
         reflectionId: queueEntry.reflectionId,

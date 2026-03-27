@@ -3,6 +3,7 @@ import { v } from "convex/values";
 import { checkContentSafety } from "./safety";
 
 const VALID_CONTENT_TYPES = ["book", "video", "article", "podcast", "other"] as const;
+const FREE_TIER_LIMIT = 3;
 
 function computeWordCount(text: string): number {
   const trimmed = text.trim();
@@ -19,7 +20,6 @@ function toDateString(date: Date, timezone: string): string {
 
 export const migrate = mutation({
   args: {
-    deviceToken: v.string(),
     title: v.string(),
     contentType: v.string(),
     consumeReason: v.optional(v.string()),
@@ -78,8 +78,8 @@ export const migrate = mutation({
       throw new Error("Invalid content type.");
     }
 
-    if (args.reflectionContent.length < 1 || args.reflectionContent.length > 400) {
-      throw new Error("Reflection must be between 1 and 400 characters.");
+    if (args.reflectionContent.length < 1 || args.reflectionContent.length > 800) {
+      throw new Error("Reflection must be between 1 and 800 characters.");
     }
 
     if (
@@ -89,6 +89,28 @@ export const migrate = mutation({
         !Number.isInteger(args.thinkingShiftRating))
     ) {
       throw new Error("Rating must be an integer between 1 and 5.");
+    }
+
+    // Free tier enforcement
+    if (profile.plan === "free") {
+      const completedSessions = await ctx.db
+        .query("sessions")
+        .withIndex("by_userId_status", (q) =>
+          q.eq("userId", userId).eq("status", "complete")
+        )
+        .filter((q) =>
+          q.and(
+            q.eq(q.field("isDeleted"), false),
+            q.neq(q.field("type"), "quick")
+          )
+        )
+        .collect();
+
+      if (completedSessions.length >= FREE_TIER_LIMIT) {
+        throw new Error(
+          `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions.`
+        );
+      }
     }
 
     const now = new Date();

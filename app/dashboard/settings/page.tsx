@@ -28,6 +28,7 @@ export default function SettingsPage() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleteInput, setDeleteInput] = useState("");
   const [isFreezing, setIsFreezing] = useState(false);
+  const [updatingPref, setUpdatingPref] = useState<string | null>(null);
 
   if (profile === undefined) return <div className="p-8 text-muted-text animate-pulse">Loading settings...</div>;
   if (!profile) return <div className="p-8 text-muted-text text-center">Profile not found.</div>;
@@ -155,7 +156,7 @@ export default function SettingsPage() {
             <div className="space-y-1">
               <h3 className="font-black text-xl lowercase">streak freeze</h3>
               <p className="text-sm font-medium text-muted-text">
-                Protect your streak when you miss a day. Available freezes: 1/month (Pro only).
+                Protect your streak when you miss a day. 1 available per month.
               </p>
             </div>
             <div className={`px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest ${
@@ -165,20 +166,14 @@ export default function SettingsPage() {
             </div>
           </div>
 
-          {profile.plan === "pro" ? (
-            <button
-              onClick={handleApplyFreeze}
-              disabled={isFreezing || profile.streakFreezeUsedThisMonth >= 1}
-              className="flex items-center gap-2 px-6 py-3 bg-white border-4 border-soft-black rounded-xl font-black text-sm hover:bg-sage/10 transition-all disabled:opacity-30 disabled:hover:bg-white"
-            >
-              <Snowflake className="w-4 h-4" />
-              {isFreezing ? "Applying..." : profile.streakFreezeUsedThisMonth >= 1 ? "Already used this month" : "Apply Freeze"}
-            </button>
-          ) : (
-            <p className="text-sm font-black text-peach-dark">
-              Upgrade to Pro to use streak freezes.
-            </p>
-          )}
+          <button
+            onClick={handleApplyFreeze}
+            disabled={isFreezing || profile.streakFreezeUsedThisMonth >= 1}
+            className="flex items-center gap-2 px-6 py-3 bg-white border-4 border-soft-black rounded-xl font-black text-sm hover:bg-sage/10 transition-all disabled:opacity-30 disabled:hover:bg-white"
+          >
+            <Snowflake className="w-4 h-4" />
+            {isFreezing ? "Applying..." : profile.streakFreezeUsedThisMonth >= 1 ? "Already used this month" : "Apply Freeze"}
+          </button>
         </div>
       </section>
 
@@ -224,14 +219,17 @@ export default function SettingsPage() {
               <p className="text-xs text-muted-text">Past reflections resurface via email when due.</p>
             </div>
             <button
+              disabled={updatingPref === "resurfacing"}
               onClick={async () => {
+                setUpdatingPref("resurfacing");
                 const next = !profile.resurfacingEmailsEnabled;
                 try {
                   await updateProfile({ resurfacingEmailsEnabled: next });
                   toast.success(next ? "Resurfacing emails enabled." : "Resurfacing emails disabled.");
                 } catch { toast.error("Failed to update preference."); }
+                finally { setUpdatingPref(null); }
               }}
-              className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors ${profile.resurfacingEmailsEnabled ? "bg-sage" : "bg-soft-black/10"}`}
+              className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors disabled:opacity-50 ${profile.resurfacingEmailsEnabled ? "bg-sage" : "bg-soft-black/10"}`}
             >
               <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white border-2 border-soft-black transition-transform ${profile.resurfacingEmailsEnabled ? "translate-x-5" : "translate-x-0"}`} />
             </button>
@@ -244,14 +242,17 @@ export default function SettingsPage() {
               <p className="text-xs text-muted-text">A reminder when your streak is active but no reflection recorded today.</p>
             </div>
             <button
+              disabled={updatingPref === "streak"}
               onClick={async () => {
+                setUpdatingPref("streak");
                 const next = !profile.streakRemindersEnabled;
                 try {
                   await updateProfile({ streakRemindersEnabled: next });
                   toast.success(next ? "Streak reminders enabled." : "Streak reminders disabled.");
                 } catch { toast.error("Failed to update preference."); }
+                finally { setUpdatingPref(null); }
               }}
-              className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors ${profile.streakRemindersEnabled ? "bg-sage" : "bg-soft-black/10"}`}
+              className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors disabled:opacity-50 ${profile.streakRemindersEnabled ? "bg-sage" : "bg-soft-black/10"}`}
             >
               <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white border-2 border-soft-black transition-transform ${profile.streakRemindersEnabled ? "translate-x-5" : "translate-x-0"}`} />
             </button>
@@ -264,14 +265,17 @@ export default function SettingsPage() {
               <p className="text-xs text-muted-text">A summary of your reflections, sent Sundays.</p>
             </div>
             <button
+              disabled={updatingPref === "weekly"}
               onClick={async () => {
+                setUpdatingPref("weekly");
                 const next = !profile.weeklySummaryEnabled;
                 try {
                   await updateProfile({ weeklySummaryEnabled: next });
                   toast.success(next ? "Weekly summary enabled." : "Weekly summary disabled.");
                 } catch { toast.error("Failed to update preference."); }
+                finally { setUpdatingPref(null); }
               }}
-              className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors ${profile.weeklySummaryEnabled ? "bg-sage" : "bg-soft-black/10"}`}
+              className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors disabled:opacity-50 ${profile.weeklySummaryEnabled ? "bg-sage" : "bg-soft-black/10"}`}
             >
               <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white border-2 border-soft-black transition-transform ${profile.weeklySummaryEnabled ? "translate-x-5" : "translate-x-0"}`} />
             </button>

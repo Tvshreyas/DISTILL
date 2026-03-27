@@ -40,8 +40,11 @@ async function checkLimit(
   limiter: Ratelimit | null,
   key: string
 ): Promise<RateLimitResult> {
-  // Graceful fallback: no Redis = allow all (dev mode)
+  // Graceful fallback: no Redis = allow all in dev, block in production
   if (!limiter) {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error("Rate limiting is not configured. Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.");
+    }
     return { success: true, remaining: 999, reset: Date.now() + 60_000 };
   }
   const result = await limiter.limit(key);

@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-warm-bg">
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
-        <p className="text-sm text-gray-500 mb-10">Last updated: February 2026</p>
+        <p className="text-sm text-muted-text mb-10">Last updated: February 2026</p>
 
-        <div className="space-y-8 text-gray-700 text-[15px] leading-relaxed">
+        <div className="space-y-8 text-soft-black/80 text-[15px] leading-relaxed">
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               1. What Distill Is
             </h2>
             <p>
@@ -27,7 +27,7 @@ export default function TermsPage() {
               you capture and revisit your own perspective on content you
               consume.
             </p>
-            <p className="mt-2 p-3 bg-gray-50 rounded text-sm border border-gray-200">
+            <p className="mt-2 p-3 bg-warm-bg/50 rounded text-sm border border-soft-black/10">
               <strong>Medical disclaimer:</strong> Distill is NOT a medical
               device and is NOT intended to diagnose, treat, cure, or prevent
               anxiety, digital addiction, attention disorders, or any other
@@ -38,7 +38,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               2. Your Account
             </h2>
             <ul className="list-disc pl-5 space-y-1">
@@ -50,7 +50,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               3. Free and Pro Tiers
             </h2>
             <ul className="list-disc pl-5 space-y-1">
@@ -72,7 +72,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               4. Acceptable Use
             </h2>
             <p>You agree not to:</p>
@@ -86,7 +86,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               5. Your Content
             </h2>
             <ul className="list-disc pl-5 space-y-1">
@@ -108,7 +108,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               6. Payments and Cancellation
             </h2>
             <ul className="list-disc pl-5 space-y-1">
@@ -131,7 +131,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               7. Limitation of Liability
             </h2>
             <p>
@@ -153,7 +153,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               8. Changes to Terms
             </h2>
             <p>
@@ -165,26 +165,26 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               9. Contact
             </h2>
             <p>
               Questions about these terms? Email us at{" "}
               <a
-                href="mailto:legal@distill.app"
-                className="text-black underline underline-offset-2"
+                href="mailto:legal@distillwise.com"
+                className="text-soft-black underline underline-offset-2"
               >
-                legal@distill.app
+                legal@distillwise.com
               </a>
               .
             </p>
           </section>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-gray-200">
+        <div className="mt-12 pt-6 border-t border-soft-black/10">
           <Link
             href="/"
-            className="text-sm text-gray-500 hover:text-black underline-offset-2 hover:underline"
+            className="text-sm text-muted-text hover:text-soft-black underline-offset-2 hover:underline"
           >
             Back to Distill
           </Link>

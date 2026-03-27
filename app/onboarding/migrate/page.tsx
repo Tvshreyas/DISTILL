@@ -9,14 +9,13 @@ import { sanitizeContent } from "@/lib/sanitize";
 const STORAGE_KEY = "distill_onboarding";
 
 interface OnboardingData {
-  deviceToken: string;
   title: string;
   contentType: string;
-  consumeReason: string;
-  reflectionContent: string;
-  promptUsed: string;
-  thinkingShiftRating: number | null;
-  createdAt: number;
+  consumeReason?: string;
+  content: string;
+  promptUsed?: string;
+  thinkingShiftRating?: number | null;
+  savedAt?: string;
 }
 
 function getStoredData(): OnboardingData | null {
@@ -26,7 +25,7 @@ function getStoredData(): OnboardingData | null {
     if (!raw) return null;
     const data: OnboardingData = JSON.parse(raw);
     // Expire after 7 days
-    if (Date.now() - data.createdAt > 7 * 24 * 60 * 60 * 1000) {
+    if (data.savedAt && Date.now() - new Date(data.savedAt).getTime() > 7 * 24 * 60 * 60 * 1000) {
       localStorage.removeItem(STORAGE_KEY);
       return null;
     }
@@ -46,7 +45,7 @@ export default function MigratePage() {
   async function migrate() {
     const data = getStoredData();
 
-    if (!data || !data.reflectionContent.trim()) {
+    if (!data || !data.content.trim()) {
       // No onboarding data — user may already be migrated or came here directly
       router.replace("/dashboard");
       return;
@@ -54,13 +53,12 @@ export default function MigratePage() {
 
     try {
       await migrateOnboarding({
-        deviceToken: data.deviceToken,
         title: sanitizeContent(data.title),
         contentType: data.contentType,
         consumeReason: data.consumeReason
           ? sanitizeContent(data.consumeReason)
           : undefined,
-        reflectionContent: sanitizeContent(data.reflectionContent),
+        reflectionContent: sanitizeContent(data.content),
         promptUsed: data.promptUsed
           ? sanitizeContent(data.promptUsed)
           : undefined,
@@ -96,20 +94,20 @@ export default function MigratePage() {
 
   if (error) {
     return (
-      <main className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-sm text-center space-y-4">
-          <h1 className="text-xl font-semibold text-gray-900">
+      <main className="min-h-screen bg-warm-bg flex items-center justify-center p-4">
+        <div className="w-full max-w-sm text-center space-y-4 brutal-card bg-white p-8">
+          <h1 className="text-xl font-black text-soft-black">
             Could not save your reflection
           </h1>
-          <p className="text-sm text-gray-600">{error}</p>
+          <p className="text-sm text-muted-text">{error}</p>
           <button
             onClick={handleRetry}
             disabled={retrying}
-            className="bg-black text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-soft-black text-white px-5 py-2.5 rounded-2xl text-sm font-black hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {retrying ? "Retrying..." : "Try again"}
           </button>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-muted-text">
             Your reflection is still saved locally and will not be lost.
           </p>
         </div>
@@ -118,10 +116,10 @@ export default function MigratePage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4">
+    <main className="min-h-screen bg-warm-bg flex items-center justify-center p-4">
       <div className="text-center space-y-3">
-        <div className="w-6 h-6 border-2 border-gray-300 border-t-black rounded-full animate-spin mx-auto" />
-        <p className="text-sm text-gray-500">Saving your reflection...</p>
+        <div className="w-6 h-6 border-2 border-soft-black/20 border-t-soft-black rounded-full animate-spin mx-auto" />
+        <p className="text-sm text-muted-text">Saving your reflection...</p>
       </div>
     </main>
   );

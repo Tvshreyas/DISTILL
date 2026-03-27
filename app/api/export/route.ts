@@ -55,7 +55,7 @@ export async function GET() {
       },
     });
   } catch (err) {
-    console.error("Export API error:", err instanceof Error ? err.message : "Unknown error");
+    console.error("Export API error occurred");
     return NextResponse.json(
       { error: "Failed to export data" },
       { status: 500 }

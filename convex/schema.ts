@@ -36,6 +36,8 @@ export default defineSchema({
     reEngagementStep: v.optional(v.number()), // 1-3, tracks last sent re-engagement email
     upgradeEmailStep: v.optional(v.number()), // 1-3, tracks last sent upgrade email
     proUpgradeDate: v.optional(v.string()), // ISO date when user upgraded to Pro (for annual nudge timing)
+    // Monthly digest dismissal tracking
+    lastDigestDismissedMonth: v.optional(v.string()),
     // Acquisition tracking (first-touch UTM params)
     acquisitionSource: v.optional(v.string()),
     acquisitionMedium: v.optional(v.string()),

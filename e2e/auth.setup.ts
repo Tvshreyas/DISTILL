@@ -1,6 +1,6 @@
 import { test as setup, expect } from "@playwright/test";
 
-const TEST_EMAIL = process.env.E2E_TEST_EMAIL || "test@distill.app";
+const TEST_EMAIL = process.env.E2E_TEST_EMAIL || "test@distillwise.com";
 const TEST_PASSWORD = process.env.E2E_TEST_PASSWORD || "TestPassword123!";
 
 setup("authenticate", async ({ page }) => {

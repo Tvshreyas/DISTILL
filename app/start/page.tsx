@@ -91,7 +91,7 @@ export default function StartPage() {
                 </button>
               </div>
               <p className="text-[10px] font-black uppercase tracking-widest text-muted-text">
-                {content.length} / 400
+                {content.length} / 800
               </p>
             </div>
 
@@ -104,7 +104,7 @@ export default function StartPage() {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="pour your thoughts here..."
-                maxLength={400}
+                maxLength={800}
                 className="w-full h-80 p-8 rounded-3xl bg-white brutal-border border-4 border-soft-black text-xl font-medium placeholder:text-soft-black/5 outline-none focus:bg-white/80 transition-all resize-none shadow-brutal hover:shadow-brutal-lg"
                 autoFocus
               />

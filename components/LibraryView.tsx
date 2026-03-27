@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
@@ -8,6 +7,15 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { Search, Book, Video, FileText, Mic, MoreHorizontal, ChevronRight, Trash2, Layers } from "lucide-react";
 import type { Id } from "@/convex/_generated/dataModel";
+
+interface ReflectionItem {
+  _id: Id<"reflections">;
+  _creationTime: number;
+  content: string;
+  thinkingShiftRating?: number;
+  layerCount: number;
+  session: { title: string; contentType: string } | null;
+}
 
 const CONTENT_TYPES = [
   { id: "all", label: "all", icon: MoreHorizontal },
@@ -187,9 +195,10 @@ export default function LibraryView() {
       ) : (
         <div className="grid grid-cols-1 gap-4">
           {reflections
-            .filter((r: any) => r._id !== pendingDelete)
-            .map((reflection: any) => {
-              const TypeIcon = CONTENT_TYPE_ICONS[reflection.session?.contentType] || MoreHorizontal;
+            .filter((r: ReflectionItem) => r._id !== pendingDelete)
+            .map((reflection: ReflectionItem) => {
+              const ct = reflection.session?.contentType as string | undefined;
+              const TypeIcon = (ct ? CONTENT_TYPE_ICONS[ct] : undefined) || MoreHorizontal;
               const layerCount: number = reflection.layerCount ?? 0;
 
               return (
@@ -200,7 +209,7 @@ export default function LibraryView() {
                 >
                   {/* Delete button */}
                   <button
-                    onClick={(e) => handleDelete(reflection._id as Id<"reflections">, e)}
+                    onClick={(e) => handleDelete(reflection._id, e)}
                     className="absolute top-6 right-6 p-2 rounded-xl opacity-0 group-hover:opacity-100 hover:bg-red-50 text-muted-text hover:text-red-500 transition-all z-10"
                     title="Delete reflection"
                   >

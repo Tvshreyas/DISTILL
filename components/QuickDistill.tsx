@@ -59,7 +59,7 @@ export default function QuickDistill() {
                   onChange={(e) => setContent(e.target.value)}
                   placeholder="The Atomic Insight (~60 words)"
                   className="w-full bg-transparent border-none focus:outline-none font-medium text-lg md:text-xl placeholder:text-muted-text/30"
-                  maxLength={400}
+                  maxLength={800}
                   disabled={isSubmitting}
                 />
               </div>

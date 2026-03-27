@@ -1,5 +1,6 @@
 export const FREE_TIER_LIMIT = 3;
 export const FREE_TIER_NUDGE = 2;
+export const QUICK_DISTILL_LIMIT = 800;
 
 // Pricing configuration
 export const PRICING = {

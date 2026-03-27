@@ -11,6 +11,7 @@ import { WeeklySummaryEmail } from "../lib/email/templates/WeeklySummaryEmail";
 import { WelcomeEmail, getWelcomeSubject } from "../lib/email/templates/WelcomeEmail";
 import { ReEngagementEmail, getReEngagementSubject } from "../lib/email/templates/ReEngagementEmail";
 import { UpgradeEmail, getUpgradeSubject } from "../lib/email/templates/UpgradeEmail";
+import { buildUnsubscribeUrl } from "../lib/email/unsubscribe";
 
 const NOTIFICATION_COOLDOWN_HOURS = 24;
 const NOTIFICATION_BATCH_SIZE = 50;
@@ -51,35 +52,6 @@ function getTodayInTimezone(timezone: string): string {
   }
 }
 
-async function generateUnsubscribeUrl(
-  appUrl: string,
-  userId: string,
-  type: "resurfacing" | "streak" | "weekly" | "welcome" | "reengagement" | "upgrade",
-  secret: string
-): Promise<string> {
-  const encoder = new TextEncoder();
-  const payload = `${userId}:${type}`;
-
-  const key = await crypto.subtle.importKey(
-    "raw",
-    encoder.encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"]
-  );
-
-  const signature = await crypto.subtle.sign("HMAC", key, encoder.encode(payload));
-  const hmacHex = Array.from(new Uint8Array(signature))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-
-  const token = btoa(`${payload}:${hmacHex}`)
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
-
-  return `${appUrl}/api/notifications/unsubscribe?token=${token}`;
-}
 
 // ────────────────────────────────────────────────────────
 // Resurfacing Emails
@@ -126,7 +98,7 @@ export const processResurfacingEmails = internalAction({
       if (!pending) continue;
 
       try {
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "resurfacing", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(appUrl, profile.userId, "resurfacing");
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(
@@ -210,7 +182,7 @@ export const processStreakReminders = internalAction({
       if (recentLogs.length > 0) continue;
 
       try {
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "streak", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(appUrl, profile.userId, "streak");
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(
@@ -293,7 +265,7 @@ export const processWeeklySummary = internalAction({
           userId: profile.userId,
         });
 
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "weekly", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(appUrl, profile.userId, "weekly");
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(
@@ -369,7 +341,7 @@ export const sendWelcomeEmail = internalAction({
 
     try {
       const resend = new Resend(resendApiKey);
-      const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, userId, "welcome", unsubSecret);
+      const unsubscribeUrl = buildUnsubscribeUrl(appUrl, userId, "welcome");
       const dashboardUrl = `${appUrl}/dashboard`;
 
       const html = await render(
@@ -461,7 +433,7 @@ export const processReEngagementEmails = internalAction({
       if (recentLogs.length > 0) continue;
 
       try {
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "reengagement", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(appUrl, profile.userId, "reengagement");
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(
@@ -574,7 +546,7 @@ export const processUpgradeEmails = internalAction({
       if (recentLogs.length > 0) continue;
 
       try {
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "upgrade", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(appUrl, profile.userId, "upgrade");
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(

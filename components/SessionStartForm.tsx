@@ -104,6 +104,7 @@ export default function SessionStartForm({
           type="button"
           role="switch"
           aria-checked={isRetroactive}
+          aria-label="Mark as retroactive reflection"
           onClick={() => setIsRetroactive(!isRetroactive)}
           className={`relative w-12 h-7 rounded-full border-2 border-soft-black transition-colors ${
             isRetroactive ? "bg-peach" : "bg-white"

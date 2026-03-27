@@ -162,7 +162,7 @@ Always explicitly destructure fields from `args` validators. `userId` always com
 All user strings go through `sanitizeContent()` (strips all HTML via DOMPurify). Never render reflection content as HTML.
 
 ### Free Tier Enforcement
-10 reflections/month for free users. Enforced **server-side** in both `reflections.create` AND `sessions.create` mutations. Profile tracks `reflectionCountThisMonth`. Soft nudge at 8/10, hard block at 10/10. Session start page and dashboard show appropriate UI banners.
+3 Deep Sessions/month for free users (Quick Distills are unlimited). Enforced **server-side** in `reflections.create` mutation by counting completed deep sessions. Profile tracks `reflectionCountThisMonth`. Soft nudge at 2/3 (`FREE_TIER_NUDGE`), hard block at 3/3 (`FREE_TIER_LIMIT`). Session start page and dashboard show appropriate UI banners.
 
 ---
 

@@ -32,5 +32,5 @@
   <!-- Bottom accent line -->
   <rect x="80" y="580" width="1040" height="2" rx="1" fill="url(#amber)" opacity="0.3"/>
   <!-- URL -->
-  <text x="600" y="610" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" fill="#6b7280" text-anchor="middle">distill.app</text>
+  <text x="600" y="610" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" fill="#6b7280" text-anchor="middle">distillwise.com</text>
 </svg>

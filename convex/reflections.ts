@@ -215,9 +215,9 @@ export const quickCreate = mutation({
     if (!identity) throw new Error("Unauthorized");
     const userId = identity.subject;
 
-    // Validate content (Quick Distill: Atomic insights only, 400 chars)
-    if (args.content.length < 1 || args.content.length > 400) {
-      throw new Error("Quick Distill must be under 400 characters. Use a Deep Session for longer reflections.");
+    // Validate content (Quick Distill: Atomic insights only, 800 chars)
+    if (args.content.length < 1 || args.content.length > 800) {
+      throw new Error("Quick Distill must be under 800 characters. Use a Deep Session for longer reflections.");
     }
 
     const cleanContent = sanitizeContent(args.content);
@@ -697,6 +697,61 @@ export const exportAll = query({
         };
       })
     );
+  },
+});
+
+export const getMonthlyDigest = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return null;
+    const userId = identity.subject;
+
+    // Get previous month's date range
+    const now = new Date();
+    const prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    const prevMonthEnd = new Date(now.getFullYear(), now.getMonth(), 0, 23, 59, 59, 999);
+    const monthLabel = prevMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+
+    const reflections = await ctx.db
+      .query("reflections")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .filter((q) =>
+        q.and(
+          q.eq(q.field("isDeleted"), false),
+          q.gte(q.field("_creationTime"), prevMonth.getTime()),
+          q.lte(q.field("_creationTime"), prevMonthEnd.getTime())
+        )
+      )
+      .collect();
+
+    if (reflections.length === 0) return null;
+
+    const totalReflections = reflections.length;
+    const totalWords = reflections.reduce((sum, r) => sum + (r.wordCount ?? 0), 0);
+
+    // Content type breakdown
+    const typeMap: Record<string, number> = {};
+    for (const r of reflections) {
+      const session = await ctx.db.get(r.sessionId);
+      const ct = session?.contentType ?? "other";
+      typeMap[ct] = (typeMap[ct] || 0) + 1;
+    }
+    const contentTypes = Object.keys(typeMap).length;
+
+    // Longest streak within previous month (approximate: count consecutive reflection days)
+    const profile = await ctx.db
+      .query("profiles")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .unique();
+
+    return {
+      monthLabel,
+      totalReflections,
+      totalWords,
+      contentTypes,
+      longestStreak: profile?.longestStreak ?? 0,
+    };
   },
 });
 

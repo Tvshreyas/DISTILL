@@ -143,8 +143,8 @@
 .font-outfit { font-family: var(--font-outfit); }
 .font-reenie { font-family: var(--font-reenie); }
 
-/* Global Brutal Focus State */
-input:focus, button:focus {
+/* Global Brutal Focus State — only for keyboard navigation */
+input:focus-visible, button:focus-visible {
   outline: 4px solid #000 !important;
   outline-offset: 2px !important;
   transition: none !important;

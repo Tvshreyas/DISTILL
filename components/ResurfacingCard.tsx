@@ -7,7 +7,6 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 export default function ResurfacingCard() {
-  const profile = useQuery(api.profiles.get);
   const pending = useQuery(api.resurfacing.getPending);
   const respond = useMutation(api.resurfacing.respond);
   const [isResponding, setIsResponding] = useState(false);
@@ -120,23 +119,11 @@ export default function ResurfacingCard() {
               Acknowledge <Check className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
             </button>
             <button
-              onClick={() => {
-                if (profile?.plan === "free") {
-                  toast.error("Adding new perspectives is a Pro feature.");
-                  return;
-                }
-                setIsLayering(true);
-              }}
+              onClick={() => setIsLayering(true)}
               className="px-6 py-4 bg-white brutal-border-sm border-2 border-soft-black rounded-2xl font-bold hover:bg-sage/10 transition-all flex items-center gap-2 group/layer"
             >
-              View Changed 
-              {profile?.plan === "free" ? (
-                <svg className="w-4 h-4 text-peach" fill="currentColor" viewBox="0 0 24 24">
-                   <path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1v-3a5 5 0 0 0-5-5zm-3 5a3 3 0 1 1 6 0v3H9V7zm3 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                </svg>
-              ) : (
-                <ArrowRight className="w-4 h-4 group-hover/layer:translate-x-1 transition-transform" />
-              )}
+              View Changed
+              <ArrowRight className="w-4 h-4 group-hover/layer:translate-x-1 transition-transform" />
             </button>
             <button
               onClick={() => handleAction("dismissed")}

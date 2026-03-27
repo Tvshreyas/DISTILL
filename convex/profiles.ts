@@ -108,6 +108,7 @@ export const update = mutation({
     streakRemindersEnabled: v.optional(v.boolean()),
     weeklySummaryEnabled: v.optional(v.boolean()),
     preferredNotificationHour: v.optional(v.number()),
+    lastDigestDismissedMonth: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -143,6 +144,8 @@ export const update = mutation({
       updates.weeklySummaryEnabled = args.weeklySummaryEnabled;
     if (args.preferredNotificationHour !== undefined)
       updates.preferredNotificationHour = args.preferredNotificationHour;
+    if (args.lastDigestDismissedMonth !== undefined)
+      updates.lastDigestDismissedMonth = args.lastDigestDismissedMonth;
 
     await ctx.db.patch(profile._id, updates);
   },
@@ -222,7 +225,7 @@ export const getByStripeCustomerId = internalQuery({
       .unique();
   },
 });
-// Apply a streak freeze (Pro only, 1 per month)
+// Apply a streak freeze (1 per month for all users)
 export const applyStreakFreeze = mutation({
   args: {},
   handler: async (ctx) => {
@@ -236,10 +239,6 @@ export const applyStreakFreeze = mutation({
       .unique();
 
     if (!profile) throw new Error("Resource not found.");
-
-    if (profile.plan !== "pro") {
-      throw new Error("Streak freeze is a Pro feature.");
-    }
 
     if (profile.streakFreezeUsedThisMonth >= 1) {
       throw new Error("You've already used your streak freeze this month.");
