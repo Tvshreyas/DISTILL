@@ -477,7 +477,18 @@ export const addLayer = mutation({
     if (!profile) throw new Error("Profile not found.");
 
     if (profile.plan === "free") {
-      throw new Error("PRO_REQUIRED");
+      // Free users get 1 layer per reflection (via resurfacing only)
+      const existingLayers = await ctx.db
+        .query("reflectionLayers")
+        .withIndex("by_reflectionId", (q) =>
+          q.eq("reflectionId", args.reflectionId),
+        )
+        .filter((q) => q.eq(q.field("userId"), userId))
+        .collect();
+
+      if (existingLayers.length > 0) {
+        throw new Error("PRO_REQUIRED");
+      }
     }
 
     // Sanitize content
@@ -797,5 +808,47 @@ export const getWeeklyStats = internalQuery({
     );
 
     return { totalReflections, totalWords, contentTypeBreakdown };
+  },
+});
+
+// Random reflection from archive — variable reward schedule (Skinner)
+// Deterministic per day so it doesn't change on re-renders
+export const randomFromArchive = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return null;
+    const userId = identity.subject;
+
+    const reflections = await ctx.db
+      .query("reflections")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .filter((q) => q.eq(q.field("isDeleted"), false))
+      .collect();
+
+    if (reflections.length < 3) return null; // Need a few before archive feels meaningful
+
+    // Use today's date as seed for deterministic daily pick
+    const today = new Date().toISOString().split("T")[0];
+    let hash = 0;
+    for (let i = 0; i < today.length; i++) {
+      hash = (hash * 31 + today.charCodeAt(i)) | 0;
+    }
+    const index = Math.abs(hash) % reflections.length;
+    const reflection = reflections[index];
+
+    const session = await ctx.db.get(reflection.sessionId);
+    const daysAgo = Math.floor(
+      (Date.now() - reflection._creationTime) / (1000 * 60 * 60 * 24),
+    );
+
+    return {
+      _id: reflection._id,
+      content: reflection.content,
+      sessionTitle: session?.title ?? null,
+      contentType: session?.contentType ?? null,
+      daysAgo,
+      createdAt: reflection._creationTime,
+    };
   },
 });

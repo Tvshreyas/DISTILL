@@ -11,9 +11,6 @@ export default async function SignUpPage({
 
   return (
     <main className="relative min-h-screen flex items-center justify-center bg-warm-bg overflow-hidden font-sans">
-      {/* Subtle Grain Overlay for Tactile Feel */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.15] mix-blend-multiply bg-[url('https://grain-y.vercel.app/noise.svg')] bg-repeat z-50" />
-
       {/* Grain Overlay for Tactile Feel */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.12] mix-blend-multiply bg-[url('https://grain-y.vercel.app/noise.svg')] bg-repeat z-50" />
 
@@ -64,7 +61,7 @@ export default async function SignUpPage({
                   authenticating...
                 </p>
                 <p className="text-[11px] text-muted-text font-bold uppercase tracking-[0.3em] opacity-40">
-                  pre-focus sequence active
+                  signing you in...
                 </p>
               </div>
             </div>
@@ -73,6 +70,7 @@ export default async function SignUpPage({
           <SignUp
             routing="path"
             path="/sign-up"
+            forceRedirectUrl="/onboarding/migrate"
             appearance={{
               variables: {
                 colorPrimary: "#0A0A0A",
@@ -118,7 +116,17 @@ export default async function SignUpPage({
           />
         </div>
 
-        <p className="mt-8 text-center text-[10px] text-muted-text font-bold uppercase tracking-widest">
+        <p className="mt-6 text-center text-sm text-muted-text font-medium">
+          already have an account?{" "}
+          <Link
+            href="/sign-in"
+            className="text-soft-black hover:text-peach font-black underline decoration-2 underline-offset-4 transition-colors"
+          >
+            log in
+          </Link>
+        </p>
+
+        <p className="mt-4 text-center text-[10px] text-muted-text font-bold uppercase tracking-widest">
           By continuing, you agree to our{" "}
           <Link
             href="/terms"

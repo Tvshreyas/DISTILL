@@ -41,6 +41,20 @@ export const getPending = query({
       (now.getTime() - createdDate.getTime()) / (1000 * 60 * 60 * 24),
     );
 
+    // Check if free user already layered this reflection
+    const profile = await ctx.db
+      .query("profiles")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .unique();
+
+    const existingLayers = await ctx.db
+      .query("reflectionLayers")
+      .withIndex("by_reflectionId", (q) =>
+        q.eq("reflectionId", item.reflectionId),
+      )
+      .filter((q) => q.eq(q.field("userId"), userId))
+      .collect();
+
     return {
       queueId: item._id,
       reflectionId: item.reflectionId,
@@ -58,6 +72,8 @@ export const getPending = query({
           }
         : null,
       daysAgo,
+      plan: profile?.plan ?? "free",
+      hasExistingLayer: existingLayers.length > 0,
     };
   },
 });

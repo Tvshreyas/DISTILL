@@ -131,13 +131,16 @@ export default function ResurfacingCard() {
               Acknowledge{" "}
               <Check className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
             </button>
-            <button
-              onClick={() => setIsLayering(true)}
-              className="px-6 py-4 bg-white brutal-border-sm border-2 border-soft-black rounded-2xl font-bold hover:bg-sage/10 transition-all flex items-center gap-2 group/layer"
-            >
-              View Changed
-              <ArrowRight className="w-4 h-4 group-hover/layer:translate-x-1 transition-transform" />
-            </button>
+            {/* Free users: 1 layer per reflection. Pro users: unlimited. */}
+            {!(pending.plan === "free" && pending.hasExistingLayer) && (
+              <button
+                onClick={() => setIsLayering(true)}
+                className="px-6 py-4 bg-white brutal-border-sm border-2 border-soft-black rounded-2xl font-bold hover:bg-sage/10 transition-all flex items-center gap-2 group/layer"
+              >
+                View Changed
+                <ArrowRight className="w-4 h-4 group-hover/layer:translate-x-1 transition-transform" />
+              </button>
+            )}
             <button
               onClick={() => handleAction("dismissed")}
               disabled={isResponding}

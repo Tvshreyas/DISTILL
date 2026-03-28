@@ -50,13 +50,20 @@ function Header() {
         </span>
       </div>
 
-      {/* Keeping a minimal link to sign in so users aren't stranded */}
-      <Link
-        href="/sign-in"
-        className="text-sm font-bold uppercase tracking-widest hover:text-peach transition-colors"
-      >
-        log in
-      </Link>
+      <div className="flex items-center gap-4">
+        <Link
+          href="/sign-in"
+          className="text-sm font-bold uppercase tracking-widest hover:text-peach transition-colors"
+        >
+          log in
+        </Link>
+        <Link
+          href="/start"
+          className="text-sm font-black uppercase tracking-widest bg-soft-black text-white px-5 py-2.5 hover:bg-peach hover:text-soft-black transition-all"
+        >
+          get started
+        </Link>
+      </div>
     </header>
   );
 }
@@ -373,10 +380,10 @@ function FinalCTA() {
         </h2>
         <div className="pt-8">
           <Link
-            href="/sign-up"
+            href="/start"
             className="brutal-btn bg-soft-black text-white text-xl px-12 py-5"
           >
-            start reflecting &rarr;
+            start thinking &rarr;
           </Link>
         </div>
       </div>

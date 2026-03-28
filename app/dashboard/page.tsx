@@ -22,6 +22,7 @@ import {
   ArrowRight,
   CalendarDays,
   X,
+  ArchiveRestore,
 } from "lucide-react";
 
 function toDateString(date: Date, timezone: string): string {
@@ -257,15 +258,53 @@ function ResurfacingHero() {
           >
             <Check className="w-4 h-4" /> Still true
           </button>
-          <button
-            onClick={() => setIsLayering(true)}
-            className="px-5 py-2.5 bg-white border-2 border-soft-black rounded-xl font-bold text-sm hover:bg-lavender/10 transition-all flex items-center gap-2"
-          >
-            <ArrowRight className="w-4 h-4" /> My thinking shifted
-          </button>
+          {!(pending.plan === "free" && pending.hasExistingLayer) && (
+            <button
+              onClick={() => setIsLayering(true)}
+              className="px-5 py-2.5 bg-white border-2 border-soft-black rounded-xl font-bold text-sm hover:bg-lavender/10 transition-all flex items-center gap-2"
+            >
+              <ArrowRight className="w-4 h-4" /> My thinking shifted
+            </button>
+          )}
         </div>
       )}
     </div>
+  );
+}
+
+// Variable Reward — random past reflection surfaces daily
+function ArchiveSpotlight() {
+  const archiveItem = useQuery(api.reflections.randomFromArchive);
+
+  if (!archiveItem) return null;
+
+  return (
+    <Link
+      href={`/dashboard/library/${archiveItem._id}`}
+      className="block p-6 md:p-8 rounded-[2rem] bg-peach/5 border-2 border-peach/20 space-y-3 hover:bg-peach/10 transition-colors group"
+    >
+      <div className="flex items-center gap-2">
+        <ArchiveRestore className="w-4 h-4 text-peach" />
+        <span className="text-[10px] font-black uppercase tracking-widest text-muted-text">
+          From Your Archive
+          {archiveItem.daysAgo > 0 && ` · ${archiveItem.daysAgo}d ago`}
+        </span>
+      </div>
+
+      <p className="text-lg font-medium text-soft-black leading-relaxed italic border-l-4 border-peach/30 pl-4 line-clamp-3">
+        &ldquo;{archiveItem.content}&rdquo;
+      </p>
+
+      {archiveItem.sessionTitle && (
+        <p className="text-xs text-muted-text font-bold lowercase">
+          from: {archiveItem.sessionTitle}
+        </p>
+      )}
+
+      <span className="text-[10px] font-black uppercase tracking-widest text-peach group-hover:text-soft-black transition-colors flex items-center gap-1">
+        revisit this thought <ArrowRight className="w-3 h-3" />
+      </span>
+    </Link>
   );
 }
 
@@ -387,6 +426,8 @@ export default function DashboardPage() {
       <QuickDistill />
 
       <ResurfacingHero />
+
+      <ArchiveSpotlight />
 
       <MonthlyDigestCard />
 

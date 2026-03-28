@@ -61,7 +61,7 @@ export default async function SignInPage({
                   authenticating...
                 </p>
                 <p className="text-[11px] text-muted-text font-bold uppercase tracking-[0.3em] opacity-40">
-                  pre-focus sequence active
+                  signing you in...
                 </p>
               </div>
             </div>
@@ -115,7 +115,17 @@ export default async function SignInPage({
           />
         </div>
 
-        <p className="mt-8 text-center text-[10px] text-muted-text font-bold uppercase tracking-widest">
+        <p className="mt-6 text-center text-sm text-muted-text font-medium">
+          don&apos;t have an account?{" "}
+          <Link
+            href="/sign-up"
+            className="text-soft-black hover:text-peach font-black underline decoration-2 underline-offset-4 transition-colors"
+          >
+            sign up
+          </Link>
+        </p>
+
+        <p className="mt-4 text-center text-[10px] text-muted-text font-bold uppercase tracking-widest">
           By continuing, you agree to our{" "}
           <Link
             href="/terms"

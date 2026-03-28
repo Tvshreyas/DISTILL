@@ -1,17 +1,30 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Check, Sparkles, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { REFLECTION_PROMPTS } from "@/lib/prompts";
+
+// Deterministic daily prompt — same question all day, new one tomorrow
+function getDailyPrompt(): string {
+  const today = new Date().toISOString().split("T")[0];
+  let hash = 0;
+  for (let i = 0; i < today.length; i++) {
+    hash = (hash * 31 + today.charCodeAt(i)) | 0;
+  }
+  const index = Math.abs(hash) % REFLECTION_PROMPTS.length;
+  return REFLECTION_PROMPTS[index].toLowerCase();
+}
 
 export default function QuickDistill() {
   const [content, setContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dailyPrompt = useMemo(() => getDailyPrompt(), []);
 
   const quickCreate = useMutation(api.reflections.quickCreate);
 
@@ -57,7 +70,7 @@ export default function QuickDistill() {
                   type="text"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  placeholder="The Atomic Insight (~60 words)"
+                  placeholder={dailyPrompt}
                   className="w-full bg-transparent border-none focus:outline-none font-medium text-lg md:text-xl placeholder:text-muted-text/30"
                   maxLength={800}
                   disabled={isSubmitting}
