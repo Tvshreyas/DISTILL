@@ -12,14 +12,16 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-warm-bg">
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
-        <p className="text-sm text-gray-500 mb-10">Last updated: February 2026</p>
+        <p className="text-sm text-muted-text mb-10">
+          Last updated: February 2026
+        </p>
 
-        <div className="space-y-8 text-gray-700 text-[15px] leading-relaxed">
+        <div className="space-y-8 text-soft-black/80 text-[15px] leading-relaxed">
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               1. What Distill Is
             </h2>
             <p>
@@ -27,7 +29,7 @@ export default function TermsPage() {
               you capture and revisit your own perspective on content you
               consume.
             </p>
-            <p className="mt-2 p-3 bg-gray-50 rounded text-sm border border-gray-200">
+            <p className="mt-2 p-3 bg-warm-bg/50 rounded text-sm border border-soft-black/10">
               <strong>Medical disclaimer:</strong> Distill is NOT a medical
               device and is NOT intended to diagnose, treat, cure, or prevent
               anxiety, digital addiction, attention disorders, or any other
@@ -38,19 +40,24 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               2. Your Account
             </h2>
             <ul className="list-disc pl-5 space-y-1">
-              <li>You must provide a valid email address to create an account.</li>
-              <li>You are responsible for maintaining access to your email for authentication.</li>
+              <li>
+                You must provide a valid email address to create an account.
+              </li>
+              <li>
+                You are responsible for maintaining access to your email for
+                authentication.
+              </li>
               <li>One account per person. Do not share your account.</li>
               <li>You must be at least 13 years old to use Distill.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               3. Free and Pro Tiers
             </h2>
             <ul className="list-disc pl-5 space-y-1">
@@ -62,9 +69,7 @@ export default function TermsPage() {
                 <strong>Pro plan:</strong> Unlimited reflections. Add layers to
                 past thoughts. Weekly digest. Export everything.
               </li>
-              <li>
-                Free tier limits reset on the 1st of each month.
-              </li>
+              <li>Free tier limits reset on the 1st of each month.</li>
               <li>
                 We reserve the right to modify tier limits with 30 days notice.
               </li>
@@ -72,7 +77,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               4. Acceptable Use
             </h2>
             <p>You agree not to:</p>
@@ -86,7 +91,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               5. Your Content
             </h2>
             <ul className="list-disc pl-5 space-y-1">
@@ -101,14 +106,12 @@ export default function TermsPage() {
                 Your content is never used for AI training, never shared with
                 third parties, and never sold.
               </li>
-              <li>
-                You can export or delete your data at any time.
-              </li>
+              <li>You can export or delete your data at any time.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               6. Payments and Cancellation
             </h2>
             <ul className="list-disc pl-5 space-y-1">
@@ -124,20 +127,20 @@ export default function TermsPage() {
                 data is preserved — nothing is deleted.
               </li>
               <li>
-                Refunds are handled on a case-by-case basis. Contact us within
-                7 days of a charge.
+                Refunds are handled on a case-by-case basis. Contact us within 7
+                days of a charge.
               </li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               7. Limitation of Liability
             </h2>
             <p>
-              Distill is provided &quot;as is&quot; without warranties of any kind,
-              express or implied. We do not guarantee that the service will be
-              uninterrupted, secure, or error-free.
+              Distill is provided &quot;as is&quot; without warranties of any
+              kind, express or implied. We do not guarantee that the service
+              will be uninterrupted, secure, or error-free.
             </p>
             <p className="mt-2">
               To the maximum extent permitted by law, Distill and its creators
@@ -146,45 +149,45 @@ export default function TermsPage() {
               data, arising from your use of the service.
             </p>
             <p className="mt-2">
-              Our total liability for any claim arising from these terms or
-              your use of Distill is limited to the amount you paid us in the
-              12 months preceding the claim, or $50, whichever is greater.
+              Our total liability for any claim arising from these terms or your
+              use of Distill is limited to the amount you paid us in the 12
+              months preceding the claim, or $50, whichever is greater.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               8. Changes to Terms
             </h2>
             <p>
-              We may update these terms from time to time. We will notify you
-              of material changes via the email associated with your account.
+              We may update these terms from time to time. We will notify you of
+              material changes via the email associated with your account.
               Continued use of Distill after changes take effect constitutes
               acceptance of the revised terms.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               9. Contact
             </h2>
             <p>
               Questions about these terms? Email us at{" "}
               <a
-                href="mailto:legal@distill.app"
-                className="text-black underline underline-offset-2"
+                href="mailto:legal@distillwise.com"
+                className="text-soft-black underline underline-offset-2"
               >
-                legal@distill.app
+                legal@distillwise.com
               </a>
               .
             </p>
           </section>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-gray-200">
+        <div className="mt-12 pt-6 border-t border-soft-black/10">
           <Link
             href="/"
-            className="text-sm text-gray-500 hover:text-black underline-offset-2 hover:underline"
+            className="text-sm text-muted-text hover:text-soft-black underline-offset-2 hover:underline"
           >
             Back to Distill
           </Link>

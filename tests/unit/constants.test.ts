@@ -46,7 +46,7 @@ describe("RATE_LIMIT", () => {
 
   it("read limit is higher than write limit", () => {
     expect(RATE_LIMIT.API_READ.maxRequests).toBeGreaterThan(
-      RATE_LIMIT.API_WRITE.maxRequests
+      RATE_LIMIT.API_WRITE.maxRequests,
     );
   });
 

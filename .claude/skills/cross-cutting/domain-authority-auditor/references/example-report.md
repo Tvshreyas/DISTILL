@@ -21,23 +21,24 @@ Full example audit output for reference. See the [SKILL.md](../SKILL.md) for the
 
 #### Veto Check (Emergency Brake)
 
-| Veto Item | Status | Action |
-|-----------|--------|--------|
-| T03: Link-Traffic Coherence | ✅ Pass | Link growth correlates with traffic growth |
+| Veto Item                        | Status  | Action                                         |
+| -------------------------------- | ------- | ---------------------------------------------- |
+| T03: Link-Traffic Coherence      | ✅ Pass | Link growth correlates with traffic growth     |
 | T05: Backlink Profile Uniqueness | ✅ Pass | No PBN patterns detected; diverse link sources |
-| T09: Penalty & Deindex History | ✅ Pass | No manual actions; clean penalty history |
+| T09: Penalty & Deindex History   | ✅ Pass | No manual actions; clean penalty history       |
 
 ### Dimension Scores
 
-| Dimension | Score | Rating | Weight | Weighted |
-|-----------|-------|--------|--------|----------|
-| C — Citation | 72/100 | Medium | 40% | 28.8 |
-| I — Identity | 58/100 | Low | 15% | 8.7 |
-| T — Trust | 81/100 | Good | 20% | 16.2 |
-| E — Eminence | 65/100 | Medium | 25% | 16.25 |
-| **CITE Score** | | | | **69.9/100** |
+| Dimension      | Score  | Rating | Weight | Weighted     |
+| -------------- | ------ | ------ | ------ | ------------ |
+| C — Citation   | 72/100 | Medium | 40%    | 28.8         |
+| I — Identity   | 58/100 | Low    | 15%    | 8.7          |
+| T — Trust      | 81/100 | Good   | 20%    | 16.2         |
+| E — Eminence   | 65/100 | Medium | 25%    | 16.25        |
+| **CITE Score** |        |        |        | **69.9/100** |
 
 **Score Calculation**:
+
 - CITE Score = 72 × 0.40 + 58 × 0.15 + 81 × 0.20 + 65 × 0.25 = 69.9
 
 **Rating Scale**: 90-100 Excellent | 75-89 Good | 60-74 Medium | 40-59 Low | 0-39 Poor
@@ -69,25 +70,28 @@ Sorted by: weight × points lost (highest impact first)
 ### Action Plan
 
 #### Quick Wins (< 1 week)
+
 - [ ] Add sameAs, founder, and foundingDate to Organization schema
 - [ ] Claim Google Business Profile for branded SERP control
 
 #### Medium Effort (1-4 weeks)
+
 - [ ] Create Wikidata entry with complete properties and references
 - [ ] Optimize top 10 pages with GEO-friendly definitive statements
 - [ ] Create or complete CrunchBase, LinkedIn company page profiles
 
 #### Strategic (1-3 months)
+
 - [ ] Launch monthly content refresh program targeting stale pages
 - [ ] Build topical authority through 3-4 pillar content clusters
 - [ ] Pursue digital PR to earn mentions on industry publications (TechCrunch, G2)
 
 ### Cross-Reference with CORE-EEAT
 
-| Assessment | Score | Rating |
-|-----------|-------|--------|
-| CITE (Domain) | 69.9/100 | Medium |
-| CORE-EEAT (Content) | Run content-quality-auditor on sample pages | — |
+| Assessment          | Score                                       | Rating |
+| ------------------- | ------------------------------------------- | ------ |
+| CITE (Domain)       | 69.9/100                                    | Medium |
+| CORE-EEAT (Content) | Run content-quality-auditor on sample pages | —      |
 
 **Diagnosis**: Low CITE + unknown CORE-EEAT → Run `/seo:audit-page` on top 5 landing pages to determine whether to prioritize content quality or domain authority first.
 

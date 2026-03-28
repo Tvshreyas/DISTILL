@@ -13,41 +13,41 @@ Use this template to create the project glossary at memory/glossary.md.
 
 ## Brand Terms
 
-| Term | Full Name | Context |
-|------|-----------|---------|
+| Term           | Full Name   | Context              |
+| -------------- | ----------- | -------------------- |
 | [abbreviation] | [full name] | [when/how it's used] |
 
 ## Product Names
 
-| Internal Name | Public Name | Category |
-|---------------|-------------|----------|
-| [code name] | [market name] | [product type] |
+| Internal Name | Public Name   | Category       |
+| ------------- | ------------- | -------------- |
+| [code name]   | [market name] | [product type] |
 
 ## Custom Segments
 
-| Segment Name | Definition | Keyword Count |
-|--------------|------------|---------------|
-| Hero KWs | Top 10 revenue-driving keywords | 10 |
-| Quick Wins | Low-difficulty, high-value targets | 25 |
-| Brand Defense | Brand + modifier combinations | 15 |
+| Segment Name  | Definition                         | Keyword Count |
+| ------------- | ---------------------------------- | ------------- |
+| Hero KWs      | Top 10 revenue-driving keywords    | 10            |
+| Quick Wins    | Low-difficulty, high-value targets | 25            |
+| Brand Defense | Brand + modifier combinations      | 15            |
 
 ## Competitor Shorthand
 
-| Shorthand | Full Domain | Notes |
-|-----------|-------------|-------|
-| Comp A | competitor-a.com | Main competitor, [industry] |
-| Comp B | competitor-b.com | Niche competitor, [specialty] |
+| Shorthand | Full Domain      | Notes                         |
+| --------- | ---------------- | ----------------------------- |
+| Comp A    | competitor-a.com | Main competitor, [industry]   |
+| Comp B    | competitor-b.com | Niche competitor, [specialty] |
 
 ## Project Acronyms
 
-| Acronym | Full Term | Definition |
-|---------|-----------|------------|
-| [ABC] | [Full term] | [What it means in this project] |
+| Acronym | Full Term   | Definition                      |
+| ------- | ----------- | ------------------------------- |
+| [ABC]   | [Full term] | [What it means in this project] |
 
 ## Internal Jargon
 
-| Phrase | Meaning | Example Usage |
-|--------|---------|---------------|
+| Phrase   | Meaning      | Example Usage                 |
+| -------- | ------------ | ----------------------------- |
 | [phrase] | [definition] | "Check rankings for [phrase]" |
 
 ## Historical Context
@@ -61,4 +61,3 @@ Use this template to create the project glossary at memory/glossary.md.
 
 _This glossary helps decode project shorthand and maintain consistency across reports and communications._
 ```
-

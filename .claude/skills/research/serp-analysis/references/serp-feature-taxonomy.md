@@ -12,13 +12,13 @@ Modern Search Engine Results Pages are far more than ten blue links. Google disp
 
 SERP features fall into five broad categories:
 
-| Category | Features | Controlled By |
-|----------|---------|--------------|
-| **Knowledge Features** | Knowledge Panel, AI Overview, Featured Snippet | Content quality + structured data |
-| **Engagement Features** | People Also Ask, Related Searches, Things to Know | Content relevance + question coverage |
-| **Rich Results** | FAQ, How-To, Review Stars, Recipe, Event, Product | Schema markup + content format |
-| **Media Features** | Image Pack, Video Carousel, Web Stories | Media optimization + hosting platform |
-| **Commerce Features** | Shopping Results, Local Pack, Ads | Merchant feeds + Google Business Profile + ad spend |
+| Category                | Features                                          | Controlled By                                       |
+| ----------------------- | ------------------------------------------------- | --------------------------------------------------- |
+| **Knowledge Features**  | Knowledge Panel, AI Overview, Featured Snippet    | Content quality + structured data                   |
+| **Engagement Features** | People Also Ask, Related Searches, Things to Know | Content relevance + question coverage               |
+| **Rich Results**        | FAQ, How-To, Review Stars, Recipe, Event, Product | Schema markup + content format                      |
+| **Media Features**      | Image Pack, Video Carousel, Web Stories           | Media optimization + hosting platform               |
+| **Commerce Features**   | Shopping Results, Local Pack, Ads                 | Merchant feeds + Google Business Profile + ad spend |
 
 ---
 
@@ -30,13 +30,13 @@ SERP features fall into five broad categories:
 
 **Sub-types:**
 
-| Sub-type | Format | Typical Trigger | Example Query |
-|---------|--------|----------------|---------------|
-| Paragraph | 40-60 word text block | "What is", "Why is", definitions | "what is domain authority" |
-| Ordered List | Numbered steps | "How to", process queries | "how to submit a sitemap" |
-| Unordered List | Bulleted list | "Types of", "best", collections | "types of schema markup" |
-| Table | Data in rows/columns | Comparison, data, pricing | "HTTP status codes list" |
-| Video | YouTube clip with timestamp | "How to" with visual component | "how to use Google Search Console" |
+| Sub-type       | Format                      | Typical Trigger                  | Example Query                      |
+| -------------- | --------------------------- | -------------------------------- | ---------------------------------- |
+| Paragraph      | 40-60 word text block       | "What is", "Why is", definitions | "what is domain authority"         |
+| Ordered List   | Numbered steps              | "How to", process queries        | "how to submit a sitemap"          |
+| Unordered List | Bulleted list               | "Types of", "best", collections  | "types of schema markup"           |
+| Table          | Data in rows/columns        | Comparison, data, pricing        | "HTTP status codes list"           |
+| Video          | YouTube clip with timestamp | "How to" with visual component   | "how to use Google Search Console" |
 
 **Optimization Playbook:**
 
@@ -49,6 +49,7 @@ SERP features fall into five broad categories:
 7. **Provide context after the snippet answer** -- Elaborate below to demonstrate depth
 
 **Monitoring:**
+
 - Track featured snippet ownership weekly for target keywords
 - Monitor snippet format changes (Google may switch from paragraph to list)
 - Watch for snippet loss after content updates
@@ -60,6 +61,7 @@ SERP features fall into five broad categories:
 **What it is:** An expandable accordion of related questions with brief answers pulled from web pages.
 
 **Trigger conditions:**
+
 - Almost all informational queries
 - Many commercial investigation queries
 - Questions beget more questions -- clicking one PAA reveals additional questions
@@ -74,6 +76,7 @@ SERP features fall into five broad categories:
 6. **Target the cascade** -- When users click one PAA, new questions appear; cover those too
 
 **PAA Mining Workflow:**
+
 1. Search your target keyword
 2. Note all visible PAA questions (4 initially)
 3. Click each one to reveal 2-4 more
@@ -88,6 +91,7 @@ SERP features fall into five broad categories:
 **What it is:** An AI-generated summary at the top of the SERP that synthesizes information from multiple sources, with cited links.
 
 **Trigger conditions:**
+
 - Informational queries (highest trigger rate)
 - Some commercial investigation queries
 - Question-format queries
@@ -96,13 +100,13 @@ SERP features fall into five broad categories:
 
 **AI Overview Formats:**
 
-| Format | Description | Trigger Pattern |
-|--------|-----------|----------------|
-| Summary paragraph | Synthesized text answer | Definitional and explanatory queries |
-| Bulleted list | Key points extracted from sources | "Benefits of", "reasons for", multi-factor answers |
-| Step-by-step | Ordered process | "How to" queries |
-| Comparison | Side-by-side analysis | "X vs Y", "difference between" |
-| Table | Structured data comparison | Data comparison, pricing, specifications |
+| Format            | Description                       | Trigger Pattern                                    |
+| ----------------- | --------------------------------- | -------------------------------------------------- |
+| Summary paragraph | Synthesized text answer           | Definitional and explanatory queries               |
+| Bulleted list     | Key points extracted from sources | "Benefits of", "reasons for", multi-factor answers |
+| Step-by-step      | Ordered process                   | "How to" queries                                   |
+| Comparison        | Side-by-side analysis             | "X vs Y", "difference between"                     |
+| Table             | Structured data comparison        | Data comparison, pricing, specifications           |
 
 **Optimization Playbook:**
 
@@ -117,13 +121,13 @@ SERP features fall into five broad categories:
 
 **Source Citation Patterns:**
 
-| What Gets Cited | Why | How to Optimize |
-|----------------|-----|----------------|
-| Definitions | AI needs authoritative definitions | Write clear, complete definitions in first paragraph |
-| Statistics | AI cites specific data points | Include original research, cite sources |
-| Step-by-step processes | AI extracts structured sequences | Use numbered lists with clear step headers |
-| Comparison data | AI synthesizes multi-source comparisons | Create comparison tables with clear labels |
-| Expert quotes | AI values authoritative voices | Include expert attribution with credentials |
+| What Gets Cited        | Why                                     | How to Optimize                                      |
+| ---------------------- | --------------------------------------- | ---------------------------------------------------- |
+| Definitions            | AI needs authoritative definitions      | Write clear, complete definitions in first paragraph |
+| Statistics             | AI cites specific data points           | Include original research, cite sources              |
+| Step-by-step processes | AI extracts structured sequences        | Use numbered lists with clear step headers           |
+| Comparison data        | AI synthesizes multi-source comparisons | Create comparison tables with clear labels           |
+| Expert quotes          | AI values authoritative voices          | Include expert attribution with credentials          |
 
 ---
 
@@ -132,6 +136,7 @@ SERP features fall into five broad categories:
 **What it is:** A large information box (typically right sidebar on desktop) showing structured entity information from Google's Knowledge Graph.
 
 **Trigger conditions:**
+
 - Brand/entity queries
 - Notable person queries
 - Place/organization queries
@@ -154,6 +159,7 @@ SERP features fall into five broad categories:
 **What it is:** A row of image thumbnails within organic results, linking to Google Images.
 
 **Trigger conditions:**
+
 - Visual queries ("what does X look like")
 - Product queries
 - Design/inspiration queries
@@ -177,6 +183,7 @@ SERP features fall into five broad categories:
 **What it is:** A horizontal carousel of video thumbnails, typically from YouTube, or individual video results with thumbnails in organic listings.
 
 **Trigger conditions:**
+
 - "How to" queries
 - Tutorial and instructional queries
 - Entertainment queries
@@ -201,6 +208,7 @@ SERP features fall into five broad categories:
 **What it is:** A map with 3 local business listings showing name, rating, address, and hours.
 
 **Trigger conditions:**
+
 - "[service] near me" queries
 - "[service] in [location]" queries
 - Queries with implicit local intent
@@ -224,6 +232,7 @@ SERP features fall into five broad categories:
 **What it is:** Product listing ads and free product listings with images, prices, and store names.
 
 **Trigger conditions:**
+
 - Product purchase queries
 - Product name queries
 - "Buy [product]" queries
@@ -247,11 +256,11 @@ SERP features fall into five broad categories:
 
 **Sub-types:**
 
-| Sub-type | Appearance | Trigger |
-|---------|-----------|---------|
-| Full sitelinks | 4-6 two-column links with descriptions | Brand/navigational queries for authoritative sites |
-| Inline sitelinks | 2-4 single-line links | Semi-navigational queries |
-| Search box sitelinks | Site-specific search box | Large, well-structured sites |
+| Sub-type             | Appearance                             | Trigger                                            |
+| -------------------- | -------------------------------------- | -------------------------------------------------- |
+| Full sitelinks       | 4-6 two-column links with descriptions | Brand/navigational queries for authoritative sites |
+| Inline sitelinks     | 2-4 single-line links                  | Semi-navigational queries                          |
+| Search box sitelinks | Site-specific search box               | Large, well-structured sites                       |
 
 **Optimization Playbook:**
 
@@ -268,16 +277,16 @@ SERP features fall into five broad categories:
 
 These features depend on specific structured data markup:
 
-| Rich Result | Schema Required | Content Type | Visual Impact |
-|------------|----------------|-------------|--------------|
-| FAQ | FAQPage | FAQ sections on any page | Expandable Q&A below listing |
-| How-To | HowTo | Step-by-step instructions | Steps with optional images |
-| Review Stars | Review / AggregateRating | Product/service reviews | Star rating in snippet |
-| Recipe | Recipe | Food/cooking content | Image, cook time, calories |
-| Event | Event | Event listings | Date, location, price |
-| Job Posting | JobPosting | Job listings | Salary, location, company |
-| Course | Course | Educational content | Provider, description, rating |
-| Breadcrumb | BreadcrumbList | Any page with hierarchy | Path display replacing URL |
+| Rich Result  | Schema Required          | Content Type              | Visual Impact                 |
+| ------------ | ------------------------ | ------------------------- | ----------------------------- |
+| FAQ          | FAQPage                  | FAQ sections on any page  | Expandable Q&A below listing  |
+| How-To       | HowTo                    | Step-by-step instructions | Steps with optional images    |
+| Review Stars | Review / AggregateRating | Product/service reviews   | Star rating in snippet        |
+| Recipe       | Recipe                   | Food/cooking content      | Image, cook time, calories    |
+| Event        | Event                    | Event listings            | Date, location, price         |
+| Job Posting  | JobPosting               | Job listings              | Salary, location, company     |
+| Course       | Course                   | Educational content       | Provider, description, rating |
+| Breadcrumb   | BreadcrumbList           | Any page with hierarchy   | Path display replacing URL    |
 
 **General Rich Result Optimization:**
 
@@ -294,11 +303,13 @@ These features depend on specific structured data markup:
 **What it is:** Related query suggestions at the bottom of the SERP ("Related searches") or shown after a user clicks a result and returns ("People also search for").
 
 **Value for SEO:**
+
 - Keyword discovery -- reveals semantically related queries
 - Content gap identification -- topics users explore after your target query
 - Topic cluster planning -- natural subtopics to cover
 
 **How to Use:**
+
 1. Mine related searches for content ideas and internal linking opportunities
 2. Cover related topics within your content to demonstrate comprehensiveness
 3. Use related search terms as H2/H3 headings in long-form content
@@ -310,11 +321,13 @@ These features depend on specific structured data markup:
 **What it is:** Carousel cards showing key aspects of a topic, or key moments within a video.
 
 **Trigger conditions:**
+
 - Broad informational queries
 - Multi-faceted topics
 - Video content with chapters
 
 **Optimization:**
+
 - Cover multiple aspects of a topic comprehensively
 - Use clear section headings that match common subtopics
 - For video: add chapter markers with timestamps
@@ -325,19 +338,19 @@ These features depend on specific structured data markup:
 
 Not all SERP features deserve equal attention. Prioritize based on your content type and goals:
 
-| SERP Feature | Traffic Impact | Effort to Win | Best For |
-|-------------|---------------|--------------|---------|
-| Featured Snippet | Very High | Medium | Informational content sites |
-| AI Overview citation | High (growing) | Medium-High | Authority/expertise sites |
-| People Also Ask | Medium-High | Low-Medium | FAQ-rich content |
-| Video Carousel | High | High (video production) | Tutorial/how-to content |
-| Local Pack | Very High (local) | Medium | Local businesses |
-| Rich Results (FAQ) | Medium | Low | Any content with Q&A |
-| Rich Results (Review) | Medium-High | Low-Medium | Product/service reviews |
-| Image Pack | Medium | Low-Medium | Visual content creators |
-| Shopping Results | Very High (ecommerce) | Medium | Product sellers |
-| Knowledge Panel | Medium (brand) | High (long-term) | Established brands |
-| Sitelinks | Low (brand already ranking) | Low (structural) | Large, structured sites |
+| SERP Feature          | Traffic Impact              | Effort to Win           | Best For                    |
+| --------------------- | --------------------------- | ----------------------- | --------------------------- |
+| Featured Snippet      | Very High                   | Medium                  | Informational content sites |
+| AI Overview citation  | High (growing)              | Medium-High             | Authority/expertise sites   |
+| People Also Ask       | Medium-High                 | Low-Medium              | FAQ-rich content            |
+| Video Carousel        | High                        | High (video production) | Tutorial/how-to content     |
+| Local Pack            | Very High (local)           | Medium                  | Local businesses            |
+| Rich Results (FAQ)    | Medium                      | Low                     | Any content with Q&A        |
+| Rich Results (Review) | Medium-High                 | Low-Medium              | Product/service reviews     |
+| Image Pack            | Medium                      | Low-Medium              | Visual content creators     |
+| Shopping Results      | Very High (ecommerce)       | Medium                  | Product sellers             |
+| Knowledge Panel       | Medium (brand)              | High (long-term)        | Established brands          |
+| Sitelinks             | Low (brand already ranking) | Low (structural)        | Large, structured sites     |
 
 ---
 
@@ -345,27 +358,27 @@ Not all SERP features deserve equal attention. Prioritize based on your content 
 
 ### What to Track
 
-| Metric | Frequency | Tool Category | Action Threshold |
-|--------|-----------|--------------|-----------------|
-| Featured snippet ownership | Weekly | ~~SEO tool | Lost snippet → investigate within 48 hours |
-| AI Overview citation rate | Weekly | ~~AI monitor | Citation loss → review content freshness |
-| PAA presence for target keywords | Monthly | ~~SEO tool | New PAA questions → create content |
-| SERP feature composition changes | Monthly | ~~SEO tool | New feature appearing → optimize for it |
-| Rich result errors | Weekly | Search Console | Any error → fix immediately |
-| Local Pack ranking | Weekly | ~~SEO tool | Drop below position 3 → investigate |
+| Metric                           | Frequency | Tool Category  | Action Threshold                           |
+| -------------------------------- | --------- | -------------- | ------------------------------------------ |
+| Featured snippet ownership       | Weekly    | ~~SEO tool     | Lost snippet → investigate within 48 hours |
+| AI Overview citation rate        | Weekly    | ~~AI monitor   | Citation loss → review content freshness   |
+| PAA presence for target keywords | Monthly   | ~~SEO tool     | New PAA questions → create content         |
+| SERP feature composition changes | Monthly   | ~~SEO tool     | New feature appearing → optimize for it    |
+| Rich result errors               | Weekly    | Search Console | Any error → fix immediately                |
+| Local Pack ranking               | Weekly    | ~~SEO tool     | Drop below position 3 → investigate        |
 
 ### SERP Feature Change Analysis
 
 When SERP features change for your target keywords, investigate:
 
-| Change | Possible Causes | Recommended Action |
-|--------|----------------|-------------------|
+| Change                       | Possible Causes                                          | Recommended Action                                                    |
+| ---------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------- |
 | Featured snippet disappeared | Google removed snippet for this query; competitor won it | Check if snippet still exists; create better snippet-targeted content |
-| AI Overview appeared (new) | Google expanded AI Overviews to this query type | Optimize content for AI citation |
-| AI Overview disappeared | Query type removed from AI Overview program | Refocus on traditional SERP features |
-| Video carousel appeared | Google detected video intent for this query | Create video content for the keyword |
-| Local Pack appeared | Google detected local intent shift | Consider local SEO if relevant |
-| Shopping results appeared | Google detected commercial intent shift | Consider product markup or adjust content angle |
+| AI Overview appeared (new)   | Google expanded AI Overviews to this query type          | Optimize content for AI citation                                      |
+| AI Overview disappeared      | Query type removed from AI Overview program              | Refocus on traditional SERP features                                  |
+| Video carousel appeared      | Google detected video intent for this query              | Create video content for the keyword                                  |
+| Local Pack appeared          | Google detected local intent shift                       | Consider local SEO if relevant                                        |
+| Shopping results appeared    | Google detected commercial intent shift                  | Consider product markup or adjust content angle                       |
 
 ---
 
@@ -373,14 +386,14 @@ When SERP features change for your target keywords, investigate:
 
 Certain SERP feature combinations indicate specific opportunities:
 
-| SERP Combination | What It Signals | Opportunity |
-|-----------------|----------------|-------------|
+| SERP Combination               | What It Signals                            | Opportunity                                                |
+| ------------------------------ | ------------------------------------------ | ---------------------------------------------------------- |
 | AI Overview + Featured Snippet | Google sees this as high-information query | Optimize for both -- structured content with clear answers |
-| Video + PAA + Featured Snippet | Multi-format informational query | Create comprehensive guide with video and FAQ |
-| Shopping + Ads + Reviews | Strong commercial intent | Product optimization, review content |
-| Local Pack + Ads | Local commercial intent | Google Business Profile optimization |
-| No features (just blue links) | Low-feature query (or very new topic) | Potential early-mover advantage for rich results |
-| PAA only (no snippet) | Snippet opportunity not yet captured | Create snippet-optimized content |
+| Video + PAA + Featured Snippet | Multi-format informational query           | Create comprehensive guide with video and FAQ              |
+| Shopping + Ads + Reviews       | Strong commercial intent                   | Product optimization, review content                       |
+| Local Pack + Ads               | Local commercial intent                    | Google Business Profile optimization                       |
+| No features (just blue links)  | Low-feature query (or very new topic)      | Potential early-mover advantage for rich results           |
+| PAA only (no snippet)          | Snippet opportunity not yet captured       | Create snippet-optimized content                           |
 
 ---
 
@@ -388,13 +401,13 @@ Certain SERP feature combinations indicate specific opportunities:
 
 The rise of AI Overviews changes how to prioritize SERP features:
 
-| Scenario | Traditional Strategy | AI-Era Strategy |
-|---------|---------------------|----------------|
-| Informational query | Win featured snippet | Win AI Overview citation AND featured snippet |
-| Comparison query | Create comparison content | Create structured comparison tables (AI prefers these) |
-| Definition query | Write clear definition for snippet | Write authoritative, citable definition with evidence |
-| How-to query | Create step-by-step list | Create steps with unique insights AI can synthesize |
-| List query | Create comprehensive ranked list | Create list with original data/reasoning AI can cite |
+| Scenario            | Traditional Strategy               | AI-Era Strategy                                        |
+| ------------------- | ---------------------------------- | ------------------------------------------------------ |
+| Informational query | Win featured snippet               | Win AI Overview citation AND featured snippet          |
+| Comparison query    | Create comparison content          | Create structured comparison tables (AI prefers these) |
+| Definition query    | Write clear definition for snippet | Write authoritative, citable definition with evidence  |
+| How-to query        | Create step-by-step list           | Create steps with unique insights AI can synthesize    |
+| List query          | Create comprehensive ranked list   | Create list with original data/reasoning AI can cite   |
 
 ### Key Difference
 

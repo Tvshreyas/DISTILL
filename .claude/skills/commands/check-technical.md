@@ -23,6 +23,7 @@ A focused **technical SEO health check** covering infrastructure, performance, a
 ```
 
 **Arguments:**
+
 - URL or domain (required)
 
 ## Workflow

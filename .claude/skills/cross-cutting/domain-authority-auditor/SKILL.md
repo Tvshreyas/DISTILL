@@ -119,6 +119,7 @@ Automatically pull backlink profiles and link quality metrics from ~~link databa
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Domain to evaluate
 2. Domain type (if not auto-detectable): Content Publisher, Product & Service, E-commerce, Community & UGC, Tool & Utility, or Authority & Institutional
 3. Backlink data: referring domains count, domain authority, top linking domains
@@ -145,19 +146,19 @@ When a user requests a domain authority audit:
 > Canonical source: `references/cite-domain-rating.md`. This inline copy is for convenience.
 
 | Dim | Default | Content Publisher | Product & Service | E-commerce | Community & UGC | Tool & Utility | Authority & Institutional |
-|-----|:-------:|:-:|:-:|:-:|:-:|:-:|:-:|
-| C | 35% | **40%** | 25% | 20% | 35% | 25% | **45%** |
-| I | 20% | 15% | **30%** | 20% | 10% | **30%** | 20% |
-| T | 25% | 20% | 25% | **35%** | 25% | 25% | 20% |
-| E | 20% | 25% | 20% | 25% | **30%** | 20% | 15% |
+| --- | :-----: | :---------------: | :---------------: | :--------: | :-------------: | :------------: | :-----------------------: |
+| C   |   35%   |      **40%**      |        25%        |    20%     |       35%       |      25%       |          **45%**          |
+| I   |   20%   |        15%        |      **30%**      |    20%     |       10%       |    **30%**     |            20%            |
+| T   |   25%   |        20%        |        25%        |  **35%**   |       25%       |      25%       |            20%            |
+| E   |   20%   |        25%        |        20%        |    25%     |     **30%**     |      20%       |            15%            |
 
 #### Veto Check (Emergency Brake)
 
-| Veto Item | Status | Action |
-|-----------|--------|--------|
-| T03: Link-Traffic Coherence | ✅ Pass / ⚠️ VETO | [If VETO: "Audit backlink profile; disavow toxic links"] |
-| T05: Backlink Profile Uniqueness | ✅ Pass / ⚠️ VETO | [If VETO: "Flag as manipulation network; investigate link sources"] |
-| T09: Penalty & Deindex History | ✅ Pass / ⚠️ VETO | [If VETO: "Address penalty first; all other optimization is futile"] |
+| Veto Item                        | Status            | Action                                                               |
+| -------------------------------- | ----------------- | -------------------------------------------------------------------- |
+| T03: Link-Traffic Coherence      | ✅ Pass / ⚠️ VETO | [If VETO: "Audit backlink profile; disavow toxic links"]             |
+| T05: Backlink Profile Uniqueness | ✅ Pass / ⚠️ VETO | [If VETO: "Flag as manipulation network; investigate link sources"]  |
+| T09: Penalty & Deindex History   | ✅ Pass / ⚠️ VETO | [If VETO: "Address penalty first; all other optimization is futile"] |
 ```
 
 If any veto item triggers, flag it prominently at the top of the report. CITE Score is capped at 39 (Poor) regardless of other scores.
@@ -167,6 +168,7 @@ If any veto item triggers, flag it prominently at the top of the report. CITE Sc
 Evaluate each item against the criteria in [references/cite-domain-rating.md](../../references/cite-domain-rating.md).
 
 Score each item:
+
 - **Pass** = 10 points (fully meets criteria)
 - **Partial** = 5 points (partially meets criteria)
 - **Fail** = 0 points (does not meet criteria)
@@ -174,21 +176,21 @@ Score each item:
 ```markdown
 ### C — Citation
 
-| ID | Check Item | Score | Notes |
-|----|-----------|-------|-------|
-| C01 | Referring Domains Volume | Pass/Partial/Fail | [specific observation] |
+| ID  | Check Item                | Score             | Notes                  |
+| --- | ------------------------- | ----------------- | ---------------------- |
+| C01 | Referring Domains Volume  | Pass/Partial/Fail | [specific observation] |
 | C02 | Referring Domains Quality | Pass/Partial/Fail | [specific observation] |
-| ... | ... | ... | ... |
-| C10 | Link Source Diversity | Pass/Partial/Fail | [specific observation] |
+| ... | ...                       | ...               | ...                    |
+| C10 | Link Source Diversity     | Pass/Partial/Fail | [specific observation] |
 
 **C Score**: [X]/100
 
 ### I — Identity
 
-| ID | Check Item | Score | Notes |
-|----|-----------|-------|-------|
+| ID  | Check Item               | Score             | Notes                  |
+| --- | ------------------------ | ----------------- | ---------------------- |
 | I01 | Knowledge Graph Presence | Pass/Partial/Fail | [specific observation] |
-| ... | ... | ... | ... |
+| ... | ...                      | ...               | ...                    |
 
 **I Score**: [X]/100
 ```
@@ -200,19 +202,19 @@ Same format for Trust and Eminence dimensions.
 ```markdown
 ### T — Trust
 
-| ID | Check Item | Score | Notes |
-|----|-----------|-------|-------|
+| ID  | Check Item               | Score             | Notes                  |
+| --- | ------------------------ | ----------------- | ---------------------- |
 | T01 | Link Profile Naturalness | Pass/Partial/Fail | [specific observation] |
-| ... | ... | ... | ... |
+| ... | ...                      | ...               | ...                    |
 
 **T Score**: [X]/100
 
 ### E — Eminence
 
-| ID | Check Item | Score | Notes |
-|----|-----------|-------|-------|
+| ID  | Check Item                | Score             | Notes                  |
+| --- | ------------------------- | ----------------- | ---------------------- |
 | E01 | Organic Search Visibility | Pass/Partial/Fail | [specific observation] |
-| ... | ... | ... | ... |
+| ... | ...                       | ...               | ...                    |
 
 **E Score**: [X]/100
 ```
@@ -236,13 +238,13 @@ Calculate scores and generate the final report:
 
 ### Dimension Scores
 
-| Dimension | Score | Rating | Weight | Weighted |
-|-----------|-------|--------|--------|----------|
-| C — Citation | [X]/100 | [rating] | [X]% | [X] |
-| I — Identity | [X]/100 | [rating] | [X]% | [X] |
-| T — Trust | [X]/100 | [rating] | [X]% | [X] |
-| E — Eminence | [X]/100 | [rating] | [X]% | [X] |
-| **CITE Score** | | | | **[X]/100** |
+| Dimension      | Score   | Rating   | Weight | Weighted    |
+| -------------- | ------- | -------- | ------ | ----------- |
+| C — Citation   | [X]/100 | [rating] | [X]%   | [X]         |
+| I — Identity   | [X]/100 | [rating] | [X]%   | [X]         |
+| T — Trust      | [X]/100 | [rating] | [X]%   | [X]         |
+| E — Eminence   | [X]/100 | [rating] | [X]%   | [X]         |
+| **CITE Score** |         |          |        | **[X]/100** |
 
 **Score Calculation**: CITE Score = C × [w_C] + I × [w_I] + T × [w_T] + E × [w_E]
 
@@ -250,12 +252,12 @@ Calculate scores and generate the final report:
 
 ### Per-Item Scores
 
-| ID | Check Item | Score | Notes |
-|----|-----------|-------|-------|
-| C01 | Referring Domains Volume | [Pass/Partial/Fail] | [observation] |
+| ID  | Check Item                | Score               | Notes         |
+| --- | ------------------------- | ------------------- | ------------- |
+| C01 | Referring Domains Volume  | [Pass/Partial/Fail] | [observation] |
 | C02 | Referring Domains Quality | [Pass/Partial/Fail] | [observation] |
-| ... | ... | ... | ... |
-| E10 | Industry Share of Voice | [Pass/Partial/Fail] | [observation] |
+| ... | ...                       | ...                 | ...           |
+| E10 | Industry Share of Voice   | [Pass/Partial/Fail] | [observation] |
 
 ### Top 5 Priority Improvements
 
@@ -267,17 +269,22 @@ Sorted by: weight × points lost (highest impact first)
 2. **[ID] [Name]** — [specific modification suggestion]
    - Current: [Fail/Partial] | Potential gain: [X] weighted points
    - Action: [concrete step]
-3–5. [Same format]
+     3–5. [Same format]
 
 ### Action Plan
 
 #### Quick Wins (< 1 week)
+
 - [ ] [Action 1]
 - [ ] [Action 2]
+
 #### Medium Effort (1-4 weeks)
+
 - [ ] [Action 3]
 - [ ] [Action 4]
+
 #### Strategic (1-3 months)
+
 - [ ] [Action 5]
 - [ ] [Action 6]
 
@@ -285,12 +292,13 @@ Sorted by: weight × points lost (highest impact first)
 
 For a complete assessment, pair this CITE audit with a CORE-EEAT content audit:
 
-| Assessment | Score | Rating |
-|-----------|-------|--------|
-| CITE (Domain) | [X]/100 | [rating] |
-| CORE-EEAT (Content) | [Run content-quality-auditor on sample pages] | — |
+| Assessment          | Score                                         | Rating   |
+| ------------------- | --------------------------------------------- | -------- |
+| CITE (Domain)       | [X]/100                                       | [rating] |
+| CORE-EEAT (Content) | [Run content-quality-auditor on sample pages] | —        |
 
 **Diagnosis Matrix**:
+
 - High CITE + High CORE-EEAT → Maintain and expand
 - High CITE + Low CORE-EEAT → Prioritize content quality
 - Low CITE + High CORE-EEAT → Build domain authority
@@ -308,12 +316,14 @@ For a complete assessment, pair this CITE audit with a CORE-EEAT content audit:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Domain identified and accessible
 - [ ] Domain type confirmed (auto-detected or user-specified)
 - [ ] Backlink data available (at minimum: referring domains count, DA/DR)
 - [ ] If comparative audit, competitor domains also specified
 
 ### Output Validation
+
 - [ ] All 40 items scored (or marked N/A with reason)
 - [ ] All 4 dimension scores calculated correctly
 - [ ] Weighted CITE Score matches domain-type weight configuration

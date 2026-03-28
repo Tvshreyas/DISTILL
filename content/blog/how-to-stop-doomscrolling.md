@@ -36,6 +36,7 @@ The question is not how to eliminate these needs. It is how to satisfy them with
 The most effective intervention for any unwanted habit is not removal but replacement — giving the brain the same reward through a different behavior.
 
 For doomscrolling, the replacement needs to satisfy the same drives:
+
 - **Novelty** — encountering ideas you haven't thought about before
 - **Stimulation** — engaging intellectually or emotionally
 - **Low barrier** — easy to start, no setup required

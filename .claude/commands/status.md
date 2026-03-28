@@ -3,12 +3,14 @@ Show a comprehensive status overview of the Distill project.
 ## Gather and display:
 
 ### 1. Git status
+
 - Current branch
 - Uncommitted changes count
 - Last 5 commits (one-line)
 - Branches ahead/behind main
 
 ### 2. Codebase stats
+
 - Total TypeScript files
 - Total lines of code (approximate)
 - Components count (files in `components/`)
@@ -17,11 +19,13 @@ Show a comprehensive status overview of the Distill project.
 - Test count (files in `tests/`)
 
 ### 3. Quality status
+
 - TypeScript errors: run `npm run type-check 2>&1 | tail -5`
 - Lint errors: run `npm run lint 2>&1 | tail -5`
 - Build status: check if `.next` directory exists and is recent
 
 ### 4. Feature completion (based on files present)
+
 Check which Distill features have code:
 | Feature | Status |
 |---------|--------|

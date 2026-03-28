@@ -12,7 +12,7 @@ export async function POST() {
     if (!userId) {
       return NextResponse.json(
         { error: { code: "UNAUTHORIZED" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -31,7 +31,7 @@ export async function POST() {
     if (!profile?.stripeCustomerId) {
       return NextResponse.json(
         { error: { code: "NOT_FOUND", message: "No billing account found." } },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -42,10 +42,10 @@ export async function POST() {
 
     return NextResponse.json({ url: session.url });
   } catch (error) {
-    console.error("Stripe portal error:", error instanceof Error ? error.message : "Unknown error");
+    console.error("Stripe portal error occurred");
     return NextResponse.json(
       { error: { code: "SERVER_ERROR", message: "Something went wrong." } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

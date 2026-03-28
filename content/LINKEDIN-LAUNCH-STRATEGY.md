@@ -1,7 +1,7 @@
 # Distill — LinkedIn Launch Strategy
 
-*Created: 2026-03-15*
-*Launch date: Tuesday, March 17, 2026*
+_Created: 2026-03-15_
+_Launch date: Tuesday, March 17, 2026_
 
 ---
 
@@ -104,11 +104,11 @@ distillwise.com
 
 ## Which to Use
 
-| Option | Best for | Risk |
-|---|---|---|
-| 1. Story-driven | Highest engagement — personal narrative performs best on LinkedIn. Relatable "40+ books" hook. | Longer. Some people won't read past paragraph 3. |
-| 2. Data-driven | Credibility with knowledge workers, L&D professionals, academics. The research citations land well on LinkedIn. | Can feel lecture-y if the audience isn't research-oriented. |
-| 3. Short and punchy | High readability, high share-ability. Scroll-stopping format. | Less emotional connection. Doesn't explain the "why" deeply. |
+| Option              | Best for                                                                                                        | Risk                                                         |
+| ------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| 1. Story-driven     | Highest engagement — personal narrative performs best on LinkedIn. Relatable "40+ books" hook.                  | Longer. Some people won't read past paragraph 3.             |
+| 2. Data-driven      | Credibility with knowledge workers, L&D professionals, academics. The research citations land well on LinkedIn. | Can feel lecture-y if the audience isn't research-oriented.  |
+| 3. Short and punchy | High readability, high share-ability. Scroll-stopping format.                                                   | Less emotional connection. Doesn't explain the "why" deeply. |
 
 **Recommendation:** Post Option 1 on launch day (Tuesday). It has the strongest hook and the personal angle that LinkedIn rewards. Use Option 3 as a follow-up post on Thursday or Friday.
 
@@ -204,17 +204,20 @@ Post 2-3x/week. Ratio: 80% insight, 20% product.
 ## LinkedIn-Specific Tactics
 
 **Profile optimization (do before Tuesday):**
+
 - Headline: "Building Distill — a thinking tool for readers" (or similar)
 - Featured section: pin the launch post
 - About section: add one line about Distill with link
 
 **Engagement rules:**
+
 - Reply to every comment within 2 hours (LinkedIn algorithm heavily weights early engagement)
 - Reply with substance, not "thanks for sharing." Ask a follow-up question or share a related insight
 - Do NOT ask people to "like and share." LinkedIn penalizes this
 - Do NOT use hashtags excessively. 0-3 max. #activelearning #reading if any
 
 **Formatting rules:**
+
 - Short paragraphs (1-2 sentences max per line)
 - Use line breaks aggressively — LinkedIn compresses dense text
 - First line is everything — it's the hook before "see more"
@@ -222,11 +225,13 @@ Post 2-3x/week. Ratio: 80% insight, 20% product.
 - Arrow symbols (→) work well for lists instead of bullet points
 
 **Timing:**
+
 - Post between 7-9am on weekdays (peak LinkedIn feed time)
 - Tuesday and Thursday are highest-engagement days
 - Avoid weekends — LinkedIn engagement drops 60%+
 
 **Who to tag (only if you have a genuine relationship):**
+
 - People who've publicly discussed reading retention, information overload, or deep work
 - Do NOT cold-tag influencers — it looks desperate and they won't engage
 
@@ -234,14 +239,14 @@ Post 2-3x/week. Ratio: 80% insight, 20% product.
 
 ## Metrics to Track
 
-| Metric | Week 1 Target |
-|---|---|
-| Launch post impressions | 1,000+ |
-| Launch post engagement rate | 3%+ |
-| Profile views from posts | 200+ |
-| Clicks to distillwise.com from LinkedIn | 50+ |
-| Connection requests received | 20+ |
-| Comments on launch post | 15+ |
+| Metric                                  | Week 1 Target |
+| --------------------------------------- | ------------- |
+| Launch post impressions                 | 1,000+        |
+| Launch post engagement rate             | 3%+           |
+| Profile views from posts                | 200+          |
+| Clicks to distillwise.com from LinkedIn | 50+           |
+| Connection requests received            | 20+           |
+| Comments on launch post                 | 15+           |
 
 ---
 

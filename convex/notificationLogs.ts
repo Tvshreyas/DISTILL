@@ -7,7 +7,7 @@ const notificationType = v.union(
   v.literal("weekly"),
   v.literal("welcome"),
   v.literal("reengagement"),
-  v.literal("upgrade")
+  v.literal("upgrade"),
 );
 
 export const log = internalMutation({
@@ -36,12 +36,14 @@ export const getRecentByUserAndType = internalQuery({
     withinHours: v.number(),
   },
   handler: async (ctx, args) => {
-    const cutoff = new Date(Date.now() - args.withinHours * 60 * 60 * 1000).toISOString();
+    const cutoff = new Date(
+      Date.now() - args.withinHours * 60 * 60 * 1000,
+    ).toISOString();
 
     const logs = await ctx.db
       .query("notificationLogs")
       .withIndex("by_userId_type", (q) =>
-        q.eq("userId", args.userId).eq("type", args.type)
+        q.eq("userId", args.userId).eq("type", args.type),
       )
       .filter((q) => q.gte(q.field("sentAt"), cutoff))
       .collect();

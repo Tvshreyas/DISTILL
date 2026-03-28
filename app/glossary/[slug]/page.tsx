@@ -87,10 +87,7 @@ export default async function GlossaryTermPage({
             understanding {term.term.toLowerCase()}
           </h2>
           {term.explanation.split("\n\n").map((para, i) => (
-            <p
-              key={i}
-              className="text-lg text-[#78716C] leading-relaxed mb-6"
-            >
+            <p key={i} className="text-lg text-[#78716C] leading-relaxed mb-6">
               {para}
             </p>
           ))}
@@ -101,10 +98,7 @@ export default async function GlossaryTermPage({
             why it matters
           </h2>
           {term.whyItMatters.split("\n\n").map((para, i) => (
-            <p
-              key={i}
-              className="text-lg text-[#78716C] leading-relaxed mb-6"
-            >
+            <p key={i} className="text-lg text-[#78716C] leading-relaxed mb-6">
               {para}
             </p>
           ))}
@@ -145,7 +139,7 @@ export default async function GlossaryTermPage({
                         {related.definition}
                       </p>
                     </Link>
-                  )
+                  ),
               )}
             </div>
           </section>

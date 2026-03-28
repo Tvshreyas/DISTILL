@@ -12,14 +12,16 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-warm-bg">
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Privacy Policy</h1>
-        <p className="text-sm text-gray-500 mb-10">Last updated: February 2026</p>
+        <p className="text-sm text-muted-text mb-10">
+          Last updated: February 2026
+        </p>
 
-        <div className="space-y-8 text-gray-700 text-[15px] leading-relaxed">
+        <div className="space-y-8 text-soft-black/80 text-[15px] leading-relaxed">
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               What Distill Is
             </h2>
             <p>
@@ -31,7 +33,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               Data We Collect
             </h2>
             <ul className="list-disc pl-5 space-y-1">
@@ -59,7 +61,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               How We Use Your Data
             </h2>
             <ul className="list-disc pl-5 space-y-1">
@@ -74,31 +76,29 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               What We Never Do
             </h2>
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                <strong>Your reflections are never used for AI training.</strong>{" "}
+                <strong>
+                  Your reflections are never used for AI training.
+                </strong>{" "}
                 Not by us. Not by any third party. Not ever.
               </li>
               <li>
-                <strong>
-                  Your data is never shared with third parties
-                </strong>{" "}
+                <strong>Your data is never shared with third parties</strong>{" "}
                 for marketing, advertising, or any other purpose.
               </li>
               <li>
-                <strong>
-                  Your reflection content is never logged
-                </strong>{" "}
-                in server logs or error tracking systems.
+                <strong>Your reflection content is never logged</strong> in
+                server logs or error tracking systems.
               </li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               Data Retention
             </h2>
             <p>
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               Your Rights (GDPR)
             </h2>
             <p className="mb-2">
@@ -137,7 +137,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               Cookies
             </h2>
             <p>
@@ -148,7 +148,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-black mb-2">
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
               Contact
             </h2>
             <p>
@@ -156,7 +156,7 @@ export default function PrivacyPage() {
               email us at{" "}
               <a
                 href="mailto:hello@distillwise.com"
-                className="text-black underline underline-offset-2"
+                className="text-soft-black underline underline-offset-2"
               >
                 hello@distillwise.com
               </a>
@@ -165,10 +165,10 @@ export default function PrivacyPage() {
           </section>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-gray-200">
+        <div className="mt-12 pt-6 border-t border-soft-black/10">
           <Link
             href="/"
-            className="text-sm text-gray-500 hover:text-black underline-offset-2 hover:underline"
+            className="text-sm text-muted-text hover:text-soft-black underline-offset-2 hover:underline"
           >
             Back to Distill
           </Link>

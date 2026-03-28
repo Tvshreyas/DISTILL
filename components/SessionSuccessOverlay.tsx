@@ -30,10 +30,10 @@ export default function SessionSuccessOverlay({
           return old + 2;
         });
       }, 30);
-      
+
       // Auto-dismiss after 3.5 seconds
       const dismiss = setTimeout(onComplete, 3500);
-      
+
       return () => {
         clearInterval(timer);
         clearTimeout(dismiss);
@@ -50,7 +50,7 @@ export default function SessionSuccessOverlay({
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[100] bg-warm-bg flex items-center justify-center p-6"
         >
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             className="w-full max-w-lg brutal-card bg-white p-12 text-center space-y-8 relative overflow-hidden"
@@ -61,7 +61,7 @@ export default function SessionSuccessOverlay({
             </div>
 
             <div className="space-y-4">
-              <motion.div 
+              <motion.div
                 initial={{ rotate: -10, scale: 0 }}
                 animate={{ rotate: 0, scale: 1 }}
                 transition={{ type: "spring", damping: 12 }}
@@ -69,7 +69,7 @@ export default function SessionSuccessOverlay({
               >
                 <Zap className="w-10 h-10 text-soft-black" />
               </motion.div>
-              
+
               <h2 className="font-grotesk text-4xl font-black lowercase tracking-tighter text-soft-black">
                 perspective preserved.
               </h2>
@@ -84,7 +84,7 @@ export default function SessionSuccessOverlay({
                 <span>{Math.round(progress)}%</span>
               </div>
               <div className="h-4 w-full bg-soft-black/5 rounded-full overflow-hidden border-2 border-soft-black/20">
-                <motion.div 
+                <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
                   className="h-full bg-peach border-r-2 border-soft-black"

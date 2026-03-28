@@ -39,6 +39,7 @@ Discovers high-value keywords from a seed topic, classifies intent, scores diffi
 ```
 
 **Arguments:**
+
 - Seed keyword or topic (required)
 - `audience="target audience"` (optional)
 - `goal="business goal"` (optional): traffic, leads, sales, awareness
@@ -59,30 +60,38 @@ Discovers high-value keywords from a seed topic, classifies intent, scores diffi
 **Seed**: [keyword] | **Audience**: [audience] | **Goal**: [goal]
 
 ## Executive Summary
+
 - Total keywords, high-priority opportunities, estimated traffic potential
 
 ## Top Keyword Opportunities
 
 ### Quick Wins (Low difficulty, High value)
+
 | Keyword | Volume | Difficulty | Intent | Score |
 
 ### Growth Keywords (Medium difficulty, High volume)
+
 | Keyword | Volume | Difficulty | Intent | Score |
 
 ### GEO Opportunities (AI-citation potential)
+
 | Keyword | Query Type | AI Potential | Recommended Format |
 
 ## Topic Clusters
+
 **Pillar**: [keyword] + cluster keywords with volume/difficulty
 
 ## Competitive Keyword Gaps
+
 _(when competitors= provided)_
 | Keyword | Competitor | Their Position | Opportunity |
 
 ## Content Calendar Recommendations
+
 | Priority | Content Title | Target Keyword | Type | Est. Effort |
 
 ## Next Steps
+
 1-3 action items
 ```
 

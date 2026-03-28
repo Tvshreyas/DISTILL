@@ -7,6 +7,7 @@ Systematic memory update procedures triggered by specific events, plus integrati
 After specific events, update memory systematically:
 
 ### After Ranking Check
+
 ```markdown
 1. Update CLAUDE.md -> Hero Keywords table (current ranks)
 2. Append to memory/keywords/historical-rankings.csv
@@ -16,6 +17,7 @@ After specific events, update memory systematically:
 ```
 
 ### After Competitor Analysis
+
 ```markdown
 1. Update CLAUDE.md -> Primary Competitors section (DA, position vs. them)
 2. Save full report to memory/competitors/analysis-history/YYYY-MM-DD-analysis.md
@@ -24,6 +26,7 @@ After specific events, update memory systematically:
 ```
 
 ### After Audit (Technical/Content/Backlink)
+
 ```markdown
 1. Save full report to memory/audits/[type]/YYYY-MM-DD-[audit-name].md
 2. Extract top 3-5 action items -> CLAUDE.md Current Optimization Priorities
@@ -32,6 +35,7 @@ After specific events, update memory systematically:
 ```
 
 ### After Monthly/Quarterly Report
+
 ```markdown
 1. Save report to memory/reports/[period]/YYYY-MM-report.md
 2. Update all metrics in CLAUDE.md Key Metrics Snapshot
@@ -43,6 +47,7 @@ After specific events, update memory systematically:
 ## Archive Management
 
 ### Monthly Archive Routine
+
 ```markdown
 1. Review CLAUDE.md for items not referenced in 30 days
 2. Move stale items to appropriate cold storage
@@ -52,6 +57,7 @@ After specific events, update memory systematically:
 ```
 
 ### Quarterly Archive Routine
+
 ```markdown
 1. Review entire cold storage structure
 2. Compress files older than 6 months
@@ -65,37 +71,44 @@ After specific events, update memory systematically:
 This skill coordinates with other SEO skills:
 
 ### When keyword-research runs:
+
 - Add discovered keywords to memory/keywords/
 - Promote top opportunities to CLAUDE.md if high-value
 - Update glossary if new terminology emerges
 
 ### When rank-tracker runs:
+
 - Update historical-rankings.csv
 - Refresh CLAUDE.md Hero Keywords table
 - Flag significant movements for hot cache notes
 
 ### When competitor-analysis runs:
+
 - Update competitor files in memory/competitors/
 - Refresh CLAUDE.md Primary Competitors section
 - Add new competitors if they outrank current top 5
 
 ### When content-gap-analysis runs:
+
 - Store full findings in memory/audits/content/
 - Promote gap opportunities to CLAUDE.md priorities
 - Update content calendar with recommended topics
 
 ### When seo-content-writer produces content:
+
 - Log to memory/content-calendar/published-content.md
 - Track target keyword and publish date
 - Set reminder to check performance in 30 days
 
 ### When content-quality-auditor runs:
+
 - Save full report to `memory/audits/content/YYYY-MM-DD-core-eeat-[page-slug].md`
 - Update CLAUDE.md Key Metrics with latest score
 - If score < 60 (Poor/Low), flag in Active Campaigns section
 - Track dimension scores for trend analysis
 
 ### When domain-authority-auditor runs:
+
 - Save full report to memory/audits/domain/YYYY-MM-DD-cite-audit.md
 - Update CITE Score in CLAUDE.md Key Metrics Snapshot
 - Note veto item status and dimension scores

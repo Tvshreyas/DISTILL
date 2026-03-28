@@ -35,7 +35,7 @@ import { POST } from "@/app/api/stripe/webhook/route";
 
 function makeRequest(
   body = "raw-body",
-  headers: Record<string, string> = { "stripe-signature": "sig_test" }
+  headers: Record<string, string> = { "stripe-signature": "sig_test" },
 ) {
   return new Request("http://localhost/api/stripe/webhook", {
     method: "POST",

@@ -7,7 +7,10 @@ interface StreakHeatmapProps {
   monthDays: { dateStr: string; isToday: boolean }[];
 }
 
-export default function StreakHeatmap({ dates, monthDays }: StreakHeatmapProps) {
+export default function StreakHeatmap({
+  dates,
+  monthDays,
+}: StreakHeatmapProps) {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between mb-2">
@@ -35,7 +38,7 @@ export default function StreakHeatmap({ dates, monthDays }: StreakHeatmapProps) 
         <div className="grid grid-cols-10 gap-3 md:gap-4 relative z-10">
           {monthDays.map(({ dateStr, isToday }, index) => {
             const hasReflected = dates.has(dateStr);
-            
+
             return (
               <motion.div
                 key={dateStr}
@@ -47,9 +50,10 @@ export default function StreakHeatmap({ dates, monthDays }: StreakHeatmapProps) 
                 <div
                   className={`
                     aspect-square rounded-full flex items-center justify-center transition-all duration-300
-                    ${hasReflected 
-                      ? "bg-peach brutal-border-sm shadow-[2px_2px_0px_#292524] scale-105" 
-                      : "bg-sage/20 border border-soft-black/10 hover:border-soft-black/30"
+                    ${
+                      hasReflected
+                        ? "bg-peach brutal-border-sm shadow-[2px_2px_0px_#292524] scale-105"
+                        : "bg-sage/20 border border-soft-black/10 hover:border-soft-black/30"
                     }
                     ${isToday ? "ring-2 ring-peach ring-offset-2 ring-offset-warm-bg" : ""}
                   `}
@@ -58,7 +62,7 @@ export default function StreakHeatmap({ dates, monthDays }: StreakHeatmapProps) 
                     <div className="w-1.5 h-1.5 rounded-full bg-soft-black/20 animate-pulse" />
                   )}
                 </div>
-                
+
                 {/* Tooltip-like date label on hover */}
                 <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-soft-black text-white text-[9px] rounded font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-20 brutal-shadow-sm border border-white/10 uppercase tracking-tighter">
                   {isToday ? "Today" : dateStr}

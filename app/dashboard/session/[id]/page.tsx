@@ -21,14 +21,24 @@ const MILESTONE_MESSAGES: Record<number, string> = {
 export default function ActiveSessionPage() {
   const { id } = useParams();
   const router = useRouter();
-  const session = useQuery(api.sessions.getById, { sessionId: id as Id<"sessions"> });
+  const session = useQuery(api.sessions.getById, {
+    sessionId: id as Id<"sessions">,
+  });
   const completeSession = useMutation(api.reflections.create);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [lastWordCount, setLastWordCount] = useState(0);
 
-  if (session === undefined) return <div className="p-8 text-muted-text animate-pulse text-center">Loading session...</div>;
-  if (!session) return <div className="p-8 text-muted-text text-center">Session not found.</div>;
+  if (session === undefined)
+    return (
+      <div className="p-8 text-muted-text animate-pulse text-center">
+        Loading session...
+      </div>
+    );
+  if (!session)
+    return (
+      <div className="p-8 text-muted-text text-center">Session not found.</div>
+    );
 
   async function handleComplete(content: string, rating: number | null) {
     setIsSubmitting(true);
@@ -40,14 +50,17 @@ export default function ActiveSessionPage() {
       });
 
       if (result?.milestoneReached) {
-        const msg = MILESTONE_MESSAGES[result.milestoneReached] ?? `Milestone reached: ${result.milestoneReached} reflections.`;
+        const msg =
+          MILESTONE_MESSAGES[result.milestoneReached] ??
+          `Milestone reached: ${result.milestoneReached} reflections.`;
         toast.success(msg, { duration: 6000 });
       }
 
       setLastWordCount(result.wordCount ?? 0);
       setShowSuccess(true);
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Something went wrong.";
+      const message =
+        err instanceof Error ? err.message : "Something went wrong.";
       toast.error(message);
       setIsSubmitting(false);
     }
@@ -67,10 +80,16 @@ export default function ActiveSessionPage() {
       </Link>
 
       <header className="space-y-2 border-b-4 border-soft-black pb-8 mt-6 mb-10">
-        <div className="text-xs font-black uppercase tracking-widest text-muted-text">{session.contentType}</div>
-        <h1 className="font-grotesk text-4xl font-black lowercase tracking-tighter">{session.title}</h1>
+        <div className="text-xs font-black uppercase tracking-widest text-muted-text">
+          {session.contentType}
+        </div>
+        <h1 className="font-grotesk text-4xl font-black lowercase tracking-tighter">
+          {session.title}
+        </h1>
         {session.consumeReason && (
-          <p className="text-sm text-muted-text font-medium italic">&ldquo;{session.consumeReason}&rdquo;</p>
+          <p className="text-sm text-muted-text font-medium italic">
+            &ldquo;{session.consumeReason}&rdquo;
+          </p>
         )}
       </header>
 

@@ -10,11 +10,12 @@ In a world of infinite scrolls and 15-second clips, our ability to think deeply 
 
 ### The Consumption Paradox
 
-The more we consume, the less we actually *distill*. We act as pipes for information, letting it flow through us without ever staying to become part of our knowledge base.
+The more we consume, the less we actually _distill_. We act as pipes for information, letting it flow through us without ever staying to become part of our knowledge base.
 
 ### Moving Towards Reflection
 
 Reflection is the process of turning information into insight. It requires:
+
 1. **Space**: Time away from the screen.
 2. **Effort**: The active labor of writing your thoughts down.
 3. **Compound Interest**: Revisiting your thoughts over time.

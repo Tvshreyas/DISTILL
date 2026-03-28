@@ -8,12 +8,14 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 ## Competitor Profile: [Name]
 
 **Basic Info**
+
 - URL: [website]
 - Domain Age: [years]
 - Estimated Traffic: [monthly visits]
 - Domain Authority/Rating: [score]
 
 **Business Model**
+
 - Type: [SaaS/E-commerce/Content/etc.]
 - Target Audience: [description]
 - Key Offerings: [products/services]
@@ -30,10 +32,10 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 
 #### Top Performing Keywords
 
-| Keyword | Position | Volume | Traffic Est. | Page |
-|---------|----------|--------|--------------|------|
-| [kw 1] | [pos] | [vol] | [traffic] | [url] |
-| [kw 2] | [pos] | [vol] | [traffic] | [url] |
+| Keyword | Position | Volume | Traffic Est. | Page  |
+| ------- | -------- | ------ | ------------ | ----- |
+| [kw 1]  | [pos]    | [vol]  | [traffic]    | [url] |
+| [kw 2]  | [pos]    | [vol]  | [traffic]    | [url] |
 
 #### Keyword Distribution by Intent
 
@@ -45,8 +47,8 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 #### Keyword Gaps (They rank, you don't)
 
 | Keyword | Their Position | Volume | Opportunity |
-|---------|----------------|--------|-------------|
-| [kw 1] | [pos] | [vol] | [analysis] |
+| ------- | -------------- | ------ | ----------- |
+| [kw 1]  | [pos]          | [vol]  | [analysis]  |
 ```
 
 ## Content Analysis Template
@@ -55,6 +57,7 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 ### Content Analysis: [Competitor]
 
 **Content Volume**
+
 - Total Pages: [X]
 - Blog Posts: [X]
 - Landing Pages: [X]
@@ -64,9 +67,9 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 
 #### Top Performing Content
 
-| Title | URL | Est. Traffic | Keywords | Backlinks |
-|-------|-----|--------------|----------|-----------|
-| [title 1] | [url] | [traffic] | [X] | [X] |
+| Title     | URL   | Est. Traffic | Keywords | Backlinks |
+| --------- | ----- | ------------ | -------- | --------- |
+| [title 1] | [url] | [traffic]    | [X]      | [X]       |
 
 **Content Patterns**
 
@@ -81,10 +84,10 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 
 **Content Themes**
 
-| Theme | # Articles | Combined Traffic |
-|-------|------------|------------------|
-| [theme 1] | [X] | [traffic] |
-| [theme 2] | [X] | [traffic] |
+| Theme     | # Articles | Combined Traffic |
+| --------- | ---------- | ---------------- |
+| [theme 1] | [X]        | [traffic]        |
+| [theme 2] | [X]        | [traffic]        |
 
 **What Makes Their Content Successful**
 
@@ -99,20 +102,22 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 ### Backlink Analysis: [Competitor]
 
 **Overview**
+
 - Total Backlinks: [X]
 - Referring Domains: [X]
 - Domain Rating: [X]
 
 **Link Quality Distribution**
+
 - High Authority (DR 70+): [X]%
 - Medium Authority (DR 30-69): [X]%
 - Low Authority (DR <30): [X]%
 
 **Top Linking Domains**
 
-| Domain | DR | Link Type | Target Page |
-|--------|-----|-----------|-------------|
-| [domain 1] | [DR] | [type] | [page] |
+| Domain     | DR   | Link Type | Target Page |
+| ---------- | ---- | --------- | ----------- |
+| [domain 1] | [DR] | [type]    | [page]      |
 
 **Link Acquisition Patterns**
 
@@ -124,9 +129,9 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 
 **Linkable Assets (Content attracting links)**
 
-| Asset | Type | Backlinks | Why It Works |
-|-------|------|-----------|--------------|
-| [asset 1] | [type] | [X] | [reason] |
+| Asset     | Type   | Backlinks | Why It Works |
+| --------- | ------ | --------- | ------------ |
+| [asset 1] | [type] | [X]       | [reason]     |
 ```
 
 ## Technical SEO Assessment Template
@@ -135,6 +140,7 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 ### Technical Analysis: [Competitor]
 
 **Site Performance**
+
 - Core Web Vitals: [Pass/Fail]
 - LCP: [X]s
 - FID: [X]ms
@@ -142,16 +148,19 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 - Mobile-friendly: [Yes/No]
 
 **Site Structure**
+
 - Site architecture depth: [X] levels
 - Internal linking quality: [Rating]
 - URL structure: [Clean/Messy]
 - Sitemap present: [Yes/No]
 
 **Technical Strengths**
+
 1. [Strength 1]
 2. [Strength 2]
 
 **Technical Weaknesses**
+
 1. [Weakness 1]
 2. [Weakness 2]
 ```
@@ -165,10 +174,10 @@ Templates for each step of the competitor analysis workflow. Use these to struct
 
 Test competitor content in AI systems for relevant queries:
 
-| Query | AI Mentions Competitor? | What's Cited | Why |
-|-------|------------------------|--------------|-----|
-| [query 1] | Yes/No | [content] | [reason] |
-| [query 2] | Yes/No | [content] | [reason] |
+| Query     | AI Mentions Competitor? | What's Cited | Why      |
+| --------- | ----------------------- | ------------ | -------- |
+| [query 1] | Yes/No                  | [content]    | [reason] |
+| [query 2] | Yes/No                  | [content]    | [reason] |
 
 **GEO Strategies Observed**
 
@@ -191,9 +200,9 @@ Test competitor content in AI systems for relevant queries:
 
 **GEO Opportunities They're Missing**
 
-| Topic | Why Missing | Your Opportunity |
-|-------|-------------|------------------|
-| [topic 1] | [reason] | [action] |
+| Topic     | Why Missing | Your Opportunity |
+| --------- | ----------- | ---------------- |
+| [topic 1] | [reason]    | [action]         |
 ```
 
 ## Synthesis Report Template
@@ -211,29 +220,30 @@ Test competitor content in AI systems for relevant queries:
 
 ## Competitive Landscape
 
-| Metric | You | Competitor 1 | Competitor 2 | Competitor 3 |
-|--------|-----|--------------|--------------|--------------|
-| Domain Authority | [X] | [X] | [X] | [X] |
-| Organic Traffic | [X] | [X] | [X] | [X] |
-| Keywords Top 10 | [X] | [X] | [X] | [X] |
-| Backlinks | [X] | [X] | [X] | [X] |
-| Content Pages | [X] | [X] | [X] | [X] |
+| Metric           | You | Competitor 1 | Competitor 2 | Competitor 3 |
+| ---------------- | --- | ------------ | ------------ | ------------ |
+| Domain Authority | [X] | [X]          | [X]          | [X]          |
+| Organic Traffic  | [X] | [X]          | [X]          | [X]          |
+| Keywords Top 10  | [X] | [X]          | [X]          | [X]          |
+| Backlinks        | [X] | [X]          | [X]          | [X]          |
+| Content Pages    | [X] | [X]          | [X]          | [X]          |
 
 **Domain Authority Comparison (Recommended)**
 
 When domain-level comparison is needed, run the [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) for each competitor to get CITE scores:
 
-| Domain | CITE Score | C (Citation) | I (Identity) | T (Trust) | E (Eminence) | Veto |
-|--------|-----------|-------------|-------------|----------|-------------|------|
-| Your domain | [score] | [score] | [score] | [score] | [score] | [pass/fail] |
-| Competitor 1 | [score] | [score] | [score] | [score] | [score] | [pass/fail] |
-| Competitor 2 | [score] | [score] | [score] | [score] | [score] | [pass/fail] |
+| Domain       | CITE Score | C (Citation) | I (Identity) | T (Trust) | E (Eminence) | Veto        |
+| ------------ | ---------- | ------------ | ------------ | --------- | ------------ | ----------- |
+| Your domain  | [score]    | [score]      | [score]      | [score]   | [score]      | [pass/fail] |
+| Competitor 1 | [score]    | [score]      | [score]      | [score]   | [score]      | [pass/fail] |
+| Competitor 2 | [score]    | [score]      | [score]      | [score]   | [score]      | [pass/fail] |
 
 This reveals domain authority gaps that inform link building and brand strategy beyond keyword-level competition.
 
 ## Competitor Strengths to Learn From
 
 ### [Competitor 1]
+
 - **Strength**: [description]
 - **Why It Works**: [analysis]
 - **How to Apply**: [action item]
@@ -243,6 +253,7 @@ This reveals domain authority gaps that inform link building and brand strategy 
 ## Competitor Weaknesses to Exploit
 
 ### Gap 1: [Description]
+
 - Who's weak: [competitors]
 - Opportunity size: [estimate]
 - Recommended action: [specific steps]
@@ -252,14 +263,16 @@ This reveals domain authority gaps that inform link building and brand strategy 
 ## Keyword Opportunities
 
 ### Keywords to Target (Competitor overlap)
+
 | Keyword | Volume | Avg Position | Best Strategy |
-|---------|--------|--------------|---------------|
-| [kw] | [vol] | [pos] | [strategy] |
+| ------- | ------ | ------------ | ------------- |
+| [kw]    | [vol]  | [pos]        | [strategy]    |
 
 ### Untapped Keywords (No competitor coverage)
-| Keyword | Volume | Difficulty | Opportunity |
-|---------|--------|------------|-------------|
-| [kw] | [vol] | [diff] | [description] |
+
+| Keyword | Volume | Difficulty | Opportunity   |
+| ------- | ------ | ---------- | ------------- |
+| [kw]    | [vol]  | [diff]     | [description] |
 
 ## Content Strategy Recommendations
 
@@ -272,14 +285,17 @@ Based on competitor analysis:
 ## Action Plan
 
 ### Immediate (This Week)
+
 1. [Action item]
 2. [Action item]
 
 ### Short-term (This Month)
+
 1. [Action item]
 2. [Action item]
 
 ### Long-term (This Quarter)
+
 1. [Action item]
 2. [Action item]
 ```

@@ -9,27 +9,27 @@ const modules = import.meta.glob("./**/*.ts");
 describe("export.getAllData", () => {
   it("throws Unauthorized when not authenticated", async () => {
     const t = convexTest(schema, modules);
-    await expect(
-      t.query(api.export.getAllData)
-    ).rejects.toThrowError("Unauthorized");
+    await expect(t.query(api.export.getAllData, {})).rejects.toThrowError(
+      "Unauthorized",
+    );
   });
 
   it("returns complete data shape", async () => {
     const t = convexTest(schema, modules);
     const asUser = t.withIdentity({ name: "Test User" });
-    await asUser.mutation(api.profiles.createOrGet);
+    await asUser.mutation(api.profiles.createOrGet, {});
 
     // Create session + reflection
-    const session = await asUser.mutation(api.sessions.create, {
+    const session = (await asUser.mutation(api.sessions.create, {
       title: "Test Book",
       contentType: "book",
-    }) as any;
+    })) as any;
     await asUser.mutation(api.reflections.create, {
       sessionId: session!._id,
       content: "My reflection.",
     });
 
-    const data = await asUser.query(api.export.getAllData);
+    const data = await asUser.query(api.export.getAllData, {});
     expect(data).toHaveProperty("exportedAt");
     expect(data).toHaveProperty("profile");
     expect(data).toHaveProperty("sessions");
@@ -42,16 +42,16 @@ describe("export.getAllData", () => {
   it("includes layers nested inside reflections", async () => {
     const t = convexTest(schema, modules);
     const asUser = t.withIdentity({ name: "Test User" });
-    await asUser.mutation(api.profiles.createOrGet);
+    await asUser.mutation(api.profiles.createOrGet, {});
 
-    const session = await asUser.mutation(api.sessions.create, {
+    const session = (await asUser.mutation(api.sessions.create, {
       title: "Test",
       contentType: "book",
-    }) as any;
-    const reflection = await asUser.mutation(api.reflections.create, {
+    })) as any;
+    const reflection = (await asUser.mutation(api.reflections.create, {
       sessionId: session!._id,
       content: "My reflection.",
-    }) as any;
+    })) as any;
 
     // Add a layer directly
     await t.run(async (ctx) => {
@@ -63,7 +63,7 @@ describe("export.getAllData", () => {
       });
     });
 
-    const data = await asUser.query(api.export.getAllData);
+    const data = await asUser.query(api.export.getAllData, {});
     expect(data.reflections[0].layers.length).toBe(1);
     expect(data.reflections[0].layers[0].content).toBe("Layer content.");
   });
@@ -71,9 +71,9 @@ describe("export.getAllData", () => {
   it("handles user with no data gracefully", async () => {
     const t = convexTest(schema, modules);
     const asUser = t.withIdentity({ name: "Test User" });
-    await asUser.mutation(api.profiles.createOrGet);
+    await asUser.mutation(api.profiles.createOrGet, {});
 
-    const data = await asUser.query(api.export.getAllData);
+    const data = await asUser.query(api.export.getAllData, {});
     expect(data.profile).not.toBeNull();
     expect(data.sessions).toEqual([]);
     expect(data.reflections).toEqual([]);

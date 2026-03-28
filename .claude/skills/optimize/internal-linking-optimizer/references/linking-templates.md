@@ -15,30 +15,33 @@ Detailed output templates for internal-linking-optimizer steps 4-7. Referenced f
 **Cluster Articles**: [X]
 
 ### Current Link Map
-
 ```
+
 [Pillar Page]
-   ├── [Cluster Article 1] ←→ [linked?]
-   ├── [Cluster Article 2] ←→ [linked?]
-   ├── [Cluster Article 3] ←→ [linked?]
-   └── [Cluster Article 4] ←→ [linked?]
+├── [Cluster Article 1] ←→ [linked?]
+├── [Cluster Article 2] ←→ [linked?]
+├── [Cluster Article 3] ←→ [linked?]
+└── [Cluster Article 4] ←→ [linked?]
+
 ```
 
 ### Recommended Link Structure
 
 ```
+
 [Pillar Page]
-   ├── Links TO all cluster articles ✅
-   │
-   ├── [Cluster Article 1]
-   │   ├── Link TO pillar ✅
-   │   └── Link TO related cluster articles
-   │
-   ├── [Cluster Article 2]
-   │   ├── Link TO pillar ✅
-   │   └── Link TO related cluster articles
-   │
-   └── [etc.]
+├── Links TO all cluster articles ✅
+│
+├── [Cluster Article 1]
+│ ├── Link TO pillar ✅
+│ └── Link TO related cluster articles
+│
+├── [Cluster Article 2]
+│ ├── Link TO pillar ✅
+│ └── Link TO related cluster articles
+│
+└── [etc.]
+
 ```
 
 ### Links to Add
@@ -60,6 +63,7 @@ Detailed output templates for internal-linking-optimizer steps 4-7. Referenced f
 ### Link Opportunity Analysis
 
 For each page, find relevant pages to link to based on:
+
 - Topic relevance
 - Keyword overlap
 - User journey logic
@@ -71,11 +75,11 @@ For each page, find relevant pages to link to based on:
 **Topic**: [topic]
 **Current internal links**: [X]
 
-| Opportunity | Target Page | Anchor Text | Why Link |
-|-------------|-------------|-------------|----------|
-| Paragraph 2 mentions "[topic]" | [URL] | "[topic phrase]" | Topic match |
-| Section on "[subject]" | [URL] | "[anchor]" | Related guide |
-| CTA at end | [URL] | "[anchor]" | User journey |
+| Opportunity                    | Target Page | Anchor Text      | Why Link      |
+| ------------------------------ | ----------- | ---------------- | ------------- |
+| Paragraph 2 mentions "[topic]" | [URL]       | "[topic phrase]" | Topic match   |
+| Section on "[subject]"         | [URL]       | "[anchor]"       | Related guide |
+| CTA at end                     | [URL]       | "[anchor]"       | User journey  |
 
 **Page: [URL 2]**
 [Continue for each page...]
@@ -105,22 +109,24 @@ For each page, find relevant pages to link to based on:
 ### Current Navigation Analysis
 
 **Main Navigation**:
+
 - Links present: [list]
 - Missing important pages: [list]
 - Too many links: [Yes/No]
 
 **Footer Navigation**:
+
 - Links present: [list]
 - SEO value: [assessment]
 
 ### Navigation Recommendations
 
-| Element | Current | Recommended | Reason |
-|---------|---------|-------------|--------|
-| Main nav | [X] links | [Y] links | [reason] |
-| Footer | [X] links | [Y] links | [reason] |
-| Sidebar | [status] | [recommendation] | [reason] |
-| Breadcrumbs | [status] | [recommendation] | [reason] |
+| Element     | Current   | Recommended      | Reason   |
+| ----------- | --------- | ---------------- | -------- |
+| Main nav    | [X] links | [Y] links        | [reason] |
+| Footer      | [X] links | [Y] links        | [reason] |
+| Sidebar     | [status]  | [recommendation] | [reason] |
+| Breadcrumbs | [status]  | [recommendation] | [reason] |
 
 ### Pages to Add to Navigation
 
@@ -151,41 +157,47 @@ For each page, find relevant pages to link to based on:
 
 ## Current State
 
-| Metric | Current | Target | Gap |
-|--------|---------|--------|-----|
-| Avg links per page | [X] | [X] | [X] |
-| Orphan pages | [X] | 0 | [X] |
-| Over-optimized anchors | [X]% | <10% | [X]% |
-| Topic cluster coverage | [X]% | 100% | [X]% |
+| Metric                 | Current | Target | Gap  |
+| ---------------------- | ------- | ------ | ---- |
+| Avg links per page     | [X]     | [X]    | [X]  |
+| Orphan pages           | [X]     | 0      | [X]  |
+| Over-optimized anchors | [X]%    | <10%   | [X]% |
+| Topic cluster coverage | [X]%    | 100%   | [X]% |
 
 ## Priority Actions
 
 ### Phase 1: Critical Fixes (Week 1)
 
 **Fix Orphan Pages**:
+
 - [ ] [URL] - Add links from [X] pages
 - [ ] [URL] - Add links from [X] pages
 
 **High-Value Link Additions**:
+
 - [ ] Link [Page A] to [Page B] with "[anchor]"
 - [ ] Link [Page A] to [Page C] with "[anchor]"
 
 ### Phase 2: Topic Clusters (Week 2-3)
 
 **Cluster 1: [Topic]**
+
 - [ ] Ensure pillar links to all [X] cluster articles
 - [ ] Add [X] cross-links between cluster articles
 
 **Cluster 2: [Topic]**
+
 - [ ] [Tasks]
 
 ### Phase 3: Optimization (Week 4+)
 
 **Anchor Text Diversity**:
+
 - [ ] Vary anchors for [Page] - currently [X]% exact match
 - [ ] [Additional tasks]
 
 **Navigation Updates**:
+
 - [ ] Add [Page] to main navigation
 - [ ] Update footer links
 
@@ -194,6 +206,7 @@ For each page, find relevant pages to link to based on:
 ### Adding Internal Links
 
 Best practices:
+
 1. Add links contextually within content
 2. Use descriptive anchor text (not "click here")
 3. Link to relevant, helpful pages
@@ -202,16 +215,17 @@ Best practices:
 
 ### Anchor Text Guidelines
 
-| Type | Example | Usage |
-|------|---------|-------|
-| Exact match | "keyword research" | 10-20% |
-| Partial match | "tips for keyword research" | 30-40% |
-| Branded | "Brand's guide to..." | 10-20% |
-| Natural | "this article", "learn more" | 20-30% |
+| Type          | Example                      | Usage  |
+| ------------- | ---------------------------- | ------ |
+| Exact match   | "keyword research"           | 10-20% |
+| Partial match | "tips for keyword research"  | 30-40% |
+| Branded       | "Brand's guide to..."        | 10-20% |
+| Natural       | "this article", "learn more" | 20-30% |
 
 ## Tracking Success
 
 Monitor these metrics weekly:
+
 - [ ] Rankings for target keywords
 - [ ] Traffic to previously orphan pages
 - [ ] Crawl stats in ~~search console

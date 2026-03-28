@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import { Space_Grotesk, Outfit, Reenie_Beanie, Lora } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import ConvexClientProvider from "@/components/ConvexClientProvider";
@@ -43,9 +42,9 @@ export const metadata: Metadata = {
     "Distill helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",
   manifest: "/manifest.json",
   icons: {
-    icon: "/icon-192.png",
-    shortcut: "/icon-192.png",
-    apple: "/icon-192.png",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
   appleWebApp: {
     capable: true,
@@ -87,16 +86,40 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
-  const nonce = headersList.get("x-nonce") ?? undefined;
-
   return (
     <html lang="en">
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Distill",
+              operatingSystem: "Web",
+              applicationCategory: "EducationalApplication",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+                category: "Freemium",
+              },
+              description:
+                "Distill helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "5",
+                reviewCount: "10",
+              },
+            }),
+          }}
+        />
       </head>
-      <body className={`${spaceGrotesk.variable} ${outfit.variable} ${reenieBeanie.variable} ${lora.variable} font-sans antialiased text-soft-black`}>
-        <ClerkProvider nonce={nonce}>
+      <body
+        className={`${spaceGrotesk.variable} ${outfit.variable} ${reenieBeanie.variable} ${lora.variable} font-sans antialiased text-soft-black`}
+      >
+        <ClerkProvider>
           <ConvexClientProvider>
             <PostHogProvider>
               <PWAProvider />

@@ -579,43 +579,43 @@ To include multiple schema types on one page, wrap them in an array:
 
 ```html
 <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "[Article title]",
-    "author": {
-      "@type": "Person",
-      "name": "[Author]"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "[Question]",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "[Answer]"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "[Article title]",
+      "author": {
+        "@type": "Person",
+        "name": "[Author]"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "[Question]",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "[Answer]"
+          }
         }
-      }
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "[URL]"
-      }
-    ]
-  }
-]
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "[URL]"
+        }
+      ]
+    }
+  ]
 </script>
 ```
 

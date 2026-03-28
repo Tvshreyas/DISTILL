@@ -12,7 +12,7 @@ import posthog from "posthog-js";
 export default function ReflectionCapture({
   onSubmitAction,
   isSubmitting,
-  prompt: initialPrompt
+  prompt: initialPrompt,
 }: {
   onSubmitAction: (content: string, rating: number | null) => void;
   isSubmitting: boolean;
@@ -21,9 +21,14 @@ export default function ReflectionCapture({
 }) {
   const [content, setContent] = useState("");
   const [rating, setRating] = useState<number | null>(null);
-  const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved">(
+    "idle",
+  );
   const [prompt, setPrompt] = useState(initialPrompt);
-  const [safetyResult, setSafetyResult] = useState<SafetyResult>({ safe: true, category: null });
+  const [safetyResult, setSafetyResult] = useState<SafetyResult>({
+    safe: true,
+    category: null,
+  });
 
   // Restore draft from localStorage on mount
   useEffect(() => {
@@ -34,11 +39,15 @@ export default function ReflectionCapture({
   }, [prompt]);
 
   // Hook into auto-save
-  useAutoSave(content, (val) => {
-    setSaveStatus("saving");
-    localStorage.setItem(`draft_${prompt}`, val);
-    setTimeout(() => setSaveStatus("saved"), 500);
-  }, 2000);
+  useAutoSave(
+    content,
+    (val) => {
+      setSaveStatus("saving");
+      localStorage.setItem(`draft_${prompt}`, val);
+      setTimeout(() => setSaveStatus("saved"), 500);
+    },
+    2000,
+  );
 
   const handleSubmit = () => {
     const result = checkContentSafety(content);
@@ -49,7 +58,7 @@ export default function ReflectionCapture({
     if (!result.safe && result.category === "B") {
       toast.warning(
         "Your reflection contains strong language. It will still be saved.",
-        { duration: 5000 }
+        { duration: 5000 },
       );
     }
     onSubmitAction(content, rating);
@@ -71,8 +80,10 @@ export default function ReflectionCapture({
       <header className="flex justify-between items-start">
         <div className="space-y-2 flex-1">
           <div className="flex items-center gap-3">
-            <span className="text-xs uppercase tracking-widest text-muted-text font-black">Reflection Prompt</span>
-            <button 
+            <span className="text-xs uppercase tracking-widest text-muted-text font-black">
+              Reflection Prompt
+            </span>
+            <button
               onClick={handleShufflePrompt}
               className="p-1 px-2 rounded-md bg-soft-black/5 hover:bg-peach/20 transition-all flex items-center gap-1.5 text-[10px] uppercase font-black tracking-widest text-muted-text hover:text-soft-black transition-colors"
             >
@@ -84,17 +95,21 @@ export default function ReflectionCapture({
             {prompt}
           </h3>
         </div>
-        
+
         {/* Status Indicator */}
         <div className="flex items-center gap-2 px-4 py-2 bg-white brutal-border-sm border-2 border-soft-black rounded-xl shrink-0">
           {saveStatus === "saving" ? (
             <>
               <div className="w-2 h-2 rounded-full bg-peach animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-widest">Saving...</span>
+              <span className="text-[10px] font-black uppercase tracking-widest">
+                Saving...
+              </span>
             </>
           ) : (
             <>
-              <Check className={`w-3 h-3 ${saveStatus === "saved" ? "text-sage-dark" : "text-muted-text"}`} />
+              <Check
+                className={`w-3 h-3 ${saveStatus === "saved" ? "text-sage-dark" : "text-muted-text"}`}
+              />
               <span className="text-[10px] font-black uppercase tracking-widest text-muted-text">
                 {saveStatus === "saved" ? "Saved" : "Draft"}
               </span>
@@ -104,7 +119,7 @@ export default function ReflectionCapture({
       </header>
 
       <div className="relative group">
-        <textarea 
+        <textarea
           value={content}
           onChange={(e) => {
             const val = e.target.value;
@@ -118,15 +133,19 @@ export default function ReflectionCapture({
           className="w-full h-80 p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black text-xl font-medium placeholder:text-soft-black/20 outline-none focus:bg-sage/5 transition-all resize-none shadow-[8px_8px_0px_0px_rgba(41,37,36,0.05)]"
           required
         />
-        
+
         {/* Safety Warning Overlay */}
         {!safetyResult.safe && (
-          <div className={`absolute top-4 right-4 px-3 py-1.5 rounded-lg border-2 font-black text-[10px] uppercase tracking-wider transition-all ${
-            safetyResult.category === "A"
-              ? "bg-red-100 text-red-600 border-red-600"
-              : "bg-peach/20 text-soft-black border-soft-black/20"
-          }`}>
-            {safetyResult.category === "A" ? "Blocked Content" : "Strong Language"}
+          <div
+            className={`absolute top-4 right-4 px-3 py-1.5 rounded-lg border-2 font-black text-[10px] uppercase tracking-wider transition-all ${
+              safetyResult.category === "A"
+                ? "bg-red-100 text-red-600 border-red-600"
+                : "bg-peach/20 text-soft-black border-soft-black/20"
+            }`}
+          >
+            {safetyResult.category === "A"
+              ? "Blocked Content"
+              : "Strong Language"}
           </div>
         )}
 
@@ -137,15 +156,17 @@ export default function ReflectionCapture({
       </div>
 
       <div className="space-y-4">
-        <p className="text-sm font-black text-muted-text uppercase tracking-widest">How much did your thinking shift?</p>
+        <p className="text-sm font-black text-muted-text uppercase tracking-widest">
+          How much did your thinking shift?
+        </p>
         <div className="flex gap-2">
           {[1, 2, 3, 4, 5].map((n) => (
             <button
               key={n}
               onClick={() => setRating(n)}
               className={`flex-1 py-4 rounded-xl border-2 font-black text-lg transition-all active:scale-95 ${
-                rating === n 
-                  ? "bg-peach text-soft-black border-soft-black brutal-shadow-xs -translate-x-0.5 -translate-y-0.5" 
+                rating === n
+                  ? "bg-peach text-soft-black border-soft-black brutal-shadow-xs -translate-x-0.5 -translate-y-0.5"
                   : "bg-white text-muted-text border-soft-black hover:bg-peach/10"
               }`}
             >
@@ -161,7 +182,9 @@ export default function ReflectionCapture({
         className="w-full py-6 text-2xl font-black rounded-2xl"
       >
         {isSubmitting ? (
-          <span className="flex items-center gap-2">preserving... <CloudUpload className="animate-bounce" /></span>
+          <span className="flex items-center gap-2">
+            preserving... <CloudUpload className="animate-bounce" />
+          </span>
         ) : (
           "complete reflection"
         )}

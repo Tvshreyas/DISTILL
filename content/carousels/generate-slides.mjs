@@ -55,7 +55,10 @@ const DAYS = 11;
     await new Promise((r) => setTimeout(r, 200));
 
     // Count slides for this day
-    const slideCount = await page.$$eval(`#day-${day} .slide`, (els) => els.length);
+    const slideCount = await page.$$eval(
+      `#day-${day} .slide`,
+      (els) => els.length,
+    );
 
     for (let i = 0; i < slideCount; i++) {
       const slideNum = i + 1;
@@ -71,7 +74,7 @@ const DAYS = 11;
           });
         },
         day,
-        i
+        i,
       );
 
       await new Promise((r) => setTimeout(r, 100));

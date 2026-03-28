@@ -16,18 +16,19 @@ Referenced from [SKILL.md](../SKILL.md).
 **Content**: "Best Cloud Hosting Providers 2023"
 **Content Type**: Commercial comparison / listicle
 
-| Dimension | Quick Score | Key Weakness | Refresh Priority |
-|-----------|-----------|--------------|-----------------|
-| C — Contextual Clarity | 60/100 | Title says 2023 — stale intent signal | 🔴 |
-| O — Organization | 75/100 | Good comparison tables but no summary box | 🟡 |
-| R — Referenceability | 35/100 | Pricing from Q1 2023, 3 broken links | 🔴 |
-| E — Exclusivity | 50/100 | No original benchmarks or test data | 🟡 |
-| Exp — Experience | 30/100 | No first-person testing narrative | 🔴 |
-| Ept — Expertise | 65/100 | Author bio present but lacks credentials | 🟡 |
-| A — Authority | 55/100 | 12 backlinks, was ranking page 1 | 🟢 |
-| T — Trust | 60/100 | Affiliate links present but not disclosed | 🔴 |
+| Dimension              | Quick Score | Key Weakness                              | Refresh Priority |
+| ---------------------- | ----------- | ----------------------------------------- | ---------------- |
+| C — Contextual Clarity | 60/100      | Title says 2023 — stale intent signal     | 🔴               |
+| O — Organization       | 75/100      | Good comparison tables but no summary box | 🟡               |
+| R — Referenceability   | 35/100      | Pricing from Q1 2023, 3 broken links      | 🔴               |
+| E — Exclusivity        | 50/100      | No original benchmarks or test data       | 🟡               |
+| Exp — Experience       | 30/100      | No first-person testing narrative         | 🔴               |
+| Ept — Expertise        | 65/100      | Author bio present but lacks credentials  | 🟡               |
+| A — Authority          | 55/100      | 12 backlinks, was ranking page 1          | 🟢               |
+| T — Trust              | 60/100      | Affiliate links present but not disclosed | 🔴               |
 
 **Weakest Dimensions** (focus refresh here):
+
 1. **Experience** — Add hands-on testing results ("We migrated a test site to each provider")
 2. **Referenceability** — Replace all 2023 pricing/uptime data with current figures
 
@@ -40,12 +41,12 @@ Referenced from [SKILL.md](../SKILL.md).
 
 ### Performance Metrics
 
-| Metric | 6 Mo Ago | Current | Change |
-|--------|----------|---------|--------|
-| Organic Traffic | 3,200/mo | 1,400/mo | -56% |
-| Avg Position | 4.2 | 14.8 | ↓ 10.6 |
-| Impressions | 18,000 | 9,500 | -47% |
-| CTR | 6.1% | 2.3% | -3.8% |
+| Metric          | 6 Mo Ago | Current  | Change |
+| --------------- | -------- | -------- | ------ |
+| Organic Traffic | 3,200/mo | 1,400/mo | -56%   |
+| Avg Position    | 4.2      | 14.8     | ↓ 10.6 |
+| Impressions     | 18,000   | 9,500    | -47%   |
+| CTR             | 6.1%     | 2.3%     | -3.8%  |
 
 ### Content Decay Signals Identified
 
@@ -56,12 +57,12 @@ Referenced from [SKILL.md](../SKILL.md).
 
 ### Refresh vs. Rewrite Decision
 
-| Factor | Assessment |
-|--------|-----------|
-| Content quality | Good structure, solid comparison tables — foundation is sound |
-| URL equity | 12 referring domains, 18 months old |
-| Scope of changes | ~40% of content needs updating |
-| Search intent | Unchanged — still commercial comparison |
+| Factor           | Assessment                                                    |
+| ---------------- | ------------------------------------------------------------- |
+| Content quality  | Good structure, solid comparison tables — foundation is sound |
+| URL equity       | 12 referring domains, 18 months old                           |
+| Scope of changes | ~40% of content needs updating                                |
+| Search intent    | Unchanged — still commercial comparison                       |
 
 **Decision**: **REFRESH** — The URL has earned backlinks, the structure is solid, and less than 50% needs rewriting. Keep the URL, update in place.
 
@@ -96,11 +97,11 @@ Referenced from [SKILL.md](../SKILL.md).
 
 ### Expected Outcomes
 
-| Metric | Current | 30-Day Target | 90-Day Target |
-|--------|---------|---------------|---------------|
-| Avg Position | 14.8 | 8-10 | 3-6 |
-| Organic Traffic | 1,400/mo | 2,200/mo | 3,500/mo |
-| Featured Snippets | 0 | 1 (FAQ) | 2+ |
+| Metric            | Current  | 30-Day Target | 90-Day Target |
+| ----------------- | -------- | ------------- | ------------- |
+| Avg Position      | 14.8     | 8-10          | 3-6           |
+| Organic Traffic   | 1,400/mo | 2,200/mo      | 3,500/mo      |
+| Featured Snippets | 0        | 1 (FAQ)       | 2+            |
 ```
 
 ---
@@ -109,12 +110,14 @@ Referenced from [SKILL.md](../SKILL.md).
 
 ```markdown
 ### Pre-Refresh
+
 - [ ] Analyze current performance metrics
 - [ ] Identify outdated information
 - [ ] Research competitor updates
 - [ ] Note missing topics
 
 ### Content Updates
+
 - [ ] Update year references
 - [ ] Refresh statistics with sources
 - [ ] Add new examples and case studies
@@ -123,6 +126,7 @@ Referenced from [SKILL.md](../SKILL.md).
 - [ ] Create FAQ section
 
 ### SEO Updates
+
 - [ ] Update title tag
 - [ ] Refresh meta description
 - [ ] Optimize headers
@@ -130,12 +134,14 @@ Referenced from [SKILL.md](../SKILL.md).
 - [ ] Add new images with alt text
 
 ### GEO Updates
+
 - [ ] Add clear definition
 - [ ] Include quotable statements
 - [ ] Add Q&A formatted content
 - [ ] Update source citations
 
 ### Technical
+
 - [ ] Update schema dateModified
 - [ ] Clear page cache
 - [ ] Update sitemap

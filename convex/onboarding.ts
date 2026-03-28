@@ -2,7 +2,14 @@ import { mutation } from "./_generated/server";
 import { v } from "convex/values";
 import { checkContentSafety } from "./safety";
 
-const VALID_CONTENT_TYPES = ["book", "video", "article", "podcast", "other"] as const;
+const VALID_CONTENT_TYPES = [
+  "book",
+  "video",
+  "article",
+  "podcast",
+  "other",
+] as const;
+const FREE_TIER_LIMIT = 3;
 
 function computeWordCount(text: string): number {
   const trimmed = text.trim();
@@ -19,7 +26,6 @@ function toDateString(date: Date, timezone: string): string {
 
 export const migrate = mutation({
   args: {
-    deviceToken: v.string(),
     title: v.string(),
     contentType: v.string(),
     consumeReason: v.optional(v.string()),
@@ -74,12 +80,19 @@ export const migrate = mutation({
       throw new Error("Title must be between 1 and 200 characters.");
     }
 
-    if (!VALID_CONTENT_TYPES.includes(args.contentType as typeof VALID_CONTENT_TYPES[number])) {
+    if (
+      !VALID_CONTENT_TYPES.includes(
+        args.contentType as (typeof VALID_CONTENT_TYPES)[number],
+      )
+    ) {
       throw new Error("Invalid content type.");
     }
 
-    if (args.reflectionContent.length < 1 || args.reflectionContent.length > 400) {
-      throw new Error("Reflection must be between 1 and 400 characters.");
+    if (
+      args.reflectionContent.length < 1 ||
+      args.reflectionContent.length > 800
+    ) {
+      throw new Error("Reflection must be between 1 and 800 characters.");
     }
 
     if (
@@ -91,6 +104,28 @@ export const migrate = mutation({
       throw new Error("Rating must be an integer between 1 and 5.");
     }
 
+    // Free tier enforcement
+    if (profile.plan === "free") {
+      const completedSessions = await ctx.db
+        .query("sessions")
+        .withIndex("by_userId_status", (q) =>
+          q.eq("userId", userId).eq("status", "complete"),
+        )
+        .filter((q) =>
+          q.and(
+            q.eq(q.field("isDeleted"), false),
+            q.neq(q.field("type"), "quick"),
+          ),
+        )
+        .collect();
+
+      if (completedSessions.length >= FREE_TIER_LIMIT) {
+        throw new Error(
+          `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions.`,
+        );
+      }
+    }
+
     const now = new Date();
     const nowIso = now.toISOString();
 
@@ -98,7 +133,7 @@ export const migrate = mutation({
     const sessionId = await ctx.db.insert("sessions", {
       userId,
       title: args.title,
-      contentType: args.contentType as typeof VALID_CONTENT_TYPES[number],
+      contentType: args.contentType as (typeof VALID_CONTENT_TYPES)[number],
       consumeReason: args.consumeReason,
       status: "complete",
       startedAt: nowIso,
@@ -137,8 +172,9 @@ export const migrate = mutation({
       onboardingCompleted: true,
     });
 
-    // Schedule resurfacing
+    // Schedule resurfacing — 1d first to collapse time-to-magic
     const intervals = [
+      { type: "1d" as const, days: 1 },
       { type: "3d" as const, days: 3 },
       { type: "7d" as const, days: 7 },
       { type: "30d" as const, days: 30 },

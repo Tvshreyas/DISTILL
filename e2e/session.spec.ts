@@ -3,8 +3,12 @@ import { test, expect } from "@playwright/test";
 test.describe("Session Flow", () => {
   test("new session page loads with form", async ({ page }) => {
     await page.goto("/dashboard/session/new");
-    await expect(page.locator("text=new session")).toBeVisible({ timeout: 10000 });
-    await expect(page.locator('input[placeholder="title of the content..."]')).toBeVisible();
+    await expect(page.locator("text=new session")).toBeVisible({
+      timeout: 10000,
+    });
+    await expect(
+      page.locator('input[placeholder="title of the content..."]'),
+    ).toBeVisible();
   });
 
   test("shows all content type buttons", async ({ page }) => {
@@ -23,11 +27,14 @@ test.describe("Session Flow", () => {
   test("can fill out the session form", async ({ page }) => {
     await page.goto("/dashboard/session/new");
 
-    await page.fill('input[placeholder="title of the content..."]', "Test Book Title");
+    await page.fill(
+      'input[placeholder="title of the content..."]',
+      "Test Book Title",
+    );
     await page.click('button:has-text("book")');
     await page.fill(
       'textarea[placeholder="what do you hope to get from this?"]',
-      "Learn something new"
+      "Learn something new",
     );
 
     const submitBtn = page.locator('button:has-text("start session")');
@@ -47,7 +54,7 @@ test.describe("Session Flow", () => {
     await expect(page.locator("text=0/140")).toBeVisible();
     await page.fill(
       'textarea[placeholder="what do you hope to get from this?"]',
-      "Hello"
+      "Hello",
     );
     await expect(page.locator("text=5/140")).toBeVisible();
   });

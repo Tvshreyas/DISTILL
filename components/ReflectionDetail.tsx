@@ -2,7 +2,11 @@
 
 import type { Doc } from "@/convex/_generated/dataModel";
 
-export default function ReflectionDetail({ reflection }: { reflection: Doc<"reflections"> }) {
+export default function ReflectionDetail({
+  reflection,
+}: {
+  reflection: Doc<"reflections">;
+}) {
   if (!reflection) return null;
 
   return (
@@ -15,8 +19,12 @@ export default function ReflectionDetail({ reflection }: { reflection: Doc<"refl
 
       {reflection.thinkingShiftRating != null && (
         <div className="inline-flex items-center gap-4 px-5 py-3 bg-peach/10 rounded-2xl border-2 border-peach/20">
-          <span className="font-grotesk text-[10px] font-black uppercase tracking-widest text-peach">Thinking Shift Impact</span>
-          <span className="font-grotesk text-xl font-black text-soft-black">{reflection.thinkingShiftRating}/5</span>
+          <span className="font-grotesk text-[10px] font-black uppercase tracking-widest text-peach">
+            Thinking Shift Impact
+          </span>
+          <span className="font-grotesk text-xl font-black text-soft-black">
+            {reflection.thinkingShiftRating}/5
+          </span>
         </div>
       )}
     </div>

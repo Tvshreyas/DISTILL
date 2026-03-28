@@ -6,7 +6,9 @@ export default function DashboardLoading() {
           <div className="absolute inset-0 rounded-full border-2 border-soft-black/5" />
           <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-peach animate-spin" />
         </div>
-        <p className="text-xs font-black uppercase tracking-widest text-muted-text">fetching your insights...</p>
+        <p className="text-xs font-black uppercase tracking-widest text-muted-text">
+          fetching your insights...
+        </p>
       </div>
     </div>
   );

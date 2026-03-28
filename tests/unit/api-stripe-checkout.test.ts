@@ -83,7 +83,7 @@ describe("create-checkout POST", () => {
     expect(mockCheckoutCreate).toHaveBeenCalledWith(
       expect.objectContaining({
         line_items: [{ price: "price_monthly", quantity: 1 }],
-      })
+      }),
     );
   });
 
@@ -100,7 +100,7 @@ describe("create-checkout POST", () => {
     expect(mockCheckoutCreate).toHaveBeenCalledWith(
       expect.objectContaining({
         line_items: [{ price: "price_annual", quantity: 1 }],
-      })
+      }),
     );
   });
 

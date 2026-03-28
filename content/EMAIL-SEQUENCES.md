@@ -1,6 +1,6 @@
 # Email Sequences — Distill
 
-*Created: 2026-03-15*
+_Created: 2026-03-15_
 
 Three automated sequences to drive activation, retention, and conversion. All copy follows Distill's rules: no praise, no marketing language, no medical claims.
 
@@ -17,6 +17,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 1: Welcome + First Step
+
 **Send:** Immediately after signup
 **Subject:** Your account is ready
 **Preview:** Start your first session in under 2 minutes.
@@ -39,6 +40,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 2: Getting Started
+
 **Send:** Day 1 (24 hours after signup)
 **Subject:** The simplest way to start
 **Preview:** Think of the last thing you read. That's your first session.
@@ -59,6 +61,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 3: Why Reflection Matters
+
 **Send:** Day 3
 **Subject:** You consume plenty. How much do you keep?
 **Preview:** The gap between reading and thinking is where most ideas disappear.
@@ -78,6 +81,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 4: Feature Highlight — Resurfacing
+
 **Send:** Day 5
 **Subject:** Your reflections come back
 **Preview:** Past reflections resurface so your thinking compounds.
@@ -97,6 +101,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 5: Check-In
+
 **Send:** Day 10
 **Subject:** Still here if you want it
 **Preview:** No pressure. Distill works when you're ready.
@@ -123,6 +128,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 1: Check-In
+
 **Send:** Day 14 of inactivity
 **Subject:** It's been a while
 **Preview:** Your library is waiting.
@@ -140,6 +146,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 2: Value Reminder
+
 **Send:** Day 21 of inactivity
 **Subject:** [X] reflections, waiting
 **Preview:** Your past thinking doesn't have to disappear.
@@ -157,6 +164,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 3: Last Touch
+
 **Send:** Day 30 of inactivity
 **Subject:** Your reflections are still here
 **Preview:** No pressure. Just letting you know.
@@ -182,6 +190,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 1: Usage Milestone
+
 **Send:** When user completes their 2nd deep session this month
 **Subject:** You've used 2 of 3 deep sessions this month
 **Preview:** 1 deep session remaining on the free tier.
@@ -201,6 +210,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 2: Limit Reached
+
 **Send:** When user hits 10/10 OR on the 1st of the following month (whichever comes first)
 **Subject:** Your free reflections reset — or go unlimited
 **Preview:** 10 more reflections available, or remove the limit entirely.
@@ -226,6 +236,7 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ---
 
 ### Email 3: Annual Savings
+
 **Send:** 14 days after upgrading to monthly Pro
 **Subject:** Save 40% with annual billing
 **Preview:** Switch to annual: $36/year instead of $60/year.
@@ -246,30 +257,35 @@ Three automated sequences to drive activation, retention, and conversion. All co
 ## Implementation Notes
 
 ### Stack
+
 - **Email provider:** Resend (already integrated)
 - **Templates:** React Email (`lib/email/templates/`)
 - **Backend:** Convex actions with `"use node"` runtime
 - **Scheduling:** Convex crons + mutation-triggered actions
 
 ### New Templates Needed
+
 1. `WelcomeEmail.tsx` — generic template with variable body content (reuse for all 5 welcome emails)
 2. `ReEngagementEmail.tsx` — includes reflection count variable
 3. `UpgradeEmail.tsx` — includes usage stats and Pro CTA
 
 ### Trigger Logic
+
 - **Welcome sequence:** Trigger email 1 on `profiles.create`. Schedule emails 2-5 via Convex scheduled functions. Cancel remaining emails if user writes a reflection (for conditional emails).
 - **Re-engagement:** Hourly cron checks for users with `lastActiveAt` > 14 days ago and no re-engagement email sent. Use `notificationLogs` table to prevent duplicates.
 - **Upgrade sequence:** Trigger from `reflections.create` mutation when `reflectionCountThisMonth` hits 8. Use profile field to track sequence state.
 
 ### Metrics to Track
-| Metric | Target |
-|---|---|
-| Welcome email open rate | 50%+ |
-| Welcome sequence → first reflection | 30%+ |
-| Re-engagement click rate | 10%+ |
-| Re-engagement → returned user | 15%+ |
-| Upgrade email → Pro conversion | 5%+ |
-| Unsubscribe rate per sequence | < 2% |
+
+| Metric                              | Target |
+| ----------------------------------- | ------ |
+| Welcome email open rate             | 50%+   |
+| Welcome sequence → first reflection | 30%+   |
+| Re-engagement click rate            | 10%+   |
+| Re-engagement → returned user       | 15%+   |
+| Upgrade email → Pro conversion      | 5%+    |
+| Unsubscribe rate per sequence       | < 2%   |
 
 ### Unsubscribe Handling
+
 All emails use the existing HMAC unsubscribe system (`lib/email/unsubscribe.ts`). Users can also toggle email preferences in Settings.

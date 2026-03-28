@@ -105,6 +105,7 @@ Automatically pull current meta tags, CTR data by query, competitor title/descri
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Current title and meta description (if optimizing existing)
 2. Target primary keyword and 2-3 secondary keywords
 3. Page URL and main content/value proposition
@@ -120,7 +121,7 @@ When a user requests meta tag optimization:
 
    ```markdown
    ### Page Analysis
-   
+
    **Page URL**: [URL]
    **Page Type**: [blog/product/landing/service/homepage]
    **Primary Keyword**: [keyword]
@@ -132,89 +133,98 @@ When a user requests meta tag optimization:
 
 2. **Create Optimized Title Tag**
 
-   ```markdown
+   ````markdown
    ### Title Tag Optimization
-   
+
    **Requirements**:
+
    - Length: 50-60 characters (displays fully in SERP)
    - Include primary keyword (preferably near front)
    - Make it compelling and click-worthy
    - Match search intent
    - Include brand name if appropriate
-   
+
    **Title Tag Formula Options**:
-   
+
    1. **Keyword | Benefit | Brand**
       "[Primary Keyword]: [Benefit] | [Brand Name]"
-      
    2. **Number + Keyword + Promise**
       "[Number] [Keyword] That [Promise/Result]"
-      
    3. **How-to Format**
       "How to [Keyword]: [Benefit/Result]"
-      
    4. **Question Format**
       "What is [Keyword]? [Brief Answer/Hook]"
-      
    5. **Year + Keyword**
       "[Keyword] in [Year]: [Hook/Update]"
-   
+
    **Generated Title Options**:
-   
-   | Option | Title | Length | Power Words | Keyword Position |
-   |--------|-------|--------|-------------|------------------|
-   | 1 | [Title] | [X] chars | [words] | [Front/Middle] |
-   | 2 | [Title] | [X] chars | [words] | [Front/Middle] |
-   | 3 | [Title] | [X] chars | [words] | [Front/Middle] |
-   
+
+   | Option | Title   | Length    | Power Words | Keyword Position |
+   | ------ | ------- | --------- | ----------- | ---------------- |
+   | 1      | [Title] | [X] chars | [words]     | [Front/Middle]   |
+   | 2      | [Title] | [X] chars | [words]     | [Front/Middle]   |
+   | 3      | [Title] | [X] chars | [words]     | [Front/Middle]   |
+
    **Recommended**: Option [X]
    **Reasoning**: [Why this option is best]
-   
+
    **Title Tag Code**:
+
    ```html
    <title>[Selected Title]</title>
    ```
+   ````
+
+   ```
+
    ```
 
 3. **Write Meta Description**
 
-   ```markdown
+   ````markdown
    ### Meta Description Optimization
-   
+
    **Requirements**:
+
    - Length: 150-160 characters (displays fully in SERP)
    - Include primary keyword naturally
    - Include clear call-to-action
    - Match page content accurately
    - Create urgency or curiosity
    - Avoid duplicate descriptions
-   
+
    **Meta Description Formula**:
-   
+
    [What the page offers] + [Benefit to user] + [Call-to-action]
-   
+
    **Power Elements to Include**:
+
    - Numbers and statistics
    - Current year
    - Emotional triggers
    - Action verbs
    - Unique value proposition
-   
+
    **Generated Description Options**:
-   
-   | Option | Description | Length | CTA | Emotional Trigger |
-   |--------|-------------|--------|-----|-------------------|
-   | 1 | [Description] | [X] chars | [CTA] | [Trigger] |
-   | 2 | [Description] | [X] chars | [CTA] | [Trigger] |
-   | 3 | [Description] | [X] chars | [CTA] | [Trigger] |
-   
+
+   | Option | Description   | Length    | CTA   | Emotional Trigger |
+   | ------ | ------------- | --------- | ----- | ----------------- |
+   | 1      | [Description] | [X] chars | [CTA] | [Trigger]         |
+   | 2      | [Description] | [X] chars | [CTA] | [Trigger]         |
+   | 3      | [Description] | [X] chars | [CTA] | [Trigger]         |
+
    **Recommended**: Option [X]
    **Reasoning**: [Why this option is best]
-   
+
    **Meta Description Code**:
+
    ```html
-   <meta name="description" content="[Selected Description]">
+   <meta name="description" content="[Selected Description]" />
    ```
+   ````
+
+   ```
+
    ```
 
 4. **Create Open Graph, Twitter Card, and Additional Meta Tags**
@@ -230,43 +240,46 @@ When a user requests meta tag optimization:
    ```markdown
    ### CORE-EEAT Meta Tag Alignment
 
-   | Check | Status | Notes |
-   |-------|--------|-------|
-   | **C01 Intent Alignment**: Title promise matches actual content delivery | ✅/⚠️/❌ | [Does the title accurately represent what the page delivers?] |
-   | **C02 Direct Answer**: Meta description reflects the core answer available in first 150 words | ✅/⚠️/❌ | [Does the description preview the direct answer?] |
+   | Check                                                                                         | Status   | Notes                                                         |
+   | --------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------- |
+   | **C01 Intent Alignment**: Title promise matches actual content delivery                       | ✅/⚠️/❌ | [Does the title accurately represent what the page delivers?] |
+   | **C02 Direct Answer**: Meta description reflects the core answer available in first 150 words | ✅/⚠️/❌ | [Does the description preview the direct answer?]             |
 
    **If C01 fails**: Title is misleading — rewrite to match actual content.
    **If C02 fails**: Content may need restructuring to front-load the answer, or description should better reflect available content.
    ```
 
-9. **Provide CTR Optimization Tips**
+6. **Provide CTR Optimization Tips**
 
    ```markdown
    ## CTR Optimization Analysis
 
    ### Power Words Used
+
    - [Word 1] - Creates [emotion/action]
    - [Word 2] - Creates [emotion/action]
 
    ### CTR Boosting Elements
 
-   | Element | Present | Impact |
-   |---------|---------|--------|
-   | Numbers | Yes/No | +20-30% CTR |
-   | Current Year | Yes/No | +15-20% CTR |
-   | Power Words | Yes/No | +10-15% CTR |
-   | Question | Yes/No | +10-15% CTR |
-   | Brackets | Yes/No | +10% CTR |
+   | Element      | Present | Impact      |
+   | ------------ | ------- | ----------- |
+   | Numbers      | Yes/No  | +20-30% CTR |
+   | Current Year | Yes/No  | +15-20% CTR |
+   | Power Words  | Yes/No  | +10-15% CTR |
+   | Question     | Yes/No  | +10-15% CTR |
+   | Brackets     | Yes/No  | +10% CTR    |
 
    ### A/B Test Suggestions
 
    Test these variations:
 
    **Version A** (Current):
+
    - Title: [Title]
    - Description: [Description]
 
    **Version B** (Test):
+
    - Title: [Alternative title]
    - Description: [Alternative description]
    - Hypothesis: [Why this might perform better]
@@ -275,12 +288,14 @@ When a user requests meta tag optimization:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Primary keyword confirmed and matches page content
 - [ ] Page type identified (blog/product/landing/service/homepage)
 - [ ] Target audience and search intent clearly defined
 - [ ] Unique value proposition articulated
 
 ### Output Validation
+
 - [ ] Title length 50-60 characters (displays fully in SERP)
 - [ ] Meta description length 150-160 characters
 - [ ] Primary keyword appears in both title and description
@@ -294,21 +309,31 @@ When a user requests meta tag optimization:
 
 **Output**:
 
-```markdown
+````markdown
 ## Meta Tags: How to Start a Podcast ([current year])
 
 ### Title Tag
+
 ```html
-<title>How to Start a Podcast in [current year]: Complete Beginner's Guide</title>
+<title>
+  How to Start a Podcast in [current year]: Complete Beginner's Guide
+</title>
 ```
+````
+
 **Length**: ~55 characters ✅
 **Keyword**: "how to start a podcast" at front ✅
 **Power Words**: "Complete", "Beginner's" ✅
 
 ### Meta Description
+
 ```html
-<meta name="description" content="Learn how to start a podcast in [current year] with our step-by-step guide. Covers equipment, hosting, recording, and launching your first episode. Start podcasting today!">
+<meta
+  name="description"
+  content="Learn how to start a podcast in [current year] with our step-by-step guide. Covers equipment, hosting, recording, and launching your first episode. Start podcasting today!"
+/>
 ```
+
 **Length**: ~163 characters ✅
 **Keyword**: Included naturally ✅
 **CTA**: "Start podcasting today!" ✅
@@ -325,6 +350,7 @@ _Complete meta tag block (with OG, Twitter, Article tags) generated using templa
 
 **Description Variation B**:
 "Want to start a podcast in [current year]? This guide covers everything: equipment ($100 budget option), best hosting platforms, recording tips, and how to get your first 1,000 listeners."
+
 ```
 
 ## Tips for Success
@@ -348,3 +374,4 @@ _Complete meta tag block (with OG, Twitter, Article tags) generated using templa
 - [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) — Audit all meta tags
 - [serp-analysis](../../research/serp-analysis/) — Analyze competitor meta tags
 
+```

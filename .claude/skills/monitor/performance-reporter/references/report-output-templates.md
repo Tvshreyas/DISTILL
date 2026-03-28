@@ -37,26 +37,29 @@ Detailed output templates for each step of the performance reporting workflow. U
 **Key Highlights**:
 
 Wins:
+
 - [Win 1 - e.g., "Organic traffic increased 25%"]
 - [Win 2 - e.g., "3 new #1 rankings achieved"]
 - [Win 3 - e.g., "Conversion rate improved 15%"]
 
 Watch Areas:
+
 - [Area 1 - e.g., "Mobile rankings declining slightly"]
 - [Area 2 - e.g., "Competitor gaining ground on key terms"]
 
 Action Required:
+
 - [Issue 1 - e.g., "Technical SEO audit needed"]
 
 ### Key Metrics at a Glance
 
-| Metric | This Period | Last Period | Change | Target | Status |
-|--------|-------------|-------------|--------|--------|--------|
-| Organic Traffic | [X] | [Y] | [+/-Z%] | [T] | [status] |
-| Keyword Rankings (Top 10) | [X] | [Y] | [+/-Z] | [T] | [status] |
-| Organic Conversions | [X] | [Y] | [+/-Z%] | [T] | [status] |
-| Domain Authority | [X] | [Y] | [+/-Z] | [T] | [status] |
-| AI Citations | [X] | [Y] | [+/-Z%] | [T] | [status] |
+| Metric                    | This Period | Last Period | Change  | Target | Status   |
+| ------------------------- | ----------- | ----------- | ------- | ------ | -------- |
+| Organic Traffic           | [X]         | [Y]         | [+/-Z%] | [T]    | [status] |
+| Keyword Rankings (Top 10) | [X]         | [Y]         | [+/-Z]  | [T]    | [status] |
+| Organic Conversions       | [X]         | [Y]         | [+/-Z%] | [T]    | [status] |
+| Domain Authority          | [X]         | [Y]         | [+/-Z]  | [T]    | [status] |
+| AI Citations              | [X]         | [Y]         | [+/-Z%] | [T]    | [status] |
 
 ### SEO ROI
 
@@ -74,22 +77,23 @@ Action Required:
 
 ### Traffic Overview
 
-| Metric | This Period | vs Last Period | vs Last Year |
-|--------|-------------|----------------|--------------|
-| Sessions | [X] | [+/-Y%] | [+/-Z%] |
-| Users | [X] | [+/-Y%] | [+/-Z%] |
-| Pageviews | [X] | [+/-Y%] | [+/-Z%] |
-| Avg. Session Duration | [X] | [+/-Y%] | [+/-Z%] |
-| Bounce Rate | [X]% | [+/-Y%] | [+/-Z%] |
-| Pages per Session | [X] | [+/-Y] | [+/-Z] |
+| Metric                | This Period | vs Last Period | vs Last Year |
+| --------------------- | ----------- | -------------- | ------------ |
+| Sessions              | [X]         | [+/-Y%]        | [+/-Z%]      |
+| Users                 | [X]         | [+/-Y%]        | [+/-Z%]      |
+| Pageviews             | [X]         | [+/-Y%]        | [+/-Z%]      |
+| Avg. Session Duration | [X]         | [+/-Y%]        | [+/-Z%]      |
+| Bounce Rate           | [X]%        | [+/-Y%]        | [+/-Z%]      |
+| Pages per Session     | [X]         | [+/-Y]         | [+/-Z]       |
 
 ### Traffic Trend
-
 ```
-[Month 1]  ████████████████████ [X]
-[Month 2]  █████████████████████ [Y]
-[Month 3]  ███████████████████████ [Z]
-[Current]  ████████████████████████ [W]
+
+[Month 1] ████████████████████ [X]
+[Month 2] █████████████████████ [Y]
+[Month 3] ███████████████████████ [Z]
+[Current] ████████████████████████ [W]
+
 ```
 
 ### Traffic by Source
@@ -128,32 +132,32 @@ Action Required:
 ### Rankings Overview
 
 | Position Range | Keywords | Change | Traffic Impact |
-|----------------|----------|--------|----------------|
-| Position 1 | [X] | [+/-Y] | [Z] sessions |
-| Position 2-3 | [X] | [+/-Y] | [Z] sessions |
-| Position 4-10 | [X] | [+/-Y] | [Z] sessions |
-| Position 11-20 | [X] | [+/-Y] | [Z] sessions |
-| Position 21-50 | [X] | [+/-Y] | [Z] sessions |
+| -------------- | -------- | ------ | -------------- |
+| Position 1     | [X]      | [+/-Y] | [Z] sessions   |
+| Position 2-3   | [X]      | [+/-Y] | [Z] sessions   |
+| Position 4-10  | [X]      | [+/-Y] | [Z] sessions   |
+| Position 11-20 | [X]      | [+/-Y] | [Z] sessions   |
+| Position 21-50 | [X]      | [+/-Y] | [Z] sessions   |
 
 ### Top Ranking Improvements
 
-| Keyword | Previous | Current | Change | Traffic |
-|---------|----------|---------|--------|---------|
-| [kw 1] | [X] | [Y] | +[Z] | [sessions] |
+| Keyword | Previous | Current | Change | Traffic    |
+| ------- | -------- | ------- | ------ | ---------- |
+| [kw 1]  | [X]      | [Y]     | +[Z]   | [sessions] |
 
 ### Rankings That Declined
 
-| Keyword | Previous | Current | Change | Impact | Action |
-|---------|----------|---------|--------|--------|--------|
-| [kw 1] | [X] | [Y] | -[Z] | -[sessions] | [action] |
+| Keyword | Previous | Current | Change | Impact      | Action   |
+| ------- | -------- | ------- | ------ | ----------- | -------- |
+| [kw 1]  | [X]      | [Y]     | -[Z]   | -[sessions] | [action] |
 
 ### SERP Feature Performance
 
-| Feature | Won | Lost | Opportunities |
-|---------|-----|------|---------------|
-| Featured Snippets | [X] | [Y] | [Z] |
-| People Also Ask | [X] | [Y] | [Z] |
-| Local Pack | [X] | [Y] | [Z] |
+| Feature           | Won | Lost | Opportunities |
+| ----------------- | --- | ---- | ------------- |
+| Featured Snippets | [X] | [Y]  | [Z]           |
+| People Also Ask   | [X] | [Y]  | [Z]           |
+| Local Pack        | [X] | [Y]  | [Z]           |
 ```
 
 ---
@@ -165,30 +169,30 @@ Action Required:
 
 ### AI Citation Overview
 
-| Metric | This Period | Last Period | Change |
-|--------|-------------|-------------|--------|
-| Keywords with AI Overview | [X]/[Y] | [X]/[Y] | [+/-Z] |
-| Your AI Citations | [X] | [Y] | [+/-Z%] |
-| Citation Rate | [X]% | [Y]% | [+/-Z%] |
-| Avg Citation Position | [X] | [Y] | [+/-Z] |
+| Metric                    | This Period | Last Period | Change  |
+| ------------------------- | ----------- | ----------- | ------- |
+| Keywords with AI Overview | [X]/[Y]     | [X]/[Y]     | [+/-Z]  |
+| Your AI Citations         | [X]         | [Y]         | [+/-Z%] |
+| Citation Rate             | [X]%        | [Y]%        | [+/-Z%] |
+| Avg Citation Position     | [X]         | [Y]         | [+/-Z]  |
 
 ### AI Citation by Topic
 
 | Topic Cluster | Opportunities | Citations | Rate |
-|---------------|---------------|-----------|------|
-| [Topic 1] | [X] | [Y] | [Z]% |
+| ------------- | ------------- | --------- | ---- |
+| [Topic 1]     | [X]           | [Y]       | [Z]% |
 
 ### GEO Wins This Period
 
-| Query | Citation Status | Source Page | Impact |
-|-------|-----------------|-------------|--------|
-| [query 1] | New citation | [page] | High visibility |
+| Query     | Citation Status | Source Page | Impact          |
+| --------- | --------------- | ----------- | --------------- |
+| [query 1] | New citation    | [page]      | High visibility |
 
 ### GEO Optimization Opportunities
 
-| Query | AI Overview | You Cited? | Gap | Action |
-|-------|-------------|------------|-----|--------|
-| [query] | Yes | No | [gap] | [action] |
+| Query   | AI Overview | You Cited? | Gap   | Action   |
+| ------- | ----------- | ---------- | ----- | -------- |
+| [query] | Yes         | No         | [gap] | [action] |
 ```
 
 ---
@@ -200,13 +204,13 @@ Action Required:
 
 ### CITE Score Summary
 
-| Metric | This Period | Last Period | Change |
-|--------|-------------|-------------|--------|
-| CITE Score | [X]/100 | [Y]/100 | [+/-Z] |
-| C -- Citation | [X]/100 | [Y]/100 | [+/-Z] |
-| I -- Identity | [X]/100 | [Y]/100 | [+/-Z] |
-| T -- Trust | [X]/100 | [Y]/100 | [+/-Z] |
-| E -- Eminence | [X]/100 | [Y]/100 | [+/-Z] |
+| Metric        | This Period | Last Period | Change |
+| ------------- | ----------- | ----------- | ------ |
+| CITE Score    | [X]/100     | [Y]/100     | [+/-Z] |
+| C -- Citation | [X]/100     | [Y]/100     | [+/-Z] |
+| I -- Identity | [X]/100     | [Y]/100     | [+/-Z] |
+| T -- Trust    | [X]/100     | [Y]/100     | [+/-Z] |
+| E -- Eminence | [X]/100     | [Y]/100     | [+/-Z] |
 
 **Veto Status**: No triggers / [item] triggered
 
@@ -229,26 +233,26 @@ _For full 40-item evaluation, run `/seo:audit-domain`_
 
 ### Content Quality Summary
 
-| Metric | Value |
-|--------|-------|
-| Pages Audited | [count] |
-| Average CORE-EEAT Score | [score]/100 ([rating]) |
-| Average GEO Score (CORE) | [score]/100 |
-| Average SEO Score (EEAT) | [score]/100 |
-| Veto Items Triggered | [count] ([item IDs]) |
+| Metric                   | Value                  |
+| ------------------------ | ---------------------- |
+| Pages Audited            | [count]                |
+| Average CORE-EEAT Score  | [score]/100 ([rating]) |
+| Average GEO Score (CORE) | [score]/100            |
+| Average SEO Score (EEAT) | [score]/100            |
+| Veto Items Triggered     | [count] ([item IDs])   |
 
 ### Dimension Averages Across Audited Pages
 
-| Dimension | Average Score | Trend |
-|-----------|--------------|-------|
-| C -- Contextual Clarity | [score] | [up/down/stable] |
-| O -- Organization | [score] | [up/down/stable] |
-| R -- Referenceability | [score] | [up/down/stable] |
-| E -- Exclusivity | [score] | [up/down/stable] |
-| Exp -- Experience | [score] | [up/down/stable] |
-| Ept -- Expertise | [score] | [up/down/stable] |
-| A -- Authority | [score] | [up/down/stable] |
-| T -- Trust | [score] | [up/down/stable] |
+| Dimension               | Average Score | Trend            |
+| ----------------------- | ------------- | ---------------- |
+| C -- Contextual Clarity | [score]       | [up/down/stable] |
+| O -- Organization       | [score]       | [up/down/stable] |
+| R -- Referenceability   | [score]       | [up/down/stable] |
+| E -- Exclusivity        | [score]       | [up/down/stable] |
+| Exp -- Experience       | [score]       | [up/down/stable] |
+| Ept -- Expertise        | [score]       | [up/down/stable] |
+| A -- Authority          | [score]       | [up/down/stable] |
+| T -- Trust              | [score]       | [up/down/stable] |
 
 ### Key Content Quality Changes
 
@@ -269,28 +273,28 @@ _For full 80-item evaluation, run `/seo:audit-page` on individual pages._
 
 ### Link Profile Summary
 
-| Metric | This Period | Last Period | Change |
-|--------|-------------|-------------|--------|
-| Total Backlinks | [X] | [Y] | [+/-Z] |
-| Referring Domains | [X] | [Y] | [+/-Z] |
-| Domain Authority | [X] | [Y] | [+/-Z] |
-| Avg. Link DA | [X] | [Y] | [+/-Z] |
+| Metric            | This Period | Last Period | Change |
+| ----------------- | ----------- | ----------- | ------ |
+| Total Backlinks   | [X]         | [Y]         | [+/-Z] |
+| Referring Domains | [X]         | [Y]         | [+/-Z] |
+| Domain Authority  | [X]         | [Y]         | [+/-Z] |
+| Avg. Link DA      | [X]         | [Y]         | [+/-Z] |
 
 ### Link Acquisition
 
-| Period | New Links | Lost Links | Net |
-|--------|-----------|------------|-----|
-| Week 1 | [X] | [Y] | [+/-Z] |
-| Week 2 | [X] | [Y] | [+/-Z] |
-| Week 3 | [X] | [Y] | [+/-Z] |
-| Week 4 | [X] | [Y] | [+/-Z] |
-| **Total** | **[X]** | **[Y]** | **[+/-Z]** |
+| Period    | New Links | Lost Links | Net        |
+| --------- | --------- | ---------- | ---------- |
+| Week 1    | [X]       | [Y]        | [+/-Z]     |
+| Week 2    | [X]       | [Y]        | [+/-Z]     |
+| Week 3    | [X]       | [Y]        | [+/-Z]     |
+| Week 4    | [X]       | [Y]        | [+/-Z]     |
+| **Total** | **[X]**   | **[Y]**    | **[+/-Z]** |
 
 ### Notable New Links
 
-| Source | DA | Type | Value |
-|--------|-----|------|-------|
-| [domain 1] | [DA] | [type] | High |
+| Source     | DA   | Type   | Value |
+| ---------- | ---- | ------ | ----- |
+| [domain 1] | [DA] | [type] | High  |
 
 ### Competitive Position
 
@@ -306,30 +310,30 @@ Your referring domains rank #[X] of [Y] competitors.
 
 ### Content Publishing Summary
 
-| Metric | This Period | Last Period | Target |
-|--------|-------------|-------------|--------|
-| New articles published | [X] | [Y] | [Z] |
-| Content updates | [X] | [Y] | [Z] |
-| Total word count | [X] | [Y] | - |
+| Metric                 | This Period | Last Period | Target |
+| ---------------------- | ----------- | ----------- | ------ |
+| New articles published | [X]         | [Y]         | [Z]    |
+| Content updates        | [X]         | [Y]         | [Z]    |
+| Total word count       | [X]         | [Y]         | -      |
 
 ### Top Performing Content
 
-| Content | Traffic | Rankings | Conversions | Status |
-|---------|---------|----------|-------------|--------|
-| [Title 1] | [X] | [Y] keywords | [Z] | Top performer |
-| [Title 2] | [X] | [Y] keywords | [Z] | Growing |
+| Content   | Traffic | Rankings     | Conversions | Status        |
+| --------- | ------- | ------------ | ----------- | ------------- |
+| [Title 1] | [X]     | [Y] keywords | [Z]         | Top performer |
+| [Title 2] | [X]     | [Y] keywords | [Z]         | Growing       |
 
 ### Content Needing Attention
 
-| Content | Issue | Traffic Change | Action |
-|---------|-------|----------------|--------|
-| [Title] | [issue] | -[X]% | [action] |
+| Content | Issue   | Traffic Change | Action   |
+| ------- | ------- | -------------- | -------- |
+| [Title] | [issue] | -[X]%          | [action] |
 
 ### Content ROI
 
-| Content Piece | Investment | Traffic Value | ROI |
-|---------------|------------|---------------|-----|
-| [Title 1] | $[X] | $[Y] | [Z]% |
+| Content Piece | Investment | Traffic Value | ROI  |
+| ------------- | ---------- | ------------- | ---- |
+| [Title 1]     | $[X]       | $[Y]          | [Z]% |
 ```
 
 ---
@@ -341,30 +345,30 @@ Your referring domains rank #[X] of [Y] competitors.
 
 ### Immediate Actions (This Week)
 
-| Priority | Action | Expected Impact | Owner |
-|----------|--------|-----------------|-------|
-| High | [Action 1] | [Impact] | [Owner] |
+| Priority | Action     | Expected Impact | Owner   |
+| -------- | ---------- | --------------- | ------- |
+| High     | [Action 1] | [Impact]        | [Owner] |
 
 ### Short-term (This Month)
 
-| Priority | Action | Expected Impact | Owner |
-|----------|--------|-----------------|-------|
-| Medium | [Action 1] | [Impact] | [Owner] |
+| Priority | Action     | Expected Impact | Owner   |
+| -------- | ---------- | --------------- | ------- |
+| Medium   | [Action 1] | [Impact]        | [Owner] |
 
 ### Long-term (This Quarter)
 
-| Priority | Action | Expected Impact | Owner |
-|----------|--------|-----------------|-------|
-| Planned | [Action 1] | [Impact] | [Owner] |
+| Priority | Action     | Expected Impact | Owner   |
+| -------- | ---------- | --------------- | ------- |
+| Planned  | [Action 1] | [Impact]        | [Owner] |
 
 ### Goals for Next Period
 
-| Metric | Current | Target | Action to Achieve |
-|--------|---------|--------|-------------------|
-| Organic Traffic | [X] | [Y] | [action] |
-| Keywords Top 10 | [X] | [Y] | [action] |
-| AI Citations | [X] | [Y] | [action] |
-| Referring Domains | [X] | [Y] | [action] |
+| Metric            | Current | Target | Action to Achieve |
+| ----------------- | ------- | ------ | ----------------- |
+| Organic Traffic   | [X]     | [Y]    | [action]          |
+| Keywords Top 10   | [X]     | [Y]    | [action]          |
+| AI Citations      | [X]     | [Y]    | [action]          |
+| Referring Domains | [X]     | [Y]    | [action]          |
 ```
 
 ---
@@ -402,15 +406,18 @@ Your referring domains rank #[X] of [Y] competitors.
 ## Appendix
 
 ### Data Sources
+
 - ~~analytics (traffic and conversion data)
 - ~~search console (search performance)
 - ~~SEO tool (rankings and backlinks)
 - ~~AI monitor (GEO metrics)
 
 ### Methodology
+
 [Explain how metrics were calculated]
 
 ### Glossary
+
 - **GEO**: Generative Engine Optimization
 - **DA**: Domain Authority
 - [Additional terms]

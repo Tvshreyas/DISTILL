@@ -14,6 +14,7 @@ Distill helps you develop your own perspective on the content you consume. It in
 ## 🛠️ Setup
 
 1. **Install dependencies**:
+
    ```bash
    npm install
    ```
@@ -22,6 +23,7 @@ Distill helps you develop your own perspective on the content you consume. It in
    Copy `.env.example` to `.env.local` and fill in your keys for Convex, Clerk, and Stripe.
 
 3. **Convex Backend**:
+
    ```bash
    npx convex dev
    ```
@@ -52,4 +54,5 @@ Distill maintains a strict 100% pass rate for its 300+ tests.
 - **Crons**: Ensure Convex cron jobs are active for auto-abandoning stale sessions and monthly counts reset.
 
 ---
+
 Built for the intentional thinker.

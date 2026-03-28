@@ -12,14 +12,14 @@ Detailed instructions for Knowledge Panel optimization, Wikidata entry managemen
 
 ### Common Knowledge Panel Issues
 
-| Issue | Root Cause | Fix |
-|-------|-----------|-----|
-| No panel appears | Entity not in Knowledge Graph | Build Wikidata entry + structured data + authoritative mentions |
-| Wrong image | Image sourced from incorrect page | Update Wikidata image; ensure preferred image on About page and social profiles |
-| Wrong description | Description pulled from wrong source | Edit Wikidata description; ensure About page has clear entity description in first paragraph |
-| Missing attributes | Incomplete structured data | Add properties to Schema.org markup and Wikidata entry |
-| Wrong entity shown | Disambiguation failure | Strengthen unique signals; add qualifiers; resolve Wikidata disambiguation |
-| Outdated info | Source data not updated | Update Wikidata, About page, and all profile pages |
+| Issue              | Root Cause                           | Fix                                                                                          |
+| ------------------ | ------------------------------------ | -------------------------------------------------------------------------------------------- |
+| No panel appears   | Entity not in Knowledge Graph        | Build Wikidata entry + structured data + authoritative mentions                              |
+| Wrong image        | Image sourced from incorrect page    | Update Wikidata image; ensure preferred image on About page and social profiles              |
+| Wrong description  | Description pulled from wrong source | Edit Wikidata description; ensure About page has clear entity description in first paragraph |
+| Missing attributes | Incomplete structured data           | Add properties to Schema.org markup and Wikidata entry                                       |
+| Wrong entity shown | Disambiguation failure               | Strengthen unique signals; add qualifiers; resolve Wikidata disambiguation                   |
+| Outdated info      | Source data not updated              | Update Wikidata, About page, and all profile pages                                           |
 
 ## Wikidata Best Practices
 
@@ -35,17 +35,17 @@ Detailed instructions for Knowledge Panel optimization, Wikidata entry managemen
 
 ### Key Wikidata Properties by Entity Type
 
-| Property | Code | Person | Org | Brand | Product |
-|----------|------|:------:|:---:|:-----:|:-------:|
-| instance of | P31 | human | organization type | brand | product type |
-| official website | P856 | yes | yes | yes | yes |
-| occupation / industry | P106/P452 | yes | yes | -- | -- |
-| founded by | P112 | -- | yes | yes | -- |
-| inception | P571 | -- | yes | yes | yes |
-| country | P17 | yes | yes | -- | -- |
-| social media | various | yes | yes | yes | yes |
-| employer | P108 | yes | -- | -- | -- |
-| developer | P178 | -- | -- | -- | yes |
+| Property              | Code      | Person |        Org        | Brand |   Product    |
+| --------------------- | --------- | :----: | :---------------: | :---: | :----------: |
+| instance of           | P31       | human  | organization type | brand | product type |
+| official website      | P856      |  yes   |        yes        |  yes  |     yes      |
+| occupation / industry | P106/P452 |  yes   |        yes        |  --   |      --      |
+| founded by            | P112      |   --   |        yes        |  yes  |      --      |
+| inception             | P571      |   --   |        yes        |  yes  |     yes      |
+| country               | P17       |  yes   |        yes        |  --   |      --      |
+| social media          | various   |  yes   |        yes        |  yes  |     yes      |
+| employer              | P108      |  yes   |        --         |  --   |      --      |
+| developer             | P178      |   --   |        --         |  --   |     yes      |
 
 ## AI Entity Optimization
 
@@ -56,6 +56,7 @@ User query -> Entity extraction -> Entity resolution -> Knowledge retrieval -> A
 ```
 
 AI systems follow this pipeline:
+
 1. **Extract** entity mentions from the query
 2. **Resolve** each mention to a known entity (or fail -> "I'm not sure")
 3. **Retrieve** associated knowledge about the entity
@@ -63,14 +64,14 @@ AI systems follow this pipeline:
 
 ### Signals AI Systems Use for Entity Resolution
 
-| Signal Type | What AI Checks | How to Optimize |
-|-------------|---------------|-----------------|
-| **Training data presence** | Was entity in pre-training corpus? | Get mentioned in high-quality, widely-crawled sources |
-| **Retrieval augmentation** | Does entity appear in live search results? | Strong SEO presence for branded queries |
-| **Structured data** | Can entity be matched to Knowledge Graph? | Complete Wikidata + Schema.org |
-| **Contextual co-occurrence** | What topics/entities appear alongside? | Build consistent topic associations across content |
-| **Source authority** | Are sources about entity trustworthy? | Get mentioned by authoritative, well-known sources |
-| **Recency** | Is information current? | Keep all entity profiles and content updated |
+| Signal Type                  | What AI Checks                             | How to Optimize                                       |
+| ---------------------------- | ------------------------------------------ | ----------------------------------------------------- |
+| **Training data presence**   | Was entity in pre-training corpus?         | Get mentioned in high-quality, widely-crawled sources |
+| **Retrieval augmentation**   | Does entity appear in live search results? | Strong SEO presence for branded queries               |
+| **Structured data**          | Can entity be matched to Knowledge Graph?  | Complete Wikidata + Schema.org                        |
+| **Contextual co-occurrence** | What topics/entities appear alongside?     | Build consistent topic associations across content    |
+| **Source authority**         | Are sources about entity trustworthy?      | Get mentioned by authoritative, well-known sources    |
+| **Recency**                  | Is information current?                    | Keep all entity profiles and content updated          |
 
 ### Entity-Specific GEO Tactics
 

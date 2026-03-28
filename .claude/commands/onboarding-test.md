@@ -5,6 +5,7 @@ This is the most critical user journey: anonymous user → first reflection → 
 ## Test steps:
 
 ### 1. Anonymous flow
+
 - Navigate to onboarding page
 - Verify 4-screen flow works:
   - Screen 1: Welcome + disclaimer text present
@@ -15,12 +16,14 @@ This is the most critical user journey: anonymous user → first reflection → 
 - Verify reflection is in localStorage with correct structure
 
 ### 2. Magic link flow
+
 - Email is sent successfully
 - Callback route handles verification
 - Safe redirect: only internal paths, no open redirect (`//evil.com`)
 - Account created in `profiles` table with `onboarding_completed = false`
 
 ### 3. Data migration
+
 - localStorage reflection migrated to DB
 - `onboarding_completed = true` after migration
 - Migration is idempotent (running twice doesn't create duplicates)
@@ -28,6 +31,7 @@ This is the most critical user journey: anonymous user → first reflection → 
 - Triggers fire: word_count calculated, resurfacing scheduled, counts incremented
 
 ### 4. Edge cases
+
 - What happens if magic link expires?
 - What happens if localStorage is cleared before migration?
 - What happens if user already has an account?
@@ -35,4 +39,5 @@ This is the most critical user journey: anonymous user → first reflection → 
 - What about 7-day anonymous session expiry?
 
 ### 5. Report
+
 Pass/fail for each step with specific issues found.

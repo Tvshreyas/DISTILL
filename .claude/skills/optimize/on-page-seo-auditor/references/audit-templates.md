@@ -13,17 +13,18 @@ Detailed output templates for on-page-seo-auditor steps 5-11. Referenced from [S
 **Reading Level**: [Grade level]
 **Estimated Read Time**: [X] minutes
 
-| Criterion | Status | Notes |
-|-----------|--------|-------|
-| Sufficient length | ✅/⚠️/❌ | [comparison to ranking content] |
-| Comprehensive coverage | ✅/⚠️/❌ | [notes] |
-| Unique value/insights | ✅/⚠️/❌ | [notes] |
-| Up-to-date information | ✅/⚠️/❌ | [notes] |
-| Proper formatting | ✅/⚠️/❌ | [notes] |
-| Readability | ✅/⚠️/❌ | [notes] |
-| E-E-A-T signals | ✅/⚠️/❌ | [notes] |
+| Criterion              | Status   | Notes                           |
+| ---------------------- | -------- | ------------------------------- |
+| Sufficient length      | ✅/⚠️/❌ | [comparison to ranking content] |
+| Comprehensive coverage | ✅/⚠️/❌ | [notes]                         |
+| Unique value/insights  | ✅/⚠️/❌ | [notes]                         |
+| Up-to-date information | ✅/⚠️/❌ | [notes]                         |
+| Proper formatting      | ✅/⚠️/❌ | [notes]                         |
+| Readability            | ✅/⚠️/❌ | [notes]                         |
+| E-E-A-T signals        | ✅/⚠️/❌ | [notes]                         |
 
 **Content Elements Present**:
+
 - [ ] Introduction with keyword
 - [ ] Clear sections/structure
 - [ ] Bullet points/lists
@@ -38,10 +39,12 @@ Detailed output templates for on-page-seo-auditor steps 5-11. Referenced from [S
 **Content Score**: [X]/10
 
 **Gaps Identified**:
+
 - [Missing topic/section 1]
 - [Missing topic/section 2]
 
 **Recommendations**:
+
 1. [Specific improvement]
 2. [Specific improvement]
 ```
@@ -58,24 +61,24 @@ Detailed output templates for on-page-seo-auditor steps 5-11. Referenced from [S
 
 ### Keyword Placement
 
-| Location | Present | Notes |
-|----------|---------|-------|
-| Title tag | ✅/❌ | Position: [X] |
-| Meta description | ✅/❌ | [notes] |
-| H1 | ✅/❌ | [notes] |
-| First 100 words | ✅/❌ | Word position: [X] |
-| H2 headings | ✅/❌ | In [X]/[Y] H2s |
-| Body content | ✅/❌ | [X] occurrences |
-| URL slug | ✅/❌ | [notes] |
-| Image alt text | ✅/❌ | In [X]/[Y] images |
-| Conclusion | ✅/❌ | [notes] |
+| Location         | Present | Notes              |
+| ---------------- | ------- | ------------------ |
+| Title tag        | ✅/❌   | Position: [X]      |
+| Meta description | ✅/❌   | [notes]            |
+| H1               | ✅/❌   | [notes]            |
+| First 100 words  | ✅/❌   | Word position: [X] |
+| H2 headings      | ✅/❌   | In [X]/[Y] H2s     |
+| Body content     | ✅/❌   | [X] occurrences    |
+| URL slug         | ✅/❌   | [notes]            |
+| Image alt text   | ✅/❌   | In [X]/[Y] images  |
+| Conclusion       | ✅/❌   | [notes]            |
 
 ### Secondary Keywords
 
-| Keyword | Occurrences | Status |
-|---------|-------------|--------|
-| [keyword 1] | [X] | ✅/⚠️/❌ |
-| [keyword 2] | [X] | ✅/⚠️/❌ |
+| Keyword     | Occurrences | Status   |
+| ----------- | ----------- | -------- |
+| [keyword 1] | [X]         | ✅/⚠️/❌ |
+| [keyword 2] | [X]         | ✅/⚠️/❌ |
 
 ### LSI/Related Terms
 
@@ -85,9 +88,11 @@ Detailed output templates for on-page-seo-auditor steps 5-11. Referenced from [S
 **Keyword Score**: [X]/10
 
 **Issues**:
+
 - [Issue 1]
 
 **Recommendations**:
+
 - [Suggestion 1]
 ```
 
@@ -101,16 +106,17 @@ Detailed output templates for on-page-seo-auditor steps 5-11. Referenced from [S
 **Total Internal Links**: [X]
 **Unique Internal Links**: [X]
 
-| Criterion | Status | Notes |
-|-----------|--------|-------|
+| Criterion                | Status   | Notes                |
+| ------------------------ | -------- | -------------------- |
 | Number of internal links | ✅/⚠️/❌ | [X] (recommend 3-5+) |
-| Relevant anchor text | ✅/⚠️/❌ | [notes] |
-| Links to related content | ✅/⚠️/❌ | [notes] |
-| Links to important pages | ✅/⚠️/❌ | [notes] |
-| No broken links | ✅/⚠️/❌ | [X] broken found |
-| Natural placement | ✅/⚠️/❌ | [notes] |
+| Relevant anchor text     | ✅/⚠️/❌ | [notes]              |
+| Links to related content | ✅/⚠️/❌ | [notes]              |
+| Links to important pages | ✅/⚠️/❌ | [notes]              |
+| No broken links          | ✅/⚠️/❌ | [X] broken found     |
+| Natural placement        | ✅/⚠️/❌ | [notes]              |
 
 **Current Internal Links**:
+
 1. "[Anchor text]" → [URL]
 2. "[Anchor text]" → [URL]
 3. "[Anchor text]" → [URL]
@@ -118,10 +124,12 @@ Detailed output templates for on-page-seo-auditor steps 5-11. Referenced from [S
 **Internal Linking Score**: [X]/10
 
 **Recommended Additional Links**:
+
 1. Add link to "[Related page]" with anchor "[suggested anchor]"
 2. Add link to "[Related page]" with anchor "[suggested anchor]"
 
 **Anchor Text Improvements**:
+
 - Change "[current anchor]" to "[improved anchor]"
 ```
 
@@ -136,23 +144,24 @@ Detailed output templates for on-page-seo-auditor steps 5-11. Referenced from [S
 
 ### Image Audit Table
 
-| Image | Alt Text | File Name | Size | Status |
-|-------|----------|-----------|------|--------|
+| Image  | Alt Text           | File Name  | Size | Status   |
+| ------ | ------------------ | ---------- | ---- | -------- |
 | [img1] | [alt or "missing"] | [filename] | [KB] | ✅/⚠️/❌ |
 | [img2] | [alt or "missing"] | [filename] | [KB] | ✅/⚠️/❌ |
 
-| Criterion | Status | Notes |
-|-----------|--------|-------|
-| All images have alt text | ✅/⚠️/❌ | [X]/[Y] have alt |
-| Alt text includes keywords | ✅/⚠️/❌ | [notes] |
-| Descriptive file names | ✅/⚠️/❌ | [notes] |
-| Appropriate file sizes | ✅/⚠️/❌ | [notes] |
-| Modern formats (WebP) | ✅/⚠️/❌ | [notes] |
-| Lazy loading enabled | ✅/⚠️/❌ | [notes] |
+| Criterion                  | Status   | Notes            |
+| -------------------------- | -------- | ---------------- |
+| All images have alt text   | ✅/⚠️/❌ | [X]/[Y] have alt |
+| Alt text includes keywords | ✅/⚠️/❌ | [notes]          |
+| Descriptive file names     | ✅/⚠️/❌ | [notes]          |
+| Appropriate file sizes     | ✅/⚠️/❌ | [notes]          |
+| Modern formats (WebP)      | ✅/⚠️/❌ | [notes]          |
+| Lazy loading enabled       | ✅/⚠️/❌ | [notes]          |
 
 **Image Score**: [X]/10
 
 **Recommendations**:
+
 1. Add alt text to image [X]: "[suggested alt text]"
 2. Compress image [Y]: Currently [X]KB, should be under [Y]KB
 3. Rename [filename] to [better-filename]
@@ -165,16 +174,16 @@ Detailed output templates for on-page-seo-auditor steps 5-11. Referenced from [S
 ```markdown
 ## Technical On-Page Analysis
 
-| Element | Current Value | Status | Recommendation |
-|---------|---------------|--------|----------------|
-| URL | [URL] | ✅/⚠️/❌ | [notes] |
-| URL length | [X] chars | ✅/⚠️/❌ | [notes] |
-| URL keywords | [present/absent] | ✅/⚠️/❌ | [notes] |
-| Canonical tag | [URL or "missing"] | ✅/⚠️/❌ | [notes] |
-| Mobile-friendly | [yes/no] | ✅/⚠️/❌ | [notes] |
-| Page speed | [X]s | ✅/⚠️/❌ | [notes] |
-| HTTPS | [yes/no] | ✅/⚠️/❌ | [notes] |
-| Schema markup | [types or "none"] | ✅/⚠️/❌ | [notes] |
+| Element         | Current Value      | Status   | Recommendation |
+| --------------- | ------------------ | -------- | -------------- |
+| URL             | [URL]              | ✅/⚠️/❌ | [notes]        |
+| URL length      | [X] chars          | ✅/⚠️/❌ | [notes]        |
+| URL keywords    | [present/absent]   | ✅/⚠️/❌ | [notes]        |
+| Canonical tag   | [URL or "missing"] | ✅/⚠️/❌ | [notes]        |
+| Mobile-friendly | [yes/no]           | ✅/⚠️/❌ | [notes]        |
+| Page speed      | [X]s               | ✅/⚠️/❌ | [notes]        |
+| HTTPS           | [yes/no]           | ✅/⚠️/❌ | [notes]        |
+| Schema markup   | [types or "none"]  | ✅/⚠️/❌ | [notes]        |
 
 **Technical Score**: [X]/10
 ```
@@ -190,25 +199,25 @@ Run a quick scan of on-page-relevant CORE-EEAT items. Reference: [CORE-EEAT Benc
 
 Content-relevant items from the 80-item benchmark:
 
-| ID | Check Item | Status | Notes |
-|----|-----------|--------|-------|
-| C01 | Intent Alignment | ✅/⚠️/❌ | Title promise = content delivery |
-| C02 | Direct Answer | ✅/⚠️/❌ | Core answer in first 150 words |
-| C09 | FAQ Coverage | ✅/⚠️/❌ | Structured FAQ present |
-| C10 | Semantic Closure | ✅/⚠️/❌ | Conclusion answers opening |
-| O01 | Heading Hierarchy | ✅/⚠️/❌ | H1→H2→H3, no skipping |
-| O02 | Summary Box | ✅/⚠️/❌ | TL;DR or Key Takeaways |
-| O03 | Data Tables | ✅/⚠️/❌ | Comparisons in tables |
-| O05 | Schema Markup | ✅/⚠️/❌ | Appropriate JSON-LD |
-| O06 | Section Chunking | ✅/⚠️/❌ | Single topic per section |
-| R01 | Data Precision | ✅/⚠️/❌ | ≥5 precise numbers |
-| R02 | Citation Density | ✅/⚠️/❌ | ≥1 per 500 words |
-| R06 | Timestamp | ✅/⚠️/❌ | Updated <1 year |
-| R08 | Internal Link Graph | ✅/⚠️/❌ | Descriptive anchors |
-| R10 | Content Consistency | ✅/⚠️/❌ | No contradictions |
-| Exp01 | First-Person Narrative | ✅/⚠️/❌ | "I tested" or "We found" |
-| Ept01 | Author Identity | ✅/⚠️/❌ | Byline + bio present |
-| T04 | Disclosure Statements | ✅/⚠️/❌ | Affiliate links disclosed |
+| ID    | Check Item             | Status   | Notes                            |
+| ----- | ---------------------- | -------- | -------------------------------- |
+| C01   | Intent Alignment       | ✅/⚠️/❌ | Title promise = content delivery |
+| C02   | Direct Answer          | ✅/⚠️/❌ | Core answer in first 150 words   |
+| C09   | FAQ Coverage           | ✅/⚠️/❌ | Structured FAQ present           |
+| C10   | Semantic Closure       | ✅/⚠️/❌ | Conclusion answers opening       |
+| O01   | Heading Hierarchy      | ✅/⚠️/❌ | H1→H2→H3, no skipping            |
+| O02   | Summary Box            | ✅/⚠️/❌ | TL;DR or Key Takeaways           |
+| O03   | Data Tables            | ✅/⚠️/❌ | Comparisons in tables            |
+| O05   | Schema Markup          | ✅/⚠️/❌ | Appropriate JSON-LD              |
+| O06   | Section Chunking       | ✅/⚠️/❌ | Single topic per section         |
+| R01   | Data Precision         | ✅/⚠️/❌ | ≥5 precise numbers               |
+| R02   | Citation Density       | ✅/⚠️/❌ | ≥1 per 500 words                 |
+| R06   | Timestamp              | ✅/⚠️/❌ | Updated <1 year                  |
+| R08   | Internal Link Graph    | ✅/⚠️/❌ | Descriptive anchors              |
+| R10   | Content Consistency    | ✅/⚠️/❌ | No contradictions                |
+| Exp01 | First-Person Narrative | ✅/⚠️/❌ | "I tested" or "We found"         |
+| Ept01 | Author Identity        | ✅/⚠️/❌ | Byline + bio present             |
+| T04   | Disclosure Statements  | ✅/⚠️/❌ | Affiliate links disclosed        |
 
 **CORE-EEAT Quick Score**: [X]/17 items passing
 
@@ -227,8 +236,8 @@ Content-relevant items from the 80-item benchmark:
 **Audit Date**: [date]
 
 ## Overall Score: [X]/100
-
 ```
+
 Score Breakdown:
 ████████░░ Title Tag: 8/10
 ██████░░░░ Meta Description: 6/10
@@ -238,6 +247,7 @@ Score Breakdown:
 █████░░░░░ Internal Links: 5/10
 ████░░░░░░ Images: 4/10
 ████████░░ Technical: 8/10
+
 ```
 
 ## Priority Issues

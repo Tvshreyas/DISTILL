@@ -42,37 +42,93 @@ export function WeeklySummaryEmail({
         <style>{`body { font-family: 'Outfit', Arial, sans-serif; }`}</style>
       </Head>
       <Body style={{ backgroundColor: "#FDFCF8", margin: 0, padding: 0 }}>
-        <Container style={{ maxWidth: "560px", margin: "0 auto", padding: "40px 20px" }}>
+        <Container
+          style={{ maxWidth: "560px", margin: "0 auto", padding: "40px 20px" }}
+        >
           {/* Header */}
-          <Text style={{ fontSize: "24px", fontWeight: 900, color: "#292524", letterSpacing: "-0.02em", textTransform: "lowercase" as const }}>
+          <Text
+            style={{
+              fontSize: "24px",
+              fontWeight: 900,
+              color: "#292524",
+              letterSpacing: "-0.02em",
+              textTransform: "lowercase" as const,
+            }}
+          >
             distill
           </Text>
 
           <Hr style={{ borderColor: "#E8EFE8", margin: "24px 0" }} />
 
           {/* Body */}
-          <Text style={{ fontSize: "20px", fontWeight: 800, color: "#292524", margin: "0 0 16px" }}>
+          <Text
+            style={{
+              fontSize: "20px",
+              fontWeight: 800,
+              color: "#292524",
+              margin: "0 0 16px",
+            }}
+          >
             Your Week
           </Text>
 
           {hasReflections ? (
             <>
-              <Section style={{ backgroundColor: "#E8EFE8", borderRadius: "16px", padding: "24px", margin: "0 0 8px" }}>
-                <Text style={{ fontSize: "32px", fontWeight: 900, color: "#292524", margin: "0 0 4px" }}>
+              <Section
+                style={{
+                  backgroundColor: "#E8EFE8",
+                  borderRadius: "16px",
+                  padding: "24px",
+                  margin: "0 0 8px",
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: "32px",
+                    fontWeight: 900,
+                    color: "#292524",
+                    margin: "0 0 4px",
+                  }}
+                >
                   {totalReflections}
                 </Text>
-                <Text style={{ fontSize: "13px", fontWeight: 600, color: "#78716C", textTransform: "uppercase" as const, letterSpacing: "0.1em", margin: 0 }}>
+                <Text
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: 600,
+                    color: "#78716C",
+                    textTransform: "uppercase" as const,
+                    letterSpacing: "0.1em",
+                    margin: 0,
+                  }}
+                >
                   reflection{totalReflections !== 1 ? "s" : ""}
                 </Text>
               </Section>
 
-              <Text style={{ fontSize: "15px", color: "#78716C", lineHeight: "1.6", margin: "16px 0 24px" }}>
-                {totalWords.toLocaleString()} words across {typesLabel || "your reflections"}.
+              <Text
+                style={{
+                  fontSize: "15px",
+                  color: "#78716C",
+                  lineHeight: "1.6",
+                  margin: "16px 0 24px",
+                }}
+              >
+                {totalWords.toLocaleString()} words across{" "}
+                {typesLabel || "your reflections"}.
               </Text>
             </>
           ) : (
-            <Text style={{ fontSize: "15px", color: "#78716C", lineHeight: "1.6", margin: "0 0 24px" }}>
-              No reflections this week. Your library is here when you&apos;re ready.
+            <Text
+              style={{
+                fontSize: "15px",
+                color: "#78716C",
+                lineHeight: "1.6",
+                margin: "0 0 24px",
+              }}
+            >
+              No reflections this week. Your library is here when you&apos;re
+              ready.
             </Text>
           )}
 
@@ -99,7 +155,10 @@ export function WeeklySummaryEmail({
           {/* Footer */}
           <Text style={{ fontSize: "12px", color: "#78716C", margin: 0 }}>
             You received this because you enabled weekly summaries.{" "}
-            <Link href={unsubscribeUrl} style={{ color: "#78716C", textDecoration: "underline" }}>
+            <Link
+              href={unsubscribeUrl}
+              style={{ color: "#78716C", textDecoration: "underline" }}
+            >
               Unsubscribe
             </Link>
           </Text>

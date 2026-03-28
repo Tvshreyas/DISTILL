@@ -35,8 +35,16 @@ export const glossaryTerms: GlossaryTerm[] = [
       "In an era of infinite content, the bottleneck is not access to information — it is the ability to retain and apply it. Active reading is the difference between consuming 50 articles and remembering none, versus reading 5 articles and integrating their ideas into your thinking.\n\nFor knowledge workers, students, and lifelong learners, active reading transforms reading time from entertainment into compound intellectual growth.",
     howToApply:
       "Start with the simplest version: after every reading session, spend 2-5 minutes writing one paragraph of your own thinking about what you just read. Not a summary — your response. What struck you, what you disagree with, what connects to something you already know.\n\nThis single practice exploits the post-reading window when information is still in working memory and available for deep encoding. Over time, these reflections accumulate into a searchable archive of your intellectual development.",
-    relatedTerms: ["spaced-repetition", "reflective-thinking", "deep-reading", "metacognition"],
-    relatedBlogPosts: ["how-to-remember-what-you-read", "the-art-of-slow-thinking"],
+    relatedTerms: [
+      "spaced-repetition",
+      "reflective-thinking",
+      "deep-reading",
+      "metacognition",
+    ],
+    relatedBlogPosts: [
+      "how-to-remember-what-you-read",
+      "the-art-of-slow-thinking",
+    ],
   },
   {
     slug: "spaced-repetition",
@@ -49,8 +57,16 @@ export const glossaryTerms: GlossaryTerm[] = [
       "Without spaced repetition, learning is a leaky bucket. You invest time reading and thinking, but the insights fade within days. Spaced repetition is the patch that makes your intellectual investment compound over time rather than evaporate.\n\nFor readers specifically, spaced resurfacing of past reflections creates a unique benefit: you get to evaluate your former thinking with fresh eyes, noticing evolution in your perspective that would otherwise be invisible.",
     howToApply:
       "The low-effort version: keep a collection of your reading reflections and review one random past reflection each day. The structured version: use a system that surfaces past reflections at 1-day, 7-day, 30-day, and 90-day intervals after you write them.\n\nThe key insight is that you are not re-reading the original content. You are re-encountering your own perspective on it — which is faster, more personal, and more effective for retention.",
-    relatedTerms: ["active-reading", "forgetting-curve", "reflective-thinking", "metacognition"],
-    relatedBlogPosts: ["why-you-forget-everything-you-read", "how-to-remember-what-you-read"],
+    relatedTerms: [
+      "active-reading",
+      "forgetting-curve",
+      "reflective-thinking",
+      "metacognition",
+    ],
+    relatedBlogPosts: [
+      "why-you-forget-everything-you-read",
+      "how-to-remember-what-you-read",
+    ],
   },
   {
     slug: "reflective-thinking",
@@ -63,8 +79,16 @@ export const glossaryTerms: GlossaryTerm[] = [
       "Without reflective thinking, content consumption is purely absorptive — you take in other people's ideas without developing your own. Over time, this creates a paradox: the more you consume, the less you are able to articulate what you actually think about any given topic.\n\nReflective thinking is the bridge between consuming information and building knowledge. It is what transforms a reader into a thinker.",
     howToApply:
       "After finishing any meaningful piece of content — a book chapter, an article, a podcast episode — answer one question in writing: What is my response to this?\n\nAvoid summarizing what the author said. Instead, capture what struck you, what you question, what you want to explore further. The goal is not completeness but authenticity — your perspective, in your words, at this moment in time.",
-    relatedTerms: ["active-reading", "metacognition", "critical-thinking", "deep-reading"],
-    relatedBlogPosts: ["the-art-of-slow-thinking", "how-to-remember-what-you-read"],
+    relatedTerms: [
+      "active-reading",
+      "metacognition",
+      "critical-thinking",
+      "deep-reading",
+    ],
+    relatedBlogPosts: [
+      "the-art-of-slow-thinking",
+      "how-to-remember-what-you-read",
+    ],
   },
   {
     slug: "forgetting-curve",
@@ -77,8 +101,15 @@ export const glossaryTerms: GlossaryTerm[] = [
       "Understanding the forgetting curve reframes the retention problem. It is not that you have a bad memory. It is that passive consumption does not create the encoding conditions for long-term storage. The fix is not to consume less — it is to process what you consume more deliberately.",
     howToApply:
       "The most effective intervention is immediate: writing a reflection within 30 minutes of finishing a reading session, while the information is still in working memory. This single action can dramatically flatten the forgetting curve for that material.\n\nCombining immediate reflection with spaced resurfacing (re-encountering your reflection at intervals) creates a retention system that works with your biology rather than against it.",
-    relatedTerms: ["spaced-repetition", "active-reading", "reflective-thinking"],
-    relatedBlogPosts: ["why-you-forget-everything-you-read", "how-to-remember-what-you-read"],
+    relatedTerms: [
+      "spaced-repetition",
+      "active-reading",
+      "reflective-thinking",
+    ],
+    relatedBlogPosts: [
+      "why-you-forget-everything-you-read",
+      "how-to-remember-what-you-read",
+    ],
   },
   {
     slug: "deep-reading",
@@ -91,7 +122,12 @@ export const glossaryTerms: GlossaryTerm[] = [
       "Deep reading is where understanding happens. Skimming gives you awareness of a topic. Deep reading gives you comprehension, the ability to evaluate arguments, and the raw material for original thinking.\n\nIn a culture optimized for shallow consumption — feeds, headlines, 15-second clips — the ability to read deeply is becoming rare and therefore more valuable.",
     howToApply:
       "Set a timer for 30-45 minutes. Read one thing. No tabs, no phone, no notifications. When the timer ends, close the book or article and write one paragraph: what did you encounter, and what do you think about it?\n\nThe timer creates a boundary. The single-source focus enables depth. The reflection afterward converts comprehension into retention.",
-    relatedTerms: ["active-reading", "reflective-thinking", "information-diet", "slow-thinking"],
+    relatedTerms: [
+      "active-reading",
+      "reflective-thinking",
+      "information-diet",
+      "slow-thinking",
+    ],
     relatedBlogPosts: ["the-art-of-slow-thinking", "how-to-stop-doomscrolling"],
   },
   {
@@ -105,8 +141,15 @@ export const glossaryTerms: GlossaryTerm[] = [
       "Metacognition is the master skill that makes all other learning techniques effective. Without it, you cannot evaluate whether your reading is productive, your reflections are genuine, or your understanding is accurate.\n\nResearch consistently shows that metacognitive awareness is one of the strongest predictors of academic and professional learning outcomes — more predictive than raw intelligence.",
     howToApply:
       "Build metacognitive checkpoints into your reading practice. After every chapter or article, pause and ask: Can I explain the main idea without looking at the text? What questions do I still have? Where did I lose focus?\n\nWriting reflections after reading is inherently metacognitive — it forces you to evaluate your own understanding and articulate what you actually took away from the experience.",
-    relatedTerms: ["reflective-thinking", "active-reading", "critical-thinking"],
-    relatedBlogPosts: ["how-to-remember-what-you-read", "the-art-of-slow-thinking"],
+    relatedTerms: [
+      "reflective-thinking",
+      "active-reading",
+      "critical-thinking",
+    ],
+    relatedBlogPosts: [
+      "how-to-remember-what-you-read",
+      "the-art-of-slow-thinking",
+    ],
   },
   {
     slug: "information-diet",
@@ -120,7 +163,10 @@ export const glossaryTerms: GlossaryTerm[] = [
     howToApply:
       "Start with an audit: for one week, track every piece of content you consume and rate each on a scale of 1-5 for how much it contributed to your thinking. Anything consistently below 3, eliminate or unsubscribe.\n\nThen introduce a rule: for every hour of consumption, spend 10 minutes reflecting. This natural friction reduces overconsumption while ensuring that what you do consume gets properly processed.",
     relatedTerms: ["deep-reading", "slow-thinking", "reflective-thinking"],
-    relatedBlogPosts: ["how-to-stop-doomscrolling", "the-paradox-of-digital-information"],
+    relatedBlogPosts: [
+      "how-to-stop-doomscrolling",
+      "the-paradox-of-digital-information",
+    ],
   },
   {
     slug: "critical-thinking",
@@ -133,8 +179,16 @@ export const glossaryTerms: GlossaryTerm[] = [
       "Without critical thinking, you accumulate other people's opinions without developing your own. You can quote experts but cannot evaluate whether their arguments hold up. In an age of AI-generated content and information abundance, the ability to think critically about what you consume is more important than the ability to consume more of it.",
     howToApply:
       "When writing a reflection after reading, include at least one point of disagreement, one question the author did not address, or one assumption the argument depends on. This trains you to engage with content analytically rather than passively.\n\nOver time, your reflection archive becomes a record of your critical thinking development — showing how your ability to evaluate ideas has sharpened.",
-    relatedTerms: ["reflective-thinking", "metacognition", "active-reading", "deep-reading"],
-    relatedBlogPosts: ["the-art-of-slow-thinking", "distillation-competitive-advantage-2026"],
+    relatedTerms: [
+      "reflective-thinking",
+      "metacognition",
+      "active-reading",
+      "deep-reading",
+    ],
+    relatedBlogPosts: [
+      "the-art-of-slow-thinking",
+      "distillation-competitive-advantage-2026",
+    ],
   },
   {
     slug: "slow-thinking",
@@ -147,7 +201,12 @@ export const glossaryTerms: GlossaryTerm[] = [
       "The most important decisions and insights come from slow thinking. Fast thinking is useful for routine decisions, but it is prone to cognitive biases, shallow analysis, and borrowed opinions.\n\nBuilding a slow thinking practice means you develop your own perspective on the ideas you encounter rather than defaulting to the perspective the content was designed to produce.",
     howToApply:
       "Choose one piece of content per day to engage with slowly. Read it without multitasking. Pause at key passages. After finishing, write a reflection that captures not just what the author said, but what you think about what the author said.\n\nThe reflection is the slow thinking moment. It cannot be rushed, and it cannot be skipped without losing the primary benefit of the reading.",
-    relatedTerms: ["deep-reading", "reflective-thinking", "critical-thinking", "metacognition"],
+    relatedTerms: [
+      "deep-reading",
+      "reflective-thinking",
+      "critical-thinking",
+      "metacognition",
+    ],
     relatedBlogPosts: ["the-art-of-slow-thinking", "how-to-stop-doomscrolling"],
   },
   {
@@ -162,7 +221,10 @@ export const glossaryTerms: GlossaryTerm[] = [
     howToApply:
       "Write one reflection after every meaningful piece of content you consume. Once a week, review 3-5 past reflections and note any connections. Over time, your archive becomes a thinking tool — not just a record of what you read, but a map of how your mind works.",
     relatedTerms: ["reflective-thinking", "spaced-repetition", "slow-thinking"],
-    relatedBlogPosts: ["how-to-remember-what-you-read", "the-art-of-slow-thinking"],
+    relatedBlogPosts: [
+      "how-to-remember-what-you-read",
+      "the-art-of-slow-thinking",
+    ],
   },
 ];
 

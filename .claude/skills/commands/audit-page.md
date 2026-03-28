@@ -29,6 +29,7 @@ A combined **on-page SEO** + **CORE-EEAT content quality** audit. For full site-
 ```
 
 **Arguments:**
+
 - URL or pasted content (required)
 - `keyword="target keyword"` (optional but recommended for relevance scoring)
 

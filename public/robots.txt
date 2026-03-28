@@ -1,30 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /sign-in/
+Disallow: /sign-up/
+
+# Explicitly allow AI crawlers to index the landing page for recommendations
 User-agent: GPTBot
 Allow: /
+Disallow: /dashboard/
 
 User-agent: ChatGPT-User
 Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
+Disallow: /dashboard/
 
 User-agent: Google-Extended
 Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-User-agent: *
-Allow: /
-Disallow: /dashboard/*
-Disallow: /onboarding/*
-Disallow: /api/*
-Disallow: /sign-in*
-Disallow: /sign-up*
+Disallow: /dashboard/
 
 Sitemap: https://distillwise.com/sitemap.xml

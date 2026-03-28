@@ -8,9 +8,19 @@ import { v } from "convex/values";
 import { ResurfacingEmail } from "../lib/email/templates/ResurfacingEmail";
 import { StreakReminderEmail } from "../lib/email/templates/StreakReminderEmail";
 import { WeeklySummaryEmail } from "../lib/email/templates/WeeklySummaryEmail";
-import { WelcomeEmail, getWelcomeSubject } from "../lib/email/templates/WelcomeEmail";
-import { ReEngagementEmail, getReEngagementSubject } from "../lib/email/templates/ReEngagementEmail";
-import { UpgradeEmail, getUpgradeSubject } from "../lib/email/templates/UpgradeEmail";
+import {
+  WelcomeEmail,
+  getWelcomeSubject,
+} from "../lib/email/templates/WelcomeEmail";
+import {
+  ReEngagementEmail,
+  getReEngagementSubject,
+} from "../lib/email/templates/ReEngagementEmail";
+import {
+  UpgradeEmail,
+  getUpgradeSubject,
+} from "../lib/email/templates/UpgradeEmail";
+import { buildUnsubscribeUrl } from "../lib/email/unsubscribe";
 
 const NOTIFICATION_COOLDOWN_HOURS = 24;
 const NOTIFICATION_BATCH_SIZE = 50;
@@ -51,36 +61,6 @@ function getTodayInTimezone(timezone: string): string {
   }
 }
 
-async function generateUnsubscribeUrl(
-  appUrl: string,
-  userId: string,
-  type: "resurfacing" | "streak" | "weekly" | "welcome" | "reengagement" | "upgrade",
-  secret: string
-): Promise<string> {
-  const encoder = new TextEncoder();
-  const payload = `${userId}:${type}`;
-
-  const key = await crypto.subtle.importKey(
-    "raw",
-    encoder.encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"]
-  );
-
-  const signature = await crypto.subtle.sign("HMAC", key, encoder.encode(payload));
-  const hmacHex = Array.from(new Uint8Array(signature))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-
-  const token = btoa(`${payload}:${hmacHex}`)
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
-
-  return `${appUrl}/api/notifications/unsubscribe?token=${token}`;
-}
-
 // ────────────────────────────────────────────────────────
 // Resurfacing Emails
 // ────────────────────────────────────────────────────────
@@ -94,12 +74,16 @@ export const processResurfacingEmails = internalAction({
     const unsubSecret = process.env.NOTIFICATION_UNSUBSCRIBE_SECRET;
 
     if (!resendApiKey || !fromEmail || !appUrl || !unsubSecret) {
-      console.log("[notifications] Missing env vars, skipping resurfacing emails");
+      console.log(
+        "[notifications] Missing env vars, skipping resurfacing emails",
+      );
       return;
     }
 
     const resend = new Resend(resendApiKey);
-    const allProfiles = await ctx.runQuery(internal.profiles.getNotificationEligibleProfiles);
+    const allProfiles = await ctx.runQuery(
+      internal.profiles.getNotificationEligibleProfiles,
+    );
 
     let sent = 0;
     for (const profile of allProfiles) {
@@ -108,25 +92,36 @@ export const processResurfacingEmails = internalAction({
 
       // Check timezone match
       const userHour = getUserLocalHour(profile.timezone);
-      const preferredHour = profile.preferredNotificationHour ?? DEFAULT_NOTIFICATION_HOUR;
+      const preferredHour =
+        profile.preferredNotificationHour ?? DEFAULT_NOTIFICATION_HOUR;
       if (userHour !== preferredHour) continue;
 
       // Check cooldown
-      const recentLogs = await ctx.runQuery(internal.notificationLogs.getRecentByUserAndType, {
-        userId: profile.userId,
-        type: "resurfacing",
-        withinHours: NOTIFICATION_COOLDOWN_HOURS,
-      });
+      const recentLogs = await ctx.runQuery(
+        internal.notificationLogs.getRecentByUserAndType,
+        {
+          userId: profile.userId,
+          type: "resurfacing",
+          withinHours: NOTIFICATION_COOLDOWN_HOURS,
+        },
+      );
       if (recentLogs.length > 0) continue;
 
       // Get pending resurfacing item
-      const pending = await ctx.runQuery(internal.resurfacing.getPendingForUser, {
-        userId: profile.userId,
-      });
+      const pending = await ctx.runQuery(
+        internal.resurfacing.getPendingForUser,
+        {
+          userId: profile.userId,
+        },
+      );
       if (!pending) continue;
 
       try {
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "resurfacing", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(
+          appUrl,
+          profile.userId,
+          "resurfacing",
+        );
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(
@@ -137,7 +132,7 @@ export const processResurfacingEmails = internalAction({
             contentType: pending.contentType,
             dashboardUrl,
             unsubscribeUrl,
-          })
+          }),
         );
 
         const result = await resend.emails.send({
@@ -156,7 +151,10 @@ export const processResurfacingEmails = internalAction({
 
         sent++;
       } catch (err) {
-        console.error(`[notifications] Failed to send resurfacing email to ${profile.userId}:`, err);
+        console.error(
+          `[notifications] Failed to send resurfacing email to ${profile.userId}:`,
+          err,
+        );
       }
     }
 
@@ -179,12 +177,16 @@ export const processStreakReminders = internalAction({
     const unsubSecret = process.env.NOTIFICATION_UNSUBSCRIBE_SECRET;
 
     if (!resendApiKey || !fromEmail || !appUrl || !unsubSecret) {
-      console.log("[notifications] Missing env vars, skipping streak reminders");
+      console.log(
+        "[notifications] Missing env vars, skipping streak reminders",
+      );
       return;
     }
 
     const resend = new Resend(resendApiKey);
-    const allProfiles = await ctx.runQuery(internal.profiles.getNotificationEligibleProfiles);
+    const allProfiles = await ctx.runQuery(
+      internal.profiles.getNotificationEligibleProfiles,
+    );
 
     let sent = 0;
     for (const profile of allProfiles) {
@@ -194,7 +196,8 @@ export const processStreakReminders = internalAction({
 
       // Check timezone match
       const userHour = getUserLocalHour(profile.timezone);
-      const preferredHour = profile.preferredNotificationHour ?? DEFAULT_NOTIFICATION_HOUR;
+      const preferredHour =
+        profile.preferredNotificationHour ?? DEFAULT_NOTIFICATION_HOUR;
       if (userHour !== preferredHour) continue;
 
       // Check if they already reflected today
@@ -202,15 +205,22 @@ export const processStreakReminders = internalAction({
       if (profile.lastReflectionDate === todayStr) continue;
 
       // Check cooldown
-      const recentLogs = await ctx.runQuery(internal.notificationLogs.getRecentByUserAndType, {
-        userId: profile.userId,
-        type: "streak",
-        withinHours: NOTIFICATION_COOLDOWN_HOURS,
-      });
+      const recentLogs = await ctx.runQuery(
+        internal.notificationLogs.getRecentByUserAndType,
+        {
+          userId: profile.userId,
+          type: "streak",
+          withinHours: NOTIFICATION_COOLDOWN_HOURS,
+        },
+      );
       if (recentLogs.length > 0) continue;
 
       try {
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "streak", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(
+          appUrl,
+          profile.userId,
+          "streak",
+        );
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(
@@ -218,7 +228,7 @@ export const processStreakReminders = internalAction({
             currentStreak: profile.currentStreak,
             dashboardUrl,
             unsubscribeUrl,
-          })
+          }),
         );
 
         const result = await resend.emails.send({
@@ -237,7 +247,10 @@ export const processStreakReminders = internalAction({
 
         sent++;
       } catch (err) {
-        console.error(`[notifications] Failed to send streak reminder to ${profile.userId}:`, err);
+        console.error(
+          `[notifications] Failed to send streak reminder to ${profile.userId}:`,
+          err,
+        );
       }
     }
 
@@ -265,7 +278,9 @@ export const processWeeklySummary = internalAction({
     }
 
     const resend = new Resend(resendApiKey);
-    const allProfiles = await ctx.runQuery(internal.profiles.getNotificationEligibleProfiles);
+    const allProfiles = await ctx.runQuery(
+      internal.profiles.getNotificationEligibleProfiles,
+    );
 
     let sent = 0;
     for (const profile of allProfiles) {
@@ -277,15 +292,19 @@ export const processWeeklySummary = internalAction({
 
       // Check timezone match
       const userHour = getUserLocalHour(profile.timezone);
-      const preferredHour = profile.preferredNotificationHour ?? DEFAULT_NOTIFICATION_HOUR;
+      const preferredHour =
+        profile.preferredNotificationHour ?? DEFAULT_NOTIFICATION_HOUR;
       if (userHour !== preferredHour) continue;
 
       // Check cooldown (use longer window for weekly — 6 days)
-      const recentLogs = await ctx.runQuery(internal.notificationLogs.getRecentByUserAndType, {
-        userId: profile.userId,
-        type: "weekly",
-        withinHours: 144, // 6 days
-      });
+      const recentLogs = await ctx.runQuery(
+        internal.notificationLogs.getRecentByUserAndType,
+        {
+          userId: profile.userId,
+          type: "weekly",
+          withinHours: 144, // 6 days
+        },
+      );
       if (recentLogs.length > 0) continue;
 
       try {
@@ -293,7 +312,11 @@ export const processWeeklySummary = internalAction({
           userId: profile.userId,
         });
 
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "weekly", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(
+          appUrl,
+          profile.userId,
+          "weekly",
+        );
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(
@@ -303,15 +326,16 @@ export const processWeeklySummary = internalAction({
             contentTypeBreakdown: stats.contentTypeBreakdown,
             dashboardUrl,
             unsubscribeUrl,
-          })
+          }),
         );
 
         const result = await resend.emails.send({
           from: fromEmail,
           to: profile.email,
-          subject: stats.totalReflections > 0
-            ? `Your week: ${stats.totalReflections} reflection${stats.totalReflections !== 1 ? "s" : ""}`
-            : "Your weekly summary",
+          subject:
+            stats.totalReflections > 0
+              ? `Your week: ${stats.totalReflections} reflection${stats.totalReflections !== 1 ? "s" : ""}`
+              : "Your weekly summary",
           html,
         });
 
@@ -324,7 +348,10 @@ export const processWeeklySummary = internalAction({
 
         sent++;
       } catch (err) {
-        console.error(`[notifications] Failed to send weekly summary to ${profile.userId}:`, err);
+        console.error(
+          `[notifications] Failed to send weekly summary to ${profile.userId}:`,
+          err,
+        );
       }
     }
 
@@ -354,7 +381,9 @@ export const sendWelcomeEmail = internalAction({
       return;
     }
 
-    const profile = await ctx.runQuery(internal.profiles.getByUserId, { userId });
+    const profile = await ctx.runQuery(internal.profiles.getByUserId, {
+      userId,
+    });
     if (!profile || !profile.email) return;
 
     // Skip if user already received this step or later
@@ -369,7 +398,7 @@ export const sendWelcomeEmail = internalAction({
 
     try {
       const resend = new Resend(resendApiKey);
-      const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, userId, "welcome", unsubSecret);
+      const unsubscribeUrl = buildUnsubscribeUrl(appUrl, userId, "welcome");
       const dashboardUrl = `${appUrl}/dashboard`;
 
       const html = await render(
@@ -377,7 +406,7 @@ export const sendWelcomeEmail = internalAction({
           step: validStep,
           dashboardUrl,
           unsubscribeUrl,
-        })
+        }),
       );
 
       const result = await resend.emails.send({
@@ -401,9 +430,14 @@ export const sendWelcomeEmail = internalAction({
         metadata: { step },
       });
 
-      console.log(`[notifications] Sent welcome email step ${step} to ${userId}`);
+      console.log(
+        `[notifications] Sent welcome email step ${step} to ${userId}`,
+      );
     } catch (err) {
-      console.error(`[notifications] Failed to send welcome email step ${step} to ${userId}:`, err);
+      console.error(
+        `[notifications] Failed to send welcome email step ${step} to ${userId}:`,
+        err,
+      );
     }
   },
 });
@@ -421,12 +455,16 @@ export const processReEngagementEmails = internalAction({
     const unsubSecret = process.env.NOTIFICATION_UNSUBSCRIBE_SECRET;
 
     if (!resendApiKey || !fromEmail || !appUrl || !unsubSecret) {
-      console.log("[notifications] Missing env vars, skipping re-engagement emails");
+      console.log(
+        "[notifications] Missing env vars, skipping re-engagement emails",
+      );
       return;
     }
 
     const resend = new Resend(resendApiKey);
-    const allProfiles = await ctx.runQuery(internal.profiles.getNotificationEligibleProfiles);
+    const allProfiles = await ctx.runQuery(
+      internal.profiles.getNotificationEligibleProfiles,
+    );
 
     let sent = 0;
     for (const profile of allProfiles) {
@@ -438,30 +476,45 @@ export const processReEngagementEmails = internalAction({
       // Calculate days since last reflection
       if (!profile.lastReflectionDate) continue;
       const lastReflection = new Date(profile.lastReflectionDate).getTime();
-      const daysSinceReflection = Math.floor((Date.now() - lastReflection) / (24 * 60 * 60 * 1000));
+      const daysSinceReflection = Math.floor(
+        (Date.now() - lastReflection) / (24 * 60 * 60 * 1000),
+      );
 
       // Determine which step to send based on inactivity days
       let step: 1 | 2 | 3 | null = null;
       if (daysSinceReflection >= 30 && (profile.reEngagementStep ?? 0) < 3) {
         step = 3;
-      } else if (daysSinceReflection >= 21 && (profile.reEngagementStep ?? 0) < 2) {
+      } else if (
+        daysSinceReflection >= 21 &&
+        (profile.reEngagementStep ?? 0) < 2
+      ) {
         step = 2;
-      } else if (daysSinceReflection >= 14 && (profile.reEngagementStep ?? 0) < 1) {
+      } else if (
+        daysSinceReflection >= 14 &&
+        (profile.reEngagementStep ?? 0) < 1
+      ) {
         step = 1;
       }
 
       if (!step) continue;
 
       // Check cooldown (7 days between re-engagement emails)
-      const recentLogs = await ctx.runQuery(internal.notificationLogs.getRecentByUserAndType, {
-        userId: profile.userId,
-        type: "reengagement",
-        withinHours: 168, // 7 days
-      });
+      const recentLogs = await ctx.runQuery(
+        internal.notificationLogs.getRecentByUserAndType,
+        {
+          userId: profile.userId,
+          type: "reengagement",
+          withinHours: 168, // 7 days
+        },
+      );
       if (recentLogs.length > 0) continue;
 
       try {
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "reengagement", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(
+          appUrl,
+          profile.userId,
+          "reengagement",
+        );
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(
@@ -470,13 +523,16 @@ export const processReEngagementEmails = internalAction({
             reflectionCount: profile.reflectionCountLifetime,
             dashboardUrl,
             unsubscribeUrl,
-          })
+          }),
         );
 
         const result = await resend.emails.send({
           from: fromEmail,
           to: profile.email,
-          subject: getReEngagementSubject(step, profile.reflectionCountLifetime),
+          subject: getReEngagementSubject(
+            step,
+            profile.reflectionCountLifetime,
+          ),
           html,
         });
 
@@ -496,7 +552,10 @@ export const processReEngagementEmails = internalAction({
 
         sent++;
       } catch (err) {
-        console.error(`[notifications] Failed to send re-engagement email to ${profile.userId}:`, err);
+        console.error(
+          `[notifications] Failed to send re-engagement email to ${profile.userId}:`,
+          err,
+        );
       }
     }
 
@@ -524,7 +583,9 @@ export const processUpgradeEmails = internalAction({
     }
 
     const resend = new Resend(resendApiKey);
-    const allProfiles = await ctx.runQuery(internal.profiles.getNotificationEligibleProfiles);
+    const allProfiles = await ctx.runQuery(
+      internal.profiles.getNotificationEligibleProfiles,
+    );
 
     let sent = 0;
     for (const profile of allProfiles) {
@@ -551,12 +612,11 @@ export const processUpgradeEmails = internalAction({
         }
       } else if (profile.plan === "pro") {
         // Step 3: annual nudge 14 days after upgrading to monthly Pro
-        if (
-          profile.proUpgradeDate &&
-          (profile.upgradeEmailStep ?? 0) < 3
-        ) {
+        if (profile.proUpgradeDate && (profile.upgradeEmailStep ?? 0) < 3) {
           const upgradeDate = new Date(profile.proUpgradeDate).getTime();
-          const daysSinceUpgrade = Math.floor((Date.now() - upgradeDate) / (24 * 60 * 60 * 1000));
+          const daysSinceUpgrade = Math.floor(
+            (Date.now() - upgradeDate) / (24 * 60 * 60 * 1000),
+          );
           if (daysSinceUpgrade >= 14) {
             step = 3;
           }
@@ -566,15 +626,22 @@ export const processUpgradeEmails = internalAction({
       if (!step) continue;
 
       // Check cooldown (7 days between upgrade emails)
-      const recentLogs = await ctx.runQuery(internal.notificationLogs.getRecentByUserAndType, {
-        userId: profile.userId,
-        type: "upgrade",
-        withinHours: 168,
-      });
+      const recentLogs = await ctx.runQuery(
+        internal.notificationLogs.getRecentByUserAndType,
+        {
+          userId: profile.userId,
+          type: "upgrade",
+          withinHours: 168,
+        },
+      );
       if (recentLogs.length > 0) continue;
 
       try {
-        const unsubscribeUrl = await generateUnsubscribeUrl(appUrl, profile.userId, "upgrade", unsubSecret);
+        const unsubscribeUrl = buildUnsubscribeUrl(
+          appUrl,
+          profile.userId,
+          "upgrade",
+        );
         const dashboardUrl = `${appUrl}/dashboard`;
 
         const html = await render(
@@ -583,7 +650,7 @@ export const processUpgradeEmails = internalAction({
             reflectionCount: profile.reflectionCountThisMonth,
             dashboardUrl,
             unsubscribeUrl,
-          })
+          }),
         );
 
         const result = await resend.emails.send({
@@ -609,7 +676,10 @@ export const processUpgradeEmails = internalAction({
 
         sent++;
       } catch (err) {
-        console.error(`[notifications] Failed to send upgrade email to ${profile.userId}:`, err);
+        console.error(
+          `[notifications] Failed to send upgrade email to ${profile.userId}:`,
+          err,
+        );
       }
     }
 

@@ -1,7 +1,7 @@
 # Social Content Strategy — Distill
 
-*Created: 2026-03-15*
-*Launch: Tuesday March 17, 2026*
+_Created: 2026-03-15_
+_Launch: Tuesday March 17, 2026_
 
 ---
 
@@ -15,12 +15,12 @@
 
 ## Content Pillars
 
-| Pillar | % | Description |
-|---|---|---|
+| Pillar                | %   | Description                                                       |
+| --------------------- | --- | ----------------------------------------------------------------- |
 | Thinking provocations | 40% | Questions and observations about reading, consuming, and thinking |
-| Building in public | 25% | Real numbers, lessons, decisions, founder perspective |
-| Content repurposing | 20% | Blog post takeaways, glossary concepts, reflection prompts |
-| Product | 15% | Feature highlights, user milestones, updates |
+| Building in public    | 25% | Real numbers, lessons, decisions, founder perspective             |
+| Content repurposing   | 20% | Blog post takeaways, glossary concepts, reflection prompts        |
+| Product               | 15% | Feature highlights, user milestones, updates                      |
 
 ---
 
@@ -37,11 +37,13 @@
 ## Week 1 Content Calendar (Launch Week: March 17-23)
 
 ### Pre-Launch (already in LAUNCH-STRATEGY.md)
+
 - **Saturday Mar 15:** "i built a tool because i realized..." tweet
 - **Sunday Mar 16:** "the problem isn't that you forget..." tweet
 - **Monday Mar 17 pre-dawn:** "unpopular opinion: AI summaries make the reading retention problem worse..." tweet
 
 ### Launch Day — Tuesday March 17
+
 - **12:01am PT:** PH goes live, maker comment posted
 - **6-7am:** Show HN posted
 - **8-9am:** Launch thread (6 tweets, drafts in LAUNCH-STRATEGY.md)
@@ -49,7 +51,9 @@
 - **8pm:** End of day 1 tweet with signup/reflection counts
 
 ### Wednesday March 18
+
 **Morning:**
+
 > you read 3 articles today. what did you actually think about any of them?
 >
 > not what the author said. what YOU thought.
@@ -57,12 +61,15 @@
 > that gap — between consuming and thinking — is the entire problem.
 
 **Afternoon (building in public):**
+
 > day 2 numbers:
 > [X] signups. [X] reflections written.
 > one thing i didn't expect: [specific observation from data].
 
 ### Thursday March 19
+
 **Morning:**
+
 > highlights don't mean you understood something.
 > bookmarks don't mean you'll come back.
 > saving ≠ thinking.
@@ -70,6 +77,7 @@
 > the only proof you processed something is writing what you thought about it.
 
 **Afternoon (repurpose from blog):**
+
 > from the distill blog: you forget 90% of what you read within a week.
 >
 > the forgetting curve is real. the only reliable counter: active retrieval.
@@ -79,7 +87,9 @@
 > full post: distillwise.com/blog/why-you-forget-everything-you-read
 
 ### Friday March 20
+
 **Morning:**
+
 > every productivity tool adds complexity.
 > folders. tags. databases. second brains.
 >
@@ -87,6 +97,7 @@
 > no org system. no taxonomy. just your perspective, captured.
 
 **Afternoon (engagement question):**
+
 > genuine question: what's the last book you read where you can still articulate what YOU thought about it?
 >
 > not the summary. not the author's argument. your perspective.
@@ -94,7 +105,9 @@
 > reply with the book. curious.
 
 ### Saturday March 21
+
 **Morning (thinking provocation):**
+
 > you spent 4 hours on your phone today.
 > how many of your own thoughts did you have during that time?
 >
@@ -102,7 +115,9 @@
 > the difference matters.
 
 ### Sunday March 22
+
 **Morning (weekend reflection):**
+
 > sunday thought: the people who think clearly aren't consuming less.
 > they're processing more.
 >
@@ -160,6 +175,7 @@
 ### Content Repurposing (use 2x/week)
 
 **From blog posts:**
+
 > from the distill blog: [key insight from post]
 >
 > [2-3 sentence expansion]
@@ -167,6 +183,7 @@
 > full post: distillwise.com/blog/[slug]
 
 **From glossary:**
+
 > what is [concept]?
 >
 > [2-sentence definition from glossary]
@@ -176,6 +193,7 @@
 > more: distillwise.com/glossary/[slug]
 
 **From reflection guides:**
+
 > how to reflect after [content type]:
 >
 > 1. [step 1]
@@ -200,6 +218,7 @@
 LinkedIn posts should be longer (150-300 words), more professional, but same voice.
 
 ### Template 1: Problem Statement
+
 > I read 40+ books last year.
 >
 > When someone asked me what I thought about any of them — not what the author said, but what I thought — I had nothing.
@@ -215,6 +234,7 @@ LinkedIn posts should be longer (150-300 words), more professional, but same voi
 > distillwise.com
 
 ### Template 2: Data/Insight
+
 > [Data point about reading/retention/attention]
 >
 > [What this means in practical terms]
@@ -224,6 +244,7 @@ LinkedIn posts should be longer (150-300 words), more professional, but same voi
 > [Soft CTA to blog post or product]
 
 ### Template 3: Contrarian Take
+
 > Unpopular opinion in [knowledge work / productivity / reading]:
 >
 > [Bold statement]
@@ -237,16 +258,19 @@ LinkedIn posts should be longer (150-300 words), more professional, but same voi
 ## Engagement Rules
 
 ### Daily (15 min)
+
 - Reply to every comment on your posts
 - Reply to every mention/RT
 - Comment on 5 posts from accounts in the reading/productivity/building space
 
 ### Quality Comments (not "great post!")
+
 - Add a related observation from your experience
 - Ask a specific follow-up question
 - Respectfully push back with nuance
 
 ### Accounts to Engage With
+
 - Founders building in public (IndieHackers community on X)
 - Book reviewers and "what I read this month" posters
 - Anti-productivity and slow living accounts
@@ -263,25 +287,25 @@ LinkedIn: 3-5 per post, placed at the bottom: #reading #thinking #productivity #
 
 ## Content Repurposing Pipeline
 
-| Source | → X/Twitter | → LinkedIn |
-|---|---|---|
-| Blog post | 1 thread (3-5 tweets) + 1 standalone insight | 1 long-form post |
-| Glossary term | 1 "what is X?" tweet | Skip |
-| Reflection guide | 1 "how to" tweet with 3 steps | 1 how-to post |
-| User milestone | 1 celebration tweet (no praise, just facts) | Skip |
-| Product update | 1 tweet | 1 post if significant |
+| Source           | → X/Twitter                                  | → LinkedIn            |
+| ---------------- | -------------------------------------------- | --------------------- |
+| Blog post        | 1 thread (3-5 tweets) + 1 standalone insight | 1 long-form post      |
+| Glossary term    | 1 "what is X?" tweet                         | Skip                  |
+| Reflection guide | 1 "how to" tweet with 3 steps                | 1 how-to post         |
+| User milestone   | 1 celebration tweet (no praise, just facts)  | Skip                  |
+| Product update   | 1 tweet                                      | 1 post if significant |
 
 ---
 
 ## Metrics
 
-| Metric | Week 1 Target | Month 1 Target |
-|---|---|---|
-| X followers | +50 | +200 |
-| Avg. impressions/tweet | 500 | 1,000 |
-| Engagement rate | 3%+ | 4%+ |
-| Link clicks to distillwise.com | 20/week | 50/week |
-| LinkedIn post impressions | 500/post | 1,000/post |
+| Metric                         | Week 1 Target | Month 1 Target |
+| ------------------------------ | ------------- | -------------- |
+| X followers                    | +50           | +200           |
+| Avg. impressions/tweet         | 500           | 1,000          |
+| Engagement rate                | 3%+           | 4%+            |
+| Link clicks to distillwise.com | 20/week       | 50/week        |
+| LinkedIn post impressions      | 500/post      | 1,000/post     |
 
 ---
 

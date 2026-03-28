@@ -46,16 +46,16 @@ Active consumption adds one step: processing. That processing can take many form
 
 ## the comparison
 
-| Dimension | Passive consumption | Active consumption |
-|-----------|---|---|
-| **What you do** | Read, watch, listen, move on | Read, watch, listen, then process |
-| **Time investment** | Content time only | Content time + 3-5 minutes processing |
-| **Output** | None | Written reflection, articulated perspective |
-| **Retention after 1 week** | ~10-20% | ~50-70% |
-| **Retention after 1 month** | ~5% | ~30-50% (higher with spaced resurfacing) |
-| **Feeling** | Productive | Uncomfortable (requires effort) |
-| **Long-term result** | Large reading list, vague memories | Smaller but deeper knowledge, clear perspectives |
-| **What you can articulate** | "I read that book. It was good." | "That book argued X. I think Y because Z." |
+| Dimension                   | Passive consumption                | Active consumption                               |
+| --------------------------- | ---------------------------------- | ------------------------------------------------ |
+| **What you do**             | Read, watch, listen, move on       | Read, watch, listen, then process                |
+| **Time investment**         | Content time only                  | Content time + 3-5 minutes processing            |
+| **Output**                  | None                               | Written reflection, articulated perspective      |
+| **Retention after 1 week**  | ~10-20%                            | ~50-70%                                          |
+| **Retention after 1 month** | ~5%                                | ~30-50% (higher with spaced resurfacing)         |
+| **Feeling**                 | Productive                         | Uncomfortable (requires effort)                  |
+| **Long-term result**        | Large reading list, vague memories | Smaller but deeper knowledge, clear perspectives |
+| **What you can articulate** | "I read that book. It was good."   | "That book argued X. I think Y because Z."       |
 
 The retention numbers are approximate, based on research on the [forgetting curve](/blog/why-you-forget-everything-you-read) and depth of processing effects documented by Craik and Lockhart (1972). The exact percentages vary by individual and content type, but the directional difference is consistent across studies: active processing dramatically improves retention.
 
@@ -107,4 +107,4 @@ The difference between a person who reads 50 books passively and a person who re
 
 ---
 
-*Distill turns passive consumption into active thinking. [distillwise.com](https://distillwise.com)*
+_Distill turns passive consumption into active thinking. [distillwise.com](https://distillwise.com)_

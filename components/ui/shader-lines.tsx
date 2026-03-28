@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-    THREE: any
+    THREE: any;
   }
 }
 
@@ -15,87 +15,89 @@ declare global {
  * Represents the digital frequency of focus and mindfulness.
  */
 export function ShaderAnimation() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<{
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-    camera: any
+    camera: any;
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-    scene: any
+    scene: any;
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-    renderer: any
+    renderer: any;
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-    uniforms: any
-    animationId: number | null
+    uniforms: any;
+    animationId: number | null;
   }>({
     camera: null,
     scene: null,
     renderer: null,
     uniforms: null,
     animationId: null,
-  })
+  });
 
   useEffect(() => {
     // Load Three.js dynamically to keep initial bundle light
-    const script = document.createElement("script")
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"
-    script.integrity = "sha512-9nYs8QvHOk+iXmZ/TT+PIfk/gFij+OkLqPF48RnRCW2mASmpIj95zM+WbsUKOD46Fr6ay2gMHf/I1MI09p5wdA=="
-    script.crossOrigin = "anonymous"
-    script.id = "three-js-script"
-    
+    const script = document.createElement("script");
+    script.src =
+      "https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js";
+    script.integrity =
+      "sha512-9nYs8QvHOk+iXmZ/TT+PIfk/gFij+OkLqPF48RnRCW2mASmpIj95zM+WbsUKOD46Fr6ay2gMHf/I1MI09p5wdA==";
+    script.crossOrigin = "anonymous";
+    script.id = "three-js-script";
+
     const onLoad = () => {
       if (containerRef.current && window.THREE) {
-        initThreeJS()
+        initThreeJS();
       }
-    }
+    };
 
     if (window.THREE) {
-      onLoad()
+      onLoad();
     } else {
-      script.onload = onLoad
-      document.head.appendChild(script)
+      script.onload = onLoad;
+      document.head.appendChild(script);
     }
 
     return () => {
       // Cleanup
       if (sceneRef.current.animationId) {
-        cancelAnimationFrame(sceneRef.current.animationId)
+        cancelAnimationFrame(sceneRef.current.animationId);
       }
       if (sceneRef.current.renderer) {
-        sceneRef.current.renderer.dispose()
+        sceneRef.current.renderer.dispose();
       }
-      const existingScript = document.getElementById("three-js-script")
-      if (existingScript && !window.location.pathname.includes('/sign-')) {
-          // Only remove if we're not likely to need it immediately again
-          // Actually, let's just keep it for performance across auth pages
+      const existingScript = document.getElementById("three-js-script");
+      if (existingScript && !window.location.pathname.includes("/sign-")) {
+        // Only remove if we're not likely to need it immediately again
+        // Actually, let's just keep it for performance across auth pages
       }
-    }
-  }, [])
+    };
+  }, []);
 
   const initThreeJS = () => {
-    if (!containerRef.current || !window.THREE) return
+    if (!containerRef.current || !window.THREE) return;
 
-    const THREE = window.THREE
-    const container = containerRef.current
+    const THREE = window.THREE;
+    const container = containerRef.current;
 
     // Clear any existing content
-    container.innerHTML = ""
+    container.innerHTML = "";
 
-    const camera = new THREE.Camera()
-    camera.position.z = 1
+    const camera = new THREE.Camera();
+    camera.position.z = 1;
 
-    const scene = new THREE.Scene()
-    const geometry = new THREE.PlaneBufferGeometry(2, 2)
+    const scene = new THREE.Scene();
+    const geometry = new THREE.PlaneBufferGeometry(2, 2);
 
     const uniforms = {
       time: { type: "f", value: 1.0 },
       resolution: { type: "v2", value: new THREE.Vector2() },
-    }
+    };
 
     const vertexShader = `
       void main() {
         gl_Position = vec4( position, 1.0 );
       }
-    `
+    `;
 
     const fragmentShader = `
       #define TWO_PI 6.2831853072
@@ -143,20 +145,20 @@ export function ShaderAnimation() {
 
         gl_FragColor = vec4(distilledColor, 1.0);
       }
-    `
+    `;
 
     const material = new THREE.ShaderMaterial({
       uniforms: uniforms,
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
-    })
+    });
 
-    const mesh = new THREE.Mesh(geometry, material)
-    scene.add(mesh)
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(window.devicePixelRatio)
-    container.appendChild(renderer.domElement)
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
 
     sceneRef.current = {
       camera,
@@ -164,31 +166,31 @@ export function ShaderAnimation() {
       renderer,
       uniforms,
       animationId: null,
-    }
+    };
 
     const onWindowResize = () => {
-      const rect = container.getBoundingClientRect()
-      renderer.setSize(rect.width, rect.height)
-      uniforms.resolution.value.x = renderer.domElement.width
-      uniforms.resolution.value.y = renderer.domElement.height
-    }
+      const rect = container.getBoundingClientRect();
+      renderer.setSize(rect.width, rect.height);
+      uniforms.resolution.value.x = renderer.domElement.width;
+      uniforms.resolution.value.y = renderer.domElement.height;
+    };
 
-    onWindowResize()
-    window.addEventListener("resize", onWindowResize, false)
+    onWindowResize();
+    window.addEventListener("resize", onWindowResize, false);
 
     const animate = () => {
-      sceneRef.current.animationId = requestAnimationFrame(animate)
-      uniforms.time.value += 0.05
-      renderer.render(scene, camera)
-    }
+      sceneRef.current.animationId = requestAnimationFrame(animate);
+      uniforms.time.value += 0.05;
+      renderer.render(scene, camera);
+    };
 
-    animate()
-  }
+    animate();
+  };
 
   return (
     <div
       ref={containerRef}
-      className="w-full h-full absolute inset-0 -z-10 opacity-60" 
+      className="w-full h-full absolute inset-0 -z-10 opacity-60"
     />
-  )
+  );
 }

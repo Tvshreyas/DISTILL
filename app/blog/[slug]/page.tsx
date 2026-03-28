@@ -46,7 +46,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  
+
   let postData;
   try {
     postData = await getPostData(slug);
@@ -58,26 +58,26 @@ export default async function BlogPostPage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": postData.title,
-    "description": postData.description,
-    "datePublished": postData.date,
-    "author": {
+    headline: postData.title,
+    description: postData.description,
+    datePublished: postData.date,
+    author: {
       "@type": "Organization",
-      "name": "Distill",
-      "url": "https://distillwise.com"
+      name: "Distill",
+      url: "https://distillwise.com",
     },
-    "publisher": {
+    publisher: {
       "@type": "Organization",
-      "name": "Distill",
-      "logo": {
+      name: "Distill",
+      logo: {
         "@type": "ImageObject",
-        "url": "https://distillwise.com/icon.svg"
-      }
+        url: "https://distillwise.com/icon.svg",
+      },
     },
-    "mainEntityOfPage": {
+    mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://distillwise.com/blog/${slug}`
-    }
+      "@id": `https://distillwise.com/blog/${slug}`,
+    },
   };
 
   return (
@@ -86,10 +86,10 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
+
       <article className="max-w-3xl mx-auto">
-        <Link 
-          href="/blog" 
+        <Link
+          href="/blog"
           className="inline-flex items-center gap-2 text-sm font-black text-[#78716C] hover:text-[#292524] uppercase tracking-widest mb-12 transition-colors"
         >
           <span className="text-xl">←</span> Back to Blog
@@ -98,7 +98,7 @@ export default async function BlogPostPage({
         <header className="mb-12">
           <div className="flex flex-wrap gap-2 mb-6">
             {postData.tags.map((tag) => (
-              <span 
+              <span
                 key={tag}
                 className="px-3 py-1 bg-[#E8EFE8] border-2 border-[#292524] text-[11px] font-black uppercase tracking-wider text-[#292524]"
               >
@@ -106,23 +106,25 @@ export default async function BlogPostPage({
               </span>
             ))}
           </div>
-          
+
           <h1 className="text-4xl md:text-6xl font-black text-[#292524] tracking-tightest leading-tight mb-6">
             {postData.title}
           </h1>
 
           <div className="flex items-center gap-4 text-sm font-bold text-[#78716C] uppercase tracking-widest">
-            <time>{new Date(postData.date).toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric"
-            })}</time>
+            <time>
+              {new Date(postData.date).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </time>
             <span>•</span>
             <span>By {postData.author}</span>
           </div>
         </header>
 
-        <div 
+        <div
           className="prose prose-stone prose-xl max-w-none
             prose-headings:text-[#292524] prose-headings:font-black prose-headings:tracking-tight
             prose-p:text-[#78716C] prose-p:leading-relaxed
@@ -131,12 +133,59 @@ export default async function BlogPostPage({
             prose-blockquote:border-l-8 prose-blockquote:border-[#FFB7B2] prose-blockquote:bg-[#E8EFE8] prose-blockquote:p-6 prose-blockquote:rounded-r-2xl prose-blockquote:italic
             prose-img:border-4 prose-img:border-[#292524] prose-img:shadow-[8px_8px_0px_0px_rgba(41,37,36,1)]
             prose-hr:border-4 prose-hr:border-[#E8EFE8]"
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(postData.contentHtml, {
-            ALLOWED_TAGS: ["p","h1","h2","h3","h4","h5","h6","ul","ol","li","blockquote","strong","em","a","code","pre","hr","br","img","table","thead","tbody","tr","th","td","span","del","sup","sub"],
-            ALLOWED_ATTR: ["href","src","alt","title","class","id","target","rel"],
-            FORBID_ATTR: ["style","onerror","onload","onclick","onmouseover"],
-            ALLOW_DATA_ATTR: false,
-          }) }}
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(postData.contentHtml, {
+              ALLOWED_TAGS: [
+                "p",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "ul",
+                "ol",
+                "li",
+                "blockquote",
+                "strong",
+                "em",
+                "a",
+                "code",
+                "pre",
+                "hr",
+                "br",
+                "img",
+                "table",
+                "thead",
+                "tbody",
+                "tr",
+                "th",
+                "td",
+                "span",
+                "del",
+                "sup",
+                "sub",
+              ],
+              ALLOWED_ATTR: [
+                "href",
+                "src",
+                "alt",
+                "title",
+                "class",
+                "id",
+                "target",
+                "rel",
+              ],
+              FORBID_ATTR: [
+                "style",
+                "onerror",
+                "onload",
+                "onclick",
+                "onmouseover",
+              ],
+              ALLOW_DATA_ATTR: false,
+            }),
+          }}
         />
 
         <footer className="mt-20 pt-12 border-t-4 border-[#292524]">
@@ -145,7 +194,8 @@ export default async function BlogPostPage({
               Want to see more clearly?
             </h3>
             <p className="text-lg text-[#78716C] mb-8 text-center max-w-xl mx-auto">
-              Distill is your private space for deep reflection. Build a compounding library of your own perspective.
+              Distill is your private space for deep reflection. Build a
+              compounding library of your own perspective.
             </p>
             <div className="text-center">
               <Link

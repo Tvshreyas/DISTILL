@@ -9,9 +9,9 @@ import { REFLECTION_PROMPTS } from "@/lib/prompts";
 export default function StartPage() {
   const router = useRouter();
   const [promptIndex, setPromptIndex] = useState(
-    Math.floor(Math.random() * REFLECTION_PROMPTS.length)
+    Math.floor(Math.random() * REFLECTION_PROMPTS.length),
   );
-  
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -33,8 +33,11 @@ export default function StartPage() {
       thinkingShiftRating: 3, // Default for quick start
       savedAt: new Date().toISOString(),
     };
-    
-    localStorage.setItem("distill_onboarding", JSON.stringify(onboardingPayload));
+
+    localStorage.setItem(
+      "distill_onboarding",
+      JSON.stringify(onboardingPayload),
+    );
     router.push("/sign-up");
   }
 
@@ -54,10 +57,13 @@ export default function StartPage() {
             <Zap className="w-3 h-3 fill-current" /> Fast Start
           </div>
           <h1 className="font-grotesk text-5xl md:text-7xl font-black lowercase tracking-tighter leading-[0.85] text-soft-black">
-            distill your<br />first thought.
+            distill your
+            <br />
+            first thought.
           </h1>
           <p className="font-serif italic text-xl text-muted-text max-w-lg">
-            &ldquo;Knowledge is not what you consume. It is what you remember.&rdquo;
+            &ldquo;Knowledge is not what you consume. It is what you
+            remember.&rdquo;
           </p>
         </header>
 
@@ -65,7 +71,8 @@ export default function StartPage() {
           {/* Section 1: Context */}
           <div className="space-y-4">
             <label className="text-[10px] font-black uppercase tracking-widest text-muted-text block">
-              what are you thinking about? (e.g. A book, a meeting, a life event)
+              what are you thinking about? (e.g. A book, a meeting, a life
+              event)
             </label>
             <input
               value={title}
@@ -91,7 +98,7 @@ export default function StartPage() {
                 </button>
               </div>
               <p className="text-[10px] font-black uppercase tracking-widest text-muted-text">
-                {content.length} / 400
+                {content.length} / 800
               </p>
             </div>
 
@@ -104,7 +111,7 @@ export default function StartPage() {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="pour your thoughts here..."
-                maxLength={400}
+                maxLength={800}
                 className="w-full h-80 p-8 rounded-3xl bg-white brutal-border border-4 border-soft-black text-xl font-medium placeholder:text-soft-black/5 outline-none focus:bg-white/80 transition-all resize-none shadow-brutal hover:shadow-brutal-lg"
                 autoFocus
               />

@@ -38,6 +38,7 @@ Configures proactive **monitoring alerts for critical SEO and GEO metrics**, def
 ```
 
 **Arguments:**
+
 - Alert type (required): ranking-drop, traffic-change, indexing-issue, backlink-change, geo-visibility, core-web-vitals, technical-error, conversion-rate, all-critical
 - `threshold=X` (required for some types): Numeric or percentage threshold
 - `keywords="list"` (optional): Specific keywords to monitor

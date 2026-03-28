@@ -7,7 +7,6 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 export default function ResurfacingCard() {
-  const profile = useQuery(api.profiles.get);
   const pending = useQuery(api.resurfacing.getPending);
   const respond = useMutation(api.resurfacing.respond);
   const [isResponding, setIsResponding] = useState(false);
@@ -18,26 +17,33 @@ export default function ResurfacingCard() {
     if (!pending) return;
     setIsResponding(true);
     try {
-      await respond({ 
-        queueId: pending.queueId, 
+      await respond({
+        queueId: pending.queueId,
         action,
-        layerContent: action === "layered" ? layerContent : undefined
+        layerContent: action === "layered" ? layerContent : undefined,
       });
       toast.success(
-        action === "layered" ? "Perspective layered." : 
-        action === "surfaced" ? "Acknowleged." : "Dismissed."
+        action === "layered"
+          ? "Perspective layered."
+          : action === "surfaced"
+            ? "Acknowleged."
+            : "Dismissed.",
       );
       setIsLayering(false);
       setLayerContent("");
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to update status.");
+      toast.error(
+        err instanceof Error ? err.message : "Failed to update status.",
+      );
     } finally {
       setIsResponding(false);
     }
   };
 
   if (pending === undefined) {
-    return <div className="h-48 bg-soft-black/5 animate-pulse rounded-[2rem]" />;
+    return (
+      <div className="h-48 bg-soft-black/5 animate-pulse rounded-[2rem]" />
+    );
   }
 
   if (!pending) {
@@ -47,8 +53,13 @@ export default function ResurfacingCard() {
           <Check className="w-8 h-8 text-sage-dark" />
         </div>
         <div className="space-y-1">
-          <h3 className="font-grotesk text-xl font-black lowercase">all caught up.</h3>
-          <p className="text-muted-text max-w-xs mx-auto text-sm font-medium">No reflections due for resurfacing today. Take a break or capture something new.</p>
+          <h3 className="font-grotesk text-xl font-black lowercase">
+            all caught up.
+          </h3>
+          <p className="text-muted-text max-w-xs mx-auto text-sm font-medium">
+            No reflections due for resurfacing today. Take a break or capture
+            something new.
+          </p>
         </div>
       </div>
     );
@@ -58,7 +69,7 @@ export default function ResurfacingCard() {
     <div className="relative group p-8 md:p-10 rounded-[2rem] bg-white brutal-border border-4 border-soft-black overflow-hidden bg-[url('https://grain-y.vercel.app/noise.svg')] bg-repeat">
       {/* Decorative accent */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-peach opacity-10 rounded-bl-full -translate-y-8 translate-x-8" />
-      
+
       <div className="relative z-10 space-y-6">
         <div className="flex items-center gap-3">
           <div className="px-3 py-1 bg-sage/20 rounded-lg border-2 border-sage/30">
@@ -83,12 +94,12 @@ export default function ResurfacingCard() {
             <div className="space-y-2">
               <label className="font-grotesk text-[10px] font-black uppercase tracking-widest text-muted-text block">
                 How has your view changed?
-              <textarea
-                value={layerContent}
-                onChange={(e) => setLayerContent(e.target.value)}
-                placeholder="Add a new layer of thinking..."
-                className="w-full bg-sage/5 brutal-border-sm p-4 text-sm font-medium focus:outline-none focus:bg-white transition-colors min-h-[120px] rounded-xl resize-none"
-              />
+                <textarea
+                  value={layerContent}
+                  onChange={(e) => setLayerContent(e.target.value)}
+                  placeholder="Add a new layer of thinking..."
+                  className="w-full bg-sage/5 brutal-border-sm p-4 text-sm font-medium focus:outline-none focus:bg-white transition-colors min-h-[120px] rounded-xl resize-none"
+                />
               </label>
             </div>
             <div className="flex gap-3">
@@ -117,26 +128,15 @@ export default function ResurfacingCard() {
               disabled={isResponding}
               className="flex-1 px-6 py-4 bg-soft-black text-white rounded-2xl font-black text-lg hover:bg-soft-black/90 transition-all flex items-center justify-center gap-2 group/btn"
             >
-              Acknowledge <Check className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+              Acknowledge{" "}
+              <Check className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
             </button>
             <button
-              onClick={() => {
-                if (profile?.plan === "free") {
-                  toast.error("Adding new perspectives is a Pro feature.");
-                  return;
-                }
-                setIsLayering(true);
-              }}
+              onClick={() => setIsLayering(true)}
               className="px-6 py-4 bg-white brutal-border-sm border-2 border-soft-black rounded-2xl font-bold hover:bg-sage/10 transition-all flex items-center gap-2 group/layer"
             >
-              View Changed 
-              {profile?.plan === "free" ? (
-                <svg className="w-4 h-4 text-peach" fill="currentColor" viewBox="0 0 24 24">
-                   <path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1v-3a5 5 0 0 0-5-5zm-3 5a3 3 0 1 1 6 0v3H9V7zm3 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                </svg>
-              ) : (
-                <ArrowRight className="w-4 h-4 group-hover/layer:translate-x-1 transition-transform" />
-              )}
+              View Changed
+              <ArrowRight className="w-4 h-4 group-hover/layer:translate-x-1 transition-transform" />
             </button>
             <button
               onClick={() => handleAction("dismissed")}

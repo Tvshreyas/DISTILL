@@ -32,17 +32,21 @@ test.describe("Settings", () => {
     if (await deleteBtn.isVisible()) {
       await deleteBtn.click();
       // Confirmation input should appear
-      await expect(page.locator('text=Type "DELETE MY ACCOUNT" to confirm')).toBeVisible();
+      await expect(
+        page.locator('text=Type "DELETE MY ACCOUNT" to confirm'),
+      ).toBeVisible();
 
       // Confirm button should be disabled until phrase matches
-      const confirmBtn = page.locator('button:has-text("Confirm Irreversible Deletion")');
+      const confirmBtn = page.locator(
+        'button:has-text("Confirm Irreversible Deletion")',
+      );
       await expect(confirmBtn).toBeDisabled();
 
       // Cancel should dismiss
       const cancelBtn = page.locator('button:has-text("Cancel")');
       await cancelBtn.click();
       await expect(
-        page.locator('text=Type "DELETE MY ACCOUNT" to confirm')
+        page.locator('text=Type "DELETE MY ACCOUNT" to confirm'),
       ).not.toBeVisible();
     }
   });

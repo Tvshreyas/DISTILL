@@ -10,13 +10,13 @@ If you have an idea for a skill but don't want to build it yourself, [open a Ski
 
 ### 1. Choose the correct category
 
-| Category | Directory | Use when the skill... |
-|----------|-----------|----------------------|
-| Research | `research/` | Gathers market data before content creation (keywords, competitors, SERP, gaps) |
-| Build | `build/` | Creates new content or markup (writing, meta tags, schema, GEO optimization) |
-| Optimize | `optimize/` | Improves existing content or site health (audits, linking, refresh) |
-| Monitor | `monitor/` | Tracks performance over time (rankings, backlinks, alerts, reports) |
-| Cross-cutting | `cross-cutting/` | Spans multiple phases (quality frameworks, entity, memory) |
+| Category      | Directory        | Use when the skill...                                                           |
+| ------------- | ---------------- | ------------------------------------------------------------------------------- |
+| Research      | `research/`      | Gathers market data before content creation (keywords, competitors, SERP, gaps) |
+| Build         | `build/`         | Creates new content or markup (writing, meta tags, schema, GEO optimization)    |
+| Optimize      | `optimize/`      | Improves existing content or site health (audits, linking, refresh)             |
+| Monitor       | `monitor/`       | Tracks performance over time (rankings, backlinks, alerts, reports)             |
+| Cross-cutting | `cross-cutting/` | Spans multiple phases (quality frameworks, entity, memory)                      |
 
 ### 2. Create the skill directory
 
@@ -25,6 +25,7 @@ mkdir -p <category>/<skill-name>
 ```
 
 The directory name must:
+
 - Be 1-64 characters
 - Use only lowercase letters, numbers, and hyphens
 - Not start or end with a hyphen
@@ -53,7 +54,6 @@ metadata:
     - "trigger phrase 1"
     - "trigger phrase 2"
 ---
-
 # Your Skill Name
 
 [Skill instructions here...]

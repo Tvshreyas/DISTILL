@@ -41,7 +41,6 @@ metadata:
 
 # Content Refresher
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -118,6 +117,7 @@ Claude can automatically pull historical traffic trends from ~~analytics, fetch 
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Traffic data or screenshots showing performance trends
 2. Ranking screenshots or history for key pages
 3. Content publish dates and last update dates
@@ -141,18 +141,19 @@ When a user requests content refresh help:
 
    Rapidly score each dimension (estimate 0-100):
 
-   | Dimension | Quick Score | Key Weakness | Refresh Priority |
-   |-----------|-----------|--------------|-----------------|
-   | C — Contextual Clarity | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | O — Organization | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | R — Referenceability | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | E — Exclusivity | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | Exp — Experience | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | Ept — Expertise | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | A — Authority | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | T — Trust | [X]/100 | [main issue] | 🔴/🟡/🟢 |
+   | Dimension              | Quick Score | Key Weakness | Refresh Priority |
+   | ---------------------- | ----------- | ------------ | ---------------- |
+   | C — Contextual Clarity | [X]/100     | [main issue] | 🔴/🟡/🟢         |
+   | O — Organization       | [X]/100     | [main issue] | 🔴/🟡/🟢         |
+   | R — Referenceability   | [X]/100     | [main issue] | 🔴/🟡/🟢         |
+   | E — Exclusivity        | [X]/100     | [main issue] | 🔴/🟡/🟢         |
+   | Exp — Experience       | [X]/100     | [main issue] | 🔴/🟡/🟢         |
+   | Ept — Expertise        | [X]/100     | [main issue] | 🔴/🟡/🟢         |
+   | A — Authority          | [X]/100     | [main issue] | 🔴/🟡/🟢         |
+   | T — Trust              | [X]/100     | [main issue] | 🔴/🟡/🟢         |
 
    **Weakest Dimensions** (focus refresh here):
+
    1. [Dimension] — [what needs fixing]
    2. [Dimension] — [what needs fixing]
 
@@ -165,10 +166,11 @@ When a user requests content refresh help:
 
    ```markdown
    ## Content Refresh Analysis
-   
+
    ### Refresh Candidate Identification
-   
+
    **Criteria for Content Refresh**:
+
    - Published more than 6 months ago
    - Contains dated information (years, statistics)
    - Declining traffic trend
@@ -176,55 +178,57 @@ When a user requests content refresh help:
    - Outdated references or broken links
    - Missing topics competitors now cover
    - No GEO optimization
-   
+
    ### Content Audit Results
-   
-   | Content | Published | Last Updated | Traffic Trend | Priority |
-   |---------|-----------|--------------|---------------|----------|
-   | [Title 1] | [date] | [date] | ↓ -45% | 🔴 High |
-   | [Title 2] | [date] | Never | ↓ -30% | 🔴 High |
-   | [Title 3] | [date] | [date] | ↓ -20% | 🟡 Medium |
-   | [Title 4] | [date] | [date] | → 0% | 🟡 Medium |
-   
+
+   | Content   | Published | Last Updated | Traffic Trend | Priority  |
+   | --------- | --------- | ------------ | ------------- | --------- |
+   | [Title 1] | [date]    | [date]       | ↓ -45%        | 🔴 High   |
+   | [Title 2] | [date]    | Never        | ↓ -30%        | 🔴 High   |
+   | [Title 3] | [date]    | [date]       | ↓ -20%        | 🟡 Medium |
+   | [Title 4] | [date]    | [date]       | → 0%          | 🟡 Medium |
+
    ### Refresh Prioritization Matrix
-   
    ```
+
    High Traffic + High Decline = 🔴 Refresh Immediately
    High Traffic + Low Decline = 🟡 Schedule Refresh
    Low Traffic + High Decline = 🟡 Evaluate & Decide
    Low Traffic + Low Decline = 🟢 Low Priority
+
    ```
+
    ```
 
 3. **Analyze Individual Content for Refresh**
 
    ```markdown
    ## Content Refresh Analysis: [Title]
-   
+
    **URL**: [URL]
    **Published**: [date]
    **Last Updated**: [date]
    **Word Count**: [X]
-   
+
    ### Performance Metrics
-   
-   | Metric | 6 Mo Ago | Current | Change |
-   |--------|----------|---------|--------|
-   | Organic Traffic | [X]/mo | [X]/mo | [+/-X]% |
-   | Avg Position | [X] | [X] | [+/-X] |
-   | Impressions | [X] | [X] | [+/-X]% |
-   | CTR | [X]% | [X]% | [+/-X]% |
-   
+
+   | Metric          | 6 Mo Ago | Current | Change  |
+   | --------------- | -------- | ------- | ------- |
+   | Organic Traffic | [X]/mo   | [X]/mo  | [+/-X]% |
+   | Avg Position    | [X]      | [X]     | [+/-X]  |
+   | Impressions     | [X]      | [X]     | [+/-X]% |
+   | CTR             | [X]%     | [X]%    | [+/-X]% |
+
    ### Keywords Analysis
-   
+
    | Keyword | Old Position | Current Position | Change |
-   |---------|--------------|------------------|--------|
-   | [kw 1] | [X] | [X] | ↓ [X] |
-   | [kw 2] | [X] | [X] | ↓ [X] |
-   | [kw 3] | [X] | [X] | ↓ [X] |
-   
+   | ------- | ------------ | ---------------- | ------ |
+   | [kw 1]  | [X]          | [X]              | ↓ [X]  |
+   | [kw 2]  | [X]          | [X]              | ↓ [X]  |
+   | [kw 3]  | [X]          | [X]              | ↓ [X]  |
+
    ### Why This Content Needs Refresh
-   
+
    1. **Outdated information**: [specific examples]
    2. **Competitive gap**: [what competitors added]
    3. **Missing topics**: [new subtopics to cover]
@@ -236,38 +240,38 @@ When a user requests content refresh help:
 
    ```markdown
    ## Refresh Requirements
-   
+
    ### Outdated Elements
-   
-   | Element | Current | Update Needed |
-   |---------|---------|---------------|
+
+   | Element         | Current      | Update Needed            |
+   | --------------- | ------------ | ------------------------ |
    | Year references | "[old year]" | Update to [current year] |
-   | Statistics | "[old stat]" | Find current data |
-   | Tool mentions | "[old tool]" | Add newer tools |
-   | Links | [X] broken | Fix or replace |
-   | Screenshots | Outdated UI | Recapture |
-   
+   | Statistics      | "[old stat]" | Find current data        |
+   | Tool mentions   | "[old tool]" | Add newer tools          |
+   | Links           | [X] broken   | Fix or replace           |
+   | Screenshots     | Outdated UI  | Recapture                |
+
    ### Missing Information
-   
+
    **Topics competitors now cover that you don't**:
-   
-   | Topic | Competitor Coverage | Words Needed | Priority |
-   |-------|---------------------|--------------|----------|
-   | [Topic 1] | 3/5 competitors | ~300 words | High |
-   | [Topic 2] | 2/5 competitors | ~200 words | Medium |
-   | [Topic 3] | 4/5 competitors | ~400 words | High |
-   
+
+   | Topic     | Competitor Coverage | Words Needed | Priority |
+   | --------- | ------------------- | ------------ | -------- |
+   | [Topic 1] | 3/5 competitors     | ~300 words   | High     |
+   | [Topic 2] | 2/5 competitors     | ~200 words   | Medium   |
+   | [Topic 3] | 4/5 competitors     | ~400 words   | High     |
+
    ### SEO Updates Needed
-   
+
    - [ ] Update title tag with current year
    - [ ] Refresh meta description
    - [ ] Add new H2 sections for [topics]
    - [ ] Update internal links to newer content
    - [ ] Add FAQ section for featured snippets
    - [ ] Refresh images and add new alt text
-   
+
    ### GEO Updates Needed
-   
+
    - [ ] Add clear definition at start
    - [ ] Include quotable statistics with sources
    - [ ] Add Q&A formatted sections
@@ -298,12 +302,14 @@ When a user requests content refresh help:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Target content URL or title clearly identified
 - [ ] Historical performance data available (traffic trends, rankings)
 - [ ] Content publish/update dates known
 - [ ] If comparing to competitors, competitor URLs provided
 
 ### Output Validation
+
 - [ ] Every recommendation cites specific data points (not generic advice)
 - [ ] Outdated elements identified with specific examples and replacement data
 - [ ] All suggested additions include word counts and section locations
@@ -337,4 +343,3 @@ When a user requests content refresh help:
 - [geo-content-optimizer](../../build/geo-content-optimizer/) — Enhance for AI
 - [on-page-seo-auditor](../on-page-seo-auditor/) — Audit refreshed content
 - [content-quality-auditor](../../cross-cutting/content-quality-auditor/) — Full 80-item CORE-EEAT audit
-

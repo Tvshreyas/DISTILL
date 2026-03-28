@@ -12,8 +12,8 @@ export default defineSchema({
         v.literal("active"),
         v.literal("canceled"),
         v.literal("past_due"),
-        v.literal("trialing")
-      )
+        v.literal("trialing"),
+      ),
     ),
     subscriptionPeriodEnd: v.optional(v.string()),
     reflectionCountThisMonth: v.number(),
@@ -36,6 +36,8 @@ export default defineSchema({
     reEngagementStep: v.optional(v.number()), // 1-3, tracks last sent re-engagement email
     upgradeEmailStep: v.optional(v.number()), // 1-3, tracks last sent upgrade email
     proUpgradeDate: v.optional(v.string()), // ISO date when user upgraded to Pro (for annual nudge timing)
+    // Monthly digest dismissal tracking
+    lastDigestDismissedMonth: v.optional(v.string()),
     // Acquisition tracking (first-touch UTM params)
     acquisitionSource: v.optional(v.string()),
     acquisitionMedium: v.optional(v.string()),
@@ -55,13 +57,13 @@ export default defineSchema({
       v.literal("realization"),
       v.literal("workout"),
       v.literal("walk"),
-      v.literal("other")
+      v.literal("other"),
     ),
     consumeReason: v.optional(v.string()),
     status: v.union(
       v.literal("active"),
       v.literal("complete"),
-      v.literal("abandoned")
+      v.literal("abandoned"),
     ),
     // "deep" = full session flow, "quick" = Quick Distill capture
     // Optional for backward compat: existing sessions without type are treated as "deep"
@@ -97,6 +99,8 @@ export default defineSchema({
     reflectionId: v.id("reflections"),
     userId: v.string(),
     content: v.string(),
+    thinkingShiftRating: v.optional(v.number()),
+    createdAt: v.optional(v.string()),
   })
     .index("by_reflectionId", ["reflectionId"])
     .index("by_userId", ["userId"]),
@@ -105,21 +109,21 @@ export default defineSchema({
     reflectionId: v.id("reflections"),
     userId: v.string(),
     intervalType: v.union(
+      v.literal("1d"),
       v.literal("3d"),
       v.literal("7d"),
       v.literal("30d"),
-      v.literal("90d")
+      v.literal("90d"),
     ),
     dueDate: v.string(),
     status: v.union(
       v.literal("pending"),
       v.literal("surfaced"),
       v.literal("dismissed"),
-      v.literal("layered")
+      v.literal("layered"),
     ),
     surfacedAt: v.optional(v.string()),
-  })
-    .index("by_userId_dueDate", ["userId", "dueDate"]),
+  }).index("by_userId_dueDate", ["userId", "dueDate"]),
 
   notificationLogs: defineTable({
     userId: v.string(),
@@ -129,7 +133,7 @@ export default defineSchema({
       v.literal("weekly"),
       v.literal("welcome"),
       v.literal("reengagement"),
-      v.literal("upgrade")
+      v.literal("upgrade"),
     ),
     sentAt: v.string(),
     emailId: v.optional(v.string()),

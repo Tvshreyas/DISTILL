@@ -7,10 +7,12 @@ Detailed techniques for optimizing content for AI citation across Google AI Over
 AI systems love clear, quotable definitions.
 
 **Before** (Weak for GEO):
+
 > SEO is really important for businesses and involves various
 > techniques to improve visibility online through search engines.
 
 **After** (Strong for GEO):
+
 > **Search Engine Optimization (SEO)** is the practice of optimizing
 > websites and content to rank higher in search engine results pages
 > (SERPs), increasing organic traffic and visibility.
@@ -20,6 +22,7 @@ AI systems love clear, quotable definitions.
 [key characteristic or benefit]."
 
 **Checklist for GEO-Optimized Definitions**:
+
 - [ ] Starts with the term being defined
 - [ ] Provides clear category (what type of thing it is)
 - [ ] Explains primary function or purpose
@@ -33,9 +36,11 @@ AI systems cite specific, standalone statements. Transform vague
 content into quotable facts.
 
 **Weak (Not quotable)**:
+
 > Email marketing is pretty effective and lots of companies use it.
 
 **Strong (Quotable)**:
+
 > Email marketing delivers an average ROI of $42 for every $1 spent,
 > making it one of the highest-performing digital marketing channels.
 
@@ -83,13 +88,16 @@ Add expert quotes and credentials:
 Properly cite sources that AI can verify:
 
 Before:
+
 > Studies show that most people prefer video content.
 
 After:
+
 > According to Wyzowl's 2024 Video Marketing Statistics report,
 > 91% of consumers want to see more online video content from brands.
 
 **Authority Elements to Add**:
+
 - [ ] Author byline with credentials
 - [ ] Expert quotes with attribution
 - [ ] Citations to peer-reviewed research
@@ -121,11 +129,11 @@ Transform content into question-answer pairs:
 
 For comparison queries, use clear tables:
 
-| Feature | Option A | Option B |
-|---------|----------|----------|
-| [Feature 1] | [Specific value] | [Specific value] |
-| [Feature 2] | [Specific value] | [Specific value] |
-| **Best for** | [Use case] | [Use case] |
+| Feature      | Option A         | Option B         |
+| ------------ | ---------------- | ---------------- |
+| [Feature 1]  | [Specific value] | [Specific value] |
+| [Feature 2]  | [Specific value] | [Specific value] |
+| **Best for** | [Use case]       | [Use case]       |
 
 **Numbered Lists**
 
@@ -148,10 +156,12 @@ AI systems prefer fact-rich content over opinion-heavy content.
 **Content Transformation**:
 
 **Low factual density**:
+
 > Social media marketing is very popular nowadays. Many businesses
 > use it and find it helpful for reaching customers.
 
 **High factual density**:
+
 > Social media marketing reaches 4.9 billion users globally (Statista, 2024).
 > Businesses using social media marketing report 66% higher lead generation
 > rates compared to non-users (HubSpot State of Marketing Report, 2024).
@@ -159,6 +169,7 @@ AI systems prefer fact-rich content over opinion-heavy content.
 > Twitter (82%), and Facebook (80%).
 
 **Factual Enhancement Checklist**:
+
 - [ ] Add specific statistics with sources
 - [ ] Include exact dates, numbers, percentages
 - [ ] Replace vague claims with verified facts
@@ -169,6 +180,7 @@ AI systems prefer fact-rich content over opinion-heavy content.
 ## FAQ Optimization for GEO
 
 FAQ sections are highly effective for GEO because:
+
 - They match question-based AI queries
 - They provide concise, structured answers
 - FAQ schema helps AI understand Q&A pairs
@@ -193,14 +205,16 @@ FAQ sections are highly effective for GEO because:
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "[Question text]",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "[Answer text]"
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "[Question text]",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "[Answer text]"
+      }
     }
-  }]
+  ]
 }
 ```
 
@@ -209,27 +223,32 @@ FAQ sections are highly effective for GEO because:
 Use this checklist for any content:
 
 **Definitions & Clarity**
+
 - [ ] Key terms are clearly defined
 - [ ] Definitions can stand alone as answers
 - [ ] Language is precise and unambiguous
 
 **Quotable Content**
+
 - [ ] Specific statistics included
 - [ ] Facts have source citations
 - [ ] Memorable statements created
 
 **Authority**
+
 - [ ] Expert quotes or credentials present
 - [ ] Authoritative sources cited
 - [ ] Original data or research included
 
 **Structure**
+
 - [ ] Q&A format sections included
 - [ ] Clear headings match common queries
 - [ ] Comparison tables where relevant
 - [ ] Numbered lists for processes
 
 **Technical**
+
 - [ ] FAQ schema markup added
 - [ ] Content freshness indicated
 - [ ] Sources are verifiable

@@ -1,7 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const mockRespond = vi.fn().mockResolvedValue(undefined);
-let mockProfileValue: Record<string, unknown> | null | undefined = { plan: "pro" };
+let mockProfileValue: Record<string, unknown> | null | undefined = {
+  plan: "pro",
+};
 let mockPendingValue: Record<string, unknown> | null | undefined = {
   queueId: "q1",
   daysAgo: 3,
@@ -82,7 +84,7 @@ describe("ResurfacingCard", () => {
     fireEvent.click(screen.getByText(/Acknowledge/));
     await vi.waitFor(() => {
       expect(mockRespond).toHaveBeenCalledWith(
-        expect.objectContaining({ queueId: "q1", action: "surfaced" })
+        expect.objectContaining({ queueId: "q1", action: "surfaced" }),
       );
     });
   });
@@ -92,25 +94,27 @@ describe("ResurfacingCard", () => {
     fireEvent.click(screen.getByText("Dismiss"));
     await vi.waitFor(() => {
       expect(mockRespond).toHaveBeenCalledWith(
-        expect.objectContaining({ queueId: "q1", action: "dismissed" })
+        expect.objectContaining({ queueId: "q1", action: "dismissed" }),
       );
     });
   });
 
-  it("clicking 'View Changed' (free plan) shows toast error", () => {
+  it("clicking 'View Changed' (free plan) opens layer textarea (layers are free for all)", () => {
     mockProfileValue = { plan: "free" };
     render(<ResurfacingCard />);
     fireEvent.click(screen.getByText(/View Changed/));
-    expect(toast.error).toHaveBeenCalledWith("Adding new perspectives is a Pro feature.");
-    // Should NOT show the layer textarea
-    expect(screen.queryByPlaceholderText("Add a new layer of thinking...")).toBeNull();
+    expect(
+      screen.getByPlaceholderText("Add a new layer of thinking..."),
+    ).toBeTruthy();
   });
 
   it("clicking 'View Changed' (pro plan) opens the layer textarea", () => {
     mockProfileValue = { plan: "pro" };
     render(<ResurfacingCard />);
     fireEvent.click(screen.getByText(/View Changed/));
-    expect(screen.getByPlaceholderText("Add a new layer of thinking...")).toBeTruthy();
+    expect(
+      screen.getByPlaceholderText("Add a new layer of thinking..."),
+    ).toBeTruthy();
   });
 
   it("layer Save button is disabled when textarea is empty", () => {

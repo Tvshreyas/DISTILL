@@ -45,7 +45,6 @@ metadata:
 
 # Rank Tracker
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -120,6 +119,7 @@ Automatically pull ranking positions from ~~SEO tool, search impressions/clicks 
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Keyword ranking positions (current and historical if available)
 2. Target keyword list with search volumes
 3. Competitor domains and their ranking positions for key terms
@@ -151,12 +151,14 @@ When a user requests rank tracking or analysis:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Keywords list is complete with search volumes
 - [ ] Target domain and tracking location are specified
 - [ ] Competitor domains identified for comparison
 - [ ] Historical baseline data available or initial tracking period set
 
 ### Output Validation
+
 - [ ] Every metric cites its data source and collection date
 - [ ] Ranking changes include context (vs. previous period)
 - [ ] Significant movements have explanations or investigation notes
@@ -178,17 +180,17 @@ Keywords in top 10 increased from 12 to 17 (+5)
 
 ## Biggest Wins
 
-| Keyword | Old | New | Change | Possible Cause |
-|---------|-----|-----|--------|----------------|
-| email marketing tips | 18 | 5 | +13 | Likely driven by content refresh |
-| best crm software | 24 | 11 | +13 | Correlates with new backlinks acquired |
-| sales automation | 15 | 7 | +8 | Correlates with schema markup addition |
+| Keyword              | Old | New | Change | Possible Cause                         |
+| -------------------- | --- | --- | ------ | -------------------------------------- |
+| email marketing tips | 18  | 5   | +13    | Likely driven by content refresh       |
+| best crm software    | 24  | 11  | +13    | Correlates with new backlinks acquired |
+| sales automation     | 15  | 7   | +8     | Correlates with schema markup addition |
 
 ## Needs Attention
 
-| Keyword | Old | New | Change | Action |
-|---------|-----|-----|--------|--------|
-| marketing automation | 4 | 12 | -8 | Likely displaced by new HubSpot guide |
+| Keyword              | Old | New | Change | Action                                |
+| -------------------- | --- | --- | ------ | ------------------------------------- |
+| marketing automation | 4   | 12  | -8     | Likely displaced by new HubSpot guide |
 
 **Recommended**: Update your marketing automation guide with [current year] statistics and examples.
 ```
@@ -206,13 +208,13 @@ Keywords in top 10 increased from 12 to 17 (+5)
 
 ### Response Protocol
 
-| Change | Timeframe | Action |
-|--------|-----------|--------|
-| Drop 1-3 positions | Wait 1-2 weeks | Monitor -- may be normal fluctuation |
-| Drop 3-5 positions | Investigate within 1 week | Check for technical issues, competitor changes |
-| Drop 5-10 positions | Investigate immediately | Full diagnostic: technical, content, links |
-| Drop off page 1 | Emergency response | Comprehensive audit + recovery plan |
-| Position gained | Document and learn | What worked? Can you replicate? |
+| Change              | Timeframe                 | Action                                         |
+| ------------------- | ------------------------- | ---------------------------------------------- |
+| Drop 1-3 positions  | Wait 1-2 weeks            | Monitor -- may be normal fluctuation           |
+| Drop 3-5 positions  | Investigate within 1 week | Check for technical issues, competitor changes |
+| Drop 5-10 positions | Investigate immediately   | Full diagnostic: technical, content, links     |
+| Drop off page 1     | Emergency response        | Comprehensive audit + recovery plan            |
+| Position gained     | Document and learn        | What worked? Can you replicate?                |
 
 > **Reference**: See [references/tracking-setup-guide.md](./references/tracking-setup-guide.md) for root cause taxonomy, CTR benchmarks by position, SERP feature CTR impact, algorithm update assessment, tracking configuration best practices, keyword selection and grouping strategies, and data interpretation guidelines.
 
@@ -227,4 +229,3 @@ Keywords in top 10 increased from 12 to 17 (+5)
 - [alert-manager](../alert-manager/) — Set up ranking alerts
 - [performance-reporter](../performance-reporter/) — Comprehensive reporting
 - [memory-management](../../cross-cutting/memory-management/) — Store ranking history in project memory
-

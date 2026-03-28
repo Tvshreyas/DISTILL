@@ -158,7 +158,7 @@ export default async function ReflectionGuidePage({
                         {related.description}
                       </p>
                     </Link>
-                  )
+                  ),
               )}
             </div>
           </section>

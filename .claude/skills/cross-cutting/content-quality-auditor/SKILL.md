@@ -37,7 +37,6 @@ metadata:
 
 > Based on [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark). Full benchmark reference: [references/core-eeat-benchmark.md](../../references/core-eeat-benchmark.md)
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -114,6 +113,7 @@ Automatically fetch page content, extract HTML structure, check schema markup, v
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Content text, URL, or file path
 2. Content type (if not auto-detectable): Product Review, How-to Guide, Comparison, Landing Page, Blog Post, FAQ Page, Alternative, Best-of, or Testimonial
 3. Optional: competitor content for benchmarking
@@ -135,11 +135,11 @@ When a user requests a content quality audit:
 
 #### Veto Check (Emergency Brake)
 
-| Veto Item | Status | Action |
-|-----------|--------|--------|
+| Veto Item                  | Status            | Action                                                     |
+| -------------------------- | ----------------- | ---------------------------------------------------------- |
 | T04: Disclosure Statements | ✅ Pass / ⚠️ VETO | [If VETO: "Add disclosure banner at page top immediately"] |
-| C01: Intent Alignment | ✅ Pass / ⚠️ VETO | [If VETO: "Rewrite title and first paragraph"] |
-| R10: Content Consistency | ✅ Pass / ⚠️ VETO | [If VETO: "Verify all data before publishing"] |
+| C01: Intent Alignment      | ✅ Pass / ⚠️ VETO | [If VETO: "Rewrite title and first paragraph"]             |
+| R10: Content Consistency   | ✅ Pass / ⚠️ VETO | [If VETO: "Verify all data before publishing"]             |
 ```
 
 If any veto item triggers, flag it prominently at the top of the report and recommend immediate action before continuing the full audit.
@@ -149,6 +149,7 @@ If any veto item triggers, flag it prominently at the top of the report and reco
 Evaluate each item against the criteria in [references/core-eeat-benchmark.md](../../references/core-eeat-benchmark.md).
 
 Score each item:
+
 - **Pass** = 10 points (fully meets criteria)
 - **Partial** = 5 points (partially meets criteria)
 - **Fail** = 0 points (does not meet criteria)
@@ -156,11 +157,11 @@ Score each item:
 ```markdown
 ### C — Contextual Clarity
 
-| ID | Check Item | Score | Notes |
-|----|-----------|-------|-------|
+| ID  | Check Item       | Score             | Notes                  |
+| --- | ---------------- | ----------------- | ---------------------- |
 | C01 | Intent Alignment | Pass/Partial/Fail | [specific observation] |
-| C02 | Direct Answer | Pass/Partial/Fail | [specific observation] |
-| ... | ... | ... | ... |
+| C02 | Direct Answer    | Pass/Partial/Fail | [specific observation] |
+| ... | ...              | ...               | ...                    |
 | C10 | Semantic Closure | Pass/Partial/Fail | [specific observation] |
 
 **C Score**: [X]/100
@@ -173,10 +174,10 @@ Repeat the same table format for **O** (Organization), **R** (Referenceability),
 ```markdown
 ### Exp — Experience
 
-| ID | Check Item | Score | Notes |
-|----|-----------|-------|-------|
+| ID    | Check Item             | Score             | Notes                  |
+| ----- | ---------------------- | ----------------- | ---------------------- |
 | Exp01 | First-Person Narrative | Pass/Partial/Fail | [specific observation] |
-| ... | ... | ... | ... |
+| ...   | ...                    | ...               | ...                    |
 
 **Exp Score**: [X]/100
 ```
@@ -203,19 +204,20 @@ Calculate scores and generate the final report:
 
 ### Dimension Scores
 
-| Dimension | Score | Rating | Weight | Weighted |
-|-----------|-------|--------|--------|----------|
-| C — Contextual Clarity | [X]/100 | [rating] | [X]% | [X] |
-| O — Organization | [X]/100 | [rating] | [X]% | [X] |
-| R — Referenceability | [X]/100 | [rating] | [X]% | [X] |
-| E — Exclusivity | [X]/100 | [rating] | [X]% | [X] |
-| Exp — Experience | [X]/100 | [rating] | [X]% | [X] |
-| Ept — Expertise | [X]/100 | [rating] | [X]% | [X] |
-| A — Authority | [X]/100 | [rating] | [X]% | [X] |
-| T — Trust | [X]/100 | [rating] | [X]% | [X] |
-| **Weighted Total** | | | | **[X]/100** |
+| Dimension              | Score   | Rating   | Weight | Weighted    |
+| ---------------------- | ------- | -------- | ------ | ----------- |
+| C — Contextual Clarity | [X]/100 | [rating] | [X]%   | [X]         |
+| O — Organization       | [X]/100 | [rating] | [X]%   | [X]         |
+| R — Referenceability   | [X]/100 | [rating] | [X]%   | [X]         |
+| E — Exclusivity        | [X]/100 | [rating] | [X]%   | [X]         |
+| Exp — Experience       | [X]/100 | [rating] | [X]%   | [X]         |
+| Ept — Expertise        | [X]/100 | [rating] | [X]%   | [X]         |
+| A — Authority          | [X]/100 | [rating] | [X]%   | [X]         |
+| T — Trust              | [X]/100 | [rating] | [X]%   | [X]         |
+| **Weighted Total**     |         |          |        | **[X]/100** |
 
 **Score Calculation**:
+
 - GEO Score = (C + O + R + E) / 4
 - SEO Score = (Exp + Ept + A + T) / 4
 - Weighted Score = Σ (dimension_score × content_type_weight)
@@ -233,6 +235,7 @@ When an item cannot be evaluated (e.g., A01 Backlink Profile requires site-level
 5. Recalculate weighted total using only dimensions with sufficient data, re-normalizing weights to sum to 100%
 
 **Example**: Authority dimension with 8 N/A items and 2 scored items (A05=8, A07=5):
+
 - Dimension score = (8+5) / (2 x 10) x 100 = 65
 - But 8/10 items are N/A (>50%), so flag as "Insufficient Data -- Authority"
 - Exclude A dimension from weighted total; redistribute its weight proportionally to remaining dimensions
@@ -241,18 +244,18 @@ When an item cannot be evaluated (e.g., A01 Backlink Profile requires site-level
 
 #### CORE — Content Body (40 Items)
 
-| ID | Check Item | Score | Notes |
-|----|-----------|-------|-------|
+| ID  | Check Item       | Score               | Notes         |
+| --- | ---------------- | ------------------- | ------------- |
 | C01 | Intent Alignment | [Pass/Partial/Fail] | [observation] |
-| C02 | Direct Answer | [Pass/Partial/Fail] | [observation] |
-| ... | ... | ... | ... |
+| C02 | Direct Answer    | [Pass/Partial/Fail] | [observation] |
+| ... | ...              | ...                 | ...           |
 
 #### EEAT — Source Credibility (40 Items)
 
-| ID | Check Item | Score | Notes |
-|----|-----------|-------|-------|
+| ID    | Check Item             | Score               | Notes         |
+| ----- | ---------------------- | ------------------- | ------------- |
 | Exp01 | First-Person Narrative | [Pass/Partial/Fail] | [observation] |
-| ... | ... | ... | ... |
+| ...   | ...                    | ...                 | ...           |
 
 ### Top 5 Priority Improvements
 
@@ -271,14 +274,17 @@ Sorted by: weight × points lost (highest impact first)
 ### Action Plan
 
 #### Quick Wins (< 30 minutes each)
+
 - [ ] [Action 1]
 - [ ] [Action 2]
 
 #### Medium Effort (1-2 hours)
+
 - [ ] [Action 3]
 - [ ] [Action 4]
 
 #### Strategic (Requires planning)
+
 - [ ] [Action 5]
 - [ ] [Action 6]
 
@@ -293,12 +299,14 @@ Sorted by: weight × points lost (highest impact first)
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Content source identified (text, URL, or file path)
 - [ ] Content type confirmed (auto-detected or user-specified)
 - [ ] Content is substantial enough for meaningful audit (≥300 words)
 - [ ] If comparative audit, competitor content also provided
 
 ### Output Validation
+
 - [ ] All 80 items scored (or marked N/A with reason)
 - [ ] All 8 dimension scores calculated correctly
 - [ ] Weighted total matches content-type weight configuration

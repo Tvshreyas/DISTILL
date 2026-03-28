@@ -40,14 +40,15 @@ The hub-and-spoke model organizes content around central "pillar" pages (hubs) t
 
 #### Link Rules
 
-| Link Type | Direction | Anchor Text Strategy |
-|-----------|-----------|---------------------|
-| Pillar → Cluster | Pillar links to each cluster | Descriptive: "learn about [subtopic]" |
-| Cluster → Pillar | Every cluster links back to pillar | Partial match: "our complete [topic] guide" |
-| Cluster ↔ Cluster | Between related clusters in same hub | Natural: "as we covered in [related article]" |
-| Hub ↔ Hub (bridge) | Between related pillar pages | Branded/natural: "see also our [topic] resource" |
+| Link Type          | Direction                            | Anchor Text Strategy                             |
+| ------------------ | ------------------------------------ | ------------------------------------------------ |
+| Pillar → Cluster   | Pillar links to each cluster         | Descriptive: "learn about [subtopic]"            |
+| Cluster → Pillar   | Every cluster links back to pillar   | Partial match: "our complete [topic] guide"      |
+| Cluster ↔ Cluster  | Between related clusters in same hub | Natural: "as we covered in [related article]"    |
+| Hub ↔ Hub (bridge) | Between related pillar pages         | Branded/natural: "see also our [topic] resource" |
 
 #### When to Use
+
 - Content marketing sites and blogs
 - SaaS companies building topical authority
 - Publishers covering defined topic areas
@@ -55,13 +56,13 @@ The hub-and-spoke model organizes content around central "pillar" pages (hubs) t
 
 #### Measurement
 
-| Metric | Target | Tool |
-|--------|--------|------|
-| Pillar page rankings for head terms | Top 10 | Rank tracker |
-| Cluster article rankings for long-tail | Top 20 | Rank tracker |
-| Internal links per cluster article | 3-5 minimum | Crawl report |
-| Click depth from homepage to cluster | ≤3 clicks | Crawl report |
-| Organic traffic to hub pages | Month-over-month growth | Analytics |
+| Metric                                 | Target                  | Tool         |
+| -------------------------------------- | ----------------------- | ------------ |
+| Pillar page rankings for head terms    | Top 10                  | Rank tracker |
+| Cluster article rankings for long-tail | Top 20                  | Rank tracker |
+| Internal links per cluster article     | 3-5 minimum             | Crawl report |
+| Click depth from homepage to cluster   | ≤3 clicks               | Crawl report |
+| Organic traffic to hub pages           | Month-over-month growth | Analytics    |
 
 ---
 
@@ -107,21 +108,23 @@ The silo model creates strict vertical hierarchies where content is organized in
 
 #### Link Rules
 
-| Link Type | Direction | Allowed? |
-|-----------|-----------|----------|
-| Parent → Child | Downward within silo | Always |
-| Child → Parent | Upward within silo | Always |
-| Sibling ↔ Sibling | Horizontal within same parent | Yes |
-| Cross-silo | Between different silos | Strict: No. Modified: Sparingly |
-| All pages → Homepage | Upward to root | Yes (via navigation) |
+| Link Type            | Direction                     | Allowed?                        |
+| -------------------- | ----------------------------- | ------------------------------- |
+| Parent → Child       | Downward within silo          | Always                          |
+| Child → Parent       | Upward within silo            | Always                          |
+| Sibling ↔ Sibling    | Horizontal within same parent | Yes                             |
+| Cross-silo           | Between different silos       | Strict: No. Modified: Sparingly |
+| All pages → Homepage | Upward to root                | Yes (via navigation)            |
 
 #### When to Use
+
 - Large e-commerce sites (100+ product categories)
 - Directory sites with clear taxonomy
 - Sites where categories are truly distinct topics
 - Enterprises with separate business lines
 
 #### Limitations
+
 - Overly strict silos can trap link equity in one branch
 - Cross-topic content becomes difficult to place
 - Users may need to navigate up and over to find related content
@@ -159,6 +162,7 @@ A flat architecture keeps all pages within 2-3 clicks of the homepage. There is 
 5. **Limit total pages** to keep the architecture manageable
 
 #### When to Use
+
 - Small sites with fewer than 100 pages
 - Portfolio sites
 - Small business brochure sites
@@ -166,12 +170,12 @@ A flat architecture keeps all pages within 2-3 clicks of the homepage. There is 
 
 #### Scaling Limits
 
-| Site Size | Flat Architecture Feasibility |
-|-----------|------------------------------|
-| <50 pages | Ideal |
-| 50-100 pages | Manageable with good navigation |
-| 100-500 pages | Difficult; consider hub-and-spoke |
-| 500+ pages | Not recommended; switch to hierarchical model |
+| Site Size     | Flat Architecture Feasibility                 |
+| ------------- | --------------------------------------------- |
+| <50 pages     | Ideal                                         |
+| 50-100 pages  | Manageable with good navigation               |
+| 100-500 pages | Difficult; consider hub-and-spoke             |
+| 500+ pages    | Not recommended; switch to hierarchical model |
 
 ---
 
@@ -204,14 +208,15 @@ Level 3:  P1  P2   P3  P4   P5  P6  P7  P8
 
 #### Authority Flow Considerations
 
-| Level | Typical Authority | Action to Improve |
-|-------|-------------------|-------------------|
-| Homepage | Highest | Ensure links to priority categories are prominent |
-| Categories | High | Link from blog content, not just navigation |
-| Subcategories | Medium | Add contextual links from other sections |
-| Individual pages | Lowest | Cross-link, feature in "popular posts" widgets |
+| Level            | Typical Authority | Action to Improve                                 |
+| ---------------- | ----------------- | ------------------------------------------------- |
+| Homepage         | Highest           | Ensure links to priority categories are prominent |
+| Categories       | High              | Link from blog content, not just navigation       |
+| Subcategories    | Medium            | Add contextual links from other sections          |
+| Individual pages | Lowest            | Cross-link, feature in "popular posts" widgets    |
 
 #### When to Use
+
 - News and media sites
 - Large blogs (500+ posts)
 - Corporate sites with many divisions
@@ -245,15 +250,16 @@ The mesh model allows free-form linking between any related pages, regardless of
 
 #### Governance Rules
 
-| Rule | Purpose |
-|------|---------|
-| Every link must have topical relevance | Prevents link dilution |
-| Maximum 15 contextual links per 1,000 words | Prevents link farms |
-| Review links quarterly | Prunes outdated connections |
-| Use descriptive anchor text only | Maintains semantic value |
+| Rule                                               | Purpose                        |
+| -------------------------------------------------- | ------------------------------ |
+| Every link must have topical relevance             | Prevents link dilution         |
+| Maximum 15 contextual links per 1,000 words        | Prevents link farms            |
+| Review links quarterly                             | Prunes outdated connections    |
+| Use descriptive anchor text only                   | Maintains semantic value       |
 | No reciprocal link trading between unrelated pages | Prevents manipulation patterns |
 
 #### When to Use
+
 - Knowledge bases and documentation sites
 - Wikis and encyclopedias
 - Research repositories
@@ -265,13 +271,13 @@ The mesh model allows free-form linking between any related pages, regardless of
 
 ### Common Migration Paths
 
-| From | To | Reason | Difficulty |
-|------|----|--------|-----------|
-| Flat → Hub-and-Spoke | Site grew beyond 100 pages | Medium |
-| Silo → Hub-and-Spoke | Silos too rigid, need cross-topic links | Medium |
-| Pyramid → Hub-and-Spoke | Want to build topical clusters | High |
-| No structure → Any model | Starting from disorganized state | High |
-| Hub-and-Spoke → Hybrid | Need both clusters and strict categories | Medium |
+| From                     | To                                       | Reason | Difficulty |
+| ------------------------ | ---------------------------------------- | ------ | ---------- |
+| Flat → Hub-and-Spoke     | Site grew beyond 100 pages               | Medium |
+| Silo → Hub-and-Spoke     | Silos too rigid, need cross-topic links  | Medium |
+| Pyramid → Hub-and-Spoke  | Want to build topical clusters           | High   |
+| No structure → Any model | Starting from disorganized state         | High   |
+| Hub-and-Spoke → Hybrid   | Need both clusters and strict categories | Medium |
 
 ### Migration Steps (General)
 
@@ -285,12 +291,12 @@ The mesh model allows free-form linking between any related pages, regardless of
 
 ### Migration Risk Mitigation
 
-| Risk | Mitigation |
-|------|-----------|
-| Temporary ranking drops | Migrate one section at a time, not all at once |
-| Broken internal links | Run crawl after each phase to verify |
-| Lost link equity | Ensure no orphan pages created during migration |
-| Anchor text disruption | Change anchors gradually, not all at once |
+| Risk                    | Mitigation                                      |
+| ----------------------- | ----------------------------------------------- |
+| Temporary ranking drops | Migrate one section at a time, not all at once  |
+| Broken internal links   | Run crawl after each phase to verify            |
+| Lost link equity        | Ensure no orphan pages created during migration |
+| Anchor text disruption  | Change anchors gradually, not all at once       |
 
 ---
 
@@ -298,35 +304,35 @@ The mesh model allows free-form linking between any related pages, regardless of
 
 ### Key Metrics by Architecture Model
 
-| Metric | Hub-and-Spoke | Silo | Flat | Pyramid | Mesh |
-|--------|---------------|------|------|---------|------|
-| Avg click depth | ≤3 | ≤4 | ≤2 | ≤4 | ≤3 |
-| Orphan pages | 0 | 0 | 0 | 0 | 0 |
-| Avg internal links per page | 5-10 | 3-7 | 8-15 | 3-5 | 8-15 |
-| Cross-section links | Many | Few | N/A | Some | Many |
-| Authority concentration | Distributed to hubs | Concentrated in silo tops | Even | Top-heavy | Even |
+| Metric                      | Hub-and-Spoke       | Silo                      | Flat | Pyramid   | Mesh |
+| --------------------------- | ------------------- | ------------------------- | ---- | --------- | ---- |
+| Avg click depth             | ≤3                  | ≤4                        | ≤2   | ≤4        | ≤3   |
+| Orphan pages                | 0                   | 0                         | 0    | 0         | 0    |
+| Avg internal links per page | 5-10                | 3-7                       | 8-15 | 3-5       | 8-15 |
+| Cross-section links         | Many                | Few                       | N/A  | Some      | Many |
+| Authority concentration     | Distributed to hubs | Concentrated in silo tops | Even | Top-heavy | Even |
 
 ### Monthly Monitoring Checklist
 
-| Check | Tool | Action if Failing |
-|-------|------|-------------------|
-| Orphan pages count | Crawl report | Add internal links immediately |
-| Average click depth | Crawl report | Add shortcuts to deep pages |
-| Crawl depth distribution | Crawl report | Flatten deep branches |
-| Internal link count per page | Crawl report | Add links to under-linked pages |
-| Anchor text diversity | Manual audit | Vary anchors for over-optimized pages |
-| Broken internal links | Crawl report | Fix or remove broken links |
-| New content linked within 48 hours | Editorial process | Add to related pages upon publishing |
+| Check                              | Tool              | Action if Failing                     |
+| ---------------------------------- | ----------------- | ------------------------------------- |
+| Orphan pages count                 | Crawl report      | Add internal links immediately        |
+| Average click depth                | Crawl report      | Add shortcuts to deep pages           |
+| Crawl depth distribution           | Crawl report      | Flatten deep branches                 |
+| Internal link count per page       | Crawl report      | Add links to under-linked pages       |
+| Anchor text diversity              | Manual audit      | Vary anchors for over-optimized pages |
+| Broken internal links              | Crawl report      | Fix or remove broken links            |
+| New content linked within 48 hours | Editorial process | Add to related pages upon publishing  |
 
 ### ROI Estimation
 
-| Architecture Change | Typical Impact | Timeline to See Results |
-|--------------------|---------------|----------------------|
-| Fix orphan pages | +15-30% traffic to those pages | 2-4 weeks |
-| Build first topic cluster | +10-25% traffic to cluster pages | 4-8 weeks |
-| Reduce click depth by 1 level | +5-15% crawl efficiency | 2-6 weeks |
-| Anchor text optimization | +5-10% ranking improvement for target terms | 4-12 weeks |
-| Full architecture migration | +20-50% overall organic traffic | 3-6 months |
+| Architecture Change           | Typical Impact                              | Timeline to See Results |
+| ----------------------------- | ------------------------------------------- | ----------------------- |
+| Fix orphan pages              | +15-30% traffic to those pages              | 2-4 weeks               |
+| Build first topic cluster     | +10-25% traffic to cluster pages            | 4-8 weeks               |
+| Reduce click depth by 1 level | +5-15% crawl efficiency                     | 2-6 weeks               |
+| Anchor text optimization      | +5-10% ranking improvement for target terms | 4-12 weeks              |
+| Full architecture migration   | +20-50% overall organic traffic             | 3-6 months              |
 
 ---
 

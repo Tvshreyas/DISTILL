@@ -1,863 +1,1161 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Distill — Carousel Generator</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Reenie+Beanie&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --warm-bg: #FDFCF8;
-    --soft-black: #292524;
-    --muted: #78716C;
-    --sage: #E8EFE8;
-    --lavender: #EFEDF4;
-    --peach: #FFB7B2;
-    --border: 3px solid #292524;
-    --shadow: 6px 6px 0px #292524;
-    --shadow-sm: 3px 3px 0px #292524;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Outfit', sans-serif;
-    background: #f0efeb;
-    padding: 40px;
-    color: var(--soft-black);
-  }
-
-  h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    text-transform: lowercase;
-    margin-bottom: 8px;
-  }
-
-  .controls {
-    background: white;
-    border: var(--border);
-    box-shadow: var(--shadow);
-    border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 40px;
-    display: flex;
-    gap: 16px;
-    align-items: end;
-    flex-wrap: wrap;
-  }
-
-  .controls label {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: lowercase;
-    letter-spacing: 0.05em;
-    display: block;
-    margin-bottom: 6px;
-    color: var(--muted);
-  }
-
-  .controls select, .controls button {
-    font-family: 'Outfit', sans-serif;
-    font-size: 15px;
-    padding: 10px 16px;
-    border: 2px solid var(--soft-black);
-    border-radius: 999px;
-    background: white;
-    cursor: pointer;
-    color: var(--soft-black);
-  }
-
-  .controls button {
-    background: var(--peach);
-    font-weight: 600;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.1s;
-  }
-
-  .controls button:hover { transform: translate(1px, 1px); box-shadow: 2px 2px 0px var(--soft-black); }
-  .controls button:active { transform: translate(3px, 3px); box-shadow: none; }
-
-  .carousel-row {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    scroll-snap-type: x mandatory;
-  }
-
-  /* ---- THE SLIDE ---- */
-  .slide {
-    width: 1080px;
-    height: 1350px;
-    min-width: 1080px;
-    border: var(--border);
-    box-shadow: var(--shadow);
-    border-radius: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 72px;
-    position: relative;
-    overflow: hidden;
-    scroll-snap-align: start;
-  }
-
-  .slide.bg-warm   { background: var(--warm-bg); }
-  .slide.bg-sage    { background: var(--sage); }
-  .slide.bg-lavender { background: var(--lavender); }
-  .slide.bg-peach   { background: var(--peach); }
-  .slide.bg-dark    { background: var(--soft-black); color: var(--warm-bg); }
-
-  /* slide number pill */
-  .slide-num {
-    position: absolute;
-    top: 48px;
-    left: 72px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    background: var(--peach);
-    color: var(--soft-black);
-    padding: 6px 18px;
-    border-radius: 999px;
-    border: 2px solid var(--soft-black);
-  }
-
-  .slide.bg-peach .slide-num { background: var(--warm-bg); }
-  .slide.bg-dark .slide-num { background: var(--peach); }
-
-  /* logo */
-  .slide-logo {
-    position: absolute;
-    bottom: 48px;
-    right: 72px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--muted);
-    text-transform: lowercase;
-  }
-
-  .slide.bg-dark .slide-logo { color: rgba(253, 252, 248, 0.4); }
-
-  /* hook slide (slide 1) */
-  .slide .hook {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 72px;
-    font-weight: 700;
-    line-height: 1.05;
-    text-transform: lowercase;
-    letter-spacing: -0.02em;
-  }
-
-  .slide .hook .accent {
-    color: var(--peach);
-    font-family: 'Reenie Beanie', cursive;
-    font-size: 90px;
-    display: inline-block;
-    transform: rotate(-3deg);
-  }
-
-  .slide.bg-peach .hook .accent { color: var(--soft-black); text-decoration: underline; }
-  .slide.bg-dark .hook .accent { color: var(--peach); }
-
-  /* body text */
-  .slide .body {
-    font-family: 'Outfit', sans-serif;
-    font-size: 42px;
-    font-weight: 500;
-    line-height: 1.45;
-    text-transform: lowercase;
-  }
-
-  .slide .body strong {
-    font-weight: 700;
-  }
-
-  .slide .body .highlight {
-    background: var(--peach);
-    padding: 2px 8px;
-    border-radius: 6px;
-  }
-
-  .slide.bg-peach .body .highlight { background: var(--warm-bg); }
-
-  /* steps / list */
-  .slide .steps {
-    font-family: 'Outfit', sans-serif;
-    font-size: 38px;
-    font-weight: 500;
-    line-height: 1.6;
-    text-transform: lowercase;
-    list-style: none;
-    counter-reset: step;
-  }
-
-  .slide .steps li {
-    counter-increment: step;
-    margin-bottom: 16px;
-  }
-
-  .slide .steps li::before {
-    content: counter(step) ". ";
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    color: var(--peach);
-  }
-
-  .slide.bg-peach .steps li::before { color: var(--soft-black); }
-
-  /* CTA slide */
-  .slide .cta-text {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 56px;
-    font-weight: 700;
-    line-height: 1.1;
-    text-transform: lowercase;
-    margin-bottom: 40px;
-  }
-
-  .slide .cta-url {
-    display: inline-block;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 36px;
-    font-weight: 600;
-    background: var(--peach);
-    color: var(--soft-black);
-    padding: 16px 40px;
-    border-radius: 999px;
-    border: 3px solid var(--soft-black);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .slide.bg-dark .cta-url { background: var(--peach); }
-
-  /* divider line */
-  .slide .divider {
-    width: 80px;
-    height: 4px;
-    background: var(--peach);
-    margin: 32px 0;
-    border-radius: 2px;
-  }
-
-  .slide.bg-peach .divider { background: var(--soft-black); }
-  .slide.bg-dark .divider { background: var(--peach); }
-
-  /* small text / caption within slide */
-  .slide .small {
-    font-family: 'Outfit', sans-serif;
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--muted);
-    text-transform: lowercase;
-    margin-top: 24px;
-  }
-
-  .slide.bg-dark .small { color: rgba(253, 252, 248, 0.5); }
-
-  /* --- Instruction text --- */
-  .instructions {
-    margin-top: 40px;
-    padding: 24px;
-    background: white;
-    border: var(--border);
-    border-radius: 16px;
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--muted);
-    max-width: 700px;
-  }
-
-  .instructions strong { color: var(--soft-black); }
-
-  /* Day label */
-  .day-label {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    text-transform: lowercase;
-    margin-bottom: 16px;
-    color: var(--muted);
-  }
-
-  .day-label span {
-    background: var(--peach);
-    padding: 4px 14px;
-    border-radius: 999px;
-    color: var(--soft-black);
-    font-size: 14px;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-</style>
-</head>
-<body>
-
-<h1>distill. carousel generator</h1>
-<p style="color: var(--muted); margin-bottom: 24px; font-size: 16px;">open in browser → screenshot each slide at 1080×1350px (or use browser devtools device mode)</p>
-
-<div class="controls">
-  <div>
-    <label>select day</label>
-    <select id="daySelect" onchange="showDay(this.value)">
-      <option value="1">day 1 — mar 14 — the problem</option>
-      <option value="2">day 2 — mar 15 — saving ≠ thinking</option>
-      <option value="3">day 3 — mar 16 — AI can't think for you</option>
-      <option value="4" selected>day 4 — mar 24 — LAUNCH DAY</option>
-      <option value="5">day 5 — mar 18 — how it works</option>
-      <option value="6">day 6 — mar 19 — reading more ≠ thinking more</option>
-      <option value="7">day 7 — mar 20 — processing problem</option>
-      <option value="8">day 8 — mar 21 — distill vs. everything</option>
-      <option value="9">day 9 — mar 22 — compound thinking</option>
-      <option value="10">day 10 — mar 23 — you are not an algorithm</option>
-      <option value="11">day 11 — mar 24 — weekly reflection habit</option>
-    </select>
-  </div>
-  <button onclick="window.print()">print / save as PDF</button>
-</div>
-
-<!-- ============ DAY 1 ============ -->
-<div class="day" id="day-1" style="display:none">
-  <div class="day-label">day 1 — march 14 <span>pre-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-warm">
-      <span class="slide-num">01</span>
-      <div class="hook">books. podcasts. articles. videos. courses. threads.<br><br>you consumed all of it.<br>how many opinions are <span class="accent">actually</span> yours?</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">02</span>
-      <div class="body">you saved 200 articles.<br>watched 100 youtube videos.<br>listened to 50 podcasts.<br>highlighted 500 passages.<br><br>and if someone asked you what you think about any of it — <strong>you'd go blank.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">03</span>
-      <div class="body">that's because <span class="highlight">consuming isn't thinking.</span><br><br>highlights are the author's words.<br>bookmarks are links you'll never revisit.<br>saving feels productive. it isn't.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">04</span>
-      <div class="body">the problem isn't input.<br>you have more than enough.<br><br>the problem is <strong>processing.</strong><br>you never stopped to ask:<br><span class="highlight">what do I actually think about this?</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">05</span>
-      <div class="body">there's a tool launching march 24 that fixes this.<br><br>it doesn't summarize content for you.<br>it doesn't use AI to think for you.<br><strong>it gives you a space to think for yourself.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-peach">
-      <span class="slide-num">06</span>
-      <div class="cta-text">distill.<br>launching march 24.</div>
-      <div class="divider"></div>
-      <div class="body">stop absorbing. start thinking.</div>
-      <br>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 2 ============ -->
-<div class="day" id="day-2" style="display:none">
-  <div class="day-label">day 2 — march 15 <span>pre-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-dark">
-      <span class="slide-num">01</span>
-      <div class="hook">your bookmarks folder<br>is a <span class="accent">graveyard.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">02</span>
-      <div class="body">847 saved articles.<br>12 "read later" lists.<br>4 highlight apps.<br><br><span class="highlight">0 original thoughts captured.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">03</span>
-      <div class="body">saving is the easiest form of procrastination.<br><br>it gives you the feeling of learning<br><strong>without the effort of thinking.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">04</span>
-      <div class="body">a highlight is someone else's sentence<br>that resonated with you for 3 seconds.<br><br><span class="highlight">a reflection is YOUR sentence</span><br>about what that idea means to you.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">05</span>
-      <div class="body"><strong>the difference between a reader and a thinker</strong><br><br>is what happens after the last page.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-peach">
-      <span class="slide-num">06</span>
-      <div class="cta-text">something's launching march 24<br>for people who want to be thinkers.</div>
-      <div class="divider"></div>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 3 ============ -->
-<div class="day" id="day-3" style="display:none">
-  <div class="day-label">day 3 — march 16 <span>pre-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-warm">
-      <span class="slide-num">01</span>
-      <div class="hook">AI can summarize a book in 30 seconds.<br><br>it still can't tell you <span class="accent">what you think</span> about it.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">02</span>
-      <div class="body">we're outsourcing the wrong thing.<br><br>the hard part was never finding information.<br>or organizing it. or summarizing it.<br><br><strong>the hard part was always thinking about it.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">03</span>
-      <div class="body">when someone asks your opinion<br>and you repeat what you heard on a podcast —<br><br><span class="highlight">that's not your opinion.<br>that's a cached response.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">04</span>
-      <div class="body">original thinking requires friction.<br>you have to sit with an idea.<br>wrestle with it. write it down badly.<br>then rewrite it.<br><br><strong>there is no shortcut for this.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">05</span>
-      <div class="body">tomorrow we're launching a tool<br>that creates space for that friction.<br><br>no AI summaries. no auto-generated notes.<br><span class="highlight">just you. your words. your perspective.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-dark">
-      <span class="slide-num">06</span>
-      <div class="cta-text">distill.<br>launches tomorrow.</div>
-      <div class="divider"></div>
-      <div class="body">a thinking tool, not a thinking replacement.</div>
-      <br>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 4 — LAUNCH ============ -->
-<div class="day" id="day-4">
-  <div class="day-label">day 4 — march 24 <span>LAUNCH DAY</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-peach">
-      <span class="slide-num">01</span>
-      <div class="hook" style="font-size: 120px;">distill<br>is live.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">02</span>
-      <div class="body">a thinking development tool<br>for people who read, watch, and listen to things —<br><br><strong>and want to actually remember<br>what they thought about them.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">03</span>
-      <div class="body" style="font-size: 38px;"><strong>how it works:</strong></div>
-      <br>
-      <ol class="steps">
-        <li>start a session — pick what you're consuming</li>
-        <li>read, watch, or listen (externally)</li>
-        <li>write a short reflection — what did you think?</li>
-        <li>your reflections resurface so your thinking compounds</li>
-      </ol>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">04</span>
-      <div class="body"><span class="highlight">this is not a note-taking app.</span><br>no tags. no folders. no org system to maintain.<br><br>it's not an AI tool either.<br><strong>you write. not a model.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">05</span>
-      <div class="body">free to use. 3 deep sessions per month.<br>unlimited with pro ($8/mo).<br><br><strong>your thoughts compound over time.<br>but only if you capture them.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-dark">
-      <span class="slide-num">06</span>
-      <div class="cta-text">stop absorbing.<br>start thinking.</div>
-      <div class="divider"></div>
-      <div class="body">try distill free.</div>
-      <br>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 5 ============ -->
-<div class="day" id="day-5" style="display:none">
-  <div class="day-label">day 5 — march 18 <span>post-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-warm">
-      <span class="slide-num">01</span>
-      <div class="hook">4 steps to <span class="accent">actually</span> remember<br>what you think.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">02</span>
-      <div class="body"><strong>step 1: start a session.</strong><br><br>pick a book, article, podcast, or video.<br>this opens a "cognitive loop" —<br>your brain knows it needs to pay attention.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">03</span>
-      <div class="body"><strong>step 2: consume the content.</strong><br><br>distill doesn't host anything.<br>go read. go watch. go listen.<br>but this time, you're reading with intent.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">04</span>
-      <div class="body"><strong>step 3: write a reflection.</strong><br><br>not a summary. not notes. not highlights.<br><span class="highlight">what did YOU think?</span><br>what changed? what do you disagree with?</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">05</span>
-      <div class="body"><strong>step 4: your thoughts resurface.</strong><br><br>past reflections come back at timed intervals.<br>you re-engage with your former self.<br><strong>your thinking compounds.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-peach">
-      <span class="slide-num">06</span>
-      <div class="cta-text">your personal library<br>of original thought.</div>
-      <div class="divider"></div>
-      <div class="body">searchable. private. growing.</div>
-      <br>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 6 ============ -->
-<div class="day" id="day-6" style="display:none">
-  <div class="day-label">day 6 — march 19 <span>post-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-dark">
-      <span class="slide-num">01</span>
-      <div class="hook">unpopular opinion:<br>reading more books<br><span class="accent">isn't the goal.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">02</span>
-      <div class="body">"i read 52 books this year."<br><br>cool. what did you think about them?<br><br><span class="highlight">"...i don't remember."</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">03</span>
-      <div class="body">reading without reflection<br>is just high-speed scanning<br>dressed up as learning.<br><br>you absorb words.<br><strong>you don't absorb meaning.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">04</span>
-      <div class="body"><span class="highlight">thinking about fewer books</span><br>is more valuable than<br>reading more of them.<br><br><strong>depth beats volume. every time.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">05</span>
-      <div class="body">one book you actually thought about<br>shapes how you see the world.<br><br>twenty books you skimmed<br>give you trivia for dinner parties.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-peach">
-      <span class="slide-num">06</span>
-      <div class="cta-text">go deeper,<br>not wider.</div>
-      <div class="divider"></div>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 7 ============ -->
-<div class="day" id="day-7" style="display:none">
-  <div class="day-label">day 7 — march 20 <span>post-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-warm">
-      <span class="slide-num">01</span>
-      <div class="hook">you don't have<br>an information problem.<br><br>you have<br>a <span class="accent">processing</span> problem.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">02</span>
-      <div class="body"><strong>the bottleneck isn't input.</strong><br><br>you have access to every book ever written.<br>every lecture. every podcast. every article.<br><br>input is solved.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">03</span>
-      <div class="body">the bottleneck is <span class="highlight">what happens after.</span><br><br>you finish a book and start the next one.<br>you close an article and open another tab.<br>no pause. no processing. no thinking.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">04</span>
-      <div class="body">information without processing<br>is <strong>noise.</strong><br><br>information with processing<br>is <strong>perspective.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">05</span>
-      <div class="body">the fix is simple.<br>after you consume something — <span class="highlight">stop.</span><br>write what you think.<br>even if it's two sentences.<br><br><strong>that's the entire gap.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-peach">
-      <span class="slide-num">06</span>
-      <div class="cta-text">distill gives you<br>the space to process.</div>
-      <div class="divider"></div>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 8 ============ -->
-<div class="day" id="day-8" style="display:none">
-  <div class="day-label">day 8 — march 21 <span>post-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-warm">
-      <span class="slide-num">01</span>
-      <div class="hook">distill is not<br>a <span class="accent">note-taking</span> app.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">02</span>
-      <div class="body"><strong>it's not notion.</strong><br>no databases. no templates.<br>no org system to maintain.<br><br><strong>it's not readwise.</strong><br>readwise resurfaces the author's words.<br><span class="highlight">distill resurfaces yours.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">03</span>
-      <div class="body"><strong>it's not a journal.</strong><br>no open-ended blank page.<br>every reflection is tied to something you consumed.<br><br><strong>it's not an AI tool.</strong><br>no summaries. no auto-generated anything.<br><span class="highlight">you write.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">04</span>
-      <div class="body"><strong>distill is a thinking development tool.</strong><br><br>you consume content.<br>you write what you think about it.<br>your reflections come back to you over time.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">05</span>
-      <div class="body">the simplest possible loop:<br><br><span class="highlight">consume → reflect → resurface → grow.</span><br><br>no setup. no configuration.<br>no system to maintain.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-dark">
-      <span class="slide-num">06</span>
-      <div class="cta-text">a tool for thinkers,<br>not organizers.</div>
-      <div class="divider"></div>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 9 ============ -->
-<div class="day" id="day-9" style="display:none">
-  <div class="day-label">day 9 — march 22 <span>post-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-warm">
-      <span class="slide-num">01</span>
-      <div class="hook">your thoughts <span class="accent">compound.</span><br><br>but only if you<br>write them down.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">02</span>
-      <div class="body"><strong>day 1:</strong> you reflect on a book about decision-making.<br><br><strong>day 30:</strong> a past reflection resurfaces. you notice your thinking has changed.<br><br><strong>day 90:</strong> patterns emerge across reflections. you start seeing connections you didn't plan.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">03</span>
-      <div class="body"><span class="highlight">this is compound thinking.</span><br><br>each reflection builds on the last.<br>not because you planned it —<br>because your perspective naturally evolves.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">04</span>
-      <div class="body">the person who wrote 100 reflections<br>thinks differently from the person who read 100 books.<br><br>reading is input.<br>reflecting is processing.<br><strong>processing is where growth happens.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">05</span>
-      <div class="body">your personal library of perspective.<br>searchable. private. always growing.<br><br><strong>six months from now,<br>you'll have an archive of how you think.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-peach">
-      <span class="slide-num">06</span>
-      <div class="cta-text">start building<br>your thinking archive.</div>
-      <div class="divider"></div>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 10 ============ -->
-<div class="day" id="day-10" style="display:none">
-  <div class="day-label">day 10 — march 23 <span>post-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-dark">
-      <span class="slide-num">01</span>
-      <div class="hook" style="font-size: 96px;">you are not<br>an <span class="accent">algorithm.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">02</span>
-      <div class="body">algorithms decide what you see.<br>recommendation engines decide what's next.<br>autoplay decides when you stop.<br><br><span class="highlight">at what point do you decide anything?</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">03</span>
-      <div class="body">consuming without choosing is passive.<br>choosing without thinking is reactive.<br><br><strong>thinking is the only active part.<br>and it's the part we skip.</strong></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">04</span>
-      <div class="body">you don't need to consume less.<br>you need to <span class="highlight">think more</span> about what you consume.<br><br>one intentional reflection<br>is worth more than ten passive bookmarks.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">05</span>
-      <div class="body">distill exists for this moment.<br>the moment after you finish something<br>where you ask: <strong>what do I actually think?</strong><br><br>that's the whole product.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-peach">
-      <span class="slide-num">06</span>
-      <div class="cta-text">stop absorbing.<br>start thinking.</div>
-      <div class="divider"></div>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============ DAY 11 ============ -->
-<div class="day" id="day-11" style="display:none">
-  <div class="day-label">day 11 — march 24 <span>post-launch</span></div>
-  <div class="carousel-row">
-
-    <div class="slide bg-warm">
-      <span class="slide-num">01</span>
-      <div class="hook">one reflection a week<br>changes how you think<br>in a <span class="accent">year.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">02</span>
-      <div class="body">week 1: 1 reflection.<br>month 1: 4 reflections.<br>month 6: 26 reflections.<br>year 1: <strong>52 reflections.</strong><br><br>52 pieces of original thought.<br><span class="highlight">a searchable archive of your perspective.</span></div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-lavender">
-      <span class="slide-num">03</span>
-      <div class="body">that's 52 times you stopped<br>and asked yourself:<br><strong>what do I think about this?</strong><br><br>most people go years without asking that once.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-warm">
-      <span class="slide-num">04</span>
-      <div class="body">you don't need a daily habit.<br>you don't need a complex system.<br>you don't need discipline.<br><br>you need <span class="highlight">one reflection.</span><br>after one thing you consumed.<br>once a week.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-sage">
-      <span class="slide-num">05</span>
-      <div class="body">the bar is low on purpose.<br><br>because the hard part isn't writing.<br><strong>the hard part is stopping long enough to think.</strong><br>distill creates that stop.</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-    <div class="slide bg-peach">
-      <span class="slide-num">06</span>
-      <div class="cta-text">start with one reflection<br>this week.</div>
-      <div class="divider"></div>
-      <div class="body">free to start. 3 deep sessions per month.</div>
-      <br>
-      <div class="cta-url">distillwise.com</div>
-      <span class="slide-logo">distill.</span>
-    </div>
-
-  </div>
-</div>
-
-<div class="instructions">
-  <strong>how to screenshot slides:</strong><br>
-  1. open this file in chrome/edge<br>
-  2. right-click a slide → inspect → select the .slide element<br>
-  3. right-click the node → "capture node screenshot" — saves at exact 1080×1350<br>
-  4. or use devtools device mode set to 1080×1350 and screenshot each slide<br><br>
-  <strong>tip:</strong> each slide is exactly 1080×1350px (instagram 4:5 ratio). for linkedin, crop to 1080×1080 if needed.
-</div>
-
-<script>
-function showDay(n) {
-  document.querySelectorAll('.day').forEach(d => d.style.display = 'none');
-  document.getElementById('day-' + n).style.display = 'block';
-}
-</script>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distill — Carousel Generator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Reenie+Beanie&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --warm-bg: #fdfcf8;
+        --soft-black: #292524;
+        --muted: #78716c;
+        --sage: #e8efe8;
+        --lavender: #efedf4;
+        --peach: #ffb7b2;
+        --border: 3px solid #292524;
+        --shadow: 6px 6px 0px #292524;
+        --shadow-sm: 3px 3px 0px #292524;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background: #f0efeb;
+        padding: 40px;
+        color: var(--soft-black);
+      }
+
+      h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        text-transform: lowercase;
+        margin-bottom: 8px;
+      }
+
+      .controls {
+        background: white;
+        border: var(--border);
+        box-shadow: var(--shadow);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 40px;
+        display: flex;
+        gap: 16px;
+        align-items: end;
+        flex-wrap: wrap;
+      }
+
+      .controls label {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+      }
+
+      .controls select,
+      .controls button {
+        font-family: "Outfit", sans-serif;
+        font-size: 15px;
+        padding: 10px 16px;
+        border: 2px solid var(--soft-black);
+        border-radius: 999px;
+        background: white;
+        cursor: pointer;
+        color: var(--soft-black);
+      }
+
+      .controls button {
+        background: var(--peach);
+        font-weight: 600;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.1s;
+      }
+
+      .controls button:hover {
+        transform: translate(1px, 1px);
+        box-shadow: 2px 2px 0px var(--soft-black);
+      }
+      .controls button:active {
+        transform: translate(3px, 3px);
+        box-shadow: none;
+      }
+
+      .carousel-row {
+        display: flex;
+        gap: 24px;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        scroll-snap-type: x mandatory;
+      }
+
+      /* ---- THE SLIDE ---- */
+      .slide {
+        width: 1080px;
+        height: 1350px;
+        min-width: 1080px;
+        border: var(--border);
+        box-shadow: var(--shadow);
+        border-radius: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px 72px;
+        position: relative;
+        overflow: hidden;
+        scroll-snap-align: start;
+      }
+
+      .slide.bg-warm {
+        background: var(--warm-bg);
+      }
+      .slide.bg-sage {
+        background: var(--sage);
+      }
+      .slide.bg-lavender {
+        background: var(--lavender);
+      }
+      .slide.bg-peach {
+        background: var(--peach);
+      }
+      .slide.bg-dark {
+        background: var(--soft-black);
+        color: var(--warm-bg);
+      }
+
+      /* slide number pill */
+      .slide-num {
+        position: absolute;
+        top: 48px;
+        left: 72px;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        background: var(--peach);
+        color: var(--soft-black);
+        padding: 6px 18px;
+        border-radius: 999px;
+        border: 2px solid var(--soft-black);
+      }
+
+      .slide.bg-peach .slide-num {
+        background: var(--warm-bg);
+      }
+      .slide.bg-dark .slide-num {
+        background: var(--peach);
+      }
+
+      /* logo */
+      .slide-logo {
+        position: absolute;
+        bottom: 48px;
+        right: 72px;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--muted);
+        text-transform: lowercase;
+      }
+
+      .slide.bg-dark .slide-logo {
+        color: rgba(253, 252, 248, 0.4);
+      }
+
+      /* hook slide (slide 1) */
+      .slide .hook {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 72px;
+        font-weight: 700;
+        line-height: 1.05;
+        text-transform: lowercase;
+        letter-spacing: -0.02em;
+      }
+
+      .slide .hook .accent {
+        color: var(--peach);
+        font-family: "Reenie Beanie", cursive;
+        font-size: 90px;
+        display: inline-block;
+        transform: rotate(-3deg);
+      }
+
+      .slide.bg-peach .hook .accent {
+        color: var(--soft-black);
+        text-decoration: underline;
+      }
+      .slide.bg-dark .hook .accent {
+        color: var(--peach);
+      }
+
+      /* body text */
+      .slide .body {
+        font-family: "Outfit", sans-serif;
+        font-size: 42px;
+        font-weight: 500;
+        line-height: 1.45;
+        text-transform: lowercase;
+      }
+
+      .slide .body strong {
+        font-weight: 700;
+      }
+
+      .slide .body .highlight {
+        background: var(--peach);
+        padding: 2px 8px;
+        border-radius: 6px;
+      }
+
+      .slide.bg-peach .body .highlight {
+        background: var(--warm-bg);
+      }
+
+      /* steps / list */
+      .slide .steps {
+        font-family: "Outfit", sans-serif;
+        font-size: 38px;
+        font-weight: 500;
+        line-height: 1.6;
+        text-transform: lowercase;
+        list-style: none;
+        counter-reset: step;
+      }
+
+      .slide .steps li {
+        counter-increment: step;
+        margin-bottom: 16px;
+      }
+
+      .slide .steps li::before {
+        content: counter(step) ". ";
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        color: var(--peach);
+      }
+
+      .slide.bg-peach .steps li::before {
+        color: var(--soft-black);
+      }
+
+      /* CTA slide */
+      .slide .cta-text {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 56px;
+        font-weight: 700;
+        line-height: 1.1;
+        text-transform: lowercase;
+        margin-bottom: 40px;
+      }
+
+      .slide .cta-url {
+        display: inline-block;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 36px;
+        font-weight: 600;
+        background: var(--peach);
+        color: var(--soft-black);
+        padding: 16px 40px;
+        border-radius: 999px;
+        border: 3px solid var(--soft-black);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .slide.bg-dark .cta-url {
+        background: var(--peach);
+      }
+
+      /* divider line */
+      .slide .divider {
+        width: 80px;
+        height: 4px;
+        background: var(--peach);
+        margin: 32px 0;
+        border-radius: 2px;
+      }
+
+      .slide.bg-peach .divider {
+        background: var(--soft-black);
+      }
+      .slide.bg-dark .divider {
+        background: var(--peach);
+      }
+
+      /* small text / caption within slide */
+      .slide .small {
+        font-family: "Outfit", sans-serif;
+        font-size: 28px;
+        font-weight: 400;
+        color: var(--muted);
+        text-transform: lowercase;
+        margin-top: 24px;
+      }
+
+      .slide.bg-dark .small {
+        color: rgba(253, 252, 248, 0.5);
+      }
+
+      /* --- Instruction text --- */
+      .instructions {
+        margin-top: 40px;
+        padding: 24px;
+        background: white;
+        border: var(--border);
+        border-radius: 16px;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--muted);
+        max-width: 700px;
+      }
+
+      .instructions strong {
+        color: var(--soft-black);
+      }
+
+      /* Day label */
+      .day-label {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        text-transform: lowercase;
+        margin-bottom: 16px;
+        color: var(--muted);
+      }
+
+      .day-label span {
+        background: var(--peach);
+        padding: 4px 14px;
+        border-radius: 999px;
+        color: var(--soft-black);
+        font-size: 14px;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>distill. carousel generator</h1>
+    <p style="color: var(--muted); margin-bottom: 24px; font-size: 16px">
+      open in browser → screenshot each slide at 1080×1350px (or use browser
+      devtools device mode)
+    </p>
+
+    <div class="controls">
+      <div>
+        <label>select day</label>
+        <select id="daySelect" onchange="showDay(this.value)">
+          <option value="1">day 1 — mar 14 — the problem</option>
+          <option value="2">day 2 — mar 15 — saving ≠ thinking</option>
+          <option value="3">day 3 — mar 16 — AI can't think for you</option>
+          <option value="4" selected>day 4 — mar 24 — LAUNCH DAY</option>
+          <option value="5">day 5 — mar 18 — how it works</option>
+          <option value="6">
+            day 6 — mar 19 — reading more ≠ thinking more
+          </option>
+          <option value="7">day 7 — mar 20 — processing problem</option>
+          <option value="8">day 8 — mar 21 — distill vs. everything</option>
+          <option value="9">day 9 — mar 22 — compound thinking</option>
+          <option value="10">day 10 — mar 23 — you are not an algorithm</option>
+          <option value="11">day 11 — mar 24 — weekly reflection habit</option>
+        </select>
+      </div>
+      <button onclick="window.print()">print / save as PDF</button>
+    </div>
+
+    <!-- ============ DAY 1 ============ -->
+    <div class="day" id="day-1" style="display: none">
+      <div class="day-label">day 1 — march 14 <span>pre-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-warm">
+          <span class="slide-num">01</span>
+          <div class="hook">
+            books. podcasts. articles. videos. courses. threads.<br /><br />you
+            consumed all of it.<br />how many opinions are
+            <span class="accent">actually</span> yours?
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">02</span>
+          <div class="body">
+            you saved 200 articles.<br />watched 100 youtube videos.<br />listened
+            to 50 podcasts.<br />highlighted 500 passages.<br /><br />and if
+            someone asked you what you think about any of it —
+            <strong>you'd go blank.</strong>
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">03</span>
+          <div class="body">
+            that's because
+            <span class="highlight">consuming isn't thinking.</span
+            ><br /><br />highlights are the author's words.<br />bookmarks are
+            links you'll never revisit.<br />saving feels productive. it isn't.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">04</span>
+          <div class="body">
+            the problem isn't input.<br />you have more than enough.<br /><br />the
+            problem is <strong>processing.</strong><br />you never stopped to
+            ask:<br /><span class="highlight"
+              >what do I actually think about this?</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">05</span>
+          <div class="body">
+            there's a tool launching march 24 that fixes this.<br /><br />it
+            doesn't summarize content for you.<br />it doesn't use AI to think
+            for you.<br /><strong
+              >it gives you a space to think for yourself.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-peach">
+          <span class="slide-num">06</span>
+          <div class="cta-text">distill.<br />launching march 24.</div>
+          <div class="divider"></div>
+          <div class="body">stop absorbing. start thinking.</div>
+          <br />
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 2 ============ -->
+    <div class="day" id="day-2" style="display: none">
+      <div class="day-label">day 2 — march 15 <span>pre-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-dark">
+          <span class="slide-num">01</span>
+          <div class="hook">
+            your bookmarks folder<br />is a
+            <span class="accent">graveyard.</span>
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">02</span>
+          <div class="body">
+            847 saved articles.<br />12 "read later" lists.<br />4 highlight
+            apps.<br /><br /><span class="highlight"
+              >0 original thoughts captured.</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">03</span>
+          <div class="body">
+            saving is the easiest form of procrastination.<br /><br />it gives
+            you the feeling of learning<br /><strong
+              >without the effort of thinking.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">04</span>
+          <div class="body">
+            a highlight is someone else's sentence<br />that resonated with you
+            for 3 seconds.<br /><br /><span class="highlight"
+              >a reflection is YOUR sentence</span
+            ><br />about what that idea means to you.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">05</span>
+          <div class="body">
+            <strong>the difference between a reader and a thinker</strong
+            ><br /><br />is what happens after the last page.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-peach">
+          <span class="slide-num">06</span>
+          <div class="cta-text">
+            something's launching march 24<br />for people who want to be
+            thinkers.
+          </div>
+          <div class="divider"></div>
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 3 ============ -->
+    <div class="day" id="day-3" style="display: none">
+      <div class="day-label">day 3 — march 16 <span>pre-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-warm">
+          <span class="slide-num">01</span>
+          <div class="hook">
+            AI can summarize a book in 30 seconds.<br /><br />it still can't
+            tell you <span class="accent">what you think</span> about it.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">02</span>
+          <div class="body">
+            we're outsourcing the wrong thing.<br /><br />the hard part was
+            never finding information.<br />or organizing it. or summarizing
+            it.<br /><br /><strong
+              >the hard part was always thinking about it.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">03</span>
+          <div class="body">
+            when someone asks your opinion<br />and you repeat what you heard on
+            a podcast —<br /><br /><span class="highlight"
+              >that's not your opinion.<br />that's a cached response.</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">04</span>
+          <div class="body">
+            original thinking requires friction.<br />you have to sit with an
+            idea.<br />wrestle with it. write it down badly.<br />then rewrite
+            it.<br /><br /><strong>there is no shortcut for this.</strong>
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">05</span>
+          <div class="body">
+            tomorrow we're launching a tool<br />that creates space for that
+            friction.<br /><br />no AI summaries. no auto-generated notes.<br /><span
+              class="highlight"
+              >just you. your words. your perspective.</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-dark">
+          <span class="slide-num">06</span>
+          <div class="cta-text">distill.<br />launches tomorrow.</div>
+          <div class="divider"></div>
+          <div class="body">a thinking tool, not a thinking replacement.</div>
+          <br />
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 4 — LAUNCH ============ -->
+    <div class="day" id="day-4">
+      <div class="day-label">day 4 — march 24 <span>LAUNCH DAY</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-peach">
+          <span class="slide-num">01</span>
+          <div class="hook" style="font-size: 120px">distill<br />is live.</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">02</span>
+          <div class="body">
+            a thinking development tool<br />for people who read, watch, and
+            listen to things —<br /><br /><strong
+              >and want to actually remember<br />what they thought about
+              them.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">03</span>
+          <div class="body" style="font-size: 38px">
+            <strong>how it works:</strong>
+          </div>
+          <br />
+          <ol class="steps">
+            <li>start a session — pick what you're consuming</li>
+            <li>read, watch, or listen (externally)</li>
+            <li>write a short reflection — what did you think?</li>
+            <li>your reflections resurface so your thinking compounds</li>
+          </ol>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">04</span>
+          <div class="body">
+            <span class="highlight">this is not a note-taking app.</span
+            ><br />no tags. no folders. no org system to maintain.<br /><br />it's
+            not an AI tool either.<br /><strong>you write. not a model.</strong>
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">05</span>
+          <div class="body">
+            free to use. 3 deep sessions per month.<br />unlimited with pro
+            ($8/mo).<br /><br /><strong
+              >your thoughts compound over time.<br />but only if you capture
+              them.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-dark">
+          <span class="slide-num">06</span>
+          <div class="cta-text">stop absorbing.<br />start thinking.</div>
+          <div class="divider"></div>
+          <div class="body">try distill free.</div>
+          <br />
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 5 ============ -->
+    <div class="day" id="day-5" style="display: none">
+      <div class="day-label">day 5 — march 18 <span>post-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-warm">
+          <span class="slide-num">01</span>
+          <div class="hook">
+            4 steps to <span class="accent">actually</span> remember<br />what
+            you think.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">02</span>
+          <div class="body">
+            <strong>step 1: start a session.</strong><br /><br />pick a book,
+            article, podcast, or video.<br />this opens a "cognitive loop" —<br />your
+            brain knows it needs to pay attention.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">03</span>
+          <div class="body">
+            <strong>step 2: consume the content.</strong><br /><br />distill
+            doesn't host anything.<br />go read. go watch. go listen.<br />but
+            this time, you're reading with intent.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">04</span>
+          <div class="body">
+            <strong>step 3: write a reflection.</strong><br /><br />not a
+            summary. not notes. not highlights.<br /><span class="highlight"
+              >what did YOU think?</span
+            ><br />what changed? what do you disagree with?
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">05</span>
+          <div class="body">
+            <strong>step 4: your thoughts resurface.</strong><br /><br />past
+            reflections come back at timed intervals.<br />you re-engage with
+            your former self.<br /><strong>your thinking compounds.</strong>
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-peach">
+          <span class="slide-num">06</span>
+          <div class="cta-text">
+            your personal library<br />of original thought.
+          </div>
+          <div class="divider"></div>
+          <div class="body">searchable. private. growing.</div>
+          <br />
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 6 ============ -->
+    <div class="day" id="day-6" style="display: none">
+      <div class="day-label">day 6 — march 19 <span>post-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-dark">
+          <span class="slide-num">01</span>
+          <div class="hook">
+            unpopular opinion:<br />reading more books<br /><span class="accent"
+              >isn't the goal.</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">02</span>
+          <div class="body">
+            "i read 52 books this year."<br /><br />cool. what did you think
+            about them?<br /><br /><span class="highlight"
+              >"...i don't remember."</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">03</span>
+          <div class="body">
+            reading without reflection<br />is just high-speed scanning<br />dressed
+            up as learning.<br /><br />you absorb words.<br /><strong
+              >you don't absorb meaning.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">04</span>
+          <div class="body">
+            <span class="highlight">thinking about fewer books</span><br />is
+            more valuable than<br />reading more of them.<br /><br /><strong
+              >depth beats volume. every time.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">05</span>
+          <div class="body">
+            one book you actually thought about<br />shapes how you see the
+            world.<br /><br />twenty books you skimmed<br />give you trivia for
+            dinner parties.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-peach">
+          <span class="slide-num">06</span>
+          <div class="cta-text">go deeper,<br />not wider.</div>
+          <div class="divider"></div>
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 7 ============ -->
+    <div class="day" id="day-7" style="display: none">
+      <div class="day-label">day 7 — march 20 <span>post-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-warm">
+          <span class="slide-num">01</span>
+          <div class="hook">
+            you don't have<br />an information problem.<br /><br />you have<br />a
+            <span class="accent">processing</span> problem.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">02</span>
+          <div class="body">
+            <strong>the bottleneck isn't input.</strong><br /><br />you have
+            access to every book ever written.<br />every lecture. every
+            podcast. every article.<br /><br />input is solved.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">03</span>
+          <div class="body">
+            the bottleneck is <span class="highlight">what happens after.</span
+            ><br /><br />you finish a book and start the next one.<br />you
+            close an article and open another tab.<br />no pause. no processing.
+            no thinking.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">04</span>
+          <div class="body">
+            information without processing<br />is <strong>noise.</strong
+            ><br /><br />information with processing<br />is
+            <strong>perspective.</strong>
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">05</span>
+          <div class="body">
+            the fix is simple.<br />after you consume something —
+            <span class="highlight">stop.</span><br />write what you think.<br />even
+            if it's two sentences.<br /><br /><strong
+              >that's the entire gap.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-peach">
+          <span class="slide-num">06</span>
+          <div class="cta-text">
+            distill gives you<br />the space to process.
+          </div>
+          <div class="divider"></div>
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 8 ============ -->
+    <div class="day" id="day-8" style="display: none">
+      <div class="day-label">day 8 — march 21 <span>post-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-warm">
+          <span class="slide-num">01</span>
+          <div class="hook">
+            distill is not<br />a <span class="accent">note-taking</span> app.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">02</span>
+          <div class="body">
+            <strong>it's not notion.</strong><br />no databases. no
+            templates.<br />no org system to maintain.<br /><br /><strong
+              >it's not readwise.</strong
+            ><br />readwise resurfaces the author's words.<br /><span
+              class="highlight"
+              >distill resurfaces yours.</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">03</span>
+          <div class="body">
+            <strong>it's not a journal.</strong><br />no open-ended blank
+            page.<br />every reflection is tied to something you consumed.<br /><br /><strong
+              >it's not an AI tool.</strong
+            ><br />no summaries. no auto-generated anything.<br /><span
+              class="highlight"
+              >you write.</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">04</span>
+          <div class="body">
+            <strong>distill is a thinking development tool.</strong
+            ><br /><br />you consume content.<br />you write what you think
+            about it.<br />your reflections come back to you over time.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">05</span>
+          <div class="body">
+            the simplest possible loop:<br /><br /><span class="highlight"
+              >consume → reflect → resurface → grow.</span
+            ><br /><br />no setup. no configuration.<br />no system to maintain.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-dark">
+          <span class="slide-num">06</span>
+          <div class="cta-text">a tool for thinkers,<br />not organizers.</div>
+          <div class="divider"></div>
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 9 ============ -->
+    <div class="day" id="day-9" style="display: none">
+      <div class="day-label">day 9 — march 22 <span>post-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-warm">
+          <span class="slide-num">01</span>
+          <div class="hook">
+            your thoughts <span class="accent">compound.</span><br /><br />but
+            only if you<br />write them down.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">02</span>
+          <div class="body">
+            <strong>day 1:</strong> you reflect on a book about
+            decision-making.<br /><br /><strong>day 30:</strong> a past
+            reflection resurfaces. you notice your thinking has changed.<br /><br /><strong
+              >day 90:</strong
+            >
+            patterns emerge across reflections. you start seeing connections you
+            didn't plan.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">03</span>
+          <div class="body">
+            <span class="highlight">this is compound thinking.</span
+            ><br /><br />each reflection builds on the last.<br />not because
+            you planned it —<br />because your perspective naturally evolves.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">04</span>
+          <div class="body">
+            the person who wrote 100 reflections<br />thinks differently from
+            the person who read 100 books.<br /><br />reading is input.<br />reflecting
+            is processing.<br /><strong
+              >processing is where growth happens.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">05</span>
+          <div class="body">
+            your personal library of perspective.<br />searchable. private.
+            always growing.<br /><br /><strong
+              >six months from now,<br />you'll have an archive of how you
+              think.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-peach">
+          <span class="slide-num">06</span>
+          <div class="cta-text">start building<br />your thinking archive.</div>
+          <div class="divider"></div>
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 10 ============ -->
+    <div class="day" id="day-10" style="display: none">
+      <div class="day-label">day 10 — march 23 <span>post-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-dark">
+          <span class="slide-num">01</span>
+          <div class="hook" style="font-size: 96px">
+            you are not<br />an <span class="accent">algorithm.</span>
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">02</span>
+          <div class="body">
+            algorithms decide what you see.<br />recommendation engines decide
+            what's next.<br />autoplay decides when you stop.<br /><br /><span
+              class="highlight"
+              >at what point do you decide anything?</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">03</span>
+          <div class="body">
+            consuming without choosing is passive.<br />choosing without
+            thinking is reactive.<br /><br /><strong
+              >thinking is the only active part.<br />and it's the part we
+              skip.</strong
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">04</span>
+          <div class="body">
+            you don't need to consume less.<br />you need to
+            <span class="highlight">think more</span> about what you consume.<br /><br />one
+            intentional reflection<br />is worth more than ten passive
+            bookmarks.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">05</span>
+          <div class="body">
+            distill exists for this moment.<br />the moment after you finish
+            something<br />where you ask:
+            <strong>what do I actually think?</strong><br /><br />that's the
+            whole product.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-peach">
+          <span class="slide-num">06</span>
+          <div class="cta-text">stop absorbing.<br />start thinking.</div>
+          <div class="divider"></div>
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DAY 11 ============ -->
+    <div class="day" id="day-11" style="display: none">
+      <div class="day-label">day 11 — march 24 <span>post-launch</span></div>
+      <div class="carousel-row">
+        <div class="slide bg-warm">
+          <span class="slide-num">01</span>
+          <div class="hook">
+            one reflection a week<br />changes how you think<br />in a
+            <span class="accent">year.</span>
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">02</span>
+          <div class="body">
+            week 1: 1 reflection.<br />month 1: 4 reflections.<br />month 6: 26
+            reflections.<br />year 1: <strong>52 reflections.</strong
+            ><br /><br />52 pieces of original thought.<br /><span
+              class="highlight"
+              >a searchable archive of your perspective.</span
+            >
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-lavender">
+          <span class="slide-num">03</span>
+          <div class="body">
+            that's 52 times you stopped<br />and asked yourself:<br /><strong
+              >what do I think about this?</strong
+            ><br /><br />most people go years without asking that once.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-warm">
+          <span class="slide-num">04</span>
+          <div class="body">
+            you don't need a daily habit.<br />you don't need a complex
+            system.<br />you don't need discipline.<br /><br />you need
+            <span class="highlight">one reflection.</span><br />after one thing
+            you consumed.<br />once a week.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-sage">
+          <span class="slide-num">05</span>
+          <div class="body">
+            the bar is low on purpose.<br /><br />because the hard part isn't
+            writing.<br /><strong
+              >the hard part is stopping long enough to think.</strong
+            ><br />distill creates that stop.
+          </div>
+          <span class="slide-logo">distill.</span>
+        </div>
+
+        <div class="slide bg-peach">
+          <span class="slide-num">06</span>
+          <div class="cta-text">start with one reflection<br />this week.</div>
+          <div class="divider"></div>
+          <div class="body">free to start. 3 deep sessions per month.</div>
+          <br />
+          <div class="cta-url">distillwise.com</div>
+          <span class="slide-logo">distill.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <strong>how to screenshot slides:</strong><br />
+      1. open this file in chrome/edge<br />
+      2. right-click a slide → inspect → select the .slide element<br />
+      3. right-click the node → "capture node screenshot" — saves at exact
+      1080×1350<br />
+      4. or use devtools device mode set to 1080×1350 and screenshot each
+      slide<br /><br />
+      <strong>tip:</strong> each slide is exactly 1080×1350px (instagram 4:5
+      ratio). for linkedin, crop to 1080×1080 if needed.
+    </div>
+
+    <script>
+      function showDay(n) {
+        document
+          .querySelectorAll(".day")
+          .forEach((d) => (d.style.display = "none"));
+        document.getElementById("day-" + n).style.display = "block";
+      }
+    </script>
+  </body>
 </html>

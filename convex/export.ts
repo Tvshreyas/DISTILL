@@ -32,7 +32,7 @@ export const getAllData = query({
       const reflectionLayers = await ctx.db
         .query("reflectionLayers")
         .withIndex("by_reflectionId", (q) =>
-          q.eq("reflectionId", reflection._id)
+          q.eq("reflectionId", reflection._id),
         )
         .collect();
       layers.push(...reflectionLayers);

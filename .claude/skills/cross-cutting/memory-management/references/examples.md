@@ -14,6 +14,7 @@ Detailed examples showing memory management in action.
 I'll update rankings for your hero keywords. Let me check the hot cache for the list.
 
 [Reads CLAUDE.md, finds Hero Keywords section:]
+
 - keyword research tools (currently #15, target #5)
 - best seo software (currently #23, target #10)
 - free backlink checker (currently #8, target #3)
@@ -27,25 +28,28 @@ I'll update rankings for your hero keywords. Let me check the hot cache for the 
 
 ## Ranking Update - December 15, 2024
 
-| Keyword | Previous | Current | Change | Target | Status |
-|---------|----------|---------|--------|--------|--------|
-| keyword research tools | #15 | #12 | up 3 | #5 | Improving |
-| best seo software | #23 | #24 | down 1 | #10 | Stable |
-| free backlink checker | #8 | #6 | up 2 | #3 | Near target |
-| content optimization guide | #12 | #11 | up 1 | #5 | Improving |
-| technical seo audit | #18 | #16 | up 2 | #8 | Improving |
+| Keyword                    | Previous | Current | Change | Target | Status      |
+| -------------------------- | -------- | ------- | ------ | ------ | ----------- |
+| keyword research tools     | #15      | #12     | up 3   | #5     | Improving   |
+| best seo software          | #23      | #24     | down 1 | #10    | Stable      |
+| free backlink checker      | #8       | #6      | up 2   | #3     | Near target |
+| content optimization guide | #12      | #11     | up 1   | #5     | Improving   |
+| technical seo audit        | #18      | #16     | up 2   | #8     | Improving   |
 
 ### Notable Changes
+
 - **free backlink checker** moved to #6 (only 3 positions from target!)
 - **keyword research tools** gained 3 positions (strong movement)
 - All other keywords showing stable or positive movement
 
 ### Updated Files
+
 1. CLAUDE.md -> Hero Keywords table updated with current ranks
 2. memory/keywords/historical-rankings.csv -> New row added:
    `2024-12-15,keyword research tools,12,best seo software,24,free backlink checker,6,...`
 
 ### Recommendations
+
 1. Push additional content/backlinks to "free backlink checker" pages to hit #3 target
 2. Investigate why "keyword research tools" suddenly gained 3 positions (replicate success)
 3. Monitor "best seo software" for any negative trends
@@ -70,6 +74,7 @@ Let me look that up in the project memory.
 From your project glossary:
 
 **Quick Wins**
+
 - **Definition**: Low-difficulty, high-value target keywords
 - **Keyword Count**: 25 keywords
 - **Context**: This segment includes keywords where you can achieve page 1 rankings within 30-60 days due to low competition, despite having decent search volume
@@ -124,6 +129,7 @@ Please provide what you have, and I'll create your initial CLAUDE.md and glossar
 ---
 
 Once you provide this information, I'll generate:
+
 - CLAUDE.md with your initial hot cache
 - memory/glossary.md with project terminology
 - memory/keywords/ structure with placeholder files
@@ -131,6 +137,7 @@ Once you provide this information, I'll generate:
 - memory/content-calendar/active-calendar.md for Q1 2025
 
 After setup, you can use commands like:
+
 - "Update rankings for hero keywords"
 - "Add new competitor [domain]"
 - "Promote [keyword] to hot cache"

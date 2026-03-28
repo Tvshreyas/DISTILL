@@ -44,7 +44,6 @@ metadata:
 
 # Keyword Research
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -120,6 +119,7 @@ Automatically pull historical search volume data, keyword difficulty scores, SER
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Seed keywords or topic description
 2. Target audience and geographic location
 3. Business goals (traffic, leads, sales)
@@ -154,11 +154,12 @@ When a user requests keyword research:
 3. **Expand Keyword List**
 
    For each seed keyword, generate variations:
-   
+
    ```markdown
    ## Keyword Expansion Patterns
-   
+
    ### Modifiers
+
    - Best [keyword]
    - Top [keyword]
    - [keyword] for [audience]
@@ -169,8 +170,9 @@ When a user requests keyword research:
    - [keyword] vs [alternative]
    - [keyword] examples
    - [keyword] tools
-   
+
    ### Long-tail Variations
+
    - [keyword] for beginners
    - [keyword] for small business
    - Free [keyword]
@@ -184,12 +186,12 @@ When a user requests keyword research:
 
    Categorize each keyword:
 
-   | Intent | Signals | Example | Content Type |
-   |--------|---------|---------|--------------|
-   | Informational | what, how, why, guide, learn | "what is SEO" | Blog posts, guides |
-   | Navigational | brand names, specific sites | "google analytics login" | Homepage, product pages |
-   | Commercial | best, review, vs, compare | "best SEO tools [current year]" | Comparison posts, reviews |
-   | Transactional | buy, price, discount, order | "buy SEO software" | Product pages, pricing |
+   | Intent        | Signals                      | Example                         | Content Type              |
+   | ------------- | ---------------------------- | ------------------------------- | ------------------------- |
+   | Informational | what, how, why, guide, learn | "what is SEO"                   | Blog posts, guides        |
+   | Navigational  | brand names, specific sites  | "google analytics login"        | Homepage, product pages   |
+   | Commercial    | best, review, vs, compare    | "best SEO tools [current year]" | Comparison posts, reviews |
+   | Transactional | buy, price, discount, order  | "buy SEO software"              | Product pages, pricing    |
 
 5. **Assess Keyword Difficulty**
 
@@ -197,19 +199,22 @@ When a user requests keyword research:
 
    ```markdown
    ### Difficulty Factors
-   
+
    **High Difficulty (70-100)**
+
    - Major brands ranking
    - High domain authority competitors
    - Established content (1000+ backlinks)
    - Paid ads dominating SERP
-   
+
    **Medium Difficulty (40-69)**
+
    - Mix of authority and niche sites
    - Some opportunities for quality content
    - Moderate backlink requirements
-   
+
    **Low Difficulty (1-39)**
+
    - Few authoritative competitors
    - Thin or outdated content ranking
    - Long-tail variations
@@ -228,30 +233,32 @@ When a user requests keyword research:
 
    ```markdown
    ### Opportunity Matrix
-   
-   | Scenario | Volume | Difficulty | Intent | Priority |
-   |----------|--------|------------|--------|----------|
-   | Quick Win | Low-Med | Low | High | ⭐⭐⭐⭐⭐ |
-   | Growth | High | Medium | High | ⭐⭐⭐⭐ |
-   | Long-term | High | High | High | ⭐⭐⭐ |
-   | Research | Low | Low | Low | ⭐⭐ |
+
+   | Scenario  | Volume  | Difficulty | Intent | Priority   |
+   | --------- | ------- | ---------- | ------ | ---------- |
+   | Quick Win | Low-Med | Low        | High   | ⭐⭐⭐⭐⭐ |
+   | Growth    | High    | Medium     | High   | ⭐⭐⭐⭐   |
+   | Long-term | High    | High       | High   | ⭐⭐⭐     |
+   | Research  | Low     | Low        | Low    | ⭐⭐       |
    ```
 
 7. **Identify GEO Opportunities**
 
    Keywords likely to trigger AI responses:
-   
+
    ```markdown
    ### GEO-Relevant Keywords
-   
+
    **High GEO Potential**
+
    - Question formats: "What is...", "How does...", "Why is..."
    - Definition queries: "[term] meaning", "[term] definition"
    - Comparison queries: "[A] vs [B]", "difference between..."
    - List queries: "best [category]", "top [number] [items]"
    - How-to queries: "how to [action]", "steps to [goal]"
-   
+
    **AI Answer Indicators**
+
    - Query is factual/definitional
    - Answer can be summarized concisely
    - Topic is well-documented online
@@ -264,26 +271,29 @@ When a user requests keyword research:
 
    ```markdown
    ## Topic Cluster: [Main Topic]
-   
+
    **Pillar Content**: [Primary keyword]
+
    - Search volume: [X]
    - Difficulty: [X]
    - Content type: Comprehensive guide
-   
+
    **Cluster Content**:
-   
+
    ### Sub-topic 1: [Secondary keyword]
+
    - Volume: [X]
    - Difficulty: [X]
    - Links to: Pillar
    - Content type: [Blog post/Tutorial/etc.]
-   
+
    ### Sub-topic 2: [Secondary keyword]
+
    - Volume: [X]
    - Difficulty: [X]
    - Links to: Pillar + Sub-topic 1
    - Content type: [Blog post/Tutorial/etc.]
-   
+
    [Continue for all cluster keywords...]
    ```
 
@@ -296,12 +306,14 @@ When a user requests keyword research:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Seed keywords or topic description clearly provided
 - [ ] Target audience and business goals specified
 - [ ] Geographic and language targeting confirmed
 - [ ] Domain authority or site maturity level established
 
 ### Output Validation
+
 - [ ] Every recommendation cites specific data points (not generic advice)
 - [ ] Search volume and difficulty scores included for each keyword
 - [ ] Keywords grouped by intent and mapped to content types
@@ -329,7 +341,6 @@ When a user requests keyword research:
 6. **Include GEO keywords** in your strategy for AI visibility
 7. **Review quarterly** - keyword dynamics change over time
 
-
 ## Reference Materials
 
 - [Keyword Intent Taxonomy](./references/keyword-intent-taxonomy.md) — Complete intent classification with signal words and content strategies
@@ -344,4 +355,3 @@ When a user requests keyword research:
 - [seo-content-writer](../../build/seo-content-writer/) — Create content for target keywords
 - [geo-content-optimizer](../../build/geo-content-optimizer/) — Optimize for AI citations
 - [rank-tracker](../../monitor/rank-tracker/) — Monitor keyword position changes over time
-

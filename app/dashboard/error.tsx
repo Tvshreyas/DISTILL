@@ -25,10 +25,10 @@ export default function DashboardError({
           />
         </svg>
       </div>
-      <h2 className="text-lg font-semibold text-white mb-2">
+      <h2 className="text-lg font-semibold text-soft-black mb-2">
         Something went wrong
       </h2>
-      <p className="text-sm text-gray-400 max-w-xs mb-6">
+      <p className="text-sm text-muted-text max-w-xs mb-6">
         An unexpected error occurred. Try again or head back to the dashboard.
       </p>
       <div className="flex gap-3">
@@ -40,7 +40,7 @@ export default function DashboardError({
         </button>
         <Link
           href="/dashboard"
-          className="border border-white/10 text-gray-300 px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-white/5 transition-all duration-200"
+          className="border border-soft-black/10 text-soft-black/70 px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-soft-black/5 transition-all duration-200"
         >
           Return to safety
         </Link>

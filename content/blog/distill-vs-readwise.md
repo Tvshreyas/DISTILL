@@ -52,19 +52,19 @@ Both are useful. They serve different purposes.
 
 ## comparison
 
-| | Readwise | Distill |
-|---|---|---|
-| **Core purpose** | Remember what authors said | Develop your own perspective |
-| **Input** | Highlights from books, articles, podcasts | Your written reflections after consuming content |
-| **What resurfaces** | Author's words (highlights, passages) | Your words (reflections, opinions) |
-| **Spaced repetition** | Yes — for highlights | Yes — for reflections |
-| **Sync from Kindle/web** | Yes | No |
-| **AI features** | AI-generated summaries, flashcards | None (by design) |
-| **Setup** | Connect reading sources | None — just start writing |
-| **Reading app included** | Yes (Reader) | No — consume content externally |
-| **Free tier** | No | Yes (3 reflections per month) |
-| **Paid** | $8.99/month | $8/month |
-| **Best for** | Highlight collectors | Thinkers and reflectors |
+|                          | Readwise                                  | Distill                                          |
+| ------------------------ | ----------------------------------------- | ------------------------------------------------ |
+| **Core purpose**         | Remember what authors said                | Develop your own perspective                     |
+| **Input**                | Highlights from books, articles, podcasts | Your written reflections after consuming content |
+| **What resurfaces**      | Author's words (highlights, passages)     | Your words (reflections, opinions)               |
+| **Spaced repetition**    | Yes — for highlights                      | Yes — for reflections                            |
+| **Sync from Kindle/web** | Yes                                       | No                                               |
+| **AI features**          | AI-generated summaries, flashcards        | None (by design)                                 |
+| **Setup**                | Connect reading sources                   | None — just start writing                        |
+| **Reading app included** | Yes (Reader)                              | No — consume content externally                  |
+| **Free tier**            | No                                        | Yes (3 reflections per month)                    |
+| **Paid**                 | $8.99/month                               | $8/month                                         |
+| **Best for**             | Highlight collectors                      | Thinkers and reflectors                          |
 
 ## when to use readwise
 
@@ -100,4 +100,4 @@ If you use Readwise already and feel like something is missing — like you have
 
 ---
 
-*Distill is free for 3 deep sessions per month. [distillwise.com](https://distillwise.com)*
+_Distill is free for 3 deep sessions per month. [distillwise.com](https://distillwise.com)_

@@ -38,7 +38,9 @@ describe("getRandomPrompt", () => {
 
   it("returns different prompts across many calls (not always the same)", () => {
     // With 13+ prompts, 50 calls should produce at least 2 unique values
-    const results = new Set(Array.from({ length: 50 }, () => getRandomPrompt()));
+    const results = new Set(
+      Array.from({ length: 50 }, () => getRandomPrompt()),
+    );
     expect(results.size).toBeGreaterThan(1);
   });
 

@@ -18,7 +18,7 @@ Notion is a workspace tool. It excels at team wikis, project management, and str
 
 The reading tracker looks impressive. It is satisfying to maintain. And it is almost entirely useless for retaining what you actually thought about the book.
 
-Here is why: Notion's strength is organization. It makes you think about *where* to put information and *how* to categorize it. For book notes, this means you spend more time tagging and templating than thinking. The notes field at the bottom of the database entry — the only part that could contain your actual perspective — is an afterthought.
+Here is why: Notion's strength is organization. It makes you think about _where_ to put information and _how_ to categorize it. For book notes, this means you spend more time tagging and templating than thinking. The notes field at the bottom of the database entry — the only part that could contain your actual perspective — is an afterthought.
 
 The result after six months: a beautiful database of books you read, with sparse notes you never revisit.
 
@@ -36,7 +36,7 @@ The result after six months: a graph with hundreds of nodes, most of which you c
 
 ## the actual problem both tools miss
 
-The issue is not Notion vs Obsidian. The issue is that both tools are designed for *managing information* — organizing, categorizing, linking, and retrieving other people's ideas.
+The issue is not Notion vs Obsidian. The issue is that both tools are designed for _managing information_ — organizing, categorizing, linking, and retrieving other people's ideas.
 
 But when you finish a book, the most valuable thing is not the author's quotes or a structured summary. It is your response. What struck you. What you disagreed with. What connected to something you already knew. What changed how you think about a topic.
 

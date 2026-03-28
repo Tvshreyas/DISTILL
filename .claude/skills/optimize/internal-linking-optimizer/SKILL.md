@@ -46,7 +46,6 @@ metadata:
 
 # Internal Linking Optimizer
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -127,6 +126,7 @@ Claude can automatically perform a full site crawl via ~~web crawler to map the 
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Sitemap URL or list of important pages
 2. Key page URLs that need more internal links
 3. Content categories or topic clusters
@@ -142,39 +142,39 @@ When a user requests internal linking optimization:
 
    ```markdown
    ## Internal Link Structure Analysis
-   
+
    ### Overview
-   
+
    **Domain**: [domain]
    **Total Pages Analyzed**: [X]
    **Total Internal Links**: [X]
    **Average Links per Page**: [X]
-   
+
    ### Link Distribution
-   
+
    | Links per Page | Page Count | Percentage |
-   |----------------|------------|------------|
-   | 0 (Orphan) | [X] | [X]% |
-   | 1-5 | [X] | [X]% |
-   | 6-10 | [X] | [X]% |
-   | 11-20 | [X] | [X]% |
-   | 20+ | [X] | [X]% |
-   
+   | -------------- | ---------- | ---------- |
+   | 0 (Orphan)     | [X]        | [X]%       |
+   | 1-5            | [X]        | [X]%       |
+   | 6-10           | [X]        | [X]%       |
+   | 11-20          | [X]        | [X]%       |
+   | 20+            | [X]        | [X]%       |
+
    ### Top Linked Pages
-   
-   | Page | Internal Links | Authority | Notes |
-   |------|----------------|-----------|-------|
-   | [URL 1] | [X] | High | [notes] |
-   | [URL 2] | [X] | High | [notes] |
-   | [URL 3] | [X] | Medium | [notes] |
-   
+
+   | Page    | Internal Links | Authority | Notes   |
+   | ------- | -------------- | --------- | ------- |
+   | [URL 1] | [X]            | High      | [notes] |
+   | [URL 2] | [X]            | High      | [notes] |
+   | [URL 3] | [X]            | Medium    | [notes] |
+
    ### Under-Linked Important Pages
-   
-   | Page | Current Links | Traffic | Recommended Links |
-   |------|---------------|---------|-------------------|
-   | [URL 1] | [X] | [X]/mo | [X]+ |
-   | [URL 2] | [X] | [X]/mo | [X]+ |
-   
+
+   | Page    | Current Links | Traffic | Recommended Links |
+   | ------- | ------------- | ------- | ----------------- |
+   | [URL 1] | [X]           | [X]/mo  | [X]+              |
+   | [URL 2] | [X]           | [X]/mo  | [X]+              |
+
    **Structure Score**: [X]/10
    ```
 
@@ -182,30 +182,34 @@ When a user requests internal linking optimization:
 
    ```markdown
    ## Orphan Page Analysis
-   
+
    ### Definition
-   Orphan pages have no internal links pointing to them, making them 
+
+   Orphan pages have no internal links pointing to them, making them
    hard for users and search engines to discover.
-   
+
    ### Orphan Pages Found: [X]
-   
-   | Page | Traffic | Priority | Recommended Action |
-   |------|---------|----------|-------------------|
-   | [URL 1] | [X]/mo | High | Link from [pages] |
-   | [URL 2] | [X]/mo | Medium | Add to navigation |
-   | [URL 3] | 0 | Low | Consider deleting/redirecting |
-   
+
+   | Page    | Traffic | Priority | Recommended Action            |
+   | ------- | ------- | -------- | ----------------------------- |
+   | [URL 1] | [X]/mo  | High     | Link from [pages]             |
+   | [URL 2] | [X]/mo  | Medium   | Add to navigation             |
+   | [URL 3] | 0       | Low      | Consider deleting/redirecting |
+
    ### Fix Strategy
-   
+
    **High Priority Orphans** (have traffic/rankings):
+
    1. [URL] - Add links from: [relevant pages]
    2. [URL] - Add links from: [relevant pages]
-   
+
    **Medium Priority Orphans** (potentially valuable):
+
    1. [URL] - Add to category/tag page
    2. [URL] - Link from related content
-   
+
    **Low Priority Orphans** (consider removing):
+
    1. [URL] - Redirect to [better page]
    2. [URL] - Delete or noindex
    ```
@@ -216,43 +220,45 @@ When a user requests internal linking optimization:
 
    ```markdown
    ## Anchor Text Analysis
-   
+
    ### Current Anchor Text Patterns
-   
+
    **Most Used Anchors**:
-   
-   | Anchor Text | Count | Target Pages | Assessment |
-   |-------------|-------|--------------|------------|
-   | "click here" | [X] | [X] pages | ❌ Not descriptive |
-   | "read more" | [X] | [X] pages | ❌ Not descriptive |
-   | "[exact keyword]" | [X] | [page] | ⚠️ May be over-optimized |
-   | "[descriptive phrase]" | [X] | [page] | ✅ Good |
-   
+
+   | Anchor Text            | Count | Target Pages | Assessment               |
+   | ---------------------- | ----- | ------------ | ------------------------ |
+   | "click here"           | [X]   | [X] pages    | ❌ Not descriptive       |
+   | "read more"            | [X]   | [X] pages    | ❌ Not descriptive       |
+   | "[exact keyword]"      | [X]   | [page]       | ⚠️ May be over-optimized |
+   | "[descriptive phrase]" | [X]   | [page]       | ✅ Good                  |
+
    ### Anchor Text Distribution by Page
-   
+
    **Page: [Important URL]**
-   
-   | Anchor Text | Source Page | Status |
-   |-------------|-------------|--------|
+
+   | Anchor Text  | Source Page  | Status   |
+   | ------------ | ------------ | -------- |
    | "[anchor 1]" | [source URL] | ✅/⚠️/❌ |
    | "[anchor 2]" | [source URL] | ✅/⚠️/❌ |
-   
+
    **Issues Found**:
+
    - Over-optimized anchors: [X] instances
    - Generic anchors: [X] instances
    - Same anchor to multiple pages: [X] instances
-   
+
    ### Anchor Text Recommendations
-   
+
    **For Page: [URL]**
-   
+
    Current: "[current anchor]" used [X] times
-   
+
    Recommended variety:
+
    - "[variation 1]" - Use from [page type]
    - "[variation 2]" - Use from [page type]
    - "[variation 3]" - Use from [page type]
-   
+
    **Anchor Score**: [X]/10
    ```
 
@@ -275,11 +281,13 @@ When a user requests internal linking optimization:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Site structure or sitemap provided (URL or file)
 - [ ] Target pages or topic clusters clearly defined
 - [ ] If optimizing specific page, page URL or content provided
 
 ### Output Validation
+
 - [ ] Every recommendation cites specific data points (not generic advice)
 - [ ] All link suggestions include source page, target page, and recommended anchor text
 - [ ] Orphan page lists include URLs and recommended actions

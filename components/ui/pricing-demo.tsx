@@ -1,7 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { CreativePricing, type PricingTier } from "@/components/ui/creative-pricing";
+import {
+  CreativePricing,
+  type PricingTier,
+} from "@/components/ui/creative-pricing";
 import { PRICING, PPP_COUNTRIES } from "@/lib/constants";
 import { Pencil, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -47,7 +50,11 @@ export function CreativePricingDemo() {
       const data = await res.json();
       if (data.url) {
         const parsed = new URL(data.url);
-        if (!["checkout.stripe.com", "billing.stripe.com"].includes(parsed.hostname)) {
+        if (
+          !["checkout.stripe.com", "billing.stripe.com"].includes(
+            parsed.hostname,
+          )
+        ) {
           return;
         }
         window.location.href = data.url;
@@ -107,7 +114,7 @@ export function CreativePricingDemo() {
               "px-5 py-2 rounded-full font-grotesk font-bold text-sm lowercase transition-all",
               billingPeriod === "monthly"
                 ? "bg-peach text-soft-black brutal-border"
-                : "text-muted-text hover:text-soft-black"
+                : "text-muted-text hover:text-soft-black",
             )}
           >
             monthly
@@ -118,7 +125,7 @@ export function CreativePricingDemo() {
               "px-5 py-2 rounded-full font-grotesk font-bold text-sm lowercase transition-all relative",
               billingPeriod === "yearly"
                 ? "bg-peach text-soft-black brutal-border"
-                : "text-muted-text hover:text-soft-black"
+                : "text-muted-text hover:text-soft-black",
             )}
           >
             yearly
