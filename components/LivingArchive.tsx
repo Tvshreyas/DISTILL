@@ -68,7 +68,10 @@ interface ReflectionData {
 }
 
 function ConfettiParticles() {
-  if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
     return null;
   }
 
@@ -88,13 +91,15 @@ function ConfettiParticles() {
         <div
           key={p.id}
           className={`confetti-particle ${p.color}`}
-          style={{
-            left: p.left,
-            top: p.top,
-            "--confetti-x": p.xOffset,
-            "--confetti-r": p.rotation,
-            animationDelay: p.delay,
-          } as React.CSSProperties}
+          style={
+            {
+              left: p.left,
+              top: p.top,
+              "--confetti-x": p.xOffset,
+              "--confetti-r": p.rotation,
+              animationDelay: p.delay,
+            } as React.CSSProperties
+          }
         />
       ))}
     </div>
@@ -132,7 +137,8 @@ export default function LivingArchive({
   initialData: ReflectionData;
 }) {
   const liveData = useQuery(api.reflections.getById, { reflectionId });
-  const reflection = (liveData as ReflectionData | null | undefined) ?? initialData;
+  const reflection =
+    (liveData as ReflectionData | null | undefined) ?? initialData;
 
   const addLayerMutation = useMutation(api.reflections.addLayer);
 
@@ -148,7 +154,7 @@ export default function LivingArchive({
     new Date(reflection.updatedAt).getTime() - reflection._creationTime > 5000;
 
   const sortedLayers = [...(reflection.layers || [])].sort(
-    (a, b) => a._creationTime - b._creationTime
+    (a, b) => a._creationTime - b._creationTime,
   );
 
   const handleAddPerspective = useCallback(() => {
@@ -193,7 +199,7 @@ export default function LivingArchive({
         }
       }
     },
-    [addLayerMutation, reflectionId]
+    [addLayerMutation, reflectionId],
   );
 
   if (!reflection) return <LoadingSkeleton />;
@@ -317,8 +323,10 @@ export default function LivingArchive({
 
               {/* Dynamic timestamp */}
               <p className="font-grotesk text-[10px] font-black uppercase tracking-[0.2em] text-soft-black/40 mb-2">
-                {dynamicTimestamp(reflection._creationTime, layer._creationTime)}
-                {" "}
+                {dynamicTimestamp(
+                  reflection._creationTime,
+                  layer._creationTime,
+                )}{" "}
                 <span className="normal-case tracking-normal">
                   {formatDate(layer._creationTime)}
                 </span>

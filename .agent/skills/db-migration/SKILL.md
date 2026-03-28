@@ -10,12 +10,15 @@ When adding or modifying database tables/columns.
 ## Steps
 
 1. **Create migration file:**
+
    ```
    supabase/migrations/<NNN>_<description>.sql
    ```
+
    Use the next sequential number after existing migrations.
 
 2. **Always enable RLS on new tables:**
+
    ```sql
    ALTER TABLE public.new_table ENABLE ROW LEVEL SECURITY;
 
@@ -26,14 +29,16 @@ When adding or modifying database tables/columns.
    ```
 
 3. **Verify RLS after migration:**
+
    ```sql
-   SELECT tablename, rowsecurity 
-   FROM pg_tables 
+   SELECT tablename, rowsecurity
+   FROM pg_tables
    WHERE schemaname = 'public';
    -- ALL rows must show rowsecurity = true
    ```
 
 4. **Test locally:**
+
    ```bash
    npx supabase db reset    # Apply all migrations fresh
    npm test                 # Ensure nothing broke
@@ -45,6 +50,7 @@ When adding or modifying database tables/columns.
    ```
 
 ## Rules
+
 - Every table MUST have `user_id` column with FK to `auth.users`
 - Every table MUST have RLS enabled with `auth.uid() = user_id` policy
 - Use soft deletes (`is_deleted` boolean) not hard deletes

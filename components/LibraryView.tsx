@@ -5,7 +5,17 @@ import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Link from "next/link";
 import { toast } from "sonner";
-import { Search, Book, Video, FileText, Mic, MoreHorizontal, ChevronRight, Trash2, Layers } from "lucide-react";
+import {
+  Search,
+  Book,
+  Video,
+  FileText,
+  Mic,
+  MoreHorizontal,
+  ChevronRight,
+  Trash2,
+  Layers,
+} from "lucide-react";
 import type { Id } from "@/convex/_generated/dataModel";
 
 interface ReflectionItem {
@@ -46,7 +56,7 @@ function highlightText(text: string, searchTerm: string): React.ReactNode {
       </mark>
     ) : (
       <span key={`t-${idx}`}>{part}</span>
-    )
+    ),
   );
 }
 
@@ -71,7 +81,9 @@ export default function LibraryView() {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [contentType, setContentType] = useState("all");
   const [limit, setLimit] = useState(20);
-  const [pendingDelete, setPendingDelete] = useState<Id<"reflections"> | null>(null);
+  const [pendingDelete, setPendingDelete] = useState<Id<"reflections"> | null>(
+    null,
+  );
   const deleteTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const removeReflection = useMutation(api.reflections.remove);
@@ -100,43 +112,46 @@ export default function LibraryView() {
   const reflections = results?.data;
   const total = results?.total || 0;
 
-  const handleDelete = useCallback((reflectionId: Id<"reflections">, e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleDelete = useCallback(
+    (reflectionId: Id<"reflections">, e: React.MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    if (deleteTimerRef.current) {
-      clearTimeout(deleteTimerRef.current);
-    }
-
-    setPendingDelete(reflectionId);
-
-    const timer = setTimeout(async () => {
-      try {
-        await removeReflection({ reflectionId });
-        setPendingDelete(null);
-      } catch {
-        toast.error("Failed to delete reflection.");
-        setPendingDelete(null);
+      if (deleteTimerRef.current) {
+        clearTimeout(deleteTimerRef.current);
       }
-    }, 5000);
 
-    deleteTimerRef.current = timer;
+      setPendingDelete(reflectionId);
 
-    toast("Reflection deleted.", {
-      action: {
-        label: "Undo",
-        onClick: () => {
-          if (deleteTimerRef.current) {
-            clearTimeout(deleteTimerRef.current);
-            deleteTimerRef.current = null;
-          }
+      const timer = setTimeout(async () => {
+        try {
+          await removeReflection({ reflectionId });
           setPendingDelete(null);
-          toast.success("Deletion undone.");
+        } catch {
+          toast.error("Failed to delete reflection.");
+          setPendingDelete(null);
+        }
+      }, 5000);
+
+      deleteTimerRef.current = timer;
+
+      toast("Reflection deleted.", {
+        action: {
+          label: "Undo",
+          onClick: () => {
+            if (deleteTimerRef.current) {
+              clearTimeout(deleteTimerRef.current);
+              deleteTimerRef.current = null;
+            }
+            setPendingDelete(null);
+            toast.success("Deletion undone.");
+          },
         },
-      },
-      duration: 5000,
-    });
-  }, [removeReflection]);
+        duration: 5000,
+      });
+    },
+    [removeReflection],
+  );
 
   return (
     <div className="space-y-8 pb-12">
@@ -179,7 +194,10 @@ export default function LibraryView() {
       {reflections === undefined ? (
         <div className="space-y-4">
           {["skeleton-1", "skeleton-2", "skeleton-3"].map((id) => (
-            <div key={id} className="h-40 bg-soft-black/5 animate-pulse rounded-[2rem]" />
+            <div
+              key={id}
+              className="h-40 bg-soft-black/5 animate-pulse rounded-[2rem]"
+            />
           ))}
         </div>
       ) : reflections.length === 0 ? (
@@ -188,8 +206,13 @@ export default function LibraryView() {
             <Search className="w-8 h-8 text-soft-black/20" />
           </div>
           <div className="space-y-1">
-            <h3 className="font-grotesk text-xl font-black lowercase text-soft-black/40">your archive is silent.</h3>
-            <p className="text-muted-text max-w-xs mx-auto">try adjusting your search or filters to find what you&apos;re looking for.</p>
+            <h3 className="font-grotesk text-xl font-black lowercase text-soft-black/40">
+              your archive is silent.
+            </h3>
+            <p className="text-muted-text max-w-xs mx-auto">
+              try adjusting your search or filters to find what you&apos;re
+              looking for.
+            </p>
           </div>
         </div>
       ) : (
@@ -198,7 +221,8 @@ export default function LibraryView() {
             .filter((r: ReflectionItem) => r._id !== pendingDelete)
             .map((reflection: ReflectionItem) => {
               const ct = reflection.session?.contentType as string | undefined;
-              const TypeIcon = (ct ? CONTENT_TYPE_ICONS[ct] : undefined) || MoreHorizontal;
+              const TypeIcon =
+                (ct ? CONTENT_TYPE_ICONS[ct] : undefined) || MoreHorizontal;
               const layerCount: number = reflection.layerCount ?? 0;
 
               return (
@@ -230,11 +254,14 @@ export default function LibraryView() {
                       </span>
                     </div>
                     <span className="text-xs font-bold text-muted-text">
-                      {new Date(reflection._creationTime).toLocaleDateString(undefined, {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
+                      {new Date(reflection._creationTime).toLocaleDateString(
+                        undefined,
+                        {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        },
+                      )}
                     </span>
                     <RatingDots rating={reflection.thinkingShiftRating} />
                     {layerCount > 0 ? (
@@ -259,7 +286,8 @@ export default function LibraryView() {
                       : "Untitled Reflection"}
                   </h4>
                   <p className="line-clamp-2 text-lg text-muted-text font-medium leading-tight max-w-2xl">
-                    &ldquo;{highlightText(reflection.content, debouncedSearch)}&rdquo;
+                    &ldquo;{highlightText(reflection.content, debouncedSearch)}
+                    &rdquo;
                   </p>
                 </Link>
               );
@@ -268,7 +296,7 @@ export default function LibraryView() {
           {total > limit && (
             <div className="pt-8 flex justify-center">
               <button
-                onClick={() => setLimit(prev => prev + 20)}
+                onClick={() => setLimit((prev) => prev + 20)}
                 className="px-8 py-3 bg-white brutal-border-sm border-2 border-soft-black rounded-xl font-bold hover:bg-sage transition-all active:scale-95"
               >
                 load more from archive

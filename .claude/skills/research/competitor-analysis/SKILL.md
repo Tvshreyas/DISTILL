@@ -45,7 +45,6 @@ metadata:
 
 # Competitor Analysis
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -122,6 +121,7 @@ Automatically pull competitor keyword rankings, backlink profiles, top performin
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Competitor URLs to analyze (2-5 recommended)
 2. Your own site URL and current metrics (traffic, rankings if known)
 3. Industry or niche context
@@ -137,20 +137,23 @@ When a user requests competitor analysis:
 1. **Identify Competitors**
 
    If not specified, help identify competitors:
-   
+
    ```markdown
    ### Competitor Identification Framework
-   
+
    **Direct Competitors** (same product/service)
+
    - Search "[your main keyword]" and note top 5 organic results
    - Check who's advertising for your keywords
    - Ask: Who do customers compare you to?
-   
+
    **Indirect Competitors** (different solution, same problem)
+
    - Search problem-focused keywords
    - Look at alternative solutions
-   
+
    **Content Competitors** (compete for same keywords)
+
    - May not sell same product
    - Rank for your target keywords
    - Include media sites, blogs, aggregators
@@ -189,12 +192,14 @@ When a user requests competitor analysis:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Competitor URLs verified as relevant to your niche
 - [ ] Analysis scope defined (comprehensive or specific focus area)
 - [ ] Your own site metrics available for comparison
 - [ ] Minimum 2-3 competitors identified for meaningful patterns
 
 ### Output Validation
+
 - [ ] Every recommendation cites specific data points (not generic advice)
 - [ ] Competitor strengths backed by measurable evidence (metrics, rankings)
 - [ ] Opportunities based on identifiable gaps, not assumptions
@@ -240,7 +245,6 @@ How has [competitor]'s SEO strategy evolved over the past year?
 5. **Monitor regularly** - competitor strategies evolve
 6. **Focus on actionable insights** - what can you actually implement?
 
-
 ## Reference Materials
 
 - [Analysis Templates](./references/analysis-templates.md) — Detailed templates for each analysis step (profile, keywords, content, backlinks, technical, GEO, synthesis)
@@ -257,4 +261,3 @@ How has [competitor]'s SEO strategy evolved over the past year?
 - [serp-analysis](../serp-analysis/) — Understand search result composition
 - [memory-management](../../cross-cutting/memory-management/) — Store competitor data in project memory
 - [entity-optimizer](../../cross-cutting/entity-optimizer/) — Compare entity presence against competitors
-

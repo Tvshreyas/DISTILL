@@ -50,7 +50,6 @@ metadata:
 
 # Backlink Analyzer
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -125,6 +124,7 @@ Automatically pull comprehensive backlink profiles including referring domains, 
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Backlink export CSV (with source domains, anchor text, link type)
 2. Referring domains list with authority metrics
 3. Competitor domains for comparison
@@ -157,25 +157,27 @@ When a user requests backlink analysis:
 
 When running `domain-authority-auditor` after this analysis, the following data feeds directly into CITE scoring:
 
-| Backlink Metric | CITE Item | Dimension |
-|----------------|-----------|-----------|
-| Referring domains count | C01 (Referring Domain Volume) | Citation |
-| Authority distribution (DA breakdown) | C02 (Referring Domains Quality) | Citation |
-| Link velocity | C04 (Link Velocity) | Citation |
-| Geographic distribution | C10 (Link Source Diversity) | Citation |
-| Dofollow/Nofollow ratio | T02 (Dofollow Ratio Normality) | Trust |
-| Toxic link analysis | T01 (Link Profile Naturalness), T03 (Link-Traffic Coherence) | Trust |
-| Competitive link intersection | T05 (Profile Uniqueness) | Trust |
+| Backlink Metric                       | CITE Item                                                    | Dimension |
+| ------------------------------------- | ------------------------------------------------------------ | --------- |
+| Referring domains count               | C01 (Referring Domain Volume)                                | Citation  |
+| Authority distribution (DA breakdown) | C02 (Referring Domains Quality)                              | Citation  |
+| Link velocity                         | C04 (Link Velocity)                                          | Citation  |
+| Geographic distribution               | C10 (Link Source Diversity)                                  | Citation  |
+| Dofollow/Nofollow ratio               | T02 (Dofollow Ratio Normality)                               | Trust     |
+| Toxic link analysis                   | T01 (Link Profile Naturalness), T03 (Link-Traffic Coherence) | Trust     |
+| Competitive link intersection         | T05 (Profile Uniqueness)                                     | Trust     |
 
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Target domain backlink data is complete and current
 - [ ] Competitor domains specified for comparison analysis
 - [ ] Backlink data includes necessary fields (source domain, anchor text, link type)
 - [ ] Authority metrics available (DA/DR or equivalent)
 
 ### Output Validation
+
 - [ ] Every metric cites its data source and collection date
 - [ ] Toxic link assessments include risk justification
 - [ ] Link opportunity recommendations are specific and actionable
@@ -192,12 +194,12 @@ When running `domain-authority-auditor` after this analysis, the following data 
 
 ### Sites linking to 2+ competitors (not you)
 
-| Domain | DA | HubSpot | Salesforce | Mailchimp | Opportunity |
-|--------|-----|---------|------------|-----------|-------------|
-| g2.com | 91 | ✅ | ✅ | ✅ | Get listed/reviewed |
-| capterra.com | 89 | ✅ | ✅ | ✅ | Submit for review |
-| entrepreneur.com | 92 | ✅ | ✅ | ❌ | Pitch guest post |
-| techcrunch.com | 94 | ✅ | ❌ | ✅ | PR/news pitch |
+| Domain           | DA  | HubSpot | Salesforce | Mailchimp | Opportunity         |
+| ---------------- | --- | ------- | ---------- | --------- | ------------------- |
+| g2.com           | 91  | ✅      | ✅         | ✅        | Get listed/reviewed |
+| capterra.com     | 89  | ✅      | ✅         | ✅        | Submit for review   |
+| entrepreneur.com | 92  | ✅      | ✅         | ❌        | Pitch guest post    |
+| techcrunch.com   | 94  | ✅      | ❌         | ✅        | PR/news pitch       |
 
 ### Top 5 Immediate Opportunities
 
@@ -219,6 +221,7 @@ When running `domain-authority-auditor` after this analysis, the following data 
 ### Estimated Impact
 
 If you acquire links from top 10 opportunities:
+
 - New referring domains: +10
 - Average DA of new links: 82
 - Estimated ranking impact: +2-5 positions for competitive keywords
@@ -251,4 +254,3 @@ If you acquire links from top 10 opportunities:
 - [alert-manager](../alert-manager/) — Set up link alerts
 - [performance-reporter](../performance-reporter/) — Include in reports
 - [entity-optimizer](../../cross-cutting/entity-optimizer/) — Branded backlinks strengthen entity signals
-

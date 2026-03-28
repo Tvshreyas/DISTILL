@@ -107,6 +107,7 @@ Automatically pull AI citation patterns (which content is being cited by ChatGPT
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Target queries where they want AI citations
 2. Current content URL or full content text
 3. Any known instances where competitors are being cited by AI
@@ -156,27 +157,29 @@ When a user requests GEO optimization:
 
    ```markdown
    ## GEO Analysis: [Content Title]
-   
+
    ### Current State Assessment
-   
-   | GEO Factor | Current Score (1-10) | Notes |
-   |------------|---------------------|-------|
-   | Clear definitions | [X] | [notes] |
-   | Quotable statements | [X] | [notes] |
-   | Factual density | [X] | [notes] |
-   | Source citations | [X] | [notes] |
-   | Q&A format | [X] | [notes] |
-   | Authority signals | [X] | [notes] |
-   | Content freshness | [X] | [notes] |
-   | Structure clarity | [X] | [notes] |
-   | **GEO Readiness** | **[avg]/10** | **Average across factors** |
-   
+
+   | GEO Factor          | Current Score (1-10) | Notes                      |
+   | ------------------- | -------------------- | -------------------------- |
+   | Clear definitions   | [X]                  | [notes]                    |
+   | Quotable statements | [X]                  | [notes]                    |
+   | Factual density     | [X]                  | [notes]                    |
+   | Source citations    | [X]                  | [notes]                    |
+   | Q&A format          | [X]                  | [notes]                    |
+   | Authority signals   | [X]                  | [notes]                    |
+   | Content freshness   | [X]                  | [notes]                    |
+   | Structure clarity   | [X]                  | [notes]                    |
+   | **GEO Readiness**   | **[avg]/10**         | **Average across factors** |
+
    **Primary Weaknesses**:
+
    1. [Weakness 1]
    2. [Weakness 2]
    3. [Weakness 3]
-   
+
    **Quick Wins**:
+
    1. [Quick improvement 1]
    2. [Quick improvement 2]
    ```
@@ -205,36 +208,41 @@ When a user requests GEO optimization:
    ### Changes Made
 
    **Definitions Added/Improved**:
+
    1. [Definition 1] - [location in content]
    2. [Definition 2] - [location in content]
 
    **Quotable Statements Created**:
+
    1. "[Statement 1]"
    2. "[Statement 2]"
 
    **Authority Signals Added**:
+
    1. [Expert quote/citation]
    2. [Source attribution]
 
    **Structural Improvements**:
+
    1. [Change 1]
    2. [Change 2]
 
    ### Before/After GEO Score
 
-   | GEO Factor | Before (1-10) | After (1-10) | Change |
-   |------------|---------------|--------------|--------|
-   | Clear definitions | [X] | [X] | +[X] |
-   | Quotable statements | [X] | [X] | +[X] |
-   | Factual density | [X] | [X] | +[X] |
-   | Source citations | [X] | [X] | +[X] |
-   | Q&A format | [X] | [X] | +[X] |
-   | Authority signals | [X] | [X] | +[X] |
-   | **Overall GEO Score** | **[avg]/10** | **[avg]/10** | **+[X]** |
+   | GEO Factor            | Before (1-10) | After (1-10) | Change   |
+   | --------------------- | ------------- | ------------ | -------- |
+   | Clear definitions     | [X]           | [X]          | +[X]     |
+   | Quotable statements   | [X]           | [X]          | +[X]     |
+   | Factual density       | [X]           | [X]          | +[X]     |
+   | Source citations      | [X]           | [X]          | +[X]     |
+   | Q&A format            | [X]           | [X]          | +[X]     |
+   | Authority signals     | [X]           | [X]          | +[X]     |
+   | **Overall GEO Score** | **[avg]/10**  | **[avg]/10** | **+[X]** |
 
    ### AI Query Coverage
 
    This content is now optimized to answer:
+
    - "What is [topic]?" ✅
    - "How does [topic] work?" ✅
    - "Why is [topic] important?" ✅
@@ -244,41 +252,43 @@ When a user requests GEO optimization:
 
 5. **CORE-EEAT GEO Self-Check**
 
-    After optimization, verify GEO-First items:
+   After optimization, verify GEO-First items:
 
-    ```markdown
-    ### CORE-EEAT GEO Post-Optimization Check
+   ```markdown
+   ### CORE-EEAT GEO Post-Optimization Check
 
-    | ID | Standard | Status | Notes |
-    |----|----------|--------|-------|
-    | C02 | Direct Answer in first 150 words | ✅/⚠️/❌ | [notes] |
-    | C04 | Key terms defined on first use | ✅/⚠️/❌ | [notes] |
-    | C09 | Structured FAQ with Schema | ✅/⚠️/❌ | [notes] |
-    | O02 | Summary Box / Key Takeaways | ✅/⚠️/❌ | [notes] |
-    | O03 | Comparisons in tables | ✅/⚠️/❌ | [notes] |
-    | O05 | JSON-LD Schema Markup | ✅/⚠️/❌ | [notes] |
-    | O06 | Section chunking (3–5 sentences) | ✅/⚠️/❌ | [notes] |
-    | R01 | ≥5 precise data points with units | ✅/⚠️/❌ | [notes] |
-    | R02 | ≥1 citation per 500 words | ✅/⚠️/❌ | [notes] |
-    | R04 | Claims backed by evidence | ✅/⚠️/❌ | [notes] |
-    | R07 | Full entity names | ✅/⚠️/❌ | [notes] |
-    | E01 | Original first-party data | ✅/⚠️/❌ | [notes] |
-    | Exp10 | Limitations acknowledged | ✅/⚠️/❌ | [notes] |
-    | Ept08 | Reasoning transparency | ✅/⚠️/❌ | [notes] |
+   | ID    | Standard                          | Status   | Notes   |
+   | ----- | --------------------------------- | -------- | ------- |
+   | C02   | Direct Answer in first 150 words  | ✅/⚠️/❌ | [notes] |
+   | C04   | Key terms defined on first use    | ✅/⚠️/❌ | [notes] |
+   | C09   | Structured FAQ with Schema        | ✅/⚠️/❌ | [notes] |
+   | O02   | Summary Box / Key Takeaways       | ✅/⚠️/❌ | [notes] |
+   | O03   | Comparisons in tables             | ✅/⚠️/❌ | [notes] |
+   | O05   | JSON-LD Schema Markup             | ✅/⚠️/❌ | [notes] |
+   | O06   | Section chunking (3–5 sentences)  | ✅/⚠️/❌ | [notes] |
+   | R01   | ≥5 precise data points with units | ✅/⚠️/❌ | [notes] |
+   | R02   | ≥1 citation per 500 words         | ✅/⚠️/❌ | [notes] |
+   | R04   | Claims backed by evidence         | ✅/⚠️/❌ | [notes] |
+   | R07   | Full entity names                 | ✅/⚠️/❌ | [notes] |
+   | E01   | Original first-party data         | ✅/⚠️/❌ | [notes] |
+   | Exp10 | Limitations acknowledged          | ✅/⚠️/❌ | [notes] |
+   | Ept08 | Reasoning transparency            | ✅/⚠️/❌ | [notes] |
 
-    **Items Needing Attention**: [list any ⚠️/❌ items]
+   **Items Needing Attention**: [list any ⚠️/❌ items]
 
-    _For full 80-item audit, use [content-quality-auditor](../../cross-cutting/content-quality-auditor/)_
-    ```
+   _For full 80-item audit, use [content-quality-auditor](../../cross-cutting/content-quality-auditor/)_
+   ```
 
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Content source identified (URL, full text, or content draft)
 - [ ] Target AI queries or topics clearly defined
 - [ ] Current GEO baseline assessed (if optimizing existing content)
 
 ### Output Validation
+
 - [ ] At least 3 clear, quotable definitions added
 - [ ] Factual density improved with at least 5 verifiable statistics
 - [ ] All claims have source citations from authoritative sources
@@ -295,24 +305,24 @@ When a user requests GEO optimization:
 ```markdown
 ## GEO-Optimized Version
 
-**Email marketing** is a digital marketing strategy that uses email to promote 
-products, build customer relationships, and drive conversions. According to 
-the Data & Marketing Association, email marketing delivers an average ROI 
-of $42 for every $1 invested, making it the highest-performing digital 
+**Email marketing** is a digital marketing strategy that uses email to promote
+products, build customer relationships, and drive conversions. According to
+the Data & Marketing Association, email marketing delivers an average ROI
+of $42 for every $1 invested, making it the highest-performing digital
 marketing channel.
 
 ### Key email marketing formats include:
 
-1. **Newsletters**: Regular updates sharing company news, industry insights, 
+1. **Newsletters**: Regular updates sharing company news, industry insights,
    and valuable content to maintain subscriber engagement
-2. **Promotional emails**: Time-sensitive offers, discounts, and product 
+2. **Promotional emails**: Time-sensitive offers, discounts, and product
    announcements designed to drive immediate sales
-3. **Transactional emails**: Order confirmations, shipping updates, and 
+3. **Transactional emails**: Order confirmations, shipping updates, and
    account notifications with 8x higher open rates than marketing emails
-4. **Automated sequences**: Pre-scheduled email series triggered by user 
+4. **Automated sequences**: Pre-scheduled email series triggered by user
    actions, such as welcome series or abandoned cart reminders
 
-> **Key statistic**: 81% of small businesses rely on email as their primary 
+> **Key statistic**: 81% of small businesses rely on email as their primary
 > customer acquisition channel (Emarsys, 2024).
 
 ---
@@ -347,4 +357,3 @@ Changes: added clear definition, 2 stats with sources, structured list, DMA/Emar
 - [content-refresher](../../optimize/content-refresher/) — Update content for freshness
 - [content-quality-auditor](../../cross-cutting/content-quality-auditor/) — Full 80-item CORE-EEAT audit
 - [serp-analysis](../../research/serp-analysis/) — Analyze AI Overview patterns
-

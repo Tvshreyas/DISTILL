@@ -3,7 +3,9 @@ import { test, expect } from "@playwright/test";
 test.describe("Dashboard", () => {
   test("loads and shows dashboard heading", async ({ page }) => {
     await page.goto("/dashboard");
-    await expect(page.locator("text=dashboard")).toBeVisible({ timeout: 10000 });
+    await expect(page.locator("text=dashboard")).toBeVisible({
+      timeout: 10000,
+    });
   });
 
   test("displays streak counter", async ({ page }) => {
@@ -11,7 +13,9 @@ test.describe("Dashboard", () => {
     await expect(page.locator("text=days")).toBeVisible({ timeout: 10000 });
   });
 
-  test("shows start session button when no active session", async ({ page }) => {
+  test("shows start session button when no active session", async ({
+    page,
+  }) => {
     await page.goto("/dashboard");
     // Wait for data to load
     await page.waitForTimeout(2000);

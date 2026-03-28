@@ -1,4 +1,9 @@
-import { query, mutation, internalMutation, internalQuery } from "./_generated/server";
+import {
+  query,
+  mutation,
+  internalMutation,
+  internalQuery,
+} from "./_generated/server";
 import { v } from "convex/values";
 import { internal } from "./_generated/api";
 
@@ -20,10 +25,13 @@ export const get = query({
     const deepSessions = await ctx.db
       .query("sessions")
       .withIndex("by_userId_status", (q) =>
-        q.eq("userId", userId).eq("status", "complete")
+        q.eq("userId", userId).eq("status", "complete"),
       )
       .filter((q) =>
-        q.and(q.eq(q.field("isDeleted"), false), q.neq(q.field("type"), "quick"))
+        q.and(
+          q.eq(q.field("isDeleted"), false),
+          q.neq(q.field("type"), "quick"),
+        ),
       )
       .collect();
 
@@ -36,7 +44,7 @@ export const get = query({
 
     const totalWordsWritten = allReflections.reduce(
       (sum, r) => sum + (r.wordCount ?? 0),
-      0
+      0,
     );
 
     return {
@@ -83,18 +91,43 @@ export const createOrGet = mutation({
       onboardingCompleted: false,
       email: identity.email,
       welcomeEmailStep: 0,
-      ...(args.acquisitionSource && { acquisitionSource: args.acquisitionSource }),
-      ...(args.acquisitionMedium && { acquisitionMedium: args.acquisitionMedium }),
-      ...(args.acquisitionCampaign && { acquisitionCampaign: args.acquisitionCampaign }),
+      ...(args.acquisitionSource && {
+        acquisitionSource: args.acquisitionSource,
+      }),
+      ...(args.acquisitionMedium && {
+        acquisitionMedium: args.acquisitionMedium,
+      }),
+      ...(args.acquisitionCampaign && {
+        acquisitionCampaign: args.acquisitionCampaign,
+      }),
     });
 
     // Schedule welcome email sequence
     // Step 1: immediate, Step 2: 1 day, Step 3: 3 days, Step 4: 5 days, Step 5: 10 days
-    await ctx.scheduler.runAfter(0, internal.notifications.sendWelcomeEmail, { userId, step: 1 });
-    await ctx.scheduler.runAfter(1 * 24 * 60 * 60 * 1000, internal.notifications.sendWelcomeEmail, { userId, step: 2 });
-    await ctx.scheduler.runAfter(3 * 24 * 60 * 60 * 1000, internal.notifications.sendWelcomeEmail, { userId, step: 3 });
-    await ctx.scheduler.runAfter(5 * 24 * 60 * 60 * 1000, internal.notifications.sendWelcomeEmail, { userId, step: 4 });
-    await ctx.scheduler.runAfter(10 * 24 * 60 * 60 * 1000, internal.notifications.sendWelcomeEmail, { userId, step: 5 });
+    await ctx.scheduler.runAfter(0, internal.notifications.sendWelcomeEmail, {
+      userId,
+      step: 1,
+    });
+    await ctx.scheduler.runAfter(
+      1 * 24 * 60 * 60 * 1000,
+      internal.notifications.sendWelcomeEmail,
+      { userId, step: 2 },
+    );
+    await ctx.scheduler.runAfter(
+      3 * 24 * 60 * 60 * 1000,
+      internal.notifications.sendWelcomeEmail,
+      { userId, step: 3 },
+    );
+    await ctx.scheduler.runAfter(
+      5 * 24 * 60 * 60 * 1000,
+      internal.notifications.sendWelcomeEmail,
+      { userId, step: 4 },
+    );
+    await ctx.scheduler.runAfter(
+      10 * 24 * 60 * 60 * 1000,
+      internal.notifications.sendWelcomeEmail,
+      { userId, step: 5 },
+    );
 
     return await ctx.db.get(id);
   },
@@ -163,8 +196,8 @@ export const updatePlan = internalMutation({
         v.literal("active"),
         v.literal("canceled"),
         v.literal("past_due"),
-        v.literal("trialing")
-      )
+        v.literal("trialing"),
+      ),
     ),
     subscriptionPeriodEnd: v.optional(v.string()),
   },
@@ -178,12 +211,23 @@ export const updatePlan = internalMutation({
 
     await ctx.db.patch(profile._id, {
       plan: args.plan,
-      ...(args.stripeCustomerId !== undefined && { stripeCustomerId: args.stripeCustomerId }),
-      ...(args.stripeSubscriptionId !== undefined && { stripeSubscriptionId: args.stripeSubscriptionId }),
-      ...(args.subscriptionStatus !== undefined && { subscriptionStatus: args.subscriptionStatus }),
-      ...(args.subscriptionPeriodEnd !== undefined && { subscriptionPeriodEnd: args.subscriptionPeriodEnd }),
+      ...(args.stripeCustomerId !== undefined && {
+        stripeCustomerId: args.stripeCustomerId,
+      }),
+      ...(args.stripeSubscriptionId !== undefined && {
+        stripeSubscriptionId: args.stripeSubscriptionId,
+      }),
+      ...(args.subscriptionStatus !== undefined && {
+        subscriptionStatus: args.subscriptionStatus,
+      }),
+      ...(args.subscriptionPeriodEnd !== undefined && {
+        subscriptionPeriodEnd: args.subscriptionPeriodEnd,
+      }),
       // Track Pro upgrade date for annual nudge email
-      ...(args.plan === "pro" && !profile.proUpgradeDate && { proUpgradeDate: new Date().toISOString() }),
+      ...(args.plan === "pro" &&
+        !profile.proUpgradeDate && {
+          proUpgradeDate: new Date().toISOString(),
+        }),
     });
   },
 });
@@ -221,7 +265,9 @@ export const getByStripeCustomerId = internalQuery({
   handler: async (ctx, args) => {
     return await ctx.db
       .query("profiles")
-      .withIndex("by_stripeCustomerId", (q) => q.eq("stripeCustomerId", args.stripeCustomerId))
+      .withIndex("by_stripeCustomerId", (q) =>
+        q.eq("stripeCustomerId", args.stripeCustomerId),
+      )
       .unique();
   },
 });
@@ -260,7 +306,7 @@ export const disableNotificationType = internalMutation({
       v.literal("weekly"),
       v.literal("welcome"),
       v.literal("reengagement"),
-      v.literal("upgrade")
+      v.literal("upgrade"),
     ),
   },
   handler: async (ctx, args) => {
@@ -370,7 +416,7 @@ export const updateSequenceField = internalMutation({
       v.literal("welcomeEmailStep"),
       v.literal("reEngagementStep"),
       v.literal("upgradeEmailStep"),
-      v.literal("proUpgradeDate")
+      v.literal("proUpgradeDate"),
     ),
     value: v.union(v.number(), v.string()),
   },
@@ -421,7 +467,9 @@ export const checkAndRecordExport = mutation({
       if (now - lastExport < twentyFourHoursMs) {
         const retryAfterMs = twentyFourHoursMs - (now - lastExport);
         const retryAfterHours = Math.ceil(retryAfterMs / (60 * 60 * 1000));
-        throw new Error(`Export rate limited. Try again in ${retryAfterHours} hour(s).`);
+        throw new Error(
+          `Export rate limited. Try again in ${retryAfterHours} hour(s).`,
+        );
       }
     }
 

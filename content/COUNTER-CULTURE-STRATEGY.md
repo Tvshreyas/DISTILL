@@ -1,7 +1,7 @@
 # Distill — Counter-Culture Marketing Strategy
 
-*Created: 2026-03-21*
-*Launch: Monday March 24, 2026*
+_Created: 2026-03-21_
+_Launch: Monday March 24, 2026_
 
 ---
 
@@ -26,6 +26,7 @@ In an era where everyone uses AI to summarize books they didn't read, manual ref
 This makes the user feel like their 2 minutes of writing is high-value "intellectual craft" — not data entry.
 
 Use this in:
+
 - Landing page tagline rotation
 - X/Twitter bio
 - Product Hunt listing
@@ -41,14 +42,14 @@ This is organic virality. No referral button needed. The product screenshots its
 
 ### 3. Counter-Positioning Against Every Trend
 
-| Trend | Everyone else | Distill |
-|-------|-------------|---------|
-| AI everything | "Let AI read for you" | "You have to think yourself" |
-| Productivity | "Do more, faster" | "Think more, slower" |
-| Second brains | "Capture everything" | "Capture only your perspective" |
-| Note-taking | "Organize with folders, tags, graphs" | "No org. Just write what you think." |
-| Consumption | "Read 52 books a year" | "Think about 10 deeply" |
-| Speed | "Speed read, skim, summarize" | "Sit with it. Write your reaction." |
+| Trend         | Everyone else                         | Distill                              |
+| ------------- | ------------------------------------- | ------------------------------------ |
+| AI everything | "Let AI read for you"                 | "You have to think yourself"         |
+| Productivity  | "Do more, faster"                     | "Think more, slower"                 |
+| Second brains | "Capture everything"                  | "Capture only your perspective"      |
+| Note-taking   | "Organize with folders, tags, graphs" | "No org. Just write what you think." |
+| Consumption   | "Read 52 books a year"                | "Think about 10 deeply"              |
+| Speed         | "Speed read, skim, summarize"         | "Sit with it. Write your reaction."  |
 
 ---
 
@@ -62,6 +63,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 ### Pre-Launch Posts (Mar 21-23)
 
 **Mar 21:**
+
 > every app in 2026 wants to think for you.
 >
 > i built one that refuses to.
@@ -73,6 +75,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 > launching monday.
 
 **Mar 22:**
+
 > hot take: the "second brain" movement created more organizational debt than actual thinking.
 >
 > you don't need a graph database of your highlights. you need 2 minutes of honesty after finishing a book.
@@ -82,6 +85,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 > most people can't answer. that's the problem.
 
 **Mar 23:**
+
 > AI summarizes. humans distill.
 >
 > one of these makes you feel productive. the other makes you a better thinker.
@@ -91,6 +95,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 ### Launch Day — March 24
 
 **Pinned tweet:**
+
 > i built distill because i was reading 50 books a year and couldn't tell you an original thought about any of them.
 >
 > it's the anti-AI tool. you consume something, you write what YOU think, your reflections resurface over time.
@@ -102,6 +107,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 **Launch thread:**
 
 **Tweet 1:**
+
 > distill is live.
 >
 > in an era of AI summaries and infinite scroll, it does one radical thing: makes you think for yourself.
@@ -109,6 +115,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 > distillwise.com
 
 **Tweet 2:**
+
 > the problem isn't information overload.
 >
 > the problem is that you consume 1000 pieces of content a year and have zero original thoughts to show for it.
@@ -116,6 +123,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 > not because you're lazy. because nothing ever asked you to think.
 
 **Tweet 3:**
+
 > distill asks one question after you read, watch, or listen to something:
 >
 > what did YOU think?
@@ -125,6 +133,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 > that's the whole product.
 
 **Tweet 4:**
+
 > what distill is NOT:
 >
 > — not a note app (no folders, no tags, no org)
@@ -133,6 +142,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 > — not a "second brain" (it's a first brain workout)
 
 **Tweet 5:**
+
 > AI summarizes. humans distill.
 >
 > free: 3 deep sessions/month.
@@ -143,6 +153,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 > try it: distillwise.com
 
 **Afternoon post (proof of thinking):**
+
 > here's a real reflection i wrote 3 weeks ago after watching a documentary:
 >
 > "[insert your actual 2-sentence reflection]"
@@ -152,6 +163,7 @@ New voice: **contrarian, slightly provocative, anti-establishment.** Like a frie
 > distillwise.com
 
 **Evening:**
+
 > day 1.
 >
 > [X] people decided to think for themselves today.
@@ -267,6 +279,7 @@ distillwise.com
 ### Follow-up LinkedIn Posts
 
 **Day 3:**
+
 ```
 Manual reflection is becoming a luxury good.
 
@@ -283,6 +296,7 @@ distillwise.com — the anti-AI thinking tool.
 ```
 
 **Day 5:**
+
 ```
 I read 47 books last year. I can name most of them.
 
@@ -308,6 +322,7 @@ distillwise.com
 **Tagline:** AI summarizes. Humans Distill.
 
 **Description:**
+
 > Every app wants to think for you. Distill is the app that refuses to.
 >
 > After reading, watching, or listening to something, you write a short reflection: what did YOU think? Your reflections resurface at intervals so your thinking compounds.
@@ -339,6 +354,7 @@ distillwise.com
 > Tech: Next.js 15, Convex, Clerk, Stripe. PWA. Solo founder, bootstrapped.
 >
 > I'd appreciate feedback on:
+>
 > - Does "anti-AI" positioning resonate or feel gimmicky?
 > - Would you actually use this, or is a blank doc sufficient?
 > - Is 3 deep sessions/month free right free tier limit?
@@ -423,6 +439,7 @@ Before launch, prepare these:
 ## Where to Find Your Audience
 
 ### X/Twitter: search and reply (genuine thoughts, not promo)
+
 - "reading list 2026"
 - "i just finished reading"
 - "podcast recommendations"
@@ -435,6 +452,7 @@ Before launch, prepare these:
 - "why can't i remember what i read"
 
 ### Subreddits (comment thoughtfully, post only on launch day)
+
 - r/productivity
 - r/books
 - r/nosurf
@@ -444,12 +462,14 @@ Before launch, prepare these:
 - r/selfimprovement
 
 ### Newsletter pitches (week 2-3)
+
 - Dense Discovery (Kai Brach) — anti-algorithm, thoughtful tech
 - The Honest Broker (Ted Gioia) — readers, anti-streaming
 - Consumed (newsletter about consumption culture)
 - The Sunday Long Read — readers who go deep
 
 **Updated pitch angle:**
+
 > Subject: The anti-AI reading tool
 >
 > Every tool in 2026 wants to summarize, extract, and automate the reading experience. I built the opposite.

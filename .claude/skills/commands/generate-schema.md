@@ -29,6 +29,7 @@ Generates valid **Schema.org JSON-LD** structured data markup to enhance search 
 ```
 
 **Arguments:**
+
 - Schema type (required): FAQ, HowTo, Article, Product, LocalBusiness, Organization, Breadcrumb, Review, Event, Video
 - Content source: URL, pasted content, or description
 

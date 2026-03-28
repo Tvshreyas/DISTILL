@@ -15,7 +15,12 @@ interface ReEngagementEmailProps {
   unsubscribeUrl: string;
 }
 
-export function ReEngagementEmail({ step, reflectionCount, dashboardUrl, unsubscribeUrl }: ReEngagementEmailProps) {
+export function ReEngagementEmail({
+  step,
+  reflectionCount,
+  dashboardUrl,
+  unsubscribeUrl,
+}: ReEngagementEmailProps) {
   const appUrl = dashboardUrl.replace(/\/dashboard$/, "");
 
   const content = {
@@ -45,19 +50,44 @@ export function ReEngagementEmail({ step, reflectionCount, dashboardUrl, unsubsc
         <style>{`body { font-family: 'Outfit', Arial, sans-serif; }`}</style>
       </Head>
       <Body style={{ backgroundColor: "#FDFCF8", margin: 0, padding: 0 }}>
-        <Container style={{ maxWidth: "560px", margin: "0 auto", padding: "40px 20px" }}>
-          <Text style={{ fontSize: "24px", fontWeight: 900, color: "#292524", letterSpacing: "-0.02em", textTransform: "lowercase" as const }}>
+        <Container
+          style={{ maxWidth: "560px", margin: "0 auto", padding: "40px 20px" }}
+        >
+          <Text
+            style={{
+              fontSize: "24px",
+              fontWeight: 900,
+              color: "#292524",
+              letterSpacing: "-0.02em",
+              textTransform: "lowercase" as const,
+            }}
+          >
             distill
           </Text>
 
           <Hr style={{ borderColor: "#E8EFE8", margin: "24px 0" }} />
 
-          <Text style={{ fontSize: "20px", fontWeight: 800, color: "#292524", margin: "0 0 16px" }}>
+          <Text
+            style={{
+              fontSize: "20px",
+              fontWeight: 800,
+              color: "#292524",
+              margin: "0 0 16px",
+            }}
+          >
             {content.heading}
           </Text>
 
           {content.body.split("\n\n").map((paragraph, i) => (
-            <Text key={i} style={{ fontSize: "15px", color: "#78716C", lineHeight: "1.6", margin: "0 0 16px" }}>
+            <Text
+              key={i}
+              style={{
+                fontSize: "15px",
+                color: "#78716C",
+                lineHeight: "1.6",
+                margin: "0 0 16px",
+              }}
+            >
               {paragraph}
             </Text>
           ))}
@@ -83,7 +113,10 @@ export function ReEngagementEmail({ step, reflectionCount, dashboardUrl, unsubsc
 
           <Text style={{ fontSize: "12px", color: "#78716C", margin: 0 }}>
             You received this because you have a Distill account.{" "}
-            <Link href={unsubscribeUrl} style={{ color: "#78716C", textDecoration: "underline" }}>
+            <Link
+              href={unsubscribeUrl}
+              style={{ color: "#78716C", textDecoration: "underline" }}
+            >
               Unsubscribe
             </Link>
           </Text>
@@ -93,7 +126,10 @@ export function ReEngagementEmail({ step, reflectionCount, dashboardUrl, unsubsc
   );
 }
 
-export function getReEngagementSubject(step: 1 | 2 | 3, reflectionCount: number): string {
+export function getReEngagementSubject(
+  step: 1 | 2 | 3,
+  reflectionCount: number,
+): string {
   const subjects = {
     1: "It's been a while",
     2: `${reflectionCount} reflection${reflectionCount !== 1 ? "s" : ""}, waiting`,

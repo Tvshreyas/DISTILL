@@ -10,62 +10,67 @@ Detailed output templates for content-refresher steps 5-9. Referenced from [SKIL
 ## Content Refresh Plan
 
 ### Title/URL
+
 **Current**: [current title]
 **Refreshed**: [updated title with year/hook]
 
 ### Structural Changes
 
 **Keep As-Is**:
+
 - [Section 1] - Still relevant and accurate
 - [Section 2] - Still relevant and accurate
 
 **Update/Expand**:
+
 - [Section 3] - Update statistics, add [X] words
 - [Section 4] - Add new examples from [current year]
 
 **Add New Sections**:
+
 - [New Section 1] - [description, ~X words]
 - [New Section 2] - [description, ~X words]
 - FAQ Section - [X questions for featured snippets]
 
 **Remove/Consolidate**:
+
 - [Section 5] - Outdated, remove or redirect topic
 
 ### Content Additions
 
 **New Word Count Target**: [X] words (+[Y] from current)
 
-| Section | Current | After Refresh | Notes |
-|---------|---------|---------------|-------|
-| Introduction | [X] | [X] | Add hook, update context |
-| [Section 1] | [X] | [X] | Keep |
-| [Section 2] | [X] | [X] | Update stats |
-| [New Section] | 0 | [X] | Add entirely |
-| FAQ | 0 | [X] | Add for GEO |
-| Conclusion | [X] | [X] | Update CTA |
+| Section       | Current | After Refresh | Notes                    |
+| ------------- | ------- | ------------- | ------------------------ |
+| Introduction  | [X]     | [X]           | Add hook, update context |
+| [Section 1]   | [X]     | [X]           | Keep                     |
+| [Section 2]   | [X]     | [X]           | Update stats             |
+| [New Section] | 0       | [X]           | Add entirely             |
+| FAQ           | 0       | [X]           | Add for GEO              |
+| Conclusion    | [X]     | [X]           | Update CTA               |
 
 ### Specific Updates
 
 **Statistics to Update**:
 
-| Old Statistic | New Statistic | Source |
-|---------------|---------------|--------|
-| "[old stat]" | "[find current]" | [source] |
-| "[old stat]" | "[find current]" | [source] |
+| Old Statistic | New Statistic    | Source   |
+| ------------- | ---------------- | -------- |
+| "[old stat]"  | "[find current]" | [source] |
+| "[old stat]"  | "[find current]" | [source] |
 
 **Links to Update**:
 
-| Anchor Text | Old URL | New URL | Reason |
-|-------------|---------|---------|--------|
-| "[anchor]" | [old] | [new] | Broken |
-| "[anchor]" | [old] | [new] | Better resource |
+| Anchor Text | Old URL | New URL | Reason          |
+| ----------- | ------- | ------- | --------------- |
+| "[anchor]"  | [old]   | [new]   | Broken          |
+| "[anchor]"  | [old]   | [new]   | Better resource |
 
 **Images to Update**:
 
-| Image | Action | New Alt Text |
-|-------|--------|--------------|
+| Image   | Action  | New Alt Text         |
+| ------- | ------- | -------------------- |
 | [img 1] | Replace | "[keyword-rich alt]" |
-| [img 2] | Keep | Update alt text |
+| [img 2] | Keep    | Update alt text      |
 ```
 
 ---
@@ -78,6 +83,7 @@ Detailed output templates for content-refresher steps 5-9. Referenced from [SKIL
 ### Updated Introduction
 
 [Write new introduction with:]
+
 - Updated hook for current year
 - Fresh statistics
 - Clear value proposition
@@ -86,6 +92,7 @@ Detailed output templates for content-refresher steps 5-9. Referenced from [SKIL
 ### New Section: [Title]
 
 [Write new section covering:]
+
 - [Topic competitors now cover]
 - Current information and examples
 - GEO-optimized with quotable statements
@@ -93,9 +100,11 @@ Detailed output templates for content-refresher steps 5-9. Referenced from [SKIL
 ### Updated Statistics Section
 
 **Replace**:
+
 > "[Old statement with outdated stat]"
 
 **With**:
+
 > "[New statement with current stat] (Source, [current year])"
 
 ### New FAQ Section
@@ -125,15 +134,19 @@ Detailed output templates for content-refresher steps 5-9. Referenced from [SKIL
 ### Add Clear Definitions
 
 **Add at start of article**:
+
 > **[Topic]** is [clear, quotable definition in 40-60 words that
-> AI systems can cite directly].
+>
+> > AI systems can cite directly].
 
 ### Add Quotable Statements
 
 **Transform**:
+
 > "Email marketing is effective for businesses."
 
 **Into**:
+
 > "Email marketing delivers an average ROI of $42 for every $1
 > invested, making it the highest-ROI digital marketing channel
 > according to the Data & Marketing Association ([current year])."
@@ -141,6 +154,7 @@ Detailed output templates for content-refresher steps 5-9. Referenced from [SKIL
 ### Add Q&A Sections
 
 Structure content with questions AI might answer:
+
 - What is [topic]?
 - How does [topic] work?
 - Why is [topic] important?
@@ -192,12 +206,14 @@ Structure content with questions AI might answer:
 ### Promotion Strategy
 
 **Immediately after refresh**:
+
 - [ ] Share on social media as "updated for [current year]"
 - [ ] Send to email list if significant update
 - [ ] Update internal links with fresh anchors
 - [ ] Reach out for new backlinks
 
 **Track Results**:
+
 - [ ] Monitor rankings for 4-6 weeks
 - [ ] Track traffic changes
 - [ ] Watch for featured snippet capture
@@ -219,14 +235,14 @@ Structure content with questions AI might answer:
 
 ## Changes Made
 
-| Element | Before | After |
-|---------|--------|-------|
-| Word count | [X] | [Y] (+[Z]%) |
-| Sections | [X] | [Y] |
-| Statistics | [X] outdated | [Y] current |
-| Internal links | [X] | [Y] |
-| Images | [X] | [Y] |
-| FAQ questions | 0 | [X] |
+| Element        | Before       | After       |
+| -------------- | ------------ | ----------- |
+| Word count     | [X]          | [Y] (+[Z]%) |
+| Sections       | [X]          | [Y]         |
+| Statistics     | [X] outdated | [Y] current |
+| Internal links | [X]          | [Y]         |
+| Images         | [X]          | [Y]         |
+| FAQ questions  | 0            | [X]         |
 
 ## Updates Completed
 
@@ -241,11 +257,11 @@ Structure content with questions AI might answer:
 
 ## Expected Outcomes
 
-| Metric | Current | 30-Day Target | 90-Day Target |
-|--------|---------|---------------|---------------|
-| Avg Position | [X] | [Y] | [Z] |
-| Organic Traffic | [X]/mo | [Y]/mo | [Z]/mo |
-| Featured Snippets | 0 | 1+ | 2+ |
+| Metric            | Current | 30-Day Target | 90-Day Target |
+| ----------------- | ------- | ------------- | ------------- |
+| Avg Position      | [X]     | [Y]           | [Z]           |
+| Organic Traffic   | [X]/mo  | [Y]/mo        | [Z]/mo        |
+| Featured Snippets | 0       | 1+            | 2+            |
 
 ## Next Review
 

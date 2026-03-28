@@ -8,10 +8,13 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
-  
+
   if (!convexUrl) {
     console.error("Missing NEXT_PUBLIC_CONVEX_URL environment variable");
-    return NextResponse.json({ error: "Internal Server Error: Missing Configuration" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error: Missing Configuration" },
+      { status: 500 },
+    );
   }
 
   const { userId, getToken } = await auth();
@@ -24,7 +27,10 @@ export async function GET() {
     const token = await getToken({ template: "convex" });
 
     if (!token) {
-      return NextResponse.json({ error: "Could not retrieve auth token" }, { status: 401 });
+      return NextResponse.json(
+        { error: "Could not retrieve auth token" },
+        { status: 401 },
+      );
     }
 
     const convex = new ConvexHttpClient(convexUrl);
@@ -34,11 +40,12 @@ export async function GET() {
     try {
       await convex.mutation(api.profiles.checkAndRecordExport, {});
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Export rate limited.";
+      const message =
+        err instanceof Error ? err.message : "Export rate limited.";
       if (message.includes("rate limited")) {
         return NextResponse.json(
           { error: message },
-          { status: 429, headers: { "Retry-After": "3600" } }
+          { status: 429, headers: { "Retry-After": "3600" } },
         );
       }
       throw err;
@@ -54,11 +61,11 @@ export async function GET() {
         "Content-Disposition": `attachment; filename="distill-export-${new Date().toISOString().split("T")[0]}.json"`,
       },
     });
-  } catch (err) {
+  } catch {
     console.error("Export API error occurred");
     return NextResponse.json(
       { error: "Failed to export data" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

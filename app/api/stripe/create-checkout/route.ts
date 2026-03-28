@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     if (!userId) {
       return NextResponse.json(
         { error: { code: "UNAUTHORIZED" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -21,13 +21,13 @@ export async function POST(req: Request) {
     if (plan !== "monthly" && plan !== "annual") {
       return NextResponse.json(
         { error: { code: "BAD_REQUEST", message: "Invalid plan" } },
-        { status: 400 }
+        { status: 400 },
       );
     }
     if (currency !== "USD" && currency !== "INR") {
       return NextResponse.json(
         { error: { code: "BAD_REQUEST", message: "Invalid currency" } },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -47,7 +47,7 @@ export async function POST(req: Request) {
     if (!priceId) {
       return NextResponse.json(
         { error: { code: "SERVER_ERROR", message: "Price not configured" } },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
     console.error("Stripe checkout error occurred");
     return NextResponse.json(
       { error: { code: "SERVER_ERROR", message: "Something went wrong." } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

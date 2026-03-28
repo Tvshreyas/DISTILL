@@ -2,12 +2,12 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --color-warm-bg: #FDFCF8;
-  --color-sage: #E8EFE8;
-  --color-lavender: #EFEDF4;
-  --color-peach: #FFB7B2;
+  --color-warm-bg: #fdfcf8;
+  --color-sage: #e8efe8;
+  --color-lavender: #efedf4;
+  --color-peach: #ffb7b2;
   --color-soft-black: #292524;
-  --color-muted-text: #78716C;
+  --color-muted-text: #78716c;
 }
 
 @theme {
@@ -92,8 +92,12 @@
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
@@ -102,9 +106,15 @@
 
 /* Gutter glow animation for timeline after layer save */
 @keyframes gutter-glow {
-  0% { box-shadow: 0 0 0 0 transparent; }
-  30% { box-shadow: 0 0 12px 4px rgba(255, 183, 178, 0.6); }
-  100% { box-shadow: 0 0 0 0 transparent; }
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  30% {
+    box-shadow: 0 0 12px 4px rgba(255, 183, 178, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
 }
 
 .animate-gutter-glow {
@@ -113,11 +123,21 @@
 
 /* Raw Brutal Jitter for dots */
 @keyframes brutal-jitter {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(1px, -1px); }
-  50% { transform: translate(-1px, 1px); }
-  75% { transform: translate(1px, 1px); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 1px);
+  }
+  75% {
+    transform: translate(1px, 1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 .brutal-jitter:hover div {
@@ -126,8 +146,15 @@
 
 /* Confetti particle animation */
 @keyframes confetti-fall {
-  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(120px) translateX(var(--confetti-x, 20px)) rotate(var(--confetti-r, 360deg)); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120px) translateX(var(--confetti-x, 20px))
+      rotate(var(--confetti-r, 360deg));
+    opacity: 0;
+  }
 }
 
 .confetti-particle {
@@ -139,12 +166,19 @@
   pointer-events: none;
 }
 
-.font-grotesk { font-family: var(--font-grotesk); }
-.font-outfit { font-family: var(--font-outfit); }
-.font-reenie { font-family: var(--font-reenie); }
+.font-grotesk {
+  font-family: var(--font-grotesk);
+}
+.font-outfit {
+  font-family: var(--font-outfit);
+}
+.font-reenie {
+  font-family: var(--font-reenie);
+}
 
 /* Global Brutal Focus State — only for keyboard navigation */
-input:focus-visible, button:focus-visible {
+input:focus-visible,
+button:focus-visible {
   outline: 4px solid #000 !important;
   outline-offset: 2px !important;
   transition: none !important;
@@ -161,12 +195,12 @@ input:focus-visible, button:focus-visible {
 
 .cl-socialButtonsBlockButton:hover {
   transform: translate(-2px, -2px) !important;
-  box-shadow: 8px 8px 0px 0px rgba(0,0,0,1) !important;
+  box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1) !important;
 }
 
 .cl-socialButtonsBlockButton:active {
   transform: translate(2px, 2px) !important;
-  box-shadow: 0px 0px 0px 0px rgba(0,0,0,1) !important;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1) !important;
 }
 
 /* Force inner button wrapper to be a centered horizontal unit */

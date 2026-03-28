@@ -7,6 +7,7 @@ On-page SEO checklist, content writing template, and featured snippet optimizati
 ## On-Page SEO Checklist
 
 **Keyword Placement**:
+
 - [ ] Primary keyword in title
 - [ ] Primary keyword in H1
 - [ ] Primary keyword in first 100 words
@@ -17,6 +18,7 @@ On-page SEO checklist, content writing template, and featured snippet optimizati
 - [ ] Related terms throughout body
 
 **Content Quality**:
+
 - [ ] Comprehensive coverage of topic
 - [ ] Original insights or data
 - [ ] Actionable takeaways
@@ -24,6 +26,7 @@ On-page SEO checklist, content writing template, and featured snippet optimizati
 - [ ] Expert quotes or citations (for E-E-A-T)
 
 **Readability**:
+
 - [ ] Paragraphs of 3-5 sentences (per CORE-EEAT O06 Section Chunking standard)
 - [ ] Varied sentence length
 - [ ] Bullet points and lists
@@ -31,6 +34,7 @@ On-page SEO checklist, content writing template, and featured snippet optimizati
 - [ ] Table of contents for long content
 
 **Technical**:
+
 - [ ] Internal links to relevant pages (2-5)
 - [ ] External links to authoritative sources (2-3)
 - [ ] Image alt text with keywords
@@ -66,6 +70,7 @@ On-page SEO checklist, content writing template, and featured snippet optimizati
 [Detailed content]
 
 [Key points in bullet format]:
+
 - Point 1
 - Point 2
 - Point 3
@@ -77,8 +82,8 @@ On-page SEO checklist, content writing template, and featured snippet optimizati
 > **Pro Tip**: [Highlighted tip or key insight]
 
 | Column 1 | Column 2 | Column 3 |
-|----------|----------|----------|
-| Data | Data | Data |
+| -------- | -------- | -------- |
+| Data     | Data     | Data     |
 
 ## [H2 - Additional Sections as Needed]
 
@@ -143,6 +148,7 @@ Want to know the secret behind small businesses that consistently turn subscribe
 Email marketing remains one of the most effective channels for small businesses, delivering an average ROI of $42 for every $1 spent. But with inboxes more crowded than ever, following email marketing best practices isn't optional---it's essential for survival.
 
 In this guide, you'll learn:
+
 - How to build a quality email list that converts
 - Proven strategies to increase open and click rates
 - Advanced personalization techniques that drive results
@@ -157,6 +163,7 @@ Before we explore the best practices, let's understand why email deserves your a
 Unlike social media where algorithms control who sees your content, email gives you direct access to your audience. You own your email list---no platform can take it away.
 
 **Key email marketing statistics for small businesses**:
+
 - 81% of SMBs rely on email as their primary customer acquisition channel
 - Email subscribers are 3x more likely to share content on social media
 - Personalized emails generate 6x higher transaction rates
@@ -168,6 +175,7 @@ Unlike social media where algorithms control who sees your content, email gives 
 The foundation of effective email marketing is a quality list. Here's how to grow yours:
 
 **Lead magnets that convert**:
+
 - Industry-specific templates
 - Exclusive discounts or early access
 - Free tools or calculators
@@ -179,12 +187,12 @@ The foundation of effective email marketing is a quality list. Here's how to gro
 
 Double opt-in confirms subscriber intent and improves deliverability. Yes, you'll have fewer subscribers, but they'll be more engaged.
 
-| Single Opt-in | Double Opt-in |
-|---------------|---------------|
-| More subscribers | Fewer subscribers |
-| Higher bounce rates | Lower bounce rates |
-| Lower engagement | Higher engagement |
-| Spam risk | Better deliverability |
+| Single Opt-in       | Double Opt-in         |
+| ------------------- | --------------------- |
+| More subscribers    | Fewer subscribers     |
+| Higher bounce rates | Lower bounce rates    |
+| Lower engagement    | Higher engagement     |
+| Spam risk           | Better deliverability |
 
 ## Crafting Emails That Get Opened
 
@@ -193,6 +201,7 @@ Double opt-in confirms subscriber intent and improves deliverability. Yes, you'l
 Your subject line determines whether emails get opened or ignored.
 
 **Subject line best practices**:
+
 1. Keep it under 50 characters
 2. Create urgency without being spammy
 3. Use numbers and specifics
@@ -210,6 +219,7 @@ Generic emails perform poorly. Here's how to personalize effectively:
 ### Segment Your Email List
 
 Divide your list based on:
+
 - Purchase history
 - Engagement level
 - Demographics
@@ -244,7 +254,7 @@ Start with one improvement today. Whether it's segmenting your list, testing sub
 
 ---
 
-*Further reading: [Internal link: "How to Write Email Copy That Converts"]*
+_Further reading: [Internal link: "How to Write Email Copy That Converts"]_
 
-*Sources: [Litmus Email Marketing Statistics](https://litmus.com), [Campaign Monitor Email Benchmarks](https://campaignmonitor.com)*
+_Sources: [Litmus Email Marketing Statistics](https://litmus.com), [Campaign Monitor Email Benchmarks](https://campaignmonitor.com)_
 ```

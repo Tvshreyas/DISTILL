@@ -58,11 +58,7 @@ function MockReflectionCapture({
         onClick={() => onSubmitAction(content, rating)}
         disabled={!content.trim() || isSubmitting}
       >
-        {isSubmitting ? (
-          <span>preserving...</span>
-        ) : (
-          "complete reflection"
-        )}
+        {isSubmitting ? <span>preserving...</span> : "complete reflection"}
       </button>
     </div>
   );
@@ -78,7 +74,9 @@ describe("ReflectionCapture", () => {
 
   it("renders the textarea with placeholder 'pour your thoughts here...'", () => {
     render(<MockReflectionCapture {...defaultProps} />);
-    expect(screen.getByPlaceholderText("pour your thoughts here...")).toBeTruthy();
+    expect(
+      screen.getByPlaceholderText("pour your thoughts here..."),
+    ).toBeTruthy();
   });
 
   it("renders the initial prompt text", () => {
@@ -101,9 +99,12 @@ describe("ReflectionCapture", () => {
 
   it("submit button is enabled when content is not empty", () => {
     render(<MockReflectionCapture {...defaultProps} />);
-    fireEvent.change(screen.getByPlaceholderText("pour your thoughts here..."), {
-      target: { value: "My reflection" },
-    });
+    fireEvent.change(
+      screen.getByPlaceholderText("pour your thoughts here..."),
+      {
+        target: { value: "My reflection" },
+      },
+    );
     const btn = screen.getByText("complete reflection") as HTMLButtonElement;
     expect(btn.disabled).toBe(false);
   });
@@ -115,16 +116,23 @@ describe("ReflectionCapture", () => {
 
   it("submit button disabled when isSubmitting is true", () => {
     render(<MockReflectionCapture {...defaultProps} isSubmitting={true} />);
-    const btn = screen.getByText(/preserving/).closest("button") as HTMLButtonElement;
+    const btn = screen
+      .getByText(/preserving/)
+      .closest("button") as HTMLButtonElement;
     expect(btn.disabled).toBe(true);
   });
 
   it("calls onSubmitAction with content and rating on submit", () => {
     const onSubmit = vi.fn();
-    render(<MockReflectionCapture {...defaultProps} onSubmitAction={onSubmit} />);
-    fireEvent.change(screen.getByPlaceholderText("pour your thoughts here..."), {
-      target: { value: "Deep thoughts" },
-    });
+    render(
+      <MockReflectionCapture {...defaultProps} onSubmitAction={onSubmit} />,
+    );
+    fireEvent.change(
+      screen.getByPlaceholderText("pour your thoughts here..."),
+      {
+        target: { value: "Deep thoughts" },
+      },
+    );
     fireEvent.click(screen.getByText("3"));
     fireEvent.click(screen.getByText("complete reflection"));
     expect(onSubmit).toHaveBeenCalledWith("Deep thoughts", 3);

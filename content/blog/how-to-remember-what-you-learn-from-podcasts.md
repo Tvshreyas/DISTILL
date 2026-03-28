@@ -57,6 +57,7 @@ Your brain has already done the filtering. Out of a 90-minute conversation, cert
 Write them down. Two or three sentences. Do this the moment you get to your desk, or in the parking lot before going inside, or in the kitchen after cooking. The window is short — [within 24 hours, 70% will be gone](/blog/why-you-forget-everything-you-read).
 
 Example after a podcast about startup strategy:
+
 > "The guest's point about hiring for trajectory over credentials makes sense but assumes you can evaluate trajectory. Most interviews test for credentials because trajectory is harder to measure. Wondering how you would actually implement this."
 
 That took 30 seconds to write. It captures a specific idea, a reaction, and an open question. That is enough.
@@ -105,4 +106,4 @@ Three minutes of reflection after one episode is worth more than eight hours of 
 
 ---
 
-*Start a Distill session after your next podcast. [distillwise.com](https://distillwise.com)*
+_Start a Distill session after your next podcast. [distillwise.com](https://distillwise.com)_

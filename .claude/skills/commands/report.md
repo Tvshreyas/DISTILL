@@ -35,6 +35,7 @@ A comprehensive **SEO and GEO performance report** that aggregates data across a
 ```
 
 **Arguments:**
+
 - Domain (required)
 - Time period (required): `last-month`, `last-quarter`, `Q[N]-[YYYY]`, `[YYYY-MM-DD] to [YYYY-MM-DD]`, `last-30-days`, `last-90-days`
 - Comparison period (optional): `vs previous-quarter`, `vs last-year`, `vs previous-period`

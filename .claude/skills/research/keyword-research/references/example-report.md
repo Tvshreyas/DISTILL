@@ -29,31 +29,31 @@ This is a complete example output showing the expected format for keyword resear
 
 ### Quick Wins (Priority: Immediate)
 
-| Keyword | Volume | Difficulty | Intent | Score |
-|---------|--------|------------|--------|-------|
-| project management for small teams | 1,200 | 28 | Commercial | 92 |
-| simple task management software | 890 | 25 | Commercial | 89 |
-| best free project management tool | 2,400 | 35 | Commercial | 85 |
-| how to manage remote team projects | 720 | 22 | Informational | 82 |
-| project tracking spreadsheet alternative | 480 | 18 | Commercial | 80 |
+| Keyword                                  | Volume | Difficulty | Intent        | Score |
+| ---------------------------------------- | ------ | ---------- | ------------- | ----- |
+| project management for small teams       | 1,200  | 28         | Commercial    | 92    |
+| simple task management software          | 890    | 25         | Commercial    | 89    |
+| best free project management tool        | 2,400  | 35         | Commercial    | 85    |
+| how to manage remote team projects       | 720    | 22         | Informational | 82    |
+| project tracking spreadsheet alternative | 480    | 18         | Commercial    | 80    |
 
 ### Growth Keywords (Priority: 3-6 months)
 
-| Keyword | Volume | Difficulty | Intent | Score |
-|---------|--------|------------|--------|-------|
-| project management software | 18,000 | 72 | Commercial | 65 |
-| best project management tools [current year] | 8,500 | 65 | Commercial | 62 |
-| project management app | 12,000 | 68 | Commercial | 58 |
+| Keyword                                      | Volume | Difficulty | Intent     | Score |
+| -------------------------------------------- | ------ | ---------- | ---------- | ----- |
+| project management software                  | 18,000 | 72         | Commercial | 65    |
+| best project management tools [current year] | 8,500  | 65         | Commercial | 62    |
+| project management app                       | 12,000 | 68         | Commercial | 58    |
 
 ### GEO Opportunities (AI-citation potential)
 
-| Keyword | Type | AI Potential | Recommended Format |
-|---------|------|--------------|-------------------|
-| what is project management | Definition | ⭐⭐⭐⭐⭐ | Clear definition + methodology |
-| agile vs waterfall | Comparison | ⭐⭐⭐⭐⭐ | Side-by-side comparison table |
-| project management methodologies | List | ⭐⭐⭐⭐ | Comprehensive list with pros/cons |
-| how to create a project plan | How-to | ⭐⭐⭐⭐ | Step-by-step guide |
-| project management best practices | List | ⭐⭐⭐⭐ | Numbered best practices |
+| Keyword                           | Type       | AI Potential | Recommended Format                |
+| --------------------------------- | ---------- | ------------ | --------------------------------- |
+| what is project management        | Definition | ⭐⭐⭐⭐⭐   | Clear definition + methodology    |
+| agile vs waterfall                | Comparison | ⭐⭐⭐⭐⭐   | Side-by-side comparison table     |
+| project management methodologies  | List       | ⭐⭐⭐⭐     | Comprehensive list with pros/cons |
+| how to create a project plan      | How-to     | ⭐⭐⭐⭐     | Step-by-step guide                |
+| project management best practices | List       | ⭐⭐⭐⭐     | Numbered best practices           |
 
 ## Topic Clusters
 
@@ -62,6 +62,7 @@ This is a complete example output showing the expected format for keyword resear
 **Pillar**: "Complete Guide to Project Management" (8,500 volume)
 
 Cluster articles:
+
 1. What is project management? (2,200 volume)
 2. Project management methodologies explained (1,800 volume)
 3. How to create a project plan (1,400 volume)
@@ -73,6 +74,7 @@ Cluster articles:
 **Pillar**: "Team Collaboration Tools Guide" (4,200 volume)
 
 Cluster articles:
+
 1. How to improve team communication (1,600 volume)
 2. Remote team management tips (1,400 volume)
 3. Best practices for distributed teams (920 volume)
@@ -80,12 +82,12 @@ Cluster articles:
 
 ## Content Calendar Recommendations
 
-| Month | Content | Target Keyword | Type |
-|-------|---------|----------------|------|
-| Week 1 | Simple Task Management Guide | simple task management software | Blog + Demo |
-| Week 2 | Project Management for Small Teams | project management for small teams | Pillar Page |
-| Week 3 | Agile vs Waterfall: Complete Comparison | agile vs waterfall | Comparison |
-| Week 4 | Free PM Tools Roundup | best free project management tool | Listicle |
+| Month  | Content                                 | Target Keyword                     | Type        |
+| ------ | --------------------------------------- | ---------------------------------- | ----------- |
+| Week 1 | Simple Task Management Guide            | simple task management software    | Blog + Demo |
+| Week 2 | Project Management for Small Teams      | project management for small teams | Pillar Page |
+| Week 3 | Agile vs Waterfall: Complete Comparison | agile vs waterfall                 | Comparison  |
+| Week 4 | Free PM Tools Roundup                   | best free project management tool  | Listicle    |
 
 ## Next Steps
 

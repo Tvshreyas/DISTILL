@@ -38,9 +38,18 @@ http.route({
             userId: body.args.userId as string,
             plan: body.args.plan as "free" | "pro",
             stripeCustomerId: body.args.stripeCustomerId as string | undefined,
-            stripeSubscriptionId: body.args.stripeSubscriptionId as string | undefined,
-            subscriptionStatus: body.args.subscriptionStatus as "active" | "canceled" | "past_due" | "trialing" | undefined,
-            subscriptionPeriodEnd: body.args.subscriptionPeriodEnd as string | undefined,
+            stripeSubscriptionId: body.args.stripeSubscriptionId as
+              | string
+              | undefined,
+            subscriptionStatus: body.args.subscriptionStatus as
+              | "active"
+              | "canceled"
+              | "past_due"
+              | "trialing"
+              | undefined,
+            subscriptionPeriodEnd: body.args.subscriptionPeriodEnd as
+              | string
+              | undefined,
           });
           break;
 
@@ -51,9 +60,12 @@ http.route({
           break;
 
         case "getByStripeCustomerId": {
-          const profile = await ctx.runQuery(internal.profiles.getByStripeCustomerId, {
-            stripeCustomerId: body.args.stripeCustomerId as string,
-          });
+          const profile = await ctx.runQuery(
+            internal.profiles.getByStripeCustomerId,
+            {
+              stripeCustomerId: body.args.stripeCustomerId as string,
+            },
+          );
           return new Response(JSON.stringify({ value: profile }), {
             status: 200,
             headers: { "Content-Type": "application/json" },
@@ -76,7 +88,10 @@ http.route({
         headers: { "Content-Type": "application/json" },
       });
     } catch (err) {
-      console.error("Webhook bridge error:", err instanceof Error ? err.message : "Unknown error");
+      console.error(
+        "Webhook bridge error:",
+        err instanceof Error ? err.message : "Unknown error",
+      );
       return new Response("Internal error", { status: 500 });
     }
   }),

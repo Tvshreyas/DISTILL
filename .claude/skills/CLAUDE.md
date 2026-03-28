@@ -4,13 +4,13 @@ This plugin provides **20 skills and 9 commands** for Search Engine Optimization
 
 ## Skills by Phase
 
-| Phase | Skills |
-|-------|--------|
-| **Research** | `keyword-research`, `competitor-analysis`, `serp-analysis`, `content-gap-analysis` |
-| **Build** | `seo-content-writer`, `geo-content-optimizer`, `meta-tags-optimizer`, `schema-markup-generator` |
-| **Optimize** | `on-page-seo-auditor`, `technical-seo-checker`, `internal-linking-optimizer`, `content-refresher` |
-| **Monitor** | `rank-tracker`, `backlink-analyzer`, `performance-reporter`, `alert-manager` |
-| **Cross-cutting** | `content-quality-auditor`, `domain-authority-auditor`, `entity-optimizer`, `memory-management` |
+| Phase             | Skills                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------- |
+| **Research**      | `keyword-research`, `competitor-analysis`, `serp-analysis`, `content-gap-analysis`                |
+| **Build**         | `seo-content-writer`, `geo-content-optimizer`, `meta-tags-optimizer`, `schema-markup-generator`   |
+| **Optimize**      | `on-page-seo-auditor`, `technical-seo-checker`, `internal-linking-optimizer`, `content-refresher` |
+| **Monitor**       | `rank-tracker`, `backlink-analyzer`, `performance-reporter`, `alert-manager`                      |
+| **Cross-cutting** | `content-quality-auditor`, `domain-authority-auditor`, `entity-optimizer`, `memory-management`    |
 
 ## One-Shot Commands
 

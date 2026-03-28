@@ -51,7 +51,6 @@ metadata:
 
 # Technical SEO Checker
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -125,6 +124,7 @@ Claude can automatically crawl the entire site structure via ~~web crawler, pull
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Site URL(s) to audit
 2. PageSpeed Insights screenshots or reports
 3. robots.txt file content
@@ -140,17 +140,19 @@ When a user requests a technical SEO audit:
 
    ```markdown
    ## Crawlability Analysis
-   
+
    ### Robots.txt Review
-   
+
    **URL**: [domain]/robots.txt
    **Status**: [Found/Not Found/Error]
-   
+
    **Current Content**:
    ```
+
    [robots.txt content]
+
    ```
-   
+
    | Check | Status | Notes |
    |-------|--------|-------|
    | File exists | ✅/❌ | [notes] |
@@ -159,28 +161,30 @@ When a user requests a technical SEO audit:
    | Important pages blocked | ✅/⚠️/❌ | [blocked paths] |
    | Assets blocked | ✅/⚠️/❌ | [CSS/JS blocked?] |
    | Correct user-agents | ✅/⚠️/❌ | [notes] |
-   
+
    **Issues Found**:
    - [Issue 1]
    - [Issue 2]
-   
+
    **Recommended robots.txt**:
    ```
-   User-agent: *
+
+   User-agent: \*
    Allow: /
    Disallow: /admin/
    Disallow: /private/
-   
+
    Sitemap: https://example.com/sitemap.xml
+
    ```
-   
+
    ---
-   
+
    ### XML Sitemap Review
-   
+
    **Sitemap URL**: [URL]
    **Status**: [Found/Not Found/Error]
-   
+
    | Check | Status | Notes |
    |-------|--------|-------|
    | Sitemap exists | ✅/❌ | [notes] |
@@ -191,14 +195,14 @@ When a user requests a technical SEO audit:
    | Only indexable URLs | ✅/⚠️/❌ | [notes] |
    | Includes priority | ✅/⚠️ | [notes] |
    | Includes lastmod | ✅/⚠️ | [accurate?] |
-   
+
    **Issues Found**:
    - [Issue 1]
-   
+
    ---
-   
+
    ### Crawl Budget Analysis
-   
+
    | Factor | Status | Impact |
    |--------|--------|--------|
    | Crawl errors | [X] errors | [Low/Med/High] |
@@ -206,7 +210,7 @@ When a user requests a technical SEO audit:
    | Thin content | [X] pages | [Low/Med/High] |
    | Redirect chains | [X] found | [Low/Med/High] |
    | Orphan pages | [X] found | [Low/Med/High] |
-   
+
    **Crawlability Score**: [X]/10
    ```
 
@@ -214,46 +218,46 @@ When a user requests a technical SEO audit:
 
    ```markdown
    ## Indexability Analysis
-   
+
    ### Index Status Overview
-   
-   | Metric | Count | Notes |
-   |--------|-------|-------|
-   | Pages in sitemap | [X] | |
-   | Pages indexed | [X] | [source: site: search] |
-   | Index coverage ratio | [X]% | [good if >90%] |
-   
+
+   | Metric               | Count | Notes                  |
+   | -------------------- | ----- | ---------------------- |
+   | Pages in sitemap     | [X]   |                        |
+   | Pages indexed        | [X]   | [source: site: search] |
+   | Index coverage ratio | [X]%  | [good if >90%]         |
+
    ### Index Blockers Check
-   
-   | Blocker Type | Found | Pages Affected |
-   |--------------|-------|----------------|
-   | noindex meta tag | [X] | [list or "none"] |
-   | noindex X-Robots | [X] | [list or "none"] |
-   | Robots.txt blocked | [X] | [list or "none"] |
-   | Canonical to other | [X] | [list or "none"] |
-   | 4xx/5xx errors | [X] | [list or "none"] |
-   | Redirect loops | [X] | [list or "none"] |
-   
+
+   | Blocker Type       | Found | Pages Affected   |
+   | ------------------ | ----- | ---------------- |
+   | noindex meta tag   | [X]   | [list or "none"] |
+   | noindex X-Robots   | [X]   | [list or "none"] |
+   | Robots.txt blocked | [X]   | [list or "none"] |
+   | Canonical to other | [X]   | [list or "none"] |
+   | 4xx/5xx errors     | [X]   | [list or "none"] |
+   | Redirect loops     | [X]   | [list or "none"] |
+
    ### Canonical Tags Audit
-   
-   | Check | Status | Notes |
-   |-------|--------|-------|
-   | Canonicals present | ✅/⚠️/❌ | [X]% of pages |
-   | Self-referencing | ✅/⚠️/❌ | [notes] |
-   | Consistent (HTTP/HTTPS) | ✅/⚠️/❌ | [notes] |
-   | Consistent (www/non-www) | ✅/⚠️/❌ | [notes] |
-   | No conflicting signals | ✅/⚠️/❌ | [notes] |
-   
+
+   | Check                    | Status   | Notes         |
+   | ------------------------ | -------- | ------------- |
+   | Canonicals present       | ✅/⚠️/❌ | [X]% of pages |
+   | Self-referencing         | ✅/⚠️/❌ | [notes]       |
+   | Consistent (HTTP/HTTPS)  | ✅/⚠️/❌ | [notes]       |
+   | Consistent (www/non-www) | ✅/⚠️/❌ | [notes]       |
+   | No conflicting signals   | ✅/⚠️/❌ | [notes]       |
+
    ### Duplicate Content Issues
-   
-   | Issue Type | Count | Examples |
-   |------------|-------|----------|
-   | Exact duplicates | [X] | [URLs] |
-   | Near duplicates | [X] | [URLs] |
-   | Parameter duplicates | [X] | [URLs] |
-   | WWW/non-WWW | [X] | [notes] |
-   | HTTP/HTTPS | [X] | [notes] |
-   
+
+   | Issue Type           | Count | Examples |
+   | -------------------- | ----- | -------- |
+   | Exact duplicates     | [X]   | [URLs]   |
+   | Near duplicates      | [X]   | [URLs]   |
+   | Parameter duplicates | [X]   | [URLs]   |
+   | WWW/non-WWW          | [X]   | [notes]  |
+   | HTTP/HTTPS           | [X]   | [notes]  |
+
    **Indexability Score**: [X]/10
    ```
 
@@ -288,11 +292,13 @@ When a user requests a technical SEO audit:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Site URL or domain clearly specified
 - [ ] Access to technical data (robots.txt, sitemap, or crawl results)
 - [ ] Performance metrics available (via ~~page speed tool or screenshots)
 
 ### Output Validation
+
 - [ ] Every recommendation cites specific data points (not generic advice)
 - [ ] All issues include affected URLs or page counts
 - [ ] Performance metrics include actual numbers with units (seconds, KB, etc.)
@@ -327,4 +333,3 @@ When a user requests a technical SEO audit:
 - [internal-linking-optimizer](../internal-linking-optimizer/) — Fix link issues
 - [alert-manager](../../monitor/alert-manager/) — Set up alerts for technical issues found
 - [content-quality-auditor](../../cross-cutting/content-quality-auditor/) — Full 80-item CORE-EEAT audit
-

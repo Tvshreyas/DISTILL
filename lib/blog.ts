@@ -21,7 +21,7 @@ export async function getSortedPostsData() {
   if (!fs.existsSync(postsDirectory)) {
     return [];
   }
-  
+
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames
     .filter((fileName) => fileName.endsWith(".md"))
@@ -39,12 +39,12 @@ export async function getSortedPostsData() {
       // Combine the data with the slug
       return {
         slug,
-        ...(matterResult.data as { 
-          title: string; 
-          description: string; 
-          date: string; 
-          author: string; 
-          tags: string[]; 
+        ...(matterResult.data as {
+          title: string;
+          description: string;
+          date: string;
+          author: string;
+          tags: string[];
         }),
       };
     });
@@ -91,12 +91,12 @@ export async function getPostData(slug: string): Promise<BlogPost> {
   return {
     slug,
     contentHtml,
-    ...(matterResult.data as { 
-      title: string; 
-      description: string; 
-      date: string; 
-      author: string; 
-      tags: string[]; 
+    ...(matterResult.data as {
+      title: string;
+      description: string;
+      date: string;
+      author: string;
+      tags: string[];
     }),
   };
 }

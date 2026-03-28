@@ -18,7 +18,7 @@ Active reading means interacting with a text as you consume it. Highlighting, qu
 
 Passive reading — the default mode for most of us — feels productive. You are turning pages. You are "getting through" the book. But cognitive research on encoding consistently shows that information your brain does not process deeply gets discarded within hours. Hermann Ebbinghaus documented this in the 1880s, and nothing about human memory has changed since. If you want the details on why forgetting happens so fast, [this piece on the forgetting curve](/blog/why-you-forget-everything-you-read) covers the mechanics.
 
-The gap between passive and active reading is not small. A 2013 study published in *Psychological Science in the Public Interest* found that practice testing and distributed practice (two forms of active engagement) dramatically outperformed rereading and highlighting for long-term retention. Rereading ranked near the bottom of effective study strategies.
+The gap between passive and active reading is not small. A 2013 study published in _Psychological Science in the Public Interest_ found that practice testing and distributed practice (two forms of active engagement) dramatically outperformed rereading and highlighting for long-term retention. Rereading ranked near the bottom of effective study strategies.
 
 The problem is not that people lack discipline. The problem is that passive reading feels like learning. You experience the ideas. You nod along. You feel informed. But feeling informed and being able to reconstruct an argument from memory are two different things.
 

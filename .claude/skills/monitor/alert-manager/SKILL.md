@@ -46,7 +46,6 @@ metadata:
 
 # Alert Manager
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -123,6 +122,7 @@ Automatically monitor real-time metric feeds for ranking changes via ~~SEO tool 
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Current baseline metrics for alert thresholds (rankings, traffic, backlinks)
 2. Critical keywords or pages to monitor
 3. Alert priority levels and notification preferences
@@ -139,21 +139,21 @@ When a user requests alert setup:
 
    ```markdown
    ## SEO Alert System Configuration
-   
+
    **Domain**: [domain]
    **Configured Date**: [date]
-   
+
    ### Alert Categories
-   
-   | Category | Description | Typical Urgency |
-   |----------|-------------|-----------------|
-   | Ranking Alerts | Keyword position changes | Medium-High |
-   | Traffic Alerts | Organic traffic fluctuations | High |
-   | Technical Alerts | Site health issues | Critical |
-   | Backlink Alerts | Link profile changes | Medium |
-   | Competitor Alerts | Competitor movements | Low-Medium |
-   | GEO Alerts | AI visibility changes | Medium |
-   | Brand Alerts | Brand mentions and reputation | Medium |
+
+   | Category          | Description                   | Typical Urgency |
+   | ----------------- | ----------------------------- | --------------- |
+   | Ranking Alerts    | Keyword position changes      | Medium-High     |
+   | Traffic Alerts    | Organic traffic fluctuations  | High            |
+   | Technical Alerts  | Site health issues            | Critical        |
+   | Backlink Alerts   | Link profile changes          | Medium          |
+   | Competitor Alerts | Competitor movements          | Low-Medium      |
+   | GEO Alerts        | AI visibility changes         | Medium          |
+   | Brand Alerts      | Brand mentions and reputation | Medium          |
    ```
 
 2. **Configure Alert Rules by Category**
@@ -172,53 +172,55 @@ When a user requests alert setup:
 
 5. **Create Alert Summary**
 
-    ```markdown
-    # SEO Alert System Summary
-    
-    **Domain**: [domain]
-    **Configured**: [date]
-    **Total Active Alerts**: [X]
-    
-    ## Alert Count by Category
-    
-    | Category | Critical | High | Medium | Low | Total |
-    |----------|----------|------|--------|-----|-------|
-    | Rankings | [X] | [X] | [X] | [X] | [X] |
-    | Traffic | [X] | [X] | [X] | [X] | [X] |
-    | Technical | [X] | [X] | [X] | [X] | [X] |
-    | Backlinks | [X] | [X] | [X] | [X] | [X] |
-    | Competitors | [X] | [X] | [X] | [X] | [X] |
-    | GEO | [X] | [X] | [X] | [X] | [X] |
-    | **Total** | **[X]** | **[X]** | **[X]** | **[X]** | **[X]** |
-    
-    ## Quick Reference
-    
-    ### If You Get a Critical Alert
-    
-    1. Don't panic
-    2. Check alert details
-    3. Follow response plan
-    4. Document actions taken
-    5. Update stakeholders
-    
-    ### Weekly Alert Review Checklist
-    
-    - [ ] Review all alerts triggered
-    - [ ] Identify patterns
-    - [ ] Adjust thresholds if needed
-    - [ ] Update response plans
-    - [ ] Clean up false positives
-    ```
+   ```markdown
+   # SEO Alert System Summary
+
+   **Domain**: [domain]
+   **Configured**: [date]
+   **Total Active Alerts**: [X]
+
+   ## Alert Count by Category
+
+   | Category    | Critical | High    | Medium  | Low     | Total   |
+   | ----------- | -------- | ------- | ------- | ------- | ------- |
+   | Rankings    | [X]      | [X]     | [X]     | [X]     | [X]     |
+   | Traffic     | [X]      | [X]     | [X]     | [X]     | [X]     |
+   | Technical   | [X]      | [X]     | [X]     | [X]     | [X]     |
+   | Backlinks   | [X]      | [X]     | [X]     | [X]     | [X]     |
+   | Competitors | [X]      | [X]     | [X]     | [X]     | [X]     |
+   | GEO         | [X]      | [X]     | [X]     | [X]     | [X]     |
+   | **Total**   | **[X]**  | **[X]** | **[X]** | **[X]** | **[X]** |
+
+   ## Quick Reference
+
+   ### If You Get a Critical Alert
+
+   1. Don't panic
+   2. Check alert details
+   3. Follow response plan
+   4. Document actions taken
+   5. Update stakeholders
+
+   ### Weekly Alert Review Checklist
+
+   - [ ] Review all alerts triggered
+   - [ ] Identify patterns
+   - [ ] Adjust thresholds if needed
+   - [ ] Update response plans
+   - [ ] Clean up false positives
+   ```
 
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Alert thresholds are based on realistic baseline data
 - [ ] Critical keywords and pages clearly identified
 - [ ] Response plans defined for each alert priority level
 - [ ] Notification channels configured with appropriate recipients
 
 ### Output Validation
+
 - [ ] Every metric cites its data source and collection date
 - [ ] Alert thresholds account for normal metric fluctuations
 - [ ] Response plans are specific and time-bound
@@ -235,22 +237,23 @@ When a user requests alert setup:
 
 ### Critical Keywords (Immediate Alert)
 
-| Keyword | Current | Alert If | Priority |
-|---------|---------|----------|----------|
-| best project management software | 2 | Drops to 5+ | 🔴 Critical |
-| project management tools | 4 | Drops to 8+ | 🔴 Critical |
-| team collaboration software | 1 | Any drop | 🔴 Critical |
+| Keyword                          | Current | Alert If    | Priority    |
+| -------------------------------- | ------- | ----------- | ----------- |
+| best project management software | 2       | Drops to 5+ | 🔴 Critical |
+| project management tools         | 4       | Drops to 8+ | 🔴 Critical |
+| team collaboration software      | 1       | Any drop    | 🔴 Critical |
 
 ### Important Keywords (Same-Day Alert)
 
-| Keyword | Current | Alert If | Priority |
-|---------|---------|----------|----------|
-| agile project management | 7 | Drops out of top 10 | 🔴 High |
-| kanban software | 9 | Drops out of top 10 | 🔴 High |
+| Keyword                  | Current | Alert If            | Priority |
+| ------------------------ | ------- | ------------------- | -------- |
+| agile project management | 7       | Drops out of top 10 | 🔴 High  |
+| kanban software          | 9       | Drops out of top 10 | 🔴 High  |
 
 ### Alert Response Plan
 
 **If Critical Keyword Drops**:
+
 1. Check if page is still indexed (site:url)
 2. Look for algorithm update announcements
 3. Analyze what changed in SERP
@@ -272,16 +275,16 @@ When a user requests alert setup:
 
 ## Alert Threshold Quick Reference
 
-| Metric | Warning | Critical | Frequency |
-|--------|---------|----------|-----------|
-| Organic traffic | -15% WoW | -30% WoW | Daily |
-| Keyword positions | >3 position drop | >5 position drop | Daily |
-| Pages indexed | -5% change | -20% change | Weekly |
-| Crawl errors | >10 new/day | >50 new/day | Daily |
-| Core Web Vitals | "Needs Improvement" | "Poor" | Weekly |
-| Backlinks lost | >5% in 1 week | >15% in 1 week | Weekly |
-| AI citation loss | Any key query | >20% queries | Weekly |
-| Security issues | Any detected | Any detected | Daily |
+| Metric            | Warning             | Critical         | Frequency |
+| ----------------- | ------------------- | ---------------- | --------- |
+| Organic traffic   | -15% WoW            | -30% WoW         | Daily     |
+| Keyword positions | >3 position drop    | >5 position drop | Daily     |
+| Pages indexed     | -5% change          | -20% change      | Weekly    |
+| Crawl errors      | >10 new/day         | >50 new/day      | Daily     |
+| Core Web Vitals   | "Needs Improvement" | "Poor"           | Weekly    |
+| Backlinks lost    | >5% in 1 week       | >15% in 1 week   | Weekly    |
+| AI citation loss  | Any key query       | >20% queries     | Weekly    |
+| Security issues   | Any detected        | Any detected     | Daily     |
 
 > **Reference**: See [references/alert-threshold-guide.md](./references/alert-threshold-guide.md) for baseline establishment, threshold setting methodology, fatigue prevention, escalation paths, and response playbooks.
 
@@ -297,4 +300,3 @@ When a user requests alert setup:
 - [performance-reporter](../performance-reporter/) — Alert summaries in reports
 - [memory-management](../../cross-cutting/memory-management/) — Store alert history and thresholds in project memory
 - [content-refresher](../../optimize/content-refresher/) — Content decay alerts trigger refresh workflows
-

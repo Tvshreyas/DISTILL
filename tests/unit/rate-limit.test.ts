@@ -35,7 +35,11 @@ describe("Rate limiters (Upstash)", () => {
   });
 
   it("authLimiter.limit() returns success when under limit", async () => {
-    mockLimitFn.mockResolvedValue({ success: true, remaining: 4, reset: Date.now() + 60_000 });
+    mockLimitFn.mockResolvedValue({
+      success: true,
+      remaining: 4,
+      reset: Date.now() + 60_000,
+    });
     const result = await authLimiter.limit("auth:1.2.3.4");
     expect(result.success).toBe(true);
     expect(result.remaining).toBe(4);
@@ -43,21 +47,33 @@ describe("Rate limiters (Upstash)", () => {
   });
 
   it("authLimiter.limit() returns failure when over limit", async () => {
-    mockLimitFn.mockResolvedValue({ success: false, remaining: 0, reset: Date.now() + 30_000 });
+    mockLimitFn.mockResolvedValue({
+      success: false,
+      remaining: 0,
+      reset: Date.now() + 30_000,
+    });
     const result = await authLimiter.limit("auth:1.2.3.4");
     expect(result.success).toBe(false);
     expect(result.remaining).toBe(0);
   });
 
   it("apiWriteLimiter delegates to Upstash", async () => {
-    mockLimitFn.mockResolvedValue({ success: true, remaining: 29, reset: Date.now() + 60_000 });
+    mockLimitFn.mockResolvedValue({
+      success: true,
+      remaining: 29,
+      reset: Date.now() + 60_000,
+    });
     const result = await apiWriteLimiter.limit("write:1.2.3.4");
     expect(result.success).toBe(true);
     expect(result.remaining).toBe(29);
   });
 
   it("apiReadLimiter delegates to Upstash", async () => {
-    mockLimitFn.mockResolvedValue({ success: true, remaining: 59, reset: Date.now() + 60_000 });
+    mockLimitFn.mockResolvedValue({
+      success: true,
+      remaining: 59,
+      reset: Date.now() + 60_000,
+    });
     const result = await apiReadLimiter.limit("read:1.2.3.4");
     expect(result.success).toBe(true);
     expect(result.remaining).toBe(59);
@@ -65,7 +81,11 @@ describe("Rate limiters (Upstash)", () => {
 
   it("returns reset timestamp from Upstash", async () => {
     const futureReset = Date.now() + 120_000;
-    mockLimitFn.mockResolvedValue({ success: true, remaining: 3, reset: futureReset });
+    mockLimitFn.mockResolvedValue({
+      success: true,
+      remaining: 3,
+      reset: futureReset,
+    });
     const result = await authLimiter.limit("auth:test");
     expect(result.reset).toBe(futureReset);
   });
@@ -88,7 +108,9 @@ describe("getClientIp", () => {
 
   it("handles multiple IPs in x-forwarded-for (comma-separated), picks last (rightmost = trusted proxy)", () => {
     const req = new Request("http://localhost", {
-      headers: { "x-forwarded-for": "203.0.113.1, 70.41.3.18, 150.172.238.178" },
+      headers: {
+        "x-forwarded-for": "203.0.113.1, 70.41.3.18, 150.172.238.178",
+      },
     });
     expect(getClientIp(req)).toBe("150.172.238.178");
   });

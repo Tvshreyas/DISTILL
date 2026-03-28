@@ -12,7 +12,17 @@ import OnboardingReflectionRestore from "@/components/OnboardingReflectionRestor
 import QuickDistill from "@/components/QuickDistill";
 import posthog from "posthog-js";
 import { toast } from "sonner";
-import { Flame, BookOpen, PenTool, TrendingUp, Sparkles, Check, ArrowRight, CalendarDays, X } from "lucide-react";
+import {
+  Flame,
+  BookOpen,
+  PenTool,
+  TrendingUp,
+  Sparkles,
+  Check,
+  ArrowRight,
+  CalendarDays,
+  X,
+} from "lucide-react";
 
 function toDateString(date: Date, timezone: string): string {
   return date.toLocaleDateString("en-CA", { timeZone: timezone });
@@ -44,7 +54,7 @@ function getNextMilestone(current: number) {
 // Loss Aversion — calculate hours until streak dies
 function getStreakUrgency(
   lastReflectionDate: string | undefined,
-  timezone: string
+  timezone: string,
 ): { hoursLeft: number; isUrgent: boolean } | null {
   if (!lastReflectionDate) return null;
 
@@ -59,7 +69,7 @@ function getStreakUrgency(
   endOfDay.setHours(23, 59, 59, 999);
   const hoursLeft = Math.max(
     0,
-    Math.floor((endOfDay.getTime() - now.getTime()) / (1000 * 60 * 60))
+    Math.floor((endOfDay.getTime() - now.getTime()) / (1000 * 60 * 60)),
   );
 
   return { hoursLeft, isUrgent: hoursLeft <= 6 };
@@ -135,9 +145,14 @@ function MonthlyDigestCard() {
         </span>
       </div>
       <p className="font-grotesk text-lg font-black lowercase leading-snug text-soft-black">
-        in {digest.monthLabel.toLowerCase()}, you wrote {digest.totalReflections} reflection{digest.totalReflections !== 1 ? "s" : ""} across {digest.contentTypes} type{digest.contentTypes !== 1 ? "s" : ""}.
-        {digest.totalWords > 0 && ` ${digest.totalWords.toLocaleString()} words total.`}
-        {digest.longestStreak > 0 && ` your longest streak was ${digest.longestStreak} days.`}
+        in {digest.monthLabel.toLowerCase()}, you wrote{" "}
+        {digest.totalReflections} reflection
+        {digest.totalReflections !== 1 ? "s" : ""} across {digest.contentTypes}{" "}
+        type{digest.contentTypes !== 1 ? "s" : ""}.
+        {digest.totalWords > 0 &&
+          ` ${digest.totalWords.toLocaleString()} words total.`}
+        {digest.longestStreak > 0 &&
+          ` your longest streak was ${digest.longestStreak} days.`}
       </p>
     </div>
   );
@@ -168,7 +183,11 @@ function ResurfacingHero() {
     if (!layerContent.trim()) return;
     setIsResponding(true);
     try {
-      await respond({ queueId: pending.queueId, action: "layered", layerContent: layerContent.trim() });
+      await respond({
+        queueId: pending.queueId,
+        action: "layered",
+        layerContent: layerContent.trim(),
+      });
       toast.success("Perspective layered.");
       setIsLayering(false);
       setLayerContent("");
@@ -219,7 +238,10 @@ function ResurfacingHero() {
               {isResponding ? "Saving..." : "Save Layer"}
             </button>
             <button
-              onClick={() => { setIsLayering(false); setLayerContent(""); }}
+              onClick={() => {
+                setIsLayering(false);
+                setLayerContent("");
+              }}
               className="px-5 py-2.5 text-muted-text font-bold text-sm hover:text-soft-black"
             >
               Cancel
@@ -271,15 +293,16 @@ export default function DashboardPage() {
     const totalWords = profile.totalWordsWritten ?? 0;
     const nextMilestone = getNextMilestone(lifetimeReflections);
     const milestoneProgress = lifetimeReflections / nextMilestone;
-    const streakUrgency = currentStreak > 0
-      ? getStreakUrgency(profile.lastReflectionDate, userTimezone)
-      : null;
+    const streakUrgency =
+      currentStreak > 0
+        ? getStreakUrgency(profile.lastReflectionDate, userTimezone)
+        : null;
     const identity = getIdentityLabel(lifetimeReflections);
 
     const reflectionDates = new Set(
       (recentReflections ?? []).map((r) =>
-        toDateString(new Date(r._creationTime), userTimezone)
-      )
+        toDateString(new Date(r._creationTime), userTimezone),
+      ),
     );
     const monthDays = getMonthDays(userTimezone);
 
@@ -297,37 +320,43 @@ export default function DashboardPage() {
     };
   }, [profile, recentReflections]);
 
-  if (profile === undefined) return (
-    <div className="space-y-12 animate-pulse">
-      <div className="space-y-2">
-        <div className="h-12 w-56 bg-soft-black/10 rounded-2xl" />
-        <div className="h-4 w-72 bg-soft-black/5 rounded-lg" />
+  if (profile === undefined)
+    return (
+      <div className="space-y-12 animate-pulse">
+        <div className="space-y-2">
+          <div className="h-12 w-56 bg-soft-black/10 rounded-2xl" />
+          <div className="h-4 w-72 bg-soft-black/5 rounded-lg" />
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-4 h-60 bg-peach/10 rounded-[2rem] border-4 border-soft-black/10" />
+          <div className="lg:col-span-8 h-60 bg-soft-black/5 rounded-[2rem] border-2 border-soft-black/10" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="h-36 bg-white/50 rounded-2xl border-2 border-soft-black/10" />
+          <div className="h-36 bg-white/50 rounded-2xl border-2 border-soft-black/10" />
+          <div className="h-36 bg-white/50 rounded-2xl border-2 border-soft-black/10" />
+        </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-4 h-60 bg-peach/10 rounded-[2rem] border-4 border-soft-black/10" />
-        <div className="lg:col-span-8 h-60 bg-soft-black/5 rounded-[2rem] border-2 border-soft-black/10" />
+    );
+  if (!profile)
+    return (
+      <div className="flex flex-col items-center justify-center py-32 text-center">
+        <div className="p-8 rounded-[2rem] border-4 border-soft-black bg-peach/10 max-w-sm space-y-4">
+          <h2 className="font-grotesk text-xl font-black text-soft-black">
+            profile not found.
+          </h2>
+          <p className="text-sm text-muted-text">
+            something went wrong loading your profile.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-3 bg-soft-black text-white rounded-2xl font-black text-sm hover:scale-105 transition-transform"
+          >
+            try again
+          </button>
+        </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="h-36 bg-white/50 rounded-2xl border-2 border-soft-black/10" />
-        <div className="h-36 bg-white/50 rounded-2xl border-2 border-soft-black/10" />
-        <div className="h-36 bg-white/50 rounded-2xl border-2 border-soft-black/10" />
-      </div>
-    </div>
-  );
-  if (!profile) return (
-    <div className="flex flex-col items-center justify-center py-32 text-center">
-      <div className="p-8 rounded-[2rem] border-4 border-soft-black bg-peach/10 max-w-sm space-y-4">
-        <h2 className="font-grotesk text-xl font-black text-soft-black">profile not found.</h2>
-        <p className="text-sm text-muted-text">something went wrong loading your profile.</p>
-        <button
-          onClick={() => window.location.reload()}
-          className="px-6 py-3 bg-soft-black text-white rounded-2xl font-black text-sm hover:scale-105 transition-transform"
-        >
-          try again
-        </button>
-      </div>
-    </div>
-  );
+    );
   if (!dashboardData) return null;
 
   const {
@@ -365,9 +394,7 @@ export default function DashboardPage() {
       {streakUrgency && (
         <div
           className={`flex items-center gap-3 px-6 py-4 rounded-2xl border-2 border-soft-black ${
-            streakUrgency.isUrgent
-              ? "bg-peach/30 animate-pulse"
-              : "bg-peach/10"
+            streakUrgency.isUrgent ? "bg-peach/30 animate-pulse" : "bg-peach/10"
           }`}
         >
           <Flame
@@ -391,11 +418,7 @@ export default function DashboardPage() {
         {/* Streak Counter + Identity Label */}
         <section className="lg:col-span-4 p-8 rounded-[2rem] border-4 border-soft-black bg-peach/10 relative overflow-hidden group hover:bg-peach/20 transition-colors">
           <div className="absolute top-0 right-0 p-4 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity">
-            <svg
-              className="w-24 h-24"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
               <path d="M15.312 10.5c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z" />
               <path
                 fillRule="evenodd"

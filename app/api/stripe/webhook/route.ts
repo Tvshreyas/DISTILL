@@ -14,12 +14,16 @@ async function callConvexBridge(action: string, args: Record<string, unknown>) {
   const internalKey = process.env.CONVEX_INTERNAL_AUTH_KEY;
 
   if (!convexUrl || !internalKey) {
-    throw new Error("Missing CONVEX_INTERNAL_AUTH_KEY or NEXT_PUBLIC_CONVEX_URL");
+    throw new Error(
+      "Missing CONVEX_INTERNAL_AUTH_KEY or NEXT_PUBLIC_CONVEX_URL",
+    );
   }
 
   // Convex HTTP actions are served at the site URL, not the cloud API URL.
   // The site URL is derived from the deployment URL.
-  const siteUrl = convexUrl.replace(".cloud/", ".site/").replace(".cloud", ".site");
+  const siteUrl = convexUrl
+    .replace(".cloud/", ".site/")
+    .replace(".cloud", ".site");
 
   const response = await fetch(`${siteUrl}/stripe-webhook-bridge`, {
     method: "POST",
@@ -45,7 +49,7 @@ export async function POST(req: Request) {
   if (!signature || !process.env.STRIPE_WEBHOOK_SECRET) {
     return NextResponse.json(
       { error: "Missing signature or webhook secret" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -54,7 +58,7 @@ export async function POST(req: Request) {
     event = getStripe().webhooks.constructEvent(
       body,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET
+      process.env.STRIPE_WEBHOOK_SECRET,
     );
   } catch {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
@@ -81,7 +85,9 @@ export async function POST(req: Request) {
           const sub = await getStripe().subscriptions.retrieve(subscriptionId);
           const subData = sub as unknown as { current_period_end?: number };
           if (subData.current_period_end) {
-            periodEnd = new Date(subData.current_period_end * 1000).toISOString();
+            periodEnd = new Date(
+              subData.current_period_end * 1000,
+            ).toISOString();
           }
         }
 
@@ -113,7 +119,9 @@ export async function POST(req: Request) {
         const status = subscription.status;
         const plan =
           status === "active" || status === "trialing" ? "pro" : "free";
-        const subObj = subscription as unknown as { current_period_end?: number };
+        const subObj = subscription as unknown as {
+          current_period_end?: number;
+        };
         const periodEnd = subObj.current_period_end
           ? new Date(subObj.current_period_end * 1000).toISOString()
           : undefined;
@@ -135,10 +143,13 @@ export async function POST(req: Request) {
       stripeEventId: event.id,
     });
   } catch (err) {
-    console.error("Webhook processing error:", err instanceof Error ? err.message : "Unknown error");
+    console.error(
+      "Webhook processing error:",
+      err instanceof Error ? err.message : "Unknown error",
+    );
     return NextResponse.json(
       { error: "Webhook processing failed" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 

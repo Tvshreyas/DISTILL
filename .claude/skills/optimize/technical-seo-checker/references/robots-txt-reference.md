@@ -25,6 +25,7 @@ Specifies which bot the rules apply to.
 **Syntax**: `User-agent: [bot-name]`
 
 **Common user-agents**:
+
 ```
 User-agent: *                    # All bots
 User-agent: Googlebot            # Google's crawler
@@ -53,6 +54,7 @@ Blocks bots from crawling specified paths.
 **Syntax**: `Disallow: [path]`
 
 **Examples**:
+
 ```
 Disallow: /                      # Block entire site
 Disallow: /admin/                # Block admin directory
@@ -63,6 +65,7 @@ Disallow:                        # Allow everything (empty disallow)
 ```
 
 **Path matching**:
+
 - `/` at end = block directory and all subdirectories
 - Without `/` at end = block all paths starting with string
 - `*` = wildcard, matches any sequence
@@ -95,6 +98,7 @@ Specifies location of XML sitemap.
 **Syntax**: `Sitemap: [absolute URL]`
 
 **Examples**:
+
 ```
 Sitemap: https://example.com/sitemap.xml
 Sitemap: https://example.com/sitemap_index.xml
@@ -102,6 +106,7 @@ Sitemap: https://example.com/blog/sitemap.xml
 ```
 
 **Best practices**:
+
 - Use absolute URLs (not relative)
 - Can include multiple Sitemap directives
 - Place at end of file
@@ -116,6 +121,7 @@ Adds delay between requests (seconds).
 **Syntax**: `Crawl-delay: [seconds]`
 
 **Example**:
+
 ```
 User-agent: *
 Crawl-delay: 10
@@ -389,6 +395,7 @@ Sitemap: https://example.com/sitemap.xml
 Test URL pattern: `https://example.com/robots.txt`
 
 Check file is:
+
 - Accessible (returns 200 status)
 - Plain text format
 - UTF-8 encoded
@@ -398,6 +405,7 @@ Check file is:
 ### Common Testing Scenarios
 
 Test these URLs in tester:
+
 - Homepage: `/`
 - Product page: `/products/example`
 - Admin page: `/admin/`
@@ -411,6 +419,7 @@ Test these URLs in tester:
 ### Mistake 1: Blocking CSS/JS Files
 
 **Wrong**:
+
 ```
 User-agent: *
 Disallow: /css/
@@ -420,6 +429,7 @@ Disallow: /js/
 **Why it's wrong**: Google needs CSS/JS to render pages properly.
 
 **Fix**:
+
 ```
 User-agent: *
 Allow: /css/
@@ -431,11 +441,13 @@ Allow: /js/
 ### Mistake 2: Using Relative URLs for Sitemap
 
 **Wrong**:
+
 ```
 Sitemap: /sitemap.xml
 ```
 
 **Fix**:
+
 ```
 Sitemap: https://example.com/sitemap.xml
 ```
@@ -445,12 +457,14 @@ Sitemap: https://example.com/sitemap.xml
 ### Mistake 3: Spaces in Directives
 
 **Wrong**:
+
 ```
 User-agent : Googlebot
 Disallow : /admin/
 ```
 
 **Fix** (no spaces before colons):
+
 ```
 User-agent: Googlebot
 Disallow: /admin/
@@ -463,6 +477,7 @@ Disallow: /admin/
 **Intention**: Block /admin directory
 
 **Wrong**:
+
 ```
 Disallow: /admin
 ```
@@ -470,6 +485,7 @@ Disallow: /admin
 **Result**: Also blocks /admin-panel, /administrator, etc.
 
 **Fix**:
+
 ```
 Disallow: /admin/
 ```
@@ -479,6 +495,7 @@ Disallow: /admin/
 ### Mistake 5: Blocking Entire Site Accidentally
 
 **Wrong**:
+
 ```
 User-agent: *
 Disallow: /
@@ -498,6 +515,7 @@ Allow: /blog/
 **Result**: Staging site gets indexed.
 
 **Fix**:
+
 ```
 User-agent: *
 Disallow: /
@@ -512,11 +530,13 @@ On all non-production environments.
 **Note**: Directives are case-insensitive, but paths are case-sensitive.
 
 **Example**:
+
 ```
 Disallow: /Admin/        # Blocks /Admin/ but not /admin/
 ```
 
 **Fix**: Block both if needed:
+
 ```
 Disallow: /admin/
 Disallow: /Admin/
@@ -576,18 +596,21 @@ Disallow: /admin/
 ### When to use each:
 
 **Robots.txt**:
+
 - Block crawling of entire directories
 - Reduce crawl budget waste
 - Block parameter variations
 - Does NOT prevent indexing if page is linked from elsewhere
 
 **Meta robots tag**:
+
 - Prevent specific pages from being indexed
 - Control snippet display
 - Control following links
 - Example: `<meta name="robots" content="noindex,follow">`
 
 **X-Robots-Tag HTTP header**:
+
 - Control non-HTML files (PDFs, images)
 - Server-level control
 - Example: `X-Robots-Tag: noindex`
@@ -601,16 +624,19 @@ Disallow: /admin/
 ### Regular Checks
 
 **Monthly**:
+
 - [ ] Verify robots.txt is accessible
 - [ ] Check Search Console for blocked URLs
 - [ ] Review crawl stats for blocked resources
 
 **Quarterly**:
+
 - [ ] Audit blocked paths - still relevant?
 - [ ] Check for new admin/private sections to block
 - [ ] Review AI crawler landscape (new bots?)
 
 **After site changes**:
+
 - [ ] Update robots.txt if URL structure changed
 - [ ] Test new sections (should they be blocked?)
 - [ ] Verify sitemaps still referenced
@@ -618,6 +644,7 @@ Disallow: /admin/
 ### Search Console Monitoring
 
 Check these reports:
+
 - **Coverage** → Excluded by robots.txt
 - **Settings** → Crawl stats
 - **URL Inspection** → Test specific URLs
@@ -652,13 +679,16 @@ Before deploying:
 **Symptom**: All pages blocked in Search Console
 
 **Fix**:
+
 1. Edit robots.txt to:
+
 ```
 User-agent: *
 Disallow:
 
 Sitemap: https://example.com/sitemap.xml
 ```
+
 2. Test in Search Console
 3. Request urgent recrawl for key pages
 4. Monitor Coverage report for recovery
@@ -672,13 +702,16 @@ Sitemap: https://example.com/sitemap.xml
 **Symptom**: "Blocked by robots.txt" in Mobile-Friendly Test
 
 **Fix**:
+
 1. Add Allow directives:
+
 ```
 User-agent: *
 Allow: /css/
 Allow: /js/
 Allow: /wp-content/uploads/
 ```
+
 2. Test in robots.txt tester
 3. Request re-render in URL Inspection tool
 
@@ -689,11 +722,14 @@ Allow: /wp-content/uploads/
 **Symptom**: staging.example.com appears in search results
 
 **Fix**:
+
 1. Add to staging robots.txt:
+
 ```
 User-agent: *
 Disallow: /
 ```
+
 2. Add noindex meta tag to all staging pages
 3. Remove staging URLs in Search Console (Removals tool)
 
@@ -702,16 +738,19 @@ Disallow: /
 ## Resources and Tools
 
 **Testing**:
+
 - Google Search Console robots.txt tester
 - Bing Webmaster Tools robots.txt analyzer
 - Technical SEO browser extensions
 
 **Validation**:
+
 - https://www.google.com/webmasters/tools/robots-testing-tool
 - https://en.ryte.com/free-tools/robots-txt/
 - https://technicalseo.com/tools/robots-txt/
 
 **Documentation**:
+
 - Google: https://developers.google.com/search/docs/crawling-indexing/robots/intro
 - Bing: https://www.bing.com/webmasters/help/robots-txt-validation
 - Robots.txt spec: https://www.robotstxt.org/

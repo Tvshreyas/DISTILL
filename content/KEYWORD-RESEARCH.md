@@ -11,95 +11,95 @@
 
 ### Cluster A: Reading Retention (Highest Volume)
 
-| Keyword | Est. Monthly Searches | Intent | Difficulty | Notes |
-|---|---|---|---|---|
-| how to remember what you read | 12,000-18,000 | Informational | HIGH | James Clear, fs.blog dominate. AI Overview triggers. |
-| how to retain what you read | 5,000-8,000 | Informational | HIGH | Overlaps with above. Headway, fs.blog rank. |
-| reading retention | 2,000-4,000 | Informational | MEDIUM | Less branded competition. |
-| reading retention techniques | 800-1,500 | Informational | MEDIUM | More specific, lower competition. |
-| how to remember books you read | 3,000-5,000 | Informational | HIGH | AI Overview heavy. |
-| why do I forget what I read | 2,000-4,000 | Informational | LOW-MEDIUM | Question format. Great for GEO. |
-| how to process what you read | 500-1,000 | Informational | LOW | Underserved query. Opportunity. |
-| what to do after reading a book | 2,000-4,000 | Informational | LOW-MEDIUM | Durmonski, ReadingRockets rank. Beatable. |
-| how to take notes from books | 3,000-5,000 | Informational | MEDIUM | Adjacent intent. |
-| how to get more out of books | 1,000-2,000 | Informational | LOW-MEDIUM | Conversational. GEO potential. |
-| spaced repetition for reading | 500-1,000 | Informational | LOW | Niche. Readwise blog ranks. Beatable. |
-| forgetting curve books | 300-600 | Informational | LOW | Science-adjacent. Easy to rank. |
-| 7-3-2-1 reading technique | 100-300 | Informational | VERY LOW | Emerging. First-mover advantage. |
+| Keyword                         | Est. Monthly Searches | Intent        | Difficulty | Notes                                                |
+| ------------------------------- | --------------------- | ------------- | ---------- | ---------------------------------------------------- |
+| how to remember what you read   | 12,000-18,000         | Informational | HIGH       | James Clear, fs.blog dominate. AI Overview triggers. |
+| how to retain what you read     | 5,000-8,000           | Informational | HIGH       | Overlaps with above. Headway, fs.blog rank.          |
+| reading retention               | 2,000-4,000           | Informational | MEDIUM     | Less branded competition.                            |
+| reading retention techniques    | 800-1,500             | Informational | MEDIUM     | More specific, lower competition.                    |
+| how to remember books you read  | 3,000-5,000           | Informational | HIGH       | AI Overview heavy.                                   |
+| why do I forget what I read     | 2,000-4,000           | Informational | LOW-MEDIUM | Question format. Great for GEO.                      |
+| how to process what you read    | 500-1,000             | Informational | LOW        | Underserved query. Opportunity.                      |
+| what to do after reading a book | 2,000-4,000           | Informational | LOW-MEDIUM | Durmonski, ReadingRockets rank. Beatable.            |
+| how to take notes from books    | 3,000-5,000           | Informational | MEDIUM     | Adjacent intent.                                     |
+| how to get more out of books    | 1,000-2,000           | Informational | LOW-MEDIUM | Conversational. GEO potential.                       |
+| spaced repetition for reading   | 500-1,000             | Informational | LOW        | Niche. Readwise blog ranks. Beatable.                |
+| forgetting curve books          | 300-600               | Informational | LOW        | Science-adjacent. Easy to rank.                      |
+| 7-3-2-1 reading technique       | 100-300               | Informational | VERY LOW   | Emerging. First-mover advantage.                     |
 
 ### Cluster B: Reflection & Thinking Tools
 
-| Keyword | Est. Monthly Searches | Intent | Difficulty | Notes |
-|---|---|---|---|---|
-| reflection tool | 500-1,000 | Commercial | MEDIUM | Mostly educational context. Differentiation needed. |
-| thinking tool | 1,000-2,000 | Informational | HIGH | Edward de Bono "Six Thinking Hats" dominates. |
-| book reflection app | 200-500 | Commercial | LOW | Very few dedicated tools exist. Huge opportunity. |
-| reading reflection app | 100-300 | Commercial | VERY LOW | Almost no competition. Own this. |
-| book reflection template | 1,000-2,000 | Informational | LOW-MEDIUM | Notion templates, Pinterest rank. |
-| reading reflection prompts | 800-1,500 | Informational | LOW | Educational sites rank. Commercial intent gap. |
-| how to write a reading reflection | 1,000-2,000 | Informational | LOW-MEDIUM | Academic intent but adaptable. |
-| how to reflect on what you read | 500-800 | Informational | LOW | Direct match to Distill's purpose. |
-| reflection journal for books | 200-400 | Commercial | LOW | Very low competition. |
-| what is reflective reading | 200-400 | Informational | LOW | Definitional. Easy to rank with good content. |
+| Keyword                           | Est. Monthly Searches | Intent        | Difficulty | Notes                                               |
+| --------------------------------- | --------------------- | ------------- | ---------- | --------------------------------------------------- |
+| reflection tool                   | 500-1,000             | Commercial    | MEDIUM     | Mostly educational context. Differentiation needed. |
+| thinking tool                     | 1,000-2,000           | Informational | HIGH       | Edward de Bono "Six Thinking Hats" dominates.       |
+| book reflection app               | 200-500               | Commercial    | LOW        | Very few dedicated tools exist. Huge opportunity.   |
+| reading reflection app            | 100-300               | Commercial    | VERY LOW   | Almost no competition. Own this.                    |
+| book reflection template          | 1,000-2,000           | Informational | LOW-MEDIUM | Notion templates, Pinterest rank.                   |
+| reading reflection prompts        | 800-1,500             | Informational | LOW        | Educational sites rank. Commercial intent gap.      |
+| how to write a reading reflection | 1,000-2,000           | Informational | LOW-MEDIUM | Academic intent but adaptable.                      |
+| how to reflect on what you read   | 500-800               | Informational | LOW        | Direct match to Distill's purpose.                  |
+| reflection journal for books      | 200-400               | Commercial    | LOW        | Very low competition.                               |
+| what is reflective reading        | 200-400               | Informational | LOW        | Definitional. Easy to rank with good content.       |
 
 ### Cluster C: Content Consumption & Information Overload
 
-| Keyword | Est. Monthly Searches | Intent | Difficulty | Notes |
-|---|---|---|---|---|
-| information overload | 5,000-10,000 | Informational | HIGH | Wikipedia #1. Hard to displace. |
-| content consumption | 1,000-2,000 | Informational | MEDIUM | Broad. Needs long-tail targeting. |
-| consuming too much content | 500-1,000 | Informational | LOW | Pain-point query. Perfect for Distill messaging. |
-| how to stop mindlessly consuming content | 300-600 | Informational | LOW | Exact match to Distill's "stop absorbing" message. |
-| intentional content consumption | 200-400 | Informational | VERY LOW | Underserved. Own this term. |
-| digital minimalism reading | 300-600 | Informational | LOW-MEDIUM | Cal Newport adjacent. |
-| consume less create more | 200-400 | Informational | LOW | The Minimalists own a post. Beatable with depth. |
-| passive vs active consumption | 100-300 | Informational | VERY LOW | No dedicated content exists. First-mover. |
-| clip thinking | 100-300 | Informational | VERY LOW | Emerging concept. Early authority opportunity. |
+| Keyword                                  | Est. Monthly Searches | Intent        | Difficulty | Notes                                              |
+| ---------------------------------------- | --------------------- | ------------- | ---------- | -------------------------------------------------- |
+| information overload                     | 5,000-10,000          | Informational | HIGH       | Wikipedia #1. Hard to displace.                    |
+| content consumption                      | 1,000-2,000           | Informational | MEDIUM     | Broad. Needs long-tail targeting.                  |
+| consuming too much content               | 500-1,000             | Informational | LOW        | Pain-point query. Perfect for Distill messaging.   |
+| how to stop mindlessly consuming content | 300-600               | Informational | LOW        | Exact match to Distill's "stop absorbing" message. |
+| intentional content consumption          | 200-400               | Informational | VERY LOW   | Underserved. Own this term.                        |
+| digital minimalism reading               | 300-600               | Informational | LOW-MEDIUM | Cal Newport adjacent.                              |
+| consume less create more                 | 200-400               | Informational | LOW        | The Minimalists own a post. Beatable with depth.   |
+| passive vs active consumption            | 100-300               | Informational | VERY LOW   | No dedicated content exists. First-mover.          |
+| clip thinking                            | 100-300               | Informational | VERY LOW   | Emerging concept. Early authority opportunity.     |
 
 ### Cluster D: Second Brain & PKM (Adjacent)
 
-| Keyword | Est. Monthly Searches | Intent | Difficulty | Notes |
-|---|---|---|---|---|
-| second brain app | 5,000-10,000 | Commercial | VERY HIGH | Notion, Obsidian, 20+ listicles. Do not target directly. |
-| personal knowledge management | 3,000-5,000 | Informational | HIGH | Saturated. Aspirational only. |
-| second brain for readers | 200-500 | Commercial | LOW | Niche subset. Winnable. |
-| Zettelkasten for book notes | 200-400 | Informational | LOW | Method-specific. |
-| building a second brain books | 500-1,000 | Informational | MEDIUM | Tiago Forte's book dominates. |
-| readwise alternative | 2,000-4,000 | Commercial/Navigational | MEDIUM | Product Hunt, comparison sites rank. Get listed. |
-| readwise alternative free | 500-1,000 | Commercial | LOW-MEDIUM | PastReads, Screvi compete. Distill can differentiate. |
-| notion reading tracker alternative | 200-400 | Commercial | LOW | Niche. Targetable. |
+| Keyword                            | Est. Monthly Searches | Intent                  | Difficulty | Notes                                                    |
+| ---------------------------------- | --------------------- | ----------------------- | ---------- | -------------------------------------------------------- |
+| second brain app                   | 5,000-10,000          | Commercial              | VERY HIGH  | Notion, Obsidian, 20+ listicles. Do not target directly. |
+| personal knowledge management      | 3,000-5,000           | Informational           | HIGH       | Saturated. Aspirational only.                            |
+| second brain for readers           | 200-500               | Commercial              | LOW        | Niche subset. Winnable.                                  |
+| Zettelkasten for book notes        | 200-400               | Informational           | LOW        | Method-specific.                                         |
+| building a second brain books      | 500-1,000             | Informational           | MEDIUM     | Tiago Forte's book dominates.                            |
+| readwise alternative               | 2,000-4,000           | Commercial/Navigational | MEDIUM     | Product Hunt, comparison sites rank. Get listed.         |
+| readwise alternative free          | 500-1,000             | Commercial              | LOW-MEDIUM | PastReads, Screvi compete. Distill can differentiate.    |
+| notion reading tracker alternative | 200-400               | Commercial              | LOW        | Niche. Targetable.                                       |
 
 ### Cluster E: Podcast & Video Retention
 
-| Keyword | Est. Monthly Searches | Intent | Difficulty | Notes |
-|---|---|---|---|---|
-| how to remember what you learn from podcasts | 1,000-2,000 | Informational | LOW-MEDIUM | MakeUseOf, Oberlo rank. Beatable. |
-| podcast notes tool | 300-600 | Commercial | LOW | Mostly AI transcription tools. Distill is different. |
-| how to take notes on podcasts | 1,000-2,000 | Informational | MEDIUM | Adjacent. |
-| how to retain information from videos | 500-1,000 | Informational | LOW | YouTube-specific content gap. |
-| remember what you learn | 1,000-2,000 | Informational | MEDIUM | Broad but high-intent. |
-| how to learn from youtube videos | 2,000-4,000 | Informational | MEDIUM | Big volume. Worth a supporting post. |
+| Keyword                                      | Est. Monthly Searches | Intent        | Difficulty | Notes                                                |
+| -------------------------------------------- | --------------------- | ------------- | ---------- | ---------------------------------------------------- |
+| how to remember what you learn from podcasts | 1,000-2,000           | Informational | LOW-MEDIUM | MakeUseOf, Oberlo rank. Beatable.                    |
+| podcast notes tool                           | 300-600               | Commercial    | LOW        | Mostly AI transcription tools. Distill is different. |
+| how to take notes on podcasts                | 1,000-2,000           | Informational | MEDIUM     | Adjacent.                                            |
+| how to retain information from videos        | 500-1,000             | Informational | LOW        | YouTube-specific content gap.                        |
+| remember what you learn                      | 1,000-2,000           | Informational | MEDIUM     | Broad but high-intent.                               |
+| how to learn from youtube videos             | 2,000-4,000           | Informational | MEDIUM     | Big volume. Worth a supporting post.                 |
 
 ### Cluster F: Reading Journals & Trackers
 
-| Keyword | Est. Monthly Searches | Intent | Difficulty | Notes |
-|---|---|---|---|---|
-| digital reading journal | 1,000-2,000 | Commercial | MEDIUM | Product-focused. Etsy, Notion templates dominate. |
-| book journal app | 1,000-2,000 | Commercial | MEDIUM | BookJournal.app, Bookmory compete. |
-| reading journal prompts | 2,000-4,000 | Informational | LOW-MEDIUM | Blog content opportunity. |
-| book tracker app | 3,000-5,000 | Commercial | HIGH | Goodreads, StoryGraph dominate. Aspirational. |
-| reading log for adults | 500-1,000 | Commercial | LOW-MEDIUM | Often educational. Adult gap. |
+| Keyword                 | Est. Monthly Searches | Intent        | Difficulty | Notes                                             |
+| ----------------------- | --------------------- | ------------- | ---------- | ------------------------------------------------- |
+| digital reading journal | 1,000-2,000           | Commercial    | MEDIUM     | Product-focused. Etsy, Notion templates dominate. |
+| book journal app        | 1,000-2,000           | Commercial    | MEDIUM     | BookJournal.app, Bookmory compete.                |
+| reading journal prompts | 2,000-4,000           | Informational | LOW-MEDIUM | Blog content opportunity.                         |
+| book tracker app        | 3,000-5,000           | Commercial    | HIGH       | Goodreads, StoryGraph dominate. Aspirational.     |
+| reading log for adults  | 500-1,000             | Commercial    | LOW-MEDIUM | Often educational. Adult gap.                     |
 
 ---
 
 ## 2. Intent Classification Summary
 
-| Intent Type | % of Keywords | Examples | Distill Strategy |
-|---|---|---|---|
-| **Informational** | 60% | "how to remember what you read", "what to do after reading a book" | Blog posts, guides, GEO-optimized content |
-| **Commercial Investigation** | 25% | "book reflection app", "readwise alternative", "reading journal app" | Comparison pages, landing pages, Product Hunt |
-| **Transactional** | 10% | "reading reflection app download", "book notes tool sign up" | Product pages, CTA-optimized content |
-| **Navigational** | 5% | "distill app", "distillwise" | Homepage SEO, brand mentions |
+| Intent Type                  | % of Keywords | Examples                                                             | Distill Strategy                              |
+| ---------------------------- | ------------- | -------------------------------------------------------------------- | --------------------------------------------- |
+| **Informational**            | 60%           | "how to remember what you read", "what to do after reading a book"   | Blog posts, guides, GEO-optimized content     |
+| **Commercial Investigation** | 25%           | "book reflection app", "readwise alternative", "reading journal app" | Comparison pages, landing pages, Product Hunt |
+| **Transactional**            | 10%           | "reading reflection app download", "book notes tool sign up"         | Product pages, CTA-optimized content          |
+| **Navigational**             | 5%            | "distill app", "distillwise"                                         | Homepage SEO, brand mentions                  |
 
 ---
 
@@ -151,13 +151,13 @@ These have established competitors but are worth building toward:
 
 AI Overviews (Google), ChatGPT, and Perplexity generate answers for:
 
-| Query Type | Example | AI Answer Format | How Distill Gets Cited |
-|---|---|---|---|
-| "How to" procedural | "how to remember what you read" | Numbered step list | Publish a definitive numbered-list post with a unique framework name (e.g., "The Distill Method") |
-| "What is" definitional | "what is reflective reading" | Short definition + expansion | Be the clearest, most concise definition source |
-| "Best tools for X" | "best app for book reflection" | Bulleted tool list | Get listed on comparison sites + own a dedicated landing page |
-| "Why" causal | "why do I forget what I read" | Science explanation + tips | Cite the Ebbinghaus forgetting curve with original data/framing |
-| "X vs Y" comparison | "passive vs active reading" | Table or comparison | Publish a clear comparison post with structured data |
+| Query Type             | Example                         | AI Answer Format             | How Distill Gets Cited                                                                            |
+| ---------------------- | ------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------- |
+| "How to" procedural    | "how to remember what you read" | Numbered step list           | Publish a definitive numbered-list post with a unique framework name (e.g., "The Distill Method") |
+| "What is" definitional | "what is reflective reading"    | Short definition + expansion | Be the clearest, most concise definition source                                                   |
+| "Best tools for X"     | "best app for book reflection"  | Bulleted tool list           | Get listed on comparison sites + own a dedicated landing page                                     |
+| "Why" causal           | "why do I forget what I read"   | Science explanation + tips   | Cite the Ebbinghaus forgetting curve with original data/framing                                   |
+| "X vs Y" comparison    | "passive vs active reading"     | Table or comparison          | Publish a clear comparison post with structured data                                              |
 
 ### Content Format for GEO Citation
 
@@ -191,6 +191,7 @@ Based on current GEO best practices for 2026:
 **Pillar page:** Ultimate guide to reading retention (2,500-3,500 words)
 
 Supporting content:
+
 - Why do I forget everything I read? (The science of the forgetting curve)
 - How to process what you read (The reflection method)
 - What to do after finishing a book (7 post-reading activities)
@@ -208,6 +209,7 @@ Supporting content:
 **Pillar page:** The case for intentional content consumption (2,000-3,000 words)
 
 Supporting content:
+
 - Stop absorbing, start thinking (manifesto-style post)
 - Consume less, create more: a practical guide
 - Passive vs active consumption: why most content is wasted
@@ -225,6 +227,7 @@ Supporting content:
 **Pillar page:** How to write a meaningful book reflection (1,500-2,500 words)
 
 Supporting content:
+
 - 30 book reflection prompts for deeper thinking
 - Book reflection template (free download / in-app)
 - Reading reflection vs book review: what's the difference
@@ -242,6 +245,7 @@ Supporting content:
 **Pillar page:** Readwise alternatives for readers who want to think, not just save (1,500-2,000 words)
 
 Supporting content:
+
 - Distill vs Readwise: reflection vs recall
 - Distill vs Notion for book notes
 - Why highlighting is not enough
@@ -258,6 +262,7 @@ Supporting content:
 **Pillar page:** How to actually learn from podcasts (1,500-2,500 words)
 
 Supporting content:
+
 - How to remember what you learn from podcasts
 - How to take notes while listening to podcasts
 - How to retain information from YouTube videos
@@ -275,6 +280,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 ### Priority 1: Launch Week (March 24-31, 2026)
 
 **Post 1: "What to Do After Reading a Book: 7 Activities That Make Books Stick"**
+
 - Target keyword: "what to do after reading a book" (2,000-4,000/mo)
 - Secondary: "how to process what you read", "after reading activities"
 - Intent: Informational
@@ -285,6 +291,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 - CTA: "Distill automates activity #3. Start a free session."
 
 **Post 2: "Why Do I Forget Everything I Read? (The Science + The Fix)"**
+
 - Target keyword: "why do I forget everything I read" (2,000-4,000/mo)
 - Secondary: "forgetting curve books", "reading retention"
 - Intent: Informational
@@ -299,6 +306,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 ### Priority 2: Week 2 (March 31 - April 7)
 
 **Post 3: "30 Book Reflection Prompts That Go Beyond 'What Did You Think?'"**
+
 - Target keyword: "book reflection prompts" (800-1,500/mo)
 - Secondary: "reading reflection prompts", "book reflection template"
 - Intent: Informational
@@ -309,6 +317,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 - CTA: "Use these prompts inside Distill. Start a reflection."
 
 **Post 4: "How to Reflect on What You Read (The 3-Step Method)"**
+
 - Target keyword: "how to reflect on what you read" (500-800/mo)
 - Secondary: "reflective reading", "reading reflection method"
 - Intent: Informational
@@ -323,6 +332,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 ### Priority 3: Week 3 (April 7-14)
 
 **Post 5: "How to Remember What You Learn from Podcasts (Without Taking Notes During)"**
+
 - Target keyword: "how to remember what you learn from podcasts" (1,000-2,000/mo)
 - Secondary: "podcast notes", "podcast reflection"
 - Intent: Informational
@@ -333,6 +343,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 - CTA: "Start a Distill session after your next podcast."
 
 **Post 6: "Passive vs Active Content Consumption: Why Most of What You Read Is Wasted"**
+
 - Target keyword: "passive vs active consumption" (100-300/mo)
 - Secondary: "intentional content consumption", "consuming too much content"
 - Intent: Informational
@@ -347,6 +358,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 ### Priority 4: Week 4 (April 14-21)
 
 **Post 7: "The Best Book Reflection Apps in 2026 (For Readers Who Think)"**
+
 - Target keyword: "book reflection app" (200-500/mo)
 - Secondary: "reading reflection app", "reflection journal for books"
 - Intent: Commercial
@@ -357,6 +369,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 - CTA: "Try Distill free."
 
 **Post 8: "Spaced Repetition for Readers: How to Remember Books Without Flashcards"**
+
 - Target keyword: "spaced repetition for reading" (500-1,000/mo)
 - Secondary: "spaced repetition books", "spaced repetition for reading notes"
 - Intent: Informational
@@ -371,6 +384,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 ### Priority 5: Week 5-6 (April 21 - May 5)
 
 **Post 9: "Distill vs Readwise: Reflection vs Recall"**
+
 - Target keyword: "readwise alternative" (2,000-4,000/mo)
 - Secondary: "readwise alternative free", "readwise vs"
 - Intent: Commercial
@@ -381,6 +395,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 - CTA: "Distill is free for 10 reflections/month."
 
 **Post 10: "Stop Absorbing. Start Thinking. (The Distill Manifesto)"**
+
 - Target keyword: "consume less create more" (200-400/mo)
 - Secondary: "intentional content consumption", "stop consuming start creating"
 - Intent: Informational / Brand
@@ -394,23 +409,23 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 
 ## 7. Keyword-to-Page Mapping (Quick Reference)
 
-| Keyword | Target Page | Page Type |
-|---|---|---|
-| book reflection app | /blog/best-book-reflection-apps | Listicle |
-| reading reflection app | Homepage + /blog/best-book-reflection-apps | Product + Listicle |
-| how to remember what you read | /blog/how-to-remember-what-you-read (pillar) | Guide |
-| what to do after reading a book | /blog/what-to-do-after-reading-a-book | Guide |
-| why do I forget what I read | /blog/why-you-forget-what-you-read | Science explainer |
-| how to reflect on what you read | /blog/how-to-reflect-on-what-you-read | Method guide |
-| book reflection prompts | /blog/book-reflection-prompts | Prompt list |
-| reading reflection prompts | /blog/book-reflection-prompts | Prompt list |
-| readwise alternative | /blog/distill-vs-readwise | Comparison |
-| spaced repetition for reading | /blog/spaced-repetition-for-readers | Science guide |
-| how to remember podcasts | /blog/how-to-remember-podcasts | Guide |
-| intentional content consumption | /blog/passive-vs-active-content-consumption | Thought piece |
-| consume less create more | /blog/distill-manifesto | Manifesto |
-| second brain for readers | /blog/distill-vs-readwise | Comparison |
-| book reflection template | /blog/book-reflection-prompts | Template/Prompt list |
+| Keyword                         | Target Page                                  | Page Type            |
+| ------------------------------- | -------------------------------------------- | -------------------- |
+| book reflection app             | /blog/best-book-reflection-apps              | Listicle             |
+| reading reflection app          | Homepage + /blog/best-book-reflection-apps   | Product + Listicle   |
+| how to remember what you read   | /blog/how-to-remember-what-you-read (pillar) | Guide                |
+| what to do after reading a book | /blog/what-to-do-after-reading-a-book        | Guide                |
+| why do I forget what I read     | /blog/why-you-forget-what-you-read           | Science explainer    |
+| how to reflect on what you read | /blog/how-to-reflect-on-what-you-read        | Method guide         |
+| book reflection prompts         | /blog/book-reflection-prompts                | Prompt list          |
+| reading reflection prompts      | /blog/book-reflection-prompts                | Prompt list          |
+| readwise alternative            | /blog/distill-vs-readwise                    | Comparison           |
+| spaced repetition for reading   | /blog/spaced-repetition-for-readers          | Science guide        |
+| how to remember podcasts        | /blog/how-to-remember-podcasts               | Guide                |
+| intentional content consumption | /blog/passive-vs-active-content-consumption  | Thought piece        |
+| consume less create more        | /blog/distill-manifesto                      | Manifesto            |
+| second brain for readers        | /blog/distill-vs-readwise                    | Comparison           |
+| book reflection template        | /blog/book-reflection-prompts                | Template/Prompt list |
 
 ---
 
@@ -451,20 +466,21 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 
 ### Track These Monthly
 
-| Metric | Tool | Target (Month 1) | Target (Month 3) |
-|---|---|---|---|
-| Organic impressions | Google Search Console | 5,000 | 50,000 |
-| Organic clicks | Google Search Console | 200 | 3,000 |
-| Keywords ranking top 50 | Google Search Console | 30 | 150 |
-| Keywords ranking top 10 | Google Search Console | 3-5 | 15-25 |
-| AI citations (Perplexity) | Manual check + Perplexity search | 0 | 2-5 queries |
-| AI citations (ChatGPT) | Manual check | 0 | 1-3 queries |
-| Blog to signup conversion | PostHog | 2% | 3% |
-| Referral traffic from comparison sites | PostHog | 0 | 50 visits/mo |
+| Metric                                 | Tool                             | Target (Month 1) | Target (Month 3) |
+| -------------------------------------- | -------------------------------- | ---------------- | ---------------- |
+| Organic impressions                    | Google Search Console            | 5,000            | 50,000           |
+| Organic clicks                         | Google Search Console            | 200              | 3,000            |
+| Keywords ranking top 50                | Google Search Console            | 30               | 150              |
+| Keywords ranking top 10                | Google Search Console            | 3-5              | 15-25            |
+| AI citations (Perplexity)              | Manual check + Perplexity search | 0                | 2-5 queries      |
+| AI citations (ChatGPT)                 | Manual check                     | 0                | 1-3 queries      |
+| Blog to signup conversion              | PostHog                          | 2%               | 3%               |
+| Referral traffic from comparison sites | PostHog                          | 0                | 50 visits/mo     |
 
 ### Monthly Keyword Check
 
 Search these manually on Google, Perplexity, and ChatGPT to track Distill's visibility:
+
 - "book reflection app"
 - "how to reflect on what you read"
 - "what to do after reading a book"

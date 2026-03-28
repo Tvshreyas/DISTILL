@@ -21,38 +21,40 @@ Referenced from [SKILL.md](../SKILL.md).
 
 ## Summary
 
-| Audit Area | Score | Key Finding |
-|------------|-------|-------------|
-| Title Tag | 8/10 | Good keyword placement; slightly long at 63 chars |
-| Meta Description | 6/10 | Missing CTA; keyword present but generic copy |
-| Header Structure | 9/10 | Clean hierarchy; H2s cover all major products |
-| Content Quality | 7/10 | 2,400 words is solid; lacks original test data |
-| Keyword Optimization | 8/10 | Strong placement; density at 1.2% is healthy |
-| Internal Links | 5/10 | Only 2 internal links; missing links to brand pages |
-| Images | 6/10 | 3/8 images missing alt text; no WebP format |
-| Technical Elements | 7/10 | Missing Product schema; good URL and mobile |
+| Audit Area           | Score | Key Finding                                         |
+| -------------------- | ----- | --------------------------------------------------- |
+| Title Tag            | 8/10  | Good keyword placement; slightly long at 63 chars   |
+| Meta Description     | 6/10  | Missing CTA; keyword present but generic copy       |
+| Header Structure     | 9/10  | Clean hierarchy; H2s cover all major products       |
+| Content Quality      | 7/10  | 2,400 words is solid; lacks original test data      |
+| Keyword Optimization | 8/10  | Strong placement; density at 1.2% is healthy        |
+| Internal Links       | 5/10  | Only 2 internal links; missing links to brand pages |
+| Images               | 6/10  | 3/8 images missing alt text; no WebP format         |
+| Technical Elements   | 7/10  | Missing Product schema; good URL and mobile         |
 
 ## Overall Score: 71/100
 
 Calculation: (8x0.15 + 6x0.05 + 9x0.10 + 7x0.25 + 8x0.15 + 5x0.10 + 6x0.10 + 7x0.10) x 10 = 71
 
 Score Breakdown:
-████████░░ Title Tag:        8/10  (15%)
-██████░░░░ Meta Description: 6/10  ( 5%)
-█████████░ Headers:          9/10  (10%)
-███████░░░ Content:          7/10  (25%)
-████████░░ Keywords:         8/10  (15%)
-█████░░░░░ Internal Links:   5/10  (10%)
-██████░░░░ Images:           6/10  (10%)
-███████░░░ Technical:        7/10  (10%)
+████████░░ Title Tag: 8/10 (15%)
+██████░░░░ Meta Description: 6/10 ( 5%)
+█████████░ Headers: 9/10 (10%)
+███████░░░ Content: 7/10 (25%)
+████████░░ Keywords: 8/10 (15%)
+█████░░░░░ Internal Links: 5/10 (10%)
+██████░░░░ Images: 6/10 (10%)
+███████░░░ Technical: 7/10 (10%)
 
 ## Priority Issues
 
 ### Critical
+
 1. **Internal linking severely underdeveloped** — Only 2 internal links found. Add links to individual headphone review pages (/sony-wh1000xm5-review, /bose-qc-ultra-review) and the headphones category page. Target 5-8 contextual internal links.
 2. **3 product images missing alt text** — Images for Sony WH-1000XM5, Bose QC Ultra, and Apple AirPods Max have empty alt attributes. Each missing alt tag is a lost ranking signal in Google Images.
 
 ### Important
+
 1. **Meta description lacks call-to-action** — Current description states facts but does not compel clicks. Add "Compare prices and features" or "See our top picks" to drive CTR.
 
 ## Quick Wins

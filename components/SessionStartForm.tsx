@@ -57,7 +57,16 @@ export default function SessionStartForm({
         </legend>
         <div className="flex flex-wrap gap-2">
           {(
-            ["book", "video", "article", "podcast", "realization", "workout", "walk", "other"] as const
+            [
+              "book",
+              "video",
+              "article",
+              "podcast",
+              "realization",
+              "workout",
+              "walk",
+              "other",
+            ] as const
           ).map((type) => (
             <button
               key={type}
@@ -78,7 +87,8 @@ export default function SessionStartForm({
       {/* Consume Reason */}
       <label className="space-y-3 block">
         <span className="text-xs font-black uppercase tracking-widest text-muted-text block">
-          why are you consuming this? <span className="text-soft-black/30">(optional)</span>
+          why are you consuming this?{" "}
+          <span className="text-soft-black/30">(optional)</span>
         </span>
         <textarea
           value={consumeReason}

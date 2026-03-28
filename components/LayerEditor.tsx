@@ -22,7 +22,10 @@ export default function LayerEditor({ onSave, onCancel }: LayerEditorProps) {
     try {
       await onSave(content.trim(), rating);
     } catch (e) {
-      const message = e instanceof Error ? e.message : "Could not save. Your addition is preserved — try again.";
+      const message =
+        e instanceof Error
+          ? e.message
+          : "Could not save. Your addition is preserved — try again.";
       setError(message);
       setIsSaving(false);
     }
@@ -75,9 +78,7 @@ export default function LayerEditor({ onSave, onCancel }: LayerEditorProps) {
           </div>
         </div>
 
-        {error && (
-          <p className="text-sm text-red-600 font-grotesk">{error}</p>
-        )}
+        {error && <p className="text-sm text-red-600 font-grotesk">{error}</p>}
 
         {/* Actions */}
         <div className="flex items-center gap-4 pt-1">

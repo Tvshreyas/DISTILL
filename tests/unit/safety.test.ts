@@ -68,21 +68,21 @@ describe("Content Safety — allowed content", () => {
 
   it("allows academic discussion of suicide", () => {
     const result = checkContentSafety(
-      "The author discusses suicide prevention strategies in chapter 3"
+      "The author discusses suicide prevention strategies in chapter 3",
     );
     expect(result).toEqual({ safe: true, category: null });
   });
 
   it("allows academic discussion of genocide", () => {
     const result = checkContentSafety(
-      "The documentary examined the Rwanda genocide and its aftermath"
+      "The documentary examined the Rwanda genocide and its aftermath",
     );
     expect(result).toEqual({ safe: true, category: null });
   });
 
   it("allows discussion of violence in media", () => {
     const result = checkContentSafety(
-      "The violence in this film felt gratuitous but served a narrative purpose"
+      "The violence in this film felt gratuitous but served a narrative purpose",
     );
     expect(result).toEqual({ safe: true, category: null });
   });
@@ -94,14 +94,14 @@ describe("Content Safety — allowed content", () => {
 
   it("allows normal reflections", () => {
     const result = checkContentSafety(
-      "This book completely changed how I think about productivity"
+      "This book completely changed how I think about productivity",
     );
     expect(result).toEqual({ safe: true, category: null });
   });
 
   it("allows abstract death references", () => {
     const result = checkContentSafety(
-      "The death of the protagonist was unexpected and moving"
+      "The death of the protagonist was unexpected and moving",
     );
     expect(result).toEqual({ safe: true, category: null });
   });
@@ -113,21 +113,21 @@ describe("Content Safety — allowed content", () => {
 
   it("allows 'murder' as noun in discussion", () => {
     const result = checkContentSafety(
-      "The murder mystery kept me guessing until the end"
+      "The murder mystery kept me guessing until the end",
     );
     expect(result).toEqual({ safe: true, category: null });
   });
 
   it("allows strong negative emotions", () => {
     const result = checkContentSafety(
-      "I am so angry at this author's terrible take on mental health"
+      "I am so angry at this author's terrible take on mental health",
     );
     expect(result).toEqual({ safe: true, category: null });
   });
 
   it("allows 'killing it' as positive slang", () => {
     const result = checkContentSafety(
-      "The author is absolutely killing it with this analysis"
+      "The author is absolutely killing it with this analysis",
     );
     expect(result).toEqual({ safe: true, category: null });
   });

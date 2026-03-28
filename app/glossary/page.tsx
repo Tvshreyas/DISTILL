@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function GlossaryPage() {
   const sortedTerms = [...glossaryTerms].sort((a, b) =>
-    a.term.localeCompare(b.term)
+    a.term.localeCompare(b.term),
   );
 
   return (

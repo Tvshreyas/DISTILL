@@ -113,6 +113,7 @@ Automatically crawl and extract page content (visible text, headings, lists, tab
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Page URL or full HTML content
 2. Page type (article, product, FAQ, how-to, local business, etc.)
 3. Specific data needed for schema (prices, dates, author info, Q&A pairs, etc.)
@@ -131,19 +132,19 @@ When a user requests schema markup:
    ```markdown
    ### CORE-EEAT Schema Mapping (O05)
 
-   | Content Type | Required Schema | Conditional Schema |
-   |-------------|----------------|--------------------|
-   | Blog (guides) | Article, Breadcrumb | FAQ, HowTo |
-   | Blog (tools) | Article, Breadcrumb | FAQ, Review |
-   | Blog (insights) | Article, Breadcrumb | FAQ |
-   | Alternative | Comparison*, Breadcrumb, FAQ | AggregateRating |
-   | Best-of | ItemList, Breadcrumb, FAQ | AggregateRating per tool |
-   | Use-case | WebPage, Breadcrumb, FAQ | — |
-   | FAQ | FAQPage, Breadcrumb | — |
-   | Landing | SoftwareApplication, Breadcrumb, FAQ | WebPage |
-   | Testimonial | Review, Breadcrumb | FAQ, Person |
+   | Content Type    | Required Schema                      | Conditional Schema       |
+   | --------------- | ------------------------------------ | ------------------------ |
+   | Blog (guides)   | Article, Breadcrumb                  | FAQ, HowTo               |
+   | Blog (tools)    | Article, Breadcrumb                  | FAQ, Review              |
+   | Blog (insights) | Article, Breadcrumb                  | FAQ                      |
+   | Alternative     | Comparison\*, Breadcrumb, FAQ        | AggregateRating          |
+   | Best-of         | ItemList, Breadcrumb, FAQ            | AggregateRating per tool |
+   | Use-case        | WebPage, Breadcrumb, FAQ             | —                        |
+   | FAQ             | FAQPage, Breadcrumb                  | —                        |
+   | Landing         | SoftwareApplication, Breadcrumb, FAQ | WebPage                  |
+   | Testimonial     | Review, Breadcrumb                   | FAQ, Person              |
 
-   *Use the mapping above to ensure schema type matches content type (CORE-EEAT O05: Pass criteria).*
+   _Use the mapping above to ensure schema type matches content type (CORE-EEAT O05: Pass criteria)._
    ```
 
    ```markdown
@@ -153,18 +154,19 @@ When a user requests schema markup:
    **Page URL**: [URL]
 
    **Eligible Rich Results**:
-   
-   | Rich Result Type | Eligibility | Impact |
-   |------------------|-------------|--------|
-   | FAQ | ✅/❌ | High - Expands SERP presence |
-   | How-To | ✅/❌ | Medium - Shows steps in SERP |
-   | Product | ✅/❌ | High - Shows price, availability |
-   | Review | ✅/❌ | High - Shows star ratings |
-   | Article | ✅/❌ | Medium - Shows publish date, author |
-   | Breadcrumb | ✅/❌ | Medium - Shows navigation path |
-   | Video | ✅/❌ | High - Shows video thumbnail |
-   
+
+   | Rich Result Type | Eligibility | Impact                              |
+   | ---------------- | ----------- | ----------------------------------- |
+   | FAQ              | ✅/❌       | High - Expands SERP presence        |
+   | How-To           | ✅/❌       | Medium - Shows steps in SERP        |
+   | Product          | ✅/❌       | High - Shows price, availability    |
+   | Review           | ✅/❌       | High - Shows star ratings           |
+   | Article          | ✅/❌       | Medium - Shows publish date, author |
+   | Breadcrumb       | ✅/❌       | Medium - Shows navigation path      |
+   | Video            | ✅/❌       | High - Shows video thumbnail        |
+
    **Recommended Schema Types**:
+
    1. [Primary schema type] - [reason]
    2. [Secondary schema type] - [reason]
    ```
@@ -184,61 +186,67 @@ When a user requests schema markup:
 
 3. **Provide Implementation and Validation**
 
-    ```markdown
-    ## Implementation Guide
+   ````markdown
+   ## Implementation Guide
 
-    ### Adding Schema to Your Page
+   ### Adding Schema to Your Page
 
-    **Option 1: In HTML <head>**
-    ```html
-    <head>
-      <script type="application/ld+json">
-        [Your JSON-LD schema here]
-      </script>
-    </head>
-    ```
+   **Option 1: In HTML <head>**
 
-    **Option 2: Before closing </body>**
-    ```html
-      <script type="application/ld+json">
-        [Your JSON-LD schema here]
-      </script>
-    </body>
-    ```
+   ```html
+   <head>
+     <script type="application/ld+json">
+       [Your JSON-LD schema here]
+     </script>
+   </head>
+   ```
+   ````
 
-    ### Validation Steps
+   **Option 2: Before closing </body>**
 
-    1. **~~schema validator**
-       - Test your live URL or paste code
-       - Check for errors and warnings
+   ```html
+     <script type="application/ld+json">
+       [Your JSON-LD schema here]
+     </script>
+   </body>
+   ```
 
-    2. **Schema.org Validator**
-       - URL: https://validator.schema.org/
-       - Validates against Schema.org spec
+   ### Validation Steps
+   1. **~~schema validator**
+      - Test your live URL or paste code
+      - Check for errors and warnings
 
-    3. **~~search console**
-       - Monitor rich results in ~~search console
-       - Check Enhancements reports for issues
+   2. **Schema.org Validator**
+      - URL: https://validator.schema.org/
+      - Validates against Schema.org spec
 
-    ### Validation Checklist
+   3. **~~search console**
+      - Monitor rich results in ~~search console
+      - Check Enhancements reports for issues
 
-    - [ ] JSON syntax is valid (no trailing commas)
-    - [ ] All required properties present
-    - [ ] URLs are absolute, not relative
-    - [ ] Dates are in ISO 8601 format
-    - [ ] Content matches visible page content
-    - [ ] No policy violations
-    ```
+   ### Validation Checklist
+   - [ ] JSON syntax is valid (no trailing commas)
+   - [ ] All required properties present
+   - [ ] URLs are absolute, not relative
+   - [ ] Dates are in ISO 8601 format
+   - [ ] Content matches visible page content
+   - [ ] No policy violations
+
+   ```
+
+   ```
 
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Page URL or content provided
 - [ ] Schema type appropriate for content (Article for blog, Product for e-commerce, etc.)
 - [ ] All required data available (author, dates, prices, etc. depending on schema type)
 - [ ] Content eligibility for rich results confirmed
 
 ### Output Validation
+
 - [ ] JSON syntax validates (no trailing commas, proper quotes)
 - [ ] All required properties present for chosen schema type
 - [ ] URLs are absolute, not relative
@@ -253,7 +261,7 @@ When a user requests schema markup:
 
 **Output**:
 
-```markdown
+````markdown
 ## FAQ Schema for SEO Page
 
 ### Schema Markup
@@ -290,6 +298,7 @@ When a user requests schema markup:
   ]
 }
 ```
+````
 
 _Implementation: Wrap the above JSON-LD in `<script type="application/ld+json">...</script>` and place in `<head>` or before `</body>`. Test with ~~schema validator._
 
@@ -307,6 +316,7 @@ Learn SEO from scratch with our comprehensive guide...
 ▼ Is SEO better than paid advertising?
   SEO and paid advertising serve different purposes...
 ```
+
 ```
 
 ## Schema Type Quick Reference
@@ -348,3 +358,4 @@ Learn SEO from scratch with our comprehensive guide...
 - [technical-seo-checker](../../optimize/technical-seo-checker/) — Technical validation
 - [entity-optimizer](../../cross-cutting/entity-optimizer/) — Entity audit informs Organization, Person, Product schema
 
+```

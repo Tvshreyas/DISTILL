@@ -2,7 +2,7 @@
  * Content safety — canonical implementation (keep in sync with lib/safety.ts)
  */
 
-export type SafetySeverity = 'block' | 'warn' | 'none';
+export type SafetySeverity = "block" | "warn" | "none";
 
 export type SafetyResult = {
   isFlagged: boolean;
@@ -44,7 +44,7 @@ const NUDGE_PATTERNS = [
 
 export function checkContentSafety(content: string): SafetyResult {
   if (!content || content.trim().length === 0) {
-    return { isFlagged: false, severity: 'none', safe: true, category: null };
+    return { isFlagged: false, severity: "none", safe: true, category: null };
   }
 
   // Check for Hard Blocks (Category A)
@@ -52,10 +52,11 @@ export function checkContentSafety(content: string): SafetyResult {
     if (pattern.test(content)) {
       return {
         isFlagged: true,
-        severity: 'block',
-        message: "This content violates our safety guidelines and cannot be saved.",
+        severity: "block",
+        message:
+          "This content violates our safety guidelines and cannot be saved.",
         safe: false,
-        category: "A"
+        category: "A",
       };
     }
   }
@@ -65,13 +66,13 @@ export function checkContentSafety(content: string): SafetyResult {
     if (pattern.test(content)) {
       return {
         isFlagged: true,
-        severity: 'warn',
+        severity: "warn",
         message: "Your language seems a bit destructive.",
         safe: false,
-        category: "B"
+        category: "B",
       };
     }
   }
 
-  return { isFlagged: false, severity: 'none', safe: true, category: null };
+  return { isFlagged: false, severity: "none", safe: true, category: null };
 }

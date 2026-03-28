@@ -3,10 +3,11 @@ title: "The Consumption Trap: Why Reading More Makes You Think Less"
 description: "High-speed information intake creates an illusion of learning while eroding original thought. Your brain needs friction to form memory."
 date: "2026-03-17"
 author: "Distill"
-tags: ["Information Overload", "Active Reading", "Knowledge Retention", "Thinking"]
+tags:
+  ["Information Overload", "Active Reading", "Knowledge Retention", "Thinking"]
 ---
 
-There is a specific feeling that comes after a four-hour content binge. You watched three YouTube essays. You listened to a podcast at 2x speed. You skimmed an AI-generated summary of a book you meant to read. You feel informed. You feel productive. You feel like you *learned something*.
+There is a specific feeling that comes after a four-hour content binge. You watched three YouTube essays. You listened to a podcast at 2x speed. You skimmed an AI-generated summary of a book you meant to read. You feel informed. You feel productive. You feel like you _learned something_.
 
 You didn't.
 
@@ -18,7 +19,7 @@ Information has never been cheaper to access. A century ago, reading a single bo
 
 Today, friction has been engineered out of every step. Algorithms surface content before you ask for it. Playback speeds let you compress an hour of thought into thirty minutes. AI summaries promise the "key takeaways" without the burden of engaging with the full argument.
 
-Each optimization makes the same implicit promise: *you can learn more by doing less.*
+Each optimization makes the same implicit promise: _you can learn more by doing less._
 
 This is a lie.
 
@@ -42,7 +43,7 @@ Most of those systems became graveyards.
 
 The problem was never organization. The problem was that capturing someone else's words is not thinking. A highlight is a record of the author's work. A bookmark is a promise you will probably never keep. An AI summary is someone else's compression of someone else's ideas.
 
-None of these are *yours*.
+None of these are _yours_.
 
 [Why you forget everything you read](/blog/why-you-forget-everything-you-read) is not because your system is broken. It is because your system was designed to store information, not to process it.
 
@@ -50,25 +51,25 @@ None of these are *yours*.
 
 The consumption trap does not just waste time. It actively degrades your capacity for original thought.
 
-When you consume without reflecting, you train your brain to be a *receiver* rather than a *processor*. Over time, this becomes your default mode. You reach for more input whenever you feel uncertain, instead of sitting with the uncertainty and working through it yourself. You become dependent on other people's conclusions.
+When you consume without reflecting, you train your brain to be a _receiver_ rather than a _processor_. Over time, this becomes your default mode. You reach for more input whenever you feel uncertain, instead of sitting with the uncertainty and working through it yourself. You become dependent on other people's conclusions.
 
-This has a name in psychology: cognitive offloading. And while it works for simple tasks (writing down a phone number), it is catastrophic for complex thinking. You cannot offload the work of forming your own perspective. That work *is* the perspective.
+This has a name in psychology: cognitive offloading. And while it works for simple tasks (writing down a phone number), it is catastrophic for complex thinking. You cannot offload the work of forming your own perspective. That work _is_ the perspective.
 
 The person who reads one book and spends a week thinking about it will outperform the person who reads twelve books and thinks about none of them. Every time.
 
 ## the way out
 
-The antidote to the consumption trap is not consuming less (though that helps). It is introducing deliberate friction *after* consumption.
+The antidote to the consumption trap is not consuming less (though that helps). It is introducing deliberate friction _after_ consumption.
 
 This means:
 
 1. **Stop before the next thing.** After finishing a chapter, a podcast, or an article, do not immediately reach for the next one. Sit with what you just consumed. Notice what stuck. Notice what confused you.
 
-2. **Write your response.** Not a summary. Not highlights. Your *response*. What did you agree with? What challenged you? What would you push back on? [Writing after reading](/blog/writing-to-think) is the single highest-leverage intellectual habit.
+2. **Write your response.** Not a summary. Not highlights. Your _response_. What did you agree with? What challenged you? What would you push back on? [Writing after reading](/blog/writing-to-think) is the single highest-leverage intellectual habit.
 
 3. **Revisit what you wrote.** A reflection written today becomes a mirror in thirty days. When you return to your own past thinking, you can see how your perspective has evolved — or hasn't. This is [how active reading actually works](/blog/active-reading-techniques).
 
-4. **Build a library of your thinking.** Over time, these reflections compound. Not a library of other people's ideas with your annotations. A library of *your own thought*, indexed by what you consumed.
+4. **Build a library of your thinking.** Over time, these reflections compound. Not a library of other people's ideas with your annotations. A library of _your own thought_, indexed by what you consumed.
 
 This is what Distill was built for. Not to capture information. Not to summarize content. To provide the space and structure for the one thing no tool can automate: your own thinking.
 
@@ -84,4 +85,4 @@ Stop absorbing. Start thinking.
 
 ---
 
-*Ready to escape the consumption trap? [Start your first reflection on Distill](https://distill.so/start) — it takes less than five minutes to turn what you just consumed into something that is actually yours.*
+_Ready to escape the consumption trap? [Start your first reflection on Distill](https://distill.so/start) — it takes less than five minutes to turn what you just consumed into something that is actually yours._

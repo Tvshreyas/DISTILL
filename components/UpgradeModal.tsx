@@ -14,7 +14,13 @@ function getCurrencyFromCookie(): CurrencyKey {
   return PPP_COUNTRIES[country] || "USD";
 }
 
-export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction: () => void; isOpen: boolean }) {
+export default function UpgradeModal({
+  onCloseAction,
+  isOpen,
+}: {
+  onCloseAction: () => void;
+  isOpen: boolean;
+}) {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -47,8 +53,14 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
       <div className="max-w-md w-full bg-white border-4 border-soft-black rounded-[2rem] shadow-[8px_8px_0px_0px_rgba(41,37,36,1)] p-8 text-center space-y-6">
-        <h2 className="text-2xl font-bold uppercase tracking-tight text-soft-black">Commit to your thinking ritual</h2>
-        <p className="text-muted-text">Don&apos;t let your momentum fade. Your archive of original thought is a lifelong asset. Upgrade to Pro to unlock unlimited capacity and lifelong resurfacing.</p>
+        <h2 className="text-2xl font-bold uppercase tracking-tight text-soft-black">
+          Commit to your thinking ritual
+        </h2>
+        <p className="text-muted-text">
+          Don&apos;t let your momentum fade. Your archive of original thought is
+          a lifelong asset. Upgrade to Pro to unlock unlimited capacity and
+          lifelong resurfacing.
+        </p>
 
         {/* Billing toggle */}
         <div className="flex justify-center">
@@ -81,8 +93,13 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
 
         {/* Price display */}
         <div>
-          <span className="text-4xl font-bold text-soft-black">{pricing.symbol}{amount}</span>
-          <span className="text-muted-text ml-1">{billingPeriod === "monthly" ? "/mo" : "/yr"}</span>
+          <span className="text-4xl font-bold text-soft-black">
+            {pricing.symbol}
+            {amount}
+          </span>
+          <span className="text-muted-text ml-1">
+            {billingPeriod === "monthly" ? "/mo" : "/yr"}
+          </span>
         </div>
 
         <div className="flex flex-col gap-2 pt-2">
@@ -93,7 +110,12 @@ export default function UpgradeModal({ onCloseAction, isOpen }: { onCloseAction:
           >
             {isLoading ? "Loading..." : "Preserve my momentum"}
           </button>
-          <button onClick={onCloseAction} className="w-full py-2 text-muted-text font-bold hover:text-soft-black transition-colors lowercase">i&apos;ll risk the momentum</button>
+          <button
+            onClick={onCloseAction}
+            className="w-full py-2 text-muted-text font-bold hover:text-soft-black transition-colors lowercase"
+          >
+            i&apos;ll risk the momentum
+          </button>
         </div>
       </div>
     </div>

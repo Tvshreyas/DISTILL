@@ -10,7 +10,7 @@ As AI continues to automate the "doing" of tasks, the value of the human "thinki
 
 ### AI Can Summarize, But Humans Distill
 
-AI is excellent at summarization—taking a long text and making it short. But summarization is objective. *Distillation* is subjective. It is the act of filtering information through your unique experiences, biases, and goals.
+AI is excellent at summarization—taking a long text and making it short. But summarization is objective. _Distillation_ is subjective. It is the act of filtering information through your unique experiences, biases, and goals.
 
 AI cannot tell you why a specific quote changes your specific business strategy. Only you can do that.
 

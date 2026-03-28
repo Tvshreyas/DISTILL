@@ -15,10 +15,7 @@ export function WordReveal({ text, className, delay = 0 }: WordRevealProps) {
   return (
     <div className={cn("flex flex-wrap justify-center text-center", className)}>
       {words.map((word, i) => (
-        <span 
-          key={i} 
-          className="relative inline-block mr-[0.25em] mb-[0.1em]"
-        >
+        <span key={i} className="relative inline-block mr-[0.25em] mb-[0.1em]">
           <motion.span
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}

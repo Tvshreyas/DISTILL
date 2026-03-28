@@ -5,10 +5,10 @@ import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  
+
   const springConfig = { damping: 25, stiffness: 200 };
   const sx = useSpring(cursorX, springConfig);
   const sy = useSpring(cursorY, springConfig);
@@ -45,9 +45,9 @@ export function CustomCursor() {
           translateY: "-50%",
         }}
         initial={{ scale: 0, opacity: 0 }}
-        animate={{ 
-          scale: isVisible ? 1 : 0, 
-          opacity: isVisible ? 1 : 0 
+        animate={{
+          scale: isVisible ? 1 : 0,
+          opacity: isVisible ? 1 : 0,
         }}
       >
         <div className="w-1 h-1 bg-peach rounded-full" />

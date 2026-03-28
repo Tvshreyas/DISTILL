@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 export function useAutoSave(
   value: string,
   onSave: (value: string) => void,
-  delayMs: number = 2000
+  delayMs: number = 2000,
 ) {
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const lastSavedRef = useRef(value);

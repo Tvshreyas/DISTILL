@@ -53,17 +53,25 @@ test.describe("Reflection Flow", () => {
     await page.waitForTimeout(3000);
 
     // Either reflections exist or empty state
-    const hasReflections = await page.locator('a[href*="/dashboard/library/"]').count();
-    const hasEmptyState = await page.locator("text=no reflections found").count();
+    const hasReflections = await page
+      .locator('a[href*="/dashboard/library/"]')
+      .count();
+    const hasEmptyState = await page
+      .locator("text=no reflections found")
+      .count();
 
     expect(hasReflections > 0 || hasEmptyState > 0).toBe(true);
   });
 
-  test("reflection detail page displays content in quotes", async ({ page }) => {
+  test("reflection detail page displays content in quotes", async ({
+    page,
+  }) => {
     await page.goto("/dashboard/library");
     await page.waitForTimeout(3000);
 
-    const firstReflection = page.locator('a[href*="/dashboard/library/"]').first();
+    const firstReflection = page
+      .locator('a[href*="/dashboard/library/"]')
+      .first();
     if (await firstReflection.isVisible()) {
       await firstReflection.click();
       await page.waitForTimeout(2000);

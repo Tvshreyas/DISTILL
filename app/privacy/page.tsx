@@ -15,7 +15,9 @@ export default function PrivacyPage() {
     <main className="min-h-screen bg-warm-bg">
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Privacy Policy</h1>
-        <p className="text-sm text-muted-text mb-10">Last updated: February 2026</p>
+        <p className="text-sm text-muted-text mb-10">
+          Last updated: February 2026
+        </p>
 
         <div className="space-y-8 text-soft-black/80 text-[15px] leading-relaxed">
           <section>
@@ -79,20 +81,18 @@ export default function PrivacyPage() {
             </h2>
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                <strong>Your reflections are never used for AI training.</strong>{" "}
+                <strong>
+                  Your reflections are never used for AI training.
+                </strong>{" "}
                 Not by us. Not by any third party. Not ever.
               </li>
               <li>
-                <strong>
-                  Your data is never shared with third parties
-                </strong>{" "}
+                <strong>Your data is never shared with third parties</strong>{" "}
                 for marketing, advertising, or any other purpose.
               </li>
               <li>
-                <strong>
-                  Your reflection content is never logged
-                </strong>{" "}
-                in server logs or error tracking systems.
+                <strong>Your reflection content is never logged</strong> in
+                server logs or error tracking systems.
               </li>
             </ul>
           </section>

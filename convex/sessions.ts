@@ -12,7 +12,7 @@ export const create = mutation({
       v.literal("realization"),
       v.literal("workout"),
       v.literal("walk"),
-      v.literal("other")
+      v.literal("other"),
     ),
     consumeReason: v.optional(v.string()),
     isRetroactive: v.optional(v.boolean()),
@@ -36,14 +36,14 @@ export const create = mutation({
     const activeSession = await ctx.db
       .query("sessions")
       .withIndex("by_userId_status", (q) =>
-        q.eq("userId", userId).eq("status", "active")
+        q.eq("userId", userId).eq("status", "active"),
       )
       .filter((q) => q.eq(q.field("isDeleted"), false))
       .first();
 
     if (activeSession) {
       throw new Error(
-        "You already have an active session. Complete or abandon it first."
+        "You already have an active session. Complete or abandon it first.",
       );
     }
 
@@ -60,19 +60,19 @@ export const create = mutation({
       const completedDeepSessions = await ctx.db
         .query("sessions")
         .withIndex("by_userId_status", (q) =>
-          q.eq("userId", userId).eq("status", "complete")
+          q.eq("userId", userId).eq("status", "complete"),
         )
         .filter((q) =>
           q.and(
             q.eq(q.field("isDeleted"), false),
-            q.neq(q.field("type"), "quick")
-          )
+            q.neq(q.field("type"), "quick"),
+          ),
         )
         .collect();
 
       if (completedDeepSessions.length >= 3) {
         throw new Error(
-          "You've completed your 3-reflection monthly ritual. To extend your practice and preserve your momentum, upgrade to Refiner."
+          "You've completed your 3-reflection monthly ritual. To extend your practice and preserve your momentum, upgrade to Refiner.",
         );
       }
     }
@@ -93,7 +93,7 @@ export const create = mutation({
     const activeSessions = await ctx.db
       .query("sessions")
       .withIndex("by_userId_status", (q) =>
-        q.eq("userId", userId).eq("status", "active")
+        q.eq("userId", userId).eq("status", "active"),
       )
       .filter((q) => q.eq(q.field("isDeleted"), false))
       .collect();
@@ -102,7 +102,7 @@ export const create = mutation({
       // Another session was created concurrently — roll back this one
       await ctx.db.delete(id);
       throw new Error(
-        "You already have an active session. Complete or abandon it first."
+        "You already have an active session. Complete or abandon it first.",
       );
     }
 
@@ -144,7 +144,7 @@ export const getActive = query({
     return await ctx.db
       .query("sessions")
       .withIndex("by_userId_status", (q) =>
-        q.eq("userId", userId).eq("status", "active")
+        q.eq("userId", userId).eq("status", "active"),
       )
       .filter((q) => q.eq(q.field("isDeleted"), false))
       .first();
@@ -167,7 +167,10 @@ export const autoAbandonStaleSessions = internalMutation({
     for (const session of activeSessions) {
       const startedAt = new Date(session.startedAt).getTime();
       if (now - startedAt > eightHoursMs) {
-        await ctx.db.patch(session._id, { status: "abandoned", completedAt: new Date().toISOString() });
+        await ctx.db.patch(session._id, {
+          status: "abandoned",
+          completedAt: new Date().toISOString(),
+        });
         count++;
       }
     }

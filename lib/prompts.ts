@@ -15,9 +15,11 @@ export const REFLECTION_PROMPTS = [
   "Strip away the jargon. What is the naked truth here?",
   "How would you explain the core of this to a 5-year-old?",
   "What if the opposite of the author's argument was true?",
-  "What's the one thing in this you should ignore forever?"
+  "What's the one thing in this you should ignore forever?",
 ];
 
 export function getRandomPrompt() {
-  return REFLECTION_PROMPTS[Math.floor(Math.random() * REFLECTION_PROMPTS.length)];
+  return REFLECTION_PROMPTS[
+    Math.floor(Math.random() * REFLECTION_PROMPTS.length)
+  ];
 }

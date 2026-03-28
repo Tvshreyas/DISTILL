@@ -22,7 +22,7 @@ The techniques below all share one principle: they force your brain to actively 
 
 ## technique 1: set an intention before you start
 
-Before opening a book, article, or video, spend 30 seconds answering one question: *what do I want to get from this?*
+Before opening a book, article, or video, spend 30 seconds answering one question: _what do I want to get from this?_
 
 This is not about being productive with every piece of content you consume. It is about priming your brain to filter for relevant information. When you set an intention, your reticular activating system — the part of your brain that filters sensory input — starts flagging relevant passages automatically.
 
@@ -40,7 +40,7 @@ This is the opposite of how most people consume content in 2026 — skimming doz
 
 This is the single highest-leverage retention technique, and almost nobody does it.
 
-After finishing a reading session — a chapter, an article, a video — take two to five minutes and write one paragraph answering: *what did I just encounter, and what do I think about it?*
+After finishing a reading session — a chapter, an article, a video — take two to five minutes and write one paragraph answering: _what did I just encounter, and what do I think about it?_
 
 Not a summary. Not highlights. Your perspective. What struck you. What you disagree with. What connects to something you already know.
 
@@ -52,7 +52,7 @@ The paragraph does not need to be polished. It does not need to be shared. It ju
 
 Spaced repetition — reviewing material at increasing intervals — is well-established in learning science. But most spaced repetition systems are designed for factual recall: flashcards, vocabulary, medical terminology.
 
-For readers, a better model is *spaced resurfacing*: having your past reflections reappear at timed intervals so you re-engage with your former thinking. This is different from re-reading a book or reviewing highlights. You are not re-consuming the content. You are re-encountering your own perspective on it.
+For readers, a better model is _spaced resurfacing_: having your past reflections reappear at timed intervals so you re-engage with your former thinking. This is different from re-reading a book or reviewing highlights. You are not re-consuming the content. You are re-encountering your own perspective on it.
 
 When a reflection you wrote three weeks ago resurfaces, you get to evaluate it with fresh eyes. Do you still agree with yourself? Has your thinking evolved? This creates a compounding effect: each re-encounter deepens your understanding and builds connections between ideas across different sources.
 
@@ -60,7 +60,7 @@ When a reflection you wrote three weeks ago resurfaces, you get to evaluate it w
 
 Isolated facts are hard to remember. Connected facts are easy. This is why experts in a field can absorb new information about their specialty effortlessly — they have a dense web of existing knowledge to attach it to.
 
-When you read something that strikes you, pause and ask: *what does this remind me of? What existing idea does this extend, contradict, or complicate?*
+When you read something that strikes you, pause and ask: _what does this remind me of? What existing idea does this extend, contradict, or complicate?_
 
 These connections do not need to be profound. "This argument about attention is similar to what Cal Newport wrote, but applied to content consumption instead of work" is a connection that your brain can use as a retrieval hook later.
 
@@ -76,7 +76,7 @@ Individual reflections are valuable. A searchable, growing archive of reflection
 
 Over time, your archive becomes a map of your intellectual development. You can search for past thinking on a topic before consuming new content about it. You can trace how your perspective evolved. You can find connections between ideas from different books, articles, and videos that you would never have noticed otherwise.
 
-The key is that the archive must contain *your thinking*, not summaries or highlights from other people's work. An archive of highlights is just a worse version of the original content. An archive of your reflections is something that only you can create and only you can use.
+The key is that the archive must contain _your thinking_, not summaries or highlights from other people's work. An archive of highlights is just a worse version of the original content. An archive of your reflections is something that only you can create and only you can use.
 
 ## the common thread: active processing beats passive highlighting
 

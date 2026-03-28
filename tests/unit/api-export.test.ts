@@ -59,7 +59,7 @@ describe("export GET", () => {
       getToken: vi.fn().mockResolvedValue("token_abc"),
     });
     mockConvexMutation.mockRejectedValue(
-      new Error("Export rate limited. Try again later.")
+      new Error("Export rate limited. Try again later."),
     );
 
     const res = await GET();

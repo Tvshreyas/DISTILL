@@ -14,6 +14,7 @@ This is a complete example output showing the expected format for content gap an
 ## Executive Summary
 
 Compared to HubSpot and Drift, your blog has significant gaps in:
+
 1. **Interactive tools** - They have 15+, you have 0
 2. **Comparison content** - Missing "[Your Tool] vs [Competitor]" pages
 3. **GEO-optimized definitions** - No glossary or term definitions
@@ -24,16 +25,17 @@ Total opportunity: ~25,000 monthly visits from 45 keyword gaps
 
 ### Quick Wins (Difficulty <40)
 
-| Keyword | Volume | Difficulty | Who Ranks |
-|---------|--------|------------|-----------|
-| saas marketing metrics | 1,200 | 32 | HubSpot #3 |
-| b2b email sequences | 890 | 28 | Drift #5 |
-| saas onboarding emails | 720 | 25 | Neither! |
-| marketing qualified lead definition | 1,800 | 35 | HubSpot #1 |
+| Keyword                             | Volume | Difficulty | Who Ranks  |
+| ----------------------------------- | ------ | ---------- | ---------- |
+| saas marketing metrics              | 1,200  | 32         | HubSpot #3 |
+| b2b email sequences                 | 890    | 28         | Drift #5   |
+| saas onboarding emails              | 720    | 25         | Neither!   |
+| marketing qualified lead definition | 1,800  | 35         | HubSpot #1 |
 
 ### Content Format Gaps
 
 **You're missing**:
+
 - [ ] Interactive ROI calculator (HubSpot gets 15k visits/mo from theirs)
 - [ ] Email template library (Drift's gets 8k visits/mo)
 - [ ] Marketing glossary (HubSpot's definition pages rank for 500+ keywords)

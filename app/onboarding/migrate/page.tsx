@@ -25,7 +25,10 @@ function getStoredData(): OnboardingData | null {
     if (!raw) return null;
     const data: OnboardingData = JSON.parse(raw);
     // Expire after 7 days
-    if (data.savedAt && Date.now() - new Date(data.savedAt).getTime() > 7 * 24 * 60 * 60 * 1000) {
+    if (
+      data.savedAt &&
+      Date.now() - new Date(data.savedAt).getTime() > 7 * 24 * 60 * 60 * 1000
+    ) {
       localStorage.removeItem(STORAGE_KEY);
       return null;
     }
@@ -72,7 +75,7 @@ export default function MigratePage() {
       setError(
         err instanceof Error
           ? err.message
-          : "Something went wrong. Check your connection and try again."
+          : "Something went wrong. Check your connection and try again.",
       );
     }
   }

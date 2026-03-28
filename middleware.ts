@@ -17,11 +17,15 @@ const isProtectedRoute = createRouteMatcher([
 function rateLimitedResponse(reset: number): NextResponse {
   const retryAfter = Math.max(1, Math.ceil((reset - Date.now()) / 1000));
   return NextResponse.json(
-    { error: { code: "RATE_LIMITED", message: "Too many requests. Try again later." } },
-    { status: 429, headers: { "Retry-After": String(retryAfter) } }
+    {
+      error: {
+        code: "RATE_LIMITED",
+        message: "Too many requests. Try again later.",
+      },
+    },
+    { status: 429, headers: { "Retry-After": String(retryAfter) } },
   );
 }
-
 
 export default clerkMiddleware(async (auth, request: NextRequest) => {
   const { pathname } = request.nextUrl;
@@ -29,10 +33,19 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
 
   // Reject oversized request bodies (1MB limit for API routes)
   const contentLength = request.headers.get("content-length");
-  if (pathname.startsWith("/api/") && contentLength && parseInt(contentLength, 10) > 1_048_576) {
+  if (
+    pathname.startsWith("/api/") &&
+    contentLength &&
+    parseInt(contentLength, 10) > 1_048_576
+  ) {
     return NextResponse.json(
-      { error: { code: "PAYLOAD_TOO_LARGE", message: "Request body too large." } },
-      { status: 413 }
+      {
+        error: {
+          code: "PAYLOAD_TOO_LARGE",
+          message: "Request body too large.",
+        },
+      },
+      { status: 413 },
     );
   }
 
@@ -97,7 +110,9 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
     upgradeInsecure,
     reportUri ? `report-uri ${reportUri}` : "",
     reportUri ? `report-to csp-endpoint` : "",
-  ].filter(Boolean).join("; ");
+  ]
+    .filter(Boolean)
+    .join("; ");
 
   const response = NextResponse.next();
   response.headers.set("Content-Security-Policy", CSP);
@@ -110,7 +125,7 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
         group: "csp-endpoint",
         max_age: 86400,
         endpoints: [{ url: reportUri }],
-      })
+      }),
     );
   }
 

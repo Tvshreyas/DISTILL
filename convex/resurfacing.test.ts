@@ -9,17 +9,17 @@ const modules = import.meta.glob("./**/*.ts");
 /** Helper: creates a user with profile, session, reflection, and resurfacing queue entry */
 async function setupWithResurfacing(t: ReturnType<typeof convexTest>) {
   const asUser = t.withIdentity({ name: "Test User" });
-  await asUser.mutation(api.profiles.createOrGet);
+  await asUser.mutation(api.profiles.createOrGet, {});
 
   const session = await asUser.mutation(api.sessions.create, {
     title: "Deep Work",
     contentType: "book",
   });
 
-  const reflection = await asUser.mutation(api.reflections.create, {
+  const reflection = (await asUser.mutation(api.reflections.create, {
     sessionId: (session as any)._id,
     content: "Focus is everything.",
-  }) as any;
+  })) as any;
 
   // The reflection.create mutation auto-creates 4 resurfacing queue entries.
   // Make one of them due today so getPending can find it.
@@ -40,9 +40,9 @@ describe("resurfacing.getPending", () => {
   it("returns null when nothing pending", async () => {
     const t = convexTest(schema, modules);
     const asUser = t.withIdentity({ name: "Test User" });
-    await asUser.mutation(api.profiles.createOrGet);
+    await asUser.mutation(api.profiles.createOrGet, {});
 
-    const pending = await asUser.query(api.resurfacing.getPending);
+    const pending = await asUser.query(api.resurfacing.getPending, {});
     expect(pending).toBeNull();
   });
 
@@ -50,7 +50,7 @@ describe("resurfacing.getPending", () => {
     const t = convexTest(schema, modules);
     const { asUser } = await setupWithResurfacing(t);
 
-    const pending = await asUser.query(api.resurfacing.getPending);
+    const pending = await asUser.query(api.resurfacing.getPending, {});
     expect(pending).not.toBeNull();
     expect(pending!.reflection.content).toBe("Focus is everything.");
     expect(pending!.session!.title).toBe("Deep Work");
@@ -88,18 +88,11 @@ describe("resurfacing.respond", () => {
     });
   });
 
-  it("creates layer and marks as layered (pro user)", async () => {
+  it("creates layer and marks as layered (any user)", async () => {
     const t = convexTest(schema, modules);
     const { asUser, queueId } = await setupWithResurfacing(t);
 
-    // Upgrade to pro
-    await t.run(async (ctx) => {
-      const profiles = await ctx.db.query("profiles").collect();
-      for (const p of profiles) {
-        await ctx.db.patch(p._id, { plan: "pro" });
-      }
-    });
-
+    // Resurfacing layers are free for all users
     await asUser.mutation(api.resurfacing.respond, {
       queueId,
       action: "layered",
@@ -116,19 +109,6 @@ describe("resurfacing.respond", () => {
     });
   });
 
-  it("rejects layering for free user", async () => {
-    const t = convexTest(schema, modules);
-    const { asUser, queueId } = await setupWithResurfacing(t);
-
-    await expect(
-      asUser.mutation(api.resurfacing.respond, {
-        queueId,
-        action: "layered",
-        layerContent: "New perspective.",
-      })
-    ).rejects.toThrowError(/Pro feature/);
-  });
-
   it("rejects empty layer content", async () => {
     const t = convexTest(schema, modules);
     const { asUser, queueId } = await setupWithResurfacing(t);
@@ -138,7 +118,7 @@ describe("resurfacing.respond", () => {
         queueId,
         action: "layered",
         layerContent: "",
-      })
+      }),
     ).rejects.toThrowError("Layer content is required.");
   });
 
@@ -155,7 +135,7 @@ describe("resurfacing.respond", () => {
       asUser.mutation(api.resurfacing.respond, {
         queueId,
         action: "dismissed",
-      })
+      }),
     ).rejects.toThrowError("This item has already been responded to.");
   });
 });

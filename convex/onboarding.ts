@@ -2,7 +2,13 @@ import { mutation } from "./_generated/server";
 import { v } from "convex/values";
 import { checkContentSafety } from "./safety";
 
-const VALID_CONTENT_TYPES = ["book", "video", "article", "podcast", "other"] as const;
+const VALID_CONTENT_TYPES = [
+  "book",
+  "video",
+  "article",
+  "podcast",
+  "other",
+] as const;
 const FREE_TIER_LIMIT = 3;
 
 function computeWordCount(text: string): number {
@@ -74,11 +80,18 @@ export const migrate = mutation({
       throw new Error("Title must be between 1 and 200 characters.");
     }
 
-    if (!VALID_CONTENT_TYPES.includes(args.contentType as typeof VALID_CONTENT_TYPES[number])) {
+    if (
+      !VALID_CONTENT_TYPES.includes(
+        args.contentType as (typeof VALID_CONTENT_TYPES)[number],
+      )
+    ) {
       throw new Error("Invalid content type.");
     }
 
-    if (args.reflectionContent.length < 1 || args.reflectionContent.length > 800) {
+    if (
+      args.reflectionContent.length < 1 ||
+      args.reflectionContent.length > 800
+    ) {
       throw new Error("Reflection must be between 1 and 800 characters.");
     }
 
@@ -96,19 +109,19 @@ export const migrate = mutation({
       const completedSessions = await ctx.db
         .query("sessions")
         .withIndex("by_userId_status", (q) =>
-          q.eq("userId", userId).eq("status", "complete")
+          q.eq("userId", userId).eq("status", "complete"),
         )
         .filter((q) =>
           q.and(
             q.eq(q.field("isDeleted"), false),
-            q.neq(q.field("type"), "quick")
-          )
+            q.neq(q.field("type"), "quick"),
+          ),
         )
         .collect();
 
       if (completedSessions.length >= FREE_TIER_LIMIT) {
         throw new Error(
-          `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions.`
+          `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions.`,
         );
       }
     }
@@ -120,7 +133,7 @@ export const migrate = mutation({
     const sessionId = await ctx.db.insert("sessions", {
       userId,
       title: args.title,
-      contentType: args.contentType as typeof VALID_CONTENT_TYPES[number],
+      contentType: args.contentType as (typeof VALID_CONTENT_TYPES)[number],
       consumeReason: args.consumeReason,
       status: "complete",
       startedAt: nowIso,

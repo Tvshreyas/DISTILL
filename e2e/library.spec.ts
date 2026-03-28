@@ -4,7 +4,7 @@ test.describe("Library", () => {
   test("loads with search input and filter buttons", async ({ page }) => {
     await page.goto("/dashboard/library");
     await expect(
-      page.locator('input[placeholder="search your reflections..."]')
+      page.locator('input[placeholder="search your reflections..."]'),
     ).toBeVisible({ timeout: 10000 });
 
     for (const label of ["all", "books", "videos", "articles", "podcasts"]) {
@@ -27,7 +27,9 @@ test.describe("Library", () => {
 
   test("search input accepts text", async ({ page }) => {
     await page.goto("/dashboard/library");
-    const searchInput = page.locator('input[placeholder="search your reflections..."]');
+    const searchInput = page.locator(
+      'input[placeholder="search your reflections..."]',
+    );
     await searchInput.fill("test search");
     await expect(searchInput).toHaveValue("test search");
   });

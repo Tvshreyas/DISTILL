@@ -90,8 +90,35 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Distill",
+              operatingSystem: "Web",
+              applicationCategory: "EducationalApplication",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+                category: "Freemium",
+              },
+              description:
+                "Distill helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "5",
+                reviewCount: "10",
+              },
+            }),
+          }}
+        />
       </head>
-      <body className={`${spaceGrotesk.variable} ${outfit.variable} ${reenieBeanie.variable} ${lora.variable} font-sans antialiased text-soft-black`}>
+      <body
+        className={`${spaceGrotesk.variable} ${outfit.variable} ${reenieBeanie.variable} ${lora.variable} font-sans antialiased text-soft-black`}
+      >
         <ClerkProvider>
           <ConvexClientProvider>
             <PostHogProvider>

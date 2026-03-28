@@ -9,7 +9,7 @@ const modules = import.meta.glob("./**/*.ts");
 /** Helper: create an authenticated user with profile + active session, return { asUser, sessionId } */
 async function setupUserWithSession(t: ReturnType<typeof convexTest>) {
   const asUser = t.withIdentity({ name: "Test User" });
-  await asUser.mutation(api.profiles.createOrGet);
+  await asUser.mutation(api.profiles.createOrGet, {});
   const session = await asUser.mutation(api.sessions.create, {
     title: "Test Book",
     contentType: "book",
@@ -27,7 +27,7 @@ describe("reflections.create", () => {
       t.mutation(api.reflections.create, {
         sessionId,
         content: "Test reflection",
-      })
+      }),
     ).rejects.toThrowError("Unauthorized");
   });
 
@@ -35,10 +35,10 @@ describe("reflections.create", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const result = await asUser.mutation(api.reflections.create, {
+    const result = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "This changed my thinking.",
-    }) as any;
+    })) as any;
     expect(result).toMatchObject({
       content: "This changed my thinking.",
       isDeleted: false,
@@ -53,20 +53,24 @@ describe("reflections.create", () => {
       asUser.mutation(api.reflections.create, {
         sessionId,
         content: "",
-      })
-    ).rejects.toThrowError("Reflection must be between 1 and 3,000 characters.");
+      }),
+    ).rejects.toThrowError(
+      "Deep Session reflection must be under 30,000 characters (~5,000 words).",
+    );
   });
 
-  it("rejects content longer than 3000 characters", async () => {
+  it("rejects content longer than 30000 characters", async () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
     await expect(
       asUser.mutation(api.reflections.create, {
         sessionId,
-        content: "X".repeat(3001),
-      })
-    ).rejects.toThrowError("Reflection must be between 1 and 3,000 characters.");
+        content: "X".repeat(30001),
+      }),
+    ).rejects.toThrowError(
+      "Deep Session reflection must be under 30,000 characters (~5,000 words).",
+    );
   });
 
   it("rejects invalid rating (0)", async () => {
@@ -78,7 +82,7 @@ describe("reflections.create", () => {
         sessionId,
         content: "Valid content",
         thinkingShiftRating: 0,
-      })
+      }),
     ).rejects.toThrowError("Rating must be an integer between 1 and 5.");
   });
 
@@ -91,7 +95,7 @@ describe("reflections.create", () => {
         sessionId,
         content: "Valid content",
         thinkingShiftRating: 6,
-      })
+      }),
     ).rejects.toThrowError("Rating must be an integer between 1 and 5.");
   });
 
@@ -104,7 +108,7 @@ describe("reflections.create", () => {
         sessionId,
         content: "Valid content",
         thinkingShiftRating: 3.5,
-      })
+      }),
     ).rejects.toThrowError("Rating must be an integer between 1 and 5.");
   });
 
@@ -112,10 +116,10 @@ describe("reflections.create", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const result = await asUser.mutation(api.reflections.create, {
+    const result = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "No rating here.",
-    }) as any;
+    })) as any;
     expect(result!.thinkingShiftRating).toBeUndefined();
   });
 
@@ -141,7 +145,7 @@ describe("reflections.create", () => {
       content: "My reflection.",
     });
 
-    const profile = await asUser.query(api.profiles.get);
+    const profile = await asUser.query(api.profiles.get, {});
     expect(profile!.reflectionCountThisMonth).toBe(1);
     expect(profile!.reflectionCountLifetime).toBe(1);
   });
@@ -172,7 +176,7 @@ describe("reflections.create", () => {
       asUser.mutation(api.reflections.create, {
         sessionId,
         content: "Over limit.",
-      })
+      }),
     ).rejects.toThrowError(/reached your 3/);
   });
 
@@ -180,10 +184,10 @@ describe("reflections.create", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const result = await asUser.mutation(api.reflections.create, {
+    const result = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "hello world test",
-    }) as any;
+    })) as any;
     expect(result!.wordCount).toBe(3);
   });
 
@@ -195,7 +199,7 @@ describe("reflections.create", () => {
       asUser.mutation(api.reflections.create, {
         sessionId,
         content: "Just kill yourself already",
-      })
+      }),
     ).rejects.toThrowError("This content cannot be saved.");
   });
 
@@ -203,10 +207,10 @@ describe("reflections.create", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const result = await asUser.mutation(api.reflections.create, {
+    const result = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "I hope you die for writing this",
-    }) as any;
+    })) as any;
     expect(result).toBeTruthy();
     expect(result!.content).toContain("I hope you die");
   });
@@ -215,10 +219,10 @@ describe("reflections.create", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const result = await asUser.mutation(api.reflections.create, {
+    const result = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "This book was absolute garbage and a waste of time",
-    }) as any;
+    })) as any;
     expect(result).toBeTruthy();
   });
 });
@@ -228,15 +232,15 @@ describe("reflections.update", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const created = await asUser.mutation(api.reflections.create, {
+    const created = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "Original content.",
-    }) as any;
+    })) as any;
 
-    const updated = await asUser.mutation(api.reflections.update, {
+    const updated = (await asUser.mutation(api.reflections.update, {
       reflectionId: created!._id,
       content: "Updated content.",
-    }) as any;
+    })) as any;
     expect(updated!.content).toBe("Updated content.");
   });
 
@@ -244,16 +248,16 @@ describe("reflections.update", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const created = await asUser.mutation(api.reflections.create, {
+    const created = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "Original safe content.",
-    }) as any;
+    })) as any;
 
     await expect(
       asUser.mutation(api.reflections.update, {
         reflectionId: created!._id,
         content: "Just kill yourself already",
-      })
+      }),
     ).rejects.toThrowError("This content cannot be saved.");
   });
 
@@ -261,19 +265,19 @@ describe("reflections.update", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const created = await asUser.mutation(api.reflections.create, {
+    const created = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "My content.",
-    }) as any;
+    })) as any;
 
     const otherUser = t.withIdentity({ name: "Other User" });
-    await otherUser.mutation(api.profiles.createOrGet);
+    await otherUser.mutation(api.profiles.createOrGet, {});
 
     await expect(
       otherUser.mutation(api.reflections.update, {
         reflectionId: created!._id,
         content: "Hacked!",
-      })
+      }),
     ).rejects.toThrowError("Resource not found.");
   });
 });
@@ -283,14 +287,18 @@ describe("reflections.remove", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const created = await asUser.mutation(api.reflections.create, {
+    const created = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "To be deleted.",
-    }) as any;
+    })) as any;
 
-    await asUser.mutation(api.reflections.remove, { reflectionId: created!._id });
+    await asUser.mutation(api.reflections.remove, {
+      reflectionId: created!._id,
+    });
 
-    const fetched = await asUser.query(api.reflections.getById, { reflectionId: created!._id });
+    const fetched = await asUser.query(api.reflections.getById, {
+      reflectionId: created!._id,
+    });
     expect(fetched).toBeNull();
   });
 
@@ -299,14 +307,16 @@ describe("reflections.remove", () => {
     const { asUser, sessionId } = await setupUserWithSession(t);
 
     // Create then delete, then try to delete again
-    const created = await asUser.mutation(api.reflections.create, {
+    const created = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "Delete me.",
-    }) as any;
-    await asUser.mutation(api.reflections.remove, { reflectionId: created!._id });
+    })) as any;
+    await asUser.mutation(api.reflections.remove, {
+      reflectionId: created!._id,
+    });
 
     await expect(
-      asUser.mutation(api.reflections.remove, { reflectionId: created!._id })
+      asUser.mutation(api.reflections.remove, { reflectionId: created!._id }),
     ).rejects.toThrowError("Resource not found.");
   });
 });
@@ -315,7 +325,7 @@ describe("reflections.list", () => {
   it("returns empty when no reflections", async () => {
     const t = convexTest(schema, modules);
     const asUser = t.withIdentity({ name: "Test User" });
-    await asUser.mutation(api.profiles.createOrGet);
+    await asUser.mutation(api.profiles.createOrGet, {});
 
     const result = await asUser.query(api.reflections.list, {});
     expect(result).toMatchObject({ data: [], total: 0 });
@@ -325,11 +335,13 @@ describe("reflections.list", () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    const created = await asUser.mutation(api.reflections.create, {
+    const created = (await asUser.mutation(api.reflections.create, {
       sessionId,
       content: "Will be deleted.",
-    }) as any;
-    await asUser.mutation(api.reflections.remove, { reflectionId: created!._id });
+    })) as any;
+    await asUser.mutation(api.reflections.remove, {
+      reflectionId: created!._id,
+    });
 
     const result = await asUser.query(api.reflections.list, {});
     expect(result.total).toBe(0);
@@ -338,7 +350,7 @@ describe("reflections.list", () => {
   it("limits results (max 50)", async () => {
     const t = convexTest(schema, modules);
     const asUser = t.withIdentity({ name: "Test User" });
-    await asUser.mutation(api.profiles.createOrGet);
+    await asUser.mutation(api.profiles.createOrGet, {});
 
     const result = await asUser.query(api.reflections.list, { limit: 100 });
     // The limit gets clamped to 50 internally, but with no data it returns 0
@@ -362,7 +374,9 @@ describe("reflections.purgeSoftDeletedReflections", () => {
         isDeleted: false,
       });
 
-      const thirtyOneDaysAgo = new Date(Date.now() - 31 * 24 * 60 * 60 * 1000).toISOString();
+      const thirtyOneDaysAgo = new Date(
+        Date.now() - 31 * 24 * 60 * 60 * 1000,
+      ).toISOString();
       await ctx.db.insert("reflections", {
         userId: "user1",
         sessionId,
@@ -374,7 +388,7 @@ describe("reflections.purgeSoftDeletedReflections", () => {
       });
     });
 
-    await t.mutation(internal.reflections.purgeSoftDeletedReflections);
+    await t.mutation(internal.reflections.purgeSoftDeletedReflections, {});
 
     // Verify it was purged
     await t.run(async (ctx) => {

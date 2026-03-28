@@ -15,15 +15,17 @@ Create or update CLAUDE.md with this template:
 ## Active Target Keywords (Top 10-20)
 
 ### Hero Keywords (Priority 1)
-| Keyword | Current Rank | Target Rank | Volume | Status |
-|---------|--------------|-------------|--------|--------|
-| [keyword 1] | #[X] | #[Y] | [vol] | [tracking/optimizing/achieved] |
-| [keyword 2] | #[X] | #[Y] | [vol] | [tracking/optimizing/achieved] |
+
+| Keyword     | Current Rank | Target Rank | Volume | Status                         |
+| ----------- | ------------ | ----------- | ------ | ------------------------------ |
+| [keyword 1] | #[X]         | #[Y]        | [vol]  | [tracking/optimizing/achieved] |
+| [keyword 2] | #[X]         | #[Y]        | [vol]  | [tracking/optimizing/achieved] |
 
 ### Secondary Keywords (Priority 2)
-| Keyword | Current Rank | Target Rank | Volume | Status |
-|---------|--------------|-------------|--------|--------|
-| [keyword 1] | #[X] | #[Y] | [vol] | [tracking/optimizing/achieved] |
+
+| Keyword     | Current Rank | Target Rank | Volume | Status                         |
+| ----------- | ------------ | ----------- | ------ | ------------------------------ |
+| [keyword 1] | #[X]         | #[Y]        | [vol]  | [tracking/optimizing/achieved] |
 
 _Full keyword database: memory/keywords/_
 
@@ -55,22 +57,23 @@ _Detailed analyses: memory/competitors/_
 
 **Last Metrics Update**: [Date]
 
-| Metric | Current | Previous | Change | Target |
-|--------|---------|----------|--------|--------|
-| Organic Traffic | [X] | [X] | [+/-X%] | [target] |
-| Avg. Position | [X] | [X] | [+/-X] | [target] |
-| Total Keywords Ranking | [X] | [X] | [+/-X] | [target] |
-| Page 1 Rankings | [X] | [X] | [+/-X] | [target] |
-| Domain Authority | [X] | [X] | [+/-X] | [target] |
-| CITE Score | [X] | [X] | [+/-X] | [target] |
+| Metric                   | Current     | Previous   | Change   | Target         |
+| ------------------------ | ----------- | ---------- | -------- | -------------- |
+| Organic Traffic          | [X]         | [X]        | [+/-X%]  | [target]       |
+| Avg. Position            | [X]         | [X]        | [+/-X]   | [target]       |
+| Total Keywords Ranking   | [X]         | [X]        | [+/-X]   | [target]       |
+| Page 1 Rankings          | [X]         | [X]        | [+/-X]   | [target]       |
+| Domain Authority         | [X]         | [X]        | [+/-X]   | [target]       |
+| CITE Score               | [X]         | [X]        | [+/-X]   | [target]       |
 | Last Content Audit Score | [score]/100 | ([rating]) | — [date] | [page audited] |
-| Total Backlinks | [X] | [X] | [+/-X%] | [target] |
+| Total Backlinks          | [X]         | [X]        | [+/-X%]  | [target]       |
 
 _Historical data: memory/reports/_
 
 ## Active Campaigns
 
 ### [Campaign Name 1]
+
 - **Duration**: [Start date] - [End date]
 - **Goal**: [Specific goal]
 - **Status**: [planning/active/completed]
@@ -78,6 +81,7 @@ _Historical data: memory/reports/_
 - **Key activities**: [brief list]
 
 ### [Campaign Name 2]
+
 - **Duration**: [Start date] - [End date]
 - **Goal**: [Specific goal]
 - **Status**: [planning/active/completed]
@@ -94,4 +98,3 @@ _Campaign archives: memory/reports/campaign/_
 
 _For project terminology, see: memory/glossary.md_
 ```
-

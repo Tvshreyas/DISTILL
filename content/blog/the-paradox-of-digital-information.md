@@ -16,7 +16,8 @@ Social media platforms are designed for the scroll, not the stay. They reward sp
 
 ### Building a Filter
 
-To survive the information age, you must move from being a consumer to being a curator. 
+To survive the information age, you must move from being a consumer to being a curator.
+
 1. **Aggressive Unsubscribing**: If it doesn't add value, it shouldn't be in your feed.
 2. **Active Reflection**: For every hour of consumption, give yourself ten minutes of synthesis.
 3. **External Brain**: Use tools like Distill to capture the 1% of content that actually matters to your growth.

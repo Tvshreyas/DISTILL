@@ -14,6 +14,7 @@ This is a complete example output showing the expected format for competitor ana
 ## SEO Strategy Overview
 
 HubSpot dominates marketing keywords through a combination of:
+
 1. **Massive content moat** - 10,000+ blog posts
 2. **Free tools as linkbait** - Website grader, email signature generator
 3. **Educational brand** - Academy, certifications, courses
@@ -26,6 +27,7 @@ HubSpot dominates marketing keywords through a combination of:
 **Publishing Volume**: 50-100 posts/month
 **Average Word Count**: 2,500+ words
 **Content Types**:
+
 - In-depth guides (35%)
 - How-to tutorials (25%)
 - Templates & examples (20%)
@@ -33,6 +35,7 @@ HubSpot dominates marketing keywords through a combination of:
 - Tools & calculators (10%)
 
 **Top Performing Content Pattern**:
+
 1. Ultimate guides on broad topics
 2. Free templates with email gate
 3. Statistics roundup posts
@@ -43,20 +46,22 @@ HubSpot dominates marketing keywords through a combination of:
 HubSpot appears in AI responses frequently because:
 
 1. **Clear definitions** at the start of every post
+
    > "Inbound marketing is a business methodology that attracts customers by creating valuable content and experiences tailored to them."
 
 2. **Quotable statistics**
+
    > "Companies that blog get 55% more website visitors"
 
 3. **Comprehensive coverage** - AI trusts their authority
 
 ### Linkable Assets
 
-| Asset | Backlinks | Why It Works |
-|-------|-----------|--------------|
-| Website Grader | 45,000+ | Free, instant value |
-| Marketing Statistics | 12,000+ | Quotable reference |
-| Blog Ideas Generator | 8,500+ | Solves real problem |
+| Asset                | Backlinks | Why It Works        |
+| -------------------- | --------- | ------------------- |
+| Website Grader       | 45,000+   | Free, instant value |
+| Marketing Statistics | 12,000+   | Quotable reference  |
+| Blog Ideas Generator | 8,500+    | Solves real problem |
 
 ## Weaknesses to Exploit
 

@@ -10,35 +10,53 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
-  
+
   if (!convexUrl) {
     console.error("Missing NEXT_PUBLIC_CONVEX_URL environment variable");
-    return new Response(renderPage("Configuration Error", "The server is missing a required environment variable."), {
-      status: 500,
-      headers: htmlHeaders(),
-    });
+    return new Response(
+      renderPage(
+        "Configuration Error",
+        "The server is missing a required environment variable.",
+      ),
+      {
+        status: 500,
+        headers: htmlHeaders(),
+      },
+    );
   }
 
   const token = request.nextUrl.searchParams.get("token");
 
   if (!token) {
-    return new Response(renderPage("Invalid Link", "This unsubscribe link is missing or malformed."), {
-      status: 400,
-      headers: htmlHeaders(),
-    });
+    return new Response(
+      renderPage(
+        "Invalid Link",
+        "This unsubscribe link is missing or malformed.",
+      ),
+      {
+        status: 400,
+        headers: htmlHeaders(),
+      },
+    );
   }
 
   const result = verifyUnsubscribeToken(token);
   if (!result) {
-    return new Response(renderPage("Invalid Link", "This unsubscribe link is invalid or expired."), {
-      status: 400,
-      headers: htmlHeaders(),
-    });
+    return new Response(
+      renderPage(
+        "Invalid Link",
+        "This unsubscribe link is invalid or expired.",
+      ),
+      {
+        status: 400,
+        headers: htmlHeaders(),
+      },
+    );
   }
 
-    // Call Convex HTTP bridge to disable the notification type
-    try {
-      // convexUrl is already checked at the top of the function
+  // Call Convex HTTP bridge to disable the notification type
+  try {
+    // convexUrl is already checked at the top of the function
     const internalAuthKey = process.env.CONVEX_INTERNAL_AUTH_KEY;
 
     if (!internalAuthKey) {
@@ -64,17 +82,26 @@ export async function GET(request: NextRequest) {
       }),
     });
   } catch (err) {
-    console.error("[unsubscribe] Failed to disable notification:", err instanceof Error ? err.message : "Unknown error");
+    console.error(
+      "[unsubscribe] Failed to disable notification:",
+      err instanceof Error ? err.message : "Unknown error",
+    );
     return new Response(
-      renderPage("Something went wrong", "We couldn't process your request. Please try again or adjust your settings in the app."),
-      { status: 500, headers: htmlHeaders() }
+      renderPage(
+        "Something went wrong",
+        "We couldn't process your request. Please try again or adjust your settings in the app.",
+      ),
+      { status: 500, headers: htmlHeaders() },
     );
   }
 
   const label = TYPE_LABELS[result.type] ?? "Notifications";
   return new Response(
-    renderPage("Unsubscribed", `${label} have been disabled. You can re-enable them in your Distill settings.`),
-    { status: 200, headers: htmlHeaders() }
+    renderPage(
+      "Unsubscribed",
+      `${label} have been disabled. You can re-enable them in your Distill settings.`,
+    ),
+    { status: 200, headers: htmlHeaders() },
   );
 }
 
@@ -82,7 +109,8 @@ export async function GET(request: NextRequest) {
 function htmlHeaders(): HeadersInit {
   return {
     "Content-Type": "text/html",
-    "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'none'",
+    "Content-Security-Policy":
+      "default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'none'",
     "X-Content-Type-Options": "nosniff",
   };
 }

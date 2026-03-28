@@ -24,7 +24,15 @@ vi.mock("next/navigation", () => ({
 
 // Mock next/link
 vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string; [key: string]: unknown }) => {
+  default: ({
+    children,
+    href,
+    ...props
+  }: {
+    children: React.ReactNode;
+    href: string;
+    [key: string]: unknown;
+  }) => {
     return { type: "a", props: { href, ...props, children } };
   },
 }));
@@ -34,7 +42,11 @@ vi.mock("@clerk/nextjs", () => ({
   useUser: () => ({
     isLoaded: true,
     isSignedIn: true,
-    user: { id: "test-user-id", fullName: "Test User", primaryEmailAddress: { emailAddress: "test@test.com" } },
+    user: {
+      id: "test-user-id",
+      fullName: "Test User",
+      primaryEmailAddress: { emailAddress: "test@test.com" },
+    },
   }),
   useClerk: () => ({
     signOut: vi.fn(),

@@ -19,12 +19,8 @@ describe("deep session limit logic", () => {
   // Mirrors the enforcement in sessions.create and reflections.create:
   //   atLimit  = plan === "free" && completedDeepSessions >= FREE_TIER_LIMIT
   //   nearLimit = plan === "free" && completedDeepSessions >= FREE_TIER_NUDGE
-  function computeFlags(
-    plan: "free" | "pro",
-    completedDeepSessions: number
-  ) {
-    const atLimit =
-      plan === "free" && completedDeepSessions >= FREE_TIER_LIMIT;
+  function computeFlags(plan: "free" | "pro", completedDeepSessions: number) {
+    const atLimit = plan === "free" && completedDeepSessions >= FREE_TIER_LIMIT;
     const nearLimit =
       plan === "free" && completedDeepSessions >= FREE_TIER_NUDGE;
     return { atLimit, nearLimit };

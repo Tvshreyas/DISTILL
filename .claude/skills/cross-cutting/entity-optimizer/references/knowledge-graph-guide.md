@@ -23,14 +23,14 @@ Your Entity
 
 ### Which Knowledge Graphs Matter
 
-| Knowledge Graph | Who Uses It | Impact |
-|----------------|-------------|--------|
-| **Google Knowledge Graph** | Google Search, Google AI | Powers Knowledge Panels, rich results, entity understanding in search |
-| **Wikidata** | Google, Bing, Apple, Amazon, AI systems | Open data feeds multiple knowledge graphs; primary structured data source |
-| **Wikipedia** | Google, all AI systems | Training data for every major LLM; Knowledge Panel descriptions often sourced here |
-| **Bing Satori** | Bing, Copilot | Powers Bing's entity understanding and Microsoft Copilot |
-| **Schema.org (your site)** | All search engines, AI crawlers | First-party structured data you control directly |
-| **DBpedia** | Research, some AI systems | Auto-extracted from Wikipedia; relevant for academic/research entities |
+| Knowledge Graph            | Who Uses It                             | Impact                                                                             |
+| -------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Google Knowledge Graph** | Google Search, Google AI                | Powers Knowledge Panels, rich results, entity understanding in search              |
+| **Wikidata**               | Google, Bing, Apple, Amazon, AI systems | Open data feeds multiple knowledge graphs; primary structured data source          |
+| **Wikipedia**              | Google, all AI systems                  | Training data for every major LLM; Knowledge Panel descriptions often sourced here |
+| **Bing Satori**            | Bing, Copilot                           | Powers Bing's entity understanding and Microsoft Copilot                           |
+| **Schema.org (your site)** | All search engines, AI crawlers         | First-party structured data you control directly                                   |
+| **DBpedia**                | Research, some AI systems               | Auto-extracted from Wikipedia; relevant for academic/research entities             |
 
 ### Data Flow
 
@@ -63,11 +63,13 @@ There is no "submit to Knowledge Graph" form. Google builds its Knowledge Graph 
 Search for your entity name in quotes. If a Knowledge Panel appears on the right, you're in the Knowledge Graph.
 
 **Method 2: Knowledge Graph API**
+
 ```
 GET https://kgsearch.googleapis.com/v1/entities:search?query=[entity]&key=[API_KEY]
 ```
 
 Response includes:
+
 - `@id`: Your Knowledge Graph ID (e.g., `kg:/m/0wrt4g`)
 - `name`: Entity name as Google understands it
 - `description`: Short entity description
@@ -86,20 +88,21 @@ If connected, query directly for entity status and attributes.
 
 ### Common Knowledge Panel Fixes
 
-| Problem | Solution |
-|---------|----------|
-| **No Knowledge Panel** | Build Wikidata entry + Schema.org + authoritative mentions. Timeline: 2-6 months. |
-| **Wrong image** | Update preferred image on: Wikidata (P18), About page, social profiles. Claim panel and suggest preferred image. |
-| **Wrong description** | Edit Wikidata description. Update first paragraph of About page and Wikipedia article. |
-| **Missing attributes** | Add properties to Wikidata and Schema.org. Claim panel and suggest additions. |
-| **Outdated information** | Update Wikidata, About page, Wikipedia, and social profiles. Request refresh via claimed panel. |
-| **Wrong entity shown** | Disambiguation needed. See Wikidata section below for disambiguation strategy. |
+| Problem                  | Solution                                                                                                         |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| **No Knowledge Panel**   | Build Wikidata entry + Schema.org + authoritative mentions. Timeline: 2-6 months.                                |
+| **Wrong image**          | Update preferred image on: Wikidata (P18), About page, social profiles. Claim panel and suggest preferred image. |
+| **Wrong description**    | Edit Wikidata description. Update first paragraph of About page and Wikipedia article.                           |
+| **Missing attributes**   | Add properties to Wikidata and Schema.org. Claim panel and suggest additions.                                    |
+| **Outdated information** | Update Wikidata, About page, Wikipedia, and social profiles. Request refresh via claimed panel.                  |
+| **Wrong entity shown**   | Disambiguation needed. See Wikidata section below for disambiguation strategy.                                   |
 
 ## Wikidata
 
 ### Why Wikidata Is Critical
 
 Wikidata is the **single most influential editable knowledge base** for entity optimization:
+
 - Google uses it as a primary source for Knowledge Panels
 - Bing uses it for Satori knowledge graph
 - AI systems reference it during entity resolution
@@ -160,21 +163,22 @@ Essential properties for each entity type:
 
 These link your Wikidata item to other knowledge bases:
 
-| Identifier | Code | Purpose |
-|-----------|------|---------|
-| official website | P856 | Primary web presence |
-| X (Twitter) username | P2002 | Social presence |
-| LinkedIn organization ID | P4264 | Professional presence |
-| GitHub username | P2037 | Technical presence |
-| CrunchBase ID | P2087 | Business data |
-| Google Knowledge Graph ID | P2671 | Google entity link |
-| App Store ID | P3861 | Mobile presence |
+| Identifier                | Code  | Purpose               |
+| ------------------------- | ----- | --------------------- |
+| official website          | P856  | Primary web presence  |
+| X (Twitter) username      | P2002 | Social presence       |
+| LinkedIn organization ID  | P4264 | Professional presence |
+| GitHub username           | P2037 | Technical presence    |
+| CrunchBase ID             | P2087 | Business data         |
+| Google Knowledge Graph ID | P2671 | Google entity link    |
+| App Store ID              | P3861 | Mobile presence       |
 
 #### Step 5: Add References
 
 **Every statement must have a reference.** Unreferenced statements may be removed.
 
 Good reference sources:
+
 - Official website (for factual claims like founding date)
 - News articles (for events, milestones)
 - Industry reports (for market position)
@@ -182,19 +186,20 @@ Good reference sources:
 
 ### Wikidata Maintenance
 
-| Task | Frequency | Why |
-|------|-----------|-----|
-| Review existing statements | Quarterly | Ensure accuracy; update changed information |
-| Add new properties | When new information available | Keep entry comprehensive |
-| Check for vandalism | Monthly | Others can edit your entry |
-| Add new references | When new coverage appears | Strengthen statement credibility |
-| Update identifiers | When new profiles created | Keep links current |
+| Task                       | Frequency                      | Why                                         |
+| -------------------------- | ------------------------------ | ------------------------------------------- |
+| Review existing statements | Quarterly                      | Ensure accuracy; update changed information |
+| Add new properties         | When new information available | Keep entry comprehensive                    |
+| Check for vandalism        | Monthly                        | Others can edit your entry                  |
+| Add new references         | When new coverage appears      | Strengthen statement credibility            |
+| Update identifiers         | When new profiles created      | Keep links current                          |
 
 ## Wikipedia
 
 ### Notability Requirements
 
 Wikipedia requires entities to meet "general notability guidelines" (GNG):
+
 - **Significant coverage** in **reliable, independent sources**
 - Coverage must be **non-trivial** (not just a mention or directory listing)
 - Sources must be **independent** of the entity (not press releases, not entity's own content)
@@ -220,6 +225,7 @@ Coverage-building strategies:
 ### Wikipedia Article Best Practices
 
 **DO:**
+
 - Write in neutral, encyclopedic tone
 - Use only independent, reliable sources as references
 - Follow Wikipedia's Manual of Style
@@ -227,6 +233,7 @@ Coverage-building strategies:
 - Let the community review and improve the article
 
 **DO NOT:**
+
 - Write promotional content
 - Use the entity's own website as a primary source
 - Create the article from a company account without disclosure
@@ -236,6 +243,7 @@ Coverage-building strategies:
 ### Wikipedia's Impact on AI
 
 Wikipedia is disproportionately important for AI systems because:
+
 - It's in the training data of every major LLM
 - AI systems treat it as a high-trust source
 - Wikipedia's structured format makes it easy for AI to extract and cite
@@ -250,6 +258,7 @@ This makes Wikipedia presence one of the highest-impact entity optimization acti
 Every entity should have at minimum this markup on the homepage:
 
 **Organization:**
+
 ```json
 {
   "@context": "https://schema.org",
@@ -276,6 +285,7 @@ Every entity should have at minimum this markup on the homepage:
 ```
 
 **Person:**
+
 ```json
 {
   "@context": "https://schema.org",
@@ -303,18 +313,16 @@ Every entity should have at minimum this markup on the homepage:
 The `sameAs` property is the **primary entity disambiguation signal** in Schema.org. It tells search engines "this is the same entity as the one on these other platforms."
 
 **Must include (when available):**
+
 1. Wikidata URL (most important for Knowledge Graph)
 2. Wikipedia URL
 3. LinkedIn URL
 4. Official social media profiles
 
-**Include when relevant:**
-5. CrunchBase URL
-6. GitHub URL
-7. IMDb URL (for people in entertainment)
-8. Industry directory URLs
+**Include when relevant:** 5. CrunchBase URL 6. GitHub URL 7. IMDb URL (for people in entertainment) 8. Industry directory URLs
 
 **Common mistakes:**
+
 - Linking to generic pages instead of entity-specific URLs
 - Inconsistent: Schema says "Example Corp" but LinkedIn says "Example Corporation"
 - Missing Wikidata link (this is the single most impactful sameAs)
@@ -335,6 +343,7 @@ Every page on the site should reference the same entity with the same `@id`:
 ```
 
 For articles:
+
 ```json
 {
   "@type": "Article",
@@ -355,29 +364,30 @@ This creates a consistent entity graph that search engines can confidently map t
 
 ### Quarterly Entity Health Check
 
-| Check | How | What to Look For |
-|-------|-----|-----------------|
-| Knowledge Panel accuracy | Google entity name | Correct info, image, attributes |
-| Wikidata entry | Visit Wikidata page | No vandalism, info still current |
-| AI entity resolution | Query 3+ AI systems | Accurate recognition and description |
-| Schema.org validation | Google Rich Results Test | No errors, complete entity data |
-| Branded search SERP | Google "[entity name]" | Clean SERP, no disambiguation issues |
-| Social profile consistency | Visit all profiles | Same name, description, links |
+| Check                      | How                      | What to Look For                     |
+| -------------------------- | ------------------------ | ------------------------------------ |
+| Knowledge Panel accuracy   | Google entity name       | Correct info, image, attributes      |
+| Wikidata entry             | Visit Wikidata page      | No vandalism, info still current     |
+| AI entity resolution       | Query 3+ AI systems      | Accurate recognition and description |
+| Schema.org validation      | Google Rich Results Test | No errors, complete entity data      |
+| Branded search SERP        | Google "[entity name]"   | Clean SERP, no disambiguation issues |
+| Social profile consistency | Visit all profiles       | Same name, description, links        |
 
 ### Entity Health Metrics to Track
 
-| Metric | Tool | Target |
-|--------|------|--------|
-| Knowledge Panel presence | Google Search | Present and accurate |
-| Branded search CTR | ~~search console | > 50% for exact brand name |
-| AI recognition rate | Manual testing | Recognized by 3/3 major AI systems |
-| Wikidata completeness | Wikidata | 15+ properties with references |
-| Schema.org error count | Google Search Console | 0 errors |
-| Brand mention volume | ~~brand monitor | Stable or growing trend |
+| Metric                   | Tool                  | Target                             |
+| ------------------------ | --------------------- | ---------------------------------- |
+| Knowledge Panel presence | Google Search         | Present and accurate               |
+| Branded search CTR       | ~~search console      | > 50% for exact brand name         |
+| AI recognition rate      | Manual testing        | Recognized by 3/3 major AI systems |
+| Wikidata completeness    | Wikidata              | 15+ properties with references     |
+| Schema.org error count   | Google Search Console | 0 errors                           |
+| Brand mention volume     | ~~brand monitor       | Stable or growing trend            |
 
 ### Recovery Playbooks
 
 **Entity disappeared from Knowledge Graph:**
+
 1. Check if Wikidata entry was deleted or merged
 2. Verify Schema.org markup hasn't changed
 3. Look for major algorithm updates that might have affected entity recognition
@@ -385,6 +395,7 @@ This creates a consistent entity graph that search engines can confidently map t
 5. Timeline: 2-8 weeks for recovery
 
 **AI systems giving incorrect entity info:**
+
 1. Identify which sources have incorrect information
 2. Correct information at source (Wikidata, Wikipedia, About page)
 3. AI systems will update over time (training data refresh + live search)
@@ -392,6 +403,7 @@ This creates a consistent entity graph that search engines can confidently map t
 5. Timeline: weeks to months depending on AI system update cycles
 
 **Knowledge Panel showing wrong entity:**
+
 1. Claim the Knowledge Panel (if you haven't already)
 2. Strengthen disambiguation signals (see SKILL.md Disambiguation Strategy)
 3. Add qualifier to entity name if needed

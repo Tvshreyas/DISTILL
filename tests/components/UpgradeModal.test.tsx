@@ -4,7 +4,9 @@ import UpgradeModal from "@/components/UpgradeModal";
 
 describe("UpgradeModal", () => {
   it("renders nothing when isOpen is false", () => {
-    const { container } = render(<UpgradeModal isOpen={false} onCloseAction={vi.fn()} />);
+    const { container } = render(
+      <UpgradeModal isOpen={false} onCloseAction={vi.fn()} />,
+    );
     expect(container.innerHTML).toBe("");
   });
 

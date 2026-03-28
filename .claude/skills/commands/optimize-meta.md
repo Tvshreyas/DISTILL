@@ -31,6 +31,7 @@ Analyzes and enhances **title tags, meta descriptions, and social media tags** t
 ```
 
 **Arguments:**
+
 - URL or page details (required)
 - `keyword="target keyword"` (optional but recommended)
 - `target="focus topic"` (alternative to keyword)

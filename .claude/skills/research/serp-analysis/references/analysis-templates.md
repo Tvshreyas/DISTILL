@@ -8,29 +8,31 @@ Templates for each step of the SERP analysis workflow. Use these to structure yo
 ## SERP Analysis: "[keyword]"
 
 **Search Details**
+
 - Keyword: [keyword]
 - Location: [location]
 - Device: [mobile/desktop]
 - Date: [date]
 
 ### SERP Layout Overview
-
 ```
+
 ┌─────────────────────────────────────────┐
-│ [AI Overview / SGE] (if present)        │
+│ [AI Overview / SGE] (if present) │
 ├─────────────────────────────────────────┤
-│ [Ads] - [X] ads above fold              │
+│ [Ads] - [X] ads above fold │
 ├─────────────────────────────────────────┤
-│ [Featured Snippet] (if present)         │
+│ [Featured Snippet] (if present) │
 ├─────────────────────────────────────────┤
-│ [Organic Result #1]                     │
-│ [Organic Result #2]                     │
-│ [People Also Ask] (if present)          │
-│ [Organic Result #3]                     │
-│ ...                                     │
+│ [Organic Result #1] │
+│ [Organic Result #2] │
+│ [People Also Ask] (if present) │
+│ [Organic Result #3] │
+│ ... │
 ├─────────────────────────────────────────┤
-│ [Related Searches]                      │
+│ [Related Searches] │
 └─────────────────────────────────────────┘
+
 ```
 
 ### SERP Features Present
@@ -61,12 +63,14 @@ Templates for each step of the SERP analysis workflow. Use these to structure yo
 **Domain Authority**: [DA]
 
 **Content Analysis**:
+
 - Type: [Blog/Product/Guide/etc.]
 - Word Count: [X] words
 - Publish Date: [date]
 - Last Updated: [date]
 
 **On-Page Factors**:
+
 - Title: [exact title]
 - Title contains keyword: Yes/No
 - Meta description: [description]
@@ -74,17 +78,20 @@ Templates for each step of the SERP analysis workflow. Use these to structure yo
 - URL structure: [clean/keyword-rich/etc.]
 
 **Content Structure**:
+
 - Headings (H2s): [list key sections]
 - Media: [X] images, [X] videos
 - Tables/Lists: Yes/No
 - FAQ section: Yes/No
 
 **Estimated Metrics**:
+
 - Page backlinks: [X]
 - Referring domains: [X]
 - Social shares: [X]
 
 **Why It Ranks #1**:
+
 1. [Factor 1]
 2. [Factor 2]
 3. [Factor 3]
@@ -99,16 +106,17 @@ Templates for each step of the SERP analysis workflow. Use these to structure yo
 
 **Common Characteristics of Top 5 Results**:
 
-| Factor | Avg/Common Value | Importance |
-|--------|-----------------|------------|
-| Word Count | [X] words | High/Med/Low |
-| Domain Authority | [X] | High/Med/Low |
-| Page Backlinks | [X] | High/Med/Low |
-| Content Freshness | [timeframe] | High/Med/Low |
-| HTTPS | [X]% | High/Med/Low |
-| Mobile Optimized | [X]% | High/Med/Low |
+| Factor            | Avg/Common Value | Importance   |
+| ----------------- | ---------------- | ------------ |
+| Word Count        | [X] words        | High/Med/Low |
+| Domain Authority  | [X]              | High/Med/Low |
+| Page Backlinks    | [X]              | High/Med/Low |
+| Content Freshness | [timeframe]      | High/Med/Low |
+| HTTPS             | [X]%             | High/Med/Low |
+| Mobile Optimized  | [X]%             | High/Med/Low |
 
 **Content Format Distribution**:
+
 - How-to guides: [X]/10
 - Listicles: [X]/10
 - In-depth articles: [X]/10
@@ -116,6 +124,7 @@ Templates for each step of the SERP analysis workflow. Use these to structure yo
 - Other: [X]/10
 
 **Domain Type Distribution**:
+
 - Brand/Company sites: [X]/10
 - Media/News sites: [X]/10
 - Niche blogs: [X]/10
@@ -136,9 +145,11 @@ Templates for each step of the SERP analysis workflow. Use these to structure yo
 **Current Snippet Holder**: [URL]
 **Snippet Type**: [Paragraph/List/Table/Video]
 **Snippet Content**:
+
 > [Exact text/description of snippet]
 
 **How to Win This Snippet**:
+
 1. [Strategy based on current snippet]
 2. [Content format recommendation]
 3. [Structure recommendation]
@@ -148,12 +159,14 @@ Templates for each step of the SERP analysis workflow. Use these to structure yo
 ### People Also Ask (PAA) Analysis
 
 **Questions Appearing**:
+
 1. [Question 1] → Currently answered by: [URL]
 2. [Question 2] → Currently answered by: [URL]
 3. [Question 3] → Currently answered by: [URL]
 4. [Question 4] → Currently answered by: [URL]
 
 **PAA Optimization Strategy**:
+
 - Include these questions as H2/H3 headings
 - Provide direct, concise answers (40-60 words)
 - Use FAQ schema markup
@@ -166,16 +179,19 @@ Templates for each step of the SERP analysis workflow. Use these to structure yo
 **AI Overview Type**: [Summary/List/Comparison/etc.]
 
 **Sources Cited in AI Overview**:
+
 1. [Source 1] - [Why cited]
 2. [Source 2] - [Why cited]
 3. [Source 3] - [Why cited]
 
 **AI Overview Content Patterns**:
+
 - Pulls definitions from: [source type]
 - Lists information as: [format]
 - Cites statistics from: [source type]
 
 **How to Get Cited in AI Overview**:
+
 1. [Specific recommendation]
 2. [Specific recommendation]
 3. [Specific recommendation]
@@ -189,17 +205,20 @@ Templates for each step of the SERP analysis workflow. Use these to structure yo
 **Primary Intent**: [Informational/Commercial/Transactional/Navigational]
 
 **Evidence**:
+
 - SERP features suggest: [analysis]
 - Top results are: [content types]
 - User likely wants: [description]
 
 **Intent Breakdown**:
+
 - Informational signals: [X]%
 - Commercial signals: [X]%
 - Transactional signals: [X]%
 
 **Content Format Implication**:
 Based on intent, your content should:
+
 - Format: [recommendation]
 - Tone: [recommendation]
 - CTA: [recommendation]
@@ -214,13 +233,13 @@ Based on intent, your content should:
 
 **Difficulty Factors**:
 
-| Factor | Score | Weight | Impact |
-|--------|-------|--------|--------|
-| Top 10 Domain Authority | [avg] | 25% | [High/Med/Low] |
-| Top 10 Page Authority | [avg] | 20% | [High/Med/Low] |
-| Backlinks Required | [est.] | 20% | [High/Med/Low] |
-| Content Quality Bar | [rating] | 20% | [High/Med/Low] |
-| SERP Stability | [rating] | 15% | [High/Med/Low] |
+| Factor                  | Score    | Weight | Impact         |
+| ----------------------- | -------- | ------ | -------------- |
+| Top 10 Domain Authority | [avg]    | 25%    | [High/Med/Low] |
+| Top 10 Page Authority   | [avg]    | 20%    | [High/Med/Low] |
+| Backlinks Required      | [est.]   | 20%    | [High/Med/Low] |
+| Content Quality Bar     | [rating] | 20%    | [High/Med/Low] |
+| SERP Stability          | [rating] | 15%    | [High/Med/Low] |
 
 **Realistic Assessment**:
 
@@ -230,6 +249,7 @@ Based on intent, your content should:
 
 **Easier Alternatives**:
 If too difficult, consider:
+
 - [Alternative keyword 1] - Difficulty: [X]
 - [Alternative keyword 2] - Difficulty: [X]
 ```
@@ -250,6 +270,7 @@ If too difficult, consider:
 To compete for "[keyword]", you need:
 
 **Minimum Requirements**:
+
 - [ ] Word count: [X]+ words
 - [ ] Backlinks: [X]+ referring domains
 - [ ] Domain Authority: [X]+
@@ -257,23 +278,24 @@ To compete for "[keyword]", you need:
 - [ ] Include: [specific elements]
 
 **Differentiators to Win**:
+
 - [ ] [Unique angle from analysis]
 - [ ] [Missing element in current results]
 - [ ] [SERP feature opportunity]
 
 ### SERP Feature Strategy
 
-| Feature | Winnable? | Strategy |
-|---------|-----------|----------|
-| Featured Snippet | Yes/No | [strategy] |
-| PAA | Yes/No | [strategy] |
-| AI Overview | Yes/No | [strategy] |
+| Feature          | Winnable? | Strategy   |
+| ---------------- | --------- | ---------- |
+| Featured Snippet | Yes/No    | [strategy] |
+| PAA              | Yes/No    | [strategy] |
+| AI Overview      | Yes/No    | [strategy] |
 
 ### Recommended Content Outline
 
 Based on SERP analysis:
-
 ```
+
 Title: [Optimized title]
 
 H1: [Main heading]
@@ -287,6 +309,7 @@ H2: [Section based on PAA/top results]
 [FAQ section for PAA optimization]
 
 [Conclusion with CTA]
+
 ```
 
 ### Next Steps

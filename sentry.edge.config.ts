@@ -9,7 +9,13 @@ Sentry.init({
     // Scrub reflection content from all error events
     if (event.extra) {
       for (const key of Object.keys(event.extra)) {
-        if (key === "content" || key === "reflectionContent" || key === "layerContent" || key === "title" || key === "consumeReason") {
+        if (
+          key === "content" ||
+          key === "reflectionContent" ||
+          key === "layerContent" ||
+          key === "title" ||
+          key === "consumeReason"
+        ) {
           event.extra[key] = "[REDACTED]";
         }
       }
@@ -19,7 +25,13 @@ Sentry.init({
       for (const breadcrumb of event.breadcrumbs) {
         if (breadcrumb.data) {
           for (const key of Object.keys(breadcrumb.data)) {
-            if (key === "content" || key === "reflectionContent" || key === "layerContent" || key === "title" || key === "consumeReason") {
+            if (
+              key === "content" ||
+              key === "reflectionContent" ||
+              key === "layerContent" ||
+              key === "title" ||
+              key === "consumeReason"
+            ) {
               breadcrumb.data[key] = "[REDACTED]";
             }
           }

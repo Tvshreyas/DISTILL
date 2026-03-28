@@ -44,7 +44,6 @@ metadata:
 
 # Content Gap Analysis
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -121,6 +120,7 @@ Automatically pull your site's content inventory from ~~search console and ~~ana
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Your site URL and content inventory (list of published content with topics)
 2. Competitor URLs (3-5 sites)
 3. Your current traffic and keyword performance (if available)
@@ -136,10 +136,10 @@ When a user requests content gap analysis:
 1. **Define Analysis Scope**
 
    Clarify parameters:
-   
+
    ```markdown
    ### Analysis Parameters
-   
+
    **Your Site**: [URL]
    **Competitors to Analyze**: [URLs or "identify for me"]
    **Topic Focus**: [specific area or "all"]
@@ -185,12 +185,14 @@ When a user requests content gap analysis:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Your content inventory is complete or representative sample provided
 - [ ] Competitor URLs identified (minimum 2-3 competitors)
 - [ ] Analysis scope defined (specific topics or comprehensive)
 - [ ] Business goals and priorities clarified
 
 ### Output Validation
+
 - [ ] Every recommendation cites specific data points (not generic advice)
 - [ ] Gap analysis compares like-to-like content (topic clusters to topic clusters)
 - [ ] Priority scoring based on measurable criteria (volume, difficulty, business fit)
@@ -230,7 +232,6 @@ Find gaps in our [commercial/informational] intent content
 5. **Update regularly** - Gaps change as competitors publish
 6. **Include GEO opportunities** - Don't just optimize for traditional search
 
-
 ## Reference Materials
 
 - [Analysis Templates](./references/analysis-templates.md) — Detailed templates for each analysis step (inventory, competitor content, keyword gaps, topic gaps, format gaps, GEO gaps, journey, prioritized report)
@@ -246,4 +247,3 @@ Find gaps in our [commercial/informational] intent content
 - [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) — Identify and fix internal linking gaps
 - [backlink-analyzer](../../monitor/backlink-analyzer/) — Analyze link gap opportunities
 - [memory-management](../../cross-cutting/memory-management/) — Track content gaps over time
-

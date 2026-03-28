@@ -1,4 +1,9 @@
-import { query, mutation, internalMutation, internalQuery } from "./_generated/server";
+import {
+  query,
+  mutation,
+  internalMutation,
+  internalQuery,
+} from "./_generated/server";
 import { v } from "convex/values";
 import { checkContentSafety } from "./safety";
 
@@ -36,7 +41,9 @@ export const create = mutation({
 
     // Validate content (Deep Sessions allow for 30k characters / 5k word refined archives)
     if (args.content.length < 1 || args.content.length > 30000) {
-      throw new Error("Deep Session reflection must be under 30,000 characters (~5,000 words).");
+      throw new Error(
+        "Deep Session reflection must be under 30,000 characters (~5,000 words).",
+      );
     }
 
     // Validate rating
@@ -71,19 +78,19 @@ export const create = mutation({
       const completedSessions = await ctx.db
         .query("sessions")
         .withIndex("by_userId_status", (q) =>
-          q.eq("userId", userId).eq("status", "complete")
+          q.eq("userId", userId).eq("status", "complete"),
         )
         .filter((q) =>
           q.and(
             q.eq(q.field("isDeleted"), false),
-            q.neq(q.field("type"), "quick")
-          )
+            q.neq(q.field("type"), "quick"),
+          ),
         )
         .collect();
 
       if (completedSessions.length >= FREE_TIER_LIMIT) {
         throw new Error(
-          `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or upgrade to Pro for unlimited Deep Sessions.`
+          `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or upgrade to Pro for unlimited Deep Sessions.`,
         );
       }
     }
@@ -117,24 +124,25 @@ export const create = mutation({
       const postInsertCount = await ctx.db
         .query("sessions")
         .withIndex("by_userId_status", (q) =>
-          q.eq("userId", userId).eq("status", "complete")
+          q.eq("userId", userId).eq("status", "complete"),
         )
         .filter((q) =>
           q.and(
             q.eq(q.field("isDeleted"), false),
-            q.neq(q.field("type"), "quick")
-          )
+            q.neq(q.field("type"), "quick"),
+          ),
         )
         .collect();
       // Include the session we're about to complete — it's still "active" but will be completed below
       if (postInsertCount.length >= FREE_TIER_LIMIT) {
         // Check if this would push us over (account for the current session completing)
         const currentSessionIsDeep = session.type !== "quick";
-        const effectiveCount = postInsertCount.length + (currentSessionIsDeep ? 1 : 0);
+        const effectiveCount =
+          postInsertCount.length + (currentSessionIsDeep ? 1 : 0);
         if (effectiveCount > FREE_TIER_LIMIT) {
           await ctx.db.delete(reflectionId);
           throw new Error(
-            `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or upgrade to Pro for unlimited Deep Sessions.`
+            `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or upgrade to Pro for unlimited Deep Sessions.`,
           );
         }
       }
@@ -217,7 +225,9 @@ export const quickCreate = mutation({
 
     // Validate content (Quick Distill: Atomic insights only, 800 chars)
     if (args.content.length < 1 || args.content.length > 800) {
-      throw new Error("Quick Distill must be under 800 characters. Use a Deep Session for longer reflections.");
+      throw new Error(
+        "Quick Distill must be under 800 characters. Use a Deep Session for longer reflections.",
+      );
     }
 
     const cleanContent = sanitizeContent(args.content);
@@ -340,11 +350,7 @@ export const update = mutation({
     }
 
     const reflection = await ctx.db.get(args.reflectionId);
-    if (
-      !reflection ||
-      reflection.userId !== userId ||
-      reflection.isDeleted
-    ) {
+    if (!reflection || reflection.userId !== userId || reflection.isDeleted) {
       throw new Error("Resource not found.");
     }
 
@@ -375,11 +381,7 @@ export const remove = mutation({
     const userId = identity.subject;
 
     const reflection = await ctx.db.get(args.reflectionId);
-    if (
-      !reflection ||
-      reflection.userId !== userId ||
-      reflection.isDeleted
-    ) {
+    if (!reflection || reflection.userId !== userId || reflection.isDeleted) {
       throw new Error("Resource not found.");
     }
 
@@ -398,11 +400,7 @@ export const getById = query({
     const userId = identity.subject;
 
     const reflection = await ctx.db.get(args.reflectionId);
-    if (
-      !reflection ||
-      reflection.userId !== userId ||
-      reflection.isDeleted
-    ) {
+    if (!reflection || reflection.userId !== userId || reflection.isDeleted) {
       return null;
     }
 
@@ -413,7 +411,7 @@ export const getById = query({
     const layers = await ctx.db
       .query("reflectionLayers")
       .withIndex("by_reflectionId", (q) =>
-        q.eq("reflectionId", args.reflectionId)
+        q.eq("reflectionId", args.reflectionId),
       )
       .collect();
 
@@ -428,10 +426,10 @@ export const getById = query({
       plan: profile?.plan ?? "free",
       session: session
         ? {
-          title: session.title,
-          contentType: session.contentType,
-          startedAt: session.startedAt,
-        }
+            title: session.title,
+            contentType: session.contentType,
+            startedAt: session.startedAt,
+          }
         : null,
       layers,
     };
@@ -466,11 +464,7 @@ export const addLayer = mutation({
 
     // IDOR: verify reflection exists and is owned by user
     const reflection = await ctx.db.get(args.reflectionId);
-    if (
-      !reflection ||
-      reflection.userId !== userId ||
-      reflection.isDeleted
-    ) {
+    if (!reflection || reflection.userId !== userId || reflection.isDeleted) {
       throw new Error("Resource not found.");
     }
 
@@ -533,7 +527,7 @@ export const list = query({
           q
             .search("content", sanitizedSearch)
             .eq("userId", userId)
-            .eq("isDeleted", false)
+            .eq("isDeleted", false),
         )
         .collect();
     } else {
@@ -561,17 +555,17 @@ export const list = query({
             ? { title: session.title, contentType: session.contentType }
             : null,
         };
-      })
+      }),
     );
 
     if (
       args.contentType &&
       ["book", "video", "article", "podcast", "other"].includes(
-        args.contentType
+        args.contentType,
       )
     ) {
       withSessions = withSessions.filter(
-        (r) => r.session?.contentType === args.contentType
+        (r) => r.session?.contentType === args.contentType,
       );
     }
 
@@ -602,7 +596,7 @@ export const purgeSoftDeletedReflections = internalMutation({
         const layers = await ctx.db
           .query("reflectionLayers")
           .withIndex("by_reflectionId", (q) =>
-            q.eq("reflectionId", reflection._id)
+            q.eq("reflectionId", reflection._id),
           )
           .collect();
         for (const layer of layers) {
@@ -641,8 +635,8 @@ export const recent = query({
       .filter((q) =>
         q.and(
           q.eq(q.field("isDeleted"), false),
-          q.gte(q.field("_creationTime"), thirtyDaysAgo.getTime())
-        )
+          q.gte(q.field("_creationTime"), thirtyDaysAgo.getTime()),
+        ),
       )
       .order("desc")
       .collect();
@@ -684,18 +678,18 @@ export const exportAll = query({
           updatedAt: r.updatedAt,
           session: session
             ? {
-              title: session.title,
-              contentType: session.contentType,
-              startedAt: session.startedAt,
-              completedAt: session.completedAt,
-            }
+                title: session.title,
+                contentType: session.contentType,
+                startedAt: session.startedAt,
+                completedAt: session.completedAt,
+              }
             : null,
           layers: layers.map((l) => ({
             content: l.content,
             createdAt: new Date(l._creationTime).toISOString(),
           })),
         };
-      })
+      }),
     );
   },
 });
@@ -710,8 +704,19 @@ export const getMonthlyDigest = query({
     // Get previous month's date range
     const now = new Date();
     const prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-    const prevMonthEnd = new Date(now.getFullYear(), now.getMonth(), 0, 23, 59, 59, 999);
-    const monthLabel = prevMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+    const prevMonthEnd = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      0,
+      23,
+      59,
+      59,
+      999,
+    );
+    const monthLabel = prevMonth.toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    });
 
     const reflections = await ctx.db
       .query("reflections")
@@ -720,15 +725,18 @@ export const getMonthlyDigest = query({
         q.and(
           q.eq(q.field("isDeleted"), false),
           q.gte(q.field("_creationTime"), prevMonth.getTime()),
-          q.lte(q.field("_creationTime"), prevMonthEnd.getTime())
-        )
+          q.lte(q.field("_creationTime"), prevMonthEnd.getTime()),
+        ),
       )
       .collect();
 
     if (reflections.length === 0) return null;
 
     const totalReflections = reflections.length;
-    const totalWords = reflections.reduce((sum, r) => sum + (r.wordCount ?? 0), 0);
+    const totalWords = reflections.reduce(
+      (sum, r) => sum + (r.wordCount ?? 0),
+      0,
+    );
 
     // Content type breakdown
     const typeMap: Record<string, number> = {};
@@ -768,8 +776,8 @@ export const getWeeklyStats = internalQuery({
       .filter((q) =>
         q.and(
           q.eq(q.field("isDeleted"), false),
-          q.gte(q.field("_creationTime"), sevenDaysAgo.getTime())
-        )
+          q.gte(q.field("_creationTime"), sevenDaysAgo.getTime()),
+        ),
       )
       .collect();
 
@@ -785,7 +793,7 @@ export const getWeeklyStats = internalQuery({
     }
 
     const contentTypeBreakdown = Object.entries(typeMap).map(
-      ([type, count]) => ({ type, count })
+      ([type, count]) => ({ type, count }),
     );
 
     return { totalReflections, totalWords, contentTypeBreakdown };

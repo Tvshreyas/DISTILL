@@ -11,31 +11,33 @@ Detailed output templates for technical-seo-checker steps 3-9. Referenced from [
 
 ### Core Web Vitals
 
-| Metric | Mobile | Desktop | Target | Status |
-|--------|--------|---------|--------|--------|
-| LCP (Largest Contentful Paint) | [X]s | [X]s | <2.5s | ✅/⚠️/❌ |
-| FID (First Input Delay) | [X]ms | [X]ms | <100ms | ✅/⚠️/❌ |
-| CLS (Cumulative Layout Shift) | [X] | [X] | <0.1 | ✅/⚠️/❌ |
-| INP (Interaction to Next Paint) | [X]ms | [X]ms | <200ms | ✅/⚠️/❌ |
+| Metric                          | Mobile | Desktop | Target | Status   |
+| ------------------------------- | ------ | ------- | ------ | -------- |
+| LCP (Largest Contentful Paint)  | [X]s   | [X]s    | <2.5s  | ✅/⚠️/❌ |
+| FID (First Input Delay)         | [X]ms  | [X]ms   | <100ms | ✅/⚠️/❌ |
+| CLS (Cumulative Layout Shift)   | [X]    | [X]     | <0.1   | ✅/⚠️/❌ |
+| INP (Interaction to Next Paint) | [X]ms  | [X]ms   | <200ms | ✅/⚠️/❌ |
 
 ### Additional Performance Metrics
 
-| Metric | Value | Status |
-|--------|-------|--------|
-| Time to First Byte (TTFB) | [X]ms | ✅/⚠️/❌ |
-| First Contentful Paint (FCP) | [X]s | ✅/⚠️/❌ |
-| Speed Index | [X] | ✅/⚠️/❌ |
-| Total Blocking Time | [X]ms | ✅/⚠️/❌ |
-| Page Size | [X]MB | ✅/⚠️/❌ |
-| Requests | [X] | ✅/⚠️/❌ |
+| Metric                       | Value | Status   |
+| ---------------------------- | ----- | -------- |
+| Time to First Byte (TTFB)    | [X]ms | ✅/⚠️/❌ |
+| First Contentful Paint (FCP) | [X]s  | ✅/⚠️/❌ |
+| Speed Index                  | [X]   | ✅/⚠️/❌ |
+| Total Blocking Time          | [X]ms | ✅/⚠️/❌ |
+| Page Size                    | [X]MB | ✅/⚠️/❌ |
+| Requests                     | [X]   | ✅/⚠️/❌ |
 
 ### Performance Issues
 
 **LCP Issues**:
+
 - [Issue]: [Impact] - [Solution]
 - [Issue]: [Impact] - [Solution]
 
 **CLS Issues**:
+
 - [Issue]: [Impact] - [Solution]
 
 **Resource Loading**:
@@ -49,10 +51,12 @@ Detailed output templates for technical-seo-checker steps 3-9. Referenced from [
 ### Optimization Recommendations
 
 **High Impact**:
+
 1. [Recommendation] - Est. improvement: [X]s
 2. [Recommendation] - Est. improvement: [X]s
 
 **Medium Impact**:
+
 1. [Recommendation]
 2. [Recommendation]
 
@@ -68,33 +72,33 @@ Detailed output templates for technical-seo-checker steps 3-9. Referenced from [
 
 ### Mobile-Friendly Test
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| Mobile-friendly overall | ✅/❌ | [notes] |
-| Viewport configured | ✅/❌ | [viewport tag] |
-| Text readable | ✅/⚠️/❌ | Font size: [X]px |
-| Tap targets sized | ✅/⚠️/❌ | [notes] |
-| Content fits viewport | ✅/❌ | [notes] |
-| No horizontal scroll | ✅/❌ | [notes] |
+| Check                   | Status   | Notes            |
+| ----------------------- | -------- | ---------------- |
+| Mobile-friendly overall | ✅/❌    | [notes]          |
+| Viewport configured     | ✅/❌    | [viewport tag]   |
+| Text readable           | ✅/⚠️/❌ | Font size: [X]px |
+| Tap targets sized       | ✅/⚠️/❌ | [notes]          |
+| Content fits viewport   | ✅/❌    | [notes]          |
+| No horizontal scroll    | ✅/❌    | [notes]          |
 
 ### Responsive Design Check
 
-| Element | Desktop | Mobile | Issues |
-|---------|---------|--------|--------|
+| Element    | Desktop  | Mobile   | Issues  |
+| ---------- | -------- | -------- | ------- |
 | Navigation | [status] | [status] | [notes] |
-| Images | [status] | [status] | [notes] |
-| Forms | [status] | [status] | [notes] |
-| Tables | [status] | [status] | [notes] |
-| Videos | [status] | [status] | [notes] |
+| Images     | [status] | [status] | [notes] |
+| Forms      | [status] | [status] | [notes] |
+| Tables     | [status] | [status] | [notes] |
+| Videos     | [status] | [status] | [notes] |
 
 ### Mobile-First Indexing
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| Mobile version has all content | ✅/⚠️/❌ | [notes] |
+| Check                           | Status   | Notes   |
+| ------------------------------- | -------- | ------- |
+| Mobile version has all content  | ✅/⚠️/❌ | [notes] |
 | Mobile has same structured data | ✅/⚠️/❌ | [notes] |
-| Mobile has same meta tags | ✅/⚠️/❌ | [notes] |
-| Mobile images have alt text | ✅/⚠️/❌ | [notes] |
+| Mobile has same meta tags       | ✅/⚠️/❌ | [notes] |
+| Mobile images have alt text     | ✅/⚠️/❌ | [notes] |
 
 **Mobile Score**: [X]/10
 ```
@@ -108,23 +112,23 @@ Detailed output templates for technical-seo-checker steps 3-9. Referenced from [
 
 ### HTTPS Status
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| SSL certificate valid | ✅/❌ | Expires: [date] |
-| HTTPS enforced | ✅/❌ | [redirects properly?] |
-| Mixed content | ✅/⚠️/❌ | [X] issues |
-| HSTS enabled | ✅/⚠️ | [notes] |
-| Certificate chain | ✅/⚠️/❌ | [notes] |
+| Check                 | Status   | Notes                 |
+| --------------------- | -------- | --------------------- |
+| SSL certificate valid | ✅/❌    | Expires: [date]       |
+| HTTPS enforced        | ✅/❌    | [redirects properly?] |
+| Mixed content         | ✅/⚠️/❌ | [X] issues            |
+| HSTS enabled          | ✅/⚠️    | [notes]               |
+| Certificate chain     | ✅/⚠️/❌ | [notes]               |
 
 ### Security Headers
 
-| Header | Present | Value | Recommended |
-|--------|---------|-------|-------------|
-| Content-Security-Policy | ✅/❌ | [value] | [recommendation] |
-| X-Frame-Options | ✅/❌ | [value] | DENY or SAMEORIGIN |
-| X-Content-Type-Options | ✅/❌ | [value] | nosniff |
-| X-XSS-Protection | ✅/❌ | [value] | 1; mode=block |
-| Referrer-Policy | ✅/❌ | [value] | [recommendation] |
+| Header                  | Present | Value   | Recommended        |
+| ----------------------- | ------- | ------- | ------------------ |
+| Content-Security-Policy | ✅/❌   | [value] | [recommendation]   |
+| X-Frame-Options         | ✅/❌   | [value] | DENY or SAMEORIGIN |
+| X-Content-Type-Options  | ✅/❌   | [value] | nosniff            |
+| X-XSS-Protection        | ✅/❌   | [value] | 1; mode=block      |
+| Referrer-Policy         | ✅/❌   | [value] | [recommendation]   |
 
 **Security Score**: [X]/10
 ```
@@ -138,34 +142,34 @@ Detailed output templates for technical-seo-checker steps 3-9. Referenced from [
 
 ### URL Pattern Review
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| HTTPS URLs | ✅/⚠️/❌ | [X]% HTTPS |
-| Lowercase URLs | ✅/⚠️/❌ | [notes] |
-| No special characters | ✅/⚠️/❌ | [notes] |
-| Readable/descriptive | ✅/⚠️/❌ | [notes] |
-| Appropriate length | ✅/⚠️/❌ | Avg: [X] chars |
-| Keywords in URLs | ✅/⚠️/❌ | [notes] |
-| Consistent structure | ✅/⚠️/❌ | [notes] |
+| Check                 | Status   | Notes          |
+| --------------------- | -------- | -------------- |
+| HTTPS URLs            | ✅/⚠️/❌ | [X]% HTTPS     |
+| Lowercase URLs        | ✅/⚠️/❌ | [notes]        |
+| No special characters | ✅/⚠️/❌ | [notes]        |
+| Readable/descriptive  | ✅/⚠️/❌ | [notes]        |
+| Appropriate length    | ✅/⚠️/❌ | Avg: [X] chars |
+| Keywords in URLs      | ✅/⚠️/❌ | [notes]        |
+| Consistent structure  | ✅/⚠️/❌ | [notes]        |
 
 ### URL Issues Found
 
-| Issue Type | Count | Examples |
-|------------|-------|----------|
-| Dynamic parameters | [X] | [URLs] |
-| Session IDs in URLs | [X] | [URLs] |
-| Uppercase characters | [X] | [URLs] |
-| Special characters | [X] | [URLs] |
-| Very long URLs (>100) | [X] | [URLs] |
+| Issue Type            | Count | Examples |
+| --------------------- | ----- | -------- |
+| Dynamic parameters    | [X]   | [URLs]   |
+| Session IDs in URLs   | [X]   | [URLs]   |
+| Uppercase characters  | [X]   | [URLs]   |
+| Special characters    | [X]   | [URLs]   |
+| Very long URLs (>100) | [X]   | [URLs]   |
 
 ### Redirect Analysis
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| Redirect chains | [X] found | [max chain length] |
-| Redirect loops | [X] found | [URLs] |
-| 302 → 301 needed | [X] found | [URLs] |
-| Broken redirects | [X] found | [URLs] |
+| Check            | Status    | Notes              |
+| ---------------- | --------- | ------------------ |
+| Redirect chains  | [X] found | [max chain length] |
+| Redirect loops   | [X] found | [URLs]             |
+| 302 → 301 needed | [X] found | [URLs]             |
+| Broken redirects | [X] found | [URLs]             |
 
 **URL Score**: [X]/10
 ```
@@ -181,27 +185,29 @@ Detailed output templates for technical-seo-checker steps 3-9. Referenced from [
 
 ### Schema Markup Found
 
-| Schema Type | Pages | Valid | Errors |
-|-------------|-------|-------|--------|
-| [Type 1] | [X] | ✅/❌ | [errors] |
-| [Type 2] | [X] | ✅/❌ | [errors] |
+| Schema Type | Pages | Valid | Errors   |
+| ----------- | ----- | ----- | -------- |
+| [Type 1]    | [X]   | ✅/❌ | [errors] |
+| [Type 2]    | [X]   | ✅/❌ | [errors] |
 
 ### Validation Results
 
 **Errors**:
+
 - [Error 1]: [affected pages] - [solution]
 - [Error 2]: [affected pages] - [solution]
 
 **Warnings**:
+
 - [Warning 1]: [notes]
 
 ### Missing Schema Opportunities
 
-| Page Type | Current Schema | Recommended |
-|-----------|----------------|-------------|
-| Blog posts | [current] | Article + FAQ |
-| Products | [current] | Product + Review |
-| Homepage | [current] | Organization |
+| Page Type  | Current Schema | Recommended      |
+| ---------- | -------------- | ---------------- |
+| Blog posts | [current]      | Article + FAQ    |
+| Products   | [current]      | Product + Review |
+| Homepage   | [current]      | Organization     |
 
 **Structured Data Score**: [X]/10
 ```
@@ -215,20 +221,20 @@ Detailed output templates for technical-seo-checker steps 3-9. Referenced from [
 
 ### Hreflang Implementation
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| Hreflang tags present | ✅/❌ | [notes] |
-| Self-referencing | ✅/⚠️/❌ | [notes] |
-| Return tags present | ✅/⚠️/❌ | [notes] |
-| Valid language codes | ✅/⚠️/❌ | [notes] |
-| x-default tag | ✅/⚠️ | [notes] |
+| Check                 | Status   | Notes   |
+| --------------------- | -------- | ------- |
+| Hreflang tags present | ✅/❌    | [notes] |
+| Self-referencing      | ✅/⚠️/❌ | [notes] |
+| Return tags present   | ✅/⚠️/❌ | [notes] |
+| Valid language codes  | ✅/⚠️/❌ | [notes] |
+| x-default tag         | ✅/⚠️    | [notes] |
 
 ### Language/Region Targeting
 
-| Language | URL | Hreflang | Status |
-|----------|-----|----------|--------|
-| [en-US] | [URL] | [tag] | ✅/⚠️/❌ |
-| [es-ES] | [URL] | [tag] | ✅/⚠️/❌ |
+| Language | URL   | Hreflang | Status   |
+| -------- | ----- | -------- | -------- |
+| [en-US]  | [URL] | [tag]    | ✅/⚠️/❌ |
+| [es-ES]  | [URL] | [tag]    | ✅/⚠️/❌ |
 
 **International Score**: [X]/10
 ```
@@ -245,8 +251,8 @@ Detailed output templates for technical-seo-checker steps 3-9. Referenced from [
 **Pages Analyzed**: [X]
 
 ## Overall Technical Health: [X]/100
-
 ```
+
 Score Breakdown:
 ████████░░ Crawlability: 8/10
 ███████░░░ Indexability: 7/10
@@ -255,6 +261,7 @@ Score Breakdown:
 █████████░ Security: 9/10
 ██████░░░░ URL Structure: 6/10
 █████░░░░░ Structured Data: 5/10
+
 ```
 
 ## Critical Issues (Fix Immediately)

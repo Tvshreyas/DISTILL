@@ -105,6 +105,7 @@ Automatically pull keyword metrics (search volume, difficulty, CPC), competitor 
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Target primary keyword and 3-5 secondary keywords
 2. Target audience and search intent (informational/commercial/transactional)
 3. Target word count and desired tone
@@ -119,10 +120,10 @@ When a user requests SEO content:
 1. **Gather Requirements**
 
    Confirm or ask for:
-   
+
    ```markdown
    ### Content Requirements
-   
+
    **Primary Keyword**: [main keyword]
    **Secondary Keywords**: [2-5 related keywords]
    **Target Word Count**: [length]
@@ -146,24 +147,24 @@ When a user requests SEO content:
 
    Apply these standards while writing:
 
-   | ID | Standard | How to Apply |
-   |----|----------|-------------|
-   | C01 | Intent Alignment | Title promise must match content delivery |
-   | C02 | Direct Answer | Core answer in first 150 words |
-   | C06 | Audience Targeting | State "this article is for..." |
-   | C10 | Semantic Closure | Conclusion answers opening question + next steps |
-   | O01 | Heading Hierarchy | H1→H2→H3, no level skipping |
-   | O02 | Summary Box | Include TL;DR or Key Takeaways |
-   | O06 | Section Chunking | Each section single topic; paragraphs 3–5 sentences |
-   | O09 | Information Density | No filler; consistent terminology |
-   | R01 | Data Precision | ≥5 precise numbers with units |
-   | R02 | Citation Density | ≥1 external citation per 500 words |
-   | R04 | Evidence-Claim Mapping | Every claim backed by evidence |
-   | R07 | Entity Precision | Full names for people/orgs/products |
-   | C03 | Query Coverage | Cover ≥3 query variants (synonyms, long-tail) |
-   | O08 | Anchor Navigation | Table of contents with jump links |
-   | O10 | Multimedia Structure | Images/videos have captions and carry information |
-   | E07 | Practical Tools | Include downloadable templates, checklists, or calculators |
+   | ID  | Standard               | How to Apply                                               |
+   | --- | ---------------------- | ---------------------------------------------------------- |
+   | C01 | Intent Alignment       | Title promise must match content delivery                  |
+   | C02 | Direct Answer          | Core answer in first 150 words                             |
+   | C06 | Audience Targeting     | State "this article is for..."                             |
+   | C10 | Semantic Closure       | Conclusion answers opening question + next steps           |
+   | O01 | Heading Hierarchy      | H1→H2→H3, no level skipping                                |
+   | O02 | Summary Box            | Include TL;DR or Key Takeaways                             |
+   | O06 | Section Chunking       | Each section single topic; paragraphs 3–5 sentences        |
+   | O09 | Information Density    | No filler; consistent terminology                          |
+   | R01 | Data Precision         | ≥5 precise numbers with units                              |
+   | R02 | Citation Density       | ≥1 external citation per 500 words                         |
+   | R04 | Evidence-Claim Mapping | Every claim backed by evidence                             |
+   | R07 | Entity Precision       | Full names for people/orgs/products                        |
+   | C03 | Query Coverage         | Cover ≥3 query variants (synonyms, long-tail)              |
+   | O08 | Anchor Navigation      | Table of contents with jump links                          |
+   | O10 | Multimedia Structure   | Images/videos have captions and carry information          |
+   | E07 | Practical Tools        | Include downloadable templates, checklists, or calculators |
 
    _These 16 items apply across all content types. For content-type-specific dimension weights, see the Content-Type Weight Table in [core-eeat-benchmark.md](../../references/core-eeat-benchmark.md)._
    _Full 80-item benchmark: [references/core-eeat-benchmark.md](../../references/core-eeat-benchmark.md)_
@@ -173,22 +174,24 @@ When a user requests SEO content:
 3. **Research and Plan**
 
    Before writing:
-   
+
    ```markdown
    ### Content Research
-   
+
    **SERP Analysis**:
+
    - Top results format: [what's ranking]
    - Average word count: [X] words
    - Common sections: [list]
    - SERP features: [snippets, PAA, etc.]
-   
+
    **Keyword Map**:
+
    - Primary: [keyword] - use in title, H1, intro, conclusion
    - Secondary: [keywords] - use in H2s, body paragraphs
    - LSI/Related: [terms] - sprinkle naturally throughout
    - Questions: [PAA questions] - use as H2/H3s or FAQ
-   
+
    **Content Angle**:
    [What unique perspective or value will this content provide?]
    ```
@@ -197,23 +200,24 @@ When a user requests SEO content:
 
    ```markdown
    ### Title Optimization
-   
+
    **Requirements**:
+
    - Include primary keyword (preferably at start)
    - Under 60 characters for full SERP display
    - Compelling and click-worthy
    - Match search intent
-   
+
    **Title Options**:
-   
+
    1. [Title option 1] ([X] chars)
       - Keyword position: [front/middle]
       - Power words: [list]
-   
+
    2. [Title option 2] ([X] chars)
       - Keyword position: [front/middle]
       - Power words: [list]
-   
+
    **Recommended**: [Best option with reasoning]
    ```
 
@@ -221,17 +225,19 @@ When a user requests SEO content:
 
    ```markdown
    ### Meta Description
-   
+
    **Requirements**:
+
    - 150-160 characters
    - Include primary keyword naturally
    - Include call-to-action
    - Compelling and specific
-   
+
    **Meta Description**:
    "[Description text]" ([X] characters)
-   
+
    **Elements included**:
+
    - ✅ Primary keyword
    - ✅ Value proposition
    - ✅ CTA or curiosity hook
@@ -258,33 +264,37 @@ When a user requests SEO content:
 
    ```markdown
    ### Link Recommendations
-   
+
    **Internal Links** (include 2-5):
+
    1. "[anchor text]" → [/your-page-url] (relevant because: [reason])
    2. "[anchor text]" → [/your-page-url] (relevant because: [reason])
-   
+
    **External Links** (include 2-3 authoritative sources):
+
    1. "[anchor text]" → [authoritative-source.com] (supports: [claim])
    2. "[anchor text]" → [authoritative-source.com] (supports: [claim])
    ```
 
 9. **Final SEO Review and CORE-EEAT Self-Check**
 
-    Score content across 10 SEO factors (title, meta description, H1, keyword placement, H2s, internal links, external links, FAQ, readability, word count) and produce an Overall SEO Score out of 10.
+   Score content across 10 SEO factors (title, meta description, H1, keyword placement, H2s, internal links, external links, FAQ, readability, word count) and produce an Overall SEO Score out of 10.
 
-    Then verify the 16 CORE-EEAT pre-write constraints (C01, C02, C06, C10, O01, O02, O06, O09, R01, R02, R04, R07, C03, O08, O10, E07) with pass/warning/fail status. List items needing attention.
+   Then verify the 16 CORE-EEAT pre-write constraints (C01, C02, C06, C10, O01, O02, O06, O09, R01, R02, R04, R07, C03, O08, O10, E07) with pass/warning/fail status. List items needing attention.
 
-    _For full 80-item audit, use [content-quality-auditor](../../cross-cutting/content-quality-auditor/)_
+   _For full 80-item audit, use [content-quality-auditor](../../cross-cutting/content-quality-auditor/)_
 
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Primary keyword confirmed and matches search intent
 - [ ] Target word count specified (minimum 800 words for substantive content)
 - [ ] Content type and audience clearly defined
 - [ ] Competitor URLs reviewed or target SERP features identified
 
 ### Output Validation
+
 - [ ] Keyword density within 1-2% for primary keyword (Note: Keyword density is a guideline, not a hard rule. Modern search engines prioritize semantic relevance and natural language over exact density targets. Focus on covering the topic comprehensively with semantic variants rather than hitting a specific percentage.)
 - [ ] All sections from outline covered completely
 - [ ] Internal links included (2-5 relevant links)
@@ -347,4 +357,3 @@ Write an ultimate guide about [topic] (3,000+ words) targeting [keyword]
 - [meta-tags-optimizer](../meta-tags-optimizer/) — Create compelling meta tags
 - [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) — Audit SEO elements
 - [content-quality-auditor](../../cross-cutting/content-quality-auditor/) — Full 80-item CORE-EEAT audit
-

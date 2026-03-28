@@ -2,7 +2,13 @@ import { describe, it, expect, vi } from "vitest";
 
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({ children, className }: { children?: React.ReactNode; className?: string }) => <div className={className}>{children}</div>,
+    div: ({
+      children,
+      className,
+    }: {
+      children?: React.ReactNode;
+      className?: string;
+    }) => <div className={className}>{children}</div>,
   },
 }));
 
@@ -22,7 +28,9 @@ describe("StreakHeatmap", () => {
   });
 
   it("renders 30 day cells", () => {
-    const { container } = render(<StreakHeatmap dates={mockDates} monthDays={mockMonthDays} />);
+    const { container } = render(
+      <StreakHeatmap dates={mockDates} monthDays={mockMonthDays} />,
+    );
     const grid = container.querySelector(".grid");
     // Each day is rendered inside a motion.div (mocked as div)
     expect(grid?.children.length).toBe(30);
@@ -39,7 +47,9 @@ describe("StreakHeatmap", () => {
   });
 
   it("active days have 'bg-peach' in their className", () => {
-    const { container } = render(<StreakHeatmap dates={mockDates} monthDays={mockMonthDays} />);
+    const { container } = render(
+      <StreakHeatmap dates={mockDates} monthDays={mockMonthDays} />,
+    );
     const grid = container.querySelector(".grid")!;
     // March 1 is index 0, should be active
     const firstDayDot = grid.children[0].querySelector("div");
@@ -47,7 +57,9 @@ describe("StreakHeatmap", () => {
   });
 
   it("today's cell has 'ring-peach' in its className", () => {
-    const { container } = render(<StreakHeatmap dates={mockDates} monthDays={mockMonthDays} />);
+    const { container } = render(
+      <StreakHeatmap dates={mockDates} monthDays={mockMonthDays} />,
+    );
     const grid = container.querySelector(".grid")!;
     // March 10 is index 9, isToday = true
     const todayDot = grid.children[9].querySelector("div");
@@ -56,6 +68,8 @@ describe("StreakHeatmap", () => {
 
   it("renders the quote 'Consistency is the compounding of focus.'", () => {
     render(<StreakHeatmap dates={mockDates} monthDays={mockMonthDays} />);
-    expect(screen.getByText(/Consistency is the compounding of focus/)).toBeTruthy();
+    expect(
+      screen.getByText(/Consistency is the compounding of focus/),
+    ).toBeTruthy();
   });
 });

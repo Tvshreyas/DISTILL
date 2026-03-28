@@ -46,14 +46,14 @@ This is not a second brain. It is a reflection practice. The distinction matters
 
 ## second brain vs reflection practice
 
-| | Second Brain | Reflection Practice |
-|---|---|---|
-| **What you capture** | Other people's ideas (highlights, quotes, facts) | Your own thinking (reactions, questions, connections) |
-| **Organization** | Folders, tags, databases, linking | None — chronological archive, searchable |
-| **Time to process** | 15-30 minutes per source | 2-5 minutes per source |
-| **Maintenance** | Ongoing (filing, reviewing, reorganizing) | Zero (write and forget; system resurfaces) |
-| **Value after 1 year** | A well-organized library of external knowledge | A searchable record of your intellectual development |
-| **Works for** | Researchers, writers, knowledge workers producing output | Readers who want their consumption to compound |
+|                        | Second Brain                                             | Reflection Practice                                   |
+| ---------------------- | -------------------------------------------------------- | ----------------------------------------------------- |
+| **What you capture**   | Other people's ideas (highlights, quotes, facts)         | Your own thinking (reactions, questions, connections) |
+| **Organization**       | Folders, tags, databases, linking                        | None — chronological archive, searchable              |
+| **Time to process**    | 15-30 minutes per source                                 | 2-5 minutes per source                                |
+| **Maintenance**        | Ongoing (filing, reviewing, reorganizing)                | Zero (write and forget; system resurfaces)            |
+| **Value after 1 year** | A well-organized library of external knowledge           | A searchable record of your intellectual development  |
+| **Works for**          | Researchers, writers, knowledge workers producing output | Readers who want their consumption to compound        |
 
 Neither approach is wrong. They solve different problems. But most readers who try a second brain are solving the wrong problem. They do not need better information retrieval. They need better information processing.
 

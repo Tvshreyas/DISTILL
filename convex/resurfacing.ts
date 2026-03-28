@@ -17,8 +17,8 @@ export const getPending = query({
       .filter((q) =>
         q.and(
           q.eq(q.field("status"), "pending"),
-          q.lte(q.field("dueDate"), today)
-        )
+          q.lte(q.field("dueDate"), today),
+        ),
       )
       .collect();
 
@@ -38,7 +38,7 @@ export const getPending = query({
     const createdDate = new Date(reflection._creationTime);
     const now = new Date();
     const daysAgo = Math.floor(
-      (now.getTime() - createdDate.getTime()) / (1000 * 60 * 60 * 24)
+      (now.getTime() - createdDate.getTime()) / (1000 * 60 * 60 * 24),
     );
 
     return {
@@ -68,7 +68,7 @@ export const respond = mutation({
     action: v.union(
       v.literal("layered"),
       v.literal("surfaced"),
-      v.literal("dismissed")
+      v.literal("dismissed"),
     ),
     layerContent: v.optional(v.string()),
   },
@@ -132,8 +132,8 @@ export const getPendingForUser = internalQuery({
       .filter((q) =>
         q.and(
           q.eq(q.field("status"), "pending"),
-          q.lte(q.field("dueDate"), today)
-        )
+          q.lte(q.field("dueDate"), today),
+        ),
       )
       .collect();
 
@@ -148,7 +148,7 @@ export const getPendingForUser = internalQuery({
     const createdDate = new Date(reflection._creationTime);
     const now = new Date();
     const daysAgo = Math.floor(
-      (now.getTime() - createdDate.getTime()) / (1000 * 60 * 60 * 24)
+      (now.getTime() - createdDate.getTime()) / (1000 * 60 * 60 * 24),
     );
 
     return {

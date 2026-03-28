@@ -19,27 +19,28 @@ This is a complete example output showing the expected format for SERP analysis 
 
 ### SERP Features Present
 
-| Feature | Present | Analysis |
-|---------|---------|----------|
-| AI Overview | ✅ | Lists steps, cites 3 sources |
-| Featured Snippet | ✅ | Step-by-step list from Buzzsprout |
-| People Also Ask | ✅ | 4 questions visible, expandable |
-| Video Results | ✅ | 3 YouTube videos mid-page |
-| Image Pack | ❌ | |
+| Feature          | Present | Analysis                          |
+| ---------------- | ------- | --------------------------------- |
+| AI Overview      | ✅      | Lists steps, cites 3 sources      |
+| Featured Snippet | ✅      | Step-by-step list from Buzzsprout |
+| People Also Ask  | ✅      | 4 questions visible, expandable   |
+| Video Results    | ✅      | 3 YouTube videos mid-page         |
+| Image Pack       | ❌      |                                   |
 
 ### Top 5 Results Analysis
 
-| Pos | Domain | DA | Word Count | Format | Backlinks |
-|-----|--------|-----|------------|--------|-----------|
-| 1 | Buzzsprout | 71 | 8,500 | Ultimate Guide | 2,400 |
-| 2 | Spotify | 93 | 3,200 | How-to Guide | 890 |
-| 3 | Podcastinsights | 58 | 12,000 | Mega Guide | 1,800 |
-| 4 | Transistor | 62 | 5,500 | Tutorial | 720 |
-| 5 | HubSpot | 91 | 6,200 | Complete Guide | 1,100 |
+| Pos | Domain          | DA  | Word Count | Format         | Backlinks |
+| --- | --------------- | --- | ---------- | -------------- | --------- |
+| 1   | Buzzsprout      | 71  | 8,500      | Ultimate Guide | 2,400     |
+| 2   | Spotify         | 93  | 3,200      | How-to Guide   | 890       |
+| 3   | Podcastinsights | 58  | 12,000     | Mega Guide     | 1,800     |
+| 4   | Transistor      | 62  | 5,500      | Tutorial       | 720       |
+| 5   | HubSpot         | 91  | 6,200      | Complete Guide | 1,100     |
 
 ### Why #1 Ranks First
 
 Buzzsprout's guide succeeds because:
+
 1. **Comprehensive** - Covers every step in detail
 2. **Updated** - Current year in title, recent updates
 3. **Structured** - Clear numbered steps (owns featured snippet)
@@ -52,6 +53,7 @@ Buzzsprout's guide succeeds because:
 **Current holder**: Buzzsprout
 
 **To win snippet**:
+
 - Create cleaner, more scannable list format
 - Keep steps to 8-10 items max
 - Start each step with action verb
@@ -60,6 +62,7 @@ Buzzsprout's guide succeeds because:
 ### AI Overview Analysis
 
 **Sources cited**:
+
 1. Buzzsprout - "Choose your podcast topic"
 2. Spotify for Podcasters - "Record and edit"
 3. Wikipedia - Definition of podcasting
@@ -69,6 +72,7 @@ Buzzsprout's guide succeeds because:
 ### Content Requirements
 
 To rank on page 1:
+
 - **Word count**: 5,000+ words minimum
 - **Format**: Step-by-step ultimate guide
 - **Backlinks**: 500+ from relevant domains
@@ -78,6 +82,7 @@ To rank on page 1:
 ### Recommended Strategy
 
 Given high difficulty, consider:
+
 1. Target long-tail: "how to start a podcast for free" (Difficulty: 45)
 2. Target niche: "how to start a podcast about [topic]" (Difficulty: 30)
 3. Create supporting video content for video carousel

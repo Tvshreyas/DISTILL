@@ -18,21 +18,21 @@ Referenced from [SKILL.md](../SKILL.md).
 
 ### Recommended Links to Add
 
-| Section | Text to Link | Target Page | Anchor |
-|---------|--------------|-------------|--------|
-| Para 2 | "building your email list" | /blog/grow-email-list/ | "building your email list" |
-| Para 5 | "subject lines" | /blog/email-subject-lines/ | "write compelling subject lines" |
-| Section on segmentation | "audience segments" | /blog/email-segmentation-guide/ | "segment your audience" |
-| CTA section | "marketing automation" | /services/email-automation/ | "email automation services" |
-| Conclusion | "email marketing tools" | /blog/best-email-tools/ | "top email marketing tools" |
+| Section                 | Text to Link               | Target Page                     | Anchor                           |
+| ----------------------- | -------------------------- | ------------------------------- | -------------------------------- |
+| Para 2                  | "building your email list" | /blog/grow-email-list/          | "building your email list"       |
+| Para 5                  | "subject lines"            | /blog/email-subject-lines/      | "write compelling subject lines" |
+| Section on segmentation | "audience segments"        | /blog/email-segmentation-guide/ | "segment your audience"          |
+| CTA section             | "marketing automation"     | /services/email-automation/     | "email automation services"      |
+| Conclusion              | "email marketing tools"    | /blog/best-email-tools/         | "top email marketing tools"      |
 
 ### Pages That Should Link TO This Article
 
-| Source Page | Location | Anchor Text |
-|-------------|----------|-------------|
-| /blog/digital-marketing-guide/ | Email section | "email marketing best practices" |
-| /services/marketing-services/ | Related content | "email marketing strategies" |
-| /blog/lead-generation-tips/ | Email mention | "email marketing techniques" |
+| Source Page                    | Location        | Anchor Text                      |
+| ------------------------------ | --------------- | -------------------------------- |
+| /blog/digital-marketing-guide/ | Email section   | "email marketing best practices" |
+| /services/marketing-services/  | Related content | "email marketing strategies"     |
+| /blog/lead-generation-tips/    | Email mention   | "email marketing techniques"     |
 
 ### Priority Actions
 

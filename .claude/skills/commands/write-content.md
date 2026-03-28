@@ -1,7 +1,7 @@
 ---
 name: write-content
 description: Write SEO and GEO optimized content from a topic and target keyword
-argument-hint: "<topic> keyword=\"<target keyword>\" type=\"<content type>\""
+argument-hint: '<topic> keyword="<target keyword>" type="<content type>"'
 parameters:
   - name: topic
     type: string
@@ -30,6 +30,7 @@ Writes search-engine-optimized content, then applies a GEO optimization pass for
 ```
 
 **Arguments:**
+
 - Topic (required)
 - `keyword="target keyword"` (required) -- primary SEO keyword
 - `type="content type"` (optional, default: blog post) -- blog post, how-to guide, comparison, listicle, landing page, ultimate guide
@@ -55,14 +56,17 @@ Writes search-engine-optimized content, then applies a GEO optimization pass for
 ---
 
 ## SEO Metadata
+
 | Element | Value |
 | Title Tag, Meta Description, URL Slug, Keywords, Word Count |
 
 ## CORE Self-Check Scores (Content Body)
+
 | Dimension | Score | Key Notes |
 | C / O / R / E dimensions with GEO Score avg |
 
 ## GEO Optimization Notes
+
 | GEO Factor | Score (1-10) | Notes |
 | Definitions, Quotable statements, Factual density, Citations, Q&A, Authority |
 **GEO Readiness**: X/10

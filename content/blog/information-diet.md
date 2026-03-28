@@ -16,7 +16,7 @@ An information diet, done correctly, is not about restriction. It is about build
 
 ## what is an information diet?
 
-The term was popularized by Clay Johnson in his 2012 book *The Information Diet*. Johnson drew the analogy to food: just as the industrialization of food production led to overconsumption of cheap calories, the industrialization of information production has led to overconsumption of cheap content. The parallel is useful but incomplete.
+The term was popularized by Clay Johnson in his 2012 book _The Information Diet_. Johnson drew the analogy to food: just as the industrialization of food production led to overconsumption of cheap calories, the industrialization of information production has led to overconsumption of cheap content. The parallel is useful but incomplete.
 
 With food, the problem really is volume. Eating 4,000 calories a day will damage your body regardless of quality. With information, volume alone is not the issue. A researcher might process hundreds of papers in a month and come out sharper for it. A casual browser might scroll through five articles and come out dumber. The variable is not quantity — it is metabolic rate.
 

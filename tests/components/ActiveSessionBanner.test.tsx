@@ -6,12 +6,23 @@ import { vi } from "vitest";
 
 // Mock next/link
 vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string }) => (
-    <a href={href} {...props}>{children}</a>
+  default: ({
+    children,
+    href,
+    ...props
+  }: {
+    children: React.ReactNode;
+    href: string;
+  }) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
-function makeSession(overrides: Partial<Doc<"sessions">> = {}): Doc<"sessions"> {
+function makeSession(
+  overrides: Partial<Doc<"sessions">> = {},
+): Doc<"sessions"> {
   return {
     _id: "session123" as Doc<"sessions">["_id"],
     _creationTime: Date.now(),
@@ -40,13 +51,17 @@ describe("ActiveSessionBanner", () => {
 
   it("renders null when session is falsy", () => {
     const { container } = render(
-      <ActiveSessionBanner session={null as unknown as Doc<"sessions">} />
+      <ActiveSessionBanner session={null as unknown as Doc<"sessions">} />,
     );
     expect(container.innerHTML).toBe("");
   });
 
   it("displays different session titles correctly", () => {
-    render(<ActiveSessionBanner session={makeSession({ title: "Watching a TED Talk" })} />);
+    render(
+      <ActiveSessionBanner
+        session={makeSession({ title: "Watching a TED Talk" })}
+      />,
+    );
     expect(screen.getByText("Watching a TED Talk")).toBeTruthy();
   });
 });

@@ -41,7 +41,6 @@ metadata:
 
 # Entity Optimizer
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -59,7 +58,7 @@ metadata:
 
 </details>
 
-Audits, builds, and maintains entity identity across search engines and AI systems. Entities — the people, organizations, products, and concepts that search engines and AI systems recognize as distinct things — are the foundation of how both Google and LLMs decide *what a brand is* and *whether to cite it*.
+Audits, builds, and maintains entity identity across search engines and AI systems. Entities — the people, organizations, products, and concepts that search engines and AI systems recognize as distinct things — are the foundation of how both Google and LLMs decide _what a brand is_ and _whether to cite it_.
 
 **Why entities matter for SEO + GEO:**
 
@@ -129,6 +128,7 @@ Query Knowledge Graph API for entity status, pull branded search data from ~~SEO
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Entity name, type (Person, Organization, Brand, Product, Creative Work, Event)
 2. Primary website / domain
 3. Known existing profiles (Wikipedia, Wikidata, social media, industry directories)
@@ -157,30 +157,31 @@ Establish the entity's current state across all systems.
 
 #### Current Entity Presence
 
-| Platform | Status | Details |
-|----------|--------|---------|
-| Google Knowledge Panel | ✅ Present / ❌ Absent / ⚠️ Incorrect | [details] |
-| Wikidata | ✅ Listed / ❌ Not listed | [QID if exists] |
-| Wikipedia | ✅ Article / ⚠️ Mentioned only / ❌ Absent | [notability assessment] |
-| Google Knowledge Graph API | ✅ Entity found / ❌ Not found | [entity ID, types, score] |
-| Schema.org on site | ✅ Complete / ⚠️ Partial / ❌ Missing | [Organization/Person/Product schema] |
+| Platform                   | Status                                     | Details                              |
+| -------------------------- | ------------------------------------------ | ------------------------------------ |
+| Google Knowledge Panel     | ✅ Present / ❌ Absent / ⚠️ Incorrect      | [details]                            |
+| Wikidata                   | ✅ Listed / ❌ Not listed                  | [QID if exists]                      |
+| Wikipedia                  | ✅ Article / ⚠️ Mentioned only / ❌ Absent | [notability assessment]              |
+| Google Knowledge Graph API | ✅ Entity found / ❌ Not found             | [entity ID, types, score]            |
+| Schema.org on site         | ✅ Complete / ⚠️ Partial / ❌ Missing      | [Organization/Person/Product schema] |
 
 #### AI Entity Resolution Test
 
 **Note**: Claude cannot directly query other AI systems or perform real-time web searches without tool access. When running without ~~AI monitor or ~~knowledge graph tools, ask the user to run these test queries and report the results, or use the user-provided information to assess entity presence.
 
 Test how AI systems identify this entity by querying:
+
 - "What is [entity name]?"
 - "Who founded [entity name]?" (for organizations)
 - "What does [entity name] do?"
 - "[entity name] vs [competitor]"
 
-| AI System | Recognizes Entity? | Description Accuracy | Cites Entity's Content? |
-|-----------|-------------------|---------------------|------------------------|
-| ChatGPT | ✅ / ⚠️ / ❌ | [accuracy notes] | [yes/no/partially] |
-| Claude | ✅ / ⚠️ / ❌ | [accuracy notes] | [yes/no/partially] |
-| Perplexity | ✅ / ⚠️ / ❌ | [accuracy notes] | [yes/no/partially] |
-| Google AI Overview | ✅ / ⚠️ / ❌ | [accuracy notes] | [yes/no/partially] |
+| AI System          | Recognizes Entity? | Description Accuracy | Cites Entity's Content? |
+| ------------------ | ------------------ | -------------------- | ----------------------- |
+| ChatGPT            | ✅ / ⚠️ / ❌       | [accuracy notes]     | [yes/no/partially]      |
+| Claude             | ✅ / ⚠️ / ❌       | [accuracy notes]     | [yes/no/partially]      |
+| Perplexity         | ✅ / ⚠️ / ❌       | [accuracy notes]     | [yes/no/partially]      |
+| Google AI Overview | ✅ / ⚠️ / ❌       | [accuracy notes]     | [yes/no/partially]      |
 ```
 
 ### Step 2: Entity Signal Audit
@@ -211,14 +212,14 @@ Evaluate each signal as Pass / Fail / Partial with a specific action for each ga
 
 ### Signal Category Summary
 
-| Category | Status | Key Findings |
-|----------|--------|-------------|
-| Structured Data | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
-| Knowledge Base | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
+| Category            | Status                           | Key Findings   |
+| ------------------- | -------------------------------- | -------------- |
+| Structured Data     | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
+| Knowledge Base      | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
 | Consistency (NAP+E) | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
-| Content-Based | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
-| Third-Party | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
-| AI-Specific | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
+| Content-Based       | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
+| Third-Party         | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
+| AI-Specific         | ✅ Strong / ⚠️ Gaps / ❌ Missing | [key findings] |
 
 ### Critical Issues
 
@@ -241,24 +242,28 @@ Sorted by: impact on entity recognition × effort required
 ### Entity Building Roadmap
 
 #### Week 1-2: Foundation (Structured Data + Consistency)
+
 - [ ] Implement/fix Organization or Person schema with full properties
 - [ ] Add sameAs links to all authoritative profiles
 - [ ] Audit and fix NAP+E consistency across all platforms
 - [ ] Ensure About page is entity-rich and well-structured
 
 #### Month 1: Knowledge Bases
+
 - [ ] Create or update Wikidata entry with complete properties
 - [ ] Ensure CrunchBase / industry directory profiles are complete
 - [ ] Build Wikipedia notability (or plan path to notability)
 - [ ] Submit to relevant authoritative directories
 
 #### Month 2-3: Authority Building
+
 - [ ] Secure mentions on authoritative industry sites
 - [ ] Build co-citation signals with established entities
 - [ ] Create topical content clusters that reinforce entity-topic associations
 - [ ] Pursue PR opportunities that generate entity mentions
 
 #### Ongoing: AI-Specific Optimization
+
 - [ ] Test AI entity resolution quarterly
 - [ ] Update factual claims to remain current and verifiable
 - [ ] Monitor AI systems for incorrect entity information
@@ -275,12 +280,14 @@ Sorted by: impact on entity recognition × effort required
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Entity name and type identified
 - [ ] Primary domain/website confirmed
 - [ ] Target topics/industries specified
 - [ ] Disambiguation context provided (if entity name is common)
 
 ### Output Validation
+
 - [ ] All 6 signal categories evaluated
 - [ ] AI entity resolution tested with at least 3 queries
 - [ ] Knowledge Panel status checked
@@ -315,6 +322,7 @@ Sorted by: impact on entity recognition × effort required
 ## Reference Materials
 
 Detailed guides for entity optimization:
+
 - [references/entity-signal-checklist.md](./references/entity-signal-checklist.md) — Complete signal checklist with verification methods
 - [references/knowledge-graph-guide.md](./references/knowledge-graph-guide.md) — Wikidata, Wikipedia, and Knowledge Graph optimization playbook
 

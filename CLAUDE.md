@@ -118,6 +118,7 @@ npm test                 # Vitest unit tests
 ### Component Split Pattern
 
 Pages are Server Components that fetch data. Interactive features are extracted into separate Client Components:
+
 - `app/dashboard/session/new/page.tsx` (Server) → `components/SessionStartForm.tsx` (Client)
 - `app/dashboard/session/[id]/page.tsx` (Server) → `components/ReflectionCapture.tsx` (Client)
 - `app/dashboard/library/page.tsx` (Server) → `components/LibraryView.tsx` (Client)
@@ -153,15 +154,19 @@ Schema defined in `convex/schema.ts` with 6 tables:
 ## Security Rules (Non-Negotiable)
 
 ### IDOR Prevention (#1 Priority)
+
 Every Convex query/mutation must filter by `userId` from `ctx.auth.getUserIdentity()`. When a resource doesn't exist OR belongs to another user, return identical null/error — never leak resource existence.
 
 ### No Mass Assignment
+
 Always explicitly destructure fields from `args` validators. `userId` always comes from `identity.subject`, never from function arguments.
 
 ### Input Sanitization
+
 All user strings go through `sanitizeContent()` (strips all HTML via DOMPurify). Never render reflection content as HTML.
 
 ### Free Tier Enforcement
+
 3 Deep Sessions/month for free users (Quick Distills are unlimited). Enforced **server-side** in `reflections.create` mutation by counting completed deep sessions. Profile tracks `reflectionCountThisMonth`. Soft nudge at 2/3 (`FREE_TIER_NUDGE`), hard block at 3/3 (`FREE_TIER_LIMIT`). Session start page and dashboard show appropriate UI banners.
 
 ---

@@ -32,7 +32,8 @@ export default function NewSessionPage() {
             active session already exists
           </p>
           <p className="text-sm text-muted-text font-medium">
-            Complete &ldquo;{activeSession.title}&rdquo; before starting a new one.
+            Complete &ldquo;{activeSession.title}&rdquo; before starting a new
+            one.
           </p>
           <Link
             href={`/dashboard/session/${activeSession._id}`}
@@ -81,7 +82,8 @@ export default function NewSessionPage() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-sage/20 border border-sage/50 rounded-full">
               <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-soft-black/80">
-                {Math.max(0, 3 - (profile.deepSessionsCount ?? 0))} deep sessions left this month
+                {Math.max(0, 3 - (profile.deepSessionsCount ?? 0))} deep
+                sessions left this month
               </span>
             </div>
           )}
@@ -93,16 +95,19 @@ export default function NewSessionPage() {
           a 5,000-word space for intensive thinking and archival.
         </p>
       </header>
-      
+
       {profile?.plan === "free" && (profile.deepSessionsCount ?? 0) >= 3 ? (
         <div className="p-10 rounded-[2.5rem] bg-white brutal-border border-4 border-soft-black text-center space-y-6">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sage/20 border-2 border-soft-black mb-2">
             <span className="text-2xl font-black text-soft-black">3/3</span>
           </div>
           <div className="space-y-2">
-            <h2 className="font-grotesk text-2xl font-black lowercase tracking-tight">Ritual Fulfilled</h2>
+            <h2 className="font-grotesk text-2xl font-black lowercase tracking-tight">
+              Ritual Fulfilled
+            </h2>
             <p className="text-muted-text font-medium max-w-sm mx-auto leading-relaxed">
-              You&apos;ve completed your monthly meditation of 3 deep sessions. Your thinking is starting to compound.
+              You&apos;ve completed your monthly meditation of 3 deep sessions.
+              Your thinking is starting to compound.
             </p>
           </div>
           <div className="pt-4 border-t border-soft-black/10">
@@ -118,7 +123,10 @@ export default function NewSessionPage() {
           </div>
         </div>
       ) : (
-        <SessionStartForm onSubmitAction={handleStart} isSubmitting={isSubmitting} />
+        <SessionStartForm
+          onSubmitAction={handleStart}
+          isSubmitting={isSubmitting}
+        />
       )}
     </main>
   );

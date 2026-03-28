@@ -39,7 +39,6 @@ metadata:
 
 # Memory Management
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -144,6 +143,7 @@ Automatically populate memory from historical data: keyword rankings over time, 
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Current target keywords with priority levels
 2. Primary competitors (3-5 domains)
 3. Key performance metrics and last update date
@@ -164,31 +164,31 @@ For new projects, create the following structure:
 ## Directory Structure
 
 project-root/
-├── CLAUDE.md                           # Hot cache (~100 lines)
+├── CLAUDE.md # Hot cache (~100 lines)
 └── memory/
-    ├── glossary.md                     # Project terminology
-    ├── keywords/
-    │   ├── hero-keywords.md           # Top priority keywords
-    │   ├── secondary-keywords.md      # Medium priority
-    │   ├── long-tail-keywords.md      # Long-tail opportunities
-    │   └── historical-rankings.csv    # Dated ranking data
-    ├── competitors/
-    │   ├── primary-competitors.md     # Top 3-5 competitors
-    │   ├── [competitor-domain].md     # Individual reports
-    │   └── analysis-history/          # Dated analyses
-    ├── audits/
-    │   ├── technical/                 # Technical SEO audits
-    │   ├── content/                   # Content audits
-    │   ├── domain/                    # Domain authority (CITE) audits
-    │   └── backlink/                  # Backlink audits
-    ├── content-calendar/
-    │   ├── active-calendar.md         # Current quarter
-    │   ├── published-content.md       # Performance tracking
-    │   └── archive/                   # Past calendars
-    └── reports/
-        ├── monthly/                   # Monthly reports
-        ├── quarterly/                 # Quarterly reports
-        └── campaign/                  # Campaign-specific reports
+├── glossary.md # Project terminology
+├── keywords/
+│ ├── hero-keywords.md # Top priority keywords
+│ ├── secondary-keywords.md # Medium priority
+│ ├── long-tail-keywords.md # Long-tail opportunities
+│ └── historical-rankings.csv # Dated ranking data
+├── competitors/
+│ ├── primary-competitors.md # Top 3-5 competitors
+│ ├── [competitor-domain].md # Individual reports
+│ └── analysis-history/ # Dated analyses
+├── audits/
+│ ├── technical/ # Technical SEO audits
+│ ├── content/ # Content audits
+│ ├── domain/ # Domain authority (CITE) audits
+│ └── backlink/ # Backlink audits
+├── content-calendar/
+│ ├── active-calendar.md # Current quarter
+│ ├── published-content.md # Performance tracking
+│ └── archive/ # Past calendars
+└── reports/
+├── monthly/ # Monthly reports
+├── quarterly/ # Quarterly reports
+└── campaign/ # Campaign-specific reports
 ```
 
 > **Templates**: See [references/hot-cache-template.md](./references/hot-cache-template.md) for the complete CLAUDE.md hot cache template and [references/glossary-template.md](./references/glossary-template.md) for the project glossary template.
@@ -198,20 +198,24 @@ project-root/
 When a user references something unclear, follow this lookup sequence:
 
 **Step 1: Check CLAUDE.md (Hot Cache)**
+
 - Is it in active keywords?
 - Is it in primary competitors?
 - Is it in current priorities or campaigns?
 
 **Step 2: Check memory/glossary.md**
+
 - Is it defined as project terminology?
 - Is it a custom segment or shorthand?
 
 **Step 3: Check Cold Storage**
+
 - Search memory/keywords/ for historical data
 - Search memory/competitors/ for past analyses
 - Search memory/reports/ for archived mentions
 
 **Step 4: Ask User**
+
 - If not found in any layer, ask for clarification
 - Log the new term in glossary if it's project-specific
 
@@ -237,12 +241,14 @@ Step 4: Update both CLAUDE.md and memory/keywords/historical-rankings.csv
 ## Validation Checkpoints
 
 ### Structure Validation
+
 - [ ] CLAUDE.md exists and is under 150 lines (aim for ~100)
 - [ ] memory/ directory structure matches template
 - [ ] glossary.md exists and is populated with project basics
 - [ ] All historical data files include timestamps in filename or metadata
 
 ### Content Validation
+
 - [ ] CLAUDE.md "Last Updated" date is current
 - [ ] Every keyword in hot cache has current rank, target rank, and status
 - [ ] Every competitor has domain authority and position assessment
@@ -250,12 +256,14 @@ Step 4: Update both CLAUDE.md and memory/keywords/historical-rankings.csv
 - [ ] Key Metrics Snapshot shows "Previous" values for comparison
 
 ### Lookup Validation
+
 - [ ] Test lookup flow: reference a term → verify it finds it in correct layer
 - [ ] Test promotion: manually promote item → verify it appears in CLAUDE.md
 - [ ] Test demotion: manually archive item → verify removed from CLAUDE.md
 - [ ] Glossary contains all custom segments and shorthand used in CLAUDE.md
 
 ### Update Validation
+
 - [ ] After ranking check, historical-rankings.csv has new row with today's date
 - [ ] After competitor analysis, analysis-history/ has dated file
 - [ ] After audit, top action items appear in CLAUDE.md priorities

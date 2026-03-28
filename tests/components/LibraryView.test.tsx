@@ -23,25 +23,57 @@ vi.mock("@/convex/_generated/api", () => ({
 
 // Mock lucide-react icons as simple spans
 vi.mock("lucide-react", () => ({
-  Search: (props: Record<string, unknown>) => <span data-testid="icon-search" {...props} />,
-  Book: (props: Record<string, unknown>) => <span data-testid="icon-book" {...props} />,
-  Video: (props: Record<string, unknown>) => <span data-testid="icon-video" {...props} />,
-  FileText: (props: Record<string, unknown>) => <span data-testid="icon-filetext" {...props} />,
-  Mic: (props: Record<string, unknown>) => <span data-testid="icon-mic" {...props} />,
-  MoreHorizontal: (props: Record<string, unknown>) => <span data-testid="icon-more" {...props} />,
-  ChevronRight: (props: Record<string, unknown>) => <span data-testid="icon-chevron" {...props} />,
-  Trash2: (props: Record<string, unknown>) => <span data-testid="icon-trash" {...props} />,
-  Layers: (props: Record<string, unknown>) => <span data-testid="icon-layers" {...props} />,
+  Search: (props: Record<string, unknown>) => (
+    <span data-testid="icon-search" {...props} />
+  ),
+  Book: (props: Record<string, unknown>) => (
+    <span data-testid="icon-book" {...props} />
+  ),
+  Video: (props: Record<string, unknown>) => (
+    <span data-testid="icon-video" {...props} />
+  ),
+  FileText: (props: Record<string, unknown>) => (
+    <span data-testid="icon-filetext" {...props} />
+  ),
+  Mic: (props: Record<string, unknown>) => (
+    <span data-testid="icon-mic" {...props} />
+  ),
+  MoreHorizontal: (props: Record<string, unknown>) => (
+    <span data-testid="icon-more" {...props} />
+  ),
+  ChevronRight: (props: Record<string, unknown>) => (
+    <span data-testid="icon-chevron" {...props} />
+  ),
+  Trash2: (props: Record<string, unknown>) => (
+    <span data-testid="icon-trash" {...props} />
+  ),
+  Layers: (props: Record<string, unknown>) => (
+    <span data-testid="icon-layers" {...props} />
+  ),
 }));
 
 // Mock next/link
 vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string }) => (
-    <a href={href} {...props}>{children}</a>
+  default: ({
+    children,
+    href,
+    ...props
+  }: {
+    children: React.ReactNode;
+    href: string;
+  }) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
-function makeReflection(id: string, content: string, title: string, contentType = "book") {
+function makeReflection(
+  id: string,
+  content: string,
+  title: string,
+  contentType = "book",
+) {
   return {
     _id: id,
     _creationTime: Date.now(),
@@ -86,7 +118,9 @@ describe("LibraryView", () => {
   it("renders search input", () => {
     mockUseQuery.mockReturnValue({ data: [], total: 0 });
     render(<LibraryView />);
-    expect(screen.getByPlaceholderText("search your archive of thought...")).toBeTruthy();
+    expect(
+      screen.getByPlaceholderText("search your archive of thought..."),
+    ).toBeTruthy();
   });
 
   it("renders content type filter buttons", () => {
@@ -102,7 +136,7 @@ describe("LibraryView", () => {
   it("shows 'load more' button when total > limit", () => {
     mockUseQuery.mockReturnValue({
       data: Array.from({ length: 20 }, (_, i) =>
-        makeReflection(`r${i}`, `content ${i}`, `title ${i}`)
+        makeReflection(`r${i}`, `content ${i}`, `title ${i}`),
       ),
       total: 50,
     });
@@ -122,7 +156,9 @@ describe("LibraryView", () => {
   it("updates search input value on typing", () => {
     mockUseQuery.mockReturnValue({ data: [], total: 0 });
     render(<LibraryView />);
-    const input = screen.getByPlaceholderText("search your archive of thought...") as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      "search your archive of thought...",
+    ) as HTMLInputElement;
     fireEvent.change(input, { target: { value: "habits" } });
     expect(input.value).toBe("habits");
   });

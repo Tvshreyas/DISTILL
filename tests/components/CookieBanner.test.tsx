@@ -9,11 +9,16 @@ const localStorageMock = {
   setItem: vi.fn((key: string, value: string) => storageMap.set(key, value)),
   removeItem: vi.fn((key: string) => storageMap.delete(key)),
   clear: vi.fn(() => storageMap.clear()),
-  get length() { return storageMap.size; },
+  get length() {
+    return storageMap.size;
+  },
   key: vi.fn((i: number) => Array.from(storageMap.keys())[i] ?? null),
 };
 
-Object.defineProperty(window, "localStorage", { value: localStorageMock, writable: true });
+Object.defineProperty(window, "localStorage", {
+  value: localStorageMock,
+  writable: true,
+});
 
 describe("CookieBanner", () => {
   beforeEach(() => {

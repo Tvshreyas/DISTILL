@@ -9,6 +9,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > SEO is really important for businesses and involves various techniques to improve visibility online through search engines. It's been around for a while and many businesses use it to get more traffic to their websites.
 
 **Problems**:
+
 - Vague language ("really important", "various techniques")
 - No clear classification
 - Meandering structure
@@ -23,6 +24,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > **Search Engine Optimization (SEO)** is a digital marketing practice that improves website rankings in organic search results through content optimization, technical improvements, and authority building. According to BrightEdge research, organic search drives 53% of all website traffic, making SEO the highest-impact channel for sustainable online visibility.
 
 **Improvements**:
+
 - Clear term + category classification
 - Specific components listed
 - Authoritative statistic with source
@@ -40,6 +42,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > Email marketing is pretty effective and lots of companies use it. It has a good return on investment compared to other marketing channels.
 
 **Problems**:
+
 - No specific numbers
 - No source attribution
 - Vague comparisons ("pretty effective", "lots", "good")
@@ -54,6 +57,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > Email marketing delivers an average ROI of $42 for every $1 spent, according to the Data & Marketing Association's 2024 research. This 4,200% return makes email the highest-performing digital marketing channel, outperforming social media (28% ROI) and paid search (23% ROI) by significant margins.
 
 **Improvements**:
+
 - Specific statistic with exact numbers
 - Source attribution with year
 - Comparative data
@@ -71,6 +75,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > To do keyword research, you should think about what your customers might search for and then use some tools to find more keywords. Look at what your competitors are doing too. Then pick the best keywords for your content.
 
 **Problems**:
+
 - Vague steps ("think about", "some tools")
 - No clear structure
 - Missing specifics
@@ -93,6 +98,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > This process typically takes 2-4 hours for a comprehensive initial keyword list.
 
 **Improvements**:
+
 - Numbered, sequential steps
 - Specific actions in each step
 - Concrete numbers and tools
@@ -110,6 +116,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > WordPress and Shopify are both popular website builders. WordPress is more flexible while Shopify is easier to use. The choice depends on what you need.
 
 **Problems**:
+
 - No specific differentiators
 - Vague claims ("more flexible", "easier")
 - No clear recommendation criteria
@@ -121,20 +128,21 @@ Before/after examples of content optimized for AI citation. Each example shows t
 
 ### After (Structured Comparison)
 
-> | Factor | WordPress | Shopify |
-> |--------|-----------|---------|
-> | **Best for** | Content-heavy sites, blogs, custom needs | E-commerce, quick setup |
-> | **Setup time** | 4-8 hours | 1-2 hours |
-> | **Monthly cost** | $10-50 (hosting + theme) | $29-299 (subscription) |
-> | **Customization** | Unlimited (50,000+ plugins) | Limited to Shopify apps |
-> | **E-commerce** | Requires WooCommerce plugin | Built-in, optimized |
-> | **SEO control** | Complete control | Good but limited |
+> | Factor            | WordPress                                | Shopify                 |
+> | ----------------- | ---------------------------------------- | ----------------------- |
+> | **Best for**      | Content-heavy sites, blogs, custom needs | E-commerce, quick setup |
+> | **Setup time**    | 4-8 hours                                | 1-2 hours               |
+> | **Monthly cost**  | $10-50 (hosting + theme)                 | $29-299 (subscription)  |
+> | **Customization** | Unlimited (50,000+ plugins)              | Limited to Shopify apps |
+> | **E-commerce**    | Requires WooCommerce plugin              | Built-in, optimized     |
+> | **SEO control**   | Complete control                         | Good but limited        |
 >
 > **Choose WordPress if**: You need maximum flexibility, run a content-first site, or have technical resources.
 >
 > **Choose Shopify if**: E-commerce is your primary goal, you want fast setup, or you lack technical expertise.
 
 **Improvements**:
+
 - Structured table format
 - Specific, comparable metrics
 - Clear use case recommendations
@@ -152,6 +160,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > Many people think that social media is important for SEO. It can help you get more visibility and traffic.
 
 **Problems**:
+
 - No expert attribution
 - Vague claims ("many people think")
 - No specific mechanism explained
@@ -166,6 +175,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > While social media doesn't directly impact search rankings, it influences SEO through indirect channels. "Social signals drive discovery, which leads to backlinks and brand searches—both powerful ranking factors," explains Rand Fishkin, founder of SparkToro and former CEO of Moz. Research from Hootsuite found that content promoted on social media earns 2.3x more backlinks than non-promoted content within the first 30 days of publication.
 
 **Improvements**:
+
 - Expert quote with credentials
 - Specific mechanism explained
 - Research data with source
@@ -185,6 +195,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > It depends on a lot of factors. Sometimes it's fast, sometimes it takes a while. New sites usually take longer than established ones.
 
 **Problems**:
+
 - No specific timeframe
 - "It depends" without explaining what it depends on
 - Vague language ("fast", "a while", "longer")
@@ -208,6 +219,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > Most businesses should budget 6 months for measurable ROI from SEO efforts.
 
 **Improvements**:
+
 - Specific timeframes with ranges
 - Factors clearly explained
 - Differentiated by scenario
@@ -223,6 +235,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 ### Before (Thin List)
 
 > Here are some important on-page SEO factors:
+>
 > - Title tags
 > - Meta descriptions
 > - Headers
@@ -231,6 +244,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > - Images
 
 **Problems**:
+
 - No explanations
 - No prioritization
 - Not actionable
@@ -245,20 +259,16 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > Critical on-page SEO factors ranked by impact:
 >
 > 1. **Title tags** - Most important on-page element; include primary keyword within first 60 characters. Title tags directly influence both rankings and CTR.
->
 > 2. **Content quality and depth** - Comprehensive content (1,500+ words for competitive keywords) outranks thin content. Focus on topical authority over keyword density.
->
 > 3. **Header structure (H1-H6)** - Use one H1 with primary keyword, multiple H2s for main sections. Proper hierarchy helps search engines understand content structure.
->
 > 4. **Internal linking** - Link to 3-5 related pages using descriptive anchor text. Internal links distribute page authority and help search engines discover content.
->
 > 5. **Image optimization** - Compress images to under 100KB, use descriptive alt text with target keywords. Page speed and accessibility both impact rankings.
->
 > 6. **URL structure** - Use descriptive, keyword-rich URLs (example.com/keyword-topic) avoiding parameters. Clean URLs improve click-through rates by 25% (Backlinko study).
 >
 > Optimize these six factors before moving to advanced tactics.
 
 **Improvements**:
+
 - Prioritized ranking
 - Specific guidance for each
 - Actionable recommendations
@@ -276,6 +286,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > AI is going to change SEO a lot in the future. Things will be different and SEO professionals will need to adapt.
 
 **Problems**:
+
 - Vague predictions ("a lot", "different")
 - No specific changes identified
 - No timeframe
@@ -292,14 +303,13 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > Three specific shifts SEO professionals must prepare for:
 >
 > 1. **Zero-click content consumption** - Users get answers without visiting websites, requiring optimization for AI citations rather than clicks
->
 > 2. **Conversation-based queries** - Natural language questions replace keyword-based searches, demanding content that answers specific questions
->
 > 3. **Source attribution value** - Being cited by AI systems (Generative Engine Optimization/GEO) becomes as important as ranking #1
 >
 > Forrester predicts that by 2025, 30% of organic traffic will come from AI system citations rather than traditional search results, making GEO optimization critical for visibility.
 
 **Improvements**:
+
 - Specific statistics with sources
 - Clear timeframes
 - Concrete changes identified
@@ -317,6 +327,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > Core Web Vitals are metrics that Google uses to measure user experience. They look at how fast your site loads and how stable it is when people use it. You should try to improve them.
 
 **Problems**:
+
 - Oversimplified without specifics
 - No concrete metrics
 - Vague improvement guidance
@@ -330,17 +341,18 @@ Before/after examples of content optimized for AI citation. Each example shows t
 
 > Core Web Vitals are three specific metrics Google uses to measure page experience:
 >
-> | Metric | Measures | Good Score | Impact |
-> |--------|----------|------------|--------|
-> | **LCP (Largest Contentful Paint)** | Loading performance | <2.5 seconds | How quickly main content appears |
-> | **FID (First Input Delay)** | Interactivity | <100 milliseconds | How quickly page responds to user input |
-> | **CLS (Cumulative Layout Shift)** | Visual stability | <0.1 | How much content shifts during loading |
+> | Metric                             | Measures            | Good Score        | Impact                                  |
+> | ---------------------------------- | ------------------- | ----------------- | --------------------------------------- |
+> | **LCP (Largest Contentful Paint)** | Loading performance | <2.5 seconds      | How quickly main content appears        |
+> | **FID (First Input Delay)**        | Interactivity       | <100 milliseconds | How quickly page responds to user input |
+> | **CLS (Cumulative Layout Shift)**  | Visual stability    | <0.1              | How much content shifts during loading  |
 >
 > According to Google's 2024 documentation, pages meeting all three thresholds rank higher and receive 24% more clicks than pages failing these metrics. Core Web Vitals became an official ranking factor in June 2021 as part of Google's Page Experience update.
 >
 > Test your Core Web Vitals with ~~page speed tool.
 
 **Improvements**:
+
 - Three specific metrics defined
 - Clear thresholds provided
 - Table format for scannability
@@ -358,6 +370,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > We improved our client's SEO and they got more traffic. They were really happy with the results and saw an increase in their business.
 
 **Problems**:
+
 - No specific numbers
 - No timeframe
 - No methodology shared
@@ -376,12 +389,14 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > **Challenge**: Only 450 monthly organic visitors, ranking #20+ for target keywords
 >
 > **Strategy implemented**:
+>
 > 1. Created 24 pillar pages targeting high-intent keywords
 > 2. Built internal linking hub connecting 150 existing pages
 > 3. Optimized 80 existing pages for featured snippets
 > 4. Secured 45 high-authority backlinks through expert roundups
 >
 > **Results (6 months)**:
+>
 > - Organic traffic: 450 → 1,854 monthly visitors (+312%)
 > - Keyword rankings: 3 keywords in top 10 → 47 keywords in top 10
 > - Featured snippets: 0 → 12 owned snippets
@@ -390,6 +405,7 @@ Before/after examples of content optimized for AI citation. Each example shows t
 > **Key insight**: 80% of traffic growth came from optimizing existing content rather than creating new pages, demonstrating the power of content refreshing strategies.
 
 **Improvements**:
+
 - Specific metrics with percentages
 - Clear timeframe
 - Detailed methodology
@@ -405,12 +421,14 @@ Before/after examples of content optimized for AI citation. Each example shows t
 To make any content more quotable:
 
 **Definitions**:
+
 - [ ] Replace vague language with precise terms
 - [ ] Add clear category classification
 - [ ] Make statement standalone
 - [ ] Include scope and boundaries
 
 **Statistics**:
+
 - [ ] Add specific numbers
 - [ ] Include source attribution
 - [ ] Specify timeframe/date
@@ -418,6 +436,7 @@ To make any content more quotable:
 - [ ] Verify accuracy
 
 **Processes**:
+
 - [ ] Number steps clearly
 - [ ] Make each step actionable
 - [ ] Add time estimates
@@ -425,6 +444,7 @@ To make any content more quotable:
 - [ ] Provide success criteria
 
 **Comparisons**:
+
 - [ ] Use table format
 - [ ] Include specific, comparable metrics
 - [ ] Add "choose if..." recommendations
@@ -432,6 +452,7 @@ To make any content more quotable:
 - [ ] Cover key decision factors
 
 **Lists**:
+
 - [ ] Prioritize items
 - [ ] Add explanations to each
 - [ ] Include specific guidance
@@ -439,6 +460,7 @@ To make any content more quotable:
 - [ ] Make actionable
 
 **Expert content**:
+
 - [ ] Add attributed quotes
 - [ ] Include credentials
 - [ ] Reference studies/research

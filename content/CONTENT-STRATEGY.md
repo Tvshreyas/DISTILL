@@ -1,12 +1,13 @@
 # Distill Content Strategy
 
-*Last updated: 2026-03-14*
+_Last updated: 2026-03-14_
 
 ---
 
 ## Product Positioning (for content purposes)
 
 Distill is a **thinking development tool** — not a journaling app, not a note-taking app, not an AI summarizer. The content strategy targets people who:
+
 - Consume a lot (books, videos, articles, podcasts) but feel they retain nothing
 - Want to build their own perspective instead of absorbing others'
 - Are interested in deep work, digital minimalism, or intentional living
@@ -19,48 +20,52 @@ Distill is a **thinking development tool** — not a journaling app, not a note-
 ## Topic Clusters
 
 ### Pillar 1: Active Reading & Retention (Hub: `/blog/how-to-remember-what-you-read`)
-| Cluster Page | Primary Keyword | Intent | Volume Est. | Difficulty |
-|---|---|---|---|---|
-| How to Remember What You Read | how to remember what you read | Informational | High (12K+/mo) | Medium |
-| Active Reading Techniques That Actually Work | active reading techniques | Informational | Medium (4K/mo) | Low-Medium |
-| Spaced Repetition for Readers (Not Students) | spaced repetition reading | Informational | Medium (2K/mo) | Low |
-| Why You Forget Everything You Read | why do I forget what I read | Informational | Medium (3K/mo) | Low |
-| The Science of Reflection After Reading | reflection after reading | Informational | Low-Medium (1K/mo) | Low |
+
+| Cluster Page                                 | Primary Keyword               | Intent        | Volume Est.        | Difficulty |
+| -------------------------------------------- | ----------------------------- | ------------- | ------------------ | ---------- |
+| How to Remember What You Read                | how to remember what you read | Informational | High (12K+/mo)     | Medium     |
+| Active Reading Techniques That Actually Work | active reading techniques     | Informational | Medium (4K/mo)     | Low-Medium |
+| Spaced Repetition for Readers (Not Students) | spaced repetition reading     | Informational | Medium (2K/mo)     | Low        |
+| Why You Forget Everything You Read           | why do I forget what I read   | Informational | Medium (3K/mo)     | Low        |
+| The Science of Reflection After Reading      | reflection after reading      | Informational | Low-Medium (1K/mo) | Low        |
 
 ### Pillar 2: Intentional Content Consumption (Hub: `/blog/intentional-content-consumption`)
-| Cluster Page | Primary Keyword | Intent | Volume Est. | Difficulty |
-|---|---|---|---|---|
-| The Information Diet: Consume Less, Think More | information diet | Informational | Medium (3K/mo) | Low-Medium |
-| Digital Minimalism for Content Consumers | digital minimalism content | Informational | Medium (2K/mo) | Medium |
-| How to Stop Doomscrolling and Start Thinking | how to stop doomscrolling | Informational | High (8K/mo) | Medium |
-| Mindful Content Consumption: A Practical Guide | mindful content consumption | Informational | Low-Medium (1K/mo) | Low |
-| Content Overload: Why More Information Makes You Less Informed | content overload | Informational | Medium (2K/mo) | Low |
+
+| Cluster Page                                                   | Primary Keyword             | Intent        | Volume Est.        | Difficulty |
+| -------------------------------------------------------------- | --------------------------- | ------------- | ------------------ | ---------- |
+| The Information Diet: Consume Less, Think More                 | information diet            | Informational | Medium (3K/mo)     | Low-Medium |
+| Digital Minimalism for Content Consumers                       | digital minimalism content  | Informational | Medium (2K/mo)     | Medium     |
+| How to Stop Doomscrolling and Start Thinking                   | how to stop doomscrolling   | Informational | High (8K/mo)       | Medium     |
+| Mindful Content Consumption: A Practical Guide                 | mindful content consumption | Informational | Low-Medium (1K/mo) | Low        |
+| Content Overload: Why More Information Makes You Less Informed | content overload            | Informational | Medium (2K/mo)     | Low        |
 
 ### Pillar 3: Building a Personal Thinking Practice (Hub: `/blog/personal-thinking-practice`)
-| Cluster Page | Primary Keyword | Intent | Volume Est. | Difficulty |
-|---|---|---|---|---|
-| How to Build a Reflection Habit | reflection habit | Informational | Low-Medium (1K/mo) | Low |
-| Compound Thinking: How Small Reflections Build Big Ideas | compound thinking | Informational | Low (500/mo) | Very Low |
-| Writing to Think: Why Writing Clarifies Your Mind | writing to think | Informational | Medium (2K/mo) | Low |
-| The Personal Knowledge Library You Actually Use | personal knowledge library | Informational | Low (800/mo) | Low |
-| First Principles Thinking for Everyday Decisions | first principles thinking | Informational | High (6K/mo) | Medium-High |
+
+| Cluster Page                                             | Primary Keyword            | Intent        | Volume Est.        | Difficulty  |
+| -------------------------------------------------------- | -------------------------- | ------------- | ------------------ | ----------- |
+| How to Build a Reflection Habit                          | reflection habit           | Informational | Low-Medium (1K/mo) | Low         |
+| Compound Thinking: How Small Reflections Build Big Ideas | compound thinking          | Informational | Low (500/mo)       | Very Low    |
+| Writing to Think: Why Writing Clarifies Your Mind        | writing to think           | Informational | Medium (2K/mo)     | Low         |
+| The Personal Knowledge Library You Actually Use          | personal knowledge library | Informational | Low (800/mo)       | Low         |
+| First Principles Thinking for Everyday Decisions         | first principles thinking  | Informational | High (6K/mo)       | Medium-High |
 
 ### Pillar 4: Deep Work & Focus (Hub: existing content covers this loosely)
-| Cluster Page | Primary Keyword | Intent | Volume Est. | Difficulty |
-|---|---|---|---|---|
-| Deep Work in the Age of AI | deep work AI 2026 | Informational | Medium (2K/mo) | Medium |
-| How to Think for Yourself in the AI Era | think for yourself AI | Informational | Low-Medium (1K/mo) | Low |
-| Synthesis as a Skill: Why AI Can't Replace Your Perspective | synthesis skill | Informational | Low (500/mo) | Very Low |
+
+| Cluster Page                                                | Primary Keyword       | Intent        | Volume Est.        | Difficulty |
+| ----------------------------------------------------------- | --------------------- | ------------- | ------------------ | ---------- |
+| Deep Work in the Age of AI                                  | deep work AI 2026     | Informational | Medium (2K/mo)     | Medium     |
+| How to Think for Yourself in the AI Era                     | think for yourself AI | Informational | Low-Medium (1K/mo) | Low        |
+| Synthesis as a Skill: Why AI Can't Replace Your Perspective | synthesis skill       | Informational | Low (500/mo)       | Very Low   |
 
 ---
 
 ## Existing Content Audit
 
-| Post | Target Keyword | Status | Action |
-|---|---|---|---|
-| The Art of Slow Thinking | slow thinking | Published | Add internal links to future retention + reflection posts |
-| The Paradox of Digital Information | information overload | Published | Refresh with 2026 stats, link to "information diet" post when published |
-| Distillation: The Competitive Advantage of 2026 | synthesis skill career | Published | Link to "think for yourself AI" post when published |
+| Post                                            | Target Keyword         | Status    | Action                                                                  |
+| ----------------------------------------------- | ---------------------- | --------- | ----------------------------------------------------------------------- |
+| The Art of Slow Thinking                        | slow thinking          | Published | Add internal links to future retention + reflection posts               |
+| The Paradox of Digital Information              | information overload   | Published | Refresh with 2026 stats, link to "information diet" post when published |
+| Distillation: The Competitive Advantage of 2026 | synthesis skill career | Published | Link to "think for yourself AI" post when published                     |
 
 ---
 
@@ -69,6 +74,7 @@ Distill is a **thinking development tool** — not a journaling app, not a note-
 ### Wave 1 (Publish first — high volume, low difficulty)
 
 **Post 4: "How to Remember What You Read: 7 Techniques That Actually Work"**
+
 - Primary keyword: `how to remember what you read`
 - Secondary: `reading retention`, `remember books`, `retain what you read`
 - Intent: Informational
@@ -89,6 +95,7 @@ Distill is a **thinking development tool** — not a journaling app, not a note-
   - The Common Thread: Active Processing Beats Passive Highlighting
 
 **Post 5: "Why You Forget Everything You Read (And What to Do About It)"**
+
 - Primary keyword: `why do I forget what I read`
 - Secondary: `forget what I read`, `can't remember books`, `reading memory`
 - Intent: Informational
@@ -103,6 +110,7 @@ Distill is a **thinking development tool** — not a journaling app, not a note-
   - How to Close the Gap (without a complicated system)
 
 **Post 6: "How to Stop Doomscrolling and Start Thinking"**
+
 - Primary keyword: `how to stop doomscrolling`
 - Secondary: `stop scrolling`, `doomscrolling habit`, `mindless scrolling`
 - Intent: Informational
@@ -119,6 +127,7 @@ Distill is a **thinking development tool** — not a journaling app, not a note-
 ### Wave 2 (Publish second — builds on Wave 1)
 
 **Post 7: "The Information Diet: How to Consume Less and Think More"**
+
 - Primary keyword: `information diet`
 - Secondary: `consume less content`, `digital nutrition`, `content curation`
 - Intent: Informational
@@ -134,6 +143,7 @@ Distill is a **thinking development tool** — not a journaling app, not a note-
   - An Information Diet Is Not About Less — It's About Better
 
 **Post 8: "Active Reading Techniques That Actually Work in 2026"**
+
 - Primary keyword: `active reading techniques`
 - Secondary: `active reading strategies`, `engaged reading`, `critical reading`
 - Intent: Informational
@@ -149,6 +159,7 @@ Distill is a **thinking development tool** — not a journaling app, not a note-
   - Building Active Reading into a Daily Practice
 
 **Post 9: "Spaced Repetition for Readers, Not Just Students"**
+
 - Primary keyword: `spaced repetition reading`
 - Secondary: `spaced repetition books`, `review what you read`, `reading spaced repetition`
 - Intent: Informational
@@ -157,6 +168,7 @@ Distill is a **thinking development tool** — not a journaling app, not a note-
 - Internal links TO: "How to Remember", "Why You Forget"
 
 **Post 10: "Writing to Think: Why the Best Thinkers Write After Reading"**
+
 - Primary keyword: `writing to think`
 - Secondary: `writing for clarity`, `write to understand`, `reflective writing`
 - Intent: Informational
@@ -164,6 +176,7 @@ Distill is a **thinking development tool** — not a journaling app, not a note-
 - Angle: Reference Feynman technique, Zettelkasten, but position "reflection capture" as the simplest version that doesn't require a complex system.
 
 **Post 11: "How to Build a Reflection Habit (Without Journaling)"**
+
 - Primary keyword: `reflection habit`
 - Secondary: `daily reflection`, `reflection practice`, `how to reflect`
 - Intent: Informational
@@ -195,6 +208,7 @@ Landing Page (/)
 ```
 
 Every post links to:
+
 1. At least 1 other blog post (contextual anchor text)
 2. The `/start` page or `/blog` hub
 3. No orphaned pages — all reachable within 2 clicks of `/blog`
@@ -204,6 +218,7 @@ Every post links to:
 ## Content Governance
 
 **Voice rules:**
+
 - Lowercase headings (matches Distill UI)
 - No exclamation marks in body copy
 - No superlatives ("best ever", "ultimate guide")
@@ -212,6 +227,7 @@ Every post links to:
 - First person plural ("we") or second person ("you"), never third person distant
 
 **Frontmatter template:**
+
 ```yaml
 ---
 title: "Title Under 60 Characters"
@@ -223,6 +239,7 @@ tags: ["Tag1", "Tag2", "Tag3"]
 ```
 
 **Review workflow:**
+
 1. Draft in `content/blog/slug.md`
 2. Run `npm run build` to verify SSG
 3. Check meta title < 60 chars, description < 155 chars
@@ -235,6 +252,7 @@ tags: ["Tag1", "Tag2", "Tag3"]
 ## Measurement Framework
 
 Track per post (once analytics is connected):
+
 - Organic sessions (Google Search Console)
 - Average position for target keyword
 - Click-through rate from SERP
@@ -243,6 +261,7 @@ Track per post (once analytics is connected):
 - Returning visitors to `/blog`
 
 Content health check (monthly):
+
 - Any post declining > 20% traffic vs. 90-day average → flag for refresh
 - Any post with 0 conversions after 60 days → evaluate CTA placement
 - New keyword opportunities from Search Console "queries" report

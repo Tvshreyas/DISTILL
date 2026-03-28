@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useTransform, useSpring, useMotionValue, MotionValue } from "framer-motion";
+import {
+  motion,
+  useTransform,
+  useSpring,
+  useMotionValue,
+  MotionValue,
+} from "framer-motion";
 import { useEffect, useState } from "react";
 
 interface ParticleProps {
@@ -47,9 +53,23 @@ export function ZenParticles() {
   );
 }
 
-function Particle({ p, mouseX, mouseY }: { p: ParticleProps; mouseX: MotionValue<number>; mouseY: MotionValue<number> }) {
-  const springX = useSpring(useTransform(mouseX, [0, 1920], [-20, 20]), { stiffness: 50, damping: 20 });
-  const springY = useSpring(useTransform(mouseY, [0, 1080], [-20, 20]), { stiffness: 50, damping: 20 });
+function Particle({
+  p,
+  mouseX,
+  mouseY,
+}: {
+  p: ParticleProps;
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
+}) {
+  const springX = useSpring(useTransform(mouseX, [0, 1920], [-20, 20]), {
+    stiffness: 50,
+    damping: 20,
+  });
+  const springY = useSpring(useTransform(mouseY, [0, 1080], [-20, 20]), {
+    stiffness: 50,
+    damping: 20,
+  });
 
   return (
     <motion.div
@@ -63,15 +83,15 @@ function Particle({ p, mouseX, mouseY }: { p: ParticleProps; mouseX: MotionValue
         backgroundColor: p.color,
         boxShadow: "0 0 10px rgba(0,0,0,0.05)",
       }}
-      animate={{ 
+      animate={{
         opacity: [0.1, 0.4, 0.1],
         scale: [1, 1.2, 1],
       }}
-      transition={{ 
-        duration: 4 + p.delay, 
-        repeat: Infinity, 
+      transition={{
+        duration: 4 + p.delay,
+        repeat: Infinity,
         ease: "easeInOut",
-        delay: p.delay 
+        delay: p.delay,
       }}
       className="absolute rounded-full"
     />

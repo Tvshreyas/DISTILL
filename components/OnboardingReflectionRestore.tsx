@@ -47,9 +47,17 @@ export default function OnboardingReflectionRestore() {
       return;
     }
 
-    const validTypes = ["book", "video", "article", "podcast", "other"] as const;
+    const validTypes = [
+      "book",
+      "video",
+      "article",
+      "podcast",
+      "other",
+    ] as const;
     type ContentType = (typeof validTypes)[number];
-    const contentType: ContentType = validTypes.includes(data.contentType as ContentType)
+    const contentType: ContentType = validTypes.includes(
+      data.contentType as ContentType,
+    )
       ? (data.contentType as ContentType)
       : "article";
 

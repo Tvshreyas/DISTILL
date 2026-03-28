@@ -20,6 +20,7 @@ When creating a new UI component in `components/`, follow these rules.
    - Page-specific (not reusable) → co-locate in the route folder
 
 3. **Handle all 4 states** (mandatory — from CLAUDE.md):
+
 ```typescript
 // Loading → Skeleton UI matching final shape
 // Empty → Icon + explanation + CTA
@@ -44,6 +45,7 @@ When creating a new UI component in `components/`, follow these rules.
    - Import shared types from `types/index.ts`
 
 ## Template
+
 ```typescript
 // components/MyComponent.tsx
 import { type FC } from 'react'
@@ -63,6 +65,7 @@ export const MyComponent: FC<MyComponentProps> = ({ title, onAction }) => {
 ```
 
 ## Checklist
+
 - [ ] Server or Client component decision documented
 - [ ] All 4 states handled (loading, empty, error, success)
 - [ ] Tailwind v4 utility classes only

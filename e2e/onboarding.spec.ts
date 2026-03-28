@@ -14,7 +14,9 @@ test.describe("Onboarding Flow", () => {
     await page.goto("/start");
 
     // Look for a next/continue button to advance steps
-    const nextButton = page.getByRole("button", { name: /next|continue|start/i });
+    const nextButton = page.getByRole("button", {
+      name: /next|continue|start/i,
+    });
     if (await nextButton.isVisible()) {
       await nextButton.click();
       // Should advance to next step
@@ -28,7 +30,7 @@ test.describe("Onboarding Flow", () => {
     // After interacting, check localStorage is used
     const hasStorage = await page.evaluate(() => {
       return Object.keys(localStorage).some(
-        (key) => key.includes("onboarding") || key.includes("distill")
+        (key) => key.includes("onboarding") || key.includes("distill"),
       );
     });
     // This is best-effort — the exact key depends on implementation
@@ -40,7 +42,9 @@ test.describe("Onboarding Flow", () => {
 
     // Look for a sign-up link or CTA at the end of onboarding
     const signUpLink = page.locator('a[href*="sign-up"]');
-    const signUpButton = page.getByRole("button", { name: /sign up|create account/i });
+    const signUpButton = page.getByRole("button", {
+      name: /sign up|create account/i,
+    });
 
     // At least one should exist on the page (may need to advance steps first)
     const hasSignUpPath =

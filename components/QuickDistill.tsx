@@ -25,7 +25,7 @@ export default function QuickDistill() {
       setShowSuccess(true);
       setContent("");
       toast.success("Thought distilled.");
-      
+
       // Auto-reset success message after 3 seconds to allow next capture
       setTimeout(() => setShowSuccess(false), 3000);
     } catch (err) {
@@ -37,13 +37,13 @@ export default function QuickDistill() {
 
   return (
     <section className="relative w-full max-w-4xl mx-auto z-30 mb-8">
-      <motion.div 
+      <motion.div
         layout
         className="brutal-card bg-white p-2 md:p-3 overflow-hidden"
       >
         <AnimatePresence mode="wait">
           {!showSuccess ? (
-            <motion.form 
+            <motion.form
               key="input-form"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -68,8 +68,8 @@ export default function QuickDistill() {
                 type="submit"
                 disabled={!content.trim() || isSubmitting}
                 className={`p-3 rounded-2xl transition-all flex items-center justify-center ${
-                  content.trim() 
-                    ? "bg-peach text-soft-black brutal-border-sm shadow-[2px_2px_0px_#292524] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_#292524]" 
+                  content.trim()
+                    ? "bg-peach text-soft-black brutal-border-sm shadow-[2px_2px_0px_#292524] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_#292524]"
                     : "bg-soft-black/5 text-muted-text"
                 }`}
               >
@@ -91,7 +91,9 @@ export default function QuickDistill() {
               <div className="w-8 h-8 rounded-full bg-sage/30 flex items-center justify-center">
                 <Check className="w-5 h-5" />
               </div>
-              <span className="font-grotesk font-black text-xl lowercase">distilled. one step closer.</span>
+              <span className="font-grotesk font-black text-xl lowercase">
+                distilled. one step closer.
+              </span>
               <Sparkles className="w-5 h-5 text-peach animate-pulse" />
             </motion.div>
           )}
@@ -100,7 +102,7 @@ export default function QuickDistill() {
 
       {/* Quick context info */}
       {!showSuccess && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="mt-3 flex justify-center gap-6"

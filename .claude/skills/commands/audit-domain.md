@@ -32,6 +32,7 @@ A comprehensive **CITE 40-item domain authority** audit with veto checks and act
 ```
 
 **Arguments:**
+
 - Domain (required)
 - `type="domain type"` (optional): Content Publisher, Product & Service, E-commerce, Community & UGC, Tool & Utility, Authority & Institutional
 - Competitor domains for comparison (optional)
@@ -43,11 +44,11 @@ A comprehensive **CITE 40-item domain authority** audit with veto checks and act
    > Canonical source: `references/cite-domain-rating.md`. This inline copy is for convenience.
 
    | Dim | Default | Content Publisher | Product & Service | E-commerce | Community & UGC | Tool & Utility | Authority & Institutional |
-   |-----|:-------:|:-:|:-:|:-:|:-:|:-:|:-:|
-   | C | 35% | **40%** | 25% | 20% | 35% | 25% | **45%** |
-   | I | 20% | 15% | **30%** | 20% | 10% | **30%** | 20% |
-   | T | 25% | 20% | 25% | **35%** | 25% | 25% | 20% |
-   | E | 20% | 25% | 20% | 25% | **30%** | 20% | 15% |
+   | --- | :-----: | :---------------: | :---------------: | :--------: | :-------------: | :------------: | :-----------------------: |
+   | C   |   35%   |      **40%**      |        25%        |    20%     |       35%       |      25%       |          **45%**          |
+   | I   |   20%   |        15%        |      **30%**      |    20%     |       10%       |    **30%**     |            20%            |
+   | T   |   25%   |        20%        |        25%        |  **35%**   |       25%       |      25%       |            20%            |
+   | E   |   20%   |        25%        |        20%        |    25%     |     **30%**     |      20%       |            15%            |
 
 2. **Run Full CITE Audit** -- Invoke `domain-authority-auditor`. Veto check first (T03, T05, T09 -- any failure caps score at 39), then score all 40 items, calculate weighted CITE Score, and generate Top 5 improvements.
 3. **Compile Output** -- Format results below. Include comparative scoring if competitor domains were provided.

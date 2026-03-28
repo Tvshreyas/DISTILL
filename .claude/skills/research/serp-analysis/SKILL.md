@@ -48,7 +48,6 @@ metadata:
 
 # SERP Analysis
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -125,6 +124,7 @@ Automatically fetch SERP snapshots for target keywords, extract ranking page met
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Target keyword(s) to analyze
 2. SERP screenshots or detailed descriptions of search results
 3. URLs of top 10 ranking pages
@@ -178,12 +178,14 @@ When a user requests SERP analysis:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Target keyword(s) clearly specified
 - [ ] Search location and device type confirmed
 - [ ] SERP data is current (date confirmed)
 - [ ] Top 10 ranking URLs identified or provided
 
 ### Output Validation
+
 - [ ] Every recommendation cites specific data points (not generic advice)
 - [ ] SERP composition mapped with all features documented
 - [ ] Ranking factors identified from actual top 10 analysis (not assumptions)
@@ -229,7 +231,6 @@ Analyze mobile vs desktop SERP differences for [keyword]
 5. **Study the outliers** - Why does a weaker site rank? Opportunity!
 6. **Consider AI Overview optimization** - Growing importance
 
-
 ## Reference Materials
 
 - [Analysis Templates](./references/analysis-templates.md) — Detailed templates for each analysis step (SERP composition, top results, ranking patterns, features, intent, difficulty, recommendations)
@@ -245,4 +246,3 @@ Analyze mobile vs desktop SERP differences for [keyword]
 - [meta-tags-optimizer](../../build/meta-tags-optimizer/) — Optimize SERP appearance with meta tags
 - [rank-tracker](../../monitor/rank-tracker/) — Track keyword position changes in SERPs
 - [performance-reporter](../../monitor/performance-reporter/) — Track SERP visibility metrics over time
-

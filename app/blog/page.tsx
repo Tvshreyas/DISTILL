@@ -4,7 +4,8 @@ import { getSortedPostsData } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog — Distill",
-  description: "Insights on thinking, productivity, and the art of distillation.",
+  description:
+    "Insights on thinking, productivity, and the art of distillation.",
   alternates: {
     canonical: "https://distillwise.com/blog",
   },
@@ -21,19 +22,20 @@ export default async function BlogPage() {
             the blog<span className="text-[#FFB7B2]">.</span>
           </h1>
           <p className="text-xl md:text-2xl font-medium text-[#78716C] max-w-2xl leading-relaxed">
-            essays on deep work, compound thinking, and staying human in an automated world.
+            essays on deep work, compound thinking, and staying human in an
+            automated world.
           </p>
         </header>
 
         <section className="grid gap-12">
           {allPostsData.map(({ slug, date, title, description, tags }) => (
-            <article 
+            <article
               key={slug}
               className="group relative bg-white border-4 border-[#292524] p-8 md:p-10 shadow-[8px_8px_0px_0px_rgba(41,37,36,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all duration-200"
             >
               <div className="flex flex-wrap gap-2 mb-6">
                 {tags.map((tag) => (
-                  <span 
+                  <span
                     key={tag}
                     className="px-3 py-1 bg-[#E8EFE8] border-2 border-[#292524] text-[11px] font-black uppercase tracking-wider text-[#292524]"
                   >
@@ -60,12 +62,12 @@ export default async function BlogPage() {
                     year: "numeric",
                   })}
                 </time>
-                
-                <Link 
+
+                <Link
                   href={`/blog/${slug}`}
                   className="text-sm font-black text-[#292524] uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform"
                 >
-                  Read Post 
+                  Read Post
                   <span className="text-xl">→</span>
                 </Link>
               </div>
@@ -75,7 +77,9 @@ export default async function BlogPage() {
 
         {allPostsData.length === 0 && (
           <div className="py-20 text-center border-4 border-dashed border-[#E8EFE8] rounded-3xl">
-            <p className="text-xl font-bold text-[#78716C]">more thoughts coming soon.</p>
+            <p className="text-xl font-bold text-[#78716C]">
+              more thoughts coming soon.
+            </p>
           </div>
         )}
       </div>

@@ -42,7 +42,6 @@ metadata:
 
 # On-Page SEO Auditor
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -116,6 +115,7 @@ Claude can automatically pull page HTML via ~~web crawler, fetch keyword search 
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Page URL or complete HTML content
 2. Target primary and secondary keywords
 3. Competitor page URLs for comparison (optional)
@@ -130,7 +130,7 @@ When a user requests an on-page SEO audit:
 
    ```markdown
    ### Audit Setup
-   
+
    **Page URL**: [URL]
    **Target Keyword**: [primary keyword]
    **Secondary Keywords**: [additional keywords]
@@ -142,28 +142,29 @@ When a user requests an on-page SEO audit:
 
    ```markdown
    ## Title Tag Analysis
-   
+
    **Current Title**: [title]
    **Character Count**: [X] characters
-   
-   | Criterion | Status | Notes |
-   |-----------|--------|-------|
-   | Length (50-60 chars) | ✅/⚠️/❌ | [notes] |
-   | Keyword included | ✅/⚠️/❌ | Position: [front/middle/end] |
-   | Keyword at front | ✅/⚠️/❌ | [notes] |
-   | Unique across site | ✅/⚠️/❌ | [notes] |
-   | Compelling/clickable | ✅/⚠️/❌ | [notes] |
-   | Matches intent | ✅/⚠️/❌ | [notes] |
-   
+
+   | Criterion            | Status   | Notes                        |
+   | -------------------- | -------- | ---------------------------- |
+   | Length (50-60 chars) | ✅/⚠️/❌ | [notes]                      |
+   | Keyword included     | ✅/⚠️/❌ | Position: [front/middle/end] |
+   | Keyword at front     | ✅/⚠️/❌ | [notes]                      |
+   | Unique across site   | ✅/⚠️/❌ | [notes]                      |
+   | Compelling/clickable | ✅/⚠️/❌ | [notes]                      |
+   | Matches intent       | ✅/⚠️/❌ | [notes]                      |
+
    **Title Score**: [X]/10
-   
+
    **Issues Found**:
+
    - [Issue 1]
    - [Issue 2]
-   
+
    **Recommended Title**:
    "[Optimized title suggestion]"
-   
+
    **Why**: [Explanation of improvements]
    ```
 
@@ -171,24 +172,25 @@ When a user requests an on-page SEO audit:
 
    ```markdown
    ## Meta Description Analysis
-   
+
    **Current Description**: [description]
    **Character Count**: [X] characters
-   
-   | Criterion | Status | Notes |
-   |-----------|--------|-------|
-   | Length (150-160 chars) | ✅/⚠️/❌ | [notes] |
-   | Keyword included | ✅/⚠️/❌ | [notes] |
-   | Call-to-action present | ✅/⚠️/❌ | [notes] |
-   | Unique across site | ✅/⚠️/❌ | [notes] |
+
+   | Criterion                 | Status   | Notes   |
+   | ------------------------- | -------- | ------- |
+   | Length (150-160 chars)    | ✅/⚠️/❌ | [notes] |
+   | Keyword included          | ✅/⚠️/❌ | [notes] |
+   | Call-to-action present    | ✅/⚠️/❌ | [notes] |
+   | Unique across site        | ✅/⚠️/❌ | [notes] |
    | Accurately describes page | ✅/⚠️/❌ | [notes] |
-   | Compelling copy | ✅/⚠️/❌ | [notes] |
-   
+   | Compelling copy           | ✅/⚠️/❌ | [notes] |
+
    **Description Score**: [X]/10
-   
+
    **Issues Found**:
+
    - [Issue 1]
-   
+
    **Recommended Description**:
    "[Optimized description suggestion]" ([X] chars)
    ```
@@ -197,19 +199,20 @@ When a user requests an on-page SEO audit:
 
    ```markdown
    ## Header Structure Analysis
-   
+
    ### Current Header Hierarchy
-   
    ```
+
    H1: [H1 text]
-     H2: [H2 text]
-       H3: [H3 text]
-       H3: [H3 text]
-     H2: [H2 text]
-       H3: [H3 text]
-     H2: [H2 text]
+   H2: [H2 text]
+   H3: [H3 text]
+   H3: [H3 text]
+   H2: [H2 text]
+   H3: [H3 text]
+   H2: [H2 text]
+
    ```
-   
+
    | Criterion | Status | Notes |
    |-----------|--------|-------|
    | Single H1 | ✅/⚠️/❌ | Found: [X] H1s |
@@ -218,13 +221,13 @@ When a user requests an on-page SEO audit:
    | H2s include keywords | ✅/⚠️/❌ | [X]/[Y] contain keywords |
    | No skipped levels | ✅/⚠️/❌ | [notes] |
    | Descriptive headers | ✅/⚠️/❌ | [notes] |
-   
+
    **Header Score**: [X]/10
-   
+
    **Issues Found**:
    - [Issue 1]
    - [Issue 2]
-   
+
    **Recommended Changes**:
    - H1: [suggestion]
    - H2s: [suggestions]
@@ -261,11 +264,13 @@ When a user requests an on-page SEO audit:
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Target keyword(s) clearly specified by user
 - [ ] Page content accessible (either via URL or provided HTML)
 - [ ] If competitor comparison requested, competitor URL provided
 
 ### Output Validation
+
 - [ ] Every recommendation cites specific data points (not generic advice)
 - [ ] Scores based on measurable criteria, not subjective opinion
 - [ ] All suggested changes include specific locations (title tag, H2 #3, paragraph 5, etc.)
@@ -301,4 +306,3 @@ When a user requests an on-page SEO audit:
 - [content-quality-auditor](../../cross-cutting/content-quality-auditor/) — Full 80-item CORE-EEAT audit
 - [internal-linking-optimizer](../internal-linking-optimizer/) — Optimize internal link structure
 - [schema-markup-generator](../../build/schema-markup-generator/) — Validate and generate schema markup
-

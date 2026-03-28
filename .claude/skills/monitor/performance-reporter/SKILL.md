@@ -47,7 +47,6 @@ metadata:
 
 # Performance Reporter
 
-
 > **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
 
 <details>
@@ -121,6 +120,7 @@ Automatically aggregate traffic metrics from ~~analytics, search performance dat
 
 **With manual data only:**
 Ask the user to provide:
+
 1. Analytics screenshots or traffic data export (sessions, users, conversions)
 2. Search Console data (impressions, clicks, average position)
 3. Keyword ranking data for the reporting period
@@ -156,17 +156,19 @@ When a user requests a performance report:
 
 11. **Compile Full Report** -- Combine all sections with table of contents, appendix (data sources, methodology, glossary).
 
-   > **Reference**: See [references/report-output-templates.md](./references/report-output-templates.md) for complete output templates for all 11 report sections.
+> **Reference**: See [references/report-output-templates.md](./references/report-output-templates.md) for complete output templates for all 11 report sections.
 
 ## Validation Checkpoints
 
 ### Input Validation
+
 - [ ] Reporting period clearly defined with comparison period
 - [ ] All required data sources available or alternatives noted
 - [ ] Target audience identified (executive/technical/client)
 - [ ] Performance goals and KPIs established for benchmarking
 
 ### Output Validation
+
 - [ ] Every metric cites its data source and collection date
 - [ ] Trends include period-over-period comparisons
 - [ ] Recommendations are specific, prioritized, and actionable
@@ -183,13 +185,13 @@ When a user requests a performance report:
 
 ## Executive Summary — Overall Performance: Good
 
-| Metric | Jan 2025 | Dec 2024 | Change | Target | Status |
-|--------|----------|----------|--------|--------|--------|
-| Organic Traffic | 52,100 | 45,200 | +15.3% | 50,000 | On track |
-| Keywords Top 10 | 87 | 79 | +8 | 90 | Watch |
-| Organic Conversions | 684 | 612 | +11.8% | 700 | Watch |
-| Domain Rating | 54 | 53 | +1 | 55 | Watch |
-| AI Citations | 18 | 12 | +50.0% | 20 | Watch |
+| Metric              | Jan 2025 | Dec 2024 | Change | Target | Status   |
+| ------------------- | -------- | -------- | ------ | ------ | -------- |
+| Organic Traffic     | 52,100   | 45,200   | +15.3% | 50,000 | On track |
+| Keywords Top 10     | 87       | 79       | +8     | 90     | Watch    |
+| Organic Conversions | 684      | 612      | +11.8% | 700    | Watch    |
+| Domain Rating       | 54       | 53       | +1     | 55     | Watch    |
+| AI Citations        | 18       | 12       | +50.0% | 20     | Watch    |
 
 **SEO ROI**: $8,200 invested / $41,040 organic revenue = 400%
 
@@ -224,4 +226,3 @@ When a user requests a performance report:
 - [memory-management](../../cross-cutting/memory-management/) — Archive reports in project memory
 - [entity-optimizer](../../cross-cutting/entity-optimizer/) — Track branded search and Knowledge Panel metrics
 - [technical-seo-checker](../../optimize/technical-seo-checker/) — Technical health data feeds into reports
-

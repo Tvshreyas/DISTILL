@@ -11,7 +11,9 @@ describe("SessionStartForm", () => {
   it("renders all form fields", () => {
     render(<SessionStartForm {...defaultProps} />);
     expect(screen.getByPlaceholderText("title of the content...")).toBeTruthy();
-    expect(screen.getByPlaceholderText("what do you hope to get from this?")).toBeTruthy();
+    expect(
+      screen.getByPlaceholderText("what do you hope to get from this?"),
+    ).toBeTruthy();
     expect(screen.getByText("retroactive reflection")).toBeTruthy();
   });
 
@@ -26,7 +28,9 @@ describe("SessionStartForm", () => {
     render(<SessionStartForm {...defaultProps} />);
     const articleBtns = screen.getAllByText("article");
     // At least one article button should have the selected styling (bg-peach)
-    const hasSelected = articleBtns.some((btn) => btn.className.includes("bg-peach"));
+    const hasSelected = articleBtns.some((btn) =>
+      btn.className.includes("bg-peach"),
+    );
     expect(hasSelected).toBe(true);
   });
 
@@ -63,9 +67,12 @@ describe("SessionStartForm", () => {
       target: { value: "Atomic Habits" },
     });
     fireEvent.click(screen.getAllByText("book")[0]);
-    fireEvent.change(screen.getByPlaceholderText("what do you hope to get from this?"), {
-      target: { value: "Build better habits" },
-    });
+    fireEvent.change(
+      screen.getByPlaceholderText("what do you hope to get from this?"),
+      {
+        target: { value: "Build better habits" },
+      },
+    );
 
     fireEvent.submit(screen.getByText("start session").closest("form")!);
 
@@ -89,9 +96,12 @@ describe("SessionStartForm", () => {
     render(<SessionStartForm {...defaultProps} />);
     // Character count is rendered as "{count}/140" — may be split into text nodes
     expect(screen.getByText(/0.*\/.*140/)).toBeTruthy();
-    fireEvent.change(screen.getByPlaceholderText("what do you hope to get from this?"), {
-      target: { value: "Hello" },
-    });
+    fireEvent.change(
+      screen.getByPlaceholderText("what do you hope to get from this?"),
+      {
+        target: { value: "Hello" },
+      },
+    );
     expect(screen.getByText(/5.*\/.*140/)).toBeTruthy();
   });
 
@@ -103,7 +113,7 @@ describe("SessionStartForm", () => {
     });
     fireEvent.submit(screen.getByText("start session").closest("form")!);
     expect(onSubmit).toHaveBeenCalledWith(
-      expect.objectContaining({ consumeReason: undefined })
+      expect.objectContaining({ consumeReason: undefined }),
     );
   });
 });
