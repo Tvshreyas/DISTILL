@@ -217,7 +217,7 @@ export default function SettingsPage() {
           <button
             onClick={handleApplyFreeze}
             disabled={isFreezing || profile.streakFreezeUsedThisMonth >= 1}
-            className="flex items-center gap-2 px-6 py-3 bg-white border-4 border-soft-black rounded-xl font-black text-sm hover:bg-sage/10 transition-all disabled:opacity-30 disabled:hover:bg-white"
+            className="flex items-center gap-2 px-6 py-3 bg-white border-4 border-soft-black rounded-xl font-black text-sm hover:bg-sage/10 transition-all disabled:opacity-50 disabled:hover:bg-white"
           >
             <Snowflake className="w-4 h-4" />
             {isFreezing
@@ -513,7 +513,7 @@ export default function SettingsPage() {
                 <button
                   onClick={handleDeleteAccount}
                   disabled={!canDelete}
-                  className="px-6 py-3 bg-red-600 text-white rounded-xl font-black text-sm disabled:opacity-30 transition-all"
+                  className="px-6 py-3 bg-red-600 text-white rounded-xl font-black text-sm disabled:opacity-50 transition-all"
                 >
                   Confirm Irreversible Deletion
                 </button>

@@ -131,7 +131,7 @@ export default function SessionStartForm({
       <button
         type="submit"
         disabled={isSubmitting || !title.trim()}
-        className="w-full py-4 bg-soft-black text-white rounded-2xl font-black text-lg disabled:opacity-30 transition-all hover:scale-[1.02] active:scale-95"
+        className="w-full py-4 bg-soft-black text-white rounded-2xl font-black text-lg disabled:opacity-50 transition-all hover:scale-[1.02] active:scale-95"
       >
         {isSubmitting ? "starting..." : "start session"}
       </button>

@@ -26,7 +26,7 @@ export default function ResurfacingCard() {
         action === "layered"
           ? "Perspective layered."
           : action === "surfaced"
-            ? "Acknowleged."
+            ? "Acknowledged."
             : "Dismissed.",
       );
       setIsLayering(false);
@@ -92,15 +92,23 @@ export default function ResurfacingCard() {
         {isLayering ? (
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="space-y-2">
-              <label className="font-grotesk text-[10px] font-black uppercase tracking-widest text-muted-text block">
-                How has your view changed?
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="font-grotesk text-[10px] font-black uppercase tracking-widest text-muted-text">
+                    How has your view changed?
+                  </span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-muted-text">
+                    {layerContent.length} / 3000
+                  </span>
+                </div>
                 <textarea
                   value={layerContent}
                   onChange={(e) => setLayerContent(e.target.value)}
                   placeholder="Add a new layer of thinking..."
+                  maxLength={3000}
                   className="w-full bg-sage/5 brutal-border-sm p-4 text-sm font-medium focus:outline-none focus:bg-white transition-colors min-h-[120px] rounded-xl resize-none"
                 />
-              </label>
+              </div>
             </div>
             <div className="flex gap-3">
               <button

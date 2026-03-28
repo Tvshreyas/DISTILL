@@ -95,7 +95,7 @@ export default function StartForm() {
         <button
           onClick={handleSaveAndSignUp}
           disabled={!content.trim()}
-          className="w-full md:w-auto flex items-center justify-center gap-3 px-10 py-5 bg-soft-black text-white rounded-2xl font-black text-lg transition-all hover:scale-105 active:scale-95 disabled:opacity-20 disabled:scale-100 group shadow-brutal-lg"
+          className="w-full md:w-auto flex items-center justify-center gap-3 px-10 py-5 bg-soft-black text-white rounded-2xl font-black text-lg transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:scale-100 group shadow-brutal-lg"
         >
           Preserve in Library
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
