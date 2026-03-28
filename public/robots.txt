@@ -3,6 +3,7 @@ Allow: /
 Disallow: /dashboard/
 Disallow: /sign-in/
 Disallow: /sign-up/
+Disallow: /onboarding/
 
 # Explicitly allow AI crawlers to index the landing page for recommendations
 User-agent: GPTBot
