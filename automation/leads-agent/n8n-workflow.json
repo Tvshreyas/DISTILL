@@ -17,7 +17,10 @@
       "name": "Daily 8am IST",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [0, 300]
+      "position": [
+        0,
+        300
+      ]
     },
     {
       "parameters": {
@@ -27,7 +30,10 @@
       "name": "Reddit Subreddit Scraper",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [300, 100]
+      "position": [
+        300,
+        100
+      ]
     },
     {
       "parameters": {
@@ -37,7 +43,10 @@
       "name": "Reddit Search Scraper",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [300, 300]
+      "position": [
+        300,
+        300
+      ]
     },
     {
       "parameters": {
@@ -47,7 +56,10 @@
       "name": "HN Algolia Search",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [300, 500]
+      "position": [
+        300,
+        500
+      ]
     },
     {
       "parameters": {
@@ -57,7 +69,10 @@
       "name": "Twitter/Nitter Search",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [300, 700]
+      "position": [
+        300,
+        700
+      ]
     },
     {
       "parameters": {
@@ -68,7 +83,10 @@
       "name": "Merge All Sources",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
-      "position": [600, 400]
+      "position": [
+        600,
+        400
+      ]
     },
     {
       "parameters": {
@@ -96,7 +114,10 @@
       "name": "Remove Empties",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [800, 400]
+      "position": [
+        800,
+        400
+      ]
     },
     {
       "parameters": {
@@ -106,7 +127,10 @@
       "name": "Deduplicate + Score",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1000, 400]
+      "position": [
+        1000,
+        400
+      ]
     },
     {
       "parameters": {
@@ -116,7 +140,10 @@
       "name": "Build Email HTML",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1200, 400]
+      "position": [
+        1200,
+        400
+      ]
     },
     {
       "parameters": {
@@ -144,7 +171,10 @@
       "name": "Has Leads?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [1400, 400]
+      "position": [
+        1400,
+        400
+      ]
     },
     {
       "parameters": {
@@ -161,7 +191,10 @@
       "name": "Send via Resend",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1600, 300],
+      "position": [
+        1600,
+        300
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "",
@@ -174,57 +207,127 @@
     "Daily 8am IST": {
       "main": [
         [
-          { "node": "Reddit Subreddit Scraper", "type": "main", "index": 0 },
-          { "node": "Reddit Search Scraper", "type": "main", "index": 0 },
-          { "node": "HN Algolia Search", "type": "main", "index": 0 },
-          { "node": "Twitter/Nitter Search", "type": "main", "index": 0 }
+          {
+            "node": "Reddit Subreddit Scraper",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Reddit Search Scraper",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HN Algolia Search",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Twitter/Nitter Search",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Reddit Subreddit Scraper": {
       "main": [
-        [{ "node": "Merge All Sources", "type": "main", "index": 0 }]
+        [
+          {
+            "node": "Merge All Sources",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Reddit Search Scraper": {
       "main": [
-        [{ "node": "Merge All Sources", "type": "main", "index": 1 }]
+        [
+          {
+            "node": "Merge All Sources",
+            "type": "main",
+            "index": 1
+          }
+        ]
       ]
     },
     "HN Algolia Search": {
       "main": [
-        [{ "node": "Merge All Sources", "type": "main", "index": 2 }]
+        [
+          {
+            "node": "Merge All Sources",
+            "type": "main",
+            "index": 2
+          }
+        ]
       ]
     },
     "Twitter/Nitter Search": {
       "main": [
-        [{ "node": "Merge All Sources", "type": "main", "index": 3 }]
+        [
+          {
+            "node": "Merge All Sources",
+            "type": "main",
+            "index": 3
+          }
+        ]
       ]
     },
     "Merge All Sources": {
       "main": [
-        [{ "node": "Remove Empties", "type": "main", "index": 0 }]
+        [
+          {
+            "node": "Remove Empties",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Remove Empties": {
       "main": [
-        [{ "node": "Deduplicate + Score", "type": "main", "index": 0 }],
+        [
+          {
+            "node": "Deduplicate + Score",
+            "type": "main",
+            "index": 0
+          }
+        ],
         []
       ]
     },
     "Deduplicate + Score": {
       "main": [
-        [{ "node": "Build Email HTML", "type": "main", "index": 0 }]
+        [
+          {
+            "node": "Build Email HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Build Email HTML": {
       "main": [
-        [{ "node": "Has Leads?", "type": "main", "index": 0 }]
+        [
+          {
+            "node": "Has Leads?",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Has Leads?": {
       "main": [
-        [{ "node": "Send via Resend", "type": "main", "index": 0 }],
+        [
+          {
+            "node": "Send via Resend",
+            "type": "main",
+            "index": 0
+          }
+        ],
         []
       ]
     }
@@ -233,7 +336,11 @@
     "executionOrder": "v1"
   },
   "tags": [
-    { "name": "distill" },
-    { "name": "leads" }
+    {
+      "name": "distill"
+    },
+    {
+      "name": "leads"
+    }
   ]
 }
