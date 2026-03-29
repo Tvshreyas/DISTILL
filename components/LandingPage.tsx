@@ -58,10 +58,10 @@ function Header() {
           log in
         </Link>
         <Link
-          href="/start"
-          className="text-sm font-black uppercase tracking-widest bg-soft-black text-white px-5 py-2.5 hover:bg-peach hover:text-soft-black transition-all"
+          href="/sign-up"
+          className="text-sm font-black uppercase tracking-widest bg-soft-black text-white px-5 py-2.5 brutal-border-sm hover:bg-peach hover:text-soft-black transition-all"
         >
-          get started
+          sign up free
         </Link>
       </div>
     </header>
@@ -103,6 +103,21 @@ function Hero() {
 
       <div className="max-w-6xl mx-auto text-center relative z-10">
         <div className="space-y-4 mb-12">
+          {/* Beta badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-sage/20 border-2 border-sage/40 brutal-border-sm">
+              <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-widest text-soft-black">
+                early access beta — free to use
+              </span>
+            </div>
+          </motion.div>
+
           <h1 className="flex flex-col items-center">
             <WordReveal
               text="think more clearly"

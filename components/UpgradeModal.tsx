@@ -3,17 +3,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Check } from "lucide-react";
-import { PRICING, PPP_COUNTRIES } from "@/lib/constants";
-
-type BillingPeriod = "monthly" | "yearly";
-type CurrencyKey = keyof typeof PRICING;
-
-function getCurrencyFromCookie(): CurrencyKey {
-  if (typeof document === "undefined") return "USD";
-  const match = document.cookie.match(/(?:^|; )x-user-country=([^;]*)/);
-  const country = match?.[1] || "US";
-  return PPP_COUNTRIES[country] || "USD";
-}
 
 export default function UpgradeModal({
   onCloseAction,
@@ -22,45 +11,31 @@ export default function UpgradeModal({
   onCloseAction: () => void;
   isOpen: boolean;
 }) {
-  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
-  const [isLoading, setIsLoading] = useState(false);
+  const [notified, setNotified] = useState(false);
 
   if (!isOpen) return null;
 
-  const currency = getCurrencyFromCookie();
-  const pricing = PRICING[currency];
-  const amount = pricing[billingPeriod];
-
-  async function handleCheckout() {
-    setIsLoading(true);
-    try {
-      const res = await fetch("/api/stripe/create-checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          plan: billingPeriod === "yearly" ? "annual" : "monthly",
-          currency: pricing.code,
-        }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    } finally {
-      setIsLoading(false);
-    }
+  function handleNotify() {
+    setNotified(true);
+    toast.success("You'll be notified when Pro launches.");
   }
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
       <div className="max-w-md w-full bg-white border-4 border-soft-black rounded-[2rem] shadow-[8px_8px_0px_0px_rgba(41,37,36,1)] p-8 text-center space-y-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-sage/20 border-2 border-sage/40 rounded-full">
+          <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
+          <span className="text-[10px] font-black uppercase tracking-widest text-soft-black">
+            invite-only beta
+          </span>
+        </div>
+
         <h2 className="text-2xl font-bold uppercase tracking-tight text-soft-black">
-          Commit to your thinking ritual
+          Pro is coming soon
         </h2>
         <p className="text-muted-text">
-          Don&apos;t let your momentum fade. Your archive of original thought is
-          a lifelong asset. Upgrade to Pro to unlock unlimited capacity and
-          lifelong resurfacing.
+          Pro is currently in invite-only beta. When it launches, you&apos;ll
+          unlock everything below.
         </p>
 
         {/* Feature comparison */}
@@ -78,53 +53,13 @@ export default function UpgradeModal({
           ))}
         </div>
 
-        {/* Billing toggle */}
-        <div className="flex justify-center">
-          <div className="inline-flex items-center border-2 border-soft-black/20 rounded-full p-1">
-            <button
-              onClick={() => setBillingPeriod("monthly")}
-              className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${
-                billingPeriod === "monthly"
-                  ? "bg-soft-black text-white"
-                  : "text-muted-text hover:text-soft-black"
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setBillingPeriod("yearly")}
-              className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all relative ${
-                billingPeriod === "yearly"
-                  ? "bg-soft-black text-white"
-                  : "text-muted-text hover:text-soft-black"
-              }`}
-            >
-              Yearly
-              <span className="absolute -top-2.5 -right-2 text-[10px] text-emerald-600 font-bold">
-                -20%
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* Price display */}
-        <div>
-          <span className="text-4xl font-bold text-soft-black">
-            {pricing.symbol}
-            {amount}
-          </span>
-          <span className="text-muted-text ml-1">
-            {billingPeriod === "monthly" ? "/mo" : "/yr"}
-          </span>
-        </div>
-
         <div className="flex flex-col gap-2 pt-2">
           <button
-            onClick={handleCheckout}
-            disabled={isLoading}
+            onClick={handleNotify}
+            disabled={notified}
             className="w-full py-4 bg-soft-black text-white rounded-2xl font-bold transition-transform active:scale-95 disabled:opacity-50 hover:bg-peach hover:text-soft-black"
           >
-            {isLoading ? "Loading..." : "Upgrade to Pro"}
+            {notified ? "you're on the list." : "notify me when Pro is available"}
           </button>
           <button
             onClick={onCloseAction}

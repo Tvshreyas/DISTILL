@@ -12,12 +12,12 @@ describe("UpgradeModal", () => {
 
   it("renders the modal when isOpen is true", () => {
     render(<UpgradeModal isOpen={true} onCloseAction={vi.fn()} />);
-    expect(screen.getByText("Commit to your thinking ritual")).toBeTruthy();
+    expect(screen.getByText("Pro is coming soon")).toBeTruthy();
   });
 
-  it("shows checkout and dismiss buttons", () => {
+  it("shows notify and dismiss buttons", () => {
     render(<UpgradeModal isOpen={true} onCloseAction={vi.fn()} />);
-    expect(screen.getByText("Upgrade to Pro")).toBeTruthy();
+    expect(screen.getByText("notify me when Pro is available")).toBeTruthy();
     expect(screen.getByText("not now")).toBeTruthy();
   });
 
