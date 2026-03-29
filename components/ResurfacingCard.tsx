@@ -2,9 +2,10 @@
 
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Sparkles, ArrowRight, Check } from "lucide-react";
+import { Sparkles, ArrowRight, Check, Lock } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import UpgradeModal from "@/components/UpgradeModal";
 
 export default function ResurfacingCard() {
   const pending = useQuery(api.resurfacing.getPending);
@@ -12,6 +13,7 @@ export default function ResurfacingCard() {
   const [isResponding, setIsResponding] = useState(false);
   const [isLayering, setIsLayering] = useState(false);
   const [layerContent, setLayerContent] = useState("");
+  const [showUpgrade, setShowUpgrade] = useState(false);
 
   const handleAction = async (action: "surfaced" | "dismissed" | "layered") => {
     if (!pending) return;
@@ -140,7 +142,18 @@ export default function ResurfacingCard() {
               <Check className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
             </button>
             {/* Free users: 1 layer per reflection. Pro users: unlimited. */}
-            {!(pending.plan === "free" && pending.hasExistingLayer) && (
+            {pending.plan === "free" && pending.hasExistingLayer ? (
+              <button
+                onClick={() => setShowUpgrade(true)}
+                className="px-6 py-4 text-muted-text font-bold text-sm hover:text-soft-black transition-colors flex items-center gap-2"
+              >
+                <Lock className="w-3.5 h-3.5" />
+                unlock unlimited layers
+                <span className="text-[10px] font-black uppercase tracking-wider bg-soft-black/10 px-2 py-0.5 rounded-full">
+                  pro
+                </span>
+              </button>
+            ) : (
               <button
                 onClick={() => setIsLayering(true)}
                 className="px-6 py-4 bg-white brutal-border-sm border-2 border-soft-black rounded-2xl font-bold hover:bg-sage/10 transition-all flex items-center gap-2 group/layer"
@@ -159,6 +172,7 @@ export default function ResurfacingCard() {
           </div>
         )}
       </div>
+      <UpgradeModal isOpen={showUpgrade} onCloseAction={() => setShowUpgrade(false)} />
     </div>
   );
 }

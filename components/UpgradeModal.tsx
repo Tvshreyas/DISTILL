@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { Check } from "lucide-react";
 import { PRICING, PPP_COUNTRIES } from "@/lib/constants";
 
 type BillingPeriod = "monthly" | "yearly";
@@ -62,6 +63,21 @@ export default function UpgradeModal({
           lifelong resurfacing.
         </p>
 
+        {/* Feature comparison */}
+        <div className="text-left space-y-2">
+          {[
+            "unlimited deep sessions (free: 3/month)",
+            "unlimited perspective layers",
+            "layer from your library anytime",
+            "lifetime resurfacing schedule",
+          ].map((feature) => (
+            <div key={feature} className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-sage-dark shrink-0" />
+              <span className="text-sm font-bold text-soft-black">{feature}</span>
+            </div>
+          ))}
+        </div>
+
         {/* Billing toggle */}
         <div className="flex justify-center">
           <div className="inline-flex items-center border-2 border-soft-black/20 rounded-full p-1">
@@ -108,13 +124,13 @@ export default function UpgradeModal({
             disabled={isLoading}
             className="w-full py-4 bg-soft-black text-white rounded-2xl font-bold transition-transform active:scale-95 disabled:opacity-50 hover:bg-peach hover:text-soft-black"
           >
-            {isLoading ? "Loading..." : "Preserve my momentum"}
+            {isLoading ? "Loading..." : "Upgrade to Pro"}
           </button>
           <button
             onClick={onCloseAction}
             className="w-full py-2 text-muted-text font-bold hover:text-soft-black transition-colors lowercase"
           >
-            i&apos;ll risk the momentum
+            not now
           </button>
         </div>
       </div>

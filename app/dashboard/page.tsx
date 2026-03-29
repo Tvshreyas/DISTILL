@@ -23,7 +23,9 @@ import {
   CalendarDays,
   X,
   ArchiveRestore,
+  Lock,
 } from "lucide-react";
+import UpgradeModal from "@/components/UpgradeModal";
 
 function toDateString(date: Date, timezone: string): string {
   return date.toLocaleDateString("en-CA", { timeZone: timezone });
@@ -165,6 +167,7 @@ function ResurfacingHero() {
   const [isResponding, setIsResponding] = useState(false);
   const [isLayering, setIsLayering] = useState(false);
   const [layerContent, setLayerContent] = useState("");
+  const [showUpgrade, setShowUpgrade] = useState(false);
 
   if (!pending) return null;
 
@@ -258,7 +261,18 @@ function ResurfacingHero() {
           >
             <Check className="w-4 h-4" /> Still true
           </button>
-          {!(pending.plan === "free" && pending.hasExistingLayer) && (
+          {pending.plan === "free" && pending.hasExistingLayer ? (
+            <button
+              onClick={() => setShowUpgrade(true)}
+              className="px-5 py-2.5 text-muted-text font-bold text-sm hover:text-soft-black transition-colors flex items-center gap-2"
+            >
+              <Lock className="w-3.5 h-3.5" />
+              unlock unlimited layers
+              <span className="text-[10px] font-black uppercase tracking-wider bg-soft-black/10 px-2 py-0.5 rounded-full">
+                pro
+              </span>
+            </button>
+          ) : (
             <button
               onClick={() => setIsLayering(true)}
               className="px-5 py-2.5 bg-white border-2 border-soft-black rounded-xl font-bold text-sm hover:bg-lavender/10 transition-all flex items-center gap-2"
@@ -268,6 +282,7 @@ function ResurfacingHero() {
           )}
         </div>
       )}
+      <UpgradeModal isOpen={showUpgrade} onCloseAction={() => setShowUpgrade(false)} />
     </div>
   );
 }
@@ -318,6 +333,7 @@ export default function DashboardPage() {
     const params = new URLSearchParams(window.location.search);
     if (params.get("upgrade") === "success") {
       posthog.capture("upgraded_to_pro");
+      toast.success("Welcome to Pro.");
       // Clean URL without reload
       window.history.replaceState({}, "", window.location.pathname);
     }
@@ -422,6 +438,21 @@ export default function DashboardPage() {
           your thinking, compounded daily.
         </p>
       </header>
+
+      {profile.plan === "free" && (
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-sage/20 border border-sage/50 rounded-full">
+          <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-soft-black/80">
+            {Math.max(0, 3 - (profile.deepSessionsCount ?? 0))} deep sessions left this month
+          </span>
+          <Link
+            href="/dashboard/session/new"
+            className="text-[10px] font-black uppercase tracking-wider text-sage-dark hover:text-soft-black transition-colors"
+          >
+            start &rarr;
+          </Link>
+        </div>
+      )}
 
       <QuickDistill />
 

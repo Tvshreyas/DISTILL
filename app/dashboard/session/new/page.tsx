@@ -5,6 +5,7 @@ import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useRouter } from "next/navigation";
 import SessionStartForm from "@/components/SessionStartForm";
+import UpgradeModal from "@/components/UpgradeModal";
 import Link from "next/link";
 import type { ContentType } from "@/types";
 
@@ -14,6 +15,7 @@ export default function NewSessionPage() {
   const activeSession = useQuery(api.sessions.getActive);
   const startSession = useMutation(api.sessions.create);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showUpgrade, setShowUpgrade] = useState(false);
 
   if (profile === undefined || activeSession === undefined)
     return <div className="p-8 text-muted-text animate-pulse">Loading...</div>;
@@ -114,12 +116,13 @@ export default function NewSessionPage() {
             <p className="text-sm text-soft-black font-black mb-4 lowercase">
               Expand your capacity to build your archive
             </p>
-            <Link
-              href="/dashboard/settings"
+            <button
+              onClick={() => setShowUpgrade(true)}
               className="inline-block px-8 py-4 bg-soft-black text-white rounded-2xl font-black transition-transform active:scale-95 hover:bg-soft-black/90"
             >
-              Preserve my momentum
-            </Link>
+              Upgrade to Pro
+            </button>
+            <UpgradeModal isOpen={showUpgrade} onCloseAction={() => setShowUpgrade(false)} />
           </div>
         </div>
       ) : (
