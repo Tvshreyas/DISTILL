@@ -2,12 +2,12 @@ import { describe, it, expect } from "vitest";
 import { FREE_TIER_LIMIT, FREE_TIER_NUDGE } from "@/lib/constants";
 
 describe("free tier constants", () => {
-  it("FREE_TIER_LIMIT is 3", () => {
-    expect(FREE_TIER_LIMIT).toBe(3);
+  it("FREE_TIER_LIMIT is 10", () => {
+    expect(FREE_TIER_LIMIT).toBe(10);
   });
 
-  it("FREE_TIER_NUDGE is 2", () => {
-    expect(FREE_TIER_NUDGE).toBe(2);
+  it("FREE_TIER_NUDGE is 8", () => {
+    expect(FREE_TIER_NUDGE).toBe(8);
   });
 
   it("nudge threshold is below limit", () => {
@@ -38,20 +38,20 @@ describe("deep session limit logic", () => {
     expect(nearLimit).toBe(false);
   });
 
-  it("at 2 deep sessions (nudge threshold): nearLimit true, atLimit false", () => {
-    const { atLimit, nearLimit } = computeFlags("free", 2);
+  it("at 8 deep sessions (nudge threshold): nearLimit true, atLimit false", () => {
+    const { atLimit, nearLimit } = computeFlags("free", 8);
     expect(atLimit).toBe(false);
     expect(nearLimit).toBe(true);
   });
 
-  it("at 3 deep sessions (limit): both true", () => {
-    const { atLimit, nearLimit } = computeFlags("free", 3);
+  it("at 10 deep sessions (limit): both true", () => {
+    const { atLimit, nearLimit } = computeFlags("free", 10);
     expect(atLimit).toBe(true);
     expect(nearLimit).toBe(true);
   });
 
-  it("at 4 deep sessions (over limit): both true", () => {
-    const { atLimit, nearLimit } = computeFlags("free", 4);
+  it("at 11 deep sessions (over limit): both true", () => {
+    const { atLimit, nearLimit } = computeFlags("free", 11);
     expect(atLimit).toBe(true);
     expect(nearLimit).toBe(true);
   });

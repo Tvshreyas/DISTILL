@@ -90,11 +90,11 @@ describe("sessions.create", () => {
     const asUser = t.withIdentity({ name: "Test User" });
     await asUser.mutation(api.profiles.createOrGet, {});
 
-    // Seed 3 completed deep sessions to hit the free tier limit
+    // Seed 10 completed deep sessions to hit the free tier limit
     await t.run(async (ctx) => {
       const profiles = await ctx.db.query("profiles").collect();
       const userId = profiles[0].userId;
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 10; i++) {
         await ctx.db.insert("sessions", {
           userId,
           title: `Session ${i}`,
@@ -113,7 +113,7 @@ describe("sessions.create", () => {
         title: "Test",
         contentType: "book",
       }),
-    ).rejects.toThrowError(/3-reflection monthly ritual/);
+    ).rejects.toThrowError(/10 deep sessions/);
   });
 });
 

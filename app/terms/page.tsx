@@ -62,7 +62,7 @@ export default function TermsPage() {
             </h2>
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                <strong>Free plan:</strong> Up to 3 deep sessions per month.
+                <strong>Free plan:</strong> Up to 10 deep sessions per month.
                 Personal library. Spaced resurfacing (view only).
               </li>
               <li>

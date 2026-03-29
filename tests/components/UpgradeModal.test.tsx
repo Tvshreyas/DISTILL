@@ -17,14 +17,14 @@ describe("UpgradeModal", () => {
 
   it("shows checkout and dismiss buttons", () => {
     render(<UpgradeModal isOpen={true} onCloseAction={vi.fn()} />);
-    expect(screen.getByText("Preserve my momentum")).toBeTruthy();
-    expect(screen.getByText(/risk the momentum/i)).toBeTruthy();
+    expect(screen.getByText("Upgrade to Pro")).toBeTruthy();
+    expect(screen.getByText("not now")).toBeTruthy();
   });
 
   it("calls onCloseAction when dismiss is clicked", () => {
     const onClose = vi.fn();
     render(<UpgradeModal isOpen={true} onCloseAction={onClose} />);
-    fireEvent.click(screen.getByText(/risk the momentum/i));
+    fireEvent.click(screen.getByText("not now"));
     expect(onClose).toHaveBeenCalledOnce();
   });
 });

@@ -60,7 +60,7 @@ const jsonLd = {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
-        description: "Free tier with 3 deep sessions per month",
+        description: "Free tier with 10 deep sessions per month",
       },
       featureList: [
         "Session-based reflection capture",
@@ -118,7 +118,7 @@ const jsonLd = {
           name: "Is Distill free?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. The free tier includes 3 deep sessions per month. Quick Distills are unlimited. Pro unlocks unlimited deep sessions, layered resurfacing, and advanced analytics.",
+            text: "Yes. The free tier includes 10 deep sessions per month. Quick Distills are unlimited. Pro unlocks unlimited deep sessions, layered resurfacing, and advanced analytics.",
           },
         },
         {

@@ -26,13 +26,13 @@ export function UpgradeEmail({
 
   const content = {
     1: {
-      heading: `You've used ${reflectionCount} of 3 deep sessions this month.`,
-      body: `${3 - reflectionCount} deep session${3 - reflectionCount !== 1 ? "s" : ""} remaining on the free tier.\n\nAfter 3, you'll need to wait until next month for more deep sessions — or upgrade to Pro for unlimited access.\n\nRemember: Quick Distills on the dashboard are always unlimited.\n\nNo pressure. The free tier resets on the 1st of every month.`,
+      heading: `You've used ${reflectionCount} of 10 deep sessions this month.`,
+      body: `${10 - reflectionCount} deep session${10 - reflectionCount !== 1 ? "s" : ""} remaining on the free tier.\n\nAfter 10, you'll need to wait until next month for more deep sessions — or upgrade to Pro for unlimited access.\n\nRemember: Quick Distills on the dashboard are always unlimited.\n\nNo pressure. The free tier resets on the 1st of every month.`,
       cta: "See Pro details",
     },
     2: {
       heading: "Your deep sessions have reset.",
-      body: `Your monthly deep session count has reset. You have 3 more sessions available.\n\nIf the limit feels like it's getting in the way, Pro removes it entirely:\n\n— Unlimited deep sessions\n— Spaced resurfacing (past reflections come back at intervals)\n— Multi-layer reflections\n— $5/month or $48/year\n\nThe free tier stays free. Upgrade only if the limit doesn't work for you.`,
+      body: `Your monthly deep session count has reset. You have 10 more sessions available.\n\nIf the limit feels like it's getting in the way, Pro removes it entirely:\n\n— Unlimited deep sessions\n— Spaced resurfacing (past reflections come back at intervals)\n— Multi-layer reflections\n— $5/month or $48/year\n\nThe free tier stays free. Upgrade only if the limit doesn't work for you.`,
       cta: "Upgrade to Pro",
     },
     3: {
@@ -129,7 +129,7 @@ export function getUpgradeSubject(
   reflectionCount: number,
 ): string {
   const subjects = {
-    1: `You've used ${reflectionCount} of 3 deep sessions this month`,
+    1: `You've used ${reflectionCount} of 10 deep sessions this month`,
     2: "Your deep sessions reset — or go unlimited",
     3: "Save 25% with annual billing",
   };

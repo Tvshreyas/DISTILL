@@ -595,16 +595,16 @@ export const processUpgradeEmails = internalAction({
       let step: 1 | 2 | 3 | null = null;
 
       if (profile.plan === "free") {
-        // Step 1: at 2/3 deep sessions this month
+        // Step 1: at 8/10 deep sessions this month
         if (
-          profile.reflectionCountThisMonth >= 2 &&
+          profile.reflectionCountThisMonth >= 8 &&
           (profile.upgradeEmailStep ?? 0) < 1
         ) {
           step = 1;
         }
-        // Step 2: hit 3/3 or start of new month after hitting limit
+        // Step 2: hit 10/10 or start of new month after hitting limit
         else if (
-          profile.reflectionCountLifetime >= 3 &&
+          profile.reflectionCountLifetime >= 10 &&
           (profile.upgradeEmailStep ?? 0) < 2 &&
           (profile.upgradeEmailStep ?? 0) >= 1
         ) {

@@ -73,7 +73,7 @@ export function CreativePricingDemo() {
       description: "start your clarity journey",
       color: "sage",
       features: [
-        "3 deep sessions per month",
+        "10 deep sessions per month",
         "unlimited quick captures",
         "personal search library",
         "basic streak tracking",

@@ -150,15 +150,15 @@ describe("reflections.create", () => {
     expect(profile!.reflectionCountLifetime).toBe(1);
   });
 
-  it("enforces free tier limit of 3 reflections", async () => {
+  it("enforces free tier limit of 10 reflections", async () => {
     const t = convexTest(schema, modules);
     const { asUser, sessionId } = await setupUserWithSession(t);
 
-    // Seed 3 completed deep sessions to hit the free tier limit
+    // Seed 10 completed deep sessions to hit the free tier limit
     await t.run(async (ctx) => {
       const profiles = await ctx.db.query("profiles").collect();
       const userId = profiles[0].userId;
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 10; i++) {
         await ctx.db.insert("sessions", {
           userId,
           title: `Completed Session ${i}`,
@@ -177,7 +177,7 @@ describe("reflections.create", () => {
         sessionId,
         content: "Over limit.",
       }),
-    ).rejects.toThrowError(/reached your 3/);
+    ).rejects.toThrowError(/reached your 10/);
   });
 
   it("calculates word count correctly", async () => {
