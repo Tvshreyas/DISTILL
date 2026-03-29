@@ -26,6 +26,7 @@ import {
   Lock,
 } from "lucide-react";
 import UpgradeModal from "@/components/UpgradeModal";
+import { FREE_TIER_LIMIT } from "@/lib/constants";
 
 function toDateString(date: Date, timezone: string): string {
   return date.toLocaleDateString("en-CA", { timeZone: timezone });
@@ -443,7 +444,7 @@ export default function DashboardPage() {
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-sage/20 border border-sage/50 rounded-full">
           <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
           <span className="text-[10px] font-bold uppercase tracking-widest text-soft-black/80">
-            {Math.max(0, 3 - (profile.deepSessionsCount ?? 0))} deep sessions left this month
+            {Math.max(0, FREE_TIER_LIMIT - (profile.deepSessionsCount ?? 0))} deep sessions left this month
           </span>
           <Link
             href="/dashboard/session/new"

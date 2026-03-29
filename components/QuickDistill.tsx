@@ -4,8 +4,9 @@ import { useState, useRef, useMemo } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Check, Sparkles, Loader2 } from "lucide-react";
+import { Send, Check, Sparkles, Loader2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import { REFLECTION_PROMPTS } from "@/lib/prompts";
 
 // Deterministic daily prompt — same question all day, new one tomorrow
@@ -25,6 +26,7 @@ export default function QuickDistill() {
   const [showSuccess, setShowSuccess] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const dailyPrompt = useMemo(() => getDailyPrompt(), []);
+  const router = useRouter();
 
   const quickCreate = useMutation(api.reflections.quickCreate);
 
@@ -99,15 +101,24 @@ export default function QuickDistill() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="flex items-center justify-center gap-3 py-4 text-sage-dark"
+              className="flex flex-col items-center gap-3 py-4"
             >
-              <div className="w-8 h-8 rounded-full bg-sage/30 flex items-center justify-center">
-                <Check className="w-5 h-5" />
+              <div className="flex items-center gap-3 text-sage-dark">
+                <div className="w-8 h-8 rounded-full bg-sage/30 flex items-center justify-center">
+                  <Check className="w-5 h-5" />
+                </div>
+                <span className="font-grotesk font-black text-xl lowercase">
+                  distilled.
+                </span>
+                <Sparkles className="w-5 h-5 text-peach animate-pulse" />
               </div>
-              <span className="font-grotesk font-black text-xl lowercase">
-                distilled. one step closer.
-              </span>
-              <Sparkles className="w-5 h-5 text-peach animate-pulse" />
+              <button
+                onClick={() => router.push("/dashboard/session/new")}
+                className="flex items-center gap-2 text-sm font-bold text-muted-text hover:text-soft-black transition-colors"
+              >
+                want to go deeper? turn this into a full session
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </motion.div>
           )}
         </AnimatePresence>

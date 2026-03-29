@@ -12,7 +12,7 @@ function sanitizeContent(input: string): string {
   return input.replace(/<[^>]*>/g, "").trim();
 }
 
-const FREE_TIER_LIMIT = 3;
+const FREE_TIER_LIMIT = 10;
 
 function computeWordCount(text: string): number {
   const trimmed = text.trim();

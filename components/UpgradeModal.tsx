@@ -66,7 +66,7 @@ export default function UpgradeModal({
         {/* Feature comparison */}
         <div className="text-left space-y-2">
           {[
-            "unlimited deep sessions (free: 3/month)",
+            "unlimited deep sessions (free: 10/month)",
             "unlimited perspective layers",
             "layer from your library anytime",
             "lifetime resurfacing schedule",

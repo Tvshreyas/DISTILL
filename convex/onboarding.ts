@@ -9,7 +9,7 @@ const VALID_CONTENT_TYPES = [
   "podcast",
   "other",
 ] as const;
-const FREE_TIER_LIMIT = 3;
+const FREE_TIER_LIMIT = 10;
 
 function computeWordCount(text: string): number {
   const trimmed = text.trim();

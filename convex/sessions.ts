@@ -70,9 +70,9 @@ export const create = mutation({
         )
         .collect();
 
-      if (completedDeepSessions.length >= 3) {
+      if (completedDeepSessions.length >= 10) {
         throw new Error(
-          "You've completed your 3-reflection monthly ritual. To extend your practice and preserve your momentum, upgrade to Refiner.",
+          "You've completed your 10 deep sessions this month. Upgrade to Pro for unlimited deep sessions.",
         );
       }
     }
