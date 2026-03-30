@@ -18,7 +18,7 @@ export default function LandingPage() {
       <main>
         <Header />
         <Hero />
-        <SlantedMarquee />
+        <HowItWorks />
         <div id="features" /> {/* Anchor for navigation */}
         <BentoGrid />
         <CreativePricingDemo />
@@ -40,7 +40,7 @@ function Header() {
     <header className="px-6 pt-6 pb-0 flex items-center justify-between max-w-6xl mx-auto w-full relative z-[60]">
       <div className="flex items-center gap-3">
         {/* Swishy-inspired Dot Logo */}
-        <div className="grid grid-cols-3 gap-1 w-6 h-6">
+        <div className="grid grid-cols-3 gap-1.5 w-8 h-8 items-center justify-center p-1">
           {[...Array(9)].map((_, i) => (
             <div key={i} className="w-1.5 h-1.5 rounded-full bg-soft-black" />
           ))}
@@ -120,15 +120,15 @@ function Hero() {
 
           <h1 className="flex flex-col items-center">
             <WordReveal
-              text="think more clearly"
+              text="you forgot 95%"
               className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tighter"
             />
             <div className="flex items-center justify-center -mt-1 md:-mt-2">
               <span className="font-reenie text-4xl md:text-6xl text-peach inline-block rotate-[-4deg] px-4 md:px-8 -translate-y-1">
-                about
+                of
               </span>
               <WordReveal
-                text="what you consume."
+                text="what you read last year."
                 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tighter"
                 delay={0.5}
               />
@@ -142,10 +142,9 @@ function Hero() {
             transition={{ duration: 0.8 }}
             className="max-w-xl mx-auto text-base md:text-lg text-muted-text font-medium leading-relaxed opacity-80"
           >
-            the 2-minute thinking ritual. convert passive consumption into
-            active thinking,{" "}
-            <span className="font-black text-soft-black">so you can</span>{" "}
-            finally own your own perspective.
+            after you read a book, watch a video, or finish a podcast — spend 2
+            minutes writing what you actually think.{" "}
+            <span className="font-black text-soft-black">that&apos;s it.</span>
           </motion.p>
 
           <motion.div
@@ -217,22 +216,43 @@ function Sticker({
   );
 }
 
-function SlantedMarquee() {
+function HowItWorks() {
   return (
-    <div
-      className="relative py-12 -rotate-1 scale-105 overflow-hidden z-20"
-      aria-hidden="true"
-    >
-      <div className="bg-soft-black py-4 border-y-[4px] border-white flex">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="flex items-center gap-12 px-6">
-              <span className="text-4xl md:text-6xl font-grotesk font-black text-white uppercase tracking-tighter">
-                distill your presence
-              </span>
-              <span className="w-12 h-1 md:w-20 md:h-1.5 bg-sage rounded-full" />
-            </div>
-          ))}
+    <div className="relative py-12 z-20">
+      <div className="bg-soft-black py-6 border-y-[4px] border-white">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 px-8">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl font-grotesk font-black text-white/30">
+              1
+            </span>
+            <span className="text-sm md:text-base font-bold text-white lowercase">
+              start a session
+            </span>
+          </div>
+          <span
+            className="hidden md:block w-12 h-0.5 bg-white/20"
+            aria-hidden="true"
+          />
+          <div className="flex items-center gap-3">
+            <span className="text-2xl font-grotesk font-black text-white/30">
+              2
+            </span>
+            <span className="text-sm md:text-base font-bold text-white lowercase">
+              consume something
+            </span>
+          </div>
+          <span
+            className="hidden md:block w-12 h-0.5 bg-white/20"
+            aria-hidden="true"
+          />
+          <div className="flex items-center gap-3">
+            <span className="text-2xl font-grotesk font-black text-white/30">
+              3
+            </span>
+            <span className="text-sm md:text-base font-bold text-white lowercase">
+              write what you think
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -260,26 +280,26 @@ function BentoGrid() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           <BentoCard
             className="md:col-span-7 bg-sage"
-            title="session starts"
-            description="open a cognitive loop before you consume. Distill creates a space for your brain to stay active."
+            title="start a session"
+            description="tell distill what you're about to read, watch, or listen to. it takes 10 seconds."
             label="01"
           />
           <BentoCard
             className="md:col-span-5 bg-lavender"
-            title="reflection capture"
-            description="write your own perspective immediately after finishing. no AI summaries, just your raw thoughts."
+            title="write what stuck"
+            description="when you're done, write what you actually think. no prompts, no AI — just you."
             label="02"
           />
           <BentoCard
             className="md:col-span-5 bg-white"
-            title="personal library"
-            description="a searchable, private archive of your own mind that compounds and grows with every session."
+            title="your library grows"
+            description="every reflection you write lives here. search it, revisit it, watch it grow."
             label="03"
           />
           <BentoCard
             className="md:col-span-7 bg-peach"
-            title="spaced resurfacing"
-            description="your past reflections resurface at timed intervals, forcing you to engage with your former self."
+            title="old thoughts come back"
+            description="weeks later, a past reflection resurfaces. you'll be surprised how your thinking changed."
             label="04"
           />
         </div>
@@ -344,16 +364,20 @@ function FAQ() {
         </h2>
         <div className="space-y-4">
           <FAQItem
-            question="is this just another journaling app?"
-            answer="not quite. distill is a thinking development tool. it helps you build a reflection habit and develop your own perspective on what you consume."
+            question="i already have a note-taking app. how is this different?"
+            answer="note-taking apps store information. distill is a thinking tool — it makes you process what you consumed and resurfaces your past thinking so it compounds over time."
           />
           <FAQItem
-            question="how does it help with focus?"
-            answer="by providing a high-contrast interface that encourages active thinking, helping you engage with content instead of just scrolling past it."
+            question="what if i don't have time?"
+            answer="each reflection takes about 2 minutes. if you had time to read the book or watch the video, you have time to write one paragraph about it."
           />
           <FAQItem
-            question="can i export my thoughts?"
-            answer="yes, your perspectives are yours. you can export them as clean markdown or json at any time."
+            question="is my data private?"
+            answer="yes. your reflections are private by default. you own your data and can export it as markdown or json at any time."
+          />
+          <FAQItem
+            question="do i need to pay?"
+            answer="no. you get 10 deep sessions per month for free. quick reflections are always unlimited."
           />
         </div>
       </div>
@@ -389,6 +413,9 @@ function FinalCTA() {
       {/* Background Blobs */}
       <div className="absolute inset-0 bg-peach/20 -z-10" />
       <div className="max-w-5xl mx-auto text-center space-y-12">
+        <p className="text-lg md:text-xl text-muted-text font-medium opacity-70">
+          you scrolled through 10,000 posts this month. how many made you think?
+        </p>
         <h2 className="font-grotesk text-7xl md:text-9xl font-bold lowercase leading-tight">
           you are not <br />
           an algorithm.
@@ -420,10 +447,13 @@ function Footer() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 relative z-10">
         <div className="col-span-2 md:col-span-1 space-y-6">
-          <div className="flex items-center gap-2">
-            <div className="grid grid-cols-3 gap-1 w-5 h-5">
+          <div className="flex items-center gap-3">
+            <div className="grid grid-cols-3 gap-1.5 w-8 h-8 items-center justify-center p-1">
               {[...Array(9)].map((_, i) => (
-                <div key={i} className="w-1 h-1 rounded-full bg-soft-black" />
+                <div
+                  key={i}
+                  className="w-1.5 h-1.5 rounded-full bg-soft-black"
+                />
               ))}
             </div>
             <span className="font-grotesk text-2xl font-bold lowercase">
@@ -431,8 +461,7 @@ function Footer() {
             </span>
           </div>
           <p className="text-sm text-muted-text max-w-xs leading-relaxed">
-            the 2-minute thinking ritual. think more clearly about what you
-            consume.
+            the 2-minute thinking ritual after every book, video, or podcast.
           </p>
         </div>
         <div>

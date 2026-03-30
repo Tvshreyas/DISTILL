@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import LandingPage from "@/components/LandingPage";
 
 export const metadata: Metadata = {
-  title: "Distill — Think more clearly about what you consume",
+  title: "Distill — You forgot 95% of what you read last year",
   description:
-    "Distill is a thinking development tool. Build a reflection habit from books, videos, articles, and podcasts. Your perspective, compounded over time.",
+    "Distill is a thinking tool. After you read a book, watch a video, or finish a podcast — spend 2 minutes writing what you actually think. Your reflections resurface over time.",
   alternates: {
     canonical: "https://distillwise.com",
   },
   openGraph: {
-    title: "Distill — Think more clearly about what you consume",
+    title: "Distill — You forgot 95% of what you read last year",
     description:
-      "Build a reflection habit from the content you consume. Your perspective, compounded over time.",
+      "After you read a book, watch a video, or finish a podcast — spend 2 minutes writing what you actually think. Your reflections resurface over time.",
     url: "https://distillwise.com",
     siteName: "Distill",
     type: "website",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Distill — Think more clearly about what you consume",
+    title: "Distill — You forgot 95% of what you read last year",
     description:
-      "Build a reflection habit from the content you consume. Your perspective, compounded over time.",
+      "After you read a book, watch a video, or finish a podcast — spend 2 minutes writing what you actually think. Your reflections resurface over time.",
     images: ["https://distillwise.com/og-image.png"],
   },
   keywords: [
@@ -126,7 +126,7 @@ const jsonLd = {
           name: "What is a reflection practice?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "A reflection practice is the habit of writing your own perspective after consuming content — not a summary, but your response to what you encountered. It converts passive consumption into active thinking.",
+            text: "A reflection practice is the habit of writing what you actually think after consuming content — not a summary, but your own perspective. Each reflection takes about 2 minutes.",
           },
         },
         {
@@ -163,18 +163,18 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          name: "Is Distill just another journaling app?",
+          name: "I already have a note-taking app. How is Distill different?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Not quite. Distill is a thinking development tool. It helps you build a reflection habit and develop your own perspective on what you consume.",
+            text: "Note-taking apps store information. Distill is a thinking tool — it makes you process what you consumed and resurfaces your past thinking so it compounds over time.",
           },
         },
         {
           "@type": "Question",
-          name: "How does Distill help with focus?",
+          name: "Do I need to pay to use Distill?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "By providing a high-contrast interface that encourages active thinking, helping you engage with content instead of just scrolling past it.",
+            text: "No. You get 10 deep sessions per month for free. Quick reflections are always unlimited.",
           },
         },
         {

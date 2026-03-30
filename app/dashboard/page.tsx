@@ -283,7 +283,10 @@ function ResurfacingHero() {
           )}
         </div>
       )}
-      <UpgradeModal isOpen={showUpgrade} onCloseAction={() => setShowUpgrade(false)} />
+      <UpgradeModal
+        isOpen={showUpgrade}
+        onCloseAction={() => setShowUpgrade(false)}
+      />
     </div>
   );
 }
@@ -444,7 +447,8 @@ export default function DashboardPage() {
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-sage/20 border border-sage/50 rounded-full">
           <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
           <span className="text-[10px] font-bold uppercase tracking-widest text-soft-black/80">
-            {Math.max(0, FREE_TIER_LIMIT - (profile.deepSessionsCount ?? 0))} deep sessions left this month
+            {Math.max(0, FREE_TIER_LIMIT - (profile.deepSessionsCount ?? 0))}{" "}
+            deep sessions left this month
           </span>
           <Link
             href="/dashboard/session/new"

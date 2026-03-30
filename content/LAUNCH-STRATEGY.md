@@ -47,7 +47,7 @@ Final polish, visual assets, community drafts, recruit 10-15 launch day supporte
 
 - [ ] Sign up as a new user end-to-end: landing → signup → onboarding → first session → reflection → library
 - [ ] Test on mobile (PWA). Core flow should work without friction
-- [ ] Confirm free tier enforcement works (3 deep sessions/month limit)
+- [ ] Confirm free tier enforcement works (10 deep sessions/month limit)
 - [ ] Confirm upgrade flow works (Stripe checkout → Pro access)
 - [ ] Load the blog, glossary, and reflection guide pages — verify no 404s
 
@@ -139,7 +139,7 @@ Final polish, visual assets, community drafts, recruit 10-15 launch day supporte
 >
 > What it's NOT: a note-taking app, an AI summarizer, or a "second brain." It's a single-purpose thinking tool.
 >
-> Free: 3 deep sessions/month. Pro: unlimited + spaced resurfacing.
+> Free: 10 deep sessions/month. Pro: unlimited + spaced resurfacing.
 >
 > I'd genuinely appreciate your feedback — especially on what's confusing or unnecessary.
 
@@ -291,7 +291,7 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 >
 > That means you have a growing library of your own thinking. It compounds over time — especially when past reflections resurface and you see how your perspective has evolved.
 >
-> Free tier: 3 deep sessions/month. If you want unlimited: [upgrade link]
+> Free tier: 10 deep sessions/month. If you want unlimited: [upgrade link]
 >
 > No pressure. The free tier is real — it stays free.
 
@@ -386,7 +386,7 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 > It's not an AI summarizer. You write, not a model.
 > It's not a journal. Reflections are content-triggered, not emotion-triggered.
 >
-> Free: 3 deep sessions/month. Pro: unlimited + spaced resurfacing + streaks.
+> Free: 10 deep sessions/month. Pro: unlimited + spaced resurfacing + streaks.
 >
 > Built by a solo founder who read 40+ books last year and couldn't recall a single original thought about any of them.
 
@@ -409,7 +409,7 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 >
 > It's not a note-taking app (no org, no folders, no tags). It's not an AI summarizer (you write, not a model). It's a single-purpose tool: make yourself think after consuming something.
 >
-> Free tier: 3 deep sessions/month. Pro: unlimited + spaced resurfacing + streak tracking.
+> Free tier: 10 deep sessions/month. Pro: unlimited + spaced resurfacing + streak tracking.
 >
 > Tech: Next.js 15, Convex, Clerk, Stripe. PWA so it works on mobile. Solo founder, bootstrapped.
 >
@@ -435,7 +435,7 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 >
 > No AI. No summaries. No folders or tags. Just: what did you think?
 >
-> Free tier gives you 3 deep sessions/month. Pro is unlimited.
+> Free tier gives you 10 deep sessions/month. Pro is unlimited.
 >
 > Would love honest feedback from this community. Link in comments.
 
@@ -447,7 +447,7 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 >
 > Then those reflections come back to me weeks later. It's surprising how often past-me had interesting ideas that present-me forgot.
 >
-> I turned it into a free web app called Distill. 3 deep sessions/month free, unlimited with Pro.
+> I turned it into a free web app called Distill. 10 deep sessions/month free, unlimited with Pro.
 >
 > Anyone else struggle with this? Curious if it's just me or if "consuming without thinking" is a common pattern.
 
@@ -495,7 +495,7 @@ Convert free users to Pro. Build sustainable content + community cadence. Get fi
 
 **Tweet 5:**
 
-> free: 3 deep sessions/month.
+> free: 10 deep sessions/month.
 > pro: unlimited reflections + spaced resurfacing + streaks.
 >
 > built with next.js, convex, clerk.
@@ -551,7 +551,7 @@ Post these one per day leading up to launch:
 >
 > Start here: [link]
 >
-> Free tier: 3 deep sessions/month. Pro: unlimited.
+> Free tier: 10 deep sessions/month. Pro: unlimited.
 >
 > If something breaks, reply to this email. I read everything.
 >
@@ -600,7 +600,7 @@ Post these one per day leading up to launch:
 >
 > That means you have a growing library of your own thinking. It compounds over time — especially when past reflections resurface and you see how your perspective has evolved.
 >
-> Free tier: 3 deep sessions/month. If you want unlimited: [upgrade link]
+> Free tier: 10 deep sessions/month. If you want unlimited: [upgrade link]
 >
 > No pressure. The free tier is real — it stays free.
 

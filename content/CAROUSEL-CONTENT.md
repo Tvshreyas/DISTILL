@@ -519,7 +519,7 @@
 **Slide 6 — CTA**
 
 > 2 days until launch.
-> free to use. 3 deep sessions per month.
+> free to use. 10 deep sessions per month.
 >
 > distillwise.com
 
@@ -563,7 +563,7 @@
 
 **Slide 5**
 
-> free to use. 3 deep sessions per month.
+> free to use. 10 deep sessions per month.
 > unlimited with pro ($8/mo).
 >
 > your thoughts have been disappearing for years.
@@ -616,7 +616,7 @@
 
 **Slide 5**
 
-> free to use. 3 deep sessions per month.
+> free to use. 10 deep sessions per month.
 > unlimited with pro ($8/mo).
 >
 > your thoughts compound over time.

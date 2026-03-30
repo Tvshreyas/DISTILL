@@ -181,27 +181,27 @@ Three automated sequences to drive activation, retention, and conversion. All co
 
 ---
 
-## Sequence 3: Free → Pro Upgrade (3 emails)
+## Sequence 3: Free Tier Nudge (3 emails)
 
-**Trigger:** User hits 2/3 deep sessions/month free current month (FREE_TIER_NUDGE)
-**Exit conditions:** User upgrades to Pro, unsubscribes, or sequence completes
-**Goal:** Convert engaged free users to Pro
+**Trigger:** User hits 8/10 deep sessions/month (FREE_TIER_NUDGE)
+**Exit conditions:** User unsubscribes or sequence completes
+**Goal:** Keep engaged users aware of their usage
 
 ---
 
 ### Email 1: Usage Milestone
 
-**Send:** When user completes their 2nd deep session this month
-**Subject:** You've used 2 of 3 deep sessions this month
-**Preview:** 1 deep session remaining on the free tier.
+**Send:** When user completes their 8th deep session this month
+**Subject:** You've used 8 of 10 deep sessions this month
+**Preview:** 2 deep sessions remaining this month.
 
-> You've completed 2 deep sessions this month. The free tier includes 3 deep sessions per month.
+> You've completed 8 deep sessions this month. The free tier includes 10 deep sessions per month.
 >
-> After 3 deep sessions, you'll need to wait until next month — or upgrade to Pro for unlimited deep sessions.
+> After 10 deep sessions, you'll need to wait until next month. Quick Distills are always unlimited.
 >
-> Pro also includes spaced resurfacing and streak tracking.
+> Pro is coming soon — we'll let you know when it's available.
 >
-> **[See Pro details →]** → /dashboard/settings
+> **[Open Distill →]** → /dashboard
 >
 > No pressure. The free tier resets on the 1st of every month.
 >

@@ -48,7 +48,9 @@ export default function UpgradeModal({
           ].map((feature) => (
             <div key={feature} className="flex items-center gap-2">
               <Check className="w-4 h-4 text-sage-dark shrink-0" />
-              <span className="text-sm font-bold text-soft-black">{feature}</span>
+              <span className="text-sm font-bold text-soft-black">
+                {feature}
+              </span>
             </div>
           ))}
         </div>
@@ -59,7 +61,9 @@ export default function UpgradeModal({
             disabled={notified}
             className="w-full py-4 bg-soft-black text-white rounded-2xl font-bold transition-transform active:scale-95 disabled:opacity-50 hover:bg-peach hover:text-soft-black"
           >
-            {notified ? "you're on the list." : "notify me when Pro is available"}
+            {notified
+              ? "you're on the list."
+              : "notify me when Pro is available"}
           </button>
           <button
             onClick={onCloseAction}

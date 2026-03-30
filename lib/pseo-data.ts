@@ -136,7 +136,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     definition:
       "Metacognition is thinking about your own thinking — the awareness and regulation of your cognitive processes, including how you learn, remember, and form opinions.",
     explanation:
-      "Coined by developmental psychologist John Flavell in 1979, metacognition has two components: metacognitive knowledge (understanding how your own thinking works) and metacognitive regulation (actively managing your learning processes).\n\nFor content consumers, metacognition manifests as awareness of your own comprehension while reading. Am I actually understanding this, or just recognizing the words? Can I explain this idea in my own words? What confused me? What do I disagree with?\n\nThis self-monitoring converts passive consumption into active learning. Without metacognition, you can read an entire chapter and not realize you understood none of it until someone asks you about it later.",
+      "Coined by developmental psychologist John Flavell in 1979, metacognition has two components: metacognitive knowledge (understanding how your own thinking works) and metacognitive regulation (actively managing your learning processes).\n\nFor content consumers, metacognition manifests as awareness of your own comprehension while reading. Am I actually understanding this, or just recognizing the words? Can I explain this idea in my own words? What confused me? What do I disagree with?\n\nThis self-monitoring turns reading into real learning. Without metacognition, you can read an entire chapter and not realize you understood none of it until someone asks you about it later.",
     whyItMatters:
       "Metacognition is the master skill that makes all other learning techniques effective. Without it, you cannot evaluate whether your reading is productive, your reflections are genuine, or your understanding is accurate.\n\nResearch consistently shows that metacognitive awareness is one of the strongest predictors of academic and professional learning outcomes — more predictive than raw intelligence.",
     howToApply:
@@ -236,7 +236,7 @@ export const reflectionGuides: ReflectionGuide[] = [
     description:
       "A practical guide to writing reflections after reading books — capture your thinking, not just the author's ideas.",
     intro:
-      "You finish a book. You know you liked it. You can recall the general topic. But the specific ideas that struck you, the arguments you disagreed with, the connections you noticed — those are already fading. This guide shows you how to capture your thinking while it is still fresh, turning reading from passive consumption into active intellectual growth.",
+      "You finish a book. You know you liked it. You can recall the general topic. But the specific ideas that struck you, the arguments you disagreed with, the connections you noticed — those are already fading. This guide shows you how to capture your thinking while it is still fresh, so your reading actually changes how you think.",
     steps: [
       {
         heading: "Set your intention before reading",

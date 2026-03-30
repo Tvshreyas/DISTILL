@@ -100,4 +100,4 @@ If you use Readwise already and feel like something is missing — like you have
 
 ---
 
-_Distill is free for 3 deep sessions per month. [distillwise.com](https://distillwise.com)_
+_Distill is free — 10 deep sessions per month. [distillwise.com](https://distillwise.com)_

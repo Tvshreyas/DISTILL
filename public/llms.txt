@@ -10,7 +10,7 @@
 - Reflection Practice: The habit of writing your own perspective after consuming content — not a summary, but your response to what you encountered.
 - Spaced Resurfacing: Past reflections resurface at timed intervals, reinforcing and connecting your ideas over time.
 - Compound Thinking: Small, regular reflections accumulate into a connected web of ideas. Each new reflection builds on previous ones.
-- Active Reading: Engaging deliberately with content by capturing your perspective, converting passive consumption into active thinking.
+- Active Reading: Engaging deliberately with content by capturing your perspective — writing what you actually think after reading, watching, or listening.
 
 ## How It Works
 1. Start a session
@@ -31,8 +31,8 @@
 - Not a content hosting platform
 
 ## Pricing
-- Free: 3 deep sessions per month
-- Pro: Unlimited reflections, spaced resurfacing, streak tracking
+- Free: 10 deep sessions per month (Quick Distills are unlimited)
+- Pro: Coming soon — unlimited deep sessions and advanced features
 
 ## Tech
 - Built with Next.js, Convex, and Clerk

@@ -34,7 +34,8 @@ export default function StartPage() {
         {/* Footer text */}
         <footer className="mt-24 border-t border-soft-black/5 pt-8">
           <p className="text-[10px] font-bold uppercase tracking-widest text-muted-text text-center italic">
-            * Once saved, this thought will be resurfaced in 3 days.
+            * Once saved, this thought will resurface later — so your thinking
+            compounds.
           </p>
         </footer>
       </main>

@@ -172,7 +172,10 @@ export default function ResurfacingCard() {
           </div>
         )}
       </div>
-      <UpgradeModal isOpen={showUpgrade} onCloseAction={() => setShowUpgrade(false)} />
+      <UpgradeModal
+        isOpen={showUpgrade}
+        onCloseAction={() => setShowUpgrade(false)}
+      />
     </div>
   );
 }

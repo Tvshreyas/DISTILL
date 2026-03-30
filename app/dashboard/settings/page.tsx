@@ -20,7 +20,6 @@ import posthog from "posthog-js";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
 import UpgradeModal from "@/components/UpgradeModal";
 
-
 const DELETE_CONFIRMATION_PHRASE = "DELETE MY ACCOUNT";
 
 export default function SettingsPage() {
@@ -48,7 +47,6 @@ export default function SettingsPage() {
     return (
       <div className="p-8 text-muted-text text-center">Profile not found.</div>
     );
-
 
   async function handleManageSubscription() {
     setIsPortalLoading(true);

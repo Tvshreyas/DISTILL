@@ -41,6 +41,12 @@ export const metadata: Metadata = {
   description:
     "Distill helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",
   manifest: "/manifest.json",
+  alternates: {
+    canonical: "https://distillwise.com",
+    types: {
+      "application/rss+xml": "https://distillwise.com/sitemap.xml",
+    },
+  },
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",

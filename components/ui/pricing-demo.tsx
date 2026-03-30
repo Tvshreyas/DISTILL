@@ -8,7 +8,6 @@ import { Pencil, Star } from "lucide-react";
 import { toast } from "sonner";
 
 export function CreativePricingDemo() {
-
   const tiers: PricingTier[] = [
     {
       name: "Beta Access",

@@ -17,10 +17,7 @@
       "name": "Daily 8am IST",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [
-        0,
-        300
-      ]
+      "position": [0, 300]
     },
     {
       "parameters": {
@@ -30,10 +27,7 @@
       "name": "Reddit Subreddit Scraper",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        300,
-        100
-      ]
+      "position": [300, 100]
     },
     {
       "parameters": {
@@ -43,10 +37,7 @@
       "name": "Reddit Search Scraper",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        300,
-        300
-      ]
+      "position": [300, 300]
     },
     {
       "parameters": {
@@ -56,10 +47,7 @@
       "name": "HN Algolia Search",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        300,
-        500
-      ]
+      "position": [300, 500]
     },
     {
       "parameters": {
@@ -69,10 +57,7 @@
       "name": "Twitter/Nitter Search",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        300,
-        700
-      ]
+      "position": [300, 700]
     },
     {
       "parameters": {
@@ -83,10 +68,7 @@
       "name": "Merge All Sources",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
-      "position": [
-        600,
-        400
-      ]
+      "position": [600, 400]
     },
     {
       "parameters": {
@@ -114,10 +96,7 @@
       "name": "Remove Empties",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        800,
-        400
-      ]
+      "position": [800, 400]
     },
     {
       "parameters": {
@@ -127,10 +106,7 @@
       "name": "Deduplicate + Score",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        1000,
-        400
-      ]
+      "position": [1000, 400]
     },
     {
       "parameters": {
@@ -140,10 +116,7 @@
       "name": "Build Email HTML",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        1200,
-        400
-      ]
+      "position": [1200, 400]
     },
     {
       "parameters": {
@@ -171,10 +144,7 @@
       "name": "Has Leads?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        1400,
-        400
-      ]
+      "position": [1400, 400]
     },
     {
       "parameters": {
@@ -191,10 +161,7 @@
       "name": "Send via Resend",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        1600,
-        300
-      ],
+      "position": [1600, 300],
       "credentials": {
         "httpHeaderAuth": {
           "id": "",

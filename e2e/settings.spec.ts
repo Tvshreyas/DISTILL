@@ -17,7 +17,9 @@ test.describe("Settings", () => {
   test("shows auto-detected timezone", async ({ page }) => {
     await page.goto("/dashboard/settings");
     await page.waitForTimeout(2000);
-    await expect(page.locator("text=Auto-detected from your browser")).toBeVisible();
+    await expect(
+      page.locator("text=Auto-detected from your browser"),
+    ).toBeVisible();
   });
 
   test("delete account requires confirmation phrase", async ({ page }) => {

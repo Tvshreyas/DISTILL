@@ -351,7 +351,7 @@ Ordered by: low difficulty + high relevance to Distill + GEO potential + commerc
 - GEO potential: HIGH (no authoritative source exists, comparison format)
 - Format: Define both. Use a comparison table. Link to research on "clip thinking" and information overload. Position reflection as the bridge from passive to active.
 - Word count: 2,000-2,500
-- CTA: "Distill turns passive consumption into active thinking."
+- CTA: "Distill helps you actually think about what you read. distillwise.com"
 
 ---
 
