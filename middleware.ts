@@ -81,8 +81,9 @@ export default clerkMiddleware(async (auth, request: NextRequest) => {
   // --- CSP Directive Construction ---
   const reportUri = process.env.NEXT_PUBLIC_CSP_REPORT_URI || "";
 
-  // script-src: permissive for Clerk initialization
-  const scriptSrc = `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://*.clerk.accounts.dev https://clerk.distillwise.com https://accounts.distillwise.com https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdnjs.cloudflare.com`;
+  // script-src: 'unsafe-inline' required by Clerk's dynamic script injection.
+  // 'unsafe-eval' removed — re-add only if Clerk CAPTCHA/bot detection breaks.
+  const scriptSrc = `script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.clerk.accounts.dev https://clerk.distillwise.com https://accounts.distillwise.com https://challenges.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdnjs.cloudflare.com`;
 
   // style-src: allows 'unsafe-inline' for Clerk's dynamic styles
   const styleSrc = "style-src 'self' 'unsafe-inline'";

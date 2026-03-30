@@ -59,6 +59,7 @@ export async function GET() {
       headers: {
         "Content-Type": "application/json",
         "Content-Disposition": `attachment; filename="distill-export-${new Date().toISOString().split("T")[0]}.json"`,
+        "Cache-Control": "no-store",
       },
     });
   } catch {

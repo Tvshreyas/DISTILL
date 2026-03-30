@@ -40,12 +40,15 @@ export async function POST() {
       return_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/settings`,
     });
 
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json(
+      { url: session.url },
+      { headers: { "Cache-Control": "no-store" } },
+    );
   } catch (error) {
     console.error("Stripe portal error occurred");
     return NextResponse.json(
       { error: { code: "SERVER_ERROR", message: "Something went wrong." } },
-      { status: 500 },
+      { status: 500, headers: { "Cache-Control": "no-store" } },
     );
   }
 }
