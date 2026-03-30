@@ -121,7 +121,7 @@ export default function NewSessionPage() {
               onClick={() => setShowUpgrade(true)}
               className="inline-block px-8 py-4 bg-soft-black text-white rounded-2xl font-black transition-transform active:scale-95 hover:bg-soft-black/90"
             >
-              Upgrade to Pro
+              learn about Pro
             </button>
             <UpgradeModal isOpen={showUpgrade} onCloseAction={() => setShowUpgrade(false)} />
           </div>

@@ -72,7 +72,7 @@ export const create = mutation({
 
       if (completedDeepSessions.length >= 10) {
         throw new Error(
-          "You've completed your 10 deep sessions this month. Upgrade to Pro for unlimited deep sessions.",
+          "You've completed your 10 deep sessions this month. Quick Distills are still unlimited, or wait until next month.",
         );
       }
     }

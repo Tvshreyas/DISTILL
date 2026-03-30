@@ -18,19 +18,8 @@ import {
 } from "lucide-react";
 import posthog from "posthog-js";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
+import UpgradeModal from "@/components/UpgradeModal";
 
-const TIMEZONES = [
-  "UTC",
-  "America/New_York",
-  "America/Chicago",
-  "America/Denver",
-  "America/Los_Angeles",
-  "Europe/London",
-  "Europe/Paris",
-  "Asia/Kolkata",
-  "Asia/Tokyo",
-  "Australia/Sydney",
-];
 
 const DELETE_CONFIRMATION_PHRASE = "DELETE MY ACCOUNT";
 
@@ -47,6 +36,7 @@ export default function SettingsPage() {
   const [deleteInput, setDeleteInput] = useState("");
   const [isFreezing, setIsFreezing] = useState(false);
   const [updatingPref, setUpdatingPref] = useState<string | null>(null);
+  const [showUpgrade, setShowUpgrade] = useState(false);
 
   if (profile === undefined)
     return (
@@ -59,14 +49,6 @@ export default function SettingsPage() {
       <div className="p-8 text-muted-text text-center">Profile not found.</div>
     );
 
-  async function handleTimezoneChange(tz: string) {
-    try {
-      await updateProfile({ timezone: tz });
-      toast.success("Timezone updated.");
-    } catch {
-      toast.error("Failed to update timezone.");
-    }
-  }
 
   async function handleManageSubscription() {
     setIsPortalLoading(true);
@@ -172,21 +154,30 @@ export default function SettingsPage() {
             <div
               className={`px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest ${profile.plan === "pro" ? "bg-sage text-sage-dark" : "bg-peach/20 text-peach-dark"}`}
             >
-              {profile.plan === "pro" ? "Active" : "Standard"}
+              {profile.plan === "pro" ? "Active" : "Beta"}
             </div>
           </div>
 
-          <MagnetizeButton
-            onClick={handleManageSubscription}
-            disabled={isPortalLoading}
-            className="w-full py-4 bg-soft-black text-white rounded-2xl font-black hover:bg-soft-black/90 transition-all"
-          >
-            {isPortalLoading
-              ? "opening portal..."
-              : profile.plan === "pro"
-                ? "Manage Subscription"
-                : "Upgrade to Pro"}
-          </MagnetizeButton>
+          {profile.plan === "pro" ? (
+            <MagnetizeButton
+              onClick={handleManageSubscription}
+              disabled={isPortalLoading}
+              className="w-full py-4 bg-soft-black text-white rounded-2xl font-black hover:bg-soft-black/90 transition-all"
+            >
+              {isPortalLoading ? "opening portal..." : "Manage Subscription"}
+            </MagnetizeButton>
+          ) : (
+            <MagnetizeButton
+              onClick={() => setShowUpgrade(true)}
+              className="w-full py-4 bg-soft-black text-white rounded-2xl font-black hover:bg-peach hover:text-soft-black transition-all"
+            >
+              learn about Pro
+            </MagnetizeButton>
+          )}
+          <UpgradeModal
+            isOpen={showUpgrade}
+            onCloseAction={() => setShowUpgrade(false)}
+          />
         </div>
       </section>
 
@@ -235,25 +226,18 @@ export default function SettingsPage() {
           <Globe className="w-3 h-3" /> Preferences
         </h2>
         <div className="p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black">
-          <label className="text-xs font-black uppercase text-muted-text tracking-widest block mb-4">
+          <p className="text-xs font-black uppercase text-muted-text tracking-widest mb-2">
             Timezone
-            <div className="relative">
-              <select
-                value={profile.timezone}
-                onChange={(e) => handleTimezoneChange(e.target.value)}
-                className="w-full p-4 rounded-xl bg-sage/5 border-2 border-soft-black font-bold text-soft-black appearance-none outline-none focus:bg-sage/10 transition-all"
-              >
-                {TIMEZONES.map((tz) => (
-                  <option key={tz} value={tz}>
-                    {tz.replace(/_/g, " ")}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <Globe className="w-4 h-4 text-soft-black/40" />
-              </div>
-            </div>
-          </label>
+          </p>
+          <div className="flex items-center gap-3">
+            <Globe className="w-4 h-4 text-soft-black/40" />
+            <span className="font-bold text-soft-black">
+              {profile.timezone.replace(/_/g, " ")}
+            </span>
+          </div>
+          <p className="text-xs text-muted-text mt-2">
+            Auto-detected from your browser.
+          </p>
         </div>
       </section>
 

@@ -90,7 +90,7 @@ export const create = mutation({
 
       if (completedSessions.length >= FREE_TIER_LIMIT) {
         throw new Error(
-          `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or upgrade to Pro for unlimited Deep Sessions.`,
+          `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or wait until next month.`,
         );
       }
     }
@@ -142,7 +142,7 @@ export const create = mutation({
         if (effectiveCount > FREE_TIER_LIMIT) {
           await ctx.db.delete(reflectionId);
           throw new Error(
-            `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or upgrade to Pro for unlimited Deep Sessions.`,
+            `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or wait until next month.`,
           );
         }
       }

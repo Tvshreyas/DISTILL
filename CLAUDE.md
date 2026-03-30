@@ -167,7 +167,7 @@ All user strings go through `sanitizeContent()` (strips all HTML via DOMPurify).
 
 ### Free Tier Enforcement
 
-3 Deep Sessions/month for free users (Quick Distills are unlimited). Enforced **server-side** in `reflections.create` mutation by counting completed deep sessions. Profile tracks `reflectionCountThisMonth`. Soft nudge at 2/3 (`FREE_TIER_NUDGE`), hard block at 3/3 (`FREE_TIER_LIMIT`). Session start page and dashboard show appropriate UI banners.
+10 Deep Sessions/month for free users (Quick Distills are unlimited). Enforced **server-side** in `reflections.create` mutation by counting completed deep sessions. Profile tracks `reflectionCountThisMonth`. Soft nudge at 8/10 (`FREE_TIER_NUDGE`), hard block at 10/10 (`FREE_TIER_LIMIT`). Session start page and dashboard show appropriate UI banners.
 
 ---
 

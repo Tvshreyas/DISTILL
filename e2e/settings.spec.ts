@@ -14,14 +14,10 @@ test.describe("Settings", () => {
     await expect(page.locator("text=Current Plan")).toBeVisible();
   });
 
-  test("has timezone dropdown", async ({ page }) => {
+  test("shows auto-detected timezone", async ({ page }) => {
     await page.goto("/dashboard/settings");
     await page.waitForTimeout(2000);
-    const select = page.locator("select").first();
-    if (await select.isVisible()) {
-      const options = await select.locator("option").count();
-      expect(options).toBeGreaterThan(0);
-    }
+    await expect(page.locator("text=Auto-detected from your browser")).toBeVisible();
   });
 
   test("delete account requires confirmation phrase", async ({ page }) => {

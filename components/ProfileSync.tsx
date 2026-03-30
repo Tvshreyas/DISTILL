@@ -64,5 +64,20 @@ export default function ProfileSync() {
     }
   }, [isLoaded, isSignedIn, userId, profile]);
 
+  // Auto-sync timezone from browser on every load
+  const updateProfile = useMutation(api.profiles.update);
+  useEffect(() => {
+    if (isLoaded && isSignedIn && profile) {
+      try {
+        const browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (browserTz && browserTz !== profile.timezone) {
+          updateProfile({ timezone: browserTz });
+        }
+      } catch {
+        // Intl not available — keep existing timezone
+      }
+    }
+  }, [isLoaded, isSignedIn, profile, updateProfile]);
+
   return null;
 }
