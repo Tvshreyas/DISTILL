@@ -627,6 +627,133 @@ export const bookReflections: BookReflection[] = [
     relatedBooks: ["start-with-why", "zero-to-one", "principles"],
     relatedGuides: ["how-to-reflect-on-books"],
   },
+  {
+    slug: "principles",
+    title: "Principles",
+    author: "Ray Dalio",
+    description:
+      "Reflect on Principles by Ray Dalio. Prompts to examine your own decision-making systems, radical transparency, and whether you have principles or just preferences.",
+    intro:
+      "Principles is essentially Ray Dalio's operating manual for life and work, distilled from running Bridgewater Associates, the world's largest hedge fund. His core argument is that most people operate reactively — making decisions based on feelings and circumstances — when they could operate systematically by developing explicit principles that guide recurring decisions.\n\nThe book's most challenging concept is 'radical transparency' — the practice of sharing all feedback openly, recording all meetings, and never talking about someone behind their back. At Bridgewater, this creates a culture where ego is subordinated to truth-seeking. Most readers find this appealing in theory and terrifying in practice.\n\nThe honest reflection Principles demands is whether you actually have principles — articulated, tested rules for how you make decisions — or whether you just have habits and preferences that you've never examined. Dalio argues that writing down your principles and stress-testing them against reality is the single most important thing you can do for your decision-making.",
+    prompts: [
+      "Dalio says most people have no explicit principles — they react situationally. Can you write down three principles that actually guide your decisions, not aspirations you wish guided them?",
+      "Radical transparency means sharing all feedback openly. Think of feedback you've withheld from someone recently. What stopped you — concern for their feelings, or concern for your own comfort?",
+      "Dalio's 'pain + reflection = progress' formula requires sitting with failure rather than moving past it quickly. What recent failure have you moved past without genuinely reflecting on what it taught you?",
+      "The book argues for 'believability-weighted decision making' — giving more weight to people with track records in a specific area. Whose opinion do you overweight because of their status rather than their expertise?",
+      "Dalio built a system where his own decisions are challenged by junior employees. Where in your life would you benefit from giving someone permission to challenge your thinking?",
+    ],
+    commonMistakes: [
+      "Admiring Dalio's system without acknowledging that radical transparency works within a specific power structure and culture that most organizations cannot replicate.",
+      "Collecting principles as intellectual exercises without actually applying them to real decisions — the value is in use, not in having a list.",
+      "Conflating Dalio's success at Bridgewater with the universal validity of his principles, when some of his approaches have been controversial even within his own organization.",
+    ],
+    relatedBooks: [
+      "good-to-great",
+      "the-7-habits-of-highly-effective-people",
+      "thinking-in-bets",
+    ],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "the-7-habits-of-highly-effective-people",
+    title: "The 7 Habits of Highly Effective People",
+    author: "Stephen Covey",
+    description:
+      "Reflect on The 7 Habits by Stephen Covey. Prompts to examine your circle of influence, whether you're living by principles or reacting to urgency, and what 'beginning with the end in mind' means for you.",
+    intro:
+      "The 7 Habits was published in 1989 and has sold over 40 million copies, making it one of the best-selling nonfiction books of all time. Its longevity comes from Covey's focus on character ethics over personality ethics — the idea that lasting effectiveness comes from principles like integrity, fairness, and service, not from techniques or shortcuts.\n\nThe book's most practical framework is the Eisenhower Matrix that Covey popularized: urgent vs. important. Covey argues that most people spend their lives in Quadrant I (urgent and important — crises) and Quadrant III (urgent but not important — interruptions), while neglecting Quadrant II (important but not urgent — planning, relationships, prevention). The shift to Quadrant II thinking is where real change happens.\n\nCovey's Habit 5 — 'Seek first to understand, then to be understood' — is the one most readers agree with and fewest actually practice. It requires listening without preparing your response, which is extraordinarily difficult in practice. Reflecting on this gap between agreement and behavior is the book's core value.",
+    prompts: [
+      "Covey's Circle of Influence vs. Circle of Concern: list what's worrying you right now. How many of those things can you actually influence? What would change if you focused only on those?",
+      "Habit 2 is 'Begin with the End in Mind.' If you wrote your own eulogy today, what would you want said — and how far is your current daily life from that vision?",
+      "Map your last week onto Covey's four quadrants. What percentage was Quadrant II (important but not urgent)? What would need to change to increase that?",
+      "Habit 5 says seek first to understand. In your most recent disagreement, did you genuinely try to understand the other person's position before defending your own?",
+      "Covey distinguishes between the personality ethic (techniques and image) and the character ethic (principles and integrity). Which one does your daily behavior reflect more honestly?",
+    ],
+    commonMistakes: [
+      "Treating the 7 habits as a to-do list rather than a paradigm shift — Covey is arguing for a fundamental change in how you see effectiveness, not adding seven tasks.",
+      "Spending time on the urgent-important matrix without addressing the underlying mindset that keeps pulling you toward urgency and reactivity.",
+      "Agreeing with 'seek first to understand' while continuing to listen only to formulate your response — the gap between knowing and doing this habit is enormous.",
+    ],
+    relatedBooks: ["principles", "essentialism", "atomic-habits"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "rich-dad-poor-dad",
+    title: "Rich Dad Poor Dad",
+    author: "Robert Kiyosaki",
+    description:
+      "Reflect on Rich Dad Poor Dad by Robert Kiyosaki. Prompts to examine your money beliefs, the asset vs. liability distinction, and where the book's advice needs critical evaluation.",
+    intro:
+      "Rich Dad Poor Dad is one of the best-selling personal finance books of all time, and also one of the most criticized. Kiyosaki's central framework — the distinction between assets (things that put money in your pocket) and liabilities (things that take money out) — is genuinely useful. His argument that the education system teaches people to work for money rather than making money work for them resonates because it names a real gap.\n\nHowever, the book is light on specifics and heavy on mindset. Kiyosaki promotes real estate and business ownership as paths to wealth but provides little concrete guidance on execution. Many financial experts have criticized the book for oversimplifying financial concepts and for Kiyosaki's dismissal of traditional education and employment.\n\nThe most valuable reflection on Rich Dad Poor Dad isn't about whether Kiyosaki is right. It's about examining the money scripts you inherited from your own family — the unspoken rules about earning, saving, spending, and investing that shape your financial behavior without your conscious awareness.",
+    prompts: [
+      "Kiyosaki's framework: assets put money in your pocket, liabilities take it out. List your major financial commitments. By this definition, how many are assets and how many are liabilities?",
+      "The book contrasts two fathers' money philosophies. Whose money philosophy did you inherit — and has it served you well or limited you?",
+      "Kiyosaki argues that fear of losing money keeps people in jobs they don't want. Where in your financial life are you choosing security over growth — and is that choice conscious or fear-driven?",
+      "The book promotes financial literacy as more important than academic education. What financial concept do you still not understand well enough to make confident decisions about?",
+      "Kiyosaki's advice is criticized for being vague on execution. After reading this book, what specific financial action could you take in the next 30 days — not a mindset shift, but a concrete step?",
+    ],
+    commonMistakes: [
+      "Accepting the asset/liability framework uncritically — a home can be both, and the book oversimplifies this distinction in ways that can lead to poor financial decisions.",
+      "Using the book's anti-employment message to justify risky financial moves without the safety net or expertise to execute them.",
+      "Treating the 'Rich Dad' as a proven financial authority when the character's actual existence has been questioned and the book's specific investment advice is contested.",
+    ],
+    relatedBooks: [
+      "the-psychology-of-money",
+      "think-and-grow-rich",
+      "the-4-hour-workweek",
+    ],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "think-and-grow-rich",
+    title: "Think and Grow Rich",
+    author: "Napoleon Hill",
+    description:
+      "Reflect on Think and Grow Rich by Napoleon Hill. Prompts to separate the useful mental frameworks from the magical thinking, and examine how desire and belief actually translate to action.",
+    intro:
+      "Think and Grow Rich, published in 1937, is based on Hill's study of 500 successful Americans including Andrew Carnegie, Henry Ford, and Thomas Edison. The book's 13 principles — desire, faith, autosuggestion, specialized knowledge, imagination, organized planning, decision, persistence, the Master Mind, sex transmutation, the subconscious mind, the brain, and the sixth sense — range from practical to mystical.\n\nThe book's core insight — that a burning desire backed by a definite plan and persistent action produces results — is essentially a pre-scientific description of goal-setting theory. Modern psychology has validated parts of this: clear goals, visualization, and persistence do correlate with achievement. But Hill wraps these insights in language that can sound like magical thinking.\n\nThe honest reflection this book demands is separating what's genuinely useful (clarity of purpose, organized planning, accountability through a Master Mind group) from what's wishful thinking (the idea that thoughts alone attract wealth). That discernment is the real exercise.",
+    prompts: [
+      "Hill's first principle is 'burning desire' — not a wish but an obsession backed by a plan. What is your most important goal right now, and is it a genuine burning desire or a casual preference?",
+      "The Master Mind principle says you should surround yourself with people who complement your weaknesses. Who are the 3-5 people you consult for major decisions, and do they actually challenge you or just agree with you?",
+      "Hill emphasizes 'definiteness of purpose' — knowing exactly what you want. Can you state your primary goal with enough specificity that you'd know whether you achieved it?",
+      "The book was written during the Great Depression. How does that context change your reading of its optimism — is it naive, or is it especially impressive given the circumstances?",
+      "Hill's principles blur the line between mental discipline and magical thinking. Which of his 13 principles do you find genuinely useful, and which require more faith than evidence?",
+    ],
+    commonMistakes: [
+      "Taking the 'thoughts become things' message literally rather than understanding it as a pre-scientific description of how clarity and commitment drive action.",
+      "Ignoring the survivorship bias in Hill's research — he studied successful people and reverse-engineered principles, without studying people who followed the same principles and failed.",
+      "Dismissing the entire book because of its mystical elements while missing the genuinely practical frameworks around goal clarity, planning, and accountability.",
+    ],
+    relatedBooks: [
+      "rich-dad-poor-dad",
+      "the-psychology-of-money",
+      "atomic-habits",
+    ],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "the-subtle-art-of-not-giving-a-fck",
+    title: "The Subtle Art of Not Giving a F*ck",
+    author: "Mark Manson",
+    description:
+      "Reflect on The Subtle Art by Mark Manson. Prompts to examine what you're choosing to care about, why positive thinking can backfire, and what problems you're willing to have.",
+    intro:
+      "The Subtle Art's core argument is frequently misread as 'stop caring about things.' Manson's actual point is the opposite: you have a limited number of things you can care about, so you'd better choose them deliberately rather than giving your attention to everything by default. The book is about values selection, not apathy.\n\nManson's most useful framework is the 'problems' reframe. He argues that happiness is not the absence of problems but the presence of problems you enjoy solving. A fit person has the problem of sore muscles and early mornings. A successful entrepreneur has the problem of employees and cash flow. The question isn't 'how do I avoid problems?' but 'what problems am I willing to have?'\n\nThe book also challenges the self-help industry's emphasis on positive thinking, arguing that the constant pursuit of positivity is itself a negative experience — what Manson calls the 'feedback loop from hell.' You feel bad, then you feel bad about feeling bad. Breaking that loop requires accepting negative emotions as normal rather than problems to fix.",
+    prompts: [
+      "Manson says the question isn't what you want in life but what pain you're willing to endure. What problem or struggle are you willing to accept as the price for something you want?",
+      "The book argues you're always choosing what to care about, even when you think you're not. What are you currently giving your attention to that doesn't deserve it?",
+      "Manson's 'feedback loop from hell' describes feeling bad about feeling bad. Where in your life are you stuck in this loop — trying to fix a negative emotion rather than accepting it?",
+      "The book claims that 'not giving a f*ck' doesn't mean being indifferent — it means being selective. If you could only care deeply about three things, what would they be?",
+      "Manson argues that entitlement comes in two forms: believing you deserve to be special, and believing you deserve to be a victim. Which form do you occasionally fall into?",
+    ],
+    commonMistakes: [
+      "Reading the book as permission to be apathetic or nihilistic when Manson explicitly argues for caring deeply about fewer, better-chosen things.",
+      "Enjoying the irreverent tone without engaging with the underlying philosophy, which draws heavily from Stoicism and existentialism.",
+      "Using 'I don't give a f*ck' as an excuse to avoid growth or difficult conversations rather than as a tool for better value selection.",
+    ],
+    relatedBooks: ["mans-search-for-meaning", "meditations", "cant-hurt-me"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
 ];
 
 export function getBookReflection(slug: string): BookReflection | undefined {
