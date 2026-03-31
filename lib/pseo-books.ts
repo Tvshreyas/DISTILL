@@ -754,6 +754,102 @@ export const bookReflections: BookReflection[] = [
     relatedBooks: ["mans-search-for-meaning", "meditations", "cant-hurt-me"],
     relatedGuides: ["how-to-reflect-on-books"],
   },
+  {
+    slug: "cant-hurt-me",
+    title: "Can't Hurt Me",
+    author: "David Goggins",
+    description:
+      "Reflect on Can't Hurt Me by David Goggins. Prompts to examine your mental toughness, the 40% rule, and where self-imposed suffering is useful versus destructive.",
+    intro:
+      "Can't Hurt Me is a memoir and self-improvement book built around one idea: most people only access 40% of their capability, and the barrier is mental, not physical. Goggins's story — from abused child to Navy SEAL to ultramarathon runner — is extreme, and that extremity is both the book's power and its danger.\n\nThe '40% rule' is useful as a heuristic. When you feel done, you probably have more in the tank. But Goggins doesn't spend much time on when pushing through is counterproductive — when rest, recovery, or a strategic pivot would serve you better. The book treats all limits as mental, when some are genuinely physical or structural.\n\nThe honest reflection this book demands is about your relationship with discomfort. Not whether you can endure more — almost everyone can — but whether your current avoidance of discomfort is protecting you or limiting you. That's a question worth answering carefully.",
+    prompts: [
+      "Goggins's 40% rule says when you think you're done, you're only at 40%. Think of a recent time you quit something hard. How much was left in the tank honestly?",
+      "The 'accountability mirror' asks you to face uncomfortable truths about yourself. What is one thing you're avoiding looking at honestly right now?",
+      "Goggins turned childhood trauma into fuel. Not everyone should or can do this. What difficult experience from your past have you processed productively, and what still needs processing?",
+      "The book treats all quitting as weakness. But sometimes quitting is strategic. Think of something you're currently enduring — is pushing through serving your goals, or is it stubbornness?",
+      "Goggins's approach works through self-imposed suffering. What's the minimum amount of productive discomfort you could add to your week that would actually move you forward?",
+    ],
+    commonMistakes: [
+      "Adopting Goggins's extreme approach without his extreme context — what works for a Navy SEAL candidate may cause burnout or injury for someone with different circumstances.",
+      "Treating the 40% rule as literal rather than motivational — ignoring genuine physical limits, mental health needs, or the value of strategic rest.",
+      "Using the book to justify grinding without direction, when the most important question isn't 'can I suffer more?' but 'am I suffering for the right thing?'",
+    ],
+    relatedBooks: [
+      "extreme-ownership",
+      "grit",
+      "the-subtle-art-of-not-giving-a-fck",
+    ],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "extreme-ownership",
+    title: "Extreme Ownership",
+    author: "Jocko Willink",
+    description:
+      "Reflect on Extreme Ownership by Jocko Willink. Prompts to examine where you're blaming others, the balance between ownership and control, and how military leadership translates to civilian life.",
+    intro:
+      "Extreme Ownership's thesis is in the title: leaders must own everything in their world, including the failures of their team. Willink and co-author Leif Babin draw from their experience as Navy SEAL officers in Ramadi, Iraq, translating combat leadership principles into business and personal life.\n\nThe book's strength is its simplicity. When something goes wrong, the leader's first question should be 'what could I have done differently?' rather than 'whose fault is this?' This reframe is genuinely powerful because it shifts focus from blame (which changes nothing) to agency (which might).\n\nThe limitation worth reflecting on is where extreme ownership becomes excessive self-blame. Not everything is within your control. Willink acknowledges this in theory but the book's relentless emphasis on ownership can lead readers to take responsibility for genuinely external problems — other people's choices, market forces, bad luck. The skill is knowing the difference.",
+    prompts: [
+      "Think of a recent failure or setback at work. Before blaming anyone else, ask: what could you specifically have done differently to prevent or mitigate it?",
+      "Willink says there are no bad teams, only bad leaders. If your team or family is underperforming in some area, what leadership failure on your part might be contributing?",
+      "The book argues that ego is the enemy of good leadership. Where is your ego currently preventing you from hearing feedback, admitting a mistake, or changing course?",
+      "Extreme ownership has limits. What in your current situation is genuinely outside your control — and are you wasting energy trying to own it instead of adapting to it?",
+      "Willink's 'Prioritize and Execute' framework says leaders must identify the single most important problem and focus there. What is your single most important problem right now, and are you actually focused on it?",
+    ],
+    commonMistakes: [
+      "Taking extreme ownership so far that it becomes self-blame for things genuinely outside your control, which leads to burnout rather than effectiveness.",
+      "Applying military hierarchy lessons directly to civilian contexts without accounting for the fundamental differences in authority, stakes, and team composition.",
+      "Using 'extreme ownership' as a leadership style that inadvertently disempowers team members by taking over their responsibilities rather than developing their capabilities.",
+    ],
+    relatedBooks: ["cant-hurt-me", "good-to-great", "principles"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "the-4-hour-workweek",
+    title: "The 4-Hour Workweek",
+    author: "Tim Ferriss",
+    description:
+      "Reflect on The 4-Hour Workweek by Tim Ferriss. Prompts to examine your relationship with work, the concept of lifestyle design, and where the book's advice is liberating versus unrealistic.",
+    intro:
+      "The 4-Hour Workweek is less about working four hours a week and more about questioning the default life script: work 40+ years, retire, then enjoy life. Ferriss proposes 'lifestyle design' — deliberately constructing the life you want now rather than deferring it to retirement. The DEAL framework (Definition, Elimination, Automation, Liberation) provides a structure for this.\n\nThe book's most genuinely useful section is on elimination — the 80/20 analysis of which 20% of your activities produce 80% of your results. Most people, when they honestly do this analysis, discover they spend the majority of their time on low-impact activities.\n\nThe honest reflection this book demands is about privilege and context. Ferriss's strategies — outsourcing, remote work, passive income — are more accessible to some people than others. The underlying question, though, is universal: are you designing your life deliberately, or are you following a script you never chose?",
+    prompts: [
+      "Ferriss's 80/20 analysis: which 20% of your work activities produce 80% of your meaningful results? What would happen if you eliminated or reduced the other 80%?",
+      "The book asks: what would you do if you could never retire? If work-until-65-then-stop wasn't the plan, how would you restructure your current life?",
+      "Ferriss distinguishes absolute income (total dollars) from relative income (dollars per hour of free time). By the relative measure, how wealthy are you actually?",
+      "The 'fear-setting' exercise asks you to define the worst-case scenario of a change you want to make. What change are you avoiding, and what would actually happen if it went wrong?",
+      "Ferriss's strategies require a level of professional flexibility many people don't have. Which of his ideas are genuinely applicable to your situation, and which require circumstances you don't currently have?",
+    ],
+    commonMistakes: [
+      "Taking the title literally and expecting to work four hours a week — Ferriss himself works significantly more than that on projects he cares about.",
+      "Adopting the outsourcing and automation strategies without first doing the elimination step, which is where the real value lies.",
+      "Ignoring the privilege embedded in the book's advice — location independence, passive income, and task outsourcing require startup capital, specific skills, and market access that aren't universally available.",
+    ],
+    relatedBooks: ["essentialism", "rich-dad-poor-dad", "deep-work"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "influence",
+    title: "Influence",
+    author: "Robert Cialdini",
+    description:
+      "Reflect on Influence by Robert Cialdini. Prompts to recognize the six principles of persuasion in your own life and examine when you're being influenced without realizing it.",
+    intro:
+      "Influence identifies six universal principles of persuasion: reciprocity, commitment/consistency, social proof, authority, liking, and scarcity. Cialdini's research shows these principles operate automatically — they're mental shortcuts that usually serve us well but can be exploited by skilled persuaders.\n\nThe book's real value isn't in learning to persuade others — it's in learning to recognize when you're being persuaded. Every advertising campaign, sales pitch, and political message uses some combination of these six principles. Once you can identify them, you can make more deliberate choices about when to comply and when to resist.\n\nThe uncomfortable reflection Influence prompts is about your own susceptibility. Most readers assume they're less influenced than average. Cialdini's point is that these principles work on everyone, including people who study them. The question isn't whether you're influenced — it's where and by whom.",
+    prompts: [
+      "Cialdini's reciprocity principle says we feel obligated to return favors. Where has someone's generosity toward you created a sense of obligation that influenced a decision you wouldn't otherwise have made?",
+      "The commitment/consistency principle says we'll act to be consistent with prior commitments. What commitment have you made — publicly or privately — that you continue to honor even though your feelings have changed?",
+      "Social proof says we look to others' behavior when uncertain. Think of a recent purchase or decision heavily influenced by reviews, testimonials, or what friends were doing. Was that influence justified?",
+      "Scarcity makes things seem more valuable. When did you last feel urgency to act because something was 'limited time' or 'almost sold out'? Was the scarcity real?",
+      "Which of the six principles are you most susceptible to — and can you identify a specific example from the last month where it affected your behavior?",
+    ],
+    commonMistakes: [
+      "Learning the six principles to manipulate others rather than to defend against manipulation — Cialdini wrote the book as a defensive guide, not an offensive one.",
+      "Believing that knowing about these principles makes you immune to them — Cialdini explicitly says awareness helps but doesn't eliminate susceptibility.",
+      "Focusing only on marketing and sales applications while missing how these principles operate in personal relationships, politics, and everyday social interactions.",
+    ],
+    relatedBooks: ["predictably-irrational", "nudge", "48-laws-of-power"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
 ];
 
 export function getBookReflection(slug: string): BookReflection | undefined {
