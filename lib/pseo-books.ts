@@ -508,6 +508,125 @@ export const bookReflections: BookReflection[] = [
     relatedBooks: ["atomic-habits", "influence", "nudge"],
     relatedGuides: ["how-to-reflect-on-books"],
   },
+  {
+    slug: "never-split-the-difference",
+    title: "Never Split the Difference",
+    author: "Chris Voss",
+    description:
+      "Reflect on Never Split the Difference by Chris Voss. Prompts to examine your negotiation habits, the role of emotions in deal-making, and why compromise is often the worst outcome.",
+    intro:
+      "Chris Voss spent 24 years as an FBI hostage negotiator, and his core claim is counterintuitive: the best negotiations are driven by emotional intelligence, not logic. His techniques — tactical empathy, mirroring, labeling, calibrated questions — are designed to make the other person feel heard, which paradoxically gives you more influence over the outcome.\n\nThe book's most provocative idea is in the title: never split the difference. Voss argues that compromise — meeting in the middle — usually means both parties get an outcome neither actually wants. The alternative is creative problem-solving that finds solutions where both sides get what they truly need, which requires understanding what they truly need rather than accepting their stated positions.\n\nMost readers treat this as a business negotiation book, but Voss's techniques apply to any conversation where outcomes matter — salary discussions, family disagreements, even deciding where to eat dinner. The reflection question is: how often do you default to compromise when a better solution exists?",
+    prompts: [
+      "Voss says 'no' is the start of a negotiation, not the end. Think of a recent situation where someone said no to you. Did you treat it as final, or did you explore what was behind the no?",
+      "Tactical empathy means understanding the other person's feelings without necessarily agreeing. In your most important current relationship (work or personal), what is the other person feeling that you haven't acknowledged?",
+      "Voss argues that 'how am I supposed to do that?' is one of the most powerful calibrated questions. Where in your life could asking this — genuinely, not sarcastically — change a dynamic?",
+      "The book claims that people who aim for compromise get worse outcomes than those who aim for creative solutions. Think of a recent compromise you made. Was there a better option you didn't explore?",
+      "Mirroring — repeating the last 1-3 words someone said — is Voss's simplest technique. Try it in your next conversation. What did you learn that you would have missed by responding with your own thoughts?",
+    ],
+    commonMistakes: [
+      "Treating the techniques as manipulation tactics rather than communication tools — Voss's methods work because they create genuine understanding, not because they trick people.",
+      "Focusing on the hostage negotiation stories while skipping the structured practice of techniques like labeling, mirroring, and calibrated questions.",
+      "Assuming these techniques only apply to formal negotiations when they're equally valuable in everyday conversations about scheduling, budgets, and relationship boundaries.",
+    ],
+    relatedBooks: [
+      "influence",
+      "how-to-win-friends-and-influence-people",
+      "48-laws-of-power",
+    ],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "start-with-why",
+    title: "Start with Why",
+    author: "Simon Sinek",
+    description:
+      "Reflect on Start with Why by Simon Sinek. Prompts to discover your own 'why,' examine whether your daily work aligns with it, and separate purpose from marketing.",
+    intro:
+      "Start with Why introduces the Golden Circle: Why (purpose) → How (process) → What (product). Sinek argues that inspiring leaders and organizations communicate from the inside out — starting with why they exist, not what they sell. Apple, Martin Luther King Jr., and the Wright Brothers are his primary examples.\n\nThe book's most useful insight is also its most uncomfortable one: most people and organizations cannot articulate their 'why.' They know what they do and how they do it, but the underlying purpose is either absent, vague, or just marketing language pasted onto existing operations. Sinek's framework only works if the 'why' is genuine.\n\nThe honest reflection Start with Why demands is whether you actually have a 'why' or whether you've been operating on autopilot — doing things because they're what you've always done, or because they pay well, or because someone told you to. The book doesn't judge either answer. But it insists you know which one is true.",
+    prompts: [
+      "Sinek's Golden Circle asks: Why do you do what you do — not the money, but the purpose? Can you state yours in one sentence without using jargon or aspirational language?",
+      "The book argues that people don't buy what you do, they buy why you do it. Think of a brand you're loyal to. Is it their 'why' or their 'what' that keeps you coming back?",
+      "Sinek distinguishes between manipulation (promotions, fear, peer pressure) and inspiration (shared purpose). In your work, which one do you rely on more to motivate others?",
+      "The 'why' must come before the 'how' and 'what.' Think about your current project or career path. Did you start with why, or did you figure out the 'what' first and retrofit a purpose?",
+      "Sinek warns that 'why' can get fuzzy as organizations grow — he calls this 'the split.' Has your original motivation for your work or a project faded? What replaced it?",
+    ],
+    commonMistakes: [
+      "Treating 'find your why' as a branding exercise rather than genuine self-examination — a 'why' that sounds good but isn't true is worse than having no stated purpose.",
+      "Assuming that Apple's success is primarily because of its 'why' while ignoring the role of design excellence, supply chain mastery, and market timing.",
+      "Using the framework to judge others ('they don't have a why') instead of turning it inward to examine your own lack of clarity.",
+    ],
+    relatedBooks: ["zero-to-one", "good-to-great", "the-lean-startup"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "zero-to-one",
+    title: "Zero to One",
+    author: "Peter Thiel",
+    description:
+      "Reflect on Zero to One by Peter Thiel. Prompts to challenge your assumptions about competition, innovation, and what it means to build something genuinely new.",
+    intro:
+      "Zero to One argues that the most valuable businesses create something entirely new (going from 0 to 1) rather than copying what exists (going from 1 to n). Thiel's contrarian framework challenges the default assumption that competition is healthy — he argues that competition destroys profits and that monopoly, properly understood, is the goal.\n\nThe book's most famous interview question — 'What important truth do very few people agree with you on?' — is a filter for original thinking. Most people's answers are either not controversial or not true. The exercise of genuinely answering it reveals how much of your thinking is borrowed.\n\nThiel's framework is deliberately provocative. He argues against lean startup methodology, against competition, against incrementalism. Whether you agree or not, the book forces you to examine assumptions about business that most people never question. The reflection value is in identifying which of Thiel's contrarian positions actually challenge your worldview and which ones you dismiss too quickly.",
+    prompts: [
+      "Thiel's interview question: What important truth do very few people agree with you on? Answer this honestly — not with something safely contrarian, but with something that would genuinely surprise people.",
+      "The book argues that competition is for losers and that monopoly is the goal. Where in your career or business are you competing on someone else's terms instead of creating your own category?",
+      "Thiel says every great company solves a unique problem. What problem are you uniquely positioned to solve that no one else is addressing?",
+      "The book distinguishes between definite optimism (planning a specific better future) and indefinite optimism (assuming things will get better without a plan). Which describes your approach to the next five years?",
+      "Thiel argues against the lean startup approach of iterating toward product-market fit, favoring bold vision instead. When has cautious iteration served you well, and when has it held you back from a bigger move?",
+    ],
+    commonMistakes: [
+      "Adopting Thiel's contrarianism as a personality trait rather than a thinking tool — being contrarian for its own sake is just as conformist as following the crowd.",
+      "Taking the anti-competition argument literally without understanding that Thiel is talking about creating new categories, not avoiding hard work.",
+      "Ignoring the survivorship bias in Thiel's examples — for every PayPal or Facebook, thousands of 'zero to one' attempts failed completely.",
+    ],
+    relatedBooks: ["the-lean-startup", "start-with-why", "good-to-great"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "the-lean-startup",
+    title: "The Lean Startup",
+    author: "Eric Ries",
+    description:
+      "Reflect on The Lean Startup by Eric Ries. Prompts to evaluate your own build-measure-learn loops, challenge your assumptions about what customers want, and avoid vanity metrics.",
+    intro:
+      "The Lean Startup introduced the Build-Measure-Learn loop to mainstream entrepreneurship: build a minimum viable product, measure how customers respond, learn from the data, and iterate. The framework sounds simple, but most people who claim to follow it skip the hardest step — genuinely measuring whether their assumptions are correct rather than seeking confirmation that they're right.\n\nRies's most underappreciated concept is the 'pivot' — a structured course correction based on validated learning. A pivot is not failure, and it's not random change. It's a disciplined response to evidence that your current approach isn't working. Most startups either pivot too late (after running out of money) or too early (before gathering enough data).\n\nThe book also introduces the distinction between vanity metrics (numbers that feel good but don't indicate real progress) and actionable metrics (numbers that inform decisions). This distinction applies far beyond startups — to personal projects, career decisions, and any situation where you're measuring your own progress.",
+    prompts: [
+      "Ries says every startup is an experiment testing a hypothesis. What hypothesis is your current project or career move testing — and have you articulated it clearly enough to know if it's been validated or invalidated?",
+      "The MVP (Minimum Viable Product) is meant to test assumptions with the least effort. Where in your work are you building more than necessary before testing whether anyone actually wants it?",
+      "Ries distinguishes vanity metrics from actionable metrics. What numbers are you tracking that make you feel good but don't actually tell you whether you're making progress?",
+      "The concept of a 'pivot' means changing strategy while keeping the same vision. Is there something you should pivot on right now — a method that isn't working even though the goal is still right?",
+      "Ries argues that 'learning' without measurable outcomes is just a euphemism for failure. What have you recently 'learned from' that you should be more honest about — was it genuine learning or just a polite way to describe something that didn't work?",
+    ],
+    commonMistakes: [
+      "Treating the MVP as a crappy first version rather than a strategic experiment designed to test a specific assumption.",
+      "Going through the Build-Measure-Learn loop without actually changing behavior based on what you measure — turning it into Build-Measure-Ignore.",
+      "Using 'pivot' as a euphemism for giving up on a failing idea without the structured analysis Ries describes.",
+    ],
+    relatedBooks: ["zero-to-one", "start-with-why", "good-to-great"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "good-to-great",
+    title: "Good to Great",
+    author: "Jim Collins",
+    description:
+      "Reflect on Good to Great by Jim Collins. Prompts to examine Level 5 leadership, the Hedgehog Concept, and whether 'great' is the right goal for your situation.",
+    intro:
+      "Good to Great studied companies that made the leap from sustained mediocrity to sustained excellence, identifying patterns like Level 5 Leadership (humble but fiercely determined), the Hedgehog Concept (the intersection of passion, talent, and economic engine), and the Flywheel Effect (small consistent pushes that compound into momentum).\n\nThe book has been criticized because several of the 'great' companies Collins identified subsequently declined — Circuit City went bankrupt, Fannie Mae collapsed in 2008. This doesn't invalidate the frameworks, but it does demand reflection on what 'great' means and whether any company's success can be attributed to a fixed set of principles.\n\nCollins's most useful and most ignored finding is what he calls 'first who, then what' — get the right people on the bus before deciding where to drive it. Most organizations do this backward, defining strategy first and then hiring to execute it. The reflection question is whether you're building around people or around plans.",
+    prompts: [
+      "Collins's Hedgehog Concept asks: what are you deeply passionate about, what can you be best in the world at, and what drives your economic engine? Can you answer all three for your current work — and do they overlap?",
+      "Level 5 leaders combine personal humility with professional will. How would your colleagues describe your leadership style — and does it match how you see yourself?",
+      "The 'first who, then what' principle says getting the right people matters more than having the right strategy. Think about your current team or collaborators. Are they the right people, or did you hire for a plan that's already changed?",
+      "Collins describes the Stockdale Paradox: confront the brutal facts of your current reality while maintaining faith that you will prevail. What brutal fact about your work or life are you currently avoiding?",
+      "Several companies Collins identified as 'great' later failed. What does that tell you about the durability of business frameworks — and about your own assumptions about what makes success last?",
+    ],
+    commonMistakes: [
+      "Treating the book's frameworks as universal laws when Collins himself acknowledges they describe patterns in specific companies during specific time periods.",
+      "Ignoring the subsequent failure of several 'great' companies, which raises legitimate questions about the book's methodology and conclusions.",
+      "Focusing on the Hedgehog Concept as a personal development tool while skipping the harder organizational insights about discipline, culture, and leadership.",
+    ],
+    relatedBooks: ["start-with-why", "zero-to-one", "principles"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
 ];
 
 export function getBookReflection(slug: string): BookReflection | undefined {
