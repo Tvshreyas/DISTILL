@@ -346,6 +346,168 @@ export const bookReflections: BookReflection[] = [
     ],
     relatedGuides: ["how-to-reflect-on-books"],
   },
+  {
+    slug: "range",
+    title: "Range",
+    author: "David Epstein",
+    description:
+      "Reflect on Range by David Epstein. Prompts to examine whether breadth or depth serves you better, the myth of early specialization, and how your diverse experiences connect.",
+    intro:
+      'Range directly challenges the 10,000-hours narrative by arguing that generalists — people who sample widely before committing — often outperform early specialists in complex, unpredictable domains. Epstein distinguishes between "kind" learning environments (like chess or golf, where patterns repeat) and "wicked" ones (like business, medicine, or life, where the rules shift). Specialization wins in kind environments. Range wins in wicked ones.\n\nThe book\'s most counterintuitive finding is that the feeling of struggling and learning slowly is often a sign of deeper, more durable learning. Epstein calls this "desirable difficulty." Readers who breeze through material feel like they\'re learning more but retain less than those who struggle.\n\nReflecting on Range means honestly assessing whether your career path has been too narrow or too scattered — and recognizing that the answer depends on the kind of environment you\'re operating in, not on a universal rule.',
+    prompts: [
+      "Epstein distinguishes kind environments (repeating patterns, clear feedback) from wicked ones (shifting rules, delayed feedback). Is your career or field kind or wicked — and does your learning strategy match?",
+      'The book argues that early specialization can create "narrow expertise" that breaks down when conditions change. Where has your specialized knowledge failed you because the situation was different from what you trained for?',
+      "Epstein shows that analogical thinking — transferring insights from one domain to another — is a hallmark of the most creative problem-solvers. What insight from a completely unrelated field has helped you in your work?",
+      'The concept of "match quality" suggests that people who sample multiple paths before committing end up more satisfied and successful. Looking back, do you wish you had explored more before committing to your current path?',
+      "Epstein argues that the feeling of struggling while learning is often a sign of deeper processing. Where in your life have you abandoned something because it felt hard, when the difficulty was actually the point?",
+    ],
+    commonMistakes: [
+      "Using the book to justify never committing to anything — Epstein's argument is about sampling before specializing, not avoiding depth permanently.",
+      "Treating Range as the opposite of Outliers or Grit when Epstein's actual point is more nuanced: the right strategy depends on the kind of environment you're in.",
+      "Ignoring the distinction between kind and wicked environments, which is the framework that determines when specialization helps and when it hurts.",
+    ],
+    relatedBooks: ["outliers", "grit", "mindset"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "essentialism",
+    title: "Essentialism",
+    author: "Greg McKeown",
+    description:
+      "Reflect on Essentialism by Greg McKeown. Prompts to identify what's truly essential in your life, where you're spreading too thin, and why saying no feels so difficult.",
+    intro:
+      "Essentialism's core argument is simple: if you don't prioritize your life, someone else will. McKeown distinguishes between the \"non-essentialist\" who tries to do everything and makes a millimeter of progress in a million directions, and the \"essentialist\" who makes massive progress in one direction by eliminating everything else.\n\nThe book sounds obvious in theory — of course you should focus on what matters. But McKeown's real contribution is diagnosing why people don't. Social pressure, sunk cost fallacy, fear of missing out, and the endowment effect (overvaluing what you already have) all conspire to keep your plate full of things that don't actually matter to you.\n\nThe hardest part of essentialism isn't identifying what's essential. Most people can do that in ten minutes. The hard part is saying no to everything else — especially when those things are good, just not the best use of your limited time.",
+    prompts: [
+      "McKeown says if the answer isn't a clear yes, it should be a no. List three commitments in your life right now that are not a clear yes. What's stopping you from eliminating them?",
+      "The book argues that we overvalue what we already have (endowment effect) and undervalue what we'd gain by letting go. What are you holding onto that no longer serves your highest contribution?",
+      "McKeown distinguishes between being busy and being productive. Audit your last week: what percentage of your activity moved something important forward versus just filled time?",
+      'The book suggests creating a personal "editing" function — systematically removing the nonessential. What would you cut from your daily routine if you could only keep three activities?',
+      "McKeown argues that saying no requires trading popularity for respect. Think of a specific recent situation where you said yes when you wanted to say no. What did that yes actually cost you?",
+    ],
+    commonMistakes: [
+      "Treating essentialism as a productivity hack rather than a fundamental shift in how you evaluate commitments — the book is about saying no to good things, not just bad ones.",
+      'Reading the book, feeling inspired to simplify, and then adding "practice essentialism" to an already overloaded to-do list.',
+      "Applying essentialism only to work while leaving personal commitments unexamined, or vice versa.",
+    ],
+    relatedBooks: ["deep-work", "digital-minimalism", "the-4-hour-workweek"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "digital-minimalism",
+    title: "Digital Minimalism",
+    author: "Cal Newport",
+    description:
+      "Reflect on Digital Minimalism by Cal Newport. Prompts to examine your relationship with technology, the cost of constant connectivity, and what a more intentional digital life looks like.",
+    intro:
+      "Digital Minimalism goes beyond the typical \"put your phone down\" advice by offering a philosophy: technology should serve your deeply held values, and anything that doesn't should be removed, not merely restricted. Newport proposes a 30-day \"digital declutter\" where you strip away all optional technology, then selectively reintroduce only what passes a strict value test.\n\nThe book's most important distinction is between using technology and being used by it. Newport argues that the attention economy has made most digital tools adversarial — they are engineered to maximize your time spent, not your well-being. Understanding this isn't paranoia; it's accurate structural analysis.\n\nWhat makes this book worth reflecting on is not the familiar argument that phones are bad. It's Newport's deeper claim that the time you reclaim from digital distraction needs to be filled with demanding, high-quality leisure activities — otherwise you'll drift back. The void is the enemy, not the phone.",
+    prompts: [
+      "Newport proposes that technology must serve a value you can articulate clearly. Pick an app you use daily — what specific value does it serve, and could you get that value another way?",
+      "The book argues solitude deprivation — never being alone with your own thoughts — is a modern crisis. When was the last time you spent 30 minutes with no inputs at all? What happened?",
+      "Newport says the void left by removing technology must be filled with demanding leisure — crafts, exercise, face-to-face socializing. What high-quality leisure activity have you abandoned since your screen time increased?",
+      "The digital declutter asks you to remove all optional technology for 30 days. If you did this starting tomorrow, what would be the hardest thing to give up — and what does that difficulty tell you?",
+      "Newport distinguishes between using social media as a tool (specific purpose, time-limited) and using it as entertainment (scrolling without intent). Which describes your actual usage pattern?",
+    ],
+    commonMistakes: [
+      "Treating digital minimalism as anti-technology when Newport's point is about intentional use, not elimination — he uses technology extensively for his work.",
+      "Doing the digital declutter without planning what to replace the screen time with, which almost guarantees relapse.",
+      "Focusing on reducing screen time metrics without addressing the underlying need that technology was filling — boredom, loneliness, anxiety.",
+    ],
+    relatedBooks: ["deep-work", "essentialism", "flow"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "flow",
+    title: "Flow",
+    author: "Mihaly Csikszentmihalyi",
+    description:
+      "Reflect on Flow by Mihaly Csikszentmihalyi. Prompts to identify when you experience flow, why it matters for well-being, and how to engineer more of it into your life.",
+    intro:
+      "Flow describes a psychological state that most people have experienced but few have analyzed: complete absorption in a challenging activity where self-consciousness disappears and time distorts. Csikszentmihalyi spent decades studying this state across cultures and professions, and his central finding is that flow — not relaxation, not pleasure — is the closest thing to a universal formula for human satisfaction.\n\nThe book's most useful framework is the challenge-skill balance. Flow occurs when the challenge of a task is high enough to demand your full attention but not so high that it produces anxiety. Too easy and you're bored. Too hard and you're stressed. The sweet spot is flow. This means flow is not something that happens to you — it's something you can engineer by calibrating difficulty.\n\nMany readers finish Flow thinking it confirms their existing hobbies. But Csikszentmihalyi's more radical claim is that flow can be found in almost any activity — including work, conversation, and mundane tasks — if you approach them with the right structure. The question isn't what you do but how you do it.",
+    prompts: [
+      "When did you last experience genuine flow — complete absorption where time disappeared? What were you doing, and what conditions made it possible?",
+      "Csikszentmihalyi's challenge-skill model says flow requires a match between difficulty and ability. Where in your life is the challenge too low (boredom) or too high (anxiety)? How could you adjust?",
+      "The book argues that flow is more common during work than during leisure, because work provides clearer goals and feedback. Does your work provide flow — and if not, what structural element is missing?",
+      "Csikszentmihalyi claims that passive leisure (watching TV, scrolling) rarely produces flow, while active leisure (sports, music, crafting) frequently does. How does your leisure time split between passive and active?",
+      'The concept of "autotelic personality" describes someone who does things for their own sake rather than external rewards. Which of your current activities are autotelic, and which are purely instrumental?',
+    ],
+    commonMistakes: [
+      "Equating flow with relaxation or fun — flow requires effort and challenge, which is why passive activities rarely produce it.",
+      "Believing flow is reserved for creative or athletic pursuits when Csikszentmihalyi shows it can emerge in any structured activity, including factory work and daily routines.",
+      "Pursuing flow as a goal rather than a byproduct — you can set up the conditions (clear goals, immediate feedback, matched challenge) but you can't force the state itself.",
+    ],
+    relatedBooks: ["deep-work", "quiet", "grit"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "mindset",
+    title: "Mindset",
+    author: "Carol Dweck",
+    description:
+      "Reflect on Mindset by Carol Dweck. Prompts to examine where you have fixed vs. growth mindsets, how praise shaped your self-image, and where fear of failure limits you.",
+    intro:
+      'Mindset introduces a deceptively simple framework: people with a "fixed mindset" believe abilities are innate and static, while those with a "growth mindset" believe abilities develop through effort and learning. Dweck\'s research shows this belief — independent of actual ability — shapes how people respond to challenges, setbacks, and criticism.\n\nThe book has been widely adopted and widely oversimplified. The most common misreading is that growth mindset means "try harder" or "be positive." Dweck has publicly pushed back against this, clarifying that growth mindset is about how you interpret failure, not about effort alone. A student who works hard using the wrong strategy isn\'t demonstrating growth mindset — they\'re demonstrating persistence without learning.\n\nThe most useful reflection on Mindset involves identifying the specific domains where you hold each mindset. Almost no one is purely fixed or purely growth across all areas. You might have a growth mindset about your career but a fixed mindset about your artistic ability. Those domain-specific beliefs are where the real work happens.',
+    prompts: [
+      "In which specific areas of your life do you operate with a fixed mindset — believing your ability is set? Be honest: intelligence, creativity, social skills, athletic ability?",
+      'Dweck shows that praising children for being "smart" creates a fixed mindset, while praising effort and strategy creates a growth mindset. How were you praised growing up, and how does it affect how you respond to failure today?',
+      'Think of a skill you believe you\'re "just not good at." Is that belief based on evidence of genuine limitation, or on a fixed-mindset interpretation of early struggles?',
+      "Dweck argues that fixed-mindset people avoid challenges because failure threatens their identity. What challenge are you currently avoiding, and is it because the task is genuinely wrong for you or because failing at it would hurt your self-image?",
+      "Growth mindset isn't just about effort — it's about changing strategy when effort isn't working. Where in your life are you working hard on something without stopping to ask whether your approach needs to change?",
+    ],
+    commonMistakes: [
+      'Reducing growth mindset to "just try harder" when Dweck\'s actual point is about interpreting failure as information and adjusting strategy accordingly.',
+      "Claiming to have a growth mindset as a personality trait rather than examining the specific domains where you actually hold fixed beliefs.",
+      'Using growth mindset language ("I can\'t do it yet") as positive self-talk without doing the harder work of actually changing your response to setbacks.',
+      'Ignoring Dweck\'s own clarification that "false growth mindset" — praising effort regardless of strategy or outcome — is not what the research supports.',
+    ],
+    relatedBooks: ["grit", "outliers", "range"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "grit",
+    title: "Grit",
+    author: "Angela Duckworth",
+    description:
+      "Reflect on Grit by Angela Duckworth. Prompts to examine your own persistence patterns, the difference between passion and obsession, and whether grit is always a virtue.",
+    intro:
+      'Grit argues that the combination of passion and perseverance — sustained over years, not weeks — predicts achievement more reliably than talent alone. Duckworth\'s research across West Point cadets, spelling bee champions, and corporate salespeople consistently shows that gritty individuals outperform more talented but less persistent peers.\n\nThe book\'s most overlooked nuance is what Duckworth means by "passion." She does not mean intensity or excitement. She means consistency of interest over time — the ability to stay committed to the same top-level goal for years while remaining flexible about how you pursue it. This distinction between top-level goals (which should be stable) and low-level goals (which should be adaptable) is the book\'s most practical framework.\n\nThe honest reflection Grit demands is uncomfortable: not "am I trying hard enough?" but "am I trying hard at the right thing?" Duckworth acknowledges that grit applied to the wrong goal is just stubbornness. The skill is knowing when to persevere and when to pivot — and the book is more honest about that tension than most readers remember.',
+    prompts: [
+      "Duckworth defines grit as passion (consistency of interest) plus perseverance (sustained effort). You might have one without the other. Which is your actual weakness — sticking with things, or finding something worth sticking with?",
+      "The book distinguishes between top-level goals (your life purpose) and low-level goals (daily tactics). What is your top-level goal, and are your current daily activities actually aligned with it?",
+      "Duckworth says quitting a low-level goal to better serve a top-level goal is not a failure of grit. What have you been persevering at that might actually need to be quit or redirected?",
+      'The "Hard Thing Rule" in Duckworth\'s family requires everyone to do one hard thing they chose, and they can\'t quit mid-season. What is your current "hard thing," and are you committed through a natural stopping point?',
+      "Duckworth acknowledges that grit without direction is stubbornness. Think of a time you persevered past the point of usefulness. What signal did you ignore that should have prompted a strategy change?",
+    ],
+    commonMistakes: [
+      "Interpreting grit as never quitting, when Duckworth explicitly discusses strategic quitting of low-level goals in service of higher-level ones.",
+      "Conflating passion with initial excitement — Duckworth's definition of passion is consistency over years, which often looks boring from the outside.",
+      "Using grit as a universal explanation for success while ignoring the structural advantages and opportunities that Duckworth acknowledges alongside individual effort.",
+    ],
+    relatedBooks: ["mindset", "outliers", "atomic-habits"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "the-power-of-habit",
+    title: "The Power of Habit",
+    author: "Charles Duhigg",
+    description:
+      "Reflect on The Power of Habit by Charles Duhigg. Prompts to identify your habit loops, find keystone habits, and understand why willpower alone doesn't work.",
+    intro:
+      'The Power of Habit introduced the habit loop — cue, routine, reward — to a mainstream audience before Atomic Habits existed. Duhigg\'s contribution is not just the loop itself but the insight that you cannot eliminate a bad habit, only change the routine while keeping the same cue and reward. This reframing changes how you approach behavior change entirely.\n\nThe book\'s most underrated concept is "keystone habits" — single habits that trigger chain reactions of other positive changes. Duhigg argues that exercise is a common keystone habit: people who start exercising tend to eat better, sleep better, and spend less impulsively, even though nobody told them to change those behaviors. The identification of your personal keystone habit is more valuable than trying to change everything at once.\n\nDuhigg also extends habit theory beyond individuals to organizations, showing how institutional habits shape corporate culture and how "crises" create windows for habit change. This organizational lens is what distinguishes the book from purely personal habit advice.',
+    prompts: [
+      "Pick a habit you want to change. Using Duhigg's framework, identify the specific cue, the routine, and the reward. What alternative routine could deliver the same reward?",
+      "Duhigg's concept of keystone habits suggests that one habit can trigger cascading positive changes. What is (or could be) your personal keystone habit — the one change that makes other changes easier?",
+      "The book argues that willpower is a finite resource that gets depleted. When in your day is your willpower lowest, and what habits do you rely on during those depleted periods?",
+      "Duhigg shows that belief in change — often supported by a community — is necessary for lasting habit modification. What habit have you tried to change alone and failed? Who could you involve?",
+      "The book describes how organizations have habits too. What is one organizational habit in your workplace or family that everyone follows without questioning? Is it serving the group well?",
+    ],
+    commonMistakes: [
+      "Trying to eliminate habits rather than redirect them — Duhigg's core insight is that the cue and reward persist, so you must substitute the routine.",
+      "Overlooking the role of belief and community in habit change, focusing only on the mechanical cue-routine-reward loop.",
+      "Ignoring the organizational and social chapters, which contain some of the book's most actionable insights about changing group behavior.",
+    ],
+    relatedBooks: ["atomic-habits", "influence", "nudge"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
 ];
 
 export function getBookReflection(slug: string): BookReflection | undefined {
