@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getSortedPostsData } from "@/lib/blog";
 import { glossaryTerms, reflectionGuides } from "@/lib/pseo-data";
+import { bookReflections } from "@/lib/pseo-books";
+import { promptTopics } from "@/lib/pseo-prompts";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://distillwise.com";
@@ -32,6 +34,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/reflect`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/reflect/books`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/prompts`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
@@ -75,5 +89,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...blogPages, ...glossaryPages, ...reflectPages];
+  // Book reflection pages
+  const bookPages: MetadataRoute.Sitemap = bookReflections.map((book) => ({
+    url: `${baseUrl}/reflect/books/${book.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
+
+  // Prompt topic pages
+  const promptPages: MetadataRoute.Sitemap = promptTopics.map((topic) => ({
+    url: `${baseUrl}/prompts/${topic.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
+
+  return [
+    ...staticPages,
+    ...blogPages,
+    ...glossaryPages,
+    ...reflectPages,
+    ...bookPages,
+    ...promptPages,
+  ];
 }
