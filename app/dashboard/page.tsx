@@ -402,17 +402,14 @@ export default function DashboardPage() {
       <div className="flex flex-col items-center justify-center py-32 text-center">
         <div className="p-8 rounded-[2rem] border-4 border-soft-black bg-peach/10 max-w-sm space-y-4">
           <h2 className="font-grotesk text-xl font-black text-soft-black">
-            profile not found.
+            setting up your archive.
           </h2>
           <p className="text-sm text-muted-text">
-            something went wrong loading your profile.
+            we&apos;re initializing your thinking space.
           </p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-6 py-3 bg-soft-black text-white rounded-2xl font-black text-sm hover:scale-105 transition-transform"
-          >
-            try again
-          </button>
+          <div className="flex justify-center pt-2">
+            <div className="w-8 h-8 border-4 border-soft-black border-t-transparent rounded-full animate-spin" />
+          </div>
         </div>
       </div>
     );

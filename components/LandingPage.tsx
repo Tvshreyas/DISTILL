@@ -113,7 +113,7 @@ function Hero() {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-sage/20 border-2 border-sage/40 brutal-border-sm">
               <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
               <span className="text-[10px] font-black uppercase tracking-widest text-soft-black">
-                early access beta — free to use
+                EARLY ACCESS BETA — FREE TO USE
               </span>
             </div>
           </motion.div>
@@ -217,42 +217,36 @@ function Sticker({
 }
 
 function HowItWorks() {
+  const steps = [
+    { num: "1", text: "start a session" },
+    { num: "2", text: "consume something" },
+    { num: "3", text: "write what you think" },
+  ];
+
   return (
-    <div className="relative py-12 z-20">
-      <div className="bg-soft-black py-6 border-y-[4px] border-white">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 px-8">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl font-grotesk font-black text-white/30">
-              1
-            </span>
-            <span className="text-sm md:text-base font-bold text-white lowercase">
-              start a session
-            </span>
-          </div>
-          <span
-            className="hidden md:block w-12 h-0.5 bg-white/20"
-            aria-hidden="true"
-          />
-          <div className="flex items-center gap-3">
-            <span className="text-2xl font-grotesk font-black text-white/30">
-              2
-            </span>
-            <span className="text-sm md:text-base font-bold text-white lowercase">
-              consume something
-            </span>
-          </div>
-          <span
-            className="hidden md:block w-12 h-0.5 bg-white/20"
-            aria-hidden="true"
-          />
-          <div className="flex items-center gap-3">
-            <span className="text-2xl font-grotesk font-black text-white/30">
-              3
-            </span>
-            <span className="text-sm md:text-base font-bold text-white lowercase">
-              write what you think
-            </span>
-          </div>
+    <div className="relative py-24 z-20 overflow-hidden bg-white/50 backdrop-blur-sm">
+      <div className="relative -rotate-[-1.5deg] scale-105">
+        <div className="bg-soft-black py-8 border-y-[4px] border-white flex overflow-hidden">
+          <motion.div
+            animate={{ x: [0, "-50%"] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="flex items-center whitespace-nowrap"
+          >
+            {/* Double the set for seamless looping */}
+            {[...steps, ...steps].map((step, i) => (
+              <div key={i} className="flex items-center">
+                <div className="flex items-center gap-4 px-12 lg:px-24">
+                  <span className="text-4xl font-grotesk font-black text-white/20">
+                    {step.num}
+                  </span>
+                  <span className="text-xl md:text-2xl font-black text-white lowercase tracking-tight">
+                    {step.text}
+                  </span>
+                </div>
+                <div className="w-16 md:w-32 h-0.5 bg-white/20" />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </div>
