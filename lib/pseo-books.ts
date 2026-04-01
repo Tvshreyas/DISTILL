@@ -850,6 +850,106 @@ export const bookReflections: BookReflection[] = [
     relatedBooks: ["predictably-irrational", "nudge", "48-laws-of-power"],
     relatedGuides: ["how-to-reflect-on-books"],
   },
+  {
+    slug: "predictably-irrational",
+    title: "Predictably Irrational",
+    author: "Dan Ariely",
+    description:
+      "Reflect on Predictably Irrational by Dan Ariely. Prompts to catch your own irrational patterns around pricing, free offers, expectations, and decision-making.",
+    intro:
+      "Predictably Irrational demonstrates that human irrationality isn't random — it follows consistent, predictable patterns. Ariely's experiments on anchoring, the power of 'free,' the effect of expectations on experience, and the cost of social vs. market norms reveal that we systematically make the same mistakes in the same situations.\n\nThe book's most practically useful insight is about the power of 'free.' Ariely shows that when something is free, we don't simply calculate its value minus zero cost — we experience an emotional charge that overrides rational evaluation. This explains everything from why you take hotel toiletries you'll never use to why free shipping changes purchasing behavior so dramatically.\n\nReflecting on this book means catching yourself in these patterns in real time — not just understanding irrationality in the abstract, but noticing the specific moments when your own decisions are being shaped by predictable biases.",
+    prompts: [
+      "Ariely shows that 'free' triggers irrational behavior. When did you last take something, sign up for something, or change a decision because it was free — and was the 'free' thing actually worth your time?",
+      "The anchoring experiments show that arbitrary numbers influence our valuations. What price anchor is currently shaping how you think about a major purchase or salary negotiation?",
+      "Ariely demonstrates that expectations shape experience — wine tastes better when you're told it's expensive. Where are your expectations currently distorting your experience of something?",
+      "The book shows that introducing market norms into social relationships destroys them. Where in your life have you accidentally turned a social exchange into a transactional one?",
+      "Ariely argues we overvalue what we already own (endowment effect). What are you keeping — a job, a relationship, a possession — partly because you already have it rather than because it's the best option?",
+    ],
+    commonMistakes: [
+      "Reading the experiments as entertaining stories without applying them to your own daily decision-making, which is where the real value lies.",
+      "Using the book to spot irrationality in others while exempting yourself — Ariely's point is that these biases are universal, including for people who study them.",
+      "Treating irrationality as always bad, when Ariely acknowledges that some irrational tendencies (like social norms) serve important functions.",
+    ],
+    relatedBooks: ["thinking-fast-and-slow", "nudge", "influence"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "nudge",
+    title: "Nudge",
+    author: "Richard Thaler",
+    description:
+      "Reflect on Nudge by Richard Thaler. Prompts to examine how choice architecture shapes your decisions and where better defaults could improve your life.",
+    intro:
+      "Nudge argues that how choices are presented — the 'choice architecture' — dramatically affects what people choose. Thaler and Sunstein show that defaults, framing, and the structure of options matter as much as the options themselves. Organ donation rates, retirement savings, and school lunch choices all change dramatically based on how they're designed, without restricting anyone's freedom.\n\nThe book's central concept of 'libertarian paternalism' — designing choice environments that guide people toward better outcomes while preserving freedom to choose otherwise — has influenced government policy worldwide. But it also raises questions about who decides what 'better' means.\n\nThe personal reflection Nudge invites is about your own choice environment. What defaults are you living with that you never chose? Your phone's notification settings, your workplace's meeting culture, your kitchen layout — all of these are choice architectures that nudge your behavior in directions you may not have selected deliberately.",
+    prompts: [
+      "What default settings in your life — phone notifications, subscriptions, routines — are you following simply because they were pre-set, not because you chose them?",
+      "Thaler shows that opt-in vs. opt-out dramatically changes behavior. Where could you change a default in your own life to make the better choice automatic?",
+      "The book argues that people often choose poorly when decisions are complex, infrequent, and lack immediate feedback. What important decision in your life fits this description, and how could you design better support for it?",
+      "Nudge raises the question of who designs choice architecture. Who or what is currently designing the choices you face daily — and are their incentives aligned with your well-being?",
+      "Thaler distinguishes between 'Econs' (perfectly rational agents) and 'Humans' (real people with biases). In which domain of your life do you most consistently behave like a Human rather than an Econ?",
+    ],
+    commonMistakes: [
+      "Treating nudges as manipulation rather than understanding them as inevitable — every choice environment has a design, and 'no design' is itself a design with consequences.",
+      "Focusing on policy applications while missing the personal applications — you can be your own choice architect for decisions about health, finances, and time.",
+      "Dismissing the ethical questions the book raises about who gets to decide what a 'good' nudge is.",
+    ],
+    relatedBooks: [
+      "predictably-irrational",
+      "thinking-fast-and-slow",
+      "the-power-of-habit",
+    ],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "thinking-in-bets",
+    title: "Thinking in Bets",
+    author: "Annie Duke",
+    description:
+      "Reflect on Thinking in Bets by Annie Duke. Prompts to separate decision quality from outcome quality, reduce resulting bias, and think more probabilistically.",
+    intro:
+      "Thinking in Bets makes one argument that changes everything: the quality of a decision and the quality of its outcome are different things. You can make a great decision that leads to a bad outcome (bad luck) and a terrible decision that leads to a good outcome (good luck). Most people judge decisions by their outcomes, which teaches the wrong lessons.\n\nDuke, a former professional poker player, calls this 'resulting' — assuming that because something worked out, the decision was good, and vice versa. This error corrupts learning. If you got promoted after a risky career move, you might conclude that risk-taking is always smart. If you got rejected after being vulnerable, you might conclude that vulnerability is always a mistake. Both conclusions are wrong.\n\nThe book's practical framework is to think of every decision as a bet — an allocation of resources based on incomplete information. This reframe makes uncertainty normal rather than something to eliminate, and it makes you evaluate the process of deciding rather than just the result.",
+    prompts: [
+      "Think of a recent good outcome in your life. Was the decision that led to it actually good, or did you just get lucky? What would have happened if things had gone differently?",
+      "Duke's concept of 'resulting' means judging decisions by outcomes. Where have you learned the wrong lesson from a good outcome or been too hard on yourself after a bad one?",
+      "The book suggests forming a 'decision group' that evaluates your reasoning before you know the outcome. Who could serve this role for you, and what decision would you bring to them?",
+      "Duke argues that saying 'I'm not sure' is a sign of sophisticated thinking, not weakness. Where are you performing certainty that you don't actually have?",
+      "If you had to bet real money on the outcome of a decision you're currently facing, how would that change your analysis?",
+    ],
+    commonMistakes: [
+      "Using 'it was a good decision regardless of the outcome' as a defense against examining genuinely poor decisions — the framework is for honest evaluation, not self-justification.",
+      "Overcomplicating decisions with probabilistic thinking when some situations call for intuition and speed.",
+      "Applying poker logic to life situations where the stakes are emotional rather than financial, which requires a different kind of analysis.",
+    ],
+    relatedBooks: [
+      "thinking-fast-and-slow",
+      "the-black-swan",
+      "predictably-irrational",
+    ],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "the-black-swan",
+    title: "The Black Swan",
+    author: "Nassim Nicholas Taleb",
+    description:
+      "Reflect on The Black Swan by Nassim Nicholas Taleb. Prompts to examine your blindness to rare events, the narrative fallacy, and how to position yourself for positive surprises.",
+    intro:
+      "The Black Swan argues that rare, unpredictable events with massive consequences — Black Swans — drive most of history, economics, and personal life. Yet we spend our time planning for the predictable, constructing narratives that make the past seem inevitable, and systematically underestimating our own ignorance.\n\nTaleb's most useful concept is the distinction between Mediocristan (domains where extremes don't matter much, like human height) and Extremistan (domains where a single event can dominate, like book sales, war, or wealth). Most important aspects of modern life operate in Extremistan, but we use Mediocristan thinking — averages, normal distributions, linear projections — to navigate them.\n\nThe book's practical takeaway is not prediction but positioning. Since you can't predict Black Swans, you should structure your life to limit exposure to negative ones and maximize exposure to positive ones. This means being conservative where the downside is catastrophic and aggressive where the upside is unlimited.",
+    prompts: [
+      "What Black Swan event has already happened in your life — something you never predicted that changed everything? Did you learn the right lesson from it, or did you construct a narrative that made it seem predictable in hindsight?",
+      "Taleb argues we construct narratives that make the past seem inevitable. What story do you tell about your career or life that makes it sound more planned than it actually was?",
+      "The barbell strategy suggests being very conservative in some areas and very aggressive in others. Where in your life are you stuck in the mediocre middle — moderate risk for moderate reward?",
+      "Taleb says experts in Extremistan domains (economics, politics) are no better at prediction than random guessing. Whose expert predictions are you currently relying on that might be worthless?",
+      "How could you restructure one area of your life to have limited downside but unlimited upside — Taleb's formula for benefiting from uncertainty?",
+    ],
+    commonMistakes: [
+      "Using Black Swan theory to justify not planning at all, when Taleb's point is about the limits of prediction, not the uselessness of preparation.",
+      "Seeing Black Swans everywhere after reading the book — most events are not Black Swans, and calling everything unpredictable is as wrong as calling everything predictable.",
+      "Ignoring the practical framework (barbell strategy, exposure to positive Black Swans) in favor of the philosophical critique, which is intellectually satisfying but less actionable.",
+    ],
+    relatedBooks: ["antifragile", "fooled-by-randomness", "thinking-in-bets"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
 ];
 
 export function getBookReflection(slug: string): BookReflection | undefined {
