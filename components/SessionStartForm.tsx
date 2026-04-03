@@ -88,7 +88,7 @@ export default function SessionStartForm({
       <label className="space-y-3 block">
         <span className="text-xs font-black uppercase tracking-widest text-muted-text block">
           why are you consuming this?{" "}
-          <span className="text-soft-black/30">(optional)</span>
+          <span className="text-soft-black/30">(up to 5,000 words)</span>
         </span>
         <textarea
           value={consumeReason}

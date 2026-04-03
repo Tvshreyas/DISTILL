@@ -9,6 +9,7 @@ import { CreativePricingDemo } from "@/components/ui/pricing-demo";
 import { WordReveal } from "@/components/ui/word-reveal";
 import { AppPreview } from "@/components/ui/app-preview";
 import { ZenParticles } from "@/components/ui/zen-particles";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function LandingPage() {
   return (
@@ -51,18 +52,28 @@ function Header() {
       </div>
 
       <div className="flex items-center gap-4">
-        <Link
-          href="/sign-in"
-          className="text-sm font-bold uppercase tracking-widest hover:text-peach transition-colors"
-        >
-          log in
-        </Link>
-        <Link
-          href="/sign-up"
-          className="text-sm font-black uppercase tracking-widest bg-soft-black text-white px-5 py-2.5 brutal-border-sm hover:bg-peach hover:text-soft-black transition-all"
-        >
-          sign up free
-        </Link>
+        <SignedOut>
+          <Link
+            href="/sign-in"
+            className="text-sm font-bold uppercase tracking-widest hover:text-peach transition-colors"
+          >
+            log in
+          </Link>
+          <Link
+            href="/sign-up"
+            className="text-sm font-black uppercase tracking-widest bg-soft-black text-white px-5 py-2.5 brutal-border-sm hover:bg-peach hover:text-soft-black transition-all"
+          >
+            sign up free
+          </Link>
+        </SignedOut>
+        <SignedIn>
+          <Link
+            href="/dashboard"
+            className="text-sm font-black uppercase tracking-widest bg-soft-black text-white px-5 py-2.5 brutal-border-sm hover:bg-peach hover:text-soft-black transition-all"
+          >
+            dashboard
+          </Link>
+        </SignedIn>
       </div>
     </header>
   );
@@ -155,9 +166,18 @@ function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4"
           >
             <MagnetizeButton asChild className="w-full sm:w-auto">
-              <Link href="/start" className="text-lg px-10 py-4">
-                start distilling
-              </Link>
+              <>
+                <SignedOut>
+                  <Link href="/sign-up" className="text-lg px-10 py-4">
+                    start distilling
+                  </Link>
+                </SignedOut>
+                <SignedIn>
+                  <Link href="/dashboard" className="text-lg px-10 py-4">
+                    go to dashboard
+                  </Link>
+                </SignedIn>
+              </>
             </MagnetizeButton>
             <Link
               href="#features"

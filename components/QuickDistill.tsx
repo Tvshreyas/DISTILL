@@ -72,7 +72,7 @@ export default function QuickDistill() {
                   type="text"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  placeholder={dailyPrompt}
+                  placeholder="Capture an insight..."
                   className="w-full bg-transparent border-none focus:outline-none font-medium text-lg md:text-xl placeholder:text-muted-text/30"
                   maxLength={800}
                   disabled={isSubmitting}
@@ -137,7 +137,7 @@ export default function QuickDistill() {
           </p>
           <p className="text-[10px] font-black uppercase tracking-widest text-muted-text flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-sage" />
-            Bypasses Session Ceremony
+            Instant Entry
           </p>
         </motion.div>
       )}
