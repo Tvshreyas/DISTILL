@@ -8,7 +8,7 @@ tags: ["Reading", "Retention", "Reflection", "Deep Work"]
 
 You finished a book last month. You remember liking it. You remember roughly what it was about. But if someone asked you to explain the three most important ideas? Blank.
 
-This is normal. Research on the forgetting curve — first documented by Hermann Ebbinghaus in 1885 and repeatedly confirmed since — shows that we forget approximately 70% of new information within 24 hours of encountering it. Without active processing, reading is closer to entertainment than education.
+This is normal. Research on [the forgetting curve](/glossary/forgetting-curve) — first documented by Hermann Ebbinghaus in 1885 and repeatedly confirmed since — shows that we forget approximately 70% of new information within 24 hours of encountering it. Without active processing, reading is closer to entertainment than education.
 
 The good news: remembering what you read is a skill, not a talent. Here are seven techniques that actually work, ordered from simplest to most powerful.
 
@@ -18,7 +18,7 @@ Before the techniques, it helps to understand the mechanism. Your brain is not a
 
 Most reading is passive. Your eyes move across words, your brain constructs meaning in real time, and then — nothing. No processing step. No connection. No revisiting. The information enters working memory and exits within hours.
 
-The techniques below all share one principle: they force your brain to actively process what you read, which is the signal your memory system needs to retain it.
+The techniques below all share one principle: they force your brain to actively process what you read — what learning scientists call [active reading](/glossary/active-reading) — which is the signal your memory system needs to retain it.
 
 ## technique 1: set an intention before you start
 
@@ -87,3 +87,12 @@ The simplest starting point is technique 3 — the immediate reflection. If you 
 Your reading time is already invested. The reflection is what turns that investment into a return.
 
 If you want to go deeper, explore [active reading techniques](/blog/active-reading-techniques) that make every session count, or learn how [spaced resurfacing](/blog/spaced-repetition-for-readers) turns individual reflections into compound knowledge. And if you are ready to make reflection a daily practice, here is how to [build the habit](/blog/reflection-habit).
+
+## keep exploring
+
+- [What is spaced repetition?](/glossary/spaced-repetition) — the science behind why timed review works
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [Reflect on Deep Work by Cal Newport](/reflect/books/deep-work) — prompts for the book that started the focus movement
+- [Reflect on Atomic Habits by James Clear](/reflect/books/atomic-habits) — prompts for building systems that stick
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Education reflection prompts](/prompts/education) — questions for learning-focused content
