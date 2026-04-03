@@ -822,8 +822,9 @@ export const randomFromArchive = query({
 
     const reflections = await ctx.db
       .query("reflections")
-      .withIndex("by_userId", (q) => q.eq("userId", userId))
-      .filter((q) => q.eq(q.field("isDeleted"), false))
+      .withIndex("by_userId", (q) =>
+        q.eq("userId", userId).eq("isDeleted", false),
+      )
       .collect();
 
     if (reflections.length < 3) return null; // Need a few before archive feels meaningful

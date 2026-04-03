@@ -27,6 +27,30 @@ import {
 } from "lucide-react";
 import UpgradeModal from "@/components/UpgradeModal";
 import { FREE_TIER_LIMIT } from "@/lib/constants";
+import React from "react";
+
+class SafeWidget extends React.Component<
+  { children: React.ReactNode; name: string },
+  { hasError: boolean }
+> {
+  constructor(props: { children: React.ReactNode; name: string }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error) {
+    console.error(`[Dashboard Widget Error: ${this.props.name}]`, error);
+  }
+
+  render() {
+    if (this.state.hasError) return null;
+    return this.props.children;
+  }
+}
 
 function toDateString(date: Date, timezone: string): string {
   return date.toLocaleDateString("en-CA", { timeZone: timezone });
@@ -456,13 +480,21 @@ export default function DashboardPage() {
         </div>
       )}
 
-      <QuickDistill />
+      <SafeWidget name="QuickDistill">
+        <QuickDistill />
+      </SafeWidget>
 
-      <ResurfacingHero />
+      <SafeWidget name="ResurfacingHero">
+        <ResurfacingHero />
+      </SafeWidget>
 
-      <ArchiveSpotlight />
+      <SafeWidget name="ArchiveSpotlight">
+        <ArchiveSpotlight />
+      </SafeWidget>
 
-      <MonthlyDigestCard />
+      <SafeWidget name="MonthlyDigestCard">
+        <MonthlyDigestCard />
+      </SafeWidget>
 
       {/* === LOSS AVERSION: Streak urgency banner === */}
       {streakUrgency && (
