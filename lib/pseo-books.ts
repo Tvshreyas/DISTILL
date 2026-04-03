@@ -950,6 +950,244 @@ export const bookReflections: BookReflection[] = [
     relatedBooks: ["antifragile", "fooled-by-randomness", "thinking-in-bets"],
     relatedGuides: ["how-to-reflect-on-books"],
   },
+  {
+    slug: "antifragile",
+    title: "Antifragile",
+    author: "Nassim Nicholas Taleb",
+    description:
+      "Reflect on Antifragile by Nassim Nicholas Taleb. Prompts to examine what gains from disorder, the difference between fragile and robust systems, and how to position yourself to benefit from volatility.",
+    intro:
+      "Antifragile introduces a category most people don't have a word for: things that get stronger from stress, disorder, and volatility. Taleb argues that the opposite of fragile isn't robust — robust just resists shock. Antifragile actively benefits from it. This reframe changes how you evaluate nearly every system in your life.\n\nMost readers grasp the concept but struggle with the application. Which parts of your life are fragile (break under stress), robust (resist stress), or antifragile (improve from stress)? The honest audit is uncomfortable because modern life is designed to eliminate volatility — and Taleb argues that elimination itself creates fragility.\n\nThe book's practical framework — via negativa (removing the bad beats adding the good), skin in the game, optionality over planning — gives you decision-making tools that work precisely because they don't require prediction.",
+    prompts: [
+      "Categorize three areas of your life as fragile, robust, or antifragile. What would need to change to move one from fragile to antifragile?",
+      "Taleb advocates via negativa — removing negatives rather than adding positives. What's one thing you could stop doing that would improve your life more than anything you could start?",
+      "Where are you currently over-optimizing for efficiency at the cost of resilience? What would introducing deliberate redundancy look like?",
+      "Taleb argues that most advice from people without skin in the game is worthless. Whose advice are you currently following who bears no consequences if they're wrong?",
+      "The book suggests small stressors build strength while large shocks destroy. What small, voluntary stressors could you introduce to build antifragility in your career or health?",
+    ],
+    commonMistakes: [
+      "Romanticizing chaos and disorder without recognizing that antifragility requires a specific structure — limited downside, unlimited upside — not just random exposure to stress.",
+      "Confusing antifragility with toughness. Being able to endure pain is robust. Antifragile means you actually get better because of the stressor.",
+      "Dismissing all planning and expertise as futile, when Taleb's argument is narrower: predictions fail in complex domains, but preparation and optionality still matter enormously.",
+    ],
+    relatedBooks: ["the-black-swan", "fooled-by-randomness", "range"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "fooled-by-randomness",
+    title: "Fooled by Randomness",
+    author: "Nassim Nicholas Taleb",
+    description:
+      "Reflect on Fooled by Randomness by Nassim Nicholas Taleb. Prompts to examine how luck disguises itself as skill, survivorship bias in success stories, and the role of randomness in your own life.",
+    intro:
+      "Fooled by Randomness is Taleb's most personal book and possibly his most unsettling. The central argument: humans are wired to see patterns and skill where randomness and luck actually dominate. The successful trader isn't necessarily skilled — he might just be the survivor of a process that blew up everyone else.\n\nThis isn't nihilism about effort. Taleb's point is more precise: in domains with high randomness, track records are unreliable evidence of skill. The problem is that nearly every domain people care about — careers, investing, business — has more randomness than we admit.\n\nReflecting honestly on where luck played a role in your own successes is genuinely difficult. The book gives you frameworks, but the emotional work of applying them to yourself is where the real value lives.",
+    prompts: [
+      "Think about your biggest career or financial success. What role did timing, connections, or luck play — honestly — versus your skill and effort?",
+      "Taleb describes the 'alternative histories' thought experiment: in how many parallel versions of your life would your current strategy have failed? What does that tell you about your risk exposure?",
+      "Where in your life are you confusing a good outcome with a good decision? Name a decision that worked out but was actually reckless in hindsight.",
+      "Survivorship bias means we study winners and ignore the dead. Whose success story are you modeling your life after, and how many people tried the same approach and failed invisibly?",
+      "Taleb argues that mild randomness helps us adapt while we deny extreme randomness exists. Where are you currently assuming stability in something that could change overnight?",
+    ],
+    commonMistakes: [
+      "Using randomness as an excuse for inaction. Taleb's point isn't that effort is useless — it's that you should structure your efforts to survive bad luck, not just capitalize on good luck.",
+      "Assuming the book debunks all expertise. Taleb distinguishes between domains where expertise works (dentistry, chess) and where it doesn't (stock picking, political forecasting).",
+      "Reading the book and then overconfidently identifying randomness in others' success while remaining blind to it in your own.",
+    ],
+    relatedBooks: ["the-black-swan", "antifragile", "thinking-in-bets"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "homo-deus",
+    title: "Homo Deus",
+    author: "Yuval Noah Harari",
+    description:
+      "Reflect on Homo Deus by Yuval Noah Harari. Prompts to examine the future of humanity, the rise of dataism, and what happens when algorithms know you better than you know yourself.",
+    intro:
+      "Homo Deus picks up where Sapiens left off. Having conquered famine, plague, and war (mostly), Harari asks: what will humanity pursue next? His answer — immortality, happiness, and divinity — sounds grandiose until you notice the tech industry is already working on all three.\n\nThe book's most provocative argument isn't about the future. It's about the present: we already outsource decisions to algorithms (what to watch, who to date, what to buy), and this trend has a logical endpoint where human experience becomes just another data stream to be optimized.\n\nWhat makes this book worth reflecting on isn't whether Harari's predictions are correct. It's the framework he provides for thinking about the relationship between consciousness, intelligence, and free will — and whether the choices you make daily are actually yours.",
+    prompts: [
+      "Harari argues algorithms will soon know you better than you know yourself. In what areas of your life have you already outsourced decisions to algorithms — and are you comfortable with that?",
+      "The book distinguishes between intelligence and consciousness. Do you think AI needs to be conscious to replace most human jobs? What does your answer reveal about what you value in human work?",
+      "Harari suggests 'dataism' — the belief that everything can be reduced to data flows — is becoming a new religion. Where do you see this belief operating in your own worldview?",
+      "If death became optional (as Harari suggests it might), how would that change your priorities today? What are you currently postponing because you assume you have limited time?",
+      "Harari warns about a 'useless class' of people whose labor has no economic value. What skills are you developing that you believe will remain valuable even as AI capabilities expand?",
+    ],
+    commonMistakes: [
+      "Treating Harari's predictions as inevitable prophecy rather than scenarios designed to provoke thinking about present-day trends.",
+      "Getting stuck on debating specific technological timelines instead of engaging with the philosophical questions about consciousness, meaning, and human purpose.",
+      "Reading the book as purely dystopian when Harari explicitly frames many developments as potentially positive — the discomfort comes from uncertainty, not inevitability.",
+    ],
+    relatedBooks: [
+      "sapiens",
+      "21-lessons-for-the-21st-century",
+      "thinking-fast-and-slow",
+    ],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
+  {
+    slug: "21-lessons-for-the-21st-century",
+    title: "21 Lessons for the 21st Century",
+    author: "Yuval Noah Harari",
+    description:
+      "Reflect on 21 Lessons for the 21st Century by Yuval Noah Harari. Prompts to examine technology, truth, resilience, and what it means to live meaningfully in an age of information overload.",
+    intro:
+      "Where Sapiens looked back and Homo Deus looked forward, 21 Lessons examines the present. Harari tackles the questions that keep thoughtful people awake: What's real in a world of fake news? What should we teach our children? How do you maintain meaning when narratives are crumbling?\n\nThe book doesn't offer tidy answers. Instead, it provides frameworks for sitting with uncertainty — a skill Harari argues is the most important one for the 21st century. Most readers speed through the 21 chapters looking for solutions and miss that the book is actually training a way of thinking.\n\nReflecting on this book means confronting your own relationship with certainty. Which of your beliefs are you holding because you examined the evidence, and which because the uncertainty is too uncomfortable to sit with?",
+    prompts: [
+      "Harari says the most important skill for the 21st century is dealing with change and maintaining mental balance. How do you currently handle situations where your beliefs are challenged by new information?",
+      "The book argues that in a world flooded with information, clarity is power. What's one topic you thought you understood well until you tried to explain it clearly to someone else?",
+      "Harari discusses the crisis of liberal democracy and shared narratives. What shared story or institution that you relied on growing up do you no longer trust? What replaced it?",
+      "The chapter on meaning argues that all our stories are fictions — but fictions we need. Which story about yourself do you suspect is partly fictional but find too useful to abandon?",
+      "Harari advocates meditation as a tool for understanding your own mind. What practice — meditation or otherwise — do you use to distinguish between your genuine thoughts and your reflexive reactions?",
+    ],
+    commonMistakes: [
+      "Cherry-picking the chapters that confirm your existing worldview while skipping the ones that challenge it — the book is designed to be uncomfortable across the political spectrum.",
+      "Concluding that because all narratives are constructed, no narrative matters. Harari's point is more nuanced: understanding stories as stories doesn't mean they're useless, just that they should be held lightly.",
+      "Reading the book as a to-do list of 21 things to fix rather than an invitation to develop comfort with complexity and uncertainty.",
+    ],
+    relatedBooks: ["sapiens", "homo-deus", "thinking-fast-and-slow"],
+    relatedGuides: ["how-to-reflect-on-books", "how-to-reflect-on-ideas"],
+  },
+  {
+    slug: "why-we-sleep",
+    title: "Why We Sleep",
+    author: "Matthew Walker",
+    description:
+      "Reflect on Why We Sleep by Matthew Walker. Prompts to examine your sleep habits, the science of rest, and whether your lifestyle actually supports the cognitive performance you want.",
+    intro:
+      "Why We Sleep is the rare book that makes you change your behavior the night you read it. Walker's case is stark: sleep deprivation damages every biological system you have, and nearly everyone in modern society is sleep-deprived. The data on cognitive performance, emotional regulation, immune function, and mortality is difficult to argue with.\n\nBut the book's real value for reflection isn't the scare factor. It's the honest reckoning with why you don't sleep enough despite knowing it matters. The answer usually isn't ignorance — it's that your identity, schedule, or social life is built around behaviors that sacrifice sleep.\n\nReflecting on this book means examining the gap between what you know about sleep and what you actually do. That gap exists for a reason, and the reason is worth understanding.",
+    prompts: [
+      "Walker presents overwhelming evidence that sleep deprivation impairs judgment, creativity, and emotional regulation. Where in your life might chronic under-sleeping be causing problems you're attributing to other things?",
+      "The book destroys the 'I'll sleep when I'm dead' mentality. What identity or cultural belief are you holding that glorifies being busy at the expense of rest?",
+      "Walker explains that you cannot 'catch up' on sleep — the damage accumulates. How does this change your thinking about your current weekday-weekend sleep pattern?",
+      "The book shows that even moderate sleep restriction (6 hours) dramatically impairs performance while the person feels fine. When was the last time you operated on less than 7 hours and thought you were functioning normally?",
+      "Walker argues that society needs structural changes (school start times, work hours) to align with sleep science. What one structural change in your own life would have the biggest impact on your sleep?",
+    ],
+    commonMistakes: [
+      "Developing sleep anxiety after reading the book — worrying so much about sleep that you can't sleep. Walker's data is alarming, but panic is counterproductive.",
+      "Treating the book as medical advice and self-diagnosing sleep disorders rather than consulting an actual sleep specialist for persistent issues.",
+      "Focusing only on sleep quantity (hours) while ignoring sleep quality factors like timing, consistency, light exposure, and temperature that the book also covers.",
+    ],
+    relatedBooks: ["digital-minimalism", "flow", "the-power-of-habit"],
+    relatedGuides: ["how-to-reflect-on-ideas"],
+  },
+  {
+    slug: "breath",
+    title: "Breath",
+    author: "James Nestor",
+    description:
+      "Reflect on Breath by James Nestor. Prompts to examine how you breathe, what modern life has done to human respiration, and the surprising connections between breathing patterns and physical health.",
+    intro:
+      "Breath makes a surprisingly strong case that how you breathe matters as much as what you eat or how you exercise. Nestor traces the devolution of human breathing — from our ancestors' wide airways to modern humans' chronic mouth-breathing and narrow palates — and connects it to asthma, sleep apnea, anxiety, and a catalog of other conditions.\n\nThe book blends personal experiment, historical research, and interviews with breathing researchers and practitioners. Some claims are well-supported by peer-reviewed science; others are more speculative. Part of reflecting on this book is learning to hold both the compelling evidence and the overreach in mind simultaneously.\n\nWhat makes Breath worth reflecting on is the core observation: breathing is the one autonomous bodily function you can consciously control, and almost nobody pays attention to it. Whether or not every claim in the book holds up, the question of how you breathe deserves more thought than you've given it.",
+    prompts: [
+      "Nestor shows that mouth breathing reshapes facial structure and worsens health outcomes. Pay attention to your breathing right now — are you breathing through your nose or mouth? What about when you sleep?",
+      "The book presents breathing techniques from multiple traditions — some ancient, some modern. Which technique from the book seemed most plausible to you, and which seemed like overreach? What criteria did you use to decide?",
+      "Nestor argues that modern diets and environments have literally changed the shape of human airways. How does this reframe your thinking about health problems you've attributed to genetics or bad luck?",
+      "The book covers 'overbreathing' — taking in too much air too quickly. When you're stressed or anxious, what happens to your breathing pattern? Have you ever consciously used breathing to change your emotional state?",
+      "Nestor's self-experiments showed dramatic changes from simple breathing modifications. What's one breathing practice from the book you could test for a week? What would convince you it was working or not?",
+    ],
+    commonMistakes: [
+      "Accepting all claims in the book with equal confidence when the evidence ranges from strong (nasal breathing benefits) to speculative (some historical claims about breathing masters).",
+      "Replacing medical treatment with breathing exercises based on the book. Nestor himself notes that breathing techniques complement medical care, not replace it.",
+      "Trying too many techniques at once and then abandoning all of them. The book works better as a prompt to change one breathing habit and observe the results.",
+    ],
+    relatedBooks: ["why-we-sleep", "the-body-keeps-the-score", "flow"],
+    relatedGuides: ["how-to-reflect-on-ideas"],
+  },
+  {
+    slug: "the-body-keeps-the-score",
+    title: "The Body Keeps the Score",
+    author: "Bessel van der Kolk",
+    description:
+      "Reflect on The Body Keeps the Score by Bessel van der Kolk. Prompts to examine how past experiences live in the body, the limits of talk therapy, and what the science of trauma reveals about how humans process difficult experiences.",
+    intro:
+      "The Body Keeps the Score changed how millions of people understand the relationship between mind and body. Van der Kolk's central insight — that trauma is stored not just in memory but in the body itself — has reshaped fields from psychology to education to criminal justice.\n\nThe book covers decades of research into how overwhelming experiences rewire the brain and nervous system. Van der Kolk argues that traditional talk therapy has limits because trauma lives below the level of conscious narrative. This is why someone can intellectually understand what happened to them and still be controlled by their body's response.\n\nReflecting on this book doesn't require having experienced severe trauma. Van der Kolk's framework applies to anyone interested in understanding why certain situations trigger disproportionate reactions, why the body sometimes seems to have a mind of its own, and why 'just thinking differently' rarely works for deeply held patterns.",
+    prompts: [
+      "Van der Kolk argues that the body stores experiences the conscious mind has processed or forgotten. What physical sensations do you notice during stress that might be connected to past experiences rather than present circumstances?",
+      "The book critiques over-reliance on medication and talk therapy alone. How do you currently process difficult experiences — primarily through thinking and talking, or do you also engage the body through movement, breath, or other practices?",
+      "Van der Kolk shows that trauma disrupts the ability to be present. When do you find it hardest to stay in the present moment, and what pulls you into the past or future?",
+      "The book describes how early experiences shape our 'window of tolerance' — the range of emotional intensity we can handle. What situations push you outside your window of tolerance, and how do you typically respond?",
+      "Van der Kolk emphasizes that healing often requires community and connection, not just individual treatment. How does your current social environment support or hinder your ability to process difficult experiences?",
+    ],
+    commonMistakes: [
+      "Self-diagnosing trauma responses based on the book without professional guidance. Van der Kolk's descriptions are educational, not diagnostic tools.",
+      "Using the book's framework to explain away all emotional difficulties as 'trauma responses,' which can be both inaccurate and an avoidance of personal responsibility.",
+      "Reading about body-based therapies (EMDR, yoga, neurofeedback) and expecting them to work immediately. Van der Kolk is clear that these approaches require skilled practitioners and sustained engagement.",
+    ],
+    relatedBooks: ["mans-search-for-meaning", "quiet", "why-we-sleep"],
+    relatedGuides: ["how-to-reflect-on-ideas"],
+  },
+  {
+    slug: "attached",
+    title: "Attached",
+    author: "Amir Levine and Rachel Heller",
+    description:
+      "Reflect on Attached by Amir Levine and Rachel Heller. Prompts to examine your attachment style, relationship patterns, and whether the way you connect with others is serving you.",
+    intro:
+      "Attached translates attachment theory from developmental psychology into a practical framework for adult relationships. The three styles — secure, anxious, and avoidant — describe patterns of how people respond to intimacy and emotional closeness. Most readers immediately recognize themselves and their partners.\n\nThe book's strength is making an academic framework immediately applicable. Its limitation is that the three-category system can become reductive — people use it to label partners rather than understand dynamic patterns. Attachment styles aren't fixed personality types. They shift across relationships and over a lifetime.\n\nReflecting on this book is valuable not for the label you assign yourself, but for the patterns it helps you recognize. When you understand why you respond to closeness or distance the way you do, you can start making choices rather than running on autopilot.",
+    prompts: [
+      "Which attachment style did you most identify with — secure, anxious, or avoidant? More importantly, does your style change depending on the relationship or situation?",
+      "Levine and Heller describe 'activating strategies' (anxious) and 'deactivating strategies' (avoidant). Which specific behaviors do you recognize in yourself when you feel emotionally threatened in a relationship?",
+      "The book argues that needing closeness isn't weakness — it's biology. How has your culture, family, or past experience shaped what you believe about emotional needs in relationships?",
+      "Attached describes how anxious-avoidant pairings create a painful cycle of pursuit and withdrawal. Have you experienced this dynamic? What kept the cycle going?",
+      "The book's central practical advice is to seek secure partners or develop secure behaviors yourself. What would 'secure' behavior look like for you in a specific current relationship — romantic, friendship, or professional?",
+    ],
+    commonMistakes: [
+      "Using attachment styles as fixed labels to judge partners ('they're avoidant, so they'll never change') rather than as a lens for understanding dynamic patterns that can shift.",
+      "Identifying as anxiously attached and then using the framework to justify controlling behavior as 'just my attachment style' rather than something to work on.",
+      "Assuming the book only applies to romantic relationships when attachment patterns show up in friendships, work relationships, and family dynamics.",
+    ],
+    relatedBooks: [
+      "quiet",
+      "the-body-keeps-the-score",
+      "how-to-win-friends-and-influence-people",
+    ],
+    relatedGuides: ["how-to-reflect-on-relationships"],
+  },
+  {
+    slug: "the-power-of-now",
+    title: "The Power of Now",
+    author: "Eckhart Tolle",
+    description:
+      "Reflect on The Power of Now by Eckhart Tolle. Prompts to examine your relationship with the present moment, the voice in your head, and whether constant thinking is helping or hindering your life.",
+    intro:
+      "The Power of Now makes a deceptively simple argument: most human suffering comes from being lost in thoughts about the past or future rather than experiencing the present. Tolle distinguishes between the 'thinking mind' (useful for practical tasks) and compulsive thinking (the voice that narrates, judges, and worries without pause).\n\nThe book draws from multiple spiritual traditions but frames presence as a practical skill rather than a religious practice. Tolle's claim isn't that thinking is bad — it's that most people are addicted to thinking and don't realize it. The gap between thoughts, he argues, is where peace and genuine intelligence live.\n\nWhat makes this book worth reflecting on isn't whether you agree with Tolle's metaphysics. It's the observable question: how much of your day do you spend genuinely present versus lost in mental commentary? Most people who honestly investigate this are startled by the answer.",
+    prompts: [
+      "Tolle asks you to observe the voice in your head without judging it. Spend one minute right now just noticing your thoughts. What's the voice saying? Is it narrating, planning, worrying, or judging?",
+      "The book distinguishes between 'clock time' (practical use of past and future for planning) and 'psychological time' (compulsive dwelling on past or future). Where in your life are you stuck in psychological time?",
+      "Tolle argues that the 'pain body' — accumulated emotional pain — feeds on negativity and drama. What situations reliably trigger disproportionate emotional reactions in you, and could they be the pain body seeking fuel?",
+      "The book claims that your sense of identity is largely constructed by the mind and isn't who you truly are. What would remain of 'you' if you removed your job title, relationships, achievements, and beliefs?",
+      "Tolle says resistance to the present moment is the root of suffering. What's one thing in your current life situation that you're resisting rather than accepting? What would full acceptance (not approval) look like?",
+    ],
+    commonMistakes: [
+      "Trying to force presence through willpower, which creates a new layer of mental activity. Tolle's approach is about allowing and noticing, not effort and control.",
+      "Using 'staying present' as an avoidance strategy for legitimate problems that require planning and future-oriented thinking. Tolle explicitly distinguishes between practical thinking and compulsive thinking.",
+      "Treating the book as a one-time read that should produce permanent enlightenment rather than a practice that develops gradually through repeated application.",
+    ],
+    relatedBooks: ["meditations", "mans-search-for-meaning", "flow"],
+    relatedGuides: ["how-to-reflect-on-ideas", "how-to-reflect-on-books"],
+  },
+  {
+    slug: "shoe-dog",
+    title: "Shoe Dog",
+    author: "Phil Knight",
+    description:
+      "Reflect on Shoe Dog by Phil Knight. Prompts to examine the messy reality of building something from nothing, the role of persistence versus luck, and what Nike's origin story reveals about entrepreneurship.",
+    intro:
+      "Shoe Dog is the rare business memoir that tells the truth about building a company. Knight doesn't sanitize Nike's origin into a neat success narrative. The early years were defined by constant cash crises, legal battles, supplier betrayals, and decisions that could have killed the company at any point. Success wasn't a strategy — it was survival.\n\nWhat makes the book valuable for reflection isn't the business tactics. It's Knight's honesty about the emotional experience of building something: the obsession that costs you relationships, the fear that never goes away regardless of revenue, and the uncomfortable fact that many critical breaks came from luck rather than skill.\n\nThe book challenges the startup mythology that dominates business culture. Knight didn't have a grand vision for a global brand. He had a vague passion for running and importing Japanese shoes. The billion-dollar company emerged from decades of improvisation, not from a business plan.",
+    prompts: [
+      "Knight describes Nike's early years as constant near-death experiences — always one cash crisis away from bankruptcy. What's your relationship with financial risk, and has reading about Knight's tolerance for it changed your perspective?",
+      "The book reveals that many of Nike's biggest breaks came from luck and timing, not strategy. Looking at your own work or projects, where has luck played a larger role than you typically acknowledge?",
+      "Knight was obsessed with Nike to the point of neglecting relationships and personal wellbeing. He's honest about the costs. If you're pursuing something with that level of intensity, what are you sacrificing? If you're not, what's holding you back?",
+      "Nike's origin wasn't a bold vision — it was a college paper about importing Japanese shoes. How does this challenge your assumption that great businesses start with great ideas rather than modest experiments?",
+      "Knight describes the deep loyalty of Nike's early team ('the Buttfaces') and how shared struggle built unbreakable bonds. What's the closest you've come to that kind of team, and what made it work or not?",
+    ],
+    commonMistakes: [
+      "Romanticizing Knight's risk-taking without accounting for survivorship bias — for every Phil Knight, thousands of entrepreneurs took similar risks and failed quietly.",
+      "Extracting business 'lessons' from a story that Knight himself presents as largely improvised and lucky. The book works better as an honest portrait than a how-to guide.",
+      "Glossing over the personal costs Knight describes — strained marriage, absent fathering, health problems — and treating them as acceptable collateral of ambition rather than real consequences worth weighing.",
+    ],
+    relatedBooks: ["zero-to-one", "the-lean-startup", "good-to-great"],
+    relatedGuides: ["how-to-reflect-on-books"],
+  },
 ];
 
 export function getBookReflection(slug: string): BookReflection | undefined {
