@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPromptTopic, promptTopics } from "@/lib/pseo-prompts";
 import { getReflectionGuide } from "@/lib/pseo-data";
+import { getBookReflection } from "@/lib/pseo-books";
+import { promptToBooks, promptToBlogPosts } from "@/lib/pseo-links";
 
 export async function generateMetadata({
   params,
@@ -59,6 +61,13 @@ export default async function PromptTopicPage({
   const relatedGuides = topic.relatedGuides
     .map((slug) => getReflectionGuide(slug))
     .filter(Boolean);
+
+  const bookSlugs = promptToBooks[topic.slug] || [];
+  const relatedBooks = bookSlugs
+    .map((slug) => getBookReflection(slug))
+    .filter(Boolean);
+
+  const blogPosts = promptToBlogPosts[topic.slug] || [];
 
   return (
     <div className="min-h-screen bg-[#FDFCF8] selection:bg-[#FFB7B2] pt-32 pb-20 px-6">
@@ -168,6 +177,50 @@ export default async function PromptTopicPage({
                     </Link>
                   ),
               )}
+            </div>
+          </section>
+        )}
+
+        {relatedBooks.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-black text-[#292524] mb-6">
+              books to reflect on
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {relatedBooks.map(
+                (book) =>
+                  book && (
+                    <Link
+                      key={book.slug}
+                      href={`/reflect/books/${book.slug}`}
+                      className="group block bg-white border-3 border-[#292524] p-5 shadow-[4px_4px_0px_0px_rgba(41,37,36,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
+                    >
+                      <h3 className="font-black text-[#292524] mb-1 group-hover:underline decoration-[#FFB7B2] decoration-3 underline-offset-2">
+                        {book.title}
+                      </h3>
+                      <p className="text-sm text-[#A8A29E]">{book.author}</p>
+                    </Link>
+                  ),
+              )}
+            </div>
+          </section>
+        )}
+
+        {blogPosts.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-black text-[#292524] mb-6">
+              further reading
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {blogPosts.map((postSlug) => (
+                <Link
+                  key={postSlug}
+                  href={`/blog/${postSlug}`}
+                  className="inline-block px-4 py-2 bg-[#C4B5FD] border-2 border-[#292524] text-sm font-black text-[#292524] hover:bg-[#292524] hover:text-white transition-colors"
+                >
+                  {postSlug.replace(/-/g, " ")}
+                </Link>
+              ))}
             </div>
           </section>
         )}

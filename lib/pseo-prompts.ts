@@ -7,6 +7,8 @@ export interface PromptTopic {
   whyTheseWork: string;
   relatedTopics: string[];
   relatedGuides: string[];
+  relatedBooks?: string[];
+  relatedBlogPosts?: string[];
 }
 
 export const promptTopics: PromptTopic[] = [

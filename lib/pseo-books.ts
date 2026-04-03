@@ -8,6 +8,8 @@ export interface BookReflection {
   commonMistakes: string[];
   relatedBooks: string[];
   relatedGuides: string[];
+  relatedBlogPosts?: string[];
+  relatedPrompts?: string[];
 }
 
 export const bookReflections: BookReflection[] = [

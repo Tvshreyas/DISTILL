@@ -9,6 +9,8 @@ export interface GlossaryTerm {
   howToApply: string;
   relatedTerms: string[];
   relatedBlogPosts: string[];
+  relatedBooks?: string[];
+  relatedPrompts?: string[];
 }
 
 export interface ReflectionGuide {
@@ -21,6 +23,9 @@ export interface ReflectionGuide {
   prompts: string[];
   commonMistakes: string[];
   relatedGuides: string[];
+  relatedBooks?: string[];
+  relatedPrompts?: string[];
+  relatedBlogPosts?: string[];
 }
 
 export const glossaryTerms: GlossaryTerm[] = [
