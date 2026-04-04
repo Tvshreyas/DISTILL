@@ -111,4 +111,12 @@ Build the library that is actually worth having.
 
 ---
 
-_Start building your reflection library today. [Write your first reflection on Distill](https://distill.so/start) — choose what you just read, watched, or listened to, and spend five minutes writing what you actually think about it. Your future self will thank you._
+_Start building your reflection library today. [Write your first reflection on Distill](https://distillwise.com/start) — choose what you just read, watched, or listened to, and spend five minutes writing what you actually think about it. Your future self will thank you._
+
+## keep exploring
+
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is metacognition?](/glossary/metacognition) — thinking about your own thinking process
+- [What is compound thinking?](/glossary/compound-thinking) — how individual reflections build into something greater
+- [Philosophy reflection prompts](/prompts/philosophy) — questions for exploring deeper ideas
+- [Self-improvement reflection prompts](/prompts/self-improvement) — questions for personal development content

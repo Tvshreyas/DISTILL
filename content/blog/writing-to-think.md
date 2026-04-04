@@ -52,7 +52,7 @@ When you write for yourself, the constraints disappear. You do not need a thesis
 
 The problem is that most writing advice assumes an audience. So people either write for others (and optimize for performance over thinking) or they do not write at all (because the bar feels too high). The middle path — writing for yourself, without standards, without structure, without an audience — is where the real leverage is.
 
-This is what makes [slow thinking](/blog/the-art-of-slow-thinking) practical rather than aspirational. You do not need a meditation practice or a digital detox. You need ten minutes and a blank page after you finish reading.
+This is what makes [slow thinking](/glossary/slow-thinking) practical rather than aspirational. You do not need a meditation practice or a digital detox. You need ten minutes and a blank page after you finish reading.
 
 ## what to write after you read (a simple template)
 
@@ -93,3 +93,9 @@ This is the compounding effect that most reading advice misses entirely. Individ
 You do not get this from highlights. You do not get it from summaries. You do not get it from saving articles to a read-later app that becomes a guilt-inducing backlog. You get it from writing — specifically, from writing your own perspective, in your own words, after every meaningful thing you consume.
 
 The practice is simple. The results are not fast. But the alternative — reading constantly and retaining almost nothing, consuming without processing, mistaking exposure for understanding — is the default for most people. Writing after reading is the exit from that default. Not because it is clever or optimized, but because it is the only thing that actually forces you to think.
+
+## keep exploring
+
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [Creativity reflection prompts](/prompts/creativity) — questions for exploring creative ideas
+- [Philosophy reflection prompts](/prompts/philosophy) — questions for deeper thinking

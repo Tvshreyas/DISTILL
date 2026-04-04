@@ -20,7 +20,7 @@ The term was popularized by Clay Johnson in his 2012 book _The Information Diet_
 
 With food, the problem really is volume. Eating 4,000 calories a day will damage your body regardless of quality. With information, volume alone is not the issue. A researcher might process hundreds of papers in a month and come out sharper for it. A casual browser might scroll through five articles and come out dumber. The variable is not quantity — it is metabolic rate.
 
-Your information metabolic rate is how efficiently you convert raw input into structured thought. Most people's rate is close to zero. They consume constantly and process almost never. The information passes through them like water through a sieve.
+Your information metabolic rate is how efficiently you convert raw input into structured thought. This is closely related to [deep reading](/glossary/deep-reading) — the practice of engaging slowly and deliberately with complex material instead of skimming. Most people's rate is close to zero. They consume constantly and process almost never. The information passes through them like water through a sieve.
 
 An information diet, in the way that actually matters, is a system for increasing that metabolic rate. It involves some curation of inputs, yes. But the core work is building a processing habit — a consistent practice of stopping after you consume something and asking yourself what you actually think about it.
 
@@ -98,7 +98,7 @@ After finishing a chapter, an article, a podcast episode, or a video, stop. Do n
 
 **What does this connect to?** No idea exists in isolation. The article about productivity connects to that book about deep work you read last year. The podcast about education reform connects to your own experience in school. These connections are where the value lives. They are how individual pieces of content compound into a worldview.
 
-Write your answers down. The act of writing forces clarity that thinking alone does not. As research on the [forgetting curve](/blog/how-to-remember-what-you-read) has shown, the simple act of retrieval and articulation dramatically increases retention. You do not need to write a thousand words. Three to five sentences capturing your honest reaction is enough. What matters is that the processing happens, not that it produces a polished output.
+Write your answers down. The act of writing forces clarity that thinking alone does not. As research on the [forgetting curve](/glossary/forgetting-curve) has shown, the simple act of retrieval and articulation dramatically increases retention. You do not need to write a thousand words. Three to five sentences capturing your honest reaction is enough. What matters is that the processing happens, not that it produces a polished output.
 
 This is the core practice. Everything else — the curation, the scheduling, the environment design — exists to support this step. If you only do one thing from this entire article, make it this: after consuming something, write down what you think about it.
 
@@ -135,3 +135,16 @@ They are not on a diet. They are running a processing operation. And the output 
 Start with one piece of content today. Read it, watch it, listen to it — whatever format you prefer. When it is done, close it. Open a blank page. Write down what you think. Not what the author thinks. What you think.
 
 That is the information diet. Not less input. More processing. That is all it takes.
+
+## keep exploring
+
+- [What is an information diet?](/glossary/information-diet) — consuming better, not just consuming less
+- [What is deep reading?](/glossary/deep-reading) — slow, focused engagement with complex texts
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is slow thinking?](/glossary/slow-thinking) — the deliberate mode that builds understanding
+- [Reflect on Digital Minimalism by Cal Newport](/reflect/books/digital-minimalism) — prompts for rethinking your relationship with technology
+- [Reflect on Essentialism by Greg McKeown](/reflect/books/essentialism) — prompts for doing less but better
+- [Reflect on Deep Work by Cal Newport](/reflect/books/deep-work) — prompts for the book that started the focus movement
+- [Self-improvement reflection prompts](/prompts/self-improvement) — questions for personal development content
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Education reflection prompts](/prompts/education) — questions for learning-focused content

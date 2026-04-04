@@ -26,7 +26,7 @@ For a reader who just finished a book, this means:
 4. Apply tags or metadata
 5. Progressively summarize (bold the important parts, then highlight the bolded parts, then summarize the highlights)
 
-By the time you finish step 3, the actual thinking you had about the book — the part that mattered — has already faded from working memory. The forgetting curve does not wait for you to finish filing.
+By the time you finish step 3, the actual thinking you had about the book — the part that mattered — has already faded from working memory. The [forgetting curve](/glossary/forgetting-curve) does not wait for you to finish filing.
 
 The irony: the system designed to help you process information prevents you from processing it. You spend your cognitive effort on organization rather than thinking.
 
@@ -78,3 +78,10 @@ The connections emerge because your brain is doing the linking — not a databas
 [Distill](/) is built for this workflow. Start a session, consume something, write your reflection. Your past reflections resurface at intervals. No folders. No tags. No PARA framework. Just your thinking, compounded over time.
 
 [Try writing your first reflection →](/start)
+
+## keep exploring
+
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is compound thinking?](/glossary/compound-thinking) — how individual reflections build into something greater
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Philosophy reflection prompts](/prompts/philosophy) — questions for exploring deeper ideas

@@ -81,3 +81,12 @@ Those reflections resurface at intervals. Your library grows. Over time, you hav
 It is not a replacement for Notion or Obsidian. It solves a different problem: the one where you read 20 books a year and cannot articulate what you think about any of them.
 
 [Try writing your first reflection →](/start)
+
+## keep exploring
+
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is active reading?](/glossary/active-reading) — engaging with text instead of passively consuming it
+- [What is compound thinking?](/glossary/compound-thinking) — how individual reflections build into something greater
+- [Reflect on How to Take Smart Notes by Sönke Ahrens](/reflect/books/how-to-take-smart-notes) — prompts for the book behind Zettelkasten
+- [Reflect on Deep Work by Cal Newport](/reflect/books/deep-work) — prompts for focused knowledge work
+- [Self-improvement reflection prompts](/prompts/self-improvement) — questions for personal development content

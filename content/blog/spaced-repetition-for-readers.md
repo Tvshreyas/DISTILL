@@ -14,7 +14,7 @@ The standard advice does not really apply. And the reason is simple: reading is 
 
 ## spaced repetition is not just for flashcards
 
-The core principle behind spaced repetition is solid. Hermann Ebbinghaus documented the [forgetting curve](/blog/why-you-forget-everything-you-read) in the 1880s — the rapid decay of memory over time without deliberate review. Spaced repetition fights that decay by timing your review sessions to the moments just before you would forget.
+The core principle behind spaced repetition is solid. Hermann Ebbinghaus documented the [forgetting curve](/glossary/forgetting-curve) in the 1880s — the rapid decay of memory over time without deliberate review. Spaced repetition fights that decay by timing your review sessions to the moments just before you would forget.
 
 This works well for discrete facts. Capital cities. Verb conjugations. Anatomy terms. You either know it or you do not. The flashcard format fits because the knowledge unit is small, testable, and binary.
 
@@ -52,7 +52,7 @@ There is a better framing for readers: spaced resurfacing.
 
 Instead of resurfacing facts or other people's ideas, you resurface your own thinking. The unit of review is not a flashcard. It is a reflection — what you thought about something after you engaged with it.
 
-The distinction matters. When you revisit someone else's idea, you are doing recall. When you revisit your own perspective on that idea, you are doing something closer to metacognition. You are examining how you think, not just what you remember.
+The distinction matters. When you revisit someone else's idea, you are doing recall. When you revisit your own perspective on that idea, you are doing something closer to [metacognition](/glossary/metacognition). You are examining how you think, not just what you remember.
 
 Here is what this looks like in practice. After you read something — a book, an article, a long essay — you write down your perspective. Not a summary. Not highlights. Your actual thinking. What struck you. Where you disagreed. What it connected to. What questions it raised.
 
@@ -118,3 +118,13 @@ This is not mystical. It is just what happens when you keep your past thinking a
 Most productivity systems optimize for input: read more, save more, highlight more. Spaced resurfacing optimizes for something different — the depth and durability of your own perspective. It takes the most evidence-backed learning technique we have and redirects it from memorizing other people's answers to developing your own thinking.
 
 You do not need to remember everything you read. You need to think with what you have read. And that requires coming back to it — not to the source material, but to what you made of it.
+
+## keep exploring
+
+- [What is spaced repetition?](/glossary/spaced-repetition) — the science behind why timed review works
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is metacognition?](/glossary/metacognition) — thinking about your own thinking process
+- [Reflect on Thinking, Fast and Slow by Daniel Kahneman](/reflect/books/thinking-fast-and-slow) — prompts for the book that changed decision science
+- [Reflect on Atomic Habits by James Clear](/reflect/books/atomic-habits) — prompts for building systems that stick
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Education reflection prompts](/prompts/education) — questions for learning-focused content

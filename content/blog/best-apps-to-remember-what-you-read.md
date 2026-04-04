@@ -109,3 +109,13 @@ If you want to remember what you actually thought: use Distill.
 Most readers will benefit most from the last approach. The bottleneck is not access to information or organization of information. It is processing — the step where you convert someone else's ideas into your own thinking.
 
 [Try writing your first reflection →](/start)
+
+## keep exploring
+
+- [What is spaced repetition?](/glossary/spaced-repetition) — the science behind why timed review works
+- [What is the forgetting curve?](/glossary/forgetting-curve) — why you lose 70% in 24 hours
+- [What is active reading?](/glossary/active-reading) — engaging with text instead of passively consuming it
+- [Reflect on Atomic Habits by James Clear](/reflect/books/atomic-habits) — prompts for building systems that stick
+- [Reflect on Digital Minimalism by Cal Newport](/reflect/books/digital-minimalism) — prompts for rethinking your relationship with technology
+- [Education reflection prompts](/prompts/education) — questions for learning-focused content
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article

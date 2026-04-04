@@ -167,3 +167,12 @@ The tool matters less than the habit. Any reflection practice — even imperfect
 ---
 
 _Distill was built for readers who want to think, not just organize. Try it free at [distillwise.com](https://distillwise.com)._
+
+## keep exploring
+
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is compound thinking?](/glossary/compound-thinking) — how individual reflections build into something greater
+- [What is metacognition?](/glossary/metacognition) — thinking about your own thinking process
+- [Reflect on Atomic Habits by James Clear](/reflect/books/atomic-habits) — prompts for building systems that stick
+- [Reflect on Thinking, Fast and Slow by Daniel Kahneman](/reflect/books/thinking-fast-and-slow) — prompts for the book that changed decision science
+- [Self-improvement reflection prompts](/prompts/self-improvement) — questions for personal development content

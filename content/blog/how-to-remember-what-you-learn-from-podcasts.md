@@ -54,7 +54,7 @@ Not a summary of the episode. Not a list of topics covered. Just what stuck.
 
 Your brain has already done the filtering. Out of a 90-minute conversation, certain moments stayed and most did not. Trust that filtering. The things that stuck are the things your brain flagged as relevant to your existing thinking.
 
-Write them down. Two or three sentences. Do this the moment you get to your desk, or in the parking lot before going inside, or in the kitchen after cooking. The window is short — [within 24 hours, 70% will be gone](/blog/why-you-forget-everything-you-read).
+Write them down. Two or three sentences. Do this the moment you get to your desk, or in the parking lot before going inside, or in the kitchen after cooking. The window is short — within 24 hours, [70% will be gone](/glossary/forgetting-curve).
 
 Example after a podcast about startup strategy:
 
@@ -107,3 +107,12 @@ Three minutes of reflection after one episode is worth more than eight hours of 
 ---
 
 _Start a Distill session after your next podcast. [distillwise.com](https://distillwise.com)_
+
+## keep exploring
+
+- [What is spaced repetition?](/glossary/spaced-repetition) — the science behind why timed review works
+- [What is the forgetting curve?](/glossary/forgetting-curve) — why you lose 70% in 24 hours
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Education reflection prompts](/prompts/education) — questions for learning-focused content
+- [Creativity reflection prompts](/prompts/creativity) — questions for creative content

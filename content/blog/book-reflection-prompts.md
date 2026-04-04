@@ -38,7 +38,7 @@ Comprehension is the floor, not the ceiling. These prompts move from "what did t
 
 ## critical thinking: where do you disagree?
 
-Agreement is comfortable. Disagreement is where thinking sharpens. These prompts push you to evaluate the author's reasoning rather than simply accept it.
+Agreement is comfortable. Disagreement is where [critical thinking](/glossary/critical-thinking) sharpens. These prompts push you to evaluate the author's reasoning rather than simply accept it.
 
 13. What is the weakest argument in this book? Where did the logic not hold up for you?
 14. What is the author ignoring or leaving out? What perspective is missing from their analysis?
@@ -75,10 +75,21 @@ Do not answer all thirty. That is a homework assignment, not a [reflection pract
 
 Instead, scan the list after finishing something. Pick the 2-3 prompts that create the most friction — the ones where your answer is not immediately obvious. Those are the prompts doing real work. If a prompt is easy to answer, it is not pushing your thinking.
 
-Write your answers in your own words. Keep it short — a few sentences per prompt is enough. The goal is not a polished essay. The goal is to capture your perspective while it is fresh, before the forgetting curve erases the nuance.
+Write your answers in your own words. Keep it short — a few sentences per prompt is enough. The goal is not a polished essay. The goal is to capture your perspective while it is fresh, before [the forgetting curve](/glossary/forgetting-curve) erases the nuance.
 
 Then revisit your answers in a few weeks. You will be surprised how much your thinking has shifted — or how much it has not.
 
 ---
 
 _Use these prompts inside Distill. Start a reflection at [distillwise.com](https://distillwise.com)._
+
+## keep exploring
+
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is critical thinking?](/glossary/critical-thinking) — evaluating ideas instead of accepting them
+- [Reflect on Atomic Habits by James Clear](/reflect/books/atomic-habits) — prompts for building systems that stick
+- [Reflect on Thinking, Fast and Slow by Daniel Kahneman](/reflect/books/thinking-fast-and-slow) — prompts for the book that changed decision science
+- [Reflect on Deep Work by Cal Newport](/reflect/books/deep-work) — prompts for the book that started the focus movement
+- [Philosophy reflection prompts](/prompts/philosophy) — questions for any philosophy book or article
+- [Self-improvement reflection prompts](/prompts/self-improvement) — questions for personal development content
+- [Psychology reflection prompts](/prompts/psychology) — questions for psychology books and articles

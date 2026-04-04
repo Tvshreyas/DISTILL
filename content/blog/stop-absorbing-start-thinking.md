@@ -56,7 +56,7 @@ That is the shift. From consumer to thinker. From someone who reads to someone w
 
 Most people skip this step forever. They read hundreds of books and remain unable to articulate a clear worldview built from what they read. The books stay in the books. The ideas never become theirs.
 
-Intentional content consumption is not about consuming less. It is about processing what you consume. One book you actually think about is worth twenty you speed-read and forget.
+Intentional content consumption is not about consuming less. It is about processing what you consume. This is what [reflective thinking](/glossary/reflective-thinking) looks like in practice. One book you actually think about is worth twenty you speed-read and forget.
 
 ## the practice
 
@@ -99,3 +99,10 @@ The world does not need more people who have read everything. It needs more peop
 ---
 
 This is why we built Distill. A thinking development tool for people who are done absorbing and ready to start thinking. [distillwise.com](https://distillwise.com)
+
+## keep exploring
+
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is critical thinking?](/glossary/critical-thinking) — evaluating ideas instead of accepting them
+- [Philosophy reflection prompts](/prompts/philosophy) — questions for exploring deeper ideas
+- [Self-improvement reflection prompts](/prompts/self-improvement) — questions for personal development content

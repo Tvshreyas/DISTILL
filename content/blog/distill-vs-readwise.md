@@ -101,3 +101,12 @@ If you use Readwise already and feel like something is missing — like you have
 ---
 
 _Distill is free — 10 deep sessions per month. [distillwise.com](https://distillwise.com)_
+
+## keep exploring
+
+- [What is spaced repetition?](/glossary/spaced-repetition) — the science behind why timed review works
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is the forgetting curve?](/glossary/forgetting-curve) — why you lose 70% in 24 hours
+- [Reflect on Atomic Habits by James Clear](/reflect/books/atomic-habits) — prompts for building systems that stick
+- [Reflect on Deep Work by Cal Newport](/reflect/books/deep-work) — prompts for focused knowledge work
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article

@@ -14,7 +14,7 @@ Active reading is the fix. Not because it is a hack or a secret, but because it 
 
 ## what is active reading (and why passive reading fails)
 
-Active reading means interacting with a text as you consume it. Highlighting, questioning, summarizing, arguing, connecting. The specific method matters less than the fact that you are doing something beyond moving your eyes across words.
+[Active reading](/glossary/active-reading) means interacting with a text as you consume it. Highlighting, questioning, summarizing, arguing, connecting. The specific method matters less than the fact that you are doing something beyond moving your eyes across words.
 
 Passive reading — the default mode for most of us — feels productive. You are turning pages. You are "getting through" the book. But cognitive research on encoding consistently shows that information your brain does not process deeply gets discarded within hours. Hermann Ebbinghaus documented this in the 1880s, and nothing about human memory has changed since. If you want the details on why forgetting happens so fast, [this piece on the forgetting curve](/blog/why-you-forget-everything-you-read) covers the mechanics.
 
@@ -81,7 +81,7 @@ The reason most people skip this step is that it feels uncomfortable. Trying to 
 
 Active reading does not end when you close the book. The final technique is revisiting your notes and reflections at increasing intervals — a day later, a week later, a month later.
 
-This is spaced repetition applied to reading notes. The concept comes from memory research: reviewing material at expanding intervals produces stronger long-term retention than reviewing it many times in a short period.
+This is [spaced repetition](/glossary/spaced-repetition) applied to reading notes. The concept comes from memory research: reviewing material at expanding intervals produces stronger long-term retention than reviewing it many times in a short period.
 
 **Concrete example:** You read a book on negotiation in January. You wrote marginal notes and a reflection after each chapter. In February, you spend fifteen minutes reviewing those notes. You notice that some ideas feel obvious now — those have been absorbed. Others feel unfamiliar — those need another pass. In April, you review again. By this point, the core arguments are durable knowledge that you can retrieve and apply in real conversations.
 
@@ -114,3 +114,14 @@ The pre-read scan, marginal dialogue, and spaced resurfacing can be added over t
 A useful framing: reading is input, but thinking is the output. Most people optimize for input volume — more books, more articles, more podcasts. Active reading optimizes for output quality. You read less, but you retain and apply more. Over months, this compounds. Your library of processed ideas grows. Connections between ideas emerge. You develop positions on topics instead of vaguely remembering that you once read something about them.
 
 That shift — from consumer to thinker — is the actual point. Not reading more. Thinking more about what you read.
+
+## keep exploring
+
+- [What is active reading?](/glossary/active-reading) — the concept behind every technique in this post
+- [What is reflective thinking?](/glossary/reflective-thinking) — why forming your own perspective matters
+- [What is deep reading?](/glossary/deep-reading) — slow, focused engagement with complex texts
+- [What is metacognition?](/glossary/metacognition) — thinking about your own thinking process
+- [Reflect on Deep Work by Cal Newport](/reflect/books/deep-work) — prompts for the book that started the focus movement
+- [Reflect on Atomic Habits by James Clear](/reflect/books/atomic-habits) — prompts for building systems that stick
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Education reflection prompts](/prompts/education) — questions for learning-focused content

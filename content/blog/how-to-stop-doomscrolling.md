@@ -67,8 +67,17 @@ People who build a reflection habit report a consistent set of changes:
 - **They feel less anxious.** The open-loop nature of infinite feeds — there is always more, you never finish — produces low-grade anxiety. A defined session with a written reflection has a clear end point.
 - **Their thinking compounds.** Over weeks and months, a library of reflections becomes a searchable archive of your intellectual development. There is no equivalent from a scrolling history.
 
-The shift is not from "doing something bad" to "doing something good." It is from consuming without processing to [consuming with intention](/blog/the-paradox-of-digital-information). The content itself can be the same — articles, videos, essays. The difference is what you do in the five minutes after.
+The shift is not from "doing something bad" to "doing something good." It is from consuming without processing to [consuming with intention](/blog/the-paradox-of-digital-information). This shift is what [critical thinking](/glossary/critical-thinking) looks like in practice — evaluating what deserves your attention instead of accepting whatever the algorithm serves. The content itself can be the same — articles, videos, essays. The difference is what you do in the five minutes after.
 
 Those five minutes are the entire gap between content consumption and thinking development. Doomscrolling skips them. Reflection fills them.
 
 If you want to formalize this shift, read about building an [information diet](/blog/information-diet) or how to turn reflection into a [daily habit](/blog/reflection-habit).
+
+## keep exploring
+
+- [What is critical thinking?](/glossary/critical-thinking) — evaluating ideas instead of accepting them
+- [What is an information diet?](/glossary/information-diet) — consuming better, not just consuming less
+- [What is slow thinking?](/glossary/slow-thinking) — the deliberate mode that builds understanding
+- [Reflect on Digital Minimalism by Cal Newport](/reflect/books/digital-minimalism) — prompts for rethinking your relationship with technology
+- [Reflect on The Power of Now by Eckhart Tolle](/reflect/books/the-power-of-now) — prompts for presence and attention
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article

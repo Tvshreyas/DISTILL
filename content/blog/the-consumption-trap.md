@@ -51,7 +51,7 @@ None of these are _yours_.
 
 The consumption trap does not just waste time. It actively degrades your capacity for original thought.
 
-When you consume without reflecting, you train your brain to be a _receiver_ rather than a _processor_. Over time, this becomes your default mode. You reach for more input whenever you feel uncertain, instead of sitting with the uncertainty and working through it yourself. You become dependent on other people's conclusions.
+When you consume without reflecting, you train your brain to be a _receiver_ rather than a _processor_. This is the opposite of [critical thinking](/glossary/critical-thinking) — the active evaluation of ideas that builds genuine understanding. Over time, this becomes your default mode. You reach for more input whenever you feel uncertain, instead of sitting with the uncertainty and working through it yourself. You become dependent on other people's conclusions.
 
 This has a name in psychology: cognitive offloading. And while it works for simple tasks (writing down a phone number), it is catastrophic for complex thinking. You cannot offload the work of forming your own perspective. That work _is_ the perspective.
 
@@ -85,4 +85,14 @@ Stop absorbing. Start thinking.
 
 ---
 
-_Ready to escape the consumption trap? [Start your first reflection on Distill](https://distill.so/start) — it takes less than five minutes to turn what you just consumed into something that is actually yours._
+_Ready to escape the consumption trap? [Start your first reflection on Distill](https://distillwise.com/start) — it takes less than five minutes to turn what you just consumed into something that is actually yours._
+
+## keep exploring
+
+- [What is critical thinking?](/glossary/critical-thinking) — evaluating ideas instead of accepting them
+- [What is slow thinking?](/glossary/slow-thinking) — the deliberate mode that builds understanding
+- [What is an information diet?](/glossary/information-diet) — consuming better, not just consuming less
+- [Reflect on Deep Work by Cal Newport](/reflect/books/deep-work) — prompts for the book that started the focus movement
+- [Reflect on Thinking, Fast and Slow by Daniel Kahneman](/reflect/books/thinking-fast-and-slow) — prompts for the book that changed decision science
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Philosophy reflection prompts](/prompts/philosophy) — questions for exploring deeper ideas

@@ -44,7 +44,7 @@ Instead of reflecting at a scheduled time, you reflect immediately after consumi
 
 This works because the cue is embedded in a behavior you already do. You already read articles, watch videos, listen to podcasts. The moment you finish is a natural transition point. You are already thinking about what you consumed. The habit slots into an existing gap rather than demanding a new one.
 
-James Clear writes about habit stacking — attaching a new behavior to an existing one. Content-triggered reflection is a specific version of this. The existing behavior is consuming content. The new behavior is writing down what you think about it. The transition between consuming and doing the next thing is the cue.
+[James Clear writes about habit stacking](/reflect/books/atomic-habits) — attaching a new behavior to an existing one. Content-triggered reflection is a specific version of this. The existing behavior is consuming content. The new behavior is writing down what you think about it. The transition between consuming and doing the next thing is the cue.
 
 This also solves the vagueness problem. You do not need to recall what you learned today. The content is right in front of you. You have a specific thing to respond to. The blank page is no longer blank — it has context.
 
@@ -129,3 +129,12 @@ Over time, this archive becomes genuinely useful. When you encounter a new idea,
 The hard part is not the writing. The hard part is remembering to do it. And that is why the trigger matters more than the routine. Tie it to the moment you finish content, keep it under two minutes, and lower your standards for what counts as a reflection. The habit will build itself.
 
 You already consume more than enough. The missing piece is not more input. It is the five minutes of thinking you skip every time you move on to the next thing.
+
+## keep exploring
+
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is active reading?](/glossary/active-reading) — engaging with text instead of passively consuming it
+- [Reflect on The Power of Habit by Charles Duhigg](/reflect/books/the-power-of-habit) — prompts for understanding how habits form
+- [Reflect on Atomic Habits by James Clear](/reflect/books/atomic-habits) — prompts for building systems that stick
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Self-improvement reflection prompts](/prompts/self-improvement) — questions for personal development content

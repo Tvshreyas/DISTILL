@@ -101,3 +101,13 @@ The default after finishing a book is to do nothing. Start the next book. Open t
 ---
 
 _Distill automates the reflection and resurfacing steps. Start a free session at [distillwise.com](https://distillwise.com)._
+
+## keep exploring
+
+- [What is the forgetting curve?](/glossary/forgetting-curve) — why you lose 70% in 24 hours
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is spaced repetition?](/glossary/spaced-repetition) — the science behind why timed review works
+- [Reflect on Atomic Habits by James Clear](/reflect/books/atomic-habits) — prompts for building systems that stick
+- [Reflect on Deep Work by Cal Newport](/reflect/books/deep-work) — prompts for the book that started the focus movement
+- [Self-improvement reflection prompts](/prompts/self-improvement) — questions for personal development content
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article

@@ -23,3 +23,14 @@ AI cannot tell you why a specific quote changes your specific business strategy.
 > **Distill Perspective**: In the age of AI, the person with the best "distilled" library of thoughts wins. Their decisions are faster, their insights are sharper, and their voice is unmistakably their own.
 
 Stop summarizing the world. Start distilling it. The first step is learning to [remember what you read](/blog/how-to-remember-what-you-read) — then building on those foundations with [slow, intentional thinking](/blog/the-art-of-slow-thinking). The practical mechanism behind this is simple: [writing to think](/blog/writing-to-think).
+
+## keep exploring
+
+- [What is critical thinking?](/glossary/critical-thinking) — evaluating ideas instead of accepting them
+- [What is compound thinking?](/glossary/compound-thinking) — how individual reflections build into something greater
+- [What is slow thinking?](/glossary/slow-thinking) — the deliberate mode that builds understanding
+- [Reflect on Thinking, Fast and Slow by Daniel Kahneman](/reflect/books/thinking-fast-and-slow) — prompts for the book that changed decision science
+- [Reflect on Zero to One by Peter Thiel](/reflect/books/zero-to-one) — prompts for the book about building the future
+- [Technology reflection prompts](/prompts/technology) — questions for technology-focused content
+- [Business reflection prompts](/prompts/business) — questions for business and strategy content
+- [Leadership reflection prompts](/prompts/leadership) — questions for leadership-focused content

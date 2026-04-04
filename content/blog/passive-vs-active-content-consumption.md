@@ -57,7 +57,7 @@ Active consumption adds one step: processing. That processing can take many form
 | **Long-term result**        | Large reading list, vague memories | Smaller but deeper knowledge, clear perspectives |
 | **What you can articulate** | "I read that book. It was good."   | "That book argued X. I think Y because Z."       |
 
-The retention numbers are approximate, based on research on the [forgetting curve](/blog/why-you-forget-everything-you-read) and depth of processing effects documented by Craik and Lockhart (1972). The exact percentages vary by individual and content type, but the directional difference is consistent across studies: active processing dramatically improves retention.
+The retention numbers are approximate, based on research on the [forgetting curve](/glossary/forgetting-curve) and depth of processing effects documented by Craik and Lockhart (1972). The exact percentages vary by individual and content type, but the directional difference is consistent across studies: active processing dramatically improves retention.
 
 ## the bridge: how to shift from passive to active
 
@@ -108,3 +108,11 @@ The difference between a person who reads 50 books passively and a person who re
 ---
 
 _Distill helps you actually think about what you read. [distillwise.com](https://distillwise.com)_
+
+## keep exploring
+
+- [What is active reading?](/glossary/active-reading) — engaging with text instead of passively consuming it
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is critical thinking?](/glossary/critical-thinking) — evaluating ideas instead of accepting them
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Philosophy reflection prompts](/prompts/philosophy) — questions for exploring deeper ideas

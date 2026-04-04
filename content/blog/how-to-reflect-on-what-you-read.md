@@ -10,7 +10,7 @@ Most people do not know what reflection actually means. They think it means summ
 
 Reflection is forming your own perspective on what you consumed. Not restating what the author said. Not capturing highlights. Not organizing notes into a database. Forming a position — what do you think about this, and why?
 
-The 3-step reflection method below takes less than five minutes. It works for books, articles, podcasts, videos, and anything else you consume intentionally. It is the simplest way to turn passive reading into active thinking.
+The 3-step reflection method below takes less than five minutes. It works for books, articles, podcasts, videos, and anything else you consume intentionally. It is the simplest way to turn passive reading into [active thinking](/glossary/reflective-thinking).
 
 ## why most people skip reflection
 
@@ -109,3 +109,13 @@ The 3-step method is simple. Consume. Pause. Write your perspective. The simplic
 ---
 
 _This method is the foundation of Distill. Start a reflection at [distillwise.com](https://distillwise.com)._
+
+## keep exploring
+
+- [What is reflective thinking?](/glossary/reflective-thinking) — the practice that separates readers from thinkers
+- [What is active reading?](/glossary/active-reading) — engaging with text instead of passively consuming it
+- [What is the forgetting curve?](/glossary/forgetting-curve) — why you lose 70% within 24 hours
+- [Reflect on The Power of Habit by Charles Duhigg](/reflect/books/the-power-of-habit) — prompts for understanding how habits form
+- [Reflect on Thinking, Fast and Slow by Daniel Kahneman](/reflect/books/thinking-fast-and-slow) — prompts for the book that changed decision science
+- [Psychology reflection prompts](/prompts/psychology) — questions for any psychology book or article
+- [Self-improvement reflection prompts](/prompts/self-improvement) — questions for personal development content
