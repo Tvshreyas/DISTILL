@@ -37,9 +37,18 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://distillwise.com"),
-  title: "Distill — Think more clearly about what you consume",
+  title: "Distillwise — Think more clearly about what you consume",
   description:
-    "Distill helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",
+    "Distillwise helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",
+  keywords: [
+    "distill",
+    "distillwise",
+    "reflection",
+    "thinking development",
+    "learning tool",
+    "growth mindset",
+    "intentional consumption",
+  ],
   manifest: "/manifest.json",
   alternates: {
     canonical: "https://distillwise.com",
@@ -50,7 +59,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    apple: "/icon-192.png",
   },
   appleWebApp: {
     capable: true,
@@ -105,7 +114,28 @@ export default async function RootLayout({
             <PostHogProvider>
               <PWAProvider />
               <CustomCursor />
-              <ProfileSync />
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    name: "Distillwise",
+                    url: "https://distillwise.com",
+                    description:
+                      "A thinking development tool for intentional content consumption.",
+                    potentialAction: {
+                      "@type": "SearchAction",
+                      target: {
+                        "@type": "EntryPoint",
+                        urlTemplate:
+                          "https://distillwise.com/search?q={search_term_string}",
+                      },
+                      "query-input": "required name=search_term_string",
+                    },
+                  }),
+                }}
+              />
               {children}
               <Toaster
                 theme="light"
