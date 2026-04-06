@@ -17,6 +17,7 @@ import {
   Share2,
 } from "lucide-react";
 import posthog from "posthog-js";
+import JSZip from "jszip";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
 import UpgradeModal from "@/components/UpgradeModal";
 
@@ -74,20 +75,64 @@ export default function SettingsPage() {
     }
   }
 
-  async function handleExportData() {
+  async function handleExportData(format: "json" | "markdown" = "json") {
     setIsExporting(true);
     try {
       const res = await fetch("/api/export");
       if (!res.ok) throw new Error("Export failed");
 
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `distill-export-${new Date().toISOString().split("T")[0]}.json`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      if (format === "json") {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `distill-export-${new Date().toISOString().split("T")[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } else if (format === "markdown") {
+        const data = await res.json();
+        const zip = new JSZip();
+
+        data.forEach((reflection: any) => {
+          const safeTitle = reflection.session?.title
+            ? reflection.session.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()
+            : 'quick-distill';
+          const dateStr = reflection.createdAt ? reflection.createdAt.split('T')[0] : 'unknown-date';
+          
+          let mdContent = `---\n`;
+          mdContent += `title: "${reflection.session?.title || 'Quick Distill'}"\n`;
+          mdContent += `date: "${dateStr}"\n`;
+          if (reflection.session?.contentType) mdContent += `type: "${reflection.session.contentType}"\n`;
+          if (reflection.wordCount) mdContent += `wordCount: ${reflection.wordCount}\n`;
+          if (reflection.thinkingShiftRating) mdContent += `rating: ${reflection.thinkingShiftRating}\n`;
+          mdContent += `tags: ["distill-reflection"]\n`;
+          mdContent += `---\n\n`;
+          
+          mdContent += `# ${reflection.session?.title || 'Quick Distill'}\n\n`;
+          mdContent += `${reflection.content}\n\n`;
+
+          if (reflection.layers && reflection.layers.length > 0) {
+            mdContent += `## Layers\n\n`;
+            reflection.layers.forEach((layer: any, idx: number) => {
+              const layerDate = layer.createdAt ? layer.createdAt.split('T')[0] : '';
+              mdContent += `### Layer ${idx + 1} (${layerDate})\n${layer.content}\n\n`;
+            });
+          }
+
+          zip.file(`${dateStr}-${safeTitle}.md`, mdContent);
+        });
+
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+        const url = URL.createObjectURL(zipBlob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `distill-markdown-export-${new Date().toISOString().split("T")[0]}.zip`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+      
       toast.success("Data export ready.");
     } catch {
       toast.error("Export failed. Please try again.");
@@ -438,19 +483,34 @@ export default function SettingsPage() {
         <h2 className="text-xs font-black uppercase tracking-[0.2em] text-soft-black/40 flex items-center gap-2">
           <Download className="w-3 h-3" /> Data Portability
         </h2>
-        <div className="p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black space-y-4">
-          <p className="text-sm font-medium text-muted-text">
-            Export all your reflections and perspectives in a clean,
-            human-readable JSON format.
+        <div className="p-8 rounded-[2rem] bg-white brutal-border border-4 border-soft-black space-y-6">
+          <div className="space-y-2">
+            <h3 className="font-black text-xl lowercase">Export Data</h3>
+            <p className="text-sm font-medium text-muted-text">
+              Export your reflections. JSON is ideal for developers, while Markdown is perfect for dropping straight into Obsidian or Notion.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={() => handleExportData("json")}
+              disabled={isExporting}
+              className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-white border-4 border-soft-black rounded-xl font-black text-sm hover:bg-sage/10 transition-all"
+            >
+              <Download className="w-4 h-4" />{" "}
+              JSON
+            </button>
+            <button
+              onClick={() => handleExportData("markdown")}
+              disabled={isExporting}
+              className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-soft-black text-white rounded-xl font-black text-sm hover:bg-soft-black/90 transition-all hover:translate-x-[2px] hover:translate-y-[2px]"
+            >
+              <Download className="w-4 h-4" />{" "}
+              Markdown (ZIP)
+            </button>
+          </div>
+          <p className="text-xs font-medium text-muted-text/60 text-center">
+            Note: You can only export once every 24 hours.
           </p>
-          <button
-            onClick={handleExportData}
-            disabled={isExporting}
-            className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-soft-black rounded-xl font-black text-sm hover:bg-sage/10 transition-all brutal-border-sm"
-          >
-            <Download className="w-4 h-4" />{" "}
-            {isExporting ? "Exporting..." : "Export My Data"}
-          </button>
         </div>
       </section>
 
