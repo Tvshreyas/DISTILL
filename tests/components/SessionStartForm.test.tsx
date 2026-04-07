@@ -14,7 +14,7 @@ describe("SessionStartForm", () => {
     expect(
       screen.getByPlaceholderText("what do you hope to get from this?"),
     ).toBeTruthy();
-    expect(screen.getByText("retroactive reflection")).toBeTruthy();
+    expect(screen.getByText("already consumed?")).toBeTruthy();
   });
 
   it("renders all 5 content type buttons", () => {
@@ -94,15 +94,15 @@ describe("SessionStartForm", () => {
 
   it("shows character count for consume reason", () => {
     render(<SessionStartForm {...defaultProps} />);
-    // Character count is rendered as "{count}/140" — may be split into text nodes
-    expect(screen.getByText(/0.*\/.*140/)).toBeTruthy();
+    // Character count is rendered as "{count}/30000" — may be split into text nodes
+    expect(screen.getByText(/0.*\/.*30000/)).toBeTruthy();
     fireEvent.change(
       screen.getByPlaceholderText("what do you hope to get from this?"),
       {
         target: { value: "Hello" },
       },
     );
-    expect(screen.getByText(/5.*\/.*140/)).toBeTruthy();
+    expect(screen.getByText(/5.*\/.*30000/)).toBeTruthy();
   });
 
   it("omits consumeReason when empty", () => {

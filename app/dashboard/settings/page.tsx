@@ -94,28 +94,37 @@ export default function SettingsPage() {
         const data = await res.json();
         const zip = new JSZip();
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         data.forEach((reflection: any) => {
           const safeTitle = reflection.session?.title
-            ? reflection.session.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()
-            : 'quick-distill';
-          const dateStr = reflection.createdAt ? reflection.createdAt.split('T')[0] : 'unknown-date';
-          
+            ? reflection.session.title.replace(/[^a-z0-9]/gi, "_").toLowerCase()
+            : "quick-distill";
+          const dateStr = reflection.createdAt
+            ? reflection.createdAt.split("T")[0]
+            : "unknown-date";
+
           let mdContent = `---\n`;
-          mdContent += `title: "${reflection.session?.title || 'Quick Distill'}"\n`;
+          mdContent += `title: "${reflection.session?.title || "Quick Distill"}"\n`;
           mdContent += `date: "${dateStr}"\n`;
-          if (reflection.session?.contentType) mdContent += `type: "${reflection.session.contentType}"\n`;
-          if (reflection.wordCount) mdContent += `wordCount: ${reflection.wordCount}\n`;
-          if (reflection.thinkingShiftRating) mdContent += `rating: ${reflection.thinkingShiftRating}\n`;
+          if (reflection.session?.contentType)
+            mdContent += `type: "${reflection.session.contentType}"\n`;
+          if (reflection.wordCount)
+            mdContent += `wordCount: ${reflection.wordCount}\n`;
+          if (reflection.thinkingShiftRating)
+            mdContent += `rating: ${reflection.thinkingShiftRating}\n`;
           mdContent += `tags: ["distill-reflection"]\n`;
           mdContent += `---\n\n`;
-          
-          mdContent += `# ${reflection.session?.title || 'Quick Distill'}\n\n`;
+
+          mdContent += `# ${reflection.session?.title || "Quick Distill"}\n\n`;
           mdContent += `${reflection.content}\n\n`;
 
           if (reflection.layers && reflection.layers.length > 0) {
             mdContent += `## Layers\n\n`;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             reflection.layers.forEach((layer: any, idx: number) => {
-              const layerDate = layer.createdAt ? layer.createdAt.split('T')[0] : '';
+              const layerDate = layer.createdAt
+                ? layer.createdAt.split("T")[0]
+                : "";
               mdContent += `### Layer ${idx + 1} (${layerDate})\n${layer.content}\n\n`;
             });
           }
@@ -132,7 +141,7 @@ export default function SettingsPage() {
         a.click();
         document.body.removeChild(a);
       }
-      
+
       toast.success("Data export ready.");
     } catch {
       toast.error("Export failed. Please try again.");
@@ -487,7 +496,8 @@ export default function SettingsPage() {
           <div className="space-y-2">
             <h3 className="font-black text-xl lowercase">Export Data</h3>
             <p className="text-sm font-medium text-muted-text">
-              Export your reflections. JSON is ideal for developers, while Markdown is perfect for dropping straight into Obsidian or Notion.
+              Export your reflections. JSON is ideal for developers, while
+              Markdown is perfect for dropping straight into Obsidian or Notion.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -496,16 +506,14 @@ export default function SettingsPage() {
               disabled={isExporting}
               className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-white border-4 border-soft-black rounded-xl font-black text-sm hover:bg-sage/10 transition-all"
             >
-              <Download className="w-4 h-4" />{" "}
-              JSON
+              <Download className="w-4 h-4" /> JSON
             </button>
             <button
               onClick={() => handleExportData("markdown")}
               disabled={isExporting}
               className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-soft-black text-white rounded-xl font-black text-sm hover:bg-soft-black/90 transition-all hover:translate-x-[2px] hover:translate-y-[2px]"
             >
-              <Download className="w-4 h-4" />{" "}
-              Markdown (ZIP)
+              <Download className="w-4 h-4" /> Markdown (ZIP)
             </button>
           </div>
           <p className="text-xs font-medium text-muted-text/60 text-center">

@@ -16,7 +16,7 @@ export default function TermsPage() {
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
         <p className="text-sm text-muted-text mb-10">
-          Last updated: February 2026
+          Last updated: April 2026
         </p>
 
         <div className="space-y-8 text-soft-black/80 text-[15px] leading-relaxed">
@@ -169,7 +169,20 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-semibold text-soft-black mb-2">
-              9. Contact
+              9. Governing Law
+            </h2>
+            <p>
+              These terms are governed by the laws of India. Any disputes
+              arising from these terms or your use of Distill shall be subject
+              to the exclusive jurisdiction of the courts in India. This does
+              not affect any mandatory consumer protection rights you may have
+              under the laws of your country of residence.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-soft-black mb-2">
+              10. Contact
             </h2>
             <p>
               Questions about these terms? Email us at{" "}

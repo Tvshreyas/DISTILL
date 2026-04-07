@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Check } from "lucide-react";
+import posthog from "posthog-js";
 
 export default function UpgradeModal({
   onCloseAction,
@@ -18,6 +19,7 @@ export default function UpgradeModal({
   function handleNotify() {
     setNotified(true);
     toast.success("You'll be notified when Pro launches.");
+    posthog.capture("pro_waitlist_signup");
   }
 
   return (

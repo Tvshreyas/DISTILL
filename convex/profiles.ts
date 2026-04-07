@@ -22,6 +22,12 @@ export const get = query({
     if (!profile) return null;
 
     // Count deep sessions this month
+    const now = new Date();
+    const startOfMonth = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      1,
+    ).toISOString();
     const deepSessions = await ctx.db
       .query("sessions")
       .withIndex("by_userId_status", (q) =>
@@ -31,26 +37,15 @@ export const get = query({
         q.and(
           q.eq(q.field("isDeleted"), false),
           q.neq(q.field("type"), "quick"),
+          q.gte(q.field("completedAt"), startOfMonth),
         ),
       )
       .collect();
 
-    // Total words written (endowment effect — show users their growing investment)
-    const allReflections = await ctx.db
-      .query("reflections")
-      .withIndex("by_userId", (q) => q.eq("userId", userId))
-      .filter((q) => q.eq(q.field("isDeleted"), false))
-      .collect();
-
-    const totalWordsWritten = allReflections.reduce(
-      (sum, r) => sum + (r.wordCount ?? 0),
-      0,
-    );
-
     return {
       ...profile,
       deepSessionsCount: deepSessions.length,
-      totalWordsWritten,
+      totalWordsWritten: profile.totalWordsWritten ?? 0,
     };
   },
 });
@@ -163,6 +158,15 @@ export const update = mutation({
         !Number.isInteger(args.preferredNotificationHour))
     ) {
       throw new Error("Notification hour must be an integer between 0 and 23.");
+    }
+
+    // Validate timezone
+    if (args.timezone !== undefined) {
+      try {
+        Intl.DateTimeFormat(undefined, { timeZone: args.timezone });
+      } catch {
+        throw new Error("Invalid timezone.");
+      }
     }
 
     const updates: Record<string, unknown> = {};

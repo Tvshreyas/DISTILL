@@ -1,5 +1,6 @@
 import { query, mutation, internalQuery } from "./_generated/server";
 import { v } from "convex/values";
+import { checkContentSafety } from "./safety";
 
 export const getPending = query({
   args: {},
@@ -121,10 +122,19 @@ export const respond = mutation({
       // Resurfacing layers are free for all users — this is the "aha moment"
       // Pro gate only applies to reflections.addLayer (Living Archive detail page)
 
+      const cleanContent = args.layerContent
+        .trim()
+        .replace(/<[^>]*>/g, "")
+        .trim();
+      const safetyResult = checkContentSafety(cleanContent);
+      if (!safetyResult.safe && safetyResult.category === "A") {
+        throw new Error("This content cannot be saved.");
+      }
+
       await ctx.db.insert("reflectionLayers", {
         reflectionId: queueEntry.reflectionId,
         userId,
-        content: args.layerContent,
+        content: cleanContent,
       });
     }
 

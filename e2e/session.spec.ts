@@ -51,11 +51,11 @@ test.describe("Session Flow", () => {
 
   test("character counter updates on reason input", async ({ page }) => {
     await page.goto("/dashboard/session/new");
-    await expect(page.locator("text=0/140")).toBeVisible();
+    await expect(page.locator("text=0/30000")).toBeVisible();
     await page.fill(
       'textarea[placeholder="what do you hope to get from this?"]',
       "Hello",
     );
-    await expect(page.locator("text=5/140")).toBeVisible();
+    await expect(page.locator("text=5/30000")).toBeVisible();
   });
 });

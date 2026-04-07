@@ -73,8 +73,23 @@ export const create = mutation({
 
     if (!profile) throw new Error("Profile not found.");
 
+    // Compute startOfMonth for free tier checks (pre-insert and post-insert)
+    const nowForLimit = new Date();
+    const startOfMonth = new Date(
+      nowForLimit.getFullYear(),
+      nowForLimit.getMonth(),
+      1,
+    ).toISOString();
+
     if (profile.plan === "free") {
-      // Count completed deep sessions this month (type === "deep" or undefined for legacy sessions)
+      // Primary check: atomic counter on profile (race-condition safe)
+      if (profile.reflectionCountThisMonth >= FREE_TIER_LIMIT) {
+        throw new Error(
+          `You've reached your ${FREE_TIER_LIMIT} monthly Deep Sessions. You can still use Quick Distill on the dashboard, or wait until next month.`,
+        );
+      }
+
+      // Secondary check: count completed deep sessions THIS MONTH only
       const completedSessions = await ctx.db
         .query("sessions")
         .withIndex("by_userId_status", (q) =>
@@ -84,6 +99,7 @@ export const create = mutation({
           q.and(
             q.eq(q.field("isDeleted"), false),
             q.neq(q.field("type"), "quick"),
+            q.gte(q.field("completedAt"), startOfMonth),
           ),
         )
         .collect();
@@ -130,6 +146,7 @@ export const create = mutation({
           q.and(
             q.eq(q.field("isDeleted"), false),
             q.neq(q.field("type"), "quick"),
+            q.gte(q.field("completedAt"), startOfMonth),
           ),
         )
         .collect();
@@ -174,6 +191,7 @@ export const create = mutation({
       currentStreak: newStreak,
       longestStreak: Math.max(profile.longestStreak, newStreak),
       lastReflectionDate: todayStr,
+      totalWordsWritten: (profile.totalWordsWritten ?? 0) + wordCount,
     });
 
     // Auto-complete session
@@ -302,6 +320,7 @@ export const quickCreate = mutation({
       currentStreak: newStreak,
       longestStreak: Math.max(profile.longestStreak, newStreak),
       lastReflectionDate: todayStr,
+      totalWordsWritten: (profile.totalWordsWritten ?? 0) + wordCount,
     });
 
     // Schedule resurfacing — 1d first to collapse time-to-magic
@@ -335,42 +354,6 @@ export const quickCreate = mutation({
   },
 });
 
-export const update = mutation({
-  args: {
-    reflectionId: v.id("reflections"),
-    content: v.string(),
-  },
-  handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) throw new Error("Unauthorized");
-    const userId = identity.subject;
-
-    if (args.content.length < 1 || args.content.length > 30000) {
-      throw new Error("Reflection must be between 1 and 30,000 characters.");
-    }
-
-    const reflection = await ctx.db.get(args.reflectionId);
-    if (!reflection || reflection.userId !== userId || reflection.isDeleted) {
-      throw new Error("Resource not found.");
-    }
-
-    const cleanContent = sanitizeContent(args.content);
-
-    const safetyResult = checkContentSafety(cleanContent);
-    if (!safetyResult.safe && safetyResult.category === "A") {
-      throw new Error("This content cannot be saved.");
-    }
-
-    await ctx.db.patch(args.reflectionId, {
-      content: cleanContent,
-      wordCount: computeWordCount(cleanContent),
-      updatedAt: new Date().toISOString(),
-    });
-
-    return await ctx.db.get(args.reflectionId);
-  },
-});
-
 export const remove = mutation({
   args: {
     reflectionId: v.id("reflections"),
@@ -389,6 +372,20 @@ export const remove = mutation({
       isDeleted: true,
       deletedAt: new Date().toISOString(),
     });
+
+    const profile = await ctx.db
+      .query("profiles")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .unique();
+
+    if (profile) {
+      await ctx.db.patch(profile._id, {
+        totalWordsWritten: Math.max(
+          0,
+          (profile.totalWordsWritten ?? 0) - (reflection.wordCount ?? 0),
+        ),
+      });
+    }
   },
 });
 
@@ -529,7 +526,11 @@ export const list = query({
     let reflections;
 
     // Sanitize search input: strip special characters that could cause unexpected behavior
-    const sanitizedSearch = args.search?.replace(/[<>{}[\]\\]/g, "").trim();
+    const sanitizedSearch = args.search
+      ?.replace(/[<>{}[\]\\:&|!()'"]/g, "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .substring(0, 200);
     if (sanitizedSearch && sanitizedSearch.length > 0) {
       // Use search index
       reflections = await ctx.db
@@ -551,23 +552,41 @@ export const list = query({
         .collect();
     }
 
-    // Join with sessions and count layers
-    let withSessions = await Promise.all(
-      reflections.map(async (r) => {
-        const session = await ctx.db.get(r.sessionId);
-        const layers = await ctx.db
-          .query("reflectionLayers")
-          .withIndex("by_reflectionId", (q) => q.eq("reflectionId", r._id))
-          .collect();
-        return {
-          ...r,
-          layerCount: layers.length,
-          session: session
-            ? { title: session.title, contentType: session.contentType }
-            : null,
-        };
-      }),
-    );
+    // Batch session lookups (deduplicated)
+    const sessionIds = [...new Set(reflections.map((r) => r.sessionId))];
+    const sessionMap = new Map<
+      string,
+      { title: string; contentType: string }
+    >();
+    for (const sid of sessionIds) {
+      const session = await ctx.db.get(sid);
+      if (session)
+        sessionMap.set(sid.toString(), {
+          title: session.title,
+          contentType: session.contentType,
+        });
+    }
+
+    // Batch layer counts
+    const allLayers = await ctx.db
+      .query("reflectionLayers")
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
+      .collect();
+    const layerCountMap = new Map<string, number>();
+    for (const layer of allLayers) {
+      const key = layer.reflectionId.toString();
+      layerCountMap.set(key, (layerCountMap.get(key) ?? 0) + 1);
+    }
+
+    // Join
+    let withSessions = reflections.map((r) => {
+      const session = sessionMap.get(r.sessionId.toString());
+      return {
+        ...r,
+        layerCount: layerCountMap.get(r._id.toString()) ?? 0,
+        session: session ?? null,
+      };
+    });
 
     if (
       args.contentType &&

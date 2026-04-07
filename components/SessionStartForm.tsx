@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { ContentType } from "@/types";
+import { SESSION_REASON_LIMIT } from "@/lib/constants";
 
 interface SessionFormData {
   title: string;
@@ -94,20 +95,21 @@ export default function SessionStartForm({
           value={consumeReason}
           onChange={(e) => setConsumeReason(e.target.value)}
           placeholder="what do you hope to get from this?"
-          maxLength={140}
-          className="w-full h-24 p-4 rounded-2xl bg-white brutal-border border-4 border-soft-black text-base font-medium placeholder:text-soft-black/20 outline-none focus:bg-sage/5 transition-all resize-none"
+          maxLength={SESSION_REASON_LIMIT}
+          className="w-full min-h-[200px] p-4 rounded-2xl bg-white brutal-border border-4 border-soft-black text-base font-medium placeholder:text-soft-black/20 outline-none focus:bg-sage/5 transition-all resize-none"
         />
         <p className="text-xs font-bold text-muted-text text-right">
-          {consumeReason.length}/140
+          {consumeReason.length}/{SESSION_REASON_LIMIT}
         </p>
       </label>
 
       {/* Retroactive Toggle */}
       <div className="flex items-center justify-between p-4 rounded-2xl bg-sage/5 border-4 border-soft-black">
         <div className="space-y-1">
-          <p className="text-sm font-black lowercase">retroactive reflection</p>
+          <p className="text-sm font-black lowercase">already consumed?</p>
           <p className="text-xs text-muted-text font-medium">
-            already finished consuming this content?
+            toggle on if you&apos;ve already finished this content and want to
+            reflect now.
           </p>
         </div>
         <button
@@ -135,6 +137,11 @@ export default function SessionStartForm({
       >
         {isSubmitting ? "starting..." : "start session"}
       </button>
+      {!title.trim() && (
+        <p className="text-xs text-muted-text font-medium text-center">
+          enter a title to start your session.
+        </p>
+      )}
     </form>
   );
 }

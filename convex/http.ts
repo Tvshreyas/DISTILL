@@ -2,6 +2,16 @@ import { httpRouter } from "convex/server";
 import { httpAction } from "./_generated/server";
 import { internal } from "./_generated/api";
 
+/** Constant-time string comparison to prevent timing attacks on auth secrets. */
+function constantTimeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let mismatch = 0;
+  for (let i = 0; i < a.length; i++) {
+    mismatch |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return mismatch === 0;
+}
+
 const http = httpRouter();
 
 // Webhook bridge: allows the Next.js Stripe webhook route to call internal
@@ -17,7 +27,12 @@ http.route({
     }
 
     const authHeader = request.headers.get("X-Internal-Auth-Key");
-    if (!authHeader || authHeader !== secret) {
+    // Constant-time comparison to prevent timing attacks
+    if (
+      !authHeader ||
+      authHeader.length !== secret.length ||
+      !constantTimeEqual(authHeader, secret)
+    ) {
       return new Response("Unauthorized", { status: 401 });
     }
 
@@ -89,8 +104,8 @@ http.route({
       });
     } catch (err) {
       console.error(
-        "Webhook bridge error:",
-        err instanceof Error ? err.message : "Unknown error",
+        "[webhook-bridge] Processing failed:",
+        err instanceof Error ? err.name : "Unknown",
       );
       return new Response("Internal error", { status: 500 });
     }

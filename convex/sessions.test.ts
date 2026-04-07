@@ -54,7 +54,7 @@ describe("sessions.create", () => {
     ).rejects.toThrowError("Title must be between 1 and 200 characters.");
   });
 
-  it("rejects consumeReason over 140 characters", async () => {
+  it("rejects consumeReason over 30000 characters", async () => {
     const t = convexTest(schema, modules);
     const asUser = t.withIdentity({ name: "Test User" });
     await asUser.mutation(api.profiles.createOrGet, {});
@@ -63,9 +63,9 @@ describe("sessions.create", () => {
       asUser.mutation(api.sessions.create, {
         title: "Test",
         contentType: "book",
-        consumeReason: "X".repeat(141),
+        consumeReason: "X".repeat(30001),
       }),
-    ).rejects.toThrowError("Reason must be 140 characters or fewer.");
+    ).rejects.toThrowError("Reason must be 30000 characters or fewer.");
   });
 
   it("blocks creation when active session already exists", async () => {
@@ -101,6 +101,7 @@ describe("sessions.create", () => {
           contentType: "book",
           status: "complete",
           startedAt: new Date().toISOString(),
+          completedAt: new Date().toISOString(),
           isRetroactive: false,
           isDeleted: false,
           type: "deep",

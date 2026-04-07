@@ -6,6 +6,7 @@ import { Sparkles, ArrowRight, Check, Lock } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import UpgradeModal from "@/components/UpgradeModal";
+import ReflectionModal from "@/components/ReflectionModal";
 
 export default function ResurfacingCard() {
   const pending = useQuery(api.resurfacing.getPending);
@@ -14,6 +15,7 @@ export default function ResurfacingCard() {
   const [isLayering, setIsLayering] = useState(false);
   const [layerContent, setLayerContent] = useState("");
   const [showUpgrade, setShowUpgrade] = useState(false);
+  const [showReflection, setShowReflection] = useState(false);
 
   const handleAction = async (action: "surfaced" | "dismissed" | "layered") => {
     if (!pending) return;
@@ -86,9 +88,18 @@ export default function ResurfacingCard() {
           <h3 className="font-grotesk text-3xl font-black lowercase tracking-tighter leading-none">
             {pending.session?.title || "Untitled Insight"}
           </h3>
-          <p className="text-lg md:text-xl text-muted-text font-medium leading-relaxed line-clamp-4 italic border-l-4 border-peach/30 pl-6 py-2">
+          <p
+            className="text-lg md:text-xl text-muted-text font-medium leading-relaxed line-clamp-4 italic border-l-4 border-peach/30 pl-6 py-2 cursor-pointer"
+            onClick={() => setShowReflection(true)}
+          >
             &ldquo;{pending.reflection.content}&rdquo;
           </p>
+          <button
+            onClick={() => setShowReflection(true)}
+            className="text-xs font-bold text-muted-text hover:text-soft-black transition-colors"
+          >
+            read full reflection &rarr;
+          </button>
         </div>
 
         {isLayering ? (
@@ -175,6 +186,12 @@ export default function ResurfacingCard() {
       <UpgradeModal
         isOpen={showUpgrade}
         onCloseAction={() => setShowUpgrade(false)}
+      />
+      <ReflectionModal
+        isOpen={showReflection}
+        onClose={() => setShowReflection(false)}
+        title={pending.session?.title || "Untitled Insight"}
+        content={pending.reflection.content}
       />
     </div>
   );

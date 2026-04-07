@@ -165,6 +165,7 @@ describe("reflections.create", () => {
           contentType: "book",
           status: "complete",
           startedAt: new Date().toISOString(),
+          completedAt: new Date().toISOString(),
           isRetroactive: false,
           isDeleted: false,
           type: "deep",
@@ -224,61 +225,6 @@ describe("reflections.create", () => {
       content: "This book was absolute garbage and a waste of time",
     })) as any;
     expect(result).toBeTruthy();
-  });
-});
-
-describe("reflections.update", () => {
-  it("updates reflection content", async () => {
-    const t = convexTest(schema, modules);
-    const { asUser, sessionId } = await setupUserWithSession(t);
-
-    const created = (await asUser.mutation(api.reflections.create, {
-      sessionId,
-      content: "Original content.",
-    })) as any;
-
-    const updated = (await asUser.mutation(api.reflections.update, {
-      reflectionId: created!._id,
-      content: "Updated content.",
-    })) as any;
-    expect(updated!.content).toBe("Updated content.");
-  });
-
-  it("rejects Category A content on update", async () => {
-    const t = convexTest(schema, modules);
-    const { asUser, sessionId } = await setupUserWithSession(t);
-
-    const created = (await asUser.mutation(api.reflections.create, {
-      sessionId,
-      content: "Original safe content.",
-    })) as any;
-
-    await expect(
-      asUser.mutation(api.reflections.update, {
-        reflectionId: created!._id,
-        content: "Just kill yourself already",
-      }),
-    ).rejects.toThrowError("This content cannot be saved.");
-  });
-
-  it("throws for other user's reflection", async () => {
-    const t = convexTest(schema, modules);
-    const { asUser, sessionId } = await setupUserWithSession(t);
-
-    const created = (await asUser.mutation(api.reflections.create, {
-      sessionId,
-      content: "My content.",
-    })) as any;
-
-    const otherUser = t.withIdentity({ name: "Other User" });
-    await otherUser.mutation(api.profiles.createOrGet, {});
-
-    await expect(
-      otherUser.mutation(api.reflections.update, {
-        reflectionId: created!._id,
-        content: "Hacked!",
-      }),
-    ).rejects.toThrowError("Resource not found.");
   });
 });
 

@@ -26,6 +26,7 @@ import {
   Lock,
 } from "lucide-react";
 import UpgradeModal from "@/components/UpgradeModal";
+import ReflectionModal from "@/components/ReflectionModal";
 import { FREE_TIER_LIMIT } from "@/lib/constants";
 import React from "react";
 
@@ -193,6 +194,7 @@ function ResurfacingHero() {
   const [isLayering, setIsLayering] = useState(false);
   const [layerContent, setLayerContent] = useState("");
   const [showUpgrade, setShowUpgrade] = useState(false);
+  const [showReflection, setShowReflection] = useState(false);
 
   if (!pending) return null;
 
@@ -236,9 +238,18 @@ function ResurfacingHero() {
         </span>
       </div>
 
-      <p className="text-lg md:text-xl font-medium text-soft-black leading-relaxed italic border-l-4 border-lavender/30 pl-4 line-clamp-3">
+      <p
+        className="text-lg md:text-xl font-medium text-soft-black leading-relaxed italic border-l-4 border-lavender/30 pl-4 line-clamp-3 cursor-pointer"
+        onClick={() => setShowReflection(true)}
+      >
         &ldquo;{pending.reflection.content}&rdquo;
       </p>
+      <button
+        onClick={() => setShowReflection(true)}
+        className="text-xs font-bold text-muted-text hover:text-soft-black transition-colors"
+      >
+        read full reflection &rarr;
+      </button>
 
       {pending.session?.title && (
         <p className="text-xs text-muted-text font-bold lowercase">
@@ -311,6 +322,12 @@ function ResurfacingHero() {
         isOpen={showUpgrade}
         onCloseAction={() => setShowUpgrade(false)}
       />
+      <ReflectionModal
+        isOpen={showReflection}
+        onClose={() => setShowReflection(false)}
+        title={pending.session?.title || "Untitled Insight"}
+        content={pending.reflection.content}
+      />
     </div>
   );
 }
@@ -318,36 +335,60 @@ function ResurfacingHero() {
 // Variable Reward — random past reflection surfaces daily
 function ArchiveSpotlight() {
   const archiveItem = useQuery(api.reflections.randomFromArchive);
+  const [showReflection, setShowReflection] = useState(false);
 
   if (!archiveItem) return null;
 
   return (
-    <Link
-      href={`/dashboard/library/${archiveItem._id}`}
-      className="block p-6 md:p-8 rounded-[2rem] bg-peach/5 border-2 border-peach/20 space-y-3 hover:bg-peach/10 transition-colors group"
-    >
-      <div className="flex items-center gap-2">
-        <ArchiveRestore className="w-4 h-4 text-peach" />
-        <span className="text-[10px] font-black uppercase tracking-widest text-muted-text">
-          From Your Archive
-          {archiveItem.daysAgo > 0 && ` · ${archiveItem.daysAgo}d ago`}
-        </span>
-      </div>
+    <>
+      <Link
+        href={`/dashboard/library/${archiveItem._id}`}
+        className="block p-6 md:p-8 rounded-[2rem] bg-peach/5 border-2 border-peach/20 space-y-3 hover:bg-peach/10 transition-colors group"
+      >
+        <div className="flex items-center gap-2">
+          <ArchiveRestore className="w-4 h-4 text-peach" />
+          <span className="text-[10px] font-black uppercase tracking-widest text-muted-text">
+            From Your Archive
+            {archiveItem.daysAgo > 0 && ` · ${archiveItem.daysAgo}d ago`}
+          </span>
+        </div>
 
-      <p className="text-lg font-medium text-soft-black leading-relaxed italic border-l-4 border-peach/30 pl-4 line-clamp-3">
-        &ldquo;{archiveItem.content}&rdquo;
-      </p>
-
-      {archiveItem.sessionTitle && (
-        <p className="text-xs text-muted-text font-bold lowercase">
-          from: {archiveItem.sessionTitle}
+        <p
+          className="text-lg font-medium text-soft-black leading-relaxed italic border-l-4 border-peach/30 pl-4 line-clamp-3 cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            setShowReflection(true);
+          }}
+        >
+          &ldquo;{archiveItem.content}&rdquo;
         </p>
-      )}
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setShowReflection(true);
+          }}
+          className="text-xs font-bold text-muted-text hover:text-soft-black transition-colors"
+        >
+          read full reflection &rarr;
+        </button>
 
-      <span className="text-[10px] font-black uppercase tracking-widest text-peach group-hover:text-soft-black transition-colors flex items-center gap-1">
-        revisit this thought <ArrowRight className="w-3 h-3" />
-      </span>
-    </Link>
+        {archiveItem.sessionTitle && (
+          <p className="text-xs text-muted-text font-bold lowercase">
+            from: {archiveItem.sessionTitle}
+          </p>
+        )}
+
+        <span className="text-[10px] font-black uppercase tracking-widest text-peach group-hover:text-soft-black transition-colors flex items-center gap-1">
+          revisit this thought <ArrowRight className="w-3 h-3" />
+        </span>
+      </Link>
+      <ReflectionModal
+        isOpen={showReflection}
+        onClose={() => setShowReflection(false)}
+        title={archiveItem.sessionTitle || "Untitled Insight"}
+        content={archiveItem.content}
+      />
+    </>
   );
 }
 

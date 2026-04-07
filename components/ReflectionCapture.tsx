@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
 import { useAutoSave } from "@/hooks/useAutoSave";
 import { Check, CloudUpload, Shuffle } from "lucide-react";
@@ -13,11 +13,13 @@ export default function ReflectionCapture({
   onSubmitAction,
   isSubmitting,
   prompt: initialPrompt,
+  sessionId,
 }: {
   onSubmitAction: (content: string, rating: number | null) => void;
   isSubmitting: boolean;
   title: string;
   prompt: string;
+  sessionId: string;
 }) {
   const [content, setContent] = useState("");
   const [rating, setRating] = useState<number | null>(null);
@@ -25,6 +27,7 @@ export default function ReflectionCapture({
     "idle",
   );
   const [prompt, setPrompt] = useState(initialPrompt);
+  const draftKey = `draft_${sessionId}`;
   const [safetyResult, setSafetyResult] = useState<SafetyResult>({
     safe: true,
     category: null,
@@ -32,24 +35,49 @@ export default function ReflectionCapture({
 
   // Restore draft from localStorage on mount
   useEffect(() => {
-    const savedDraft = localStorage.getItem(`draft_${prompt}`);
+    const savedDraft = localStorage.getItem(draftKey);
     if (savedDraft) {
       setContent(savedDraft);
     }
-  }, [prompt]);
+  }, [draftKey]);
 
   // Hook into auto-save
   useAutoSave(
     content,
     (val) => {
       setSaveStatus("saving");
-      localStorage.setItem(`draft_${prompt}`, val);
+      localStorage.setItem(draftKey, val);
       setTimeout(() => setSaveStatus("saved"), 500);
     },
     2000,
   );
 
+  // Manual save draft
+  const handleSaveDraft = useCallback(() => {
+    localStorage.setItem(draftKey, content);
+    setSaveStatus("saved");
+  }, [draftKey, content]);
+
+  // Warn before navigating away with unsaved changes
+  useEffect(() => {
+    const handler = (e: BeforeUnloadEvent) => {
+      const saved = localStorage.getItem(draftKey) ?? "";
+      if (content && content !== saved) {
+        e.preventDefault();
+      }
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [content, draftKey]);
+
   const handleSubmit = () => {
+    if (
+      !window.confirm(
+        "Once submitted, this reflection is sealed forever. You can always add layers later to evolve your thinking.\n\nSubmit now?",
+      )
+    ) {
+      return;
+    }
     const result = checkContentSafety(content);
     if (!result.safe && result.category === "A") {
       toast.error("This content cannot be saved.");
@@ -62,7 +90,7 @@ export default function ReflectionCapture({
       );
     }
     onSubmitAction(content, rating);
-    localStorage.removeItem(`draft_${prompt}`);
+    localStorage.removeItem(draftKey);
     posthog.capture("reflection_created", {
       word_count: content.trim().split(/\s+/).length,
       has_rating: rating !== null,
@@ -96,25 +124,34 @@ export default function ReflectionCapture({
           </h3>
         </div>
 
-        {/* Status Indicator */}
-        <div className="flex items-center gap-2 px-4 py-2 bg-white brutal-border-sm border-2 border-soft-black rounded-xl shrink-0">
-          {saveStatus === "saving" ? (
-            <>
-              <div className="w-2 h-2 rounded-full bg-peach animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-widest">
-                Saving...
-              </span>
-            </>
-          ) : (
-            <>
-              <Check
-                className={`w-3 h-3 ${saveStatus === "saved" ? "text-sage-dark" : "text-muted-text"}`}
-              />
-              <span className="text-[10px] font-black uppercase tracking-widest text-muted-text">
-                {saveStatus === "saved" ? "Saved" : "Draft"}
-              </span>
-            </>
-          )}
+        {/* Status Indicator + Save Draft */}
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            onClick={handleSaveDraft}
+            disabled={!content.trim()}
+            className="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg bg-soft-black/5 hover:bg-sage/20 text-muted-text hover:text-soft-black transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            save draft
+          </button>
+          <div className="flex items-center gap-2 px-4 py-2 bg-white brutal-border-sm border-2 border-soft-black rounded-xl">
+            {saveStatus === "saving" ? (
+              <>
+                <div className="w-2 h-2 rounded-full bg-peach animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-widest">
+                  Saving...
+                </span>
+              </>
+            ) : (
+              <>
+                <Check
+                  className={`w-3 h-3 ${saveStatus === "saved" ? "text-sage-dark" : "text-muted-text"}`}
+                />
+                <span className="text-[10px] font-black uppercase tracking-widest text-muted-text">
+                  {saveStatus === "saved" ? "Saved" : "Draft"}
+                </span>
+              </>
+            )}
+          </div>
         </div>
       </header>
 

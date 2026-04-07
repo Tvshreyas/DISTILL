@@ -1,6 +1,7 @@
 export const FREE_TIER_LIMIT = 10;
 export const FREE_TIER_NUDGE = 8;
 export const QUICK_DISTILL_LIMIT = 800;
+export const SESSION_REASON_LIMIT = 30000;
 
 // Pricing configuration
 export const PRICING = {

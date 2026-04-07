@@ -28,8 +28,8 @@ export const create = mutation({
     }
 
     // Validate optional reason
-    if (args.consumeReason && args.consumeReason.length > 140) {
-      throw new Error("Reason must be 140 characters or fewer.");
+    if (args.consumeReason && args.consumeReason.length > 30000) {
+      throw new Error("Reason must be 30000 characters or fewer.");
     }
 
     // Check for existing active session
@@ -56,7 +56,13 @@ export const create = mutation({
     if (!profile) throw new Error("Profile not found.");
 
     if (profile.plan === "free") {
-      // Count completed deep sessions (type === "deep" or undefined for legacy sessions)
+      // Count completed deep sessions THIS MONTH only
+      const now2 = new Date();
+      const startOfMonth = new Date(
+        now2.getFullYear(),
+        now2.getMonth(),
+        1,
+      ).toISOString();
       const completedDeepSessions = await ctx.db
         .query("sessions")
         .withIndex("by_userId_status", (q) =>
@@ -66,6 +72,7 @@ export const create = mutation({
           q.and(
             q.eq(q.field("isDeleted"), false),
             q.neq(q.field("type"), "quick"),
+            q.gte(q.field("completedAt"), startOfMonth),
           ),
         )
         .collect();

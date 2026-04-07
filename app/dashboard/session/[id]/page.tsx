@@ -25,9 +25,27 @@ export default function ActiveSessionPage() {
     sessionId: id as Id<"sessions">,
   });
   const completeSession = useMutation(api.reflections.create);
+  const abandonSession = useMutation(api.sessions.abandon);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAbandoning, setIsAbandoning] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [lastWordCount, setLastWordCount] = useState(0);
+
+  async function handleAbandon() {
+    if (!window.confirm("Abandon this session? Your draft will be lost."))
+      return;
+    setIsAbandoning(true);
+    try {
+      await abandonSession({ sessionId: id as Id<"sessions"> });
+      toast.success("Session abandoned.");
+      router.push("/dashboard");
+    } catch (err) {
+      toast.error(
+        err instanceof Error ? err.message : "Failed to abandon session.",
+      );
+      setIsAbandoning(false);
+    }
+  }
 
   if (session === undefined)
     return (
@@ -72,12 +90,21 @@ export default function ActiveSessionPage() {
 
   return (
     <main className="max-w-2xl mx-auto px-6 py-20 relative">
-      <Link
-        href="/dashboard"
-        className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-muted-text hover:text-soft-black transition-colors"
-      >
-        &larr; Dashboard
-      </Link>
+      <div className="flex justify-between items-center">
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-muted-text hover:text-soft-black transition-colors"
+        >
+          &larr; Dashboard
+        </Link>
+        <button
+          onClick={handleAbandon}
+          disabled={isAbandoning}
+          className="text-xs font-bold text-muted-text hover:text-red-500 transition-colors lowercase disabled:opacity-50"
+        >
+          {isAbandoning ? "abandoning..." : "abandon session"}
+        </button>
+      </div>
 
       <header className="space-y-2 border-b-4 border-soft-black pb-8 mt-6 mb-10">
         <div className="text-xs font-black uppercase tracking-widest text-muted-text">
@@ -98,6 +125,7 @@ export default function ActiveSessionPage() {
         prompt="What's your core takeaway from this?"
         onSubmitAction={handleComplete}
         isSubmitting={isSubmitting}
+        sessionId={id as string}
       />
 
       <SessionSuccessOverlay

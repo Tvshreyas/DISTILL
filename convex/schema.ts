@@ -20,6 +20,7 @@ export default defineSchema({
     reflectionCountLifetime: v.number(),
     currentStreak: v.number(),
     longestStreak: v.number(),
+    totalWordsWritten: v.optional(v.number()),
     lastReflectionDate: v.optional(v.string()),
     streakFreezeUsedThisMonth: v.number(),
     timezone: v.string(),

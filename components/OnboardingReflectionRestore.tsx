@@ -67,7 +67,7 @@ export default function OnboardingReflectionRestore() {
         const session = await createSession({
           title: data.title!.slice(0, 200),
           contentType,
-          consumeReason: data.consumeReason?.slice(0, 140) || undefined,
+          consumeReason: data.consumeReason?.slice(0, 30000) || undefined,
           isRetroactive: true,
         });
 
