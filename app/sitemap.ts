@@ -1,11 +1,34 @@
 import type { MetadataRoute } from "next";
-import { getSortedPostsData } from "@/lib/blog";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import { glossaryTerms, reflectionGuides } from "@/lib/pseo-data";
 import { bookReflections } from "@/lib/pseo-books";
 import { promptTopics } from "@/lib/pseo-prompts";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://distillwise.com";
+/**
+ * Read blog post slugs and dates directly here instead of importing
+ * getSortedPostsData, so the sitemap stays self-contained and works
+ * reliably both at build time and at runtime on Vercel.
+ */
+function getBlogEntries(): { slug: string; date: string }[] {
+  try {
+    const dir = path.join(process.cwd(), "content/blog");
+    if (!fs.existsSync(dir)) return [];
+    return fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith(".md"))
+      .map((f) => {
+        const { data } = matter(fs.readFileSync(path.join(dir, f), "utf8"));
+        return { slug: f.replace(/\.md$/, ""), date: data.date as string };
+      });
+  } catch {
+    return [];
+  }
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://distillwise.com";
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -52,21 +75,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: new Date("2026-02-01"),
+      lastModified: new Date("2026-04-01"),
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: new Date("2026-02-01"),
+      lastModified: new Date("2026-04-01"),
       changeFrequency: "yearly",
       priority: 0.3,
     },
   ];
 
-  // Dynamic blog post URLs
-  const posts = await getSortedPostsData();
-  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
+  // Blog post URLs
+  const blogPages: MetadataRoute.Sitemap = getBlogEntries().map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,

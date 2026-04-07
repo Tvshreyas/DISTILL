@@ -26,6 +26,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
   trailingSlash: false,
+  outputFileTracingIncludes: {
+    "/sitemap.xml": ["./content/blog/**/*.md"],
+  },
   async headers() {
     return [
       {
