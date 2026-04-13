@@ -36,10 +36,10 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://distillwise.com"),
-  title: "Distillwise — Think more clearly about what you consume",
+  metadataBase: new URL("https://www.distillwise.com"),
+  title: "Distill — Think more clearly about what you consume",
   description:
-    "Distillwise helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",
+    "Distill helps you develop your own thinking from the content you consume. Build a reflection habit. Your thoughts, compounded over time.",
   keywords: [
     "distill",
     "distillwise",
@@ -50,12 +50,6 @@ export const metadata: Metadata = {
     "intentional consumption",
   ],
   manifest: "/manifest.json",
-  alternates: {
-    canonical: "https://distillwise.com",
-    types: {
-      "application/rss+xml": "https://distillwise.com/sitemap.xml",
-    },
-  },
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
@@ -114,28 +108,6 @@ export default async function RootLayout({
             <PostHogProvider>
               <PWAProvider />
               <CustomCursor />
-              <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                  __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "WebSite",
-                    name: "Distillwise",
-                    url: "https://distillwise.com",
-                    description:
-                      "A thinking development tool for intentional content consumption.",
-                    potentialAction: {
-                      "@type": "SearchAction",
-                      target: {
-                        "@type": "EntryPoint",
-                        urlTemplate:
-                          "https://distillwise.com/search?q={search_term_string}",
-                      },
-                      "query-input": "required name=search_term_string",
-                    },
-                  }),
-                }}
-              />
               {children}
               <Toaster
                 theme="light"

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Insights on thinking, productivity, and the art of distillation.",
   alternates: {
-    canonical: "https://distillwise.com/blog",
+    canonical: "https://www.distillwise.com/blog",
   },
 };
 

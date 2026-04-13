@@ -81,7 +81,7 @@ Then revisit your answers in a few weeks. You will be surprised how much your th
 
 ---
 
-_Use these prompts inside Distill. Start a reflection at [distillwise.com](https://distillwise.com)._
+_Use these prompts inside Distill. Start a reflection at [distillwise.com](https://www.distillwise.com)._
 
 ## keep exploring
 

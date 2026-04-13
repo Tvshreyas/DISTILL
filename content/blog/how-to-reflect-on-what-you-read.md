@@ -108,7 +108,7 @@ The 3-step method is simple. Consume. Pause. Write your perspective. The simplic
 
 ---
 
-_This method is the foundation of Distill. Start a reflection at [distillwise.com](https://distillwise.com)._
+_This method is the foundation of Distill. Start a reflection at [distillwise.com](https://www.distillwise.com)._
 
 ## keep exploring
 

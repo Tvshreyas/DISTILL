@@ -18,4 +18,28 @@ User-agent: Google-Extended
 Allow: /
 Disallow: /dashboard/
 
-Sitemap: https://distillwise.com/sitemap.xml
+User-agent: ClaudeBot
+Allow: /
+Disallow: /dashboard/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /dashboard/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /dashboard/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /dashboard/
+
+User-agent: CCBot
+Allow: /
+Disallow: /dashboard/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /dashboard/
+
+Sitemap: https://www.distillwise.com/sitemap.xml

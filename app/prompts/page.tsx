@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Curated reflection prompts for philosophy, psychology, business, history, science, and 15 more topics. Questions to ask yourself after reading or watching.",
   alternates: {
-    canonical: "https://distillwise.com/prompts",
+    canonical: "https://www.distillwise.com/prompts",
   },
 };
 

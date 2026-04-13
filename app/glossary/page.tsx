@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Key concepts in thinking, reading, and reflection. Understand active reading, spaced repetition, metacognition, and more.",
   alternates: {
-    canonical: "https://distillwise.com/glossary",
+    canonical: "https://www.distillwise.com/glossary",
   },
 };
 

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy — Distill",
   description:
     "How Distill handles your data. Your reflections are private and encrypted. Read our full privacy policy.",
-  alternates: { canonical: "https://distillwise.com/privacy" },
+  alternates: { canonical: "https://www.distillwise.com/privacy" },
 };
 
 export default function PrivacyPage() {

@@ -166,7 +166,7 @@ The tool matters less than the habit. Any reflection practice — even imperfect
 
 ---
 
-_Distill was built for readers who want to think, not just organize. Try it free at [distillwise.com](https://distillwise.com)._
+_Distill was built for readers who want to think, not just organize. Try it free at [distillwise.com](https://www.distillwise.com)._
 
 ## keep exploring
 

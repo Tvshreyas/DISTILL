@@ -459,7 +459,7 @@ export default function SettingsPage() {
           <button
             onClick={async () => {
               const shareUrl =
-                "https://distillwise.com?utm_source=referral&utm_medium=share&utm_campaign=user_share";
+                "https://www.distillwise.com?utm_source=referral&utm_medium=share&utm_campaign=user_share";
               const shareData = {
                 title: "Distill — stop absorbing, start thinking",
                 text: "A tool that helps you capture your own perspective after consuming books, videos, articles, and podcasts.",

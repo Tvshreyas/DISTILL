@@ -98,7 +98,7 @@ The world does not need more people who have read everything. It needs more peop
 
 ---
 
-This is why we built Distill. A thinking development tool for people who are done absorbing and ready to start thinking. [distillwise.com](https://distillwise.com)
+This is why we built Distill. A thinking development tool for people who are done absorbing and ready to start thinking. [distillwise.com](https://www.distillwise.com)
 
 ## keep exploring
 

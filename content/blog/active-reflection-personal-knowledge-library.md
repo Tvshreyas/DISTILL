@@ -111,7 +111,7 @@ Build the library that is actually worth having.
 
 ---
 
-_Start building your reflection library today. [Write your first reflection on Distill](https://distillwise.com/start) — choose what you just read, watched, or listened to, and spend five minutes writing what you actually think about it. Your future self will thank you._
+_Start building your reflection library today. [Write your first reflection on Distill](https://www.distillwise.com/start) — choose what you just read, watched, or listened to, and spend five minutes writing what you actually think about it. Your future self will thank you._
 
 ## keep exploring
 

@@ -19,7 +19,7 @@ export async function generateMetadata({
     title: `${topic.topic} Reflection Prompts — Distill`,
     description: topic.description,
     alternates: {
-      canonical: `https://distillwise.com/prompts/${slug}`,
+      canonical: `https://www.distillwise.com/prompts/${slug}`,
     },
     openGraph: {
       title: `${topic.topic} Reflection Prompts — Distill`,
@@ -50,7 +50,7 @@ export default async function PromptTopicPage({
     author: {
       "@type": "Organization",
       name: "Distill",
-      url: "https://distillwise.com",
+      url: "https://www.distillwise.com",
     },
   };
 

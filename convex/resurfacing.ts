@@ -136,6 +136,35 @@ export const respond = mutation({
         userId,
         content: cleanContent,
       });
+
+      // For free users, clear all other pending resurfacing entries for this reflection
+      // (free users can only layer via resurfacing, so once they've layered, block future opportunities)
+      const profile = await ctx.db
+        .query("profiles")
+        .withIndex("by_userId", (q) => q.eq("userId", userId))
+        .unique();
+
+      if (profile?.plan === "free") {
+        const otherPendingEntries = await ctx.db
+          .query("resurfacingQueue")
+          .filter((q) =>
+            q.and(
+              q.eq(q.field("reflectionId"), queueEntry.reflectionId),
+              q.eq(q.field("userId"), userId),
+              q.eq(q.field("status"), "pending"),
+            ),
+          )
+          .collect();
+
+        for (const entry of otherPendingEntries) {
+          if (entry._id.toString() !== args.queueId.toString()) {
+            await ctx.db.patch(entry._id, {
+              status: "surfaced",
+              surfacedAt: new Date().toISOString(),
+            });
+          }
+        }
+      }
     }
 
     // Update queue entry status

@@ -19,7 +19,7 @@ export async function generateMetadata({
     title: `What Is ${term.term}? — Distill Glossary`,
     description: term.definition,
     alternates: {
-      canonical: `https://distillwise.com/glossary/${slug}`,
+      canonical: `https://www.distillwise.com/glossary/${slug}`,
     },
     openGraph: {
       title: `What Is ${term.term}?`,
@@ -50,7 +50,7 @@ export default async function GlossaryTermPage({
     inDefinedTermSet: {
       "@type": "DefinedTermSet",
       name: "Distill Thinking Glossary",
-      url: "https://distillwise.com/glossary",
+      url: "https://www.distillwise.com/glossary",
     },
   };
 

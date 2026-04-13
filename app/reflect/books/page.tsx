@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Reflection prompts and guides for 50 popular nonfiction books. Learn what to think about after reading Atomic Habits, Deep Work, Sapiens, and more.",
   alternates: {
-    canonical: "https://distillwise.com/reflect/books",
+    canonical: "https://www.distillwise.com/reflect/books",
   },
 };
 

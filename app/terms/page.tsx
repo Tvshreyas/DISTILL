@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Terms of Service — Distill",
   description:
     "Terms of service for Distill, a thinking development and reflection tool.",
-  alternates: { canonical: "https://distillwise.com/terms" },
+  alternates: { canonical: "https://www.distillwise.com/terms" },
 };
 
 export default function TermsPage() {

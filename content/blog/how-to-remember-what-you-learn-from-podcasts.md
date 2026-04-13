@@ -106,7 +106,7 @@ Three minutes of reflection after one episode is worth more than eight hours of 
 
 ---
 
-_Start a Distill session after your next podcast. [distillwise.com](https://distillwise.com)_
+_Start a Distill session after your next podcast. [distillwise.com](https://www.distillwise.com)_
 
 ## keep exploring
 

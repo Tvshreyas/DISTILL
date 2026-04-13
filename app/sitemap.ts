@@ -28,7 +28,7 @@ function getBlogEntries(): { slug: string; date: string }[] {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://distillwise.com";
+  const baseUrl = "https://www.distillwise.com";
 
   const staticPages: MetadataRoute.Sitemap = [
     {

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Learn how to reflect on books, podcasts, articles, videos, and audiobooks. Practical guides for building a reflection practice.",
   alternates: {
-    canonical: "https://distillwise.com/reflect",
+    canonical: "https://www.distillwise.com/reflect",
   },
 };
 

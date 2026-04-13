@@ -6,18 +6,18 @@ export const metadata: Metadata = {
   description:
     "Distill is a thinking tool. After you read a book, watch a video, or finish a podcast — spend 2 minutes writing what you actually think. Your reflections resurface over time.",
   alternates: {
-    canonical: "https://distillwise.com",
+    canonical: "https://www.distillwise.com",
   },
   openGraph: {
     title: "Distill — You forgot 95% of what you read last year",
     description:
       "After you read a book, watch a video, or finish a podcast — spend 2 minutes writing what you actually think. Your reflections resurface over time.",
-    url: "https://distillwise.com",
+    url: "https://www.distillwise.com",
     siteName: "Distill",
     type: "website",
     images: [
       {
-        url: "https://distillwise.com/og-image.png",
+        url: "https://www.distillwise.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Distill — a thinking development tool",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Distill — You forgot 95% of what you read last year",
     description:
       "After you read a book, watch a video, or finish a podcast — spend 2 minutes writing what you actually think. Your reflections resurface over time.",
-    images: ["https://distillwise.com/og-image.png"],
+    images: ["https://www.distillwise.com/og-image.png"],
   },
   keywords: [
     "reflection app",
@@ -51,7 +51,7 @@ const jsonLd = {
     {
       "@type": "WebApplication",
       name: "Distill",
-      url: "https://distillwise.com",
+      url: "https://www.distillwise.com",
       description:
         "A thinking development tool that helps you build a reflection habit from books, videos, articles, and podcasts.",
       applicationCategory: "ProductivityApplication",
@@ -73,8 +73,8 @@ const jsonLd = {
     {
       "@type": "Organization",
       name: "Distill",
-      url: "https://distillwise.com",
-      logo: "https://distillwise.com/icon-192.png",
+      url: "https://www.distillwise.com",
+      logo: "https://www.distillwise.com/icon-192.png",
       sameAs: [],
       knowsAbout: [
         "Active Reading",
@@ -90,7 +90,7 @@ const jsonLd = {
     {
       "@type": "WebSite",
       name: "Distill",
-      url: "https://distillwise.com",
+      url: "https://www.distillwise.com",
       description:
         "A thinking development tool for building a reflection practice.",
     },

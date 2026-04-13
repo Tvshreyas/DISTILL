@@ -85,7 +85,7 @@ Stop absorbing. Start thinking.
 
 ---
 
-_Ready to escape the consumption trap? [Start your first reflection on Distill](https://distillwise.com/start) — it takes less than five minutes to turn what you just consumed into something that is actually yours._
+_Ready to escape the consumption trap? [Start your first reflection on Distill](https://www.distillwise.com/start) — it takes less than five minutes to turn what you just consumed into something that is actually yours._
 
 ## keep exploring
 

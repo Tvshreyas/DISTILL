@@ -19,7 +19,7 @@ export async function generateMetadata({
     title: `How to Reflect on ${book.title} by ${book.author} — Distill`,
     description: book.description,
     alternates: {
-      canonical: `https://distillwise.com/reflect/books/${slug}`,
+      canonical: `https://www.distillwise.com/reflect/books/${slug}`,
     },
     openGraph: {
       title: `Reflect on ${book.title} — Distill`,
@@ -50,7 +50,7 @@ export default async function BookReflectionPage({
     author: {
       "@type": "Organization",
       name: "Distill",
-      url: "https://distillwise.com",
+      url: "https://www.distillwise.com",
     },
   };
 

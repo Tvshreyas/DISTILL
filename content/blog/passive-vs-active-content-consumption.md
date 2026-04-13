@@ -107,7 +107,7 @@ The difference between a person who reads 50 books passively and a person who re
 
 ---
 
-_Distill helps you actually think about what you read. [distillwise.com](https://distillwise.com)_
+_Distill helps you actually think about what you read. [distillwise.com](https://www.distillwise.com)_
 
 ## keep exploring
 

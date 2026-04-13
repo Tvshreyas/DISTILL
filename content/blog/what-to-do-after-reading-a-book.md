@@ -100,7 +100,7 @@ The default after finishing a book is to do nothing. Start the next book. Open t
 
 ---
 
-_Distill automates the reflection and resurfacing steps. Start a free session at [distillwise.com](https://distillwise.com)._
+_Distill automates the reflection and resurfacing steps. Start a free session at [distillwise.com](https://www.distillwise.com)._
 
 ## keep exploring
 

@@ -3,7 +3,7 @@
 
 ## Site
 - Name: Distill
-- URL: https://distillwise.com
+- URL: https://www.distillwise.com
 - Description: Distill is a thinking development tool where you write short reflections after consuming content like books, videos, articles, and podcasts. Your reflections resurface at intervals so your thinking compounds over time.
 
 ## Core Concepts
@@ -21,6 +21,10 @@
 ## Key Pages
 - /blog — Articles on active reading, intentional consumption, and building a thinking practice
 - /start — Try writing your first reflection before signing up
+- /reflect/books — Reflection prompts for 50+ popular nonfiction books
+- /prompts — 35+ reflection prompt topics (stoicism, decision-making, habits, mindset, writing, more)
+- /glossary — Definitions of terms like compound thinking, spaced resurfacing, active reading, metacognition
+- /reflect — Guides for building a reflection practice
 - /dashboard — Your personal reflection library and streak tracker (requires account)
 
 ## What Distill Is NOT
@@ -32,7 +36,7 @@
 
 ## Pricing
 - Free: 10 deep sessions per month (Quick Distills are unlimited)
-- Pro: Coming soon — unlimited deep sessions and advanced features
+- Pro: Unlimited deep sessions, layered resurfacing, and advanced analytics
 
 ## Tech
 - Built with Next.js, Convex, and Clerk
