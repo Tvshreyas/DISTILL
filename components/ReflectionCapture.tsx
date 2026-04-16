@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
 import { useAutoSave } from "@/hooks/useAutoSave";
 import { Check, CloudUpload, Shuffle } from "lucide-react";
-import { REFLECTION_PROMPTS } from "@/lib/prompts";
+import { getNextPrompt } from "@/lib/prompts";
 import { checkContentSafety, type SafetyResult } from "@/lib/safety";
 import { toast } from "sonner";
 import posthog from "posthog-js";
@@ -14,12 +14,14 @@ export default function ReflectionCapture({
   isSubmitting,
   prompt: initialPrompt,
   sessionId,
+  contentType,
 }: {
   onSubmitAction: (content: string, rating: number | null) => void;
   isSubmitting: boolean;
   title: string;
   prompt: string;
   sessionId: string;
+  contentType?: string;
 }) {
   const [content, setContent] = useState("");
   const [rating, setRating] = useState<number | null>(null);
@@ -98,9 +100,7 @@ export default function ReflectionCapture({
   };
 
   const handleShufflePrompt = () => {
-    const currentIndex = REFLECTION_PROMPTS.indexOf(prompt);
-    const nextIndex = (currentIndex + 1) % REFLECTION_PROMPTS.length;
-    setPrompt(REFLECTION_PROMPTS[nextIndex]);
+    setPrompt(getNextPrompt(contentType ?? "other", prompt));
   };
 
   return (

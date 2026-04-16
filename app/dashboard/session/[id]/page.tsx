@@ -9,6 +9,7 @@ import type { Id } from "@/convex/_generated/dataModel";
 import ReflectionCapture from "@/components/ReflectionCapture";
 import SessionSuccessOverlay from "@/components/SessionSuccessOverlay";
 import Link from "next/link";
+import { getPromptForSession } from "@/lib/prompts";
 
 const MILESTONE_MESSAGES: Record<number, string> = {
   1: "Your first reflection. The journey begins.",
@@ -122,7 +123,8 @@ export default function ActiveSessionPage() {
 
       <ReflectionCapture
         title={session.title}
-        prompt="What's your core takeaway from this?"
+        prompt={getPromptForSession(session.contentType, id as string)}
+        contentType={session.contentType}
         onSubmitAction={handleComplete}
         isSubmitting={isSubmitting}
         sessionId={id as string}
