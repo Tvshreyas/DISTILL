@@ -25,9 +25,9 @@ const STEPS: Record<
   }
 > = {
   1: {
-    subject: "Your account is ready",
-    heading: "Your account is ready.",
-    body: `Here's what Distill does:\n\n1. Start a session — pick what you're reading, watching, or listening to\n2. Consume the content (Distill doesn't host anything)\n3. Write a short reflection — what did you think?\n4. Your reflections resurface at intervals\n\nThat's the entire product. No folders. No tags. No AI.\n\nThe best way to understand it is to try it once.`,
+    subject: "your first reflection is waiting",
+    heading: "your first reflection is waiting.",
+    body: `Distill is one thing: a place to write what you actually think after you read, watch, or listen to something.\n\nFinish something today — a book chapter, a podcast episode, an article. Then open Distill and write your reaction. Not a summary. What you thought.\n\nTomorrow, we'll send it back to you. You'll be surprised what you wrote.`,
     cta: "Start your first session",
     ctaPath: "/dashboard/session/new",
   },

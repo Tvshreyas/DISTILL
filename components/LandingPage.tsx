@@ -153,9 +153,9 @@ function Hero() {
             transition={{ duration: 0.8 }}
             className="max-w-xl mx-auto text-base md:text-lg text-muted-text font-medium leading-relaxed opacity-80"
           >
-            after you read a book, watch a video, or finish a podcast — spend 2
-            minutes writing what you actually think.{" "}
-            <span className="font-black text-soft-black">that&apos;s it.</span>
+            distill captures your perspective — not highlights, not summaries —
+            after every book, podcast, or article. then surfaces it back when
+            your thinking has had time to shift.
           </motion.p>
 
           <motion.div
@@ -169,7 +169,7 @@ function Hero() {
               <>
                 <SignedOut>
                   <Link href="/sign-up" className="text-lg px-10 py-4">
-                    start distilling
+                    write your first reflection
                   </Link>
                 </SignedOut>
                 <SignedIn>
@@ -186,6 +186,16 @@ function Hero() {
               how it works
             </Link>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xs text-muted-text font-medium tracking-wide"
+          >
+            free to start. no highlights. no AI. just your thinking.
+          </motion.p>
         </div>
 
         <AppPreview />

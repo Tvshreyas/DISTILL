@@ -50,57 +50,61 @@ export function ResurfacingEmail({
 
           <Hr style={{ borderColor: "#E8EFE8", margin: "24px 0" }} />
 
-          {/* Body */}
-          <Text
-            style={{
-              fontSize: "20px",
-              fontWeight: 800,
-              color: "#292524",
-              margin: "0 0 8px",
-            }}
-          >
-            {daysAgo} Days Ago, You Thought...
-          </Text>
-
-          <Text
-            style={{
-              fontSize: "13px",
-              fontWeight: 600,
-              color: "#78716C",
-              textTransform: "uppercase" as const,
-              letterSpacing: "0.1em",
-              margin: "0 0 16px",
-            }}
-          >
-            {contentType} — {contentTitle}
-          </Text>
-
-          {/* Reflection blockquote */}
+          {/* Reflection — open directly with their words */}
           <Section
             style={{
               backgroundColor: "#E8EFE8",
               borderRadius: "16px",
               padding: "24px",
-              margin: "0 0 24px",
+              margin: "0 0 16px",
               borderLeft: "4px solid #292524",
             }}
           >
             <Text
               style={{
-                fontSize: "15px",
+                fontSize: "17px",
                 color: "#292524",
-                lineHeight: "1.6",
+                lineHeight: "1.7",
                 margin: 0,
                 fontStyle: "italic",
               }}
             >
               &ldquo;
-              {reflectionContent.length > 300
-                ? reflectionContent.slice(0, 300) + "..."
+              {reflectionContent.length > 400
+                ? reflectionContent.slice(0, 400) + "..."
                 : reflectionContent}
               &rdquo;
             </Text>
           </Section>
+
+          <Text
+            style={{
+              fontSize: "14px",
+              color: "#78716C",
+              margin: "0 0 4px",
+            }}
+          >
+            You wrote this {daysAgo} days ago after{" "}
+            {contentType === "book"
+              ? "reading"
+              : contentType === "podcast"
+                ? "listening to"
+                : contentType === "video"
+                  ? "watching"
+                  : "consuming"}{" "}
+            <strong style={{ color: "#292524" }}>{contentTitle}</strong>.
+          </Text>
+
+          <Text
+            style={{
+              fontSize: "15px",
+              fontWeight: 700,
+              color: "#292524",
+              margin: "0 0 24px",
+            }}
+          >
+            Has anything changed?
+          </Text>
 
           {/* CTA */}
           <Link
@@ -117,7 +121,7 @@ export function ResurfacingEmail({
               border: "3px solid #292524",
             }}
           >
-            Revisit on Distill
+            Add a layer &rarr;
           </Link>
 
           <Hr style={{ borderColor: "#E8EFE8", margin: "32px 0 16px" }} />

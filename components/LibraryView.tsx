@@ -202,18 +202,42 @@ export default function LibraryView() {
         </div>
       ) : reflections.length === 0 ? (
         <div className="py-20 text-center border-4 border-dashed border-soft-black/10 rounded-[2rem] space-y-4">
-          <div className="w-16 h-16 bg-soft-black/5 rounded-full flex items-center justify-center mx-auto">
-            <Search className="w-8 h-8 text-soft-black/20" />
-          </div>
-          <div className="space-y-1">
-            <h3 className="font-grotesk text-xl font-black lowercase text-soft-black/40">
-              your archive is silent.
-            </h3>
-            <p className="text-muted-text max-w-xs mx-auto">
-              try adjusting your search or filters to find what you&apos;re
-              looking for.
-            </p>
-          </div>
+          {debouncedSearch || contentType !== "all" ? (
+            <>
+              <div className="w-16 h-16 bg-soft-black/5 rounded-full flex items-center justify-center mx-auto">
+                <Search className="w-8 h-8 text-soft-black/20" />
+              </div>
+              <div className="space-y-1">
+                <h3 className="font-grotesk text-xl font-black lowercase text-soft-black/40">
+                  no matches.
+                </h3>
+                <p className="text-muted-text max-w-xs mx-auto">
+                  try adjusting your search or filters.
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="w-16 h-16 bg-sage/20 rounded-full flex items-center justify-center mx-auto">
+                <Book className="w-8 h-8 text-sage-dark" />
+              </div>
+              <div className="space-y-1">
+                <h3 className="font-grotesk text-xl font-black lowercase text-soft-black">
+                  nothing here yet.
+                </h3>
+                <p className="text-muted-text max-w-sm mx-auto">
+                  complete a session to add your first reflection. it&apos;ll
+                  resurface in 24 hours — your first letter to your future self.
+                </p>
+              </div>
+              <Link
+                href="/dashboard/session/new"
+                className="brutal-btn bg-soft-black text-white text-sm px-6 py-2.5 hover:bg-peach hover:text-soft-black inline-block"
+              >
+                start a session
+              </Link>
+            </>
+          )}
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4">

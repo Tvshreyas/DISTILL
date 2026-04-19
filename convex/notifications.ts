@@ -138,7 +138,7 @@ export const processResurfacingEmails = internalAction({
         const result = await resend.emails.send({
           from: fromEmail,
           to: profile.email,
-          subject: `${pending.daysAgo} days ago, you thought...`,
+          subject: `you wrote this ${pending.daysAgo} days ago`,
           html,
         });
 
@@ -234,7 +234,7 @@ export const processStreakReminders = internalAction({
         const result = await resend.emails.send({
           from: fromEmail,
           to: profile.email,
-          subject: `Your ${profile.currentStreak}-day streak continues`,
+          subject: `your streak ends at midnight`,
           html,
         });
 

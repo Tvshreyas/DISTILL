@@ -49,10 +49,21 @@ export function StreakReminderEmail({
               fontSize: "20px",
               fontWeight: 800,
               color: "#292524",
-              margin: "0 0 16px",
+              margin: "0 0 8px",
             }}
           >
-            Your {currentStreak}-day streak continues.
+            your streak ends at midnight.
+          </Text>
+
+          <Text
+            style={{
+              fontSize: "15px",
+              color: "#78716C",
+              lineHeight: "1.6",
+              margin: "0 0 8px",
+            }}
+          >
+            you&apos;ve reflected {currentStreak} days straight.
           </Text>
 
           <Text
@@ -63,7 +74,7 @@ export function StreakReminderEmail({
               margin: "0 0 24px",
             }}
           >
-            No reflection recorded today. Your streak is still active.
+            one more today keeps it going.
           </Text>
 
           {/* CTA */}
@@ -81,7 +92,7 @@ export function StreakReminderEmail({
               border: "3px solid #292524",
             }}
           >
-            Open Distill
+            open distill &rarr;
           </Link>
 
           <Hr style={{ borderColor: "#E8EFE8", margin: "32px 0 16px" }} />

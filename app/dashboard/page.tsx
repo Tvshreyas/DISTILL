@@ -505,6 +505,29 @@ export default function DashboardPage() {
         </p>
       </header>
 
+      {/* First-time user empty state */}
+      {lifetimeReflections === 0 && !activeSession && (
+        <div className="py-12 text-center border-4 border-dashed border-soft-black/10 rounded-[2rem] space-y-4">
+          <div className="w-16 h-16 bg-sage/20 rounded-full flex items-center justify-center mx-auto">
+            <PenTool className="w-7 h-7 text-sage-dark" />
+          </div>
+          <h3 className="font-grotesk text-2xl font-black lowercase text-soft-black">
+            your thinking starts here.
+          </h3>
+          <p className="text-muted-text font-medium max-w-sm mx-auto leading-relaxed">
+            pick something you&apos;re reading, watching, or listening to. write
+            down what you actually think when you&apos;re done.
+          </p>
+          <Link
+            href="/dashboard/session/new"
+            className="brutal-btn bg-soft-black text-white text-base px-8 py-3 hover:bg-peach hover:text-soft-black inline-block"
+          >
+            start a session
+          </Link>
+          <p className="text-xs text-muted-text">takes 30 seconds to set up.</p>
+        </div>
+      )}
+
       {profile.plan === "free" && (
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-sage/20 border border-sage/50 rounded-full">
           <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
@@ -549,8 +572,8 @@ export default function DashboardPage() {
           />
           <span className="font-grotesk text-sm font-bold">
             {streakUrgency.isUrgent
-              ? `${streakUrgency.hoursLeft}h left to keep your ${currentStreak}-day streak alive.`
-              : `Reflect today to extend your ${currentStreak}-day streak.`}
+              ? `${streakUrgency.hoursLeft}h left. ${currentStreak} days of straight thinking.`
+              : `${currentStreak} days of straight thinking. one more today.`}
           </span>
           <Link
             href="/dashboard/session/new"
@@ -583,9 +606,20 @@ export default function DashboardPage() {
               {currentStreak}
             </span>
             <span className="font-grotesk text-xl font-bold text-soft-black/40 lowercase">
-              days
+              {currentStreak === 1 ? "day" : "days"}
             </span>
           </div>
+          {currentStreak === 0 && lifetimeReflections > 0 && (
+            <p className="text-sm text-muted-text font-medium mt-2">
+              your streak reset. ready to start again?
+            </p>
+          )}
+          {currentStreak > 0 && (
+            <p className="text-sm text-muted-text font-medium mt-2">
+              {currentStreak} {currentStreak === 1 ? "day" : "days"} of straight
+              thinking.
+            </p>
+          )}
 
           {/* IDENTITY LABELING — earned title */}
           <div className="mt-6 space-y-2">
