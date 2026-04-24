@@ -4,7 +4,6 @@ import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useEffect, useState } from "react";
-import posthog from "posthog-js";
 
 function getCookie(name: string): string | undefined {
   const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
@@ -40,10 +39,12 @@ export default function ProfileSync() {
           deleteCookie("utm_medium");
           deleteCookie("utm_campaign");
           // Track signup event
-          posthog.capture("user_signed_up", {
-            acquisition_source: utmSource,
-            acquisition_medium: utmMedium,
-            acquisition_campaign: utmCampaign,
+          import("posthog-js").then(({ default: posthog }) => {
+            posthog.capture("user_signed_up", {
+              acquisition_source: utmSource,
+              acquisition_medium: utmMedium,
+              acquisition_campaign: utmCampaign,
+            });
           });
         })
         .catch((err) => {
@@ -55,11 +56,13 @@ export default function ProfileSync() {
   // Identify user in PostHog once profile exists
   useEffect(() => {
     if (isLoaded && isSignedIn && userId && profile) {
-      posthog.identify(userId, {
-        plan: profile.plan,
-        acquisition_source: profile.acquisitionSource,
-        acquisition_medium: profile.acquisitionMedium,
-        acquisition_campaign: profile.acquisitionCampaign,
+      import("posthog-js").then(({ default: posthog }) => {
+        posthog.identify(userId, {
+          plan: profile.plan,
+          acquisition_source: profile.acquisitionSource,
+          acquisition_medium: profile.acquisitionMedium,
+          acquisition_campaign: profile.acquisitionCampaign,
+        });
       });
     }
   }, [isLoaded, isSignedIn, userId, profile]);

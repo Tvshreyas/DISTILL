@@ -6,9 +6,14 @@ import PostHogProvider from "@/components/PostHogProvider";
 import CookieBanner from "@/components/CookieBanner";
 import PWAProvider from "@/components/PWAProvider";
 import { Toaster } from "sonner";
-import { CustomCursor } from "@/components/ui/custom-cursor";
+import dynamic from "next/dynamic";
 import ProfileSync from "@/components/ProfileSync";
 import "./globals.css";
+
+const CustomCursor = dynamic(
+  () => import("@/components/ui/custom-cursor").then((mod) => mod.CustomCursor),
+  { ssr: false },
+);
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -27,12 +32,14 @@ const reenieBeanie = Reenie_Beanie({
   subsets: ["latin"],
   variable: "--font-reenie",
   display: "swap",
+  preload: false,
 });
 
 const lora = Lora({
   subsets: ["latin"],
   variable: "--font-serif",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
